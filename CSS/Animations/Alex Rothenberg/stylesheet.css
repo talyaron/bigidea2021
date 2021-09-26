@@ -2,7 +2,7 @@
     width:100px;
     height: 100px;
     background-color: teal;
-    animation: move 5s infinite;
+    animation: move 5s linear 2s infinite;
     position: relative;
 }
 /*define the animation*/
@@ -11,11 +11,14 @@
         background:teal;
         transform: rotate(0deg) scale(1);
         left: 0vw;
-    } 
+    }
+    25%,75%{
+        transform: rotate(180deg) scale(3);
+    }
     50%{
         background:yellow;
-        transform: rotate(360deg) scale(3);
-        left: 100vw
+        transform: rotate(360deg) scale(1);
+        left: 90vw
         ;
     }
 }
