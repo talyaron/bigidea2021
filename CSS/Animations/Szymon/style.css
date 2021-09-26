@@ -2,18 +2,20 @@
     width: 100px;
     height: 100px;
     background: teal;
-    animation: move 5s;
+    animation: move 5s linear 2s;
+    position: relative;
+    animation-iteration-count: infinite;
 }
 
 @keyframes move{
     from{
         background: teal;
         transform: rotate(edge) scale(1);
-        transform: translate(1px);
+        left: 0vw;
     }
     to{
         background: yellow;
         transform: rotate(360deg) scale(10);
-        transform: translate(200px);
+        left: 100vw;
     }
 }
