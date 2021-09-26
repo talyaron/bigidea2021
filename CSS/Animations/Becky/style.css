@@ -3,7 +3,7 @@
     height: 100px;
     background-color: teal;
 
-    animation: move 5s;
+    animation: move 5s linear 2s infinite;
     position: relative;
 }
 @keyframes move {
