@@ -5,22 +5,23 @@
     animation: move 5s linear 1s 1 alternate forwards;
     position: absolute;
 }
+
 .box2{
-    
+    position: relative;
 }
 
 @keyframes move{
     from{
         background: teal;
-        transform: rotate(edge) scale(1);
+        transform: rotate(edge) scale(0);
         left: 0vw;
         bottom: 40vw;
         
     }
     to{
         background: yellow;
-        transform: rotate(360deg) scale(.5);
-        left: 90vw;
+        transform: rotate(360deg) scale(10);
+        left: 50vw;
         bottom: 20vw;
         
     }
