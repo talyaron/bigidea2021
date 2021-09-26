@@ -12,8 +12,10 @@
 @keyframes move {
    from {
        background:teal;
+       transform: rotate(0deg) scale(1);
    } 
    to{
        background:yellow;
+       transform: rotate(360deg) scale(0);
    }
 }
