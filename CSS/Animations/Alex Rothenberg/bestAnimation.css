@@ -10,6 +10,8 @@
     animation-direction: alternate;
     animation-iteration-count: infinite;
   }
+
+  
   
   @keyframes stretch {
     0% {
