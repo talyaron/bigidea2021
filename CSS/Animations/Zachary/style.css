@@ -3,12 +3,13 @@
     height:100px;
     background:teal;
     animation:move 5s;
+    position:absolute;
 }
 
 @keyframes move {
     from {
         background:teal;
-        position:absolute;
+      
         left:0px;
         transform: rotateX(0deg) rotatey(0deg) rotatez(360deg) scale(1);
     }
