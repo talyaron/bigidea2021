@@ -2,9 +2,11 @@
     width: 100px;
     height: 100px;
     background: teal;
-    animation: move 5s linear 2s;
-    position: relative;
-    animation-iteration-count: infinite;
+    animation: move 5s linear 1s 1 alternate forwards;
+    position: absolute;
+}
+.box2{
+    
 }
 
 @keyframes move{
@@ -12,10 +14,14 @@
         background: teal;
         transform: rotate(edge) scale(1);
         left: 0vw;
+        bottom: 40vw;
+        
     }
     to{
         background: yellow;
-        transform: rotate(360deg) scale(10);
-        left: 100vw;
+        transform: rotate(360deg) scale(.5);
+        left: 90vw;
+        bottom: 20vw;
+        
     }
 }

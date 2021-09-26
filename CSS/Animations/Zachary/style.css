@@ -8,14 +8,19 @@
 
 
 @keyframes move {
-    from {
+    0% {
         background:teal;
         left:0px;
         transform: rotateX(0deg) rotatey(0deg) rotatez(360deg) scale(1);
     }
-    to {
+    50% {
         background: yellow;
         left:500px;
         transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg) scale(0.1)
+    }
+    100%{
+        background: red;
+        left:250px;
+        transform: scale3d(10px);
     }
 }
