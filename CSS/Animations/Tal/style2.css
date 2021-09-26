@@ -1,0 +1,24 @@
+.box{
+    width:200px;
+    height:200px;
+    background:green;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box:active, .box:hover{
+    animation: move 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes move {
+    from{
+        background-image: url('https://www.gardeningknowhow.com/wp-content/uploads/2019/09/flower-color-400x391.jpg');
+    }
+    to{
+        background-image: url('https://i.guim.co.uk/img/media/bdf23d7b1bbb200cf72ae0c22f051bf926445b20/1_0_5075_3046/master/5075.jpg?width=1300&quality=85&auto=format&fit=max&s=4dc466a613c618911a2641c32dcedbcd');
+    }
+}
