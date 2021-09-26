@@ -6,8 +6,6 @@
     /* call the animation */
     /* animation: name duration timing-function delay iteration-count direction fill-mode; */
     animation: move 5s;
-    position: relative;
-    animation-iteration-count: infinite;
 }
 
 /* define the animation */
@@ -15,12 +13,9 @@
    from {
        background:teal;
        transform: rotate(0deg) scale(1);
-       left: 0vw;
-       
    } 
    to{
        background:yellow;
-       transform: rotate(360deg) scale(0);
-       left: 100vw;
+       transform: rotate(360deg) scale(1);
    }
 }
