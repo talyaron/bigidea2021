@@ -1,0 +1,21 @@
+.box{
+    width:100px;
+    height:100px;
+    background:teal;
+
+    /* call the animation */
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: move 5s;
+}
+
+/* define the animation */
+@keyframes move {
+   from {
+       background:teal;
+       transform: rotate(0deg) scale(1);
+   } 
+   to{
+       background:yellow;
+       transform: rotate(360deg) scale(1);
+   }
+}
