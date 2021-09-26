@@ -6,15 +6,49 @@
     animation: move 5s linear 2s infinite;
     position: relative;
 }
+.box2{
+    width: 100px;
+    height: 100px;
+
+    animation: movetwo 5s linear 2s infinite;
+    position: relative;
+
+}
 @keyframes move {
-    from{
+    0%{
         background: teal;
         transform: rotate(0deg);
         left: 0vw;
     }
-    to{
+   50%{
         background: yellow;
         transform: rotate(360deg);
         left: 100vw;
     }
+    100%{
+
+
+    }
+}
+@keyframes movetwo {
+    0%{
+        background: teal;
+        transform: rotate(0deg);
+        left: 30vw;
+        scale: (1);
+
+    }
+    100%{
+        background: yellow;
+        transform: rotate(360deg);
+        left: 80vw;
+        scale: (6);
+    }
+}
+.photo{
+    height: 100px;
+    width: 100px;
+}
+body{
+    background-color: violet;
 }
