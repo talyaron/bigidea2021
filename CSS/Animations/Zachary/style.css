@@ -2,7 +2,7 @@
     width:100px;
     height:100px;
     background:teal;
-    animation:move 5s linear 2s infinite ;
+    animation:move 5s linear 2s infinite alternate ;
     position:absolute;
 }
 
