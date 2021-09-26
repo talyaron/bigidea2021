@@ -1,0 +1,70 @@
+nav{
+    color: white;
+    background-color: red;
+    position: fixed;
+    text-align: center;
+    display: in-line;
+    width: 100%;
+    padding: 20px;
+    top: 0px;
+}
+
+body{
+    position: relative;
+    margin: 0px;
+}
+
+.title{
+    margin-top: -18px;
+}
+
+.imgFormatting{
+    shape-image-threshold: inherit;
+}
+
+.menu{
+    text-align: left;
+    margin: 0px;
+    top: 20px;
+}
+
+.addButton{
+    right: 6%;
+    bottom: 12%;
+    font-size: 40px;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    background-color: blue;
+    position: fixed;
+}
+
+.card{
+    color: whitesmoke;
+    background-color: darkblue;
+    width: 33%;
+    bottom: 50%;
+    height: 240px;
+    border-radius: 12px;
+    box-shadow: 2px 3px 9px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+    text-align: center;
+    vertical-align: center;
+    display: inline-block;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    object-fit: cover;
+}
+
+.cardContainer{
+    bottom: 20%;
+    margin: 10px auto;
+    margin-top: 100px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
