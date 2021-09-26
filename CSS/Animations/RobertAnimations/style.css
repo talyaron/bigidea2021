@@ -10,8 +10,9 @@
 }
 .arrow
 {
-    left: 12px;
-    top: 12px;
+    position: relative;
+    left: 490px;
+    top: 300px;
 }
 /* call the animation*/
 
