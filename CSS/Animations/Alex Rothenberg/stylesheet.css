@@ -2,30 +2,23 @@
     width:100px;
     height: 100px;
     background-color: teal;
-    animation: move 5s infinite,
-            nudge 5s infinite;
+    animation: move 5s linear 2s infinite;
+    position: relative;
 }
 /*define the animation*/
 @keyframes move {
-    0%{
-        background-color: teal;
+    0%,100% {
+        background:teal;
         transform: rotate(0deg) scale(1);
+        left: 0vw;
+    }
+    25%,75%{
+        transform: rotate(180deg) scale(3);
     }
     50%{
-        background-color: brown;
-        transform: rotate(180deg) scale(5);
-    }
-    100%{
-        background-color: teal;
+        background:yellow;
         transform: rotate(360deg) scale(1);
+        left: 90vw
+        ;
     }
 }
-@keyframes nudge {
-    0%, 100% {
-      transform: translate(0, 0);
-    }
-    
-    50% {
-      transform: translate(500px, 0);
-    }
-  }

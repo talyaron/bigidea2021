@@ -1,0 +1,26 @@
+.box{
+    width:100px;
+    height:100px;
+    background:teal;
+    animation:move 5s linear 2s infinite alternate ;
+    position:absolute;
+}
+
+
+@keyframes move {
+    0% {
+        background:teal;
+        left:0px;
+        transform: rotateX(0deg) rotatey(0deg) rotatez(360deg) scale(1);
+    }
+    50% {
+        background: yellow;
+        left:500px;
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg) scale(0.1)
+    }
+    100%{
+        background: red;
+        left:250px;
+        transform: scale3d(10px);
+    }
+}

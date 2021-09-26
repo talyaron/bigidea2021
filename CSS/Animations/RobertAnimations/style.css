@@ -1,0 +1,33 @@
+.box
+{
+    width: 300px;
+    height: 300px;
+    background: black;
+    animation: move 5s linear 1s 1 alternate forwards;
+    position:relative;
+    
+   
+}
+.arrow
+{
+    left: 12px;
+    top: 12px;
+}
+/* call the animation*/
+
+/*define animation
+*/
+@keyframes move {
+    from {
+        background: teal;
+        transform: rotate(0deg) scale(1) ;
+        position: absolute;
+        left: 0px;
+    }
+    to {
+        background: yellow;
+        transform: rotate(9000deg) scale(1);
+        position: absolute;
+        left: 400px;
+    }
+}
