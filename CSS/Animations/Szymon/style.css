@@ -1,0 +1,19 @@
+.box{
+    width: 100px;
+    height: 100px;
+    background: teal;
+    animation: move 5s;
+}
+
+@keyframes move{
+    from{
+        background: teal;
+        transform: rotate(edge) scale(1);
+        transform: translate(1px);
+    }
+    to{
+        background: yellow;
+        transform: rotate(360deg) scale(10);
+        transform: translate(200px);
+    }
+}
