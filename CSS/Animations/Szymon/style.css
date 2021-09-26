@@ -1,0 +1,21 @@
+.box{
+    width: 100px;
+    height: 100px;
+    background: teal;
+    animation: move 5s linear 2s;
+    position: relative;
+    animation-iteration-count: infinite;
+}
+
+@keyframes move{
+    from{
+        background: teal;
+        transform: rotate(edge) scale(1);
+        left: 0vw;
+    }
+    to{
+        background: yellow;
+        transform: rotate(360deg) scale(10);
+        left: 100vw;
+    }
+}
