@@ -2,25 +2,44 @@
  width: 100px;
  height: 100px;
  background: cornflowerblue;
+ left: 40%;
 
  /*call the animation*/
- /* animation: name duration timing-function delay items */
+ /* animation: name duration timing-function delay iteration-count direction fill-mode; */
 
- animation: move 5s infinite;
+ animation: move 5s linear 1s infinite alternate forwards;
+ position: relative;
+ animation-name: stretch;
+ animation-iteration-count: infinite;
+ animation-timing-function: ease-out;
+ animation-delay: 0;
 }
 
 
 /*define the animation*/
-@keyframes move {
-from {
-background: crimson;
-transform: rotate(0deg) scale(1);
-position: absolute;
-left: 0px;
-}
-to{
-    background: darkblue;
-    transform: rotate(360deg) scale(2);
-    left: 2000px;
-}
-}
+
+@keyframes stretch {
+    0% {
+      transform: scale(.3) rotate(0deg);
+      background-color: red;
+      border-radius: 100%;
+      top: 0px;
+    }
+    33% {
+      background-color: orange;
+      left: 0px;
+
+    }
+    66% {
+      transform: rotate(180deg);
+      background-color: yellow;
+      top: 500px;
+      
+    }
+    100%{
+    transform: scale(1.5) rotate(360deg);
+    right: 0px;
+    top: 0px;
+        background-color: indigo;
+    }
+  }
