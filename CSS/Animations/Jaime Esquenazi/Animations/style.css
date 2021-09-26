@@ -1,0 +1,32 @@
+body{
+    background: grey;
+}
+.box{
+    width: 100px;
+    height: 100px;
+    background: teal;
+    position: absolute;
+    left: 650px;
+    top: 250px;
+    animation: move 5s linear 1s 1 alternate forwards;
+}
+
+/*define the animation*/
+@keyframes move {
+
+    0%   {background: teal; transform: rotate(0deg) scale(1);}
+    50%  {background: yellow;
+        transform: rotate(1440deg) scale(8);
+        position: absolute;}
+    100% {background: teal; transform: rotate(0deg) scale(1);}
+    }
+
+
+.textBox{
+    font-size: 36px;
+    color: teal;
+    display:inline-block;
+    position: relative;
+    top: 500px;
+    left: 500px;
+}

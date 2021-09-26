@@ -1,0 +1,19 @@
+.box{
+    width:500px;
+    height:500px;
+    background:#ff2600;
+    animation:move 5s linear 1s infinite alternate;
+}
+
+@keyframes move {
+    from{
+        background: rgb(255, 0, 200);
+        transform: scaleX(1) scaleY(0)
+         
+    }
+    to{
+        background: rgb(255, 0, 255);
+        transform:scaleX(0) scaleY(1)
+        
+    }
+}

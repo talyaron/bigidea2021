@@ -5,17 +5,27 @@
 
     /* call the animation */
     /* animation: name duration timing-function delay iteration-count direction fill-mode; */
-    animation: move 5s;
+    animation: move 5s linear 1s 1 alternate forwards;
+    position: relative;
+    
 }
 
 /* define the animation */
 @keyframes move {
-   from {
+   0% {
        background:teal;
        transform: rotate(0deg) scale(1);
+       left: 0vw;
+       
    } 
-   to{
+   50%{
        background:yellow;
-       transform: rotate(360deg) scale(0);
+       transform: rotate(360deg) scale(.5);
+       left: 50vw;
+   }
+   100%{
+    background:blue;
+    transform: rotate(360deg) scale(2);
+    left: 0vw;
    }
 }
