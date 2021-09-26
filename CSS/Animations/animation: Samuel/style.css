@@ -1,0 +1,26 @@
+.box{
+ width: 100px;
+ height: 100px;
+ background: cornflowerblue;
+
+ /*call the animation*/
+ /* animation: name duration timing-function delay items */
+
+ animation: move 5s infinite;
+}
+
+
+/*define the animation*/
+@keyframes move {
+from {
+background: crimson;
+transform: rotate(0deg) scale(1);
+position: absolute;
+left: 0px;
+}
+to{
+    background: darkblue;
+    transform: rotate(360deg) scale(2);
+    left: 2000px;
+}
+}
