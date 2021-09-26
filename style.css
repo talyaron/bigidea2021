@@ -1,0 +1,37 @@
+.box{
+    width: 100px;
+    height: 100px;
+    background: violet;
+
+    animation: move 5s;
+}
+
+div{
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+}
+
+@keyframes move {
+    from {
+        background: violet;
+        transform: rotate(0deg) scale(1);
+        position: absolute;
+        left: 0vw;
+        top: 0px;
+        animation: move 5s linear 1s 1 alternate forward;
+        animation-iteration-count: infinite;
+    }
+
+    to {
+        position: absolute;
+        background-color: orangered;
+        transform: rotate(180deg) rotateX(180deg) rotateY(360deg) scale(3);
+        left: 100vw;
+        top: 100vw;
+    }
+}
+
+.imgFormatting{
+    shape-image-threshold: inherit;
+}
