@@ -1,0 +1,28 @@
+.Plus{
+    position: fixed;
+    border-radius: 35px;
+    width: 70px;
+    height: 70px;
+    background-color: red;
+    font-size: 90px;
+    color: blue;
+    top: 85%;
+    left: 85%;
+}
+.container{
+    margin: 10px auto;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 1000px;
+}
+.card{
+    width: 300px;
+    height: 300px;
+    border-radius: 12px;
+    box-shadow: 3px 3px 9px rgb(94, 91, 91);
+    margin-bottom: 20px;
+    font-size: 30px;
+}
