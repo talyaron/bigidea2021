@@ -1,23 +1,36 @@
+body{
+    background: darkviolet;
+}
+
 .box{
+    position: relative;
     width: 100px;
     height: 100px;
     background-color: darkgray;
-    animation: move 5s;
-    animation-iteration-count: infinite;
+    offset-path: path(10);
+    animation: move 8s infinite alternate ease-in-out;
+    top: 40vh;
+    width: 40vw;
+    justify-content: center;
     position: relative;
 }
 
+.text{
+    text-align: right;
+    font-size: 60px;
+}
 
 @keyframes move {
    from {
-       background:teal;
-       transform: rotate(0deg) scale(1);
-       left: 0vw;
+        position: 50vw;
+        background:teal;
+        transform: rotate(0deg) scale(1);
+        offset-distance: 0%;
    } 
    to{
        background:yellow;
-       transform: rotate(360deg) scale(3);
-       left: 100vw
-       ;
+       transform: rotate(360deg) scale(3) rotate(360deg);
+       offset-distance: 100%;
+       position: 50vw;
    }
 }
