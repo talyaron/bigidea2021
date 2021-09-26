@@ -1,8 +1,8 @@
 .box{
-    width:100px;
-    height:100px;
+    width:500px;
+    height:500px;
     background:#ff2600;
-    animation:move 5s;
+    animation:move 5s linear 1s infinite alternate;
 }
 
 @keyframes move {
