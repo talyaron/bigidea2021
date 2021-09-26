@@ -26,11 +26,13 @@ body{
         background:teal;
         transform: rotate(0deg) scale(1);
         offset-distance: 0%;
+        left: 10%;
    } 
    to{
        background:yellow;
        transform: rotate(360deg) scale(3) rotate(360deg);
        offset-distance: 100%;
        position: 50vw;
+       left: 70%;
    }
 }
