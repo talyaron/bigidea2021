@@ -1,8 +1,12 @@
+body{
+    background: grey;
+}
+
 .boxes{
     width: 420px;
     height: 420px;
     position: relative;
-    left: 30vw;
+    left: 31vw;
     top: 5vh;
 }
 
