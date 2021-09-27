@@ -1,0 +1,204 @@
+.box{
+    width:200px;
+    height:200px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/ru/0/01/Immigrant_Song.jpg);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box:active, .box:hover{
+    animation: move 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+.box1{
+    width:200px;
+    height:200px;
+    background-image: url(https://media2.giphy.com/media/PgJwMLahrGc3IcteOt/200.gif);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box1:active, .box1:hover{
+    animation: move1 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+
+.box2{
+    width:200px;
+    height:200px;
+    background-image: url(https://m.media-amazon.com/images/I/71T7Rwiq9eL._AC_SY450_.jpg);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box2:active, .box2:hover{
+    animation: move2 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+
+}
+.box3{
+    width:200px;
+    height:200px;
+    background-image: url(https://i.ytimg.com/vi/V5BdX30DilE/maxresdefault.jpg);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box3:active, .box3:hover{
+    animation: move3 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+.box4{
+    width:200px;
+    height:200px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/he/f/f0/Come_and_Get_Your_Love_-_Redbone.jpeg);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box4:active, .box4:hover{
+    animation: move4 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+.box5{
+    width:200px;
+    height:200px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/en/c/cd/Rebecca_Black_-_Friday.png);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box5:active, .box5:hover{
+    animation: move5 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+.box6{
+    width:200px;
+    height:200px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/he/c/c0/%D7%91%D7%99%D7%99%D7%91%D7%99.jpg);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box6:active, .box6:hover{
+    animation: move6 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+.box7{
+    width:200px;
+    height:200px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/he/a/ae/Selena_Gomez_-_For_You_%28Official_Album_Cover%29.png);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box7:active, .box7:hover{
+    animation: move7 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+@keyframes move {
+    from{
+        background-image: url('https://upload.wikimedia.org/wikipedia/ru/0/01/Immigrant_Song.jpg');
+    }
+    to{
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png');
+    }
+}
+
+@keyframes move1 {
+    from{
+        background-image: url('https://media2.giphy.com/media/PgJwMLahrGc3IcteOt/200.gif');
+    }
+    to{
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png');
+    }
+}
+
+@keyframes move2
+{
+    from{
+        background-image: url('https://m.media-amazon.com/images/I/71T7Rwiq9eL._AC_SY450_.jpg');
+    }
+    to{
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png');
+    }
+}
+
+
+@keyframes move3
+{
+    from{
+        background-image: url('https://i.ytimg.com/vi/V5BdX30DilE/maxresdefault.jpg');
+    }
+    to{
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5VesxDwAxjr_96mZvLbiDfGTuir8aBOm-899XS7RXypt49NfxwigMNL5LsjDFYfObHs&usqp=CAU');
+    }
+}
+
+@keyframes move4
+{
+    from{
+        background-image: url('https://upload.wikimedia.org/wikipedia/he/f/f0/Come_and_Get_Your_Love_-_Redbone.jpeg');
+    }
+    to{
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png');
+    }
+}
+
+
+@keyframes move5
+{
+    from{
+        background-image: url('https://upload.wikimedia.org/wikipedia/en/c/cd/Rebecca_Black_-_Friday.png');
+    }
+    to{
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5VesxDwAxjr_96mZvLbiDfGTuir8aBOm-899XS7RXypt49NfxwigMNL5LsjDFYfObHs&usqp=CAU');
+    }
+}
+
+
+@keyframes move6
+{
+    from{
+        background-image: url('https://upload.wikimedia.org/wikipedia/he/c/c0/%D7%91%D7%99%D7%99%D7%91%D7%99.jpg');
+    }
+    to{
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5VesxDwAxjr_96mZvLbiDfGTuir8aBOm-899XS7RXypt49NfxwigMNL5LsjDFYfObHs&usqp=CAU');
+    }
+}
+
+
+@keyframes move7
+{
+    from{
+        background-image: url('https://upload.wikimedia.org/wikipedia/he/a/ae/Selena_Gomez_-_For_You_%28Official_Album_Cover%29.png');
+    }
+    to{
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5VesxDwAxjr_96mZvLbiDfGTuir8aBOm-899XS7RXypt49NfxwigMNL5LsjDFYfObHs&usqp=CAU');
+    }
+}
+
