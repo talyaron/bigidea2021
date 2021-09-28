@@ -1,0 +1,144 @@
+.box{
+    width:200px;
+    height:200px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/he/d/dc/CarlyRaeJepsen-CallMeMaybe.jpg');
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box2{ /* peaches by justin bieber --> like */
+    width:200px;
+    height:200px;
+    background-image: url('https://i.ytimg.com/vi/BydBU2pCkU8/mqdefault.jpg');
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box3{
+    width:200px;
+    height:200px;
+    background: url('https://1.bp.blogspot.com/-Loq6XNQxBBw/YJ_X2uTSMyI/AAAAAAAAHDc/7wc92OW_L8ELJCYd10pELvyzv7hpB09LwCLcBGAsYHQ/s680/Olivia%2BRodrigo%2B%25E2%2580%2593%2Bgood%2B4%2Bu%2BLyrics.webp');
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box4{
+    width:200px;
+    height:200px;
+    background: url('https://upload.wikimedia.org/wikipedia/en/f/f0/Lil_Baby_-_Woah.png');
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box5{
+    width:200px;
+    height:200px;
+    background: url('https://i.pinimg.com/originals/ef/73/d4/ef73d46514049b715f5d3fd305e966b1.jpg');
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box6{
+    width:200px;
+    height:200px;
+    background: url('https://i1.sndcdn.com/artworks-66IEziyOwKbmhAx4-77Xpfg-t500x500.jpg');
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box7{
+    width:200px;
+    height:200px;
+    background: url('https://upload.wikimedia.org/wikipedia/he/0/09/SuperBass_NickiMinaj.jpg');
+    position: relative;
+    background-size:200px 200px;
+}
+
+.box8{
+    width:200px;
+    height:200px;
+    background: url('https://m.media-amazon.com/images/I/81iXE2XNYDL._SS500_.jpg');
+    position: relative;
+    background-size:200px 200px;
+}
+
+
+
+
+
+
+
+.box:active, .box:hover{
+    animation: dislike 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+
+.box2:active, .box2:hover{
+    animation: like 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+
+.box3:active, .box3:hover{
+    animation: love 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+
+.box4:active, .box4:hover{
+    animation: dislike 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+
+.box5:active, .box5:hover{
+    animation: dislike 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+
+.box6:active, .box6:hover{
+    animation: like 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+
+.box7:active, .box7:hover{
+    animation: dislike 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+
+.box8:active, .box8:hover{
+    animation: like 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes love {
+    to{
+        background-image: url('https://media.istockphoto.com/vectors/smiling-emoticon-with-3-hearts-vector-id1138913775');
+    } 
+}
+
+@keyframes like {
+    to{
+        background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqkP_wzZCIk0hkpaQmVRSwTSEJsSQkRHSwjXiNX5NRnL5SN0oUIZ-iK3tH-8cku8ORGVA&usqp=CAU');
+    }
+}
+
+@keyframes dislike {
+    to {
+        background: url('https://i.pinimg.com/originals/78/66/7f/78667ffabbfaf1788ca47b902a411f2e.png');
+    }
+}
