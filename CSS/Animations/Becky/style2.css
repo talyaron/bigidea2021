@@ -1,0 +1,206 @@
+.box{
+    width:200px;
+    height:200px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/en/e/eb/Matoma_%E2%80%93_One_in_a_Million.png);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+}
+.box2{
+    width:200px;
+    height:200px;
+    background-image: url(https://lite-images-i.scdn.co/image/ab67616d00001e028bd4a20032a613d28e909109);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+    
+    
+
+}
+.box3{
+    width:200px;
+    height:200px;
+    background-image: url(https://images-na.ssl-images-amazon.com/images/I/711UjNzynnL._SL1500_.jpg);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+
+}
+.box4{
+    width:200px;
+    height:200px;
+    background-image: url(https://ichef.bbci.co.uk/news/976/cpsprodpb/10BBB/production/_113593586_swift.jpg);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+
+}
+.box5{
+    width:200px;
+    height:200px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/en/b/b1/Oasis_-_%28What%27s_The_Story%29_Morning_Glory_album_cover.jpg);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+
+}
+.box6{
+    width:200px;
+    height:200px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/en/4/45/Divide_cover.png);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+
+}
+.box7{
+    width:200px;
+    height:200px;
+    background-image: url(https://static.qobuz.com/images/covers/ub/23/g0r81zcel23ub_600.jpg);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+
+}
+.box8{
+    width:200px;
+    height:200px;
+    background-image: url(https://i1.sndcdn.com/artworks-GML6JX3niZQI-0-t500x500.jpg);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    position: relative;
+    background-size:200px 200px;
+
+}
+
+.box:active, .box:hover{
+    animation: move 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+.box2:active, .box2:hover{
+    animation: move2 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+.box3:active, .box3:hover{
+    animation: move3 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+}
+.box4:active, .box4:hover{
+    animation: move4 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+.box5:active, .box5:hover{
+    animation: move5 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+.box6:active, .box6:hover{
+    animation: move6 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+.box7:active, .box7:hover{
+    animation: move7 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+.box8:active, .box8:hover{
+    animation: move8 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+@keyframes move {
+    from{
+        background-image: url(https://upload.wikimedia.org/wikipedia/en/e/eb/Matoma_%E2%80%93_One_in_a_Million.png);
+    }
+    to{
+        background-image: url(https://i.guim.co.uk/img/media/bdf23d7b1bbb200cf72ae0c22f051bf926445b20/1_0_5075_3046/master/5075.jpg?width=1300&quality=85&auto=format&fit=max&s=4dc466a613c618911a2641c32dcedbcd);
+    }
+}
+@keyframes move2 {
+    from{
+        background-image: url(https://lite-images-i.scdn.co/image/ab67616d00001e028bd4a20032a613d28e909109);
+    }
+    to{
+        background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mr._Smiley_Face.svg/1200px-Mr._Smiley_Face.svg.png);
+
+    }
+}
+@keyframes move3 {
+    from{
+        background-image: url(https://images-na.ssl-images-amazon.com/images/I/711UjNzynnL._SL1500_.jpg);
+    }
+    to{
+        background-image: url(https://ih1.redbubble.net/image.1285041515.5231/st,small,845x845-pad,1000x1000,f8f8f8.jpg);
+
+    }
+    
+}
+@keyframes move4 {
+    from{
+        background-image: url(https://ichef.bbci.co.uk/news/976/cpsprodpb/10BBB/production/_113593586_swift.jpg);
+
+    }
+    to{
+        background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mr._Smiley_Face.svg/1200px-Mr._Smiley_Face.svg.png);
+    }
+    
+}
+@keyframes move5 {
+    from{
+        background-image: url(https://upload.wikimedia.org/wikipedia/en/b/b1/Oasis_-_%28What%27s_The_Story%29_Morning_Glory_album_cover.jpg);
+    }
+    to{
+        background-image: url(https://ih1.redbubble.net/image.1285041515.5231/st,small,845x845-pad,1000x1000,f8f8f8.jpg);
+    }
+}
+@keyframes move6 {
+    from{
+        background-image: url(https://upload.wikimedia.org/wikipedia/en/4/45/Divide_cover.png);
+    }
+    to{
+        background-image: url(https://ih1.redbubble.net/image.1285041515.5231/st,small,845x845-pad,1000x1000,f8f8f8.jpg);
+    }
+}
+@keyframes move7 {
+    from{
+        background-image: url(https://static.qobuz.com/images/covers/ub/23/g0r81zcel23ub_600.jpg);
+    }
+    to{
+        background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mr._Smiley_Face.svg/1200px-Mr._Smiley_Face.svg.png);
+    }
+}
+@keyframes move8 {
+    from{
+        background-image: url(https://i1.sndcdn.com/artworks-GML6JX3niZQI-0-t500x500.jpg);
+    }
+    to{
+        background-image: url(https://ih1.redbubble.net/image.1285041515.5231/st,small,845x845-pad,1000x1000,f8f8f8.jpg);
+    }
+}
+.cover{
+    margin: 10px;
+    border: 1px solid black;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+.text{
+    background-color: white;
+    display: block;
+    font-style: italic;
+    margin-top: 180px;
+    
+}
+body{
+    background-color: black;
+}

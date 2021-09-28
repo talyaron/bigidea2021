@@ -24,3 +24,6 @@
         transform: scale3d(10px);
     }
 }
+body{
+    background-image: url("images\potatoes.jfif");
+}
