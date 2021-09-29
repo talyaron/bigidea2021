@@ -1,0 +1,27 @@
+.cont{
+    display: grid;
+    gap: 10px;
+    grid-template-columns:  300px 300px 300px;
+    grid-template-rows: 410px 410px 410px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.item{
+    background-color: rgb(245, 244, 244);
+    margin-top: 40px;
+    
+}
+h1{
+    margin: 3px;
+    color: rgb(59, 59, 59);
+    text-align: center;
+}
+p{
+    color: rgb(95, 95, 95);
+    margin: 5px;
+}
+img{
+    height: 150px;
+    width: 300px;
+}
