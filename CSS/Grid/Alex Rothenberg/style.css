@@ -30,7 +30,7 @@
 
 }
 
-.header{
+.header1{
     font-size:35px;
     color:gray;
 }
@@ -50,4 +50,30 @@ a:visited{
     font-size:20px;
     color:gray; 
     border-left:2px solid red;
+}
+
+.container2{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4,200px);
+    gap:3px;
+
+    grid-template-areas: 
+    "header header header header"
+    "main . . ."
+    "main . . ."
+    ". . . .";
+
+}
+.item2{
+    background-color: aqua;
+}
+
+.header{
+    grid-area: header;
+    background-color: tomato;
+}
+.main{
+    grid-area: main;
+    background-color: green;
 }

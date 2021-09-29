@@ -1,0 +1,32 @@
+
+.container{
+    color: teal;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 200px);
+    gap: 3px;
+
+    grid-template-areas: 
+    "header header header header"
+    "main main . side"
+    ". . . side";
+}
+
+.item{
+    background-color: sienna;
+}
+
+.header{
+    grid-area: header;
+    background-color: royalblue;
+}
+
+.main{
+    grid-area: main;
+    background-color: crimson;
+}
+
+.side{
+    grid-area: side;
+    background-color: darkmagenta;
+}

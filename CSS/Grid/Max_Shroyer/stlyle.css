@@ -1,4 +1,4 @@
-.cont{
+/* .cont{
     display: grid;
     gap: 10px;
     grid-template-columns:  300px 300px 300px;
@@ -23,5 +23,39 @@ p{
 }
 img{
     height: 150px;
-    width: 300px;
+    width: 300px; */
+/* } */
+/* -------------- */
+
+.cont2{
+    display: grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-template-rows: repeat(4, 200px);
+    gap:3px;
+
+    grid-template-areas: 
+    "header header header header"
+    "main main . side"  
+    "main main . side"
+    ". . . side"
+    
+    ;
+
+}
+.item2{
+    background-color: linen;
+    
+}
+
+.header{
+    grid-area: header;
+    background-color: mediumvioletred;
+}
+.main{
+    grid-area: main;
+    background-color: olive;
+}
+.side{
+grid-area: side;
+background-color: plum;
 }
