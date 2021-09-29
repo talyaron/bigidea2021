@@ -1,15 +1,35 @@
 .container{
     display: grid;
     gap: 5px;
-    grid-template-columns: 550px 400px 300px;
+    grid-template-columns: 525px 400px 470px;
     grid-template-rows: 400px 400px 400px;
 }
 
 .item{
     background-color: lightseagreen;
+    border: 2px solid black;
 }
+
+.container2{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 200px);
+    gap: 3px;
+    grid-template-areas: "header header header header";
+}
+
+.header{
+    grid-area: header;
+    background-color: tomato;
+}
+
+.item2{
+    background-color: aqua;
+}
+
 h2{
-    color: red;
+    color: black;
+    border-left: 2px solid red;
 }
 
 .a{

@@ -1,0 +1,10 @@
+.container{
+    display:grid;
+    gap:5px;
+    grid-template-columns: auto 20px auto 40px; 
+    grid-template-rows: 400px 200px 300px;
+}
+
+.item{
+    background-color: wheat;
+}
