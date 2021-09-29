@@ -15,13 +15,12 @@
 {
     from {
         background: teal;
-        transform: rotate(0deg) scale(1);
         position: absolute;
         left: 0%;
     }
     to {
         background: yellow;
-        transform: rotate(360deg) scale(2);
+        position: absolute;
         left: 45%;
         
     }
