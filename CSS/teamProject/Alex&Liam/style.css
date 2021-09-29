@@ -8,8 +8,29 @@
     "header header header header"
     "pic pic main1 main2"
     "pic pic main1 main2"
-    "bottom bottom main1 main2";   
+    "bottom bottom main1 main2";    
 }
 .item{
     background-color: grey;
+}
+
+.header{
+   grid-area: header;
+   background-color: tomato; 
+}
+.pic{
+    grid-area: pic;
+    background-color: teal;
+}
+.main1{
+    grid-area: main1;
+    background-color: yellow;
+}
+.main2{
+    grid-area: main2;
+    background-color: yellowgreen;
+}
+.bottom{
+    grid-area: bottom;
+    background-color: violet;
 }
