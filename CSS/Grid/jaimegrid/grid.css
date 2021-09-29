@@ -41,6 +41,11 @@
     background-color: yellow;
 }
 
+.header{
+    grid-area: header;
+    background-color: tomato;
+}
+
 h2{
     color: black;
     border-left: 2px solid red;
