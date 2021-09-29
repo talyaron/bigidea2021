@@ -1,3 +1,17 @@
+.header{
+    position: fixed;
+    width: 100vw;
+    background-color: salmon;
+    padding: 6px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    margin: 0px;
+}
+
+
+
+
+
 @keyframes moveleftwards
 {
     from {
