@@ -50,12 +50,24 @@ justify-content: space-between;
     grid-template-rows: repeat(4, 200px);
     gap: 3px;
 
-    grid-template-areas: "header header header header";
+    grid-template-areas: "header header header header"
+    "main main . side"
+    "main main . side"
+    ". . . side";
 }
 .item2{
-    background-color: aqua;
+    background-color: tomato;
 }
 .header{
     grid-area: header;
-    background-color: tomato;
+    background-color: green;
+}
+.main{
+    grid-area: main;
+    background-color: purple;
+}
+.side
+{
+    grid-area: side;
+    background-color: yellow;
 }
