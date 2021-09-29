@@ -1,0 +1,29 @@
+.container{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: auto 20px auto 40px;
+    grid-template-rows: 400px 200px 300px;
+}
+
+.item{
+    background-color: sienna;
+}
+
+.container2{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 200px);
+    gap: 3px;
+
+    grid-template-areas: 
+    "header header header header";
+}
+
+.header{
+    grid-area: header;
+    background-color: royalblue;
+}
+
+.item2{
+    background-color: gainsboro;
+}
