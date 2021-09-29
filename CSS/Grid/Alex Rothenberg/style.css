@@ -1,0 +1,52 @@
+.container{
+    display: grid;
+    gap:20px;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: 35px 200px auto auto auto;
+}
+
+.item{
+    background-color: white;
+}
+.pic1{
+    background-image: url("https://ichef.bbci.co.uk/news/976/cpsprodpb/11D2B/production/_120730037_9c774df6-c1cb-402b-9434-fdb483739c36.jpg");
+    background-size:100% 100%;
+}
+.pic2{
+    background-image: url("https://ichef.bbci.co.uk/news/976/cpsprodpb/7F9F/production/_120717623_b25_25594_r.jpg");
+    background-size:100% 100%;
+}
+.pic3{
+    background-image: url("https://ichef.bbci.co.uk/news/976/cpsprodpb/15E4D/production/_120677698_gettyimages-467096068.jpg");
+    background-size:100% 100%;
+}
+.text{
+    font-size: large;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.para{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.header{
+    font-size:35px;
+    color:gray;
+}
+.red{
+    border-left:3px solid red;
+}
+.yellow{
+    border-left:3px solid rgb(220, 220, 1);
+}
+a:link{
+    color: rgb(89, 89, 89);
+}
+a:visited{
+    color: rgb(89, 89, 89);
+}
+.bottomheader{
+    font-size:20px;
+    color:gray; 
+    border-left:2px solid red;
+}
