@@ -1,19 +1,163 @@
-.box{
-    width:500px;
-    height:500px;
-    background:#ff2600;
-    animation:move 5s linear 1s infinite alternate;
+.music0 {
+    width:200px;
+    height:250px;
+    background-image: url('./files/source.png') ;
+    background-size: 200px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    border-radius: 20px;
+    margin: 10px;
+    transition: background-size 500ms ease-out, background-image 500ms ease-out;
+    
+}
+.music0:hover {
+    background-image: url('./files/source2.png') ;
+    background-size: 210px;
 }
 
-@keyframes move {
-    from{
-        background: rgb(255, 0, 200);
-        transform: scaleX(1) scaleY(0)
-         
-    }
-    to{
-        background: rgb(255, 0, 255);
-        transform:scaleX(0) scaleY(1)
-        
-    }
+
+
+
+
+.music1 {
+    width:200px;
+    height:250px;
+    background-image: url('./files/denial.png') ;
+    background-size: 200px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    border-radius: 20px;
+    margin: 10px;
+    transition: background-size 500ms ease-out, background-image 500ms ease-out;
+    
+}
+.music1:hover {
+    background-image: url('./files/denial2.png') ;
+    background-size: 210px;
+}
+
+
+
+
+
+.music2 {
+    width:200px;
+    height:250px;
+    background-image: url('./files/swing.png') ;
+    background-size: 200px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    border-radius: 20px;
+    margin: 10px;
+    transition: background-size 500ms ease-out, background-image 500ms ease-out;
+    
+}
+.music2:hover {
+    background-image: url('./files/swing2.png') ;
+    background-size: 210px;
+}
+
+
+
+
+
+.music3 {
+    width:200px;
+    height:250px;
+    background-image: url('./files/ashes.png') ;
+    background-size: 200px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    border-radius: 20px;
+    margin: 10px;
+    transition: background-size 500ms ease-out, background-image 500ms ease-out;
+    
+}
+.music3:hover {
+    background-image: url('./files/ashes2.png') ;
+    background-size: 210px;
+}
+
+
+
+
+
+.music4 {
+    width:200px;
+    height:250px;
+    background-image: url('./files/ovni.png') ;
+    background-size: 200px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    border-radius: 20px;
+    margin: 10px;
+    transition: background-size 500ms ease-out, background-image 500ms ease-out;
+    
+}
+.music4:hover {
+    background-image: url('./files/ovni2.png') ;
+    background-size: 210px;
+}
+
+
+
+
+
+.music5 {
+    width:200px;
+    height:250px;
+    background-image: url('./files/despa.png') ;
+    background-size: 200px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    border-radius: 20px;
+    margin: 10px;
+    transition: background-size 500ms ease-out, background-image 500ms ease-out;
+    
+}
+.music5:hover {
+    background-image: url('./files/despa1.png') ;
+    background-size: 210px;
+}
+
+
+
+
+
+.music6 {
+    width:200px;
+    height:250px;
+    background-image: url('./files/happy.png') ;
+    background-size: 200px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    border-radius: 20px;
+    margin: 10px;
+    transition: background-size 500ms ease-out, background-image 500ms ease-out;
+    
+}
+.music6:hover {
+    background-image: url('./files/happy2.png') ;
+    background-size: 210px;
+}
+
+
+
+
+
+.music7 {
+    width:200px;
+    height:250px;
+    background-image: url('./files/popit.png') ;
+    background-size: 200px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    border-radius: 20px;
+    margin: 10px;
+    transition: background-size 500ms ease-out, background-image 500ms ease-out;
+    
+}
+.music7:hover {
+    background-image: url('./files/popit2.png') ;
+    background-size: 210px;
 }
