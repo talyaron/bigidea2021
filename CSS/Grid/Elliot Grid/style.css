@@ -49,3 +49,6 @@ img{
     z-index: 2;
     margin: 2%;
 }
+
+/*note that this actually does not automatically use grid alone,
+ and the html file accompanied by this file fails to use the grid....
