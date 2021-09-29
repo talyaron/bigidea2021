@@ -12,10 +12,10 @@
 .container2{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 200px);
     gap: 3px;
 
-    grid-template-areas: "header header header";
+    grid-template-areas: "header header header header";
 }
 
 
