@@ -1,0 +1,30 @@
+.container
+{
+    display: grid;
+    gap: 5px;
+    color: white;
+    grid-template-columns: 400px 400px 400px ;
+    grid-template-rows: 400px 200px 300px;
+}
+.item
+{
+    background-color: black;
+}
+.item1
+{
+background-image: url(https://media.istockphoto.com/photos/wise-man-got-mathematical-problem-solution-picture-id899619542?k=20&m=899619542&s=170667a&w=0&h=xj3wOhANviPWP-Kp7t8HpuMoXAuL3lU4y3YUMUToBOE=);
+background-size: 400px 400px;
+
+}
+.item2
+{
+    background-image: url(https://thumbs.dreamstime.com/b/protesting-people-riots-street-stock-illustration-189504246.jpg);
+    background-size: 400px 400px;;
+    color: black
+}
+.item3
+{
+    background-image: url(https://i.ytimg.com/vi/0us2UbWFTCI/maxresdefault.jpg);
+    color: black;
+    background-size: 400px 400px;
+}
