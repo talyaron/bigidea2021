@@ -15,16 +15,30 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 200px);
     gap: 3px;
-    grid-template-areas: "header header header header";
+    grid-template-areas: 
+    "header header header header"
+    "main . . side"
+    "main . . side"
+    ". . . side";
+}
+
+.item2{
+    background-color: tomato;
 }
 
 .header{
     grid-area: header;
-    background-color: tomato;
+    background-color: green;
 }
 
-.item2{
-    background-color: aqua;
+.main{
+    grid-area: main;
+    background-color: purple;
+}
+
+.side{
+    grid-area: side;
+    background-color: yellow;
 }
 
 h2{
