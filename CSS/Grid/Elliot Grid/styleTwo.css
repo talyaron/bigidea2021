@@ -1,22 +1,36 @@
+
 .container{
-    display: grid;
-    gap: 5px;
-    grid-template-columns: auto 20px auto 40px;
-    grid-template-rows: 400px 200px 300px;
-}
-
-.item{
-    background-color: sienna;
-}
-
-.container2{
+    color: teal;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 200px);
     gap: 3px;
 
     grid-template-areas: 
-    "header header header header";
+    "header header header header"
+    "main main . side"
+    ". . . side";
+<<<<<<< HEAD
+}
+
+.item2{
+    background-color: sienna;
+}
+
+.container{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: auto 20px auto 40px;
+    grid-template-rows: 400px 200px 300px;
+    color: teal;
+
+   
+=======
+>>>>>>> main
+}
+
+.item{
+    background-color: sienna;
 }
 
 .header{
@@ -24,6 +38,12 @@
     background-color: royalblue;
 }
 
-.item2{
-    background-color: gainsboro;
+.main{
+    grid-area: main;
+    background-color: crimson;
+}
+
+.side{
+    grid-area: side;
+    background-color: darkmagenta;
 }
