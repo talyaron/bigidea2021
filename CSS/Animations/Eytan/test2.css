@@ -1,0 +1,15 @@
+.music0 {
+    width:200px;
+    height:250px;
+    background:#1b1a1f;
+    background-image: url('https://pics.filmaffinity.com/Source_Music_Video-422900189-large.jpg');
+    background-size: 200px;
+    border-radius: 20px;
+    transition: background-color 500ms ease-out, scale 500ms ease-out;
+    
+}
+
+div:hover {
+    background-color: #272430;
+    scale:(1.1);
+}

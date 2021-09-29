@@ -1,0 +1,54 @@
+nav{
+    color: white;
+    background-color: red;
+    position: fixed;
+    text-align: center;
+    display: in-line;
+    width: 100%;
+    padding: 20px;
+    top: 0px;
+}
+
+body{
+    position: relative;
+    background-color: cornsilk;
+    margin: 0px;
+    align-items: center;
+}
+
+.articleContainer{
+    display: grid;
+    gap: 15%;
+    margin-top: 40%;
+    margin-left: 2%;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px;
+    justify-content: center;
+}
+
+article{
+    background-color: cadetblue;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+}
+
+header{
+    font-weight: bold;
+    font-style: oblique;
+    color: maroon;
+    opacity: 80%;
+    top: 80%;
+    z-index: 1;
+    margin: 3%;
+}
+
+img{
+    position: absolute;
+    shape-image-threshold: inherit;
+    z-index: 2;
+    margin: 2%;
+}
+
+/*note that this actually does not automatically use grid alone,
+ and the html file accompanied by this file fails to use the grid....
