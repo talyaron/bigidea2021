@@ -7,7 +7,9 @@
     gap: 3px;
 
     grid-template-areas: 
-    "header header header header";
+    "header header header header"
+    "main main . side"
+    ". . . side";
 }
 
 .item2{
@@ -21,10 +23,7 @@
     grid-template-rows: 400px 200px 300px;
     color: teal;
 
-    grid-template-areas: 
-    "header header header header"
-    "main main . side"
-    ". . . side";
+   
 }
 
 .item{
