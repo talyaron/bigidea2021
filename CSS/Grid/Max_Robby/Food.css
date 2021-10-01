@@ -4,7 +4,7 @@ body{
     margin: 0px;
 }
 .header{
-    position: fixed;
+    position: static;
     width: 100vw;
     background-color: salmon;
     padding: 6px;
