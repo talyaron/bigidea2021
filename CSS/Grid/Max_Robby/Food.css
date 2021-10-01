@@ -11,9 +11,13 @@ body{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-align: center;
 }
+.container{
+    position: relative;
+    top: 50px;
+}
 .name
 {
-    color: tomato;
+    color: salmon;
     animation: moveleftwards 5s forwards;
     font-size: 40px;
 
