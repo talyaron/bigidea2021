@@ -14,40 +14,69 @@ body{
 .name
 {
     color: tomato;
-    animation: moveleftwards 5s;
-}
-.food
-{
-    animation: moverightwards 5s;
+    animation: moveleftwards 5s forwards;
+    font-size: 40px;
+
 }
 
+.pic{
+    height: 400px;
+    width: 400px;
+}
+
+#Food1{
+    animation: moveleftwards1 5s forwards;
+}
+#Food2{
+    animation: moveleftwards2 5s forwards;
+
+}
+#Food3{
+    animation: moveleftwards3 5s forwards;
+    
+}
 
 
 
-@keyframes moveleftwards
+
+@keyframes moveleftwards1 
 {
     from {
-        background: teal;
         position: absolute;
-        left: 0%;
+        left: -50%;
     }
     to {
-        background: yellow;
         position: absolute;
-        left: 45%;
+        left: 70%;
+        
         
     }
 }
-@keyframes moverightwards
+
+@keyframes moveleftwards2 
 {
     from {
-        background: teal;
-        transform: rotate(0deg) scale(1);
         position: absolute;
-        right: 0%;
+        left: -50%;
     }
     to {
-        background: yellow;
-        transform: rotate(360deg) scale(2);
-        right: 45%;
+        position: absolute;
+        left: 37%;
+        
+        
+    }
+}
+
+@keyframes moveleftwards3 
+{
+    from {
+        position: absolute;
+        left: -50%;
+    }
+    to {
+        position: absolute;
+        left: 5%;
+        
+        
+    }
 }
