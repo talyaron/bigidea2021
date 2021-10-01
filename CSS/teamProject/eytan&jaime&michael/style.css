@@ -2,14 +2,31 @@
     margin: 0px;
 }
 
+.container{
+    position: absolute;
+    left: 5px;
+    top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+p.box{
+    margin: 10px;
+    border: 2px solid black;
+    box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.5);
+}
+
 ul{
     list-style-type: none;
     margin: 0px;
     padding: 0px;
     overflow: hidden;
-    background-color: darkslategrey;
+    background-color: rgb(240, 239, 239);
     position: fixed;
     top: 0px;
+    left: 0px;
     width: 100%;
 }
 
@@ -19,7 +36,7 @@ li{
 
 li a{
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -31,5 +48,5 @@ li a:hover:not(.active){
 
 .active {
     color: black;
-    background-color: green;
+    background-color: lightgrey;
   }
