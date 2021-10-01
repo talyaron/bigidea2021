@@ -27,6 +27,9 @@ body{
     height: 400px;
     width: 400px;
 }
+.Disc{
+    width: 400px;
+}
 
 #Food1{
     animation: moveleftwards1 5s forwards;
