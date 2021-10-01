@@ -1,36 +1,36 @@
 .body{
-    background: teal;
+    margin: 0px;
 }
-/*
-.menu{
-    position: relative;
-    left: 35vw;
-}
-*/
+
 ul{
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     overflow: hidden;
-    background-color: #f3f3f3;
-    display: block;
+    background-color: darkslategrey;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
 }
+
 li{
     float: left;
 }
+
 li a{
     display: block;
-    color: #666;
+    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
-  
-li a:hover:not(.active) {
-    background-color: #ddd;
+
+li a:hover:not(.active){
+    background-color: lightsteelblue;
 }
-  
-li a.active {
-    color: white;
-    background-color: red;
-}
+
+.active {
+    color: black;
+    background-color: green;
+  }
