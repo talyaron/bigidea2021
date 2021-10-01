@@ -119,29 +119,24 @@ a{
 }
  */
 
- .cont{
+ .container
+{
     display: grid;
-    grid-template-columns:repeat(5, 1fr);
-    grid-template-rows: repeat(4, 200px);
-    gap:3px;
-
-
-    grid-template-areas: 
-    "header header header header header"
-    "main . main main main"  
-    "main main main main main" 
-    "main main main main main" 
-    ;
+    gap: 5px;
+    color: white;
+    grid-template-columns: 400px 400px 400px ;
+    grid-template-rows: 400px 200px 300px;
+    color: green;
 
 }
 
+.item2
+{
 
-.header{
-grid-area: header;
-background-color: rgb(207, 21, 0);
-}
-.main{
-grid-area: main;
-background-color: rgb(150, 83, 24);
+text-align: left;
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: space-between;
 
 }

@@ -20,8 +20,13 @@ a{
     color: black;
 }
 .container{
-    position: relative;
-    top: 50px;
+    display: grid;
+    gap: 5px;
+    color: white;
+    grid-template-columns: 400px 400px 400px ;
+    grid-template-rows: 400px 200px 300px;
+    color: green;
+
 }
 .name
 {
