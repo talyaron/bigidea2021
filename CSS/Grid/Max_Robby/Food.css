@@ -4,12 +4,20 @@ body{
     margin: 0px;
 }
 .header{
-    position: fixed;
+    position: static;
     width: 100vw;
     background-color: salmon;
     padding: 6px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: left;
+    position: static;
+}
+h1{
     text-align: center;
+}
+a{
+    text-decoration: none;
+    color: black;
 }
 .container{
     position: relative;
@@ -27,16 +35,20 @@ body{
     height: 400px;
     width: 400px;
 }
+.Disc{
+    width: 400px;
+    font-family: sans-serif;
+}
 
 #Food1{
-    animation: moveleftwards1 5s forwards;
+    animation: moveleftwards1 3s forwards;
 }
 #Food2{
-    animation: moveleftwards2 5s forwards;
+    animation: moveleftwards2 3s forwards;
 
 }
 #Food3{
-    animation: moveleftwards3 5s forwards;
+    animation: moveleftwards3 3s forwards;
     
 }
 
