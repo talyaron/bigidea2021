@@ -53,6 +53,10 @@ li a{
     text-decoration: none;
 }
 
+div a{
+    text-align: right;
+}
+
 li a:hover:not(.active){
     background-color: lightsteelblue;
 }
