@@ -1,19 +1,72 @@
 .container{
     display: grid;
     gap: 15px;
-    grid-template-columns: 400px 400px 400px;
+    grid-template-columns: 400px 400px ;
     grid-template-rows: 400px 400px 400px 400px 400px;
     justify-content: center; 
+    margin-top: 150px;
 }
 .item{
     background-color:rgb(149, 232, 243);
+    font-size: 30px;
+    color: white;
 }
 h1{
     color: white;
+    background-color: red;
+    position: fixed;
+    text-align: center;
+    display: inline;
+    width: 100%;
+    padding: 20px;
+    top: -25px;
 }
 body{
     background-color: black;
 }
+.photo{
+    width: 400px;
+    height: 400px;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    position: absolute;
+    z-index: 2;
+
+   
+}
+.text{
+    font-size: 50px;
+    position: absolute;
+    z-index: 1;
+    
+}
+.space{
+    background-color:rgba(149, 232, 243);
+    color: white;
+    opacity: 0;
+    
+}
+
+.photo:active, .photo:hover{
+    animation: gainOpacity 120s;
+}
+
+@keyframes gainOpacity {
+    0%{
+        opacity: 1;
+
+    }
+    5%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+    
+}
+
+
 
 
 
