@@ -1,8 +1,8 @@
 
 
-/* body{
+ body{
     margin: 0px;
-}
+}/*
 .container{
     display: grid;
     grid-template-columns:repeat(5, 1fr);
@@ -21,7 +21,7 @@
     ;
 
 
-}
+}*/
 .header{
     position: static;
     background-color: salmon;
@@ -36,7 +36,7 @@ h1{
 a{
     text-decoration: none;
     color: black;
-}
+}/*
 .item2{
 
     text-align: left;
@@ -44,24 +44,18 @@ a{
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-}
+}*/
 .name
 {
     color: salmon;
-    animation: moveleftwards 5s forwards;
-    font-size: 40px;
 
 }
 
-.pic{
-    height: 400px;
-    width: 400px;
-}
 .Disc{
     font-family: sans-serif;
+    
 }
-
-#Food1{
+ #Food1{
     animation: moveleftwards1 3s forwards;
 }
 #Food2{
@@ -117,26 +111,27 @@ a{
         
     }
 }
- */
 
  .container
 {
     display: grid;
     gap: 5px;
-    color: white;
-    grid-template-columns: 400px 400px 400px ;
+    grid-template-columns: 33vw 33vw 33vw ;
     grid-template-rows: 400px 200px 300px;
-    color: green;
+    
 
 }
 
 .item2
 {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 
-text-align: left;
-display: flex;
-flex-direction: column;
-flex-wrap: wrap;
-justify-content: space-between;
-
+.pic{
+    position: relative;
+    width: 250px;
+    height: 250px;
 }
