@@ -1,6 +1,6 @@
 body{
     margin: 0px;
-    background-color: rgb(235, 235, 235);
+    background-color: rgba(240, 239, 239);
 }
 
 /* Grid */
@@ -37,6 +37,7 @@ ul{
     top: 0px;
     left: 0px;
     width: 100%;
+    box-shadow: 0 4px 16px 0px #dadada;
 }
 
 li{
