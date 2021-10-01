@@ -1,15 +1,19 @@
-.body{
+body{
     margin: 0px;
+    background-color: rgb(235, 235, 235);
 }
 
 /* Grid */
 .container{
-    position: absolute;
-    left: 5px;
-    top: 50px;
+    position: relative;
+    left: auto;
+    top: 20%;
     display: grid;
-    grid-template-columns: 300px 300px 300px;
-    grid-template-rows: 500px 500px 500px;
+    grid-template-columns: 400px 400px 400px;
+    grid-template-rows: 600px 600px 600px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 50px;  
 }
 
 
@@ -17,9 +21,9 @@
 /* boxes and menu*/
 
 .box{
-    margin: 5px;
-    border-radius: 5px;
-    box-shadow: 3px 3px 9px rgba(0, 0, 0.5, 0.5);
+    margin: 50px;
+    border-radius: 16px;
+    box-shadow:-4px -4px 16px 0px #ffffff , 4px 4px 16px 0px #dadada;
 }
 
 ul{
@@ -37,6 +41,7 @@ ul{
 
 li{
     float: left;
+
 }
 
 li a{
