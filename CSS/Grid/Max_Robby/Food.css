@@ -1,0 +1,90 @@
+
+
+body{
+    margin: 0px;
+}
+.header{
+    position: static;
+    width: 100vw;
+    background-color: salmon;
+    padding: 6px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    position: static;
+}
+.container{
+    position: relative;
+    top: 50px;
+}
+.name
+{
+    color: salmon;
+    animation: moveleftwards 5s forwards;
+    font-size: 40px;
+
+}
+
+.pic{
+    height: 400px;
+    width: 400px;
+}
+.Disc{
+    width: 400px;
+}
+
+#Food1{
+    animation: moveleftwards1 5s forwards;
+}
+#Food2{
+    animation: moveleftwards2 5s forwards;
+
+}
+#Food3{
+    animation: moveleftwards3 5s forwards;
+    
+}
+
+
+
+
+@keyframes moveleftwards1 
+{
+    from {
+        position: absolute;
+        left: -50%;
+    }
+    to {
+        position: absolute;
+        left: 70%;
+        
+        
+    }
+}
+
+@keyframes moveleftwards2 
+{
+    from {
+        position: absolute;
+        left: -50%;
+    }
+    to {
+        position: absolute;
+        left: 37%;
+        
+        
+    }
+}
+
+@keyframes moveleftwards3 
+{
+    from {
+        position: absolute;
+        left: -50%;
+    }
+    to {
+        position: absolute;
+        left: 5%;
+        
+        
+    }
+}
