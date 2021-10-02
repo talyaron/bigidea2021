@@ -1,11 +1,29 @@
 
 
-body{
+ body{
     margin: 0px;
-}
+}/*
+.container{
+    display: grid;
+    grid-template-columns:repeat(5, 1fr);
+    grid-template-rows: repeat(4, 200px);
+    gap:3px;
+
+    grid-template-areas: 
+    "header header header header"
+    "Food . Food . Food"
+    "pic . pic . pic"
+    'Disc . Disc . Disc'
+
+
+    
+    
+    ;
+
+
+}*/
 .header{
     position: static;
-    width: 100vw;
     background-color: salmon;
     padding: 6px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -18,29 +36,26 @@ h1{
 a{
     text-decoration: none;
     color: black;
-}
-.container{
-    position: relative;
-    top: 50px;
-}
+}/*
+.item2{
+
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}*/
 .name
 {
     color: salmon;
-    animation: moveleftwards 5s forwards;
-    font-size: 40px;
 
 }
 
-.pic{
-    height: 400px;
-    width: 400px;
-}
 .Disc{
-    width: 400px;
     font-family: sans-serif;
+    
 }
-
-#Food1{
+ #Food1{
     animation: moveleftwards1 3s forwards;
 }
 #Food2{
@@ -95,4 +110,29 @@ a{
         
         
     }
+}
+
+ .container
+{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 33vw 33vw 33vw ;
+    grid-template-rows: 400px 200px 300px;
+    
+
+}
+
+.item2
+{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.pic{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    left: 120px;
 }
