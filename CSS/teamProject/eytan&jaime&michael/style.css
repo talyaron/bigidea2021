@@ -71,6 +71,9 @@ li a:hover:not(.active){
 }
 
 .btn {
+    position: relative;
+    left: 160px;
+    top: 100px;
     border: none;
     color: rgb(106, 106, 106);
     padding: 15px 32px;
@@ -81,6 +84,5 @@ li a:hover:not(.active){
     margin: 4px 2px;
     cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
-    width: 425px;
-    height: 15px;
+
   }
