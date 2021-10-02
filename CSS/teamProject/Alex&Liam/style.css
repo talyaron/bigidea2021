@@ -34,3 +34,41 @@
     grid-area: bottom;
     background-color: violet;
 }
+.aHeader{
+    font-size: 85px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.aPic{
+    width:100%;
+    height:100%;
+    background-image: url('https://www.chick-fil-a.com/-/media/images/cfacom/default-images/chick-fil-a-logo-vector.ashx');
+}
+
+.animate:active, .animate:hover{
+    animation: spin 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+@keyframes spin {
+ from{
+    transform: scale(1);
+ }   
+ to{
+    transform: scale(1.25)
+ }
+}
+
+.pHeaderA{
+    font-size: 25px;
+}
+.pTextA{
+    font-size: larger;
+}
+.ptextA2{
+    font-size: 5px;
+}
+.photoA{
+    width:400px;
+    height:250px;
+}
