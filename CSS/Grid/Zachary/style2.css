@@ -5,8 +5,9 @@
    gap:5px;
    grid-template-areas: 
    "header header header header"
-   "main main . side"
-   "main main side side";
+   "main . . side"
+   "main . . side"
+   ". . . side";
 }
 .item{
     background-color: red;
@@ -15,4 +16,13 @@
 .header{
     grid-area: header;
     background-color: green;
+}
+.main{
+    grid-area: main;
+    background-color:purple;
+}
+
+.side{
+    grid-area: side;
+    background-color:yellow;
 }
