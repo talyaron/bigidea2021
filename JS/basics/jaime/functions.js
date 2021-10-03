@@ -11,7 +11,7 @@ console.log(`Hello ${name}`);
 sayHello("Jaime");
 sayHello("to my little friend");
 
-function factorial(n) {
+function factorialize(n) {
     let final= 1;
     while(n > 1) {
         final = final * n;
@@ -20,6 +20,6 @@ function factorial(n) {
     console.log(final);
 }
 
-factorial(5);
-factorial(4);
-factorial(3);
+factorialize(5);
+factorialize(9);
+factorialize(17);
