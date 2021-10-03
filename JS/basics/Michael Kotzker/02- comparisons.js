@@ -3,4 +3,4 @@ let z = "2";
 
 console.log(x !== z);
 
-console.log(!false);      
+console.log(!false);
