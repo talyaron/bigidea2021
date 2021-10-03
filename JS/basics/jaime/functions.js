@@ -9,7 +9,7 @@ console.log(`Hello ${name}`);
 }
 
 sayHello("Jaime");
-sayHello("to my little friend");
+sayHello("Eitan");
 
 function factorialize(n) {
     let final= 1;
