@@ -11,9 +11,11 @@ while (i<10) {
 }
 */
 //n!
+
+
 let n = 0;
 let final = 1; 
-for (let n = 1; n < 5; n++) {
+for (let n = 1; n < 7; n++) {
     final += n*final;
 }
 
