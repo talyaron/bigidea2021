@@ -19,6 +19,8 @@ sayHello("Becky")
 
 function Factorial(n){
     let final = 1;
+function Factorial(n){
+    let Final = 1;
     while(n>1){
         final = final*n;
         n--;
@@ -26,4 +28,4 @@ function Factorial(n){
     return(final)
 }
 
-console.log(Factorial(5))
+console.log(Factorial(5));
