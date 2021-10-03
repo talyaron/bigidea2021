@@ -14,9 +14,10 @@ while (i < 10) {
 let n = 5;
 let final = 1;
 
-while(final > 1){
+while(n > 1){
+    console.log(n);
     final = final * n;
-    n = n--;
+    n--;
 }
 
 console.log(final);
