@@ -3,3 +3,4 @@ let z = "4";
 
 console.log(x<z);
 
+console.log(!false);

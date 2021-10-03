@@ -47,6 +47,7 @@ h1 {
     flex-direction: column;
     animation: pulse 8s linear infinite;
     border-radius: 10px;
+    border:1px solid black;
 }
 
 .shukh {
