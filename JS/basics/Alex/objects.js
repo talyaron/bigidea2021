@@ -14,15 +14,17 @@ console.log(a[3]);
 console.log(lessThan2);
 
 
+
+
 function factorial(num){
-    var result = num;
-if (num === 0 || num === 1) 
-    return 1; 
-while (num > 1) { 
-    num--;
-    result *= num;
-}
-return result;
+        var result = num;
+    if (num === 0 || num === 1) 
+        return 1; 
+    while (num > 1) { 
+        num--;
+        result *= num;
+    }
+    return result;
 }
 
 const b = [1,2,3,4,5,6];
