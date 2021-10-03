@@ -1,0 +1,282 @@
+body{
+    background-image: url("images/background.jpg");
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin:0 0 0 0;
+}
+nav{
+    background-color: chocolate;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+ul{
+    display: inline;
+    position: absolute;
+    top:0;
+}
+h1{
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 0;
+}
+
+.title{
+    text-align: center;
+}
+.parent {
+    width: 1200px;
+    height: auto;
+    display: grid;
+    grid-template-columns: 300px 300px 300px 300px;
+    grid-template-rows: 300px 300px 300px;
+    margin: 80px auto;
+    gap: 20px;
+    grid-template-areas: 
+    "ND shukh shukh etr"
+    "tea shukh shukh etr"
+    "hum hum spir spir";
+}
+
+.item {
+    display: block;
+    
+}
+.ND{
+    grid-area:ND;
+    display: flex;
+    flex-direction: column;
+    animation: pulse 8s linear  infinite;
+    border-radius: 10px;
+}
+.shukh{
+    grid-area: shukh;
+    border: 2px solid black;
+    animation: pulse 8s linear  infinite;
+    border-radius: 10px;
+}
+.etr{
+    grid-area: etr;
+    border: 2px solid black;
+    animation: pulse 8s linear  infinite;
+    border-radius: 10px;
+}
+.tea{
+    grid-area: tea;
+    border: 2px solid black;
+    animation: pulse 8s linear  infinite;
+    border-radius: 10px;
+}
+
+.hum{
+    grid-area: hum;
+    border: 2px solid black;
+    animation: pulse 8s linear  infinite;
+    border-radius: 10px;
+}
+.spir{
+    grid-area:spir;
+    border: 2px solid black;
+    animation: pulse 8s linear  infinite;
+    border-radius: 10px;
+}
+.title{
+    
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 130%;
+
+}
+img{
+    width: 100px;
+    height: auto;
+    align-self: center;
+}
+.textimage{
+    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    flex-direction: column;
+    border:2px solid black;
+    border-radius: 5px;
+    margin-left: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.introshukh{
+    text-align: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 5px;
+}
+.shukhbody{
+    
+    display:flex;
+    width: 550px;
+    height:500px;
+    justify-content: space-between;
+    margin:auto;
+    flex-wrap: wrap;
+    
+}
+.shukhy{
+    width:260px;
+    height: 240px;
+    border: 2px solid black;
+    display: block;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.shukha{
+    margin-top: 15px;
+}
+.shukhimg{
+    width:90px;
+}
+.nutsimg{
+    width:90px;
+}
+.freshtxt{
+    border:3px ridge orange;
+    font-size: 97%;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 5px;
+}
+.nutstxt{
+    border:3px ridge green;
+    font-size: 97%;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 5px;
+}
+.peopletxt{
+    border:3px ridge red;
+    font-size: 97%;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.balaclava{
+    width:180px;
+}
+.resttxt{
+    border:2px ridge blue;
+    font-size: 90%;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 5px;
+    margin-top: 2px;
+}
+.etr{
+    display: flex;
+    flex-direction: column;
+}
+.etrog{
+    width: 225px;
+}
+.etrogtxt{
+    border:2px ridge greenyellow;
+    font-size: 100%;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 5px;
+    margin-top: 2px;
+}
+.teatxt{
+    border:2px ridge brown;
+    font-size: 108%;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+.hummousflex{
+    display:flex;
+    padding: 3px;
+    justify-content: space-around;
+}
+.hummous{
+    margin:0 auto;
+}
+.hbowl{
+    width:200px;
+    margin-top: 15px;
+}
+.hummouscode{
+    width:280px;
+    border:2px ridge burlywood;
+    font-size: 108%;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+.spirulina{
+    margin:0 auto;
+}
+.spirulinaflex{
+    display: flex;
+    justify-content: space-around;
+}
+.spirulinacode{
+    width:300px;
+    border:2px ridge green;
+    font-size: 108%;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+.spirulinaimg{
+    width:210px;
+    margin-top: 15px;
+}
+@keyframes pulse {
+    0% {
+        border: 2px solid black;
+    }
+    100% {
+        border: 2px solid purple;
+    }
+    20% {
+        border: 2px solid blueviolet;
+    }
+    30% {
+        border: 2px solid blue;
+    }
+    40% {
+        border: 2px solid rgb(255, 0, 255);
+    }
+    50% {
+        border: 2px solid red;
+    }
+    60% {
+        border: 2px solid rgb(255, 255, 0);
+    }
+    70% {
+        border: 2px solid greenyellow;
+    }
+    80% {
+        border: 2px solid green;
+    }
+    100%{
+        border: 2px solid rgb(1, 44, 1);
+    }
+}
