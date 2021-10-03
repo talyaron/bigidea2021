@@ -9,6 +9,7 @@ function sayHello(name){
 
 sayHello("Becky")
 
+<<<<<<< Updated upstream
 // function Factorial(n,final){
 //     while(n>1){
 //         final = final*n;
@@ -19,11 +20,19 @@ sayHello("Becky")
 
 function Factorial(n){
     let final = 1;
+=======
+function Factorial(n){
+    let Final = 1;
+>>>>>>> Stashed changes
     while(n>1){
         final = final*n;
         n--;
     }
+<<<<<<< Updated upstream
     return(final)
+=======
+    return
+>>>>>>> Stashed changes
 }
 
 console.log(Factorial(5))
