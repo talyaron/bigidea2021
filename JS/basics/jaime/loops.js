@@ -6,12 +6,15 @@ while(j<10) {
 }
 */
 
-let n = 5;
-let final = 1;
-
-while(n > 1) {
-    console.log(n);
-    final = final * n;
-    n --;
+function factorial(n) {
+    let final= 1;
+    while(n > 1) {
+        final = final * n;
+        n--;
+    }
+    console.log(final);
 }
-console.log(final);
+
+factorial(5);
+factorial(4);
+factorial(3);
