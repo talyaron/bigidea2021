@@ -9,12 +9,21 @@ function sayHello(name){
 
 sayHello("Becky")
 
-function Factorial(n,final){
+// function Factorial(n,final){
+//     while(n>1){
+//         final = final*n;
+//         n--;
+//     }
+//     return(final)
+// }
+
+function Factorial(n){
+    let final = 1;
     while(n>1){
         final = final*n;
         n--;
     }
-    console.log(final)
+    return(final)
 }
 
-Factorial(5,1)
+console.log(Factorial(5))
