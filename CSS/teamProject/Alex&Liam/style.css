@@ -44,7 +44,11 @@
     height:100%;
     background-image: url('https://www.chick-fil-a.com/-/media/images/cfacom/default-images/chick-fil-a-logo-vector.ashx');
 }
-
+.aPic2{
+    width:80%;
+    height:100%;
+    background-image: url('https://jamiegeller.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_647/MTY1NTI0OTA2OTQ4NzY1MjIy/shakshuka.webp');
+}
 .animate:active, .animate:hover{
     animation: spin 1s;
     animation-direction: normal;

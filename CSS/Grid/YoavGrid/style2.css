@@ -17,7 +17,7 @@
 
     grid-template-areas: "header header header header";
 }
-
+/*push*/
 
 .item2{
     background-color: aqua;
@@ -27,4 +27,9 @@
 .header{
     grid-area: header;
     background-color: tomato;
+}
+
+.main{
+    grid-area: main;
+    background-color: purple;
 }
