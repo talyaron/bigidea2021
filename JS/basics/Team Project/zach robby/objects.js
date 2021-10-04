@@ -22,22 +22,23 @@ for (let a = 0; a < videoGamesList.length; a++) {
 console.log(totals)
 strategyTime=totals[0].strategy
 fightingTime=totals[0].fighting
+divisionChange=(strategyTime+fightingTime)/5
 //strategy
 function percentLike(x){
     let output="a"
-    if (x<=30&&x>=0){
+    if (x<=divisionChange&&x>=0){
         output="20% like"
     }
-    else if (x<=60&&x>30){
+    else if (x<=2*divisionChange&&x>divisionChange){
         output="40% like"
     }
-    else if (x<=90&&x>60){
+    else if (x<=3*divisionChange&&x>2*divisionChange){
         output="60% like"
     }
-    else if (x<=120&&x>90){
+    else if (x<=4*divisionChange&&x>3*divisionChange){
         output="80% like"
     }
-    else if (x<=150&&x>120){
+    else if (x<=5*divisionChange&&x>4*divisionChange){
         output="100% like"
     }
     return output
