@@ -22,7 +22,7 @@ function findStatsForGenre(currentGenre){
         if(element[0] == currentGenre){
             totalGenreTime = totalGenreTime + element[1];
         }
-    }
+    });
 
     return ((totalGenreTime/totalTimeAllGames)*100);
 };
