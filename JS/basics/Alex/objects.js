@@ -32,3 +32,16 @@ const b = [1,2,3,4,5,6];
 b.forEach(function(element){
     console.log(factorial(element));
 })
+
+// Objects
+
+let x = {genre:'startegy', timePlayed:50};
+
+let videoGamesList = [
+    {genre:'startegy', timePlayed:50},
+    {genre:'fighting', timePlayed:23},
+    {genre:'startegy', timePlayed:53}
+
+]
+
+console.log(videoGamesList[2].timePlayed);

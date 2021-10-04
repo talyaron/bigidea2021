@@ -21,3 +21,8 @@ function Interest(initialAmaount, IntrestRate, timeInYears){
     return total;
 }
 console.log(Interest(100, .02, 50))
+
+//2 types of games, want ot know our type, 
+
+// fighting vs stratigy 
+//algarithem to predict what game type,,, ,AND LEARN
