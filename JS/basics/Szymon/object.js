@@ -8,7 +8,7 @@ let lessThan2 = a.filter(function(element) {return(element<4)})
 
 console.log(lessThan2)
 
-console.log(a[3])
+console.log(a[7])
 
 function factorial(n){
     let final=1
@@ -20,4 +20,12 @@ function factorial(n){
  }
 
 const b=[5,2,3,6,1,4];
-b.forEach(funtion(element))
+
+
+let x={genre:`strategy`,timePlayed:50}
+let videoGameList=[
+    {genre:`strategy`,timePlayed:50},
+    {genre:`fighting`,timePlayed:23},
+    {genre:`strategy`,timePlayed:53}
+]
+console.log(videoGameList[2].timePlayed)
