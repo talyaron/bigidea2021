@@ -10,6 +10,7 @@ for( let i=time*frequency;i>0;i--){
 }
 console.log(broski);
 function compound(a,b,c,d){
+    let n=a
     while (c*d>0){
         a=a*b*(c/d);
         d--;
