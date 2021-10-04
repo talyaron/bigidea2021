@@ -23,21 +23,21 @@ console.log(totals)
 strategyTime=totals[0].strategy
 fightingTime=totals[0].fighting
 //strategy
-function percentLike(x){
+function percentLike(Time){
     let output="a"
-    if (x<=30&&x>=0){
+    if (Time<=30&&Time>=0){
         output="20% like"
     }
-    else if (x<=60&&x>30){
+    else if (Time<=60&&Time>30){
         output="40% like"
     }
-    else if (x<=90&&x>60){
+    else if (Time<=90&&Time>60){
         output="60% like"
     }
-    else if (x<=120&&x>90){
+    else if (Time<=120&&Time>90){
         output="80% like"
     }
-    else if (x<=150&&x>120){
+    else if (Time<=100000000&&Time>120){
         output="100% like"
     }
     return output
@@ -46,3 +46,5 @@ function percentLike(x){
 
 console.log("strategy like % =",percentLike(strategyTime))
 console.log("fighting like % =",percentLike(fightingTime))
+
+totalBoth=StrategyTime+fightingTime
