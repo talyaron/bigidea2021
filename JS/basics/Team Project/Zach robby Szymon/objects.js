@@ -9,9 +9,11 @@ let videoGamesList = [
 ]
 console.log(videoGamesList[3].timePlayed)
 
+debugger;
 
 let totals = [{ strategy: 0, fighting: 0 }]
-for (let a = 0; a <= videoGamesList.length; a++) {
+
+for (let a = 0; a < videoGamesList.length; a++) {
     if (videoGamesList[a].genre == "strategy") {
         totals[0].strategy += videoGamesList[a].timePlayed
     }
