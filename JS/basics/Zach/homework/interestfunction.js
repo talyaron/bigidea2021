@@ -9,11 +9,14 @@ for( let i=time*frequency;i>0;i--){
     
 }
 console.log(output);
-function compound(a,b,c,d){
-    let timevar=d
-    while (c*timevar>0){
-        a=a*b*(c/d);
-        timevar--;
+function compound(initial,interest,frequency,time){
+    let timeVar=time;
+    
+    while (frequency*timeVar>0){
+        initial= initial* interest*(frequency/time);
+        timeVar--;
     }
+    return initial;b
+
 }
 console.log(compound(initial,interest,frequency,time))
