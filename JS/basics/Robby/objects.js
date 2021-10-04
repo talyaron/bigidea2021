@@ -28,6 +28,20 @@ console.log(lessThan2);
 }
 
 const b = [1,2,3,4,5,6];
+
 b.forEach(function(element){ 
     return factorial(element);
 })
+
+//objects
+
+let x = {genre:'Strategy', timePlayed:50};
+
+let videoGameList = [
+    {genre:'Strategy', timePlayed:50},
+    {genre:'fighting', timePlayed:23},
+    {genre:'Strategy', timePlayed:53}
+
+]
+
+console.log(videoGameList[2].timePlayed)
