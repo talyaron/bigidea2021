@@ -1,11 +1,10 @@
-let x = {genre:'strategy', timePlayed:50};
 let videoGameList = [
     {genre:'RPG', timePlayed:50},
     {genre:'fighting', timePlayed:23},
-    {genre:'strategy', timePlayed:53},
+    {genre:'fighting', timePlayed:53},
     {genre:'adventure', timePlayed:36},
-    {genre:'simulation', timePlayed:201},
-    {genre:'strategy', timePlayed:90},
+    {genre:'strategy', timePlayed:201},
+    {genre:'adventure', timePlayed:90},
     {genre:'shooter', timePlayed:200}
 
 ]
