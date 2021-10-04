@@ -1,11 +1,12 @@
 
 //functions
 function gameLikelihood(gamesList) {
-    let timeArray = [];
-    let percentArray = [];
-    let finalArray = [];
-    let sumTime = 0;
-    let genreTime = 0;
+    //variables
+    let timeArray = []; //array to add time for each game
+    let percentArray = []; //array that takes timeArray and divides by sumTime to calculate the percent chance for each game
+    let finalArray = []; //Connects the genre to the percentages 
+    let sumTime = 0; 
+    let genreTime = 0; 
     let percentChance = 0; 
 
 
@@ -15,15 +16,12 @@ function gameLikelihood(gamesList) {
         sumTime += gamesList[i].timePlayed;
     }
 
-    
-
     // for loop creates array for the gamelist time played values
     for (i = 0; i < gamesList.length; i++) {
         genreTime = gamesList[i].timePlayed;
         timeArray.push(genreTime);
         genreTime = 0;
     }
-
     
     //for loop creates percent chance for each element 
     timeArray.forEach(function(element){
@@ -31,13 +29,11 @@ function gameLikelihood(gamesList) {
         
     })
 
-    
     //Creates final array that combines the name of the genre with the percent chance of playing 
     for (i = 0; i < gamesList.length; i++) {
         finalArray.push(gamesList[i].genre + " " + percentArray[i] + "%");
     }
 
-   
 
     return (finalArray);
 
