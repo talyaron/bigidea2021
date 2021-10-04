@@ -30,7 +30,7 @@ const videoGamesList = [
     {genre: 'fighting', timePlayed: 25},
     {genre: 'multiplayer', timePlayed: 20},
     {genre: 'puzzle', timePlayed: 10},
-    {genre: 'multiplayer', timePlayed: 25}
+    {genre: 'running', timePlayed: 25}
 ]
 
 
