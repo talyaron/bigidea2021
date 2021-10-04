@@ -1,4 +1,3 @@
-//let x = {genre:`Strategy`, timePlayed:50};
 let gameplayLogs = [
     {genre:`Strategy`, timePlayed:45},
     {genre:`Fighting`, timePlayed:21},
@@ -10,23 +9,21 @@ let gameplayLogs = [
     {genre:`Adventure`, timePlayed:12}
 ]
 
-let numLogs = gameplayLogs.length;
-let totalTimeAllGames = 0;
+function findStatsForGenre(currentGenre){
+    let totalGenreTime = 0;
+    let totalTimeAllGames = 0;
 
 
-gameplayLogs.forEach(function(element){
-    totalTimeAllGames = totalTimeAllGames + element[1];
-});
+    gameplayLogs.forEach(function(element){
+        totalTimeAllGames = totalTimeAllGames + element[1];
+    });
 
-gameplayLogs.forEach(function(element){
-    //if element[0] exists in totalGameplayStats[0], then access the instance and add element[1] to totalGameplaystats[x][1]
-    //  Also, add +1 to the numLogs
-    //if not
-});
+    gameplayLogs.forEach(function(element){
+        if(element[0] == currentGenre){
+            totalGenreTime = totalGenreTime + element[1];
+        }
+    }
 
-let totalGameplayStats = [
-    {genre:`Space`, totalTime:64, numLogs:3, proportionPlayed: 1},
-]
+    return ((totalGenreTime/totalTimeAllGames)*100);
+};
 
-let currentGenre;
-let totalGenreTime;
