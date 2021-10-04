@@ -1,3 +1,5 @@
+
+//functions
 function gameLikelihood(genre, gamesList) {
     let sumTime = 0;
     let genreTime = 0;
@@ -17,19 +19,24 @@ function gameLikelihood(genre, gamesList) {
 
     percentChance = 100 * (genreTime / sumTime);
 
-    return (percentChance)
+    return (percentChance.toFixed(2));
 
 }
 
+
+//variables 
 const videoGamesList = [
     {genre: 'strategy', timePlayed: 50},
     {genre: 'fighting', timePlayed: 25},
     {genre: 'multiplayer', timePlayed: 20},
     {genre: 'puzzle', timePlayed: 10},
-    {genre: 'multiplayer', timePlayed: 25}
+    {genre: 'running', timePlayed: 25}
 ]
 
 
-console.log(gameLikelihood('strategy', videoGamesList) + "% chance of playing this genre");
+
+//run
+
+console.log(gameLikelihood('fighting', videoGamesList) + "% chance of playing this genre");
 
 
