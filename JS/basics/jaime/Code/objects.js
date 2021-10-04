@@ -27,3 +27,14 @@ const b = [5, 3, 8, 9, 7];
 b.forEach(function(element) {
     return factorialize(element);
 })
+
+let x = {genre:'strategy', timePlayed:50};
+let videoGamesList = [
+    {genre:'strategy', timePlayed:50},
+    {genre:'fighting', timePlayed:18},
+    {genre:'strategy', timePlayed:22},
+    {genre:'strategy', timePlayed:44},
+    {genre:'fighting', timePlayed:36}]
+];
+
+console.log(videoGamesList[2].timePlayed);
