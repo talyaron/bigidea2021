@@ -1,8 +1,8 @@
-// function intrist(base, rate, time){
+// function intrist(initialAmaount, IntrestRate, timeInYears){
         
-//         let r = rate + 1;
-//         let rt = r ** time;
-//         let t = rt * base
+//         let r = IntrestRate + 1;
+//         let rt = r ** timeInYears;
+//         let t = rt * initialAmaount
 //         let total = t.toFixed(2);
 
 //         return total
@@ -11,10 +11,10 @@
 // console.log(intrist(100, .02, 50))
 
 
-function Interest(base, rate, time){
+function Interest(initialAmaount, IntrestRate, timeInYears){
     let total = 0;
-    for( let t = 1; t<=time; t++){
-        total = (total + base) * (1 + rate);
+    for( let t = 1; t<=timeInYears; t++){
+        total = (total + initialAmaount) * (1 + IntrestRate);
 
 
     }

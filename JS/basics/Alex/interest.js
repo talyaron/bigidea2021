@@ -2,8 +2,11 @@
 // t = time
 // r = rate
 
-function compInterest(i,t,r){
- return (i * (Math.pow((1 + r / 100), t)).toFixed(4));
+function compoundInterest(initialAmount,timeInYears,intrestRate){
+ return (initialAmount * (Math.pow((1 + intrestRate / 100), timeInYears)).toFixed(4));
 }
 
-console.log(compInterest(100,5,10));
+console.log(compoundInterest(100,5,10));
+
+console.log(compoundInterest(400000, 17, 6));
+
