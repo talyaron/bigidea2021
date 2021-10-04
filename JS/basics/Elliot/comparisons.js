@@ -59,9 +59,11 @@ function factorial(n){
 
 const abba = [1, 'b', 1, 5];
 
-abba.forEach(function(element){
-    console.log(element);
-})
+abba.forEach(
+    function(element){
+        console.log(element);
+    }
+)
 
 let lessThan2 = abba.filter(function(element) {return element<4});
 
