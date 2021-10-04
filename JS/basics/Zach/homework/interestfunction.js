@@ -3,12 +3,12 @@ const initial = numbers[0]
 const interest=numbers[1]
 const frequency=numbers[2]
 const time=numbers[3]
-var broski=initial
+var output=initial
 for( let i=time*frequency;i>0;i--){
-    broski=broski+broski*interest/frequency;
+    output=output+output*interest/frequency;
     
 }
-console.log(broski);
+console.log(output);
 function compound(a,b,c,d){
     let n=a
     while (c*d>0){
