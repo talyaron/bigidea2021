@@ -1,9 +1,5 @@
 function interestRate(years, principle, rate) {
-    let a;
-    let total;
-
-
-    total = principle + (principle * (rate * years));
+    let total = principle + (principle * (rate * years));
     console.log(total);
 }
 
