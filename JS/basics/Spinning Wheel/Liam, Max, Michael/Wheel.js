@@ -2,7 +2,7 @@ let namelist = ['Alex', 'Becky', 'Elliot', 'Eytan', 'Jaime', 'Liam', 'Max', 'Mic
 let numOnTeam = []
 
 const getOccurrence =(numOnTeam, value) =>{
-        return array.filter((v) => (v === value)).length;
+        return numOnTeam.filter((v) => (v === value)).length;
     }
 
 const scrambler = element =>{
