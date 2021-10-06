@@ -40,26 +40,45 @@ const cb = element => {
 //callback
 arr.forEach(cb);
 
-let namesList = ['jaime', 'robby', 'elliot'];
+let namesList = ['jaime', 'robby', 'elliot', 'eitan', 'zach', 'szymon', 'sam', 'yoav', 'liam', 'alex', 'michael', 'becky', 'max', 'tal'];
 
 const names = (element) => {
     console.log(`Hello ${element}`);
 }
 
 namesList.forEach(names);
+console.log("");
+console.log("");
 
 
 
 
 
-let newNames = ['jaime', 'robby', 'elliot', 'eitan', 'zach', 'szymon', 'sam'];
+let newNames = ['jaime', 'robby', 'elliot', 'eitan', 'zach', 'szymon', 'sam', 'yoav', 'liam', 'alex', 'michael', 'becky', 'max', 'tal'];
 let randNames = [];
 
-const newNamesList = element => {
-    let decision = Math.random(1);
-    if(decision <= 1 && decision > 0) {
-        randNames.push(newNames[element]);
+function shuffle(array) {
+    let arrayLength = array.length, randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (arrayLength != 0) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * arrayLength);
+      arrayLength--;
+  
+      // And swap it with the current element.
+      [array[arrayLength], array[randomIndex]] = [
+        array[randomIndex], array[arrayLength]];
     }
-}
+  
+    return array;
+  }
+  
+  // Used like so
+  shuffle(newNames);
 
-randNames.forEach(newNamesList);
+  for(let i=0; i < (newNames.length/2); i++) {
+      randNames.push(newNames[i]);
+  }
+  console.log(randNames);
