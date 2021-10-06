@@ -1,6 +1,6 @@
-//My method
 let nameArrayMain = ["Jim", "Bob", "Alex", "Jack", "Ryan", "Jesse", "Max", "Arnold", "William", "Evan"];
 
+//My Solution
 let randHalfSelector = element => {
     let nameArrayRandHalf = [];
     let nameArrayOtherHalf = [];
@@ -30,3 +30,19 @@ let randHalfSelector = element => {
     console.log(nameArrayRandHalf, nameArrayOtherHalf);
 }
 randHalfSelector(nameArrayMain);
+
+//Another Solution, more efficient...
+function pickRandomFromArray(numStrings, array) {
+    let randomPick; 
+    for (j = 0; j < numStrings; j++)                                //gets whatever number of names you select
+    {
+        randomPick = Math.floor((Math.random() * array.length));    //picks a random number between 0 and the length of array
+        for (i = 0; i < array.length; i++) {                        //prints the string at that index and removes it from the array
+            if (i == randomPick) {
+                console.log(array[i]);
+                array.splice(i, 1);
+            } 
+        }
+    }
+}
+pickRandomFromArray(5, nameArrayMain);
