@@ -50,20 +50,19 @@ names.forEach(hello);
 
 let ans =[];
 
-const randomHalf = element =>{
-    if(ans.length == (names.length/2)){
 
-    }else{
-        rand = Math.random(0,1)
-        if(rand <= .5){
-            ans.push(element)
-        }
+function pickRandomHalf(names,numNames){
+    while(ans.length < numNames){
+        strPick = Math.floor((Math.random() * names.length))
+        console.log(strPick);
+        ans.push(names[strPick]);
+        names.splice(strPick,1);
     }
 }
 
 
 
-names.forEach(randomHalf);
+pickRandomHalf(names, 5);
 
 
 console.log(ans);
