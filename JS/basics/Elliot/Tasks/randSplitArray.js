@@ -1,3 +1,4 @@
+//My method
 let nameArrayMain = ["Jim", "Bob", "Alex", "Jack", "Ryan", "Jesse", "Max", "Arnold", "William", "Evan"];
 let nameArrayRandHalf = [];
 let nameArrayOtherHalf = [];
@@ -6,6 +7,7 @@ let randHalfSelector = element => {
     let halfSize = (element.length / 2);
     let randSelector;
     let mainArrayIndex = 0;
+    let incompleteArray = nameArrayOtherHalf;
     while((nameArrayRandHalf.length < halfSize) && (nameArrayOtherHalf.length < halfSize)){
         randSelector = Math.random();
         if (randSelector >= 0.5) {
@@ -18,23 +20,12 @@ let randHalfSelector = element => {
     }
 
     if(nameArrayRandHalf.length < halfSize) {
-        for(let index = mainArrayIndex; index < nameArrayMain.length; index++){
-            nameArrayRandHalf.push(element[index]);
-        }
+        incompleteArray = nameArrayRandHalf;
     }
-    else if (nameArrayOtherHalf.length < halfSize){
-        for(let index = mainArrayIndex; index < nameArrayMain.length; index++){
-            nameArrayOtherHalf.push(element[index]);
-
-        }
+    for(let index = mainArrayIndex; index < nameArrayMain.length; index++){
+        incompleteArray.push(element[index]);
     }
 
-    nameArrayRandHalf.forEach((element) => {
-        console.log(`Hello there ${element}`);
-    })
-    nameArrayOtherHalf.forEach((element) => {
-        console.log(`Hi ${element}`);
-    })
+    console.log(nameArrayRandHalf, nameArrayOtherHalf);
 }
-
 randHalfSelector(nameArrayMain);
