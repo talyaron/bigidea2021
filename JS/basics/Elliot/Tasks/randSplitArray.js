@@ -1,13 +1,14 @@
 //My method
 let nameArrayMain = ["Jim", "Bob", "Alex", "Jack", "Ryan", "Jesse", "Max", "Arnold", "William", "Evan"];
-let nameArrayRandHalf = [];
-let nameArrayOtherHalf = [];
 
 let randHalfSelector = element => {
+    let nameArrayRandHalf = [];
+    let nameArrayOtherHalf = [];
     let halfSize = Math.ceil(element.length / 2);
-    let randSelector;
+    let randSelector = Math.random(); //Random number used to filter names between two lists
     let mainArrayIndex = 0;
     let incompleteArray = nameArrayOtherHalf;
+
     while((nameArrayRandHalf.length < halfSize) && (nameArrayOtherHalf.length < halfSize)){
         randSelector = Math.random();
         if (randSelector >= 0.5) {
