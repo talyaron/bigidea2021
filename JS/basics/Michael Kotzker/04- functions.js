@@ -10,7 +10,7 @@ function multiply(a, b){
 
 console.log(multiply(2,5));
 
-//decleration
+//declaration
 function sayHello(name){
     console.log(`Hello ${name}`);
 }
@@ -18,3 +18,12 @@ function sayHello(name){
 //invocation
 sayHello("Samuel");
 sayHello("Eitan");
+
+//callback
+let names = ['Michael', 'Simon', 'Elliot', 'Liam', 'Zach', 'Jaime']
+
+const cb = (element) => {
+    console.log(`Hello ${element}`);
+}
+
+names.forEach(cb);
