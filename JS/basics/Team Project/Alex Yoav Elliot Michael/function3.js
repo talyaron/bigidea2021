@@ -10,20 +10,21 @@ let gameplayLogs = [
 ]
 
 function findStatsForGenre(currentGenre){
-    let totalGenreTime = 0;
-    let totalTimeAllGames = 0;
+   
+
+    let totalGenreTime = 0, totalTimeAllGames = 0;
 
 
     gameplayLogs.forEach(function(element){
-        totalTimeAllGames = totalTimeAllGames + element[1];
-    });
+        totalTimeAllGames += element.timePlayed;
 
-    gameplayLogs.forEach(function(element){
-        if(element[0] == currentGenre){
-            totalGenreTime = totalGenreTime + element[1];
+        if(element.genre == currentGenre){
+            totalGenreTime += element.timePlayed;
         }
     });
+
 
     return ((totalGenreTime/totalTimeAllGames)*100);
 };
 
+console.log(findStatsForGenre('Space'));
