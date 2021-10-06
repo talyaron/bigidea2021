@@ -4,24 +4,24 @@
 
 //declare function
 
-function multiply(a, b){
-    return (a*b);
+function multiply(a, b) {
+    return (a * b);
 }
 
 function add(a, b) {
-    return (a+b);
+    return (a + b);
 }
 
 function factorial(n) {
-    let final = 1; 
+    let final = 1;
     for (i = n; i > 0; i--) {
-        final = i*final;
+        final = i * final;
     }
-    return(final);
+    return (final);
 }
 
 function pickRandomFromArray(numStrings, array) {
-    let randomPick; 
+    let randomPick;
     for (j = 0; j < numStrings; j++)                                //gets whatever number of names you select
     {
         randomPick = Math.floor((Math.random() * array.length));    //picks a random number between 0 and the length of array
@@ -29,7 +29,7 @@ function pickRandomFromArray(numStrings, array) {
             if (i == randomPick) {
                 console.log(array[i]);
                 array.splice(i, 1);
-            } 
+            }
         }
     }
 
@@ -56,7 +56,7 @@ function randomGroups(groupSize, array) {
 
 
 //VARIABLES
-let arr = [1,2,3,4,5,6,7,8,'b'];
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 'b'];
 
 const cb = element => {
     console.log(add(2, element));
