@@ -4,7 +4,7 @@ let nameArrayRandHalf = [];
 let nameArrayOtherHalf = [];
 
 let randHalfSelector = element => {
-    let halfSize = (element.length / 2);
+    let halfSize = Math.ceil(element.length / 2);
     let randSelector;
     let mainArrayIndex = 0;
     let incompleteArray = nameArrayOtherHalf;
@@ -18,9 +18,6 @@ let randHalfSelector = element => {
         }
         mainArrayIndex++;
     }
-
-    console.log(nameArrayRandHalf, nameArrayOtherHalf);
-
 
     if(nameArrayRandHalf.length < halfSize) {
         incompleteArray = nameArrayRandHalf;
