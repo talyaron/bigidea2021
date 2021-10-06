@@ -76,5 +76,5 @@ namesList.forEach(names);
 */
 
 //pickRandomFromArray(5, namesList);
-randomGroups(6, namesList);
+randomGroups(3, namesList);
 
