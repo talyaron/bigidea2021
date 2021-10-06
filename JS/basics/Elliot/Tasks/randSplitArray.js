@@ -46,3 +46,11 @@ function pickRandomFromArray(numStrings, array) {
     }
 }
 pickRandomFromArray(5, nameArrayMain);
+
+
+//Second task given to us was to make a random team maker that allows the
+//User to choose how many people are in a single team.
+
+function randTeamMakerTwo(nameArray, peoplePerTeam){
+    
+}
