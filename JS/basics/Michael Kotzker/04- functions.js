@@ -10,7 +10,7 @@ function multiply(a, b){
 
 console.log(multiply(2,5));
 
-//decleration
+//declaration
 function sayHello(name){
     console.log(`Hello ${name}`);
 }
@@ -18,3 +18,8 @@ function sayHello(name){
 //invocation
 sayHello("Samuel");
 sayHello("Eitan");
+
+//functions
+const add = (a, b) => {
+    return a + b;
+}
