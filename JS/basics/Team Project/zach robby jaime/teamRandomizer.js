@@ -20,6 +20,6 @@ for(let h=0; h<=numTeams; h++) {
 
 }
 
-
-getNumTeams(3);
-console.log(arrultimate);
+for (let i=0; i<=length;i++){
+    arrultimate[Math.random()*namelist.length/numTeams][numTeams]
+    }
