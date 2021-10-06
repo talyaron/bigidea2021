@@ -7,7 +7,6 @@ function getNumTeams(memPerTeam) {
 }
 
 const shuffled = namelist.sort((a, b) => 0.5 - Math.random());
-let length=namelist.length-1;
 
 var arrultimate= [];
 debugger;
