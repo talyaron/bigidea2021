@@ -2,15 +2,21 @@ let namelist= ['Jaime','Robby','Elliot','Tal','Eytan','ALex','Max','Szymon','Yoa
 let numTeams; 
 
 function getNumTeams(memPerTeam) {
-    numTeams = Math.round(memPerTeam / array.length);
+    numTeams = Math.ceil(memPerTeam / namelist.length);
     return numTeams;
 }
 
 const shuffled = namelist.sort((a, b) => 0.5 - Math.random());
 let length=namelist.length-1;
 
-let arrultimate= [][];
-for(let i=0; i<=namelist.length; i++){
+var arrultimate= [];
+debugger;
+
+for(i=0; i<=numTeams; i+memPerTeam) {
+    for(let k=0; k<=memPerTeam; k++)
+    {
+        arrultimate[i].push(k);
+    }
 
 }
 
