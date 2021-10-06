@@ -51,12 +51,12 @@ pickRandomFromArray(5, nameArrayMain);
 //Second task given to us was to make a random team maker that allows the
 //User to choose how many people are in a single team.
 
-let nameArrayTesting = ["Jim", "Bob", "Alex", "Jack", "Ryan", "Jesse", "Max", "Arnold", "William", "Evan"];
+let nameArrayTesting = ["Jim", "Bob", "Alex", "Jack", "Ryan", "Jesse", "Max", "Arnold", "James", "Evan"];
 
-//My Solution
+//My Solution, doesnt fully work since large lists aren't put in there fully
 function randTeamMakerTwo(nameArray, peoplePerTeam){
     let distributedTeams = [];
-    let individualTeam = [];
+    let individualTeam = []; // ["Jim", "Bob", "Alex"]
     let tempHolder;
     let randIndexVal;
     
