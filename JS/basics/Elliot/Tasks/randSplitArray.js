@@ -57,8 +57,8 @@ let nameArrayTesting = ["Jim", "Bob", "Alex", "Jack", "Ryan", "Jesse", "Max", "A
 function randTeamMakerTwo(origArray, peoplePerTeam){
     let distributedTeams = []; // [["Jim", "Bob", "Alex"],["Jack", "Ryan", "Jesse"],["Max", "Arnold", "James"],["Evan"]]
     let individualTeam = []; // ["Jim", "Bob", "Alex"]
-    let tempHolder;
-    let randIndexVal;
+    //let tempHolder;
+    //let randIndexVal;
     
     let nameArray = origArray.sort((a, b) => 0.5 - Math.random());
     
