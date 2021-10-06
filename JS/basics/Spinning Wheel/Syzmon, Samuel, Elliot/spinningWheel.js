@@ -1,4 +1,4 @@
-let names = ['Alex', 'Becky', 'Max', 'Yoav', 'Zach','Michael',"Robby","Liam","Billy","Charlie"]
+let names = ['Alex', 'Becky', 'Max', 'Yoav', 'Zach','Michael',"Robby","Liam","Billy","Charlie", `Szymon`]
 
 let tempAns = [];
 let ans =[];
