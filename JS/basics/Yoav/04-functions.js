@@ -32,8 +32,26 @@ function pickRandomFromArray(numStrings, array) {
             } 
         }
     }
-    
 
+}
+
+function randomGroups(groupSize, array) {
+    let randomPick;
+    let length = array.length;
+    
+    for (groupNum = 0; groupNum < (Math.ceil(length / groupSize)); groupNum++) //how many gtoups will there be
+    {
+        for (j = 0; j < groupSize; j++)                                //loops through to select one group of a certain size
+        {
+            if (array.length > 0) {
+                randomPick = Math.floor((Math.random() * array.length));    //picks a random number between 0 and the length of array
+                console.log('Group Number ' + (groupNum + 1) + ': ' + array[randomPick]);
+                array.splice(randomPick, 1);
+            }    
+        }
+    }
+
+    
 }
 
 
@@ -47,7 +65,7 @@ const cb = element => {
 //callback
 arr.forEach(cb);
 
-let namesList = ['jaime', 'robby', 'elliot', 'eitan', 'zach', 'szymon', 'sam', 'yoav'];
+let namesList = ["jaime", "robby", "elliot", "eitan", "zach", "szymon", "sam", "yoav", "becky", "max", "michael", "alex", "liam"];
 
 /*const names = (element) => {
     console.log('Hello ' + element);
@@ -57,4 +75,6 @@ let namesList = ['jaime', 'robby', 'elliot', 'eitan', 'zach', 'szymon', 'sam', '
 namesList.forEach(names);
 */
 
-pickRandomFromArray(5, namesList);
+//pickRandomFromArray(5, namesList);
+randomGroups(6, namesList);
+
