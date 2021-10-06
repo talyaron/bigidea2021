@@ -26,4 +26,4 @@ function findStatsForGenre(currentGenre){
 
     return ((totalGenreTime/totalTimeAllGames)*100);
 };
-
+console.log(findStatsForGenre(gameplayLogs))
