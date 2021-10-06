@@ -19,6 +19,9 @@ let randHalfSelector = element => {
         mainArrayIndex++;
     }
 
+    console.log(nameArrayRandHalf, nameArrayOtherHalf);
+
+
     if(nameArrayRandHalf.length < halfSize) {
         incompleteArray = nameArrayRandHalf;
     }

@@ -64,15 +64,16 @@ const de= (element) =>{
 arr2.forEach(de);
 
 let arr3= [];
-let counter;
+let counter=0;
 const ef = (element) => {
     if(Math.random()<=.5 && counter<7){
-        arr3.push(arr2[element])
+        arr3.push(element)
         counter++;
         
     }
 
-    console.log(arr3)
+    
 }
 
 arr2.forEach(ef);
+console.log(arr3)
