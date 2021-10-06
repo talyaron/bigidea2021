@@ -17,16 +17,21 @@ let randHalfSelector = element => {
         mainArrayIndex++;
     }
 
+    console.log(nameArrayRandHalf, nameArrayOtherHalf);
+
+
     if(nameArrayRandHalf.length < halfSize) {
         for(let index = mainArrayIndex; index < nameArrayMain.length; index++){
-            nameArrayRandHalf.push(element[mainArrayIndex]);
+            nameArrayRandHalf.push(element[index]);
         }
     }
     else if (nameArrayOtherHalf.length < halfSize){
         for(let index = mainArrayIndex; index < nameArrayMain.length; index++){
-            nameArrayOtherHalf.push(element[mainArrayIndex]);
+            nameArrayOtherHalf.push(element[index]);
         }
     }
+
+    console.log(nameArrayRandHalf, nameArrayOtherHalf);
 
     nameArrayRandHalf.forEach((element) => {
         console.log(`Hello there ${element}`);
