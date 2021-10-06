@@ -51,6 +51,30 @@ pickRandomFromArray(5, nameArrayMain);
 //Second task given to us was to make a random team maker that allows the
 //User to choose how many people are in a single team.
 
+//My Solution
 function randTeamMakerTwo(nameArray, peoplePerTeam){
+    let distributedTeams = [];
+    let individualTeam = [];
+    let tempHolder;
+    let randIndexVal;
     
+    for (let currentIndex = nameArray.length - 1; currentIndex > 0; currentIndex--) { //Shuffles the list of names to make the list random
+        randIndexVal = Math.floor(Math.random() * (currentIndex + 1));
+        tempHolder = nameArray[currentIndex];
+        nameArray[currentIndex] = nameArray[randIndexVal];
+        nameArray[randIndexVal] = tempHolder;
+    }
+    
+    nameArray.forEach(function(player){ //Adds the players to teams.
+        if(individualTeam.length < peoplePerTeam){ //Checks to see if an individual team is full
+            individualTeam.push(player); //If not, add a player
+        }
+        else{ //If the team is full, add the team to the final array and clear the team list for the next group
+            distributedTeams.push(individualTeam);
+            individualTeam = [];
+        }
+    })
+    console.log(distributedTeams);
 }
+
+randTeamMakerTwo(nameArrayMain, 3);

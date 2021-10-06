@@ -37,6 +37,8 @@ function pickRandomFromArray(numStrings, array) {
 
 function randomGroups(groupSize, array) {
     let randomPick;
+    let arrGroups = [];
+    let tempArray = [];
     let length = array.length;
     
     for (groupNum = 0; groupNum < (Math.ceil(length / groupSize)); groupNum++) //how many gtoups will there be
@@ -45,11 +47,16 @@ function randomGroups(groupSize, array) {
         {
             if (array.length > 0) {
                 randomPick = Math.floor((Math.random() * array.length));    //picks a random number between 0 and the length of array
-                console.log('Group Number ' + (groupNum + 1) + ': ' + array[randomPick]);
+                tempArray.push(array[randomPick]);
+                //console.log('Group Number ' + (groupNum + 1) + ': ' + array[randomPick]);
                 array.splice(randomPick, 1);
             }    
         }
+        arrGroups.push(tempArray);
+        tempArray = [];
     }
+
+    return (arrGroups);
 
     
 }
@@ -76,5 +83,9 @@ namesList.forEach(names);
 */
 
 //pickRandomFromArray(5, namesList);
+<<<<<<< HEAD
 randomGroups(3, namesList);
+=======
+console.log(randomGroups(4, namesList));
+>>>>>>> main
 
