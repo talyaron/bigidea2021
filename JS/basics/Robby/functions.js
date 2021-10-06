@@ -63,16 +63,13 @@ const de= (element) =>{
 
 arr2.forEach(de);
 
-let arr3= [];
-let counter;
-const ef = (element) => {
-    if(Math.random()<=.5 && counter<7){
-        arr3.push(arr2[element])
-        counter++;
-        
-    }
 
-    console.log(arr3)
+let namelist= ['Jaime','Robby','Elliot','Tal','Eytan','ALex','Max','Szymon','Yoav','Samuel','Michael','Becky']
+
+const shuffled = namelist.sort((a, b) => 0.5 - Math.random());
+let length=namelist.length-1;
+
+for (let i=0; i<=length/2;i++){
+    console.log(shuffled[i])
 }
 
-arr2.forEach(ef);
