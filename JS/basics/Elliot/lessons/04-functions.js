@@ -31,11 +31,11 @@ const add = (a, b) => {
 }
 
 
-let arr = [1,2,4,9,2,4,8,3,2,'b'];
+/*let arr = [1,2,4,9,2,4,8,3,2,'b'];
 
 arr.forEach((element)=>{
     console.log(add(2, element));
-})
+})*/
 //Note that putting in 'b' resulted in the value 2b being returned
 
 
@@ -50,8 +50,9 @@ let cb = element => {
     console.log(add(2, element));
 }*/
 
-let nameArray = ["Jim", "Bob", "Alex", "Jack", "Ryan"];
+/*let nameArray = ["Jim", "Bob", "Alex", "Jack", "Ryan"];
 
 nameArray.forEach((element) => {
-    console.log("Hello there, " + element);
+    console.log(`Hello there ${element}`);
 })
+*/
