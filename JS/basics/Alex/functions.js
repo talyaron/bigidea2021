@@ -48,10 +48,11 @@ const hello = element =>{
 
 names.forEach(hello);
 
-let names = ['Alex', 'Becky', 'Max', 'Yoav', 'Zach','Michael',"Robby","Liam","Billy","Charlie"]
-
 let tempAns = [];
 let ans =[];
+
+names.sort(() => Math.random() - 0.5);
+console.log(names);
 
 
 function pickRandom(names,numNames){
@@ -70,7 +71,7 @@ function pickRandom(names,numNames){
 
 
 
-pickRandom(names, 3);
+pickRandom(names, 2);
 
 
 console.log(ans);

@@ -7,12 +7,11 @@ let ans =[];
 function pickRandom(names,numNames){
    let iLength = names.length;
     for(i=0;i<iLength/numNames;i++){
-    while(tempAns.length < numNames){
-        strPick = Math.floor((Math.random() * names.length))
-        console.log(strPick);
-        tempAns.push(names[strPick]);
-        names.splice(strPick,1);
-    }
+        while(tempAns.length < numNames){
+            strPick = Math.floor((Math.random() * names.length))
+            tempAns.push(names[strPick]);
+            names.splice(strPick,1);
+        }
     ans.push(tempAns);
     tempAns = [];
 }
@@ -21,3 +20,4 @@ function pickRandom(names,numNames){
 
 
 pickRandom(names, 3);
+console.log(ans);
