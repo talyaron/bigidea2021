@@ -83,5 +83,9 @@ namesList.forEach(names);
 */
 
 //pickRandomFromArray(5, namesList);
+<<<<<<< HEAD
+randomGroups(3, namesList);
+=======
 console.log(randomGroups(4, namesList));
+>>>>>>> main
 
