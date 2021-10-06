@@ -1,9 +1,11 @@
 //functions
 
-//function is a segment of the code that do some calculations or sone "job";
+//function is a segment of the code that do some 
+//calculations or sone "job";
 
 //declare function
-
+//Can delare anywhere in the code and the function can still be used
+//by lines ahead of it.
 function multiply(a, b){
     return a * b;
 }
@@ -18,3 +20,79 @@ function sayHello(name){
 //invocation
 sayHello("Samuel");
 sayHello("Eitan");
+
+
+//functions, using => has same basic use 
+//as declaing a normal method. Main difference is that
+// => requires the declaration of the function to be ahead in the code
+//before it can be called.
+const add = (a, b) => {
+    return a + b;
+}
+
+
+/*let arr = [1,2,4,9,2,4,8,3,2,'b'];
+
+arr.forEach((element)=>{
+    console.log(add(2, element));
+})*/
+//Note that putting in 'b' resulted in the value 2b being returned
+
+
+//Now testing callback
+//When arr.forEach(cb) is called, with the function cb defined
+//after the usage, it will return an error. 
+
+/*arr.forEach(cb);
+
+//Note, with one element, parentheses do not have to be included
+let cb = element => {
+    console.log(add(2, element));
+}*/
+
+/*let nameArray = ["Jim", "Bob", "Alex", "Jack", "Ryan"];
+
+nameArray.forEach((element) => {
+    console.log(`Hello there ${element}`);
+})
+*/
+
+let nameArrayMain = ["Jim", "Bob", "Alex", "Jack", "Ryan", "Jesse", "Max", "Arnold", "William", "Evan"];
+let nameArrayRandHalf = [];
+let nameArrayOtherHalf = [];
+
+let randHalfSelector = element => {
+    let halfSize = (element.length / 2);
+    let randSelector;
+    let mainArrayIndex = 0;
+    while((nameArrayRandHalf.length < halfSize) && (nameArrayOtherHalf.length < halfSize)){
+        randSelector = Math.random();
+        if (randSelector >= 0.5) {
+            nameArrayRandHalf.push(element[mainArrayIndex]);
+        }
+        else{
+            nameArrayOtherHalf.push(element[mainArrayIndex]);
+        }
+        mainArrayIndex++;
+    }
+
+    if(nameArrayRandHalf.length < halfSize) {
+        for(let index = mainArrayIndex; index < nameArrayMain.length; index++){
+            nameArrayRandHalf.push(element[mainArrayIndex]);
+        }
+    }
+    else if (nameArrayOtherHalf.length < halfSize){
+        for(let index = mainArrayIndex; index < nameArrayMain.length; index++){
+            nameArrayOtherHalf.push(element[mainArrayIndex]);
+        }
+    }
+
+    nameArrayRandHalf.forEach((element) => {
+        console.log(`Hello there ${element}`);
+    })
+    nameArrayOtherHalf.forEach((element) => {
+        console.log(`Hi ${element}`);
+    })
+}
+
+randHalfSelector(nameArrayMain);
