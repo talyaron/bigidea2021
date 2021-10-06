@@ -1,3 +1,4 @@
+//unhoisted function
 function multiply(a, b) {
     return a * b;
 }
@@ -23,3 +24,42 @@ function factorialize(n) {
 factorialize(5);
 factorialize(9);
 factorialize(17);
+
+//hoisted function (cannot be initialized after callback)
+const add = (a,b) => {
+    return a + b;
+}
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 'b'];
+
+
+const cb = element => {
+    console.log(add(2, element));
+}
+
+//callback
+arr.forEach(cb);
+
+let namesList = ['jaime', 'robby', 'elliot'];
+
+const names = (element) => {
+    console.log(`Hello ${element}`);
+}
+
+namesList.forEach(names);
+
+
+
+
+
+let newNames = ['jaime', 'robby', 'elliot', 'eitan', 'zach', 'szymon', 'sam'];
+let randNames = [];
+
+const newNamesList = element => {
+    let decision = Math.random(1);
+    if(decision <= 1 && decision > 0) {
+        randNames.push(newNames[element]);
+    }
+}
+
+randNames.forEach(newNamesList);

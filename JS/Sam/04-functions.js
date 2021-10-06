@@ -29,7 +29,31 @@ function Factorial (n){
     return(final)
 }
 
-console.log(Factorial(5))
+// function
+/*const add = (a, b) => {
+    return a + b;
+}
+
+let arr =[1, 2, 3, 4, 5, 6, 7, 8, 'b'];
+
+arr.forEach((element)=>{
+    console.log(add(2, element));
+})
+*/
+
+/*arr.forEach(cb);
+
+let namesList =['sam', 'max', 'elliot', 'simon',]
 
 
+const names = (element) => {
+    console.log(`Hello ${element}`);
+}
 
+namesList.forEach(names);
+*/
+
+const namesList = ["sam", "yoav", "Tal", "Max", "Becky", "Elliot", "Robby", "Zach", "liam",];
+const randomnamesList = namesList[Math.floor(Math.random() * namesList.length)];
+
+console.log(randomnamesList);
