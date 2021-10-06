@@ -9,15 +9,13 @@ function pickRandom(names,numNames){
     for(i=0;i<iLength/numNames;i++){
     while(tempAns.length < numNames){
         strPick = Math.floor((Math.random() * names.length))
-        console.log(strPick);
         tempAns.push(names[strPick]);
         names.splice(strPick,1);
     }
     ans.push(tempAns);
     tempAns = [];
 }
+    console.log(ans);
 }
-
-
 
 pickRandom(names, 3);
