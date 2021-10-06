@@ -54,30 +54,34 @@ pickRandomFromArray(5, nameArrayMain);
 let nameArrayTesting = ["Jim", "Bob", "Alex", "Jack", "Ryan", "Jesse", "Max", "Arnold", "James", "Evan"];
 
 //My Solution, doesnt fully work since large lists aren't put in there fully
-function randTeamMakerTwo(nameArray, peoplePerTeam){
-    let distributedTeams = [];
+function randTeamMakerTwo(origArray, peoplePerTeam){
+    let distributedTeams = []; // [["Jim", "Bob", "Alex"],["Jack", "Ryan", "Jesse"],["Max", "Arnold", "James"],["Evan"]]
     let individualTeam = []; // ["Jim", "Bob", "Alex"]
     let tempHolder;
     let randIndexVal;
     
+    let nameArray = origArray.sort((a, b) => 0.5 - Math.random());
+    
+    /*Another method to shuffle the array, called the input variable nameArray when this was made
     for (let currentIndex = nameArray.length - 1; currentIndex > 0; currentIndex--) { //Shuffles the list of names to make the list random
         randIndexVal = Math.floor(Math.random() * (currentIndex + 1));
         tempHolder = nameArray[currentIndex];
         nameArray[currentIndex] = nameArray[randIndexVal];
         nameArray[randIndexVal] = tempHolder;
-    }
+    }*/
     
     nameArray.forEach(function(player){ //Adds the players to teams.
-        if(individualTeam.length < peoplePerTeam){ //Checks to see if an individual team is full
-            individualTeam.push(player); //If not, add a player
-        }
-        else{ //If the team is full, add the team to the final array and clear the team list for the next group
+        if(individualTeam.length >= peoplePerTeam) { //Checks to see if an individual team is full
             distributedTeams.push(individualTeam);
             individualTeam = [];
         }
+        individualTeam.push(player); //If not, add a player
     })
     distributedTeams.push(individualTeam);
     console.log(distributedTeams);
 }
 
 randTeamMakerTwo(nameArrayTesting, 3);
+randTeamMakerTwo(nameArrayTesting, 2);
+randTeamMakerTwo(nameArrayTesting, 4);
+randTeamMakerTwo(nameArrayTesting, 1);
