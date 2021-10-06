@@ -46,4 +46,4 @@ const names = (element) => {
     console.log(`Hello ${element}`);
 }
 
-arr.forEach(names);
+namesList.forEach(names);
