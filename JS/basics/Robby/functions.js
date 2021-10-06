@@ -55,10 +55,24 @@ let cb = (element) =>{
 arr.forEach(cb);
 
 
-let arr2= ["Robby", "Elliot", "Jaime"];
+let arr2= ["Robby", "Elliot", "Jaime", "Alex", "Zach", "Eytan", "Szymon", "Liam", "Michael", "Becky", "Max", "Sam", "Yoav"];
 
 const de= (element) =>{
     console.log(`Hello ${element}`)
 }
 
 arr2.forEach(de);
+
+let arr3= [];
+let counter;
+const ef = (element) => {
+    if(Math.random()<=.5 && counter<7){
+        arr3.push(arr2[element])
+        counter++;
+        
+    }
+
+    console.log(arr3)
+}
+
+arr2.forEach(ef);
