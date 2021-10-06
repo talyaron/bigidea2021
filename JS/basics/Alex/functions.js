@@ -48,22 +48,30 @@ const hello = element =>{
 
 names.forEach(hello);
 
+let tempAns = [];
 let ans =[];
 
-const randomHalf = element =>{
-    if(ans.length == (names.length/2)){
+names.sort(() => Math.random() - 0.5);
+console.log(names);
 
-    }else{
-        rand = Math.random(0,1)
-        if(rand <= .5){
-            ans.push(element)
-        }
+
+function pickRandom(names,numNames){
+   let iLength = names.length;
+    for(i=0;i<iLength/numNames;i++){
+    while(tempAns.length < numNames){
+        strPick = Math.floor((Math.random() * names.length))
+        console.log(strPick);
+        tempAns.push(names[strPick]);
+        names.splice(strPick,1);
     }
+    ans.push(tempAns);
+    tempAns = [];
+}
 }
 
 
 
-names.forEach(randomHalf);
+pickRandom(names, 2);
 
 
 console.log(ans);
