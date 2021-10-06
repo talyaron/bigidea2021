@@ -52,5 +52,5 @@ pickRandomFromArray(5, nameArrayMain);
 //User to choose how many people are in a single team.
 
 function randTeamMakerTwo(nameArray, peoplePerTeam){
-
+    
 }
