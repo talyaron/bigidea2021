@@ -19,7 +19,11 @@ function sayHello(name){
 sayHello("Samuel");
 sayHello("Eitan");
 
-//functions
-const add = (a, b) => {
-    return a + b;
+//callback
+let names = ['Michael', 'Simon', 'Elliot', 'Liam', 'Zach', 'Jaime']
+
+const cb = (element) => {
+    console.log(`Hello ${element}`);
 }
+
+names.forEach(cb);
