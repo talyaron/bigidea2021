@@ -24,7 +24,7 @@ let numPerGroup = 2
 
 const srambleTheTeam = (element,numPerGroup) =>{
     let NumTeams = namelist/numPerGroup;
-    let TeamNum = (Math.floor(Math.random()*NumberOfTeams))+1
-    if team
+    let playerPosInlist = (Math.floor(Math.random()*NumberOfTeams))+1
+    if
 
 }
