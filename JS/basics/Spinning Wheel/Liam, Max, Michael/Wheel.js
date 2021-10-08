@@ -1,30 +1,25 @@
 
-// let numOnTeam = []
-
-// const getOccurrence =(numOnTeam, value) =>{  // checks how many people are on each team
-//         return numOnTeam.filter((v) => (v === value)).length;
-//     }
-
-// const srambleTheTeam = element =>{
-//     let NumberOfTeams = 4; 
-//     let ranNum = (Math.floor(Math.random()*NumberOfTeams))+1 //picks the team
-//     let MaxteamNum = namelist.length/NumberOfTeams; 
-//     if (numOnTeam.forEach(getOccurrence(ranNum)) >= MaxteamNum){
-//         //repick a difrent team
-//         numOnTeam.push(ranNum) // adds that a person was put on that team to the numOnTeam list 
-//     }
-//     console.log(element, 'is on team',ranNum); // prints out the name and what team they are on
-
-// }
-
-
-
 let namelist = ['Alex', 'Becky', 'Elliot', 'Eytan', 'Jaime', 'Liam', 'Max', 'Michael', 'Robby', 'Szymon', 'Tal', 'Yoav', 'Zach'];
-let numPerGroup = 2
+let numPerGroup = 0
 
-const srambleTheTeam = (element,numPerGroup) =>{
-    let NumTeams = namelist/numPerGroup;
-    let playerPosInlist = (Math.floor(Math.random()*NumberOfTeams))+1
-    if
 
+const srambleTheTeam = (numPerGroup, namelist) =>{
+    let tempArray = [];
+    let realGoups = [];
+    let numTeams = Math.floor(namelist/numPerGroup);
+    
+    for (groupSize = 0; groupSize < numPerGroup; groupSize++ ){
+        for(num = 0 ; num < numPerGroup; num++){
+            if(namelist.length>0){
+                let playerPosInlist = Math.floor(Math.random()*namelist.length)
+                tempArray.push(namelist[playerPosInlist]);
+                namelist.splice(playerPosInlist, 1);
+            }
+            realGoups.push(tempArray);
+            tempArray = []
+        }
+        return realGoups;
+
+    }
 }
+console.log(srambleTheTeam(2, namelist));
