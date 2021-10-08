@@ -1,25 +1,25 @@
 
-let namelist = ['Alex', 'Becky', 'Elliot', 'Eytan', 'Jaime', 'Liam', 'Max', 'Michael', 'Robby', 'Szymon', 'Tal', 'Yoav', 'Zach'];
-let numPerGroup = 0
+let namesList = ['Alex', 'Becky', 'Elliot', 'Eytan', 'Jaime', 'Liam', 'Max', 'Michael', 'Robby', 'Szymon', 'Tal', 'Yoav', 'Zach', 'Liam'];
 
 
-const srambleTheTeam = (numPerGroup, namelist) =>{
-    let tempArray = [];
-    let realGoups = [];
-    let numTeams = Math.floor(namelist/numPerGroup);
+function randomGroups(playersInGroup, arr) {
+    let playerPosRandom;
+    let finGroups = [];
+    let templist = [];
+    let Len = arr.length;
     
-    for (groupSize = 0; groupSize < numPerGroup; groupSize++ ){
-        for(num = 0 ; num < numPerGroup; num++){
-            if(namelist.length>0){
-                let playerPosInlist = Math.floor(Math.random()*namelist.length)
-                tempArray.push(namelist[playerPosInlist]);
-                namelist.splice(playerPosInlist, 1);
-            }
-            realGoups.push(tempArray);
-            tempArray = []
+    for (numofGroups = 0; numofGroups < (Math.ceil(Len / playersInGroup)); numofGroups++){
+        for (RealNumInGroup = 0; RealNumInGroup < playersInGroup; RealNumInGroup++){
+            if (Len > 0) {
+                playerPosRandom = Math.floor((Math.random() * arr.length));
+                templist.push(arr[playerPosRandom]);
+                arr.splice(playerPosRandom, 1);
+            }    
         }
-        return realGoups;
-
+        finGroups.push(templist);
+        templist = [];
     }
+    return (finGroups);
 }
-console.log(srambleTheTeam(2, namelist));
+
+console.log(randomGroups(4, namesList))
