@@ -26,6 +26,9 @@ switch(clicks) {
 
     case 1:
     ev.target.innerText =  "X";
+    if(square1.getValue()=== square2.getValue() && square1.getValue()=== square1.getValue()===) {
+
+    }
     break;
     case 2:
     ev.target.innerText =  "O";
@@ -33,3 +36,4 @@ switch(clicks) {
     break;
 }
 }
+
