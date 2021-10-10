@@ -5,7 +5,7 @@ let userTurn = 'O'
 function handleClick(ev){
     console.log(ev)
     console.log(ev.target.outerText);
-    const Text = ev.target.outerText
+    //const Text = ev.target.outerText
     switch (userTurn) {
         case "O":
             userTurn = 'X'
@@ -20,6 +20,7 @@ function handleClick(ev){
             ev.target.innerText = 'E';
 
     }
+    
     //if(Text === 'X'){
 
     
