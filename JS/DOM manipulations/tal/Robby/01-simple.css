@@ -1,3 +1,5 @@
+
+}
 button{
     background-color: red;
     color: none;
@@ -7,6 +9,7 @@ button{
     border-radius: 50px;
 
 }
+
 button:active{
     background-color: orange;
 }
@@ -22,3 +25,18 @@ button:active{
 .green{
     background-color: green;
 }
+
+.box{
+    width: 30px;
+}
+.container
+{
+    display: grid;
+    gap: 5px;
+    color: white;
+    grid-template-columns: 20px 20px 20px ;
+    grid-template-rows: 20px 20px 20px;
+    color: green;
+
+}
+
