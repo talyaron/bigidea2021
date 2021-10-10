@@ -21,6 +21,14 @@ button:hover, button:active{
     background-color: rgb(119, 150, 175);
 }
 
+.gameButton{
+    
+}
+
+.resetButton{
+    
+}
+
 div{
     background-color: none;
 }
