@@ -16,7 +16,7 @@ function pickRandom(names,numNames){
     }
  }
 
- pickRandom(names, 2);
+ pickRandom(names, 3);
 
 
 console.log(ans);
