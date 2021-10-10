@@ -1,5 +1,4 @@
 button{
-    background-color: teal;
     color: white;
     border: none;
     border-radius: 50px;
@@ -26,4 +25,18 @@ button:active{
 }
 .teal{
     background-color: teal;
+}
+div{
+    background-color: tan;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    font-size: larger;
+    margin-top: 10px;
+}
+div:hover{
+    background-color: tomato;
+}
+div:active{
+    background-color: thistle;
 }

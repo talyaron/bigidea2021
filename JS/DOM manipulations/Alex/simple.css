@@ -1,12 +1,19 @@
+.container{
+    display: grid;
+    gap:20px;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    justify-content: center;
+}
+
 button{
     background-color: teal;
     color: white;
-    border: none;
-    border-radius: 50px;
+    border: none; 
     padding: 10px 30px;
 }
 button:active{
-    background-color:rgb(241, 176, 176) ;
+    background-color: rgb(0,160,160);
 }
 .red{
     background-color: red;
@@ -22,7 +29,6 @@ button:active{
 }
 .yellow{
     background-color: yellow;
-    color: black;
 }
 .teal{
     background-color: teal;
