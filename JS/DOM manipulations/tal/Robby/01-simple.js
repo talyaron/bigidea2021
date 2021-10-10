@@ -29,9 +29,7 @@ switch(clicks) {
     break;
     case 2:
     ev.target.innerText =  "O";
+    clicks= 0;
     break;
-    default: 
-    ev.target.innerText="";
-    clicks=0;
 }
 }
