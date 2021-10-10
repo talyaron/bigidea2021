@@ -1,0 +1,33 @@
+button{
+    background-color: teal;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 30px;
+}
+button:active{
+    background-color: rgb(186, 238, 238);
+    color: black;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 30px;
+}
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}
+.green{
+    background-color: green;
+}
+.yellow{
+    background-color: yellow;
+    color: black;
+}
+.orange{
+    background-color: orange;
+}
+.teal{
+    background-color: teal;
+}
