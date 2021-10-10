@@ -23,3 +23,9 @@ button:active{
 .yellow{
     background-color: yellow;
 }
+.teal{
+    background-color: teal;
+}
+#square{
+    border-radius: 0px;
+}
