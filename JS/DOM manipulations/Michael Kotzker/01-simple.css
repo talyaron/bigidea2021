@@ -8,3 +8,9 @@ button{
 button:active{
     background-color: rgb(0, 160, 160);
 }
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}
