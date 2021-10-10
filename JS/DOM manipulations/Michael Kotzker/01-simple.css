@@ -14,3 +14,16 @@ button:active{
 .blue{
     background-color: blue;
 }
+.green{
+    background-color: green;
+}
+.yellow{
+    background-color: yellow;
+    color: black;
+}
+.orange{
+    background-color: orange;
+}
+.teal{
+    background-color: teal;
+}
