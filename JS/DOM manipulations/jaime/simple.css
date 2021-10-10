@@ -34,7 +34,7 @@ button:active{
     background-color: teal;
 }
 
-#square{
+.square{
     border-radius: 0px;
 }
 
