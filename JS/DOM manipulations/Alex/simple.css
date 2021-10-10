@@ -11,25 +11,14 @@ button{
     color: white;
     border: none; 
     padding: 10px 30px;
+    font-size: 50px;
+}
+.text{
+    color: rgba(0,0,0,0);
 }
 button:active{
     background-color: rgb(0,160,160);
 }
 .red{
     background-color: red;
-}
-.blue{
-    background-color: blue;
-}
-.green{
-    background-color: green;
-}
-.orange{
-    background-color: orange;
-}
-.yellow{
-    background-color: yellow;
-}
-.teal{
-    background-color: teal;
 }
