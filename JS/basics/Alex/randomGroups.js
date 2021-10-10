@@ -6,7 +6,7 @@ let ans =[];
 function pickRandom(names,numNames){
     let iLength = names.length;
      for(i=0;i<iLength/numNames;i++){
-        while(tempAns.length < numNames){
+        while(tempAns.length < numNames  && names.length != 0){
             strPick = Math.floor((Math.random() * names.length))
             tempAns.push(names[strPick]);
             names.splice(strPick,1);

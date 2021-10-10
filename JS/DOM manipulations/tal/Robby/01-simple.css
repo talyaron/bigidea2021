@@ -1,0 +1,24 @@
+button{
+    background-color: red;
+    color: none;
+    border: none;
+    border-radius: 12;
+    padding: 10px;
+    border-radius: 50px;
+
+}
+button:active{
+    background-color: orange;
+}
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}
+.orange{
+    background-color: orange;
+}
+.green{
+    background-color: green;
+}

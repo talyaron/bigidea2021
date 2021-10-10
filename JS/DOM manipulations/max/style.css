@@ -1,0 +1,14 @@
+button{
+    padding: 10px;
+    border: solid black 3px;
+    border-radius: 9px;
+}
+button:active{
+    background-color: cornsilk;
+}
+.red{
+    background-color: crimson;
+}
+.blue{
+    background-color: darkblue;
+}
