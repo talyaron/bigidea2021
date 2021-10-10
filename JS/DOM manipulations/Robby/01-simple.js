@@ -22,20 +22,20 @@ function handleClick3(ev){
     
     if(b1==b2 && b1==b3 && b1!="") 
     {
-        alert(b1+ 'is Victorious on the field of battle!');
+        alert(b1+ ' is Victorious on the field of battle!');
     
         
     } else if(b1==b4 && b1==b7 && b1!="")
     {
-        alert(b1+ 'is Victorious on the field of battle!');
+        alert(b1+ ' is Victorious on the field of battle!');
     }
     else if (b1==b5 &&b1==b9 && b1!="") 
     {
-        alert(b1+ 'is Victorious on the field of battle!');
+        alert(b1+ ' is Victorious on the field of battle!');
     }
     else if (b4==b5 && b5==b6 && b4!="")
      {
-        alert(b4+ 'is Victorious on the field of battle!');
+        alert(b4+ ' is Victorious on the field of battle!');
         } 
     else if  (b3==b5 && b5==b7 && b5!="")
     {
@@ -51,7 +51,7 @@ function handleClick3(ev){
     }
     else if(b3==b6 && b6==b9 && b9!="")
     {
-        alert(b9+ 'is Victorious on the field of battle');
+        alert(b9+ ' is Victorious on the field of battle');
     }
 }
 
