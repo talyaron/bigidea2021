@@ -15,9 +15,10 @@ function splitTeam(array, memPerTeam){
         teamArray.push(member);
     })
     arrultimate.push(teamArray);
-    console.log(arrultimate);
+    return(arrultimate);
 }
 
+console.log(splitTeam(shuffled, 5));
 splitTeam(shuffled, 3);
 splitTeam(shuffled, 2);
 splitTeam(shuffled, 4);
