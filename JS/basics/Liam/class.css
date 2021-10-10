@@ -1,4 +1,6 @@
+
 button{
+    background-color: teal;
     color: white;
     border: none;
     border-radius: 50px;
@@ -26,17 +28,16 @@ button:active{
 .teal{
     background-color: teal;
 }
-div{
-    background-color: tan;
-    height: 50px;
-    width: 50px;
+.box{
+    background-color: cadetblue;
+    border: 1px solid blue;
+    height: 100px;
+    width: 100px;
     text-align: center;
-    font-size: larger;
-    margin-top: 10px;
+    font-size: 70px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-div:hover{
-    background-color: tomato;
-}
-div:active{
-    background-color: thistle;
-}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }

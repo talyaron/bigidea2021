@@ -1,13 +1,18 @@
 function handleClick(ev){
     //alert("I was clicked by " + ev.target.id + " and the classes on this button are " + ev.target.className);
-    console.log(ev);
     const buttonText = ev.target.innerText;
-    if(buttonText === 'Push Me'){
-        
-        ev.target.innerText = 'Pushed';
-    } else {
-        ev.target.innerText = 'Push me';
+
+    switch(buttonText){
+        case 'X':
+            ev.target.innerText = 'O';
+            break;
+        case '':
+            ev.target.innerText = 'X';
+            break;
+        default:
+            ev.target.innerText='';
     }
+
 }
 
 
