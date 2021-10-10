@@ -42,31 +42,31 @@ function WinnerWinner(){
     // console.log(b0, b1, b2, b3, b4, b5, b6 ,b7 ,b8)
 
     // hardcoded all the winning situations below 
-    if(b0 === b1 && b1 === b2){
+    if(b0 === b1 && b1 === b2 && b2 != ''){
         alert(`Game over ${b0} Wins!`)
     }
-    else if(b3 === b4 && b4=== b5){
+    else if(b3 === b4 && b4=== b5 && b5 != ''){
         alert(`Game over ${b3} Wins!`)
     }
-    else if(b6=== b7 && b7 === b8){
+    else if(b6=== b7 && b7 === b8  && b8 != ''){ 
         alert(`Game over ${b6} Wins! `)
     }
-    else if(b0=== b3 && b3 === b6){
+    else if(b0=== b3 && b3 === b6 && b6 != ''){
         alert(`Game over ${b0} Wins! `)
     }
-    else if(b1=== b4 && b4 === b7){
+    else if(b1=== b4 && b4 === b7 && b7 != ''){
         alert(`Game over ${b1} Wins! `)
     }
-    else if(b2=== b5 && b5 === b8){
+    else if(b2=== b5 && b5 === b8  && b8 != ''){
         alert(`Game over ${b2} Wins! `)
     }
-    else if(b6=== b7 && b7 === b8){
+    else if(b6=== b7 && b7 === b8 && b8 != ''){
         alert(`Game over ${b6} Wins! `)
     }
-    else if(b0=== b4 && b4 === b8){
+    else if(b0=== b4 && b4 === b8 && b8 != ''){
         alert(`Game over ${b0} Wins! `)
     }
-    else if(b2=== b4 && b4 === b6){
+    else if(b2=== b4 && b4 === b6 && b6 != ''){
         alert(`Game over ${b6} Wins! `)
         }
     }
