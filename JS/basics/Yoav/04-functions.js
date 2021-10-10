@@ -4,25 +4,88 @@
 
 //declare function
 
-function multiply(a, b){
-    return (a*b);
+function multiply(a, b) {
+    return (a * b);
 }
 
-console.log(multiply(2,5));
-
-function sayHello(name){
-    console.log(`Hello, ${name}`);
+function add(a, b) {
+    return (a + b);
 }
 
 function factorial(n) {
-    let final = 1; 
+    let final = 1;
     for (i = n; i > 0; i--) {
-        final = i*final;
+        final = i * final;
     }
-    return(final);
+    return (final);
 }
 
-sayHello("Samuel");
-sayHello("Eitan");
+function pickRandomFromArray(numStrings, array) {
+    let randomPick;
+    for (j = 0; j < numStrings; j++)                                //gets whatever number of names you select
+    {
+        randomPick = Math.floor((Math.random() * array.length));    //picks a random number between 0 and the length of array
+        for (i = 0; i < array.length; i++) {                        //prints the string at that index and removes it from the array
+            if (i == randomPick) {
+                console.log(array[i]);
+                array.splice(i, 1);
+            }
+        }
+    }
 
-console.log(factorial(5));
+}
+
+function randomGroups(groupSize, array) {
+    let randomPick;
+    let arrGroups = [];
+    let tempArray = [];
+    let length = array.length;
+    
+    for (groupNum = 0; groupNum < (Math.ceil(length / groupSize)); groupNum++) //how many gtoups will there be
+    {
+        for (j = 0; j < groupSize; j++)                                //loops through to select one group of a certain size
+        {
+            if (array.length > 0) {
+                randomPick = Math.floor((Math.random() * array.length));    //picks a random number between 0 and the length of array
+                tempArray.push(array[randomPick]);
+                //console.log('Group Number ' + (groupNum + 1) + ': ' + array[randomPick]);
+                array.splice(randomPick, 1);
+            }    
+        }
+        arrGroups.push(tempArray);
+        tempArray = [];
+    }
+
+    return (arrGroups);
+
+    
+}
+
+
+//VARIABLES
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 'b'];
+
+const cb = element => {
+    console.log(add(2, element));
+}
+
+//callback
+arr.forEach(cb);
+
+let namesList = ["jaime", "robby", "elliot", "eitan", "zach", "szymon", "sam", "yoav", "becky", "max", "michael", "alex", "liam"];
+
+/*const names = (element) => {
+    console.log('Hello ' + element);
+}
+
+
+namesList.forEach(names);
+*/
+
+//pickRandomFromArray(5, namesList);
+<<<<<<< HEAD
+randomGroups(3, namesList);
+=======
+console.log(randomGroups(4, namesList));
+>>>>>>> main
+
