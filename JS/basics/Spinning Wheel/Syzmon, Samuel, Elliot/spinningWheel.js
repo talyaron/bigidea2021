@@ -14,7 +14,7 @@ function pickRandom(names,numNames){
         }
     ans.push(tempAns);
     tempAns = [];
-}
+    }
 }
 
 

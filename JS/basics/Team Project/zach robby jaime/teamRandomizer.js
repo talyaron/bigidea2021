@@ -1,22 +1,23 @@
-let namelist= ['Jaime','Robby','Elliot','Tal','Eytan','ALex','Max','Szymon','Yoav','Samuel','Michael','Becky'];
+let nameList= ['Jaime','Robby','Elliot','Eytan','Alex','Max','Szymon','Yoav','Samuel','Michael','Becky'];
 let numTeams; 
 
-function getNumTeams(memPerTeam) {
-    numTeams = Math.round(memPerTeam / array.length);
-    return numTeams;
-}
+const shuffled = nameList.sort((a, b) => 0.5 - Math.random());
 
-const shuffled = namelist.sort((a, b) => 0.5 - Math.random());
-let length=namelist.length-1;
+function splitTeam(array, memPerTeam){
 
-var arrultimate= [[], []];
-for(let i=0; i<=namelist.length; i++){
+    let teamArray = [], arrultimate= [];
 
-}
-
-for (let i=0; i<=length;i++){
-    for (let k=0; k<=numTeams;k++){
-    let arrultimate=[i][k]arrultimate[Math.random()*namelist.length][Math.random()*namelist.length];
-    }
-    }
+    array.forEach(function(member){
+        if(teamArray.length >= memPerTeam) {
+            arrultimate.push(teamArray);
+            teamArray = [];
+        }
+        teamArray.push(member);
+    })
+    arrultimate.push(teamArray);
     console.log(arrultimate);
+}
+
+splitTeam(shuffled, 3);
+splitTeam(shuffled, 2);
+splitTeam(shuffled, 4);
