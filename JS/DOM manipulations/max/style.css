@@ -1,14 +1,28 @@
 button{
-    padding: 10px;
     border: solid black 3px;
     border-radius: 9px;
 }
 button:active{
     background-color: cornsilk;
 }
-.red{
-    background-color: crimson;
+.Cont {
+    display: grid;
+    grid-template-rows: 200px 200px 200px;
+    grid-template-columns: 200px 200px 200px;
 }
-.blue{
-    background-color: darkblue;
+
+body {
+  display: flex;
+  justify-content: center;
 }
+.Box {
+  background: #444;
+  border: 1px solid #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #AAA;
+  font-size: 50px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+

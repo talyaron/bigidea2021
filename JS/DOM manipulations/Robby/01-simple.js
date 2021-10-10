@@ -1,25 +1,27 @@
-alternate = 0;
-
 function handleClick(ev){
-    const buttonText = ev.target.innerText;
-    alternate += 1;
-    switch(alternate) {
-        case 1:
-            ev.target.innerText = "X";
-            break;
-        case 2:
-            ev.target.innerText = "O";
-            alternate = 0;
-            break;
+    //alert(`I was clicked by ${ev.target.id} dawg and the class on this button is ${ev.target.className} broski`);
+    console.log(ev)
+    console.log(ev.target.outerText)
+    const buttonText=ev.target.outerText
+    if(buttonText === 'Push Me'){
+        ev.target.innerText = "Pushed";
     }
-    checkWin();
+    else{
+        ev.target.innerText =  "Push Me";
+    }
+}
+
+function handleTextChange(ev)
+{
+console.log(ev.target.value);
 
 
 }
 
+function handleClick3(ev){
 
-function checkWin(){
-    var b1, b1, b3, b4, b5, b6, b7, b8, b9;
+    
+    var b1, b2, b3, b4, b5, b6, b7, b8, b9;
     if(document.getElementById("b1").innerText != ""){
         b1 = document.getElementById("b1").innerText;
     }else{b1 = 'Null1'}
@@ -47,23 +49,35 @@ function checkWin(){
     if(document.getElementById("b9").innerText != ""){
         b9 = document.getElementById("b9").innerText;
     }else{b9 = 'Null9'}
-
-    if(b1==b2 && b2==b3){
-        alert(b1 + " Wins!");
-    } else if(b4==b5 && b5==b6){
-        alert(b4 + " Wins!");
-    } else if(b7==b8 && b8==b9){
-        alert(b7 + " Wins!");
-    }else if(b1==b5 && b5==b9){
-        alert(b1 + " Wins!");
-    }else if(b3==b5 && b5==b7){
-        alert(b3 + " Wins!");
-    }else if(b1==b4 && b4==b7){
-        alert(b1 + " Wins!");
-    }else if(b2==b5 && b5==b8){
-        alert(b2 + " Wins!");
-    }else if(b3==b6 && b6==b9){
-        alert(b4 + " Wins!");
+    
+    if((b1==b2 && b1==b3) || (b1==b4 && b1==b7) || (b1==b5 &&b1==b9)  &&( (b1== "X") || (b1== "O"))){
+     alert(b1+ 'is Victorious on the field of battle!')
+        }
+    else if((b4==b5 && b5==b6) ||
+    (b3==b5 && b5==b7) || (b2==b5 && b5==b8) && ((b5== "X") || (b1== "O"))){
+        alert(b5+ 'is Victorious on the field of battle!')
     }
-    //123 456 789 159 357 147 258 369
+    else if((b7==b8 && b8==b9) || (b3==b6 && b6==b9) && ((b9== "X") ||(b9==O))){
+        alert(b9+ 'is Victorious on the field of battle')
+    }}
+
+//rectangle
+
+
+
+function handleClick2(ev){
+    var clicks= 0;
+    clicks ++;
+switch(clicks) {
+
+    case 1:
+    ev.target.innerText =  "X";
+    handleClick3();
+    break;
+    case 2:
+    ev.target.innerText =  "O";
+    handleClick3();
+    clicks= 0;
+    break;
+}
 }

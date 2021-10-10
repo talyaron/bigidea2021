@@ -12,6 +12,6 @@ function handleclick(ev){
 }
 
 function handleTextChange(ev){
-   console.log(ev.target.value)
-
-}
+    console.log(ev.target.value)
+ 
+ }
