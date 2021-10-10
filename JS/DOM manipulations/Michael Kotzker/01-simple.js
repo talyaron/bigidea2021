@@ -4,4 +4,5 @@ function handleClick(ev){
 }
 function handleTextChange(ev){
     console.log(ev)
+    console.log(ev.target.value)
 }
