@@ -25,9 +25,7 @@ function handleClickBox(ev) {
             break;
         case 2:
             ev.target.innerText = "O";
-            break;
-        default:
-            ev.target.innerText = "";
             clicks = 0;
+            break;
     }
 }

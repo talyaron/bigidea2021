@@ -1,12 +1,15 @@
+
+}
 button{
     background-color: red;
     color: none;
-    border: none;
-    border-radius: 12;
-    padding: 10px;
+    border: 2px soluid black;
     border-radius: 50px;
+    padding: 10px;
+
 
 }
+
 button:active{
     background-color: orange;
 }
@@ -22,3 +25,15 @@ button:active{
 .green{
     background-color: green;
 }
+
+.box{
+    width: 30px;
+}
+.container
+{
+    display: grid;
+    grid-template-columns: 20px 20px 20px;
+    grid-template-rows: 20px 20px 20px;
+
+}
+

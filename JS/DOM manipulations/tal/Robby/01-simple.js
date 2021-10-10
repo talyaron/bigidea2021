@@ -16,3 +16,20 @@ function handleTextChange(ev)
 console.log(ev.target.value);
 
 }
+
+//rectangle
+var clicks= 0;
+function handleClick2(ev){
+   
+    clicks ++;
+switch(clicks) {
+
+    case 1:
+    ev.target.innerText =  "X";
+    break;
+    case 2:
+    ev.target.innerText =  "O";
+    clicks= 0;
+    break;
+}
+}
