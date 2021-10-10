@@ -1,10 +1,8 @@
 alternate = 0;
 
 function handleClick(ev){
-    //alert("I was clicked by " + ev.target.id + " and the classes on this button are " + ev.target.className);
     const buttonText = ev.target.innerText;
     alternate += 1;
-    console.log(ev);
     switch(alternate) {
         case 1:
             ev.target.innerText = "X";
@@ -68,9 +66,4 @@ function checkWin(){
         alert(b4 + " Wins!");
     }
     //123 456 789 159 357 147 258 369
-}
-
-
-function handleTextChange(ev){
-    console.log(ev.target.value);
 }
