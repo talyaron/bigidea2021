@@ -26,14 +26,14 @@ button:active{
     background-color: green;
 }
 
-.box{
+#box{
     width: 30px;
 }
 .container
 {
     display: grid;
-    grid-template-columns: 20px 20px 20px;
-    grid-template-rows: 20px 20px 20px;
+    grid-template-columns: 40px 40px 40px;
+    grid-template-rows: 40px 40px 40px;
 
 }
 
