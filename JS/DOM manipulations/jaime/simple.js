@@ -19,7 +19,6 @@ var clicks = 0;
 function handleClickBox(ev) {
     clicks += 1;
 
-    debugger;
     switch(clicks) {
         case 1:
             ev.target.innerText = "X";
