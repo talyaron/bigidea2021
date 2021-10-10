@@ -8,9 +8,6 @@ let turnNumber = 0;
 let gameOver = 0;
 //Will prevent false tie declarations
 
-/*let gameGrid = [[, , ,], [, , ,], [, , ,]];
-//Records state of all points on the Tic-Tac-Toe Grid
-
 let buttonToGridRow;
 let buttonToGridColumn;
 //For updating the model grid to the actual Tic-Tac-Toe grid's status*/
