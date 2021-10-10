@@ -6,7 +6,7 @@ button{
     padding: 10px 30px;
 }
 button:active{
-    background-color:rgb(241, 176, 176) ;
+    background: rgb(0, 110, 110);
 }
 .red{
     background-color: red;
@@ -22,8 +22,4 @@ button:active{
 }
 .yellow{
     background-color: yellow;
-    color: black;
-}
-.teal{
-    background-color: teal;
 }
