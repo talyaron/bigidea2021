@@ -41,3 +41,23 @@ const cb = element =>{
     console.log(add('Hello ', element));
 }
 arr2.forEach(cb);
+
+let nameList = ['Max', 'Becky', 'Yoav', 'Samuel', 'Szymon', 'Eytan', 'Zach', 'Jaime', 'Robby', 'Elliot', 'Alex', 'Liam', 'Micheal'];
+let nameList2 = [];
+const randomHalf = element =>{
+    if(nameList2.length == (nameList.length/2)){
+
+    }else{
+        rand = Math.random(0,1)
+        if(rand <= .5){
+            nameList2.push(element)
+        }
+    }
+}
+
+
+
+nameList.forEach(randomHalf);
+
+
+console.log(nameList2);
