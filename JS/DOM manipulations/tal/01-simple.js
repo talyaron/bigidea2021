@@ -1,3 +1,5 @@
+let userTurn = 'O'
+
 function handleClick(ev) {
     // alert(`I was clicked by ${ev.target.id} and the class on this button are ${ev.target.classList}`);
     console.log(ev)
@@ -5,18 +7,18 @@ function handleClick(ev) {
     const buttonText = ev.target.innerText;
   
     console.log('buttonText:',buttonText)
-    switch (buttonText) {
-        case "":
+    switch (userTurn) {
+        case "O":
+            userTurn = 'X'
             ev.target.innerText = 'X';
             break;
         case 'X':
             ev.target.innerText = 'O';
+            userTurn = 'O'
             break;
-        case 'O':
-            ev.target.innerText = '';
-            break;
+       
         default:
-            ev.target.innerText = '44';
+            ev.target.innerText = 'E';
 
     }
     
