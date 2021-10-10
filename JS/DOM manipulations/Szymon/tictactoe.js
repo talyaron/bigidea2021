@@ -2,6 +2,7 @@ var clicks=0
 function handleclick(ev){
    clicks +=1
 
+   
     switch(clicks){
         case 1: 
         ev.target.innerText= ``

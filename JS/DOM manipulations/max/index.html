@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TikTakToe</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <button onclick="handleClick(event)" id = 'blue' class = 'blue'>click me</button>
-    <button onclick="handleClick(event)" id = 'red' class = 'red'>click me</button>
+    <div class="Cont">
+        <button onclick="handleClick(event)" class = 'Box'></button>
+        <button onclick="handleClick(event)" class = 'Box'></button>
+        <button onclick="handleClick(event)" class = 'Box'></button>
+        <button onclick="handleClick(event)" class = 'Box'></button>
+        <button onclick="handleClick(event)" class = 'Box'></button>
+        <button onclick="handleClick(event)" class = 'Box'></button>
+        <button onclick="handleClick(event)" class = 'Box'></button>
+        <button onclick="handleClick(event)" class = 'Box'></button>
+        <button onclick="handleClick(event)" class = 'Box'></button>
+    </div>
+    <button onclick="reset(event)" class = 'reset'>Reset Game</button>
 
+
+    
     <script src="./simple.js"></script>
 </body>
 </html>
