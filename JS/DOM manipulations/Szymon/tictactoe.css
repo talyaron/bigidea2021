@@ -1,0 +1,13 @@
+button{
+    background-color: teal;
+    color: white;
+    border: none;
+    padding: 50px 50px;
+}
+div{
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    gap: 3px;
+}
