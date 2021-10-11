@@ -1,22 +1,22 @@
-const div = document.querySelector('#myDiv');
-console.dir(myDiv);
-myDiv.innerText = "Hello";
-myDiv.style.fontSize = "40px";
-myDiv.style.color = "royalblue";
 
-const myImage = document.querySelector('myImage');
-myImage.src = './scream.jpg'
+
+const myImage = document.querySelector('#myImage');
+myImage.addEventListener('mouseenter', handleMouseEnter);
+myImage.addEventListener('mouseleave', handleMouseLeave);
+myImage.src = './fallingwithstyle.jpg';
 myImage.style.maxWidth = '200px';
-myImage.style.display = 'none';
+myImage.style.display = 'block';
 
-myDiv.addEventListener('mouseenter', handleMouseEnter);
-myDiv.addEventListener('mouseleave', handleMouseLeave);
+const fallingAudio = new Audio('falling.mp3');
 
-function handleMouseEnter(ev) {
-    console.log("Mouse entered!!!!!!!!!!!!");
-    myImage.style.display = 'block';
+function handleMouseEnter(ev){
+    console.log("Mouse entered!!!!!!!!!!!!!!!!!!!!!!!")
+    myImage.style.top = '0vh';
+    fallingAudio.play();
+   
 }
-function handleMouseLeave(ev) {
-    console.log("Mouse left!!!!!!!!!!!!");
-    myImage.style.display = 'none';
+
+function handleMouseLeave(ev){
+    console.log("Mouse left!!!!!!!!!!!!!!!!");
+    myImage.style.top = '100vh';
 }

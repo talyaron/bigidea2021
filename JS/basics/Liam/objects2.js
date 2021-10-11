@@ -48,7 +48,10 @@ function xo(ev){
     }
 }
 
-
+function color(ev){
+    let backcolor = ev.target.value;
+    document.body.style.backgroundColor = backcolor;
+}
 
 function click(ev){
     console.log(ev.target.id)

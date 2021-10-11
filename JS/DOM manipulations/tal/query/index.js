@@ -9,20 +9,20 @@ myDiv.addEventListener('mouseleave', handleMouseLeave);
 const myImage = document.querySelector('#myImage');
 myImage.src = 'scream.webp';
 myImage.style.maxWidth = '200px';
-myImage.style.display = 'none';
+// myImage.style.display = 'none';
 
 const myScream = new Audio('scream.mp3');
 const mySigh = new Audio('sigh.mp3');
 
 function handleMouseEnter(ev){
     console.log("Mouse enterd!!!!!!!!!!!!!!!!!!!!!!!")
-    myImage.style.display = 'block';
+    myImage.style.top = '100vh';
     myScream.play();
    
 }
 
 function handleMouseLeave(ev){
     console.log("Mouse leaved!!!!!!!!!!!!!!!!");
-    myImage.style.display = 'none';
+    myImage.style.top = '0vh';
     mySigh.play();
 }
