@@ -61,9 +61,6 @@ function handleClick3(ev){
 var clicks=0;
 function handleClick2(ev) {
     clicks += 1;
-    b1 = document.getElementById("b1").innerText, b2 = document.getElementById("b2").innerText, b3 = document.getElementById("b3").innerText, b4 = document.getElementById("b4").innerText, b5 = document.getElementById("b5").innerText, b6 = document.getElementById("b6").innerText, b7 = document.getElementById("b7").innerText, b8 = document.getElementById("b8").innerText, b9 = document.getElementById("b9").innerText;
-    
-
     switch(clicks) {
         case 1:
             ev.target.innerText = "X";
@@ -73,6 +70,10 @@ function handleClick2(ev) {
             clicks = 0;
             break;
 }
+    b1 = document.getElementById("b1").innerText, b2 = document.getElementById("b2").innerText, b3 = document.getElementById("b3").innerText, b4 = document.getElementById("b4").innerText, b5 = document.getElementById("b5").innerText, b6 = document.getElementById("b6").innerText, b7 = document.getElementById("b7").innerText, b8 = document.getElementById("b8").innerText, b9 = document.getElementById("b9").innerText;
+    
+
+    
 handleClick3();
 }
 
