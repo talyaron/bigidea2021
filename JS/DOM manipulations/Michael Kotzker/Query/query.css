@@ -1,6 +1,9 @@
 img{
     height: 200px;
     width: 400px;
+}
+
+img:hover{
     animation: move linear 3s;
 }
 
