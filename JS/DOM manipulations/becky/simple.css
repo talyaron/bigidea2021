@@ -1,0 +1,54 @@
+button{
+    background-color: teal;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+}
+button:active{
+    background-color: rgb(186, 238, 238);
+    color: black;
+    border: none;
+    padding: 10px 30px;
+}
+.button2{
+    background-color: teal;
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 50px;
+    border: 10px solid black;
+
+}
+.gridContainer{
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px;
+    margin-top: 0px;
+    
+
+}
+.button2:active{
+    background-color: rgb(186, 238, 189);
+    color: black;
+    padding: 10px 30px;
+}
+
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}
+.green{
+    background-color: green;
+}
+.yellow{
+    background-color: yellow;
+    color: black;
+}
+.orange{
+    background-color: orange;
+}
+.teal{
+    background-color: teal;
+}

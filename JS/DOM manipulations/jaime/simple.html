@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./simple.css">
+</head>
+<body>
+    <button class="red" id='red' onclick="handleClick(event)">Push Me</button>
+    <button class="blue" id='blue' onclick="handleClick(event)">Push Me</button>
+    <button class="green" id='green' onclick="handleClick(event)">Push Me</button>
+    <button class="orange" id='orange' onclick="handleClick(event)">Push Me</button>
+    <button class="yellow" id='yellow' onclick="handleClick(event)">Push Me</button>
+    <button class="teal" id='teal' onclick="handleClick(event)">Push Me</button>
+    <input id='box' type='text' onkeyup="handleTextKey(event)">
+    <p><br><br><br><br></p>
+
+    <div class="container">
+        <button class='square' id="1" onclick="handleClickBox(event)" onclick="checkWinner(event)"></button>
+        <button class='square' id="2" onclick="handleClickBox(event)" onclick="checkWinner(event)"></button>
+        <button class='square' id="3" onclick="handleClickBox(event)" onclick="checkWinner(event)"></button>
+        <button class='square' id="4" onclick="handleClickBox(event)" onclick="checkWinner(event)"></button>
+        <button class='square' id="5" onclick="handleClickBox(event)" onclick="checkWinner(event)"></button>
+        <button class='square' id="6" onclick="handleClickBox(event)" onclick="checkWinner(event)"></button>
+        <button class='square' id="7" onclick="handleClickBox(event)" onclick="checkWinner(event)"></button>
+        <button class='square' id="8" onclick="handleClickBox(event)" onclick="checkWinner(event)"></button>
+        <button class='square' id="9" onclick="handleClickBox(event)" onclick="checkWinner(event)"></button>
+    </div>
+    
+    <script src="./simple.js"></script>
+</body>
+</html>
