@@ -1,0 +1,12 @@
+.screenChanger{
+    width: 20vw;
+    height: 20vw;
+    padding: 30px 30px;
+}
+
+body{
+    text-align: center;
+    margin: 30vw;
+    background-color: white;
+    color: gray;
+}
