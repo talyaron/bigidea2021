@@ -1,4 +1,5 @@
-img{
+#myimage{
     position: relative;
+    transition: all .5s;
     top: 0vh;
 }
