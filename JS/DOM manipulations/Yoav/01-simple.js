@@ -1,4 +1,7 @@
 let userTurn = 'O'
+var colorChange;
+
+
 
 function handleClick(ev) {
     // alert(`I was clicked by ${ev.target.id} and the class on this button are ${ev.target.classList}`);
@@ -24,13 +27,10 @@ function handleClick(ev) {
     
 }
 
+
+
 function handleTextChange(ev) {
 
     console.log(ev.target.value);
 }
 
-function handleColourChange(ev){
-    let Backcolor=ev.target.value;
-    debugger;
-    document.body.style.backgroundColor= Backcolor;
-}
