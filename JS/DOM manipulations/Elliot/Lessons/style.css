@@ -1,0 +1,52 @@
+/*#myImage{
+    position:absolute;
+    transition:5s;
+    top:0vh;
+}*/
+
+/*Check file code from Alex, Michael, Jaime, and Becky*/
+.kanyePhotoEnter{
+    animation: enterScreen 2s;
+}
+
+.kanyePhotoExit{
+    animation: fallOffScreen 2s;
+}
+
+@keyframes fallOffScreen {
+    from {
+        background: violet;
+        transform: rotate(0deg) scale(1);
+        position: absolute;
+        left: 0vw;
+        top: 0px;
+        animation: move 2s linear 1s 1 alternate forward;
+        animation-iteration-count: infinite;
+    }
+
+    to {
+        position: absolute;
+        background-color: orangered;
+        transform: rotate(180deg) rotateX(180deg) rotateY(360deg) scale(3);
+        left: 100vw;
+        top: 100vw;
+    }
+}
+
+@keyframes enterScreen {
+    from {
+        animation: move 2s linear 1s 1 alternate forward;
+        animation-iteration-count: infinite;
+        position: absolute;
+        transform: rotate(180deg) rotateX(180deg) rotateY(360deg) scale(3);
+        left: 100vw;
+        top: 100vw;
+    }
+
+    to {
+        transform: rotate(0deg) scale(1);
+        position: absolute;
+        left: 0vw;
+        top: 0px;
+    }
+}
