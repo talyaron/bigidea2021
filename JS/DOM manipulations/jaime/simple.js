@@ -19,10 +19,7 @@ var clicks = 0, turns = 0, box1, box2, box3, box4, box5, box6, box7, box8, box9;
 function handleClickBox(ev) {
     clicks += 1;
     turns +=1;
-
-    box1 = document.getElementById("1").innerText, box2 = document.getElementById("2").innerText, box3 = document.getElementById("3").innerText, box4 = document.getElementById("4").innerText, box5 = document.getElementById("5").innerText, box6 = document.getElementById("6").innerText, box7 = document.getElementById("7").innerText, box8 = document.getElementById("8").innerText, box9 = document.getElementById("9").innerText;
     
-
     switch(clicks) {
         case 1:
             ev.target.innerText = "X";
@@ -33,6 +30,9 @@ function handleClickBox(ev) {
             break;
             
     }
+
+    box1 = document.getElementById("1").innerText, box2 = document.getElementById("2").innerText, box3 = document.getElementById("3").innerText, box4 = document.getElementById("4").innerText, box5 = document.getElementById("5").innerText, box6 = document.getElementById("6").innerText, box7 = document.getElementById("7").innerText, box8 = document.getElementById("8").innerText, box9 = document.getElementById("9").innerText;
+    
     checkWinner();
 }
 
