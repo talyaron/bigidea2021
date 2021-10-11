@@ -15,7 +15,7 @@ const myScream = new Audio('scream.mp3');
 const mySigh = new Audio('sigh.mp3');
 
 function handleMouseEnter(ev){
-    console.log("Mouse enterd!!!!!!!!!!!!!!!!!!!!!!!")
+    console.log("Mouse entered!!!!!!!!!!!!!!!!!!!!!!!")
     myImage.style.display = 'block';
     myScream.play();
    
