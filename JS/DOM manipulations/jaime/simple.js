@@ -19,7 +19,7 @@ var clicks = 0, turns = 0;
 function handleClickBox(ev) {
     clicks += 1;
     turns +=1;
-
+    
     switch(clicks) {
         case 1:
             ev.target.innerText = "X";
@@ -29,6 +29,10 @@ function handleClickBox(ev) {
             clicks = 0;
             break;
     }
+
+    box1 = document.getElementById("1").innerText, box2 = document.getElementById("2").innerText, box3 = document.getElementById("3").innerText, box4 = document.getElementById("4").innerText, box5 = document.getElementById("5").innerText, box6 = document.getElementById("6").innerText, box7 = document.getElementById("7").innerText, box8 = document.getElementById("8").innerText, box9 = document.getElementById("9").innerText;
+    
+    checkWinner();
 }
 
 
