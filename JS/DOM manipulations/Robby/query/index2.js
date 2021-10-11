@@ -6,21 +6,27 @@ myDiv.style.color= "royalblue";
 myDiv.addEventListener('mouseenter', handleMouseEnter);
 myDiv.addEventListener('mouseleave', handleMouseLeave);
 const myImage= document.querySelector('#myImage')
-myImage.src= 'myImage.webp'
+myImage.src= 'mufasa.jpg'
 myImage.style.maxWidth= '200px'
-myImage.style.display ='none'
-const myScream= new Audio('scream.mp3');
+myImage.style.display ='block'
+const myScream= new Audio('part1.mp3');
 const mySigh= new Audio('sigh.mp3');
 function handleMouseEnter(ev){
  
 
   
-    console.log("Mouse entered!!!!!!!!");
-    myImage.style.display= 'block';
+    console.log("Long Live the King");
+    myImage.style.display ='block'
+    myImage.animate([
+        {transform: 'translateY(0px'},
+        {transform: 'translateY(600px'}
+    ])
+    
     myScream.play();
 }
 function handleMouseLeave(ev){
-    console.log("Mouse left!");
+    console.log("AAAAAAAAAAH!");
     myImage.style.display= 'none';
+    myImage.style.top= '0vh';
     mySigh.play();
 }
