@@ -77,3 +77,12 @@ function handleClick2(ev) {
 handleClick3();
 }
 
+
+function handleClick4(ev)
+{
+    let backgroundColor= ev.target.value;
+    document.body.style.backgroundColor= backgroundColor;
+
+
+
+}
