@@ -1,14 +1,13 @@
-const myDiv = document.querySelector('#myDiv');
-console.dir(myDiv);
-myDiv.innerText = "Hello";
-myDiv.style.fontSize = "40px";
-myDiv.style.color = "royalblue";
-myDiv.addEventListener('mouseenter', handleMouseEnter);
-myDiv.addEventListener('mouseleave', handleMouseLeave);
-function handleMouseEnter(ev){
-    console.log("Mouse enterd!!!!!!!!!!!!!!!!!!!!!!!")
-}
+const myImage = document.querySelector('#myImage');
+console.dir(myImage);
+myImage.addEventListener('mouseenter', handleMouseEnter);
+myImage.src = 'scream.webp';
+myImage.style.display = 'block';
 
-function handleMouseLeave(ev){
-    console.log("Mouse leaved!!!!!!!!!!!!!!!!");
+const myScream = new Audio('scream.mp3');
+
+function handleMouseEnter(ev){
+    myImage.style.display = 'block';
+    myScream.play();
+    console.log("Aaaaaah!!");
 }
