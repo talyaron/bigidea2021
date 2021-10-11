@@ -8,6 +8,7 @@ const myScream = new Audio('scream.mp3');
 
 function handleMouseEnter(ev){
     myImage.style.display = 'block';
+    myImage.classList.add('hover')
     myScream.play();
     console.log("Aaaaaah!!");
 }

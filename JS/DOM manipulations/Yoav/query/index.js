@@ -16,7 +16,7 @@ const mySigh = new Audio('sigh.mp3');
 
 function handleMouseEnter(ev){
     console.log("Mouse entered!!!!!!!!");
-    myImage.style.top = '120vh';
+    myImage.style.top = '100vh';
     mySigh.play();
 
 }
