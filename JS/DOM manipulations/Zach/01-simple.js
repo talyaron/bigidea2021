@@ -31,5 +31,6 @@ function handleTextChange(ev) {
 
 function handleColourChange(ev){
     let Backcolor=ev.target.value;
+    debugger;
     document.body.style.backgroundColor= Backcolor;
 }
