@@ -1,0 +1,17 @@
+img{
+    height: 200px;
+    width: 400px;
+}
+
+img:hover{
+    animation: move linear 3s;
+}
+
+@keyframes move {
+    from{
+        top: 0vh;
+    }    
+    to{
+        top: 100vh;
+    }
+}

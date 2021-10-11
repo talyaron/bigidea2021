@@ -1,6 +1,5 @@
 #myImage{
     position: relative;
     transition: all 0.5s;
-    top:0vh;
+    top: 0vh;
 }
-
