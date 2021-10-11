@@ -34,3 +34,9 @@ function handleTextChange(ev){
    
 }
 
+function backgroundChange(ev){
+    let backgroundColor = ev.target.value;
+    document.body.style.backgroundColor = backgroundColor
+       
+}
+
