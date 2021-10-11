@@ -6,7 +6,6 @@ button{
     border-radius: 50px;
     /*The space between the border of the item and the center text*/
     padding: 10px 30px;
-    
 }
 button:active{
     background-color: rgb(96, 138, 124);
