@@ -10,7 +10,7 @@ myImage.src= 'mufasa.jpg'
 myImage.style.maxWidth= '200px'
 myImage.style.display ='block'
 const myScream= new Audio('part1.mp3');
-const mySigh= new Audio('sigh.mp3');
+const mySigh= new Audio('falling.mp3');
 function handleMouseEnter(ev){
  
 
@@ -20,13 +20,15 @@ function handleMouseEnter(ev){
     myImage.animate([
         {transform: 'translateY(0px'},
         {transform: 'translateY(600px'}
-    ])
+    ],{
+        duration: 1000,
+        iteratios: Infinity
+    });
     
     myScream.play();
 }
 function handleMouseLeave(ev){
     console.log("AAAAAAAAAAH!");
-    myImage.style.display= 'none';
-    myImage.style.top= '0vh';
+    myImage.style.display = 'none'
     mySigh.play();
 }

@@ -9,18 +9,23 @@ const myImage= document.querySelector('#myImage')
 myImage.src= 'myImage.webp'
 myImage.style.maxWidth= '200px'
 myImage.style.display ='none'
-const myScream= new Audio('scream.mp3');
-const mySigh= new Audio('sigh.mp3');
+const myScar= new Audio('scream.mp3');
+const myMufasa= new Audio('sigh.mp3');
 function handleMouseEnter(ev){
- 
-
-  
-    console.log("Mouse entered!!!!!!!!");
-    myImage.style.display= 'block';
-    myScream.play();
-}
-function handleMouseLeave(ev){
-    console.log("Mouse left!");
-    myImage.style.display= 'none';
-    mySigh.play();
-}
+        console.log("Long Live the Kin")
+        myImage.style.display = 'block'
+        myScar.play();
+        myImage.animate([
+            
+            {transform: 'translateY(0px)'},
+            {transform: 'translateY(600px)'}
+        ],{
+            duration: 5,
+            iterations: Infinity
+        });
+    }
+    function handleMouseLeave(ev){
+        console.log("AAAh")
+        myMufasa.play();
+        myImage.style.display = 'none'
+    }
