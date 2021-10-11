@@ -1,6 +1,5 @@
 const myDiv= document.querySelector('#myDiv');
 console.dir(myDiv);
-myDiv.innerText= "Hello There";
 myDiv.style.fontSize= "40px";
 myDiv.style.color= "royalblue";
 myDiv.addEventListener('mouseenter', handleMouseEnter);
@@ -8,7 +7,7 @@ myDiv.addEventListener('mouseleave', handleMouseLeave);
 const myImage= document.querySelector('#myImage')
 myImage.src= 'mufasa.jpg'
 myImage.style.maxWidth= '200px'
-myImage.style.display ='block'
+myImage.style.display ='none'
 const myScream= new Audio('part1.mp3');
 const mySigh= new Audio('falling.mp3');
 function handleMouseEnter(ev){
