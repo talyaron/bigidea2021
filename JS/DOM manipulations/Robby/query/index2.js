@@ -6,8 +6,8 @@ myDiv.addEventListener('mouseenter', handleMouseEnter);
 myDiv.addEventListener('mouseleave', handleMouseLeave);
 const myImage= document.querySelector('#myImage')
 myImage.src= 'mufasa.jpg'
-myImage.style.maxWidth= '200px'
-myImage.style.display ='none'
+myImage.style.maxWidth= '600px'
+myImage.style.display ='block'
 const myScream= new Audio('part1.mp3');
 const mySigh= new Audio('falling.mp3');
 function handleMouseEnter(ev){
@@ -21,13 +21,12 @@ function handleMouseEnter(ev){
         {transform: 'translateY(600px'}
     ],{
         duration: 1000,
-        iteratios: Infinity
+        iterations: 6
     });
     
     myScream.play();
 }
 function handleMouseLeave(ev){
     console.log("AAAAAAAAAAH!");
-    myImage.style.display = 'none'
     mySigh.play();
 }
