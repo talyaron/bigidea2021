@@ -1,4 +1,12 @@
 img{
+    height: 200px;
+    width: 400px;
+    position: relative;
+    top:0vh;
+}
+
+
+.hover{
     animation: move linear 3s;
 }
 

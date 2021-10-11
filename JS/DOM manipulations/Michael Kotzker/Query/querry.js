@@ -1,26 +1,14 @@
-const myDiv = document.querySelector('#myDiv');
-console.dir(myDiv);
-myDiv.innerText = "Hello";
-myDiv.style.fontSize = "40px";
-myDiv.style.color = "royalblue";
-myDiv.addEventListener('mouseenter', handleMouseEnter);
-myDiv.addEventListener('mouseleave', handleMouseLeave);
 const myImage = document.querySelector('#myImage');
+console.dir(myImage);
+myImage.addEventListener('mouseenter', handleMouseEnter);
 myImage.src = 'scream.webp';
-myImage.style.maxWidth = '200px';
-myImage.style.display = 'none';
+myImage.style.display = 'block';
 
 const myScream = new Audio('scream.mp3');
-const mySigh = new Audio('sigh.mp3');
 
 function handleMouseEnter(ev){
-    console.log("Mouse enterd!!!!!!!!!!!!!!!!!!!!!!!")
     myImage.style.display = 'block';
-    myScream.play(); 
-}
-
-function handleMouseLeave(ev){
-    console.log("Mouse leaved!!!!!!!!!!!!!!!!");
-    myImage.style.display = 'none';
-    mySigh.play();
+    myImage.classList.add('hover')
+    myScream.play();
+    console.log("Aaaaaah!!");
 }
