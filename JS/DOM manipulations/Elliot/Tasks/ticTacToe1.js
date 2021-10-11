@@ -8,10 +8,6 @@ let turnNumber = 0;
 let gameOver = 0;
 //Will prevent false tie declarations
 
-let buttonToGridRow;
-let buttonToGridColumn;
-//For updating the model grid to the actual Tic-Tac-Toe grid's status*/
-
 let gameResult = "The winner of this game is: ";
 //For declaring the winner of the game
 
@@ -73,29 +69,39 @@ function markedSpot(ev){
 function checkIfWon(ev){
     //if game is won through an y of the win conditions, 
     //set gameOver variable to 1.
-    if(document.getElementById('1') == document.getElementById('2') == document.getElementById('3') != ""){
+    let box1 = document.getElementById('1').innerText;
+    let box2 = document.getElementById('2').innerText;
+    let box3 = document.getElementById('3').innerText;
+    let box4 = document.getElementById('4').innerText;
+    let box5 = document.getElementById('5').innerText;
+    let box6 = document.getElementById('6').innerText;
+    let box7 = document.getElementById('7').innerText;
+    let box8 = document.getElementById('8').innerText;
+    let box9 = document.getElementById('9').innerText;
+
+    if(box1 == box2 == box3 != null){
         gameOver = 1;
-        gameResult =+ ev.target.innerText;
-    } else if(document.getElementById('4') == document.getElementById('5') == document.getElementById('6') != ""){
+        gameResult = gameResult + box1;
+    } else if(box4 == box5 == box6 != null){
         gameOver = 1;
-        gameResult =+ ev.target.innerText;
-    } else if(document.getElementById('7') == document.getElementById('8') == document.getElementById('9') != "") {
+        gameResult = gameResult + box4;
+    } else if(box7 == box8 == box9 != null) {
         gameOver = 1;
-        gameResult =+ ev.target.innerText;
-    } else if(document.getElementById('1') == document.getElementById('4') == document.getElementById('7') != "") {
+        gameResult = gameResult + box7;
+    } else if(box1 == box4 == box7 != null) {
         gameOver = 1;
-        gameResult =+ ev.target.innerText;
-    } else if(document.getElementById('2') == document.getElementById('5') == document.getElementById('8') != "") {
+        gameResult = gameResult + box1;
+    } else if(box2 == box5 == box8 != null) {
         gameOver = 1;
-        gameResult =+ ev.target.innerText;
-    } else if(document.getElementById('3') == document.getElementById('6') == document.getElementById('9') != "") {
+        gameResult = gameResult + box2;
+    } else if(box3 == box6 == box9 != null) {
         gameOver = 1;
-        gameResult =+ ev.target.innerText;
-    } else if(document.getElementById('1') == document.getElementById('5') == document.getElementById('9') != "") {
+        gameResult = gameResult + box3;
+    } else if(box1 == box5 == box9 != null) {
         gameOver = 1;
-        gameResult =+ ev.target.innerText;
-    } else if(document.getElementById('7') == document.getElementById('5') == document.getElementById('3') != "") {
+        gameResult = gameResult + box1;
+    } else if(box3 == box5 == box7 != null) {
         gameOver = 1;
-        gameResult =+ ev.target.innerText;
+        gameResult = gameResult + box3;
     }
 }

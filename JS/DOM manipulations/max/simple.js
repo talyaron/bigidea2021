@@ -42,6 +42,7 @@ function WinnerWinner(){
     // console.log(b0, b1, b2, b3, b4, b5, b6 ,b7 ,b8)
 
     // hardcoded all the winning situations below 
+    // and made sure to only give a valid winning situation if the boxes arnt blank
     if(b0 === b1 && b1 === b2 && b2 != ''){
         alert(`Game over ${b0} Wins!`)
     }
