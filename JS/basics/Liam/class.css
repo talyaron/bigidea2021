@@ -1,4 +1,5 @@
 
+
 button{
     background-color: teal;
     color: white;
@@ -39,5 +40,6 @@ button:active{
 }
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 100px);
+    gap:0px;
   }
