@@ -1,19 +1,19 @@
-let box1 = document.querySelector('#box1');
-let box2 = document.querySelector('#box2');
-let box3 = document.querySelector('#box3');
-let box4 = document.querySelector('#box4');
-let box5 = document.querySelector('#box5');
-let box6 = document.querySelector('#box6');
-let box7 = document.querySelector('#box7');
-let box8 = document.querySelector('#box8');
-let box9 = document.querySelector('#box9');
+let one = document.querySelector('#one');
+let two = document.querySelector('#two');
+let three = document.querySelector('#three');
+let four = document.querySelector('#four');
+let five = document.querySelector('#five');
+let six = document.querySelector('#six');
+let seven = document.querySelector('#seven');
+let eight = document.querySelector('#eight');
+let nine = document.querySelector('#nine');
 
-const boxes = [box1,box2,box3,box4,box5,box6,box7,box8,box9];
+const boxes = [one,two,three,four,five,six,seven,eight,nine];
 
-function randomizeBoxes(ev){
+function Scramble(){
     boxes.forEach(element =>{
         element.style.top = `${Math.random()*100}vh`;
         element.style.left = `${Math.random()*100}vw`;
     });
 }
-randomizeBoxes();
+Scramble();

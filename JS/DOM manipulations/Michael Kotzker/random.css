@@ -1,6 +1,42 @@
 div {
-    width: 100px;
-    height: 100px;
-    padding: 10px;
+    width: 150px;
+    height: 150px;
+    padding: 20px;
     position: absolute;
+}
+
+#one{
+    background-color: gray;
+}
+
+#two{
+    background-color: lightgray;
+}
+
+#three{
+    background-color: black;
+}
+
+#four{
+    background-color: red;
+}
+
+#five{
+    background-color: orange;
+}
+
+#six{
+    background-color: yellow;
+}
+
+#seven{
+    background-color: green;
+}
+
+#eight{
+    background-color: blue;
+}
+
+#nine{
+    background-color: purple;
 }
