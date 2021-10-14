@@ -1,0 +1,45 @@
+button{
+    background-color: blue;
+    color: white;
+    border: 1px solid black;
+    border-radius: 50px;
+    padding: 10px 30px;
+}
+
+button:active{
+    background: rgb(0, 110, 110);
+}
+
+.red{
+    background-color: red;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.green{
+    background-color: green;
+}
+
+.orange{
+    background-color: orange;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.teal{
+    background-color: teal;
+}
+
+.square{
+    border-radius: 0px;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 70px 70px 70px;
+    grid-template-rows: 70px 70px 70px;
+}
