@@ -33,3 +33,13 @@ switch(clicks) {
     break;
 }
 }
+
+
+function handleClick4(ev)
+{
+    let backgroundColor= ev.target.value;
+    document.body.style.backgroundColor= backgroundColor;
+
+
+
+}

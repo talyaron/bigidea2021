@@ -16,13 +16,13 @@ const Birds = new Audio ('birdSound.wav');
 function handleMouseEnter(ev){
     console.log("mouse entered!!!!!")
     myImage.style.display = 'block'
-    myImage.animate([
-        
+    Birds.play();
+    myImage.animate([  
         {transform: 'translateY(0px)'},
         {transform: 'translateY(600px)'}
     ],{
         duration: 1000,
-        iteratios: Infinity
+        iterations: Infinity
     });
 }
 function handleMouseLeave(ev){
