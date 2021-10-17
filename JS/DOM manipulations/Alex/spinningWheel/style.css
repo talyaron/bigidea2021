@@ -1,4 +1,5 @@
 #wheel{
     width:300px;
+    position: relative;
     transition: 4s all;
 }
