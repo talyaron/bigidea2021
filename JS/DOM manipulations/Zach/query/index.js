@@ -17,14 +17,14 @@ fall.style.width="400px"
 myImg.addEventListener('mouseenter',handleFall)
 function handleMouseEnter(){
     console.log("arghhhhhhhhhh mouse enter")
-    myImg.style.display="block"
+    myImg.style.display="block" ;
+    fall.style.top="100vh"
 };
 function handleMouseLeave(){
     console.log("arghhhhhhhhhh mouse leave")
     myImg.style.display="none"
 };
 
-function handleFall(){
-    
-    myImg.style.top="100vh";
+function handleFall(ev){
+    fall.style.top="100vh"
 }
