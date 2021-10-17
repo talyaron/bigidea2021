@@ -1,7 +1,11 @@
 function SpintheWheel(minRotate, maxRotate){
     //return degree of spinning + rounds
     const numberofRotationsindeg = minRotate*360 + (maxRotate - minRotate)*(Math.random()*360);
-    return numberofRotationsindeg;
+    const finalDiffernce = numberofRotationsindeg % 360;
+    let number = (finalDiffernce / 60) + 1;
+    if (number > 6) number = 1;
+    console.log(Math.ceil(number))
+    return -1*numberofRotationsindeg;
 }
 
 //for(let i = 0; i < 500; i++){
