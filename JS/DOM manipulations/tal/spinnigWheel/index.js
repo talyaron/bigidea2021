@@ -18,8 +18,13 @@ function spinTheWheel(minRotate, maxRotate) {
 //     console.log((spinTheWheel(4, 6)>=1440 && spinTheWheel(4,6)<=2160)); //=1440- 1960
 // }
 
-setTimeout(()=>{
-    const wheel = document.getElementById('wheel');
-    const rotation = spinTheWheel(40, 60)
-    wheel.style.transform = `rotate(${-rotation}deg)`;
-},2000)
+
+const wheel = document.getElementById('wheel');
+wheel.addEventListener('transitionend', ev => {
+  
+    alert(`The result is ${ev.target.dataset.result}`);
+})
+const rotation = spinTheWheel(4, 6);
+wheel.style.transform = `rotate(${rotation.rotate}deg)`;
+wheel.dataset.result = rotation.result;
+
