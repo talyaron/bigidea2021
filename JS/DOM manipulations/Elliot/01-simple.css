@@ -1,0 +1,40 @@
+button{
+    /*color: rgb(230, 207, 0);*/
+    color: black;
+    background-color: rgb(28, 128, 94);
+    border: none;
+    border-radius: 50px;
+    /*The space between the border of the item and the center text*/
+    padding: 10px 30px;
+}
+button:active{
+    background-color: rgb(96, 138, 124);
+}
+
+.red{
+    background-color: red;
+}
+
+.orange{
+    background-color: orange;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.green{
+    background-color: green;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.indigo{
+    background-color: indigo;
+}
+
+.counter{
+    color: rgb(83, 81, 63);
+}
