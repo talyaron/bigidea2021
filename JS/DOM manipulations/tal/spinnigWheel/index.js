@@ -1,5 +1,5 @@
 function spinTheWheel(minRotate, maxRotate) {
-    //return deg of spinning + rounds 
+
     const numberOfRotationsInDeg = minRotate * 360 + (maxRotate - minRotate) * (Math.random() * 360);
 
     const finalDiffernce = numberOfRotationsInDeg % 360;
