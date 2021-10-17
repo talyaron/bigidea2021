@@ -7,8 +7,10 @@ function spinTheWheel(minRotate, maxRotate) {
     console.log(Math.ceil(number))
 
     return numberOfRotationsInDeg;
+    alert(`Your Number is ${number}`)
 
 }
 const wheel = document.getElementById('wheel');
 const rotation = spinTheWheel(4, 6)
 wheel.style.transform = `rotate(${-rotation}deg)`;
+
