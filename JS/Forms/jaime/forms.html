@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./forms.css">
+
+</head>
+<body id="body">
+    <script src="./forms.js"></script>
+
+    <form onsubmit='handleSubmit(event)'>
+        
+        <label for="date">Date</label>
+        <input type="date" class="date" id="date">
+
+        <label for="title">Title</label>
+        <input type="text" class="title" id="title">
+
+        <label for="color">Background Color</label>
+        <input type="color" class="color" id="color">
+
+        <label for="description">Description</label>
+        <textarea class="description" id="description"></textarea>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h1 id="title">Title</h1>
+    <h2 id="date">Date</h2>
+    <h3 id="description">Description</h3>
+</body>
+</html>
