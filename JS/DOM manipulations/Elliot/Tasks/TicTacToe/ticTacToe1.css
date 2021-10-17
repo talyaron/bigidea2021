@@ -1,0 +1,22 @@
+button{
+    color:goldenrod;
+    background-color: rgb(39, 105, 39);
+
+    border: none;
+    border-radius: 20px;
+
+    padding: 10px 30px;
+}
+
+button:active, button:hover{
+    background-color: rgba(39, 105, 39, 0.5);
+}
+
+.container{
+    display: grid;
+    justify-content: center;
+
+    gap: 25px;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+}
