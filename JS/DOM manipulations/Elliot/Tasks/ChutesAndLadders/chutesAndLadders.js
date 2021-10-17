@@ -40,3 +40,20 @@ function makeBoxes(numBoxes){
         (randomBox).appendTo( 'body' ); 
     }
 }
+
+/* Check out as a potential solution
+let b1 = document.querySelector('#b1');
+let b2 = document.querySelector('#b2');
+let b3 = document.querySelector('#b3');
+let b4 = document.querySelector('#b4');
+let b5 = document.querySelector('#b5');
+let b6 = document.querySelector('#b6');
+
+const arr = [b1, b2, b3, b4, b5, b6];
+
+function randomizeLocation(ev){
+    arr.forEach(element => {
+        element.style.top = `${Math.random()*100}vh`;
+        element.style.left = `${Math.random()*100}vw`;
+    });
+}*/
