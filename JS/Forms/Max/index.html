@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <script src="./index.js"></script>
+
+
+    <form onSubmit='handleSubmit(event)'>
+        <label for="date">date</label>
+        <input type="date" name="date" id="date">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+        <label for="cars">Cars</label>
+        <select name="cars" id="cars">
+            <option value="Honda">Honda</option>
+            <option value="Mazda">Mazda</option>
+        </select>
+        <label for="description">description</label>
+        <textarea name="description" id="description"></textarea>
+        <input type="submit" id="submit">
+        
+
+    </form>
+
+    <form onSubmit='handleSubmit1(event)'>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+        <label for="date1">date</label>
+        <input type="date" name="date1" id="date1">
+        <label for="content">content</label>
+        <textarea name="content" id="content"></textarea>
+        <label for="color">Background Color</label>
+        <input type="color" name="color" id="color">
+        <input type="submit" id="submit1">
+        <h1 id="head1">title</h1>
+        <h2 id="head2">date</h2>
+        <h3 id="head3">content</h3>
+        
+    </form>
+</body>
+</html>
