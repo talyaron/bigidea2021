@@ -4,10 +4,10 @@ function spinTheWheel(minRotate, maxRotate) {
 
     const finalDiffernce = numberOfRotationsInDeg % 360;
     let number = (finalDiffernce / 60) + 1;
-    if(number>6) number =1;
+    if (number > 6) number = 1;
     console.log(Math.ceil(number))
 
-    let finalReturn = [numberOfRotationsInDeg,number]
+    let finalReturn = [numberOfRotationsInDeg, number]
 
     return finalReturn;
 
@@ -17,12 +17,12 @@ function spinTheWheel(minRotate, maxRotate) {
 const wheel = document.getElementById('wheel');
 const rotation = spinTheWheel(40, 60)
 
-setTimeout(()=> {
+setTimeout(() => {
     wheel.style.transform = `rotate(${-rotation[0]}deg)`;
-},250)
-setTimeout(()=>{
-alert("You rolled a " + Math.ceil(rotation[1]))
-},4250)
+}, 250);
+setTimeout(() => {
+    alert("You rolled a " + Math.ceil(rotation[1]))
+}, 4250);
 
 
 

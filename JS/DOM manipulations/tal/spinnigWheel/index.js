@@ -21,8 +21,7 @@ function spinTheWheel(minRotate, maxRotate) {
 
 const wheel = document.getElementById('wheel');
 wheel.addEventListener('transitionend', ev => {
-    console.log('animationend')
-    console.log(ev.target.dataset.result);
+  
     alert(`The result is ${ev.target.dataset.result}`);
 })
 const rotation = spinTheWheel(4, 6);
