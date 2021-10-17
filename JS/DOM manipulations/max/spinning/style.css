@@ -2,8 +2,9 @@
     width: 400px;
     transition: 4s all;
 }
-#peg{
-    background-color: red;
+
+.winnerPeg{
+    background-color: rgb(255, 0, 0);
     height: 20px;
     width: 5px;
     position: fixed;
