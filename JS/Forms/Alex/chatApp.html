@@ -5,17 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="chatapp.css">
+    <link rel="stylesheet" href="chatApp.css">
 </head>
 <body id= "body">
-    <!-- we are using forms to get multiple input fields at the same time-->
-    <!-- name attributes help us get the data from the input field-->
     <form onsubmit= 'handleSubmit(event)'>
-        <label for="Text">Text</label>
-        <input type="Text" name = "Text" id= "Text">
+        <label for="Text">Enter Text</label>
+        <input type="Text" name = "Text" id= "textEnter">
         <input type="submit" value="Submit">
     </form>
-    <h6 id= "Text">Text</h1>
-    <script src="chatapp.js"></script>
+    <h1 id= "Text"></h1>
+    <script src="chatApp.js"></script>
 </body>
 </html>
