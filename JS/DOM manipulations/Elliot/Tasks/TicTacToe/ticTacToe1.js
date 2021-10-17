@@ -1,111 +1,92 @@
-let turnNotifier = 0; 
-//0 is O's turn, 1 is X's turn
-
-let turnNumber = 0; 
-//Acts as an end condition, essentially for when a game ends in a draw
-
+let turnNotifier = "X"; 
+let turnNumber = 1;
 let gameOver = 0;
-//Will prevent false tie declarations
-
 let gameResult = "The winner of this game is: ";
-//For declaring the winner of the game
-
-let box11 = document.getElementById('11').innerText;
-let box12 = document.getElementById('12').innerText;
-let box13 = document.getElementById('13').innerText;
-let box21 = document.getElementById('21').innerText;
-let box22 = document.getElementById('22').innerText;
-let box23 = document.getElementById('23').innerText;
-let box31 = document.getElementById('31').innerText;
-let box32 = document.getElementById('32').innerText;
-let box33 = document.getElementById('33').innerText;
-let boxSelected;
-//Initial conditions of boxes, to prevent clicking already selected box
+let box11, box12, box13, box21, box22, box23, box31, box32, box33;
 
 function takeTurn(ev){
-    boxSelected = ev.srcElement.id;
-    turnNumber++; 
-    //Starts game off at turn 1, last player input is turn 9, will process ties at turn 9
-    //Will be kept at the same turn through edge cases in the other functions
     if(gameOver == 0){
-    //If game still ongoing and turn hasn't been completed yet
-    //Turn is still ongoing since spot is not marked yet
-    //Prevents continued play after game is won
-        markedSpot(boxSelected);
-        //Registers change to an individual tic-tac-toe box
+        markedSpot(ev, ev.srcElement.id);
         checkIfWon();
-        //Check if win condition is accomplished during turn
-        //Will set gameOver status to 1 if game is won
-        if((turnNumber == 9) && (gameOver == 0)) {
-        //After the last turn has been played.
-        //If the game has not been won after all boxes are full, declare a tie
-            gameOver = 1;
-            gameResult = "This game has resulted in a tie!";
-        }
-    } else {
-    //Game is over in else condition, aka (gameOver == 1)
+        checkIfTie();
+    } 
+    if(gameOver == 1){
         alert(gameResult);
-        //Will declare winner based on GameResult,
-        //Which is automatically updated to include the winner.
         alert("Would you like to play again? If so, click reset!");
-        //Will prompt players if they want to play again
     }
+    changeTurn();
 }
 
-//Working as planned (100%)
-//Properly marks in turns
-//Properly avoids selecting an already filled box
-//Properly keeps the game at the same turn if turn not properly taken
-//Properly updates game grid status to 2D array "gameGrid"
-function markedSpot(boxSelected){
-    var previousElementState = window['box' + boxSelected];
-    if(previousElementState == ""){
+function markedSpot(ev, selectedID){
+    if(document.getElementById(selectedID).innerText == ""){
         switch(turnNotifier){
-            case 0:
+            case "O":
                 ev.target.innerText = "O";
-                turnNotifier = 1;
-                window['box' + boxSelected] = "O";
                 break;
-            case 1:
+            case "X":
                 ev.target.innerText = "X";
-                turnNotifier = 0;
-                window['box' + boxSelected] = "X";
                 break;
         } 
     } else {
         alert(`You cannot mark this box, try another...`);
         turnNumber--;
-        //Sets the turn number back to keep the game going on the same turn
     }
 }
 
 function checkIfWon(){
-    //if game is won through an y of the win conditions, 
-    //set gameOver variable to 1.
+    box11 = document.getElementById("11").innerText;
+    box12 = document.getElementById("12").innerText;
+    box13 = document.getElementById("13").innerText;
+    box21 = document.getElementById("21").innerText;
+    box22 = document.getElementById("22").innerText;
+    box23 = document.getElementById("23").innerText;
+    box31 = document.getElementById("31").innerText;
+    box32 = document.getElementById("32").innerText;
+    box33 = document.getElementById("33").innerText;
 
-    if(box11 == box12 == box13 != ""){
+
+    //Checks top row, then middle row, then bottom row
+    //Checks first column, then second column, then third column
+    //Checks down slash, then up slash
+    //Note that you cannot compare box11 == box12 == box13 directly...
+    if((box11 == box12) && (box11 == box13) && (box12 == box13) && ((box11 == "X") || (box11 == "O"))){
         gameOver = 1;
-        gameResult = gameResult + box11;
-    } else if(box21 == box22 == box23 != ""){
+    } else if((box21 == box22) && (box21 == box23) && (box22 == box23) && ((box21 == "X") || (box21 == "O"))){
         gameOver = 1;
-        gameResult = gameResult + box21;
-    } else if(box31 == box32 == box33 != "") {
+    } else if((box31 == box32) && (box31 == box33) && (box32 == box33) && ((box31 == "X") || (box31 == "O"))){
         gameOver = 1;
-        gameResult = gameResult + box31;
-    } else if(box11 == box21 == box31 != "") {
+    } else if((box11 == box21) && (box11 == box31) && (box21 == box31) && ((box11 == "X") || (box11 == "O"))){
         gameOver = 1;
-        gameResult = gameResult + box11;
-    } else if(box12 == box22 == box32 != "") {
+    } else if((box12 == box22) && (box12 == box32) && (box22 == box32) && ((box12 == "X") || (box12 == "O"))){
         gameOver = 1;
-        gameResult = gameResult + box12;
-    } else if(box13 == box23 == box33 != "") {
+    } else if((box13 == box23) && (box13 == box33) && (box23 == box33) && ((box13 == "X") || (box13 == "O"))){
         gameOver = 1;
-        gameResult = gameResult + box13;
-    } else if(box11 == box22 == box33 != "") {
+    } else if((box11 == box22) && (box11 == box33) && (box22 == box33) && ((box22 == "X") || (box22 == "O"))){
         gameOver = 1;
-        gameResult = gameResult + box11;
-    } else if(box13 == box22 == box31 != "") {
+    } else if((box13 == box22) && (box13 == box31) && (box22 == box31) && ((box22 == "X") || (box22 == "O"))){
         gameOver = 1;
-        gameResult = gameResult + box13;
     }
+
+    if(gameOver == 1){
+        gameResult = gameResult + turnNotifier;
+    }
+}
+
+function checkIfTie(){
+    if((turnNumber == 9) && (gameOver == 0)) {
+        gameOver = 1;
+        gameResult = "This game has resulted in a tie!";
+    }
+}
+
+function changeTurn(){
+    switch(turnNotifier){
+        case "O":
+            turnNotifier = "X";
+            break;
+        case "X":
+            turnNotifier = "O";
+            break;
+    } 
+    turnNumber++;
 }
