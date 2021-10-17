@@ -4,8 +4,24 @@ form{
     max-width: 400px;
 }
 
-input, select, textarea{
+input, textarea{
     border-radius: 10px;
     margin-bottom: 20px;
     border:1px solid rgb(199, 199, 199);
+    top: 85vh;
+    position: relative;
+}
+
+div{
+    position: relative;
+    top: 85vh;
+    font-weight: bold;
+    background-color: tan;
+}
+
+label{
+    position: relative;
+    top: 85vh;
+    font-style: italic;
+    background-color: tan;
 }
