@@ -14,7 +14,8 @@ function spinTheWheel(minRotate, maxRotate) {
 // for(let i = 0; i <50;i++){
 //     console.log((spinTheWheel(4, 6)>=1440 && spinTheWheel(4,6)<=2160)); //=1440- 1960
 // }
-
-const wheel = document.getElementById('wheel');
-const rotation = spinTheWheel(4, 6)
-wheel.style.transform = `rotate(${-rotation}deg)`;
+setTimeout(()=>{
+    const wheel = document.getElementById('wheel');
+    const rotation = spinTheWheel(40, 60)
+    wheel.style.transform = `rotate(${-rotation}deg)`;
+},2000)
