@@ -5,6 +5,7 @@ function SpintheWheel(minRotate, maxRotate){
 }
 
 for(let i = 0; i < 500; i++){
+   
     console.log((SpintheWheel(4, 6) >=1440 && SpintheWheel(4,6)<=2160)); //= 1440 - 1960
 }
 
