@@ -5,8 +5,7 @@ form{
 }
 
 input, select, textarea{
-    
-    margin-bottom: 20px;
+        margin-bottom: 20px;
     border:none;
     border-bottom:1px solid rgb(199, 199, 199);
 }
