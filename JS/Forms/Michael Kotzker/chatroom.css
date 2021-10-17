@@ -8,20 +8,14 @@ input, textarea{
     border-radius: 10px;
     margin-bottom: 20px;
     border:1px solid rgb(199, 199, 199);
-    top: 85vh;
-    position: relative;
 }
 
 div{
-    position: relative;
-    top: 85vh;
-    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
     background-color: tan;
 }
 
 label{
-    position: relative;
-    top: 85vh;
     font-style: italic;
     background-color: tan;
 }
