@@ -3,8 +3,8 @@ function spinTheWheel(minRotate, maxRotate) {
     const numberOfRotationsInDeg = minRotate * 360 + (maxRotate - minRotate) * (Math.random() * 360);
 
     const finalDiffernce = numberOfRotationsInDeg % 360;
-    let number = (finalDiffernce / 60) +1;
-    if(number > 6) number =1;
+    let number = (finalDiffernce / 60) + 1;
+    if (number > 6) number = 1;
     console.log(Math.ceil(number))
 
     return {
