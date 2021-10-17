@@ -4,9 +4,9 @@ function spinTheWheel(minRotate, maxRotate){
     
 }
 
-// for(let i =0; i<20; i++){
-//     console.log((spinTheWheel(4,6)>= 1440 && spinTheWheel(4,6) <=2160));
-// }
+for(let i =0; i<20; i++){
+    console.log((spinTheWheel(4,6)>= 1440 && spinTheWheel(4,6) <=2160));
+}
 
 const wheel= document.getElementById('wheel');
 const rotation= spinTheWheel(4,6);
