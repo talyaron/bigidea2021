@@ -18,7 +18,8 @@ function handleSubmit(ev){
 
 function handleTextSubmit(ev){
     ev.preventDefault();
-
     const text = ev.target.elements.text.value;
-    h1.innerHTML +=;
+    let h1 = document.getElementsByTagName('h1')[0];
+    h1.innerHTML += text + '<br>';
+    form.reset()
 }
