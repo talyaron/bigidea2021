@@ -21,5 +21,5 @@ function handleTextSubmit(ev){
     const text = ev.target.elements.text.value;
     let h1 = document.getElementsByTagName('h1')[0];
     h1.innerHTML += text + '<br>';
-    form.reset()
+    ev.target.reset();
 }
