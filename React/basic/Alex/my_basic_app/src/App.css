@@ -1,3 +1,11 @@
 .gold{
-  background-color: gold;
+  background-color: rgb(67, 100, 186);
+}
+.paragraph{
+  font-size: larger;
+}
+.image{
+  width:600px;
+  height:450px;
+  float:right;
 }
