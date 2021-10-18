@@ -1,7 +1,7 @@
-//let newAddition, fullLineEntry; Vrrsion 1
-let totalInputLine;
-let totalInputToDiv,totalInputDivMaker;
-let dataHoldingRegion;
+//let newAddition, fullLineEntry; Version 1
+let totalInputLine = "";
+let totalInputToDiv, divMaker;
+let dataInsertPoint;
 
 
 function handleLineEnter(ev){
@@ -14,14 +14,15 @@ function handleLineEnter(ev){
     document.getElementById('line')[0].innerHTML = "";*/
 
     ev.preventDefault();
-    totalInputLine = totalInputLine + document.getElementById('line').innerText;
+    console.log(ev);
+    totalInputLine = totalInputLine + ev.target.children[1].value;
+    //console.log(totalInputLine);
 
-    totalInputDivMaker = document.createElement("div");
+    divMaker = document.createElement("div");
     totalInputToDiv = document.createTextNode(totalInputLine);
+    //console.log(totalInputToDiv);
+    dataInsertPoint = document.getElementById("linePlaceReference");
     
-    totalInputDivMaker.innerText = totalInputLine;
-    document.body.appendChild(totalInputDivMaker);
-
+    divMaker.appendChild(totalInputToDiv);
+    document.body.insertBefore(divMaker, dataInsertPoint);
 }
-
-//Objective is that whenever
