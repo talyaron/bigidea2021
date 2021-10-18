@@ -1,6 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
 
+function Blog(){
+  return(
+    <div className="Blog">
+      <header>
+      Favorite Video Game of the Poor Sucker Writing This
+      </header>
+      <b>
+        My favorite video game is Monster Hunter World. This is my favorite because I enjoy hunting massive beasts and showing them whose boss. I most enjoy obtaining their materials to make better gear and then hunt other mosnters.
+      </b>
+    </div>
+  )
+}
+
+
+
 function App() {
   return (
     <div className="App">
