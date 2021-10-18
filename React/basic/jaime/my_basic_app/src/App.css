@@ -1,7 +1,11 @@
 .box{
   background-color: gold;
+  border: 2px dashed black;
 }
 .jaime{
     float: right;
     margin: 10px;
+}
+p, h1{
+  margin: 10px;
 }
