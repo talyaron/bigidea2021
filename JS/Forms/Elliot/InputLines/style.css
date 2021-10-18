@@ -10,11 +10,11 @@ textarea{
     border: 3px solid rgb(26, 94, 26);
 }
 
-label{
+label, div{
     font-size: 20px;
 }
 
-.enterData{
+.enterData, .responseData{
     margin: 10px 15px;
     padding: 10px 15px;
     background-color: moccasin;
