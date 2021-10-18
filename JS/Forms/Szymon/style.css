@@ -1,0 +1,8 @@
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+input, select, textarea{
+    border-radius: 10px;
+}
