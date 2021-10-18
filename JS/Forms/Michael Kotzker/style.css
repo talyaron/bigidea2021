@@ -1,0 +1,11 @@
+form{
+    display:flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+input, select, textarea{
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border:1px solid rgb(199, 199, 199);
+}

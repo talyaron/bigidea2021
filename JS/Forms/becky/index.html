@@ -8,30 +8,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- we are using forms to get multiple input fields at the same time -->
-
-
-    <!-- name attribute help us get the data from the input field  -->
-
     <form onsubmit='handleSubmit(event)'>
         <label for="date">Date</label>
-        <input type="date" name="date" id="date">
+        <input type="date" name = "date" id = "date">
+
         <label for="name">Name</label>
         <input type="text" name="name" id="name">
+
         <label for="cars">Cars</label>
         <select id='cars' name='cars'>
             <option value="nisan">Nisan</option>
-            <option value="honda">Honda</option>
+            <option value="Honda">Honda</option>
         </select>
-        <label for="desciption">Description</label>
-        <textarea name="description" id="description"></textarea>
-        <input type="submit" value="Submit">
+        
+        <label for="description">Description</label>
+        <textarea name="description" id="description" ></textarea>
+
+        <input type="submit" value ="Submit">
+
+        <label for="color">Color</label>
+        <input type="color" name="color" id="color">
     </form>
 
-    <h1>Title</h1>
-    <h2>Date</h2>
-    <p>Description</p>
+    <h1 id="h1">Title</h1>
+    <h2 id="h2">date</h2>
+    <p id="h3">Description</p>
+
     <script src="index.js"></script>
 </body>
 </html>
