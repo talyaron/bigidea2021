@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+.box{
+  background-color: midnightblue;
+  color: white;
+
+}
+.Robby{
+  float: right;
+  margin: 10px;
+
+}
+.h1{
+  flex: 432px;
+}
+.hello
+{
+  background-color: brown;
+  color: green;
+}
