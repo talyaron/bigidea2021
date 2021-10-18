@@ -1,0 +1,25 @@
+div {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    position: absolute;
+}
+#box1,#box7,#box13,#box19,#box25,#box31,#box37,#box43,#box49{
+    background-color: rgba(192, 11, 11, 0.521);
+}
+
+#box2,#box8,#box14,#box20,#box26,#box32,#box38,#box44,#box50{
+    background-color: rgba(0, 119, 255, 0.637);
+}
+#box3,#box9,#box15,#box21,#box27,#box33,#box39,#box45{
+    background-color: rgba(255, 255, 0, 0.397);
+}
+#box4,#box10,#box16,#box22,#box28,#box34,#box40{
+    background-color: rgba(11, 104, 11, 0.555);
+}
+#box5,#box11,#box17,#box23,#box29,#box35,#box41{
+    background-color: rgba(0, 0, 255, 0.589);
+}
+#box6,#box12,#box18,#box24,#box30,#box36,#box42{
+    background-color: rgba(87, 4, 87, 0.596);
+}

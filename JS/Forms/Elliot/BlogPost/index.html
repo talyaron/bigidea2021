@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!--
+        Have a title, date, and description will all be displayed below the input form
+        Also include color changer.
+    -->
+
+    <form class = "enterData" onsubmit = 'handleBlogPost(event)'>
+        <label for="title">Blog Title</label>
+        <input type="text" class="title" id="title">
+
+        <label for="date">Date</label>
+        <input type="date" class="date" id="date">
+
+        <label for="name">Name</label>
+        <input type="text" class="name" id="name">
+
+        <label for="description">Description</label>
+        <textarea name="description" id="description"></textarea>
+
+        <label for="colorBackground">Color</label>
+        <input type = "color" class="colorBackground" id = "colorBackground"></input>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <form class="returnData">
+        <label class = 'returnTitle'></label>
+        <label class = 'returnDate'></label>
+        <label class = 'returnName'></label>
+        <label class = 'returnDescription'></label>
+    </form>
+
+
+    <script src="index.js">
+
+
+    </script>
+</body>
+</html>

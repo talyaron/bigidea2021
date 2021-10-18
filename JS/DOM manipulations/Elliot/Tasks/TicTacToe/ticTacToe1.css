@@ -1,0 +1,37 @@
+button{
+    color:goldenrod;
+    background-color: rgb(39, 105, 39);
+    font-size: 90px;
+
+    border: none;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 25px; 
+
+    padding: 10px 50px;
+}
+
+button:active, button:hover{
+    background-color: rgba(39, 105, 39, 0.5);
+}
+
+.spacer{
+    color: none;
+    background-color: none;
+    padding: 10px 10px;
+}
+
+.container{
+    display: grid;
+    justify-content: center;
+
+    gap: 25px;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 20px 100px 100px 100px 20px;
+
+    background-color: cadetblue;
+}
+
+.jade{
+    background-color: rgb(39, 105, 39);
+}

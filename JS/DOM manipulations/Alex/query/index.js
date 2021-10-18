@@ -9,13 +9,11 @@ myDiv.addEventListener('mouseup', handleMouseEnter);
 myDiv.addEventListener('mouseleave', handleMouseLeave);
 
 const myImg = document.querySelector('#myImage');
-myImg.style.maxWidth='200px';
 myImg.src="shark.jpg";
 myImg.style.display='block';
 
 const myFallImg = document.querySelector('#myFallImage');
 console.log(myFallImg);
-myImg.style.maxWidth='200px';
 
 
 const myScream = new Audio('scream.mp3');
