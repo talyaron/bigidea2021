@@ -10,10 +10,6 @@ function App() {
      <img className='image' src={D2}/>
      <h1>Test</h1>
     <div className='paragraph'>Test</div>
-    <br></br>
-    <div className='paragraph'>Test</div>
-    <br></br>
-    <div className='paragraph'>Test</div>
    </div>
 
   );
