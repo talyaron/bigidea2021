@@ -1,23 +1,20 @@
 import logo from './logo.svg';
+import Robby from './eve.jpg';
 import './App.css';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="box">
+
+      <h1>My Name is Robby and my favorite game is smash bros</h1>
+      <div>Colors weave into a spire of flame
+Distant sparks call to a past still unnamed
+Bear this torch against the cold of the night
+Search your soul and reawaken the undying light</div>
+<div class = "hello"> It is a super awesome game with great songs</div>
+<img class= "Robby" src={Robby} />
     </div>
   );
 }
