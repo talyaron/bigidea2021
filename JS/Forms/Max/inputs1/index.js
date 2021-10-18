@@ -11,8 +11,6 @@ function handleSubmit(ev){
     let description = ev.target.elements.description.value;
     console.log('description->', description);
 
-
-
 }
 
 
