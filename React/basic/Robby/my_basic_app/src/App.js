@@ -9,12 +9,12 @@ function App() {
     <div className="box">
 
       <h1>My Name is Robby and my favorite game is smash bros</h1>
-      <div>Colors weave into a spire of flame
-Distant sparks call to a past still unnamed
-Bear this torch against the cold of the night
+      <img class= "Robby" src={Robby} />
+      <div>Colors weave into a spire of flame,
+Distant sparks call to a past still unnamed,
+Bear this torch against the cold of the night,
 Search your soul and reawaken the undying light</div>
 <div class = "hello"> It is a super awesome game with great songs</div>
-<img class= "Robby" src={Robby} />
     </div>
   );
 }
