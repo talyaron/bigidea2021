@@ -15,14 +15,14 @@ function prop() {
                 <div>
                     <div className="Image"></div>
                     <div className="Title"></div>
-                    <div></div>
-                    <div></div>
+                    <div className="TextBold"></div>
+                    <div classname="TextNormal"></div>
                 </div>
                 <div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div className="Image"></div>
+                    <div className="Title"></div>
+                    <div className="TextBold"></div>
+                    <div classname="TextNormal"></div>
                 </div>
                 <p></p>
                 <p></p>
