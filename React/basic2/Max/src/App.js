@@ -11,7 +11,13 @@ function App() {
        <h1 className = 'Header'>News</h1>
        <img src = {greta} className = 'photo'></img>
        <img src = {nap} className = 'photo'></img>
-       <img src ={singa} className = 'photo'></img>
+       <img src = {singa} className = 'photo'></img>
+       <div className = 'text'></div>
+       <div className = 'text'></div>
+       <div className = 'text'></div>
+       <a className = 'link'></a>
+       <a className = 'link'></a>
+       <a className = 'link'></a>
     </div>
   );
 }
