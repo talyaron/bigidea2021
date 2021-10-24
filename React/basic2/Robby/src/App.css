@@ -51,10 +51,10 @@
   width: 100%;
   background-size:cover;
   background-repeat: no-repeat;
-  background-image: url(https://ae01.alicdn.com/kf/H3b30abb764d4410ba103285f305eeccfz/TOMY-Pokemon-Elf-Ball-Deformation-Toy-Model-Pikachu-Jenny-Turtle-Mewtwo-Pokemon-Action-Figure-Toy-Movable.jpg_640x640.jpg);
+  background-image: url(https://api.time.com/wp-content/uploads/2021/04/lego-time100-companies.jpg?quality=85&w=1200&h=628&crop=1);
 }
 .image1:hover{
-  background-image: ('./pictures/1.jpg');
+  background-image: url('./pictures/1.jpg');
   height: 100%;
   width: 100%;
   background-size:cover;
@@ -68,7 +68,7 @@
   background-image: url(https://api.time.com/wp-content/uploads/2021/04/lego-time100-companies.jpg?quality=85&w=1200&h=628&crop=1);
 }
 .image2:hover{
-  background-image: ('./pictures/2.jpg');
+  background-image: url('./pictures/2.jpg');
   height: 100%;
   width: 100%;
   background-size:cover;
@@ -83,7 +83,7 @@
   background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Nintendo-DS-Fat-Blue.jpg/1200px-Nintendo-DS-Fat-Blue.jpg);
 }
 .image3:hover{
-  background-image: ('./pictures/3.jpg');
+  background-image: url('./pictures/3.jpg');
   height: 100%;
   width: 100%;
   background-size:cover;
@@ -98,7 +98,7 @@
   background-image: url(https://www.u-buy.com.tw/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvOTFvc3lWWkItREwuX0FDX1NMMTUwMF8uanBn.jpg);
 }
 .image4:hover{
-  background-image: ('./pictures/4.jpg');
+  background-image: url('./pictures/4.jpg');
   height: 100%;
   width: 100%;
   background-size:cover;
