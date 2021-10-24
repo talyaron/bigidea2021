@@ -1,4 +1,4 @@
-import './App.css';
+import '';
 import smash from './img/smash.jpg';
 function blog(){
     return(
