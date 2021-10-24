@@ -1,5 +1,5 @@
 //import logo from './logo.svg';
-import sandwichMan from './sandwichGuy.jpeg';
+import geoGuesser from './geoGuess.png';
 import './App.css';
 
 const abc = 123;
@@ -20,7 +20,7 @@ function App() {
       </div>
 
       <div className="photoFrame">
-        <img src={sandwichMan} />
+        <img src={geoGuesser} />
         <div className="photoDescription"> Figure 1: Man Holding A Sandwich </div>
       </div>
 
