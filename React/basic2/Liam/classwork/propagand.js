@@ -19,7 +19,7 @@ function prop() {
                 <div></div>
             </div>
             <div>
-                <div></div>
+                <div><img src={balence} alt="balence"></div>
                 <div></div>
                 <div></div>
                 <div></div>
