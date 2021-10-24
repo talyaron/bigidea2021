@@ -1,12 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-
-
-
+import './propaganda.css';
 import wheel from './img/wheel.jpg';
 import greta from './img/greta.jpg';
 import balence from './img/balence.jpg';
-function App() {
+function prop() {
     return (
         <div>
             <h2 className='h2'>Liam's favorite video games</h2>
@@ -34,4 +30,4 @@ function App() {
         </div>
     );
 }
-export default App;
+export default prop;
