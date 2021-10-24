@@ -18,7 +18,8 @@ function App() {
       </div>
       <div className="Article2">
         <h2>Marijuana</h2>
-        <p>Luxembourg will become the first country in Europe to legalize the production and consumption of marijuana, to counter the illegal market. The government has announced that adults over 18 will be able to grow up to four cannabis plants in their homes or gardens for their own use.</p>
+        <p>Luxembourg will become the first country in Europe to legalize the production and consumption of marijuana, to counter the illegal market.
+The government has announced that adults over 18 will be able to grow up to four cannabis plants in their homes or gardens for their own use.</p>
       </div>
       <div className="Article3">
         <h2>Queen Elizabeth</h2>
