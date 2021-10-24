@@ -2,7 +2,7 @@
 import imageA from './geoGuess.png';
 import imageB from './geoGuess.png';
 import imageC from './geoGuess.png';
-import './App.css';
+import './toyHover.css';
 
 const abc = 123;
 
