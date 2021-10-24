@@ -1,15 +1,34 @@
 import '';
-import smash from './img/smash.jpg';
-function blog(){
-    return(
+import smash from '';
+function prop() {
+    return (
         <div>
-         <h2 className='h2'>Liam's favorite video games</h2>
-          <img src={smash} alt="smash"/> 
-          <p>I do not have one particular favorite game but some of my favorites are these:</p>
-          <p>When I was little I started with call of duty BO2. That was the greatest cod game of all time and no other cod games can beat it. I also like to play Overwatch and GTA with my friends. In gta we sell drugs and kill cops its very fun.</p>
-          <p> Recently I have been playing Smash Bro's. My best character in smash is Kazuya. Zach has a nintendo here and we play smash sometimes but he does not have kazuya. If he were to get kazuya id slap everyone here back to preschool.  </p> 
+            <h2 className='h2'>Liam's favorite video games</h2>
+            <img src={smash} alt="smash" />
+            <div className="Parent">
+                <div className="item ">
+                    <div className="Image"></div>
+                    <div className="Title"></div>
+                    <div className="TextBold"></div>
+                    <div classname="TextNormal"></div>
+                </div>
+                <div>
+                    <div className="Image"></div>
+                    <div className="Title"></div>
+                    <div className="TextBold"></div>
+                    <div classname="TextNormal"></div>
+                </div>
+                <div>
+                    <div className="Image"></div>
+                    <div className="Title"></div>
+                    <div className="TextBold"></div>
+                    <div classname="TextNormal" idName="hii"></div>
+                </div>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
         </div>
-    
     );
 }
-export default blog;
+export default prop;
