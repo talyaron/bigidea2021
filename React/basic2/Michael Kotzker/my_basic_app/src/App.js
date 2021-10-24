@@ -14,7 +14,8 @@ function App() {
       </div>
       <div className='Article1'>
         <h2>Bitcoin</h2>
-        <p></p>
+        <p>Wednesday, October 20, Bitcoin reached a new all-time high of $ 66,899, surpassing that of last April.
+Bitcoin can be considered a reliable investment or is it the usual passing phenomenon</p>
       </div>
       <div className="Article2">
         <h2>Marijuana</h2>
