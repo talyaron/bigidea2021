@@ -1,16 +1,33 @@
-import tal from './tal.png';
-import wow3 from './wow3.jpg';
+//import logo from './logo.svg';
+import geoGuesser from './geoGuess.png';
 import './App.css';
 
-const game = 'World Of Warcraft III';
+const abc = 123;
 
 function App() {
   return (
-    <div className="box">
-      <img src={tal} />
-      <h1>My favorite game is:</h1>
-      <h2>{game}</h2>
-      <img src={wow3} />
+    <div className='main'>
+      <div className="blogTitle">
+        <header> Interview: What is my favorite game? </header>
+      </div>
+
+      <div className="author"> Written by: Elliot Kupchik </div>
+      <div className="publisher"> Published under: Tal Studios </div>
+      <div className="date"> Published on: Oct 18, 2021 </div>
+
+      <div className="para1">
+        <h2>I like peaceful games that allow you to explore landscapes!</h2>
+      </div>
+
+      <div className="photoFrame">
+        <img src={geoGuesser} />
+        <div className="photoDescription"> Figure 1: GeoGuesser Logo </div>
+      </div>
+
+      <div className="para2">
+        <h2>In particular, I enjoyplaying GeoGuesser, since it allows you to learn about the urban and natural landscapes of Earth!</h2>
+      </div>
+
     </div>
   );
 }
