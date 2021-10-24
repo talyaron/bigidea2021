@@ -36,42 +36,30 @@
     transform: rotate(360deg);
   }
 }
-img{
-  width: 300px;
-  height: 300px;
+.box{
+  display: grid;
+  grid-template-columns: [first] 33% [line2] 33% [line3] 33%;
+  grid-template-rows: 200px 200px 100px;
+  background-color: midnightblue;
+  color: white;
+  font-size: 10px;
+  width: 100%;
+
 }
-.Title{
-  font-family: fantasy;
+.image1{
+ height: 100%;
+  width: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
+
 }
-.TextBold{
-  color: dimgrey;
-  font-family: sans-serif;
+
+.h1{
+  flex: 432px;
+  font-size: 3000px;
 }
-.TextNormal{
-  color: dimgrey;
-  font-family:monospace;
-}
-.parent{
-  display:grid;
-  grid-template-rows: 300px 300px 300px;
-  grid-template-areas: "item1 item2 item3";
-  gap: 30px;
-}
-.item1{
-  grid-area: item1;
-}
-.item2{
-  grid-area: item2;
-}
-.item3{
-  grid-area: item3;
-}
-.title{
-  font-weight: bolder;
-}
-.TextBold{
-  font-weight: bold;
-}
-.TextNormal{
-  font-weight: 300;
+.hello
+{
+  background-color: brown;
+  color: green;
 }

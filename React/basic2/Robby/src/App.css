@@ -46,13 +46,78 @@
   width: 100%;
 
 }
-.image{
+.image1{
+  height: 100%;
+  width: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-image: url(https://ae01.alicdn.com/kf/H3b30abb764d4410ba103285f305eeccfz/TOMY-Pokemon-Elf-Ball-Deformation-Toy-Model-Pikachu-Jenny-Turtle-Mewtwo-Pokemon-Action-Figure-Toy-Movable.jpg_640x640.jpg);
+}
+.image1:hover{
+  background-image: url(http://i.ebayimg.com/images/g/xu8AAOSwdGFY4PZ8/s-l500.jpg);
+  height: 100%;
+  width: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+.image2{
  height: 100%;
   width: 100%;
   background-size:cover;
   background-repeat: no-repeat;
 
 }
+.image3{
+ height: 100%;
+  width: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
+
+}
+.image4{
+ height: 100%;
+  width: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
+
+}
+.image5{
+ height: 100%;
+  width: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
+
+}
+.image6{
+ height: 100%;
+  width: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
+
+}
+.image7{
+ height: 100%;
+  width: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
+
+}
+.image8{
+ height: 100%;
+  width: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
+  
+
+}
+.image9{
+ height: 100%;
+  width: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
+
+}
+
 .h1{
   flex: 432px;
   font-size: 3000px;
