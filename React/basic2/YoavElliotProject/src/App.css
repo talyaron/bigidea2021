@@ -1,5 +1,5 @@
 .main{
-  gap: 10px;
+  gap: 50px;
   text-align: center;
   color: rgb(21, 75, 21);
   background-color: rgb(133, 79, 8);
@@ -7,14 +7,22 @@
   height: 100vh;
 
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 2fr 1fr 2fr 1fr;
-  grid-template-rows: 3fr 1fr 2fr 2fr 1fr 7fr 1fr;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+  'header header header'
+  ". . . "
+  'par par par'
+  ;
 
 }
 
 
 header{
   font-size: 60px;
+}
+.par{
+  grid-area: par;
 }
 
 .blogTitle{
@@ -27,38 +35,13 @@ header{
   font-size: 60px;
 }
 
-.blogImageOne{
-  grid-row: 3 / 5;
-  grid-column: 2 / 3;
-  
-  color:rgb(133, 79, 8);
-  background-color: cadetblue;
-
+.header{
+  grid-area: header;
 }
 
-.blogImageTwo{
-  grid-row: 3 / 5;
-  grid-column: 4 / 5;
-  
-  color:rgb(133, 79, 8);
-  background-color: cadetblue;
-
+.image{
+  width: 100%;
+  background-size:cover;
 }
 
-.blogImageThree{
-  grid-row: 3 / 5;
-  grid-column: 6 / 7;
-  
-  color:rgb(133, 79, 8);
-  background-color: cadetblue;
 
-}
-
-.para1{
-  grid-row: 6 / 7;
-  grid-column: 2 / 7;
-
-  background-color: cadetblue;
-  color: rgb(235, 235, 44);  
-  font-size: 20px;
-}
