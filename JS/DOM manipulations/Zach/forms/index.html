@@ -8,10 +8,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form >
-        <input type="date" >
+    <form onsubmit='handleSubmit(event)'>
+        <input type="date" id="date" name="date">
+        <label for="date">Date:</label>
         <input type="text" name="name" id="name">
-        <label for
+        <label for="name">Name:</label>
+        <input type="text" name="cars" id="cars">
+        <label for="cars">Cars</label>
+        <select name="cars" id="cars">
+            <option value="Nissan">Nissan</option>
+            <option value="Honda">Honda</option>
+        </select>
+        <label for="description">Description</label>
+        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+        <input type="submit"  value="submit">
     </form>
     <script src="scripts.js"></script>
 </body>
