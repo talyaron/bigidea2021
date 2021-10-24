@@ -28,3 +28,12 @@ img{
 .item3{
     grid-area: item3;
 }
+.title{
+    font-weight: bolder;
+}
+.TextBold{
+    font-weight: bold;
+}
+.TextNormal{
+    font-weight: 300;
+}
