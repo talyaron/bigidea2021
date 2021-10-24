@@ -7,7 +7,7 @@ const abc = 123
 
 function App(){
   return(
-    <div className=" ">
+    <div className="container">
       hi
     </div>
   );
