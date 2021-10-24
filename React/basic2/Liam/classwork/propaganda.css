@@ -17,4 +17,5 @@ img{
     display:grid;
     grid-template-columns: 300px 300px 300px;
     grid-template-areas: "item1 item2 item3";
+    gap: 30px;
 }
