@@ -28,5 +28,9 @@
 .Header{
   grid-column: 1 / span 3;
   grid-row: 1/ span 1;
+  background-color: rgb(223, 88, 88);
+  padding: 10px;
+  margin-top: 0px;
+  margin-bottom: 10px;
 
 }
