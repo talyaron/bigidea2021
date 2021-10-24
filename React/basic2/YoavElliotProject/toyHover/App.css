@@ -1,0 +1,67 @@
+.main{
+  gap: 10px;
+  text-align: center;
+
+  color: rgb(21, 75, 21);
+  background-color: rgb(133, 79, 8);
+
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+
+
+
+}
+
+header{
+  font-size: 60px;
+}
+
+.blogTitle{
+  grid-row: 1 / 2;
+  grid-column: 1 / 8;
+
+  color:rgb(133, 79, 8);
+  background-color: cadetblue;
+
+  font-size: 60px;
+}
+
+.blogImageOne{
+  grid-row: 3 / 5;
+  grid-column: 2 / 3;
+  
+  color:rgb(133, 79, 8);
+  background-color: cadetblue;
+
+}
+
+.blogImageTwo{
+  grid-row: 3 / 5;
+  grid-column: 4 / 5;
+  
+  color:rgb(133, 79, 8);
+  background-color: cadetblue;
+
+}
+
+.blogImageThree{
+  grid-row: 3 / 5;
+  grid-column: 6 / 7;
+  
+  color:rgb(133, 79, 8);
+  background-color: cadetblue;
+
+}
+
+.para1{
+  grid-row: 6 / 7;
+  grid-column: 2 / 7;
+
+  background-color: cadetblue;
+  color: rgb(235, 235, 44);  
+  font-size: 20px;
+}
