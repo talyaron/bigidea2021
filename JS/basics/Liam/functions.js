@@ -15,7 +15,7 @@ const add = (a,b) => {
 //arr.forEach(cb)
 
 let namesli = ["liam","bob","bill","jill", "tom","joe","moe","yoav"];
-let num = 7;
+let num = namesli.length;
 let namesli2 = [];
 for (let index = 0; index < 4; index++) {
     randnum = Math.floor(Math.random() * num);
