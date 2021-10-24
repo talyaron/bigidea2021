@@ -10,8 +10,7 @@
 }
 
 .photo{
-  height: 400px;
-  width: 600px;
+  width: 100%;
 }
 #photo1{
   grid-column: 1 / span 1;
