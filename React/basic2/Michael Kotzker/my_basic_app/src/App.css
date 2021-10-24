@@ -4,8 +4,12 @@ div{
 }
 h2{
   background-color: thistle;
+  max-width: 500px;
 }
 p{
   background-color: beige;
   max-width: 500px;
+}
+img{
+  margin: 10px;
 }
