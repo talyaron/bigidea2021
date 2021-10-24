@@ -1,5 +1,5 @@
-import '';
-import smash from '';
+import './propaganda.css';
+import wheel from '';
 function prop() {
     return (
         <div>
