@@ -36,3 +36,104 @@
     transform: rotate(360deg);
   }
 }
+
+.body{
+  background-color: rgb(52, 137, 206);
+  display: grid;
+  grid-template-columns: [first] 33% [line2] 33% [line3] 33%;
+  grid-template-rows: 80px 450px 450px 450px;
+  column-gap: 15px;
+  row-gap: 15px;
+}
+.header{
+  text-align: center;
+  background-color: red;
+  grid-column: 1 / span 3;
+  grid-row: 1/ span 1;
+}
+
+.one{
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+
+  height: 95%;
+  width: 95%;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-image: url(catan.jpeg);
+}
+
+.two{
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 1;
+
+  height: 95%;
+  width: 95%;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-image: url(ds.png);
+}
+
+.three{
+  grid-column: 2 / span 1;
+  grid-row: 3 / span 1;
+
+  height: 95%;
+  width: 95%;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-image: url(cube.jpg);
+}
+
+.four{
+  grid-column: 3 / span 1;
+  grid-row: 3 / span 1;
+
+  height: 95%;
+  width: 95%;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-image: url(legos.jpg);
+}
+
+.five{
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+
+  height: 95%;
+  width: 95%;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-image: url(dnd.jpg);
+}
+
+.six{
+  grid-column: 3 / span 1;
+  grid-row: 2 / span 1;
+
+  height: 95%;
+  width: 95%;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-image: url(beyblade.jpeg);
+}
+
+.box{
+  text-align: center;
+}
+
+.one:hover, .two:hover, .three:hover{
+  background-image: url(jaime.png);
+  height: 95%;
+  width: 95%;
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+
+.four:hover, .five:hover, .six:hover{
+  background-image: url(szymon.png);
+  height: 95%;
+  width: 95%;
+  background-size:cover;
+  background-repeat: no-repeat;
+}
