@@ -9,35 +9,40 @@
 
 }
 
-
-
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  .container{
-    display: grid;
-    grid-template-columns: [first] 33% [line2] 33% [line3] 33%;
-    grid-template-rows: 450px 450px 450px;
-    background-color: midnightblue;
-    color: white;
-    font-size: 10px;
-    width: 100%;
-  
-  }
-
-
 .image1{
   background-image: url("./Bakugan.jpg");
 }
+
+.image2{
+    background-image: url("./Lego Thanos.jpg");
+  }
+
+  .image3{
+    background-image: url("./Blade Blade.jpg");
+  }
+
+  .image4{
+    background-image: url("./pokemon\ cards.jpg");
+  }
+
+  .image5{
+    background-image: url("./wii.jpg");
+  }
+
+  .image6{
+    background-image: url("./Maverick.jpg");
+  }
+
+  .image7{
+    background-image: url("./woody.jpg");
+  }
+
+  .image8{
+    background-image: url("./Nerf Sword.jpg");
+  }
+
+  .image9{
+    background-image: url("./Blade\ Blade.jpg");
+  }
+
+  
