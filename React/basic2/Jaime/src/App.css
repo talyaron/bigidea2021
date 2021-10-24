@@ -1,11 +1,34 @@
+/*
 .box{
   background-color: gold;
   border: 2px dashed black;
 }
+
 .jaime{
     float: right;
     margin: 10px;
 }
+
 p, h1{
   margin: 10px;
+}
+*/
+
+.jaimeszymon{
+  display: flex;
+  flex-direction: row;
+  border-collapse: collapse;
+  margin: 10px;
+}
+
+.box2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 2px;
+}
+.img{
+  width: 100%;
+  
 }
