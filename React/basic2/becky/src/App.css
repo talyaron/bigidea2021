@@ -16,31 +16,64 @@
 #pic1{
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
-  background-image: url('./max.png');
+  background-image: url('./hotweels.jpeg');
+  background-size: 100%;
+  
 }
 #pic2{
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
+  background-image: url('./kitchen.png');
+  background-size: 100%;
 }
 #pic3{
   grid-column: 3 / span 1;
   grid-row: 1 / span 1;
+  background-image: url('./lego.jpg');
+  background-size: 100%;
 }
 #pic4{
   grid-column: 1 / span 1;
   grid-row: 2 / span 1;
+  background-image: url('./thomas.jpeg');
+  background-size: 100%;
 }
 #pic5{
   grid-column: 2/ span 1;
   grid-row: 2 / span 1;
+  background-image: url('./ribecca.jpeg');
+  background-size: 100%;
 }
 #pic6{
   grid-column: 3 / span 1;
   grid-row: 2 / span 1;
+  background-image: url('./nerf.jpg');
+  background-size: 100%;
 }
 
 #pic1:hover{
-  background-image: url('./max.png');
-  opacity: .5;
+  background-image: url('./max.png') ;
+  background-size: 100%;
 }
+#pic2:hover{
+  background-image: url('./me.jpeg') ;
+  background-size: 100%;
+}
+#pic3:hover{
+  background-image: url('./max.png') ;
+  background-size: 100%;
+}
+#pic4:hover{
+  background-image: url('./me.jpeg') ;
+  background-size: 100%;
+}
+#pic5:hover{
+  background-image: url('./me.jpeg') ;
+  background-size: 100%;
+}
+#pic6:hover{
+  background-image: url('./max.png') ;
+  background-size: 100%;
+}
+
 
