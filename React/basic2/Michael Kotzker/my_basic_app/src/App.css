@@ -7,4 +7,5 @@ h2{
 }
 p{
   background-color: beige;
+  max-width: 500px;
 }
