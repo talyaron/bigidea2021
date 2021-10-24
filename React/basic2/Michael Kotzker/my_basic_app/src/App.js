@@ -5,8 +5,10 @@ import './App.css';
 
 function App() {
   return (
+    <>
+    <h1>News</h1>
     <div className="container">
-      <h1>News</h1>
+      
       <div className='Article1'>
         <img className="btc" src= {btc}/>
         <h2>Bitcoin</h2>
@@ -23,6 +25,7 @@ function App() {
         <p>Queen Elizabeth spent the night in the hospital (as a precaution). After a dense series of commitments, The Queen followed the doctors' advice and gave up her trip to Northern Ireland.</p>
       </div>
     </div>
+    </>
   );
 }
 
