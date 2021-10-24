@@ -1,31 +1,15 @@
-.box{
-  background-color: blanchedalmond;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.cont{
+  display: grid;
+  grid-template-columns: 250px, 250px, 250px;
+  grid-template-rows: 300px, 300px, 300px, 300px;
+  
+  
+
 }
-h1{
-  width: 500px;
-  background-color: cadetblue;
-  height: 30px;
-}
-img{
-  height: 300px;
+
+.photo{
+  height: 250px;
   width: 300px;
-}
-.bodypar{
-  flex-grow: 1;
-  flex-basis: 100%;
-  position: relative;
-  left: 300px ;
-  bottom: 150px;
-}
-.break{
-  flex-basis: 100%;
-  flex-grow: 1;
-  height: 0px;
-}
-.CSGO{
-  position: relative;
-  left: 50px;
+
+
 }
