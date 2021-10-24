@@ -46,28 +46,28 @@
   width: 100%;
 
 }
-.image1{
+.image10{
   height: 100%;
   width: 100%;
   background-size:cover;
   background-repeat: no-repeat;
   background-image: url(https://i5.walmartimages.com/asr/91cd2731-5b7d-410b-9c06-4df46d2da2ab_1.d10fd73a57ac57f22fd0c8e923e3db22.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF);
 }
-.image1:hover{
-  background-image: url('./pictures/3.jpg');
+.image10:hover{
+  background-image: url('./pictures/1.jpg');
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.image22{
   height: 100%;
   width: 100%;
   background-size:cover;
   background-repeat: no-repeat;
+  background-image: url(https://www.ubuy.com/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNzEwUk5Bd0hPcFMuX0FDX1NMMTQ1OF8uanBn.jpg);
 }
-.image2{
-  height: 100%;
-  width: 100%;
-  background-size:cover;
-  background-repeat: no-repeat;
-  background-image: url(https://api.time.com/wp-content/uploads/2021/04/lego-time100-companies.jpg?quality=85&w=1200&h=628&crop=1);
-}
-.image2:hover{
+.image22:hover{
   background-image: url('./pictures/2.jpg');
   height: 100%;
   width: 100%;
