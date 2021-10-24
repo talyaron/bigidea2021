@@ -39,18 +39,18 @@
 .box{
   display: grid;
   grid-template-columns: [first] 33% [line2] 33% [line3] 33%;
-
+  grid-template-rows: 200px 200px 100px;
   background-color: midnightblue;
   color: white;
   font-size: 10px;
   width: 100%;
 
 }
-.Robby{
-  float: right;
-  margin: 10px;
-  width: 33%;
-
+.image{
+ height: 100%;
+  width: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
 
 }
 .h1{
