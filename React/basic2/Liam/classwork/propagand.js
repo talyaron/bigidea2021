@@ -22,7 +22,7 @@ function prop() {
                     <div className="Image"></div>
                     <div className="Title"></div>
                     <div className="TextBold"></div>
-                    <div classname="TextNormal"></div>
+                    <div classname="TextNormal" idName="hii"></div>
                 </div>
                 <p></p>
                 <p></p>
