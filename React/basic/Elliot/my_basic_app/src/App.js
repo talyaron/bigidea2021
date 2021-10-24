@@ -15,7 +15,7 @@ function App() {
       <div className="publisher"> Published under: Tal Studios </div>
       <div className="date"> Published on: Oct 18, 2021 </div>
 
-      <div className="review para1">
+      <div className="para1">
         <h2>I like peaceful games that allow you to explore landscapes!</h2>
       </div>
 
@@ -24,7 +24,7 @@ function App() {
         <div className="photoDescription"> Figure 1: Man Holding A Sandwich </div>
       </div>
 
-      <div className="review para2">
+      <div className="para2">
         <h2>In particular, I enjoyplaying GeoGuesser, since it allows you to learn about the urban and natural landscapes of Earth!</h2>
       </div>
 

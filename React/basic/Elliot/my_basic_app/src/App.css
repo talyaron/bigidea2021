@@ -3,12 +3,11 @@
   vertical-align: middle;
   color: rgb(21, 75, 21);
   background-color: rgb(133, 79, 8);
-  flex-direction: row;
-  flex-wrap: wrap;
   width: 100vw;
 
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(8, 1fr);
   grid-template-areas: 
     "title title title title title"
     "author . publisher . date"
@@ -28,24 +27,17 @@ header{
   grid-area: "title";
   background-color: cadetblue;
   padding: 10px 10px;
-  /* width: 100vw; */
-  height: 25vh;
 }
 
 .author{
   grid-area: "author";
-  width: min-content;
-  height: 60px;
   font-size: 12px;
-  vertical-align: middle;
   padding: 10px 10px;
   background-color: cadetblue;
   color: rgb(21, 75, 21);
 }
 .publisher{
   grid-area: "publisher";
-  width: min-content;
-  height: 60px;
   font-size: 12px;
   vertical-align: middle;
   padding: 10px 10px;
@@ -54,8 +46,6 @@ header{
 }
 .date{
   grid-area: "date";
-  width: min-content;
-  height: 45px;
   font-size: 12px;
   vertical-align: middle;
   padding: 10px 10px;
@@ -74,21 +64,19 @@ header{
   grid-area: "imgCap";
   background-color: none;
   color: rgb(235, 235, 44);  
-  width: min-content;
-  height: 65px;
   font-size: 25px;
 }
 
-.review{
+.para1{
   background-color: none;
   color: rgb(235, 235, 44);  
   font-size: 35px;
-}
-
-.para1{
   grid-area: "para1";
 }
 
 .para2{
+  background-color: none;
+  color: rgb(235, 235, 44);  
+  font-size: 35px;
   grid-area: "para2";
 }
