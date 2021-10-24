@@ -1,15 +1,16 @@
-import logo from './logo.svg';
 import tal from './tal.png';
+import wow3 from './wow3.jpg';
 import './App.css';
 
-const abc = 123;
+const game = 'World Of Warcraft III';
 
 function App() {
   return (
     <div className="box">
       <img src={tal} />
-      <h1>Boo {abc}</h1>
-      <div>Hi all</div>
+      <h1>My favorite game is:</h1>
+      <h2>{game}</h2>
+      <img src={wow3} />
     </div>
   );
 }
