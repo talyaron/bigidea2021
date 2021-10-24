@@ -23,11 +23,16 @@ function App() {
             occasionally rocking the 'vote for pedro' shirts. If you have not seen it, Napoleon Dynamite is about a super awkward teenager navigating 
             home and high school in a small town.
 
-       </div>
-       <div className = 'text' id = "text3">par about singa</div>
+        </div>
+       <div className = 'text' id = "text3">
+            SINGAPORE — Authorities in Singapore have tightened Covid measures as infections in the country rise to fresh 
+            record highs — but two health experts told CNBC they are not terribly concerned. The country’s health-care system and workers have been strained by 
+            the increase in cases, and there is a need to slow down transmission to avoid seeing more infections in vulnerable groups such as the elderly, the 
+            health ministry said Friday when stricter measures were announced again.
+          </div>
        <a className = 'link' id = "link1" href = 'https://twitter.com/GretaThunberg/status/1441828422448263169?s=20'>link 1</a>
        <a className = 'link' id = "link2" href = 'https://kidotalkradio.com/the-2004-cult-classic-comedy-napoleon-dynamite-was-filmed-in-idaho/'>link 2</a>
-       <a className = 'link' id = "link3" href = ''>link 3</a>
+       <a className = 'link' id = "link3" href = 'https://www.cnbc.com/2021/09/27/singapore-is-seeing-record-covid-cases-that-may-not-be-a-bad-thing.html'>link 3</a>
     </div>
   );
 }
