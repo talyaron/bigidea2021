@@ -6,11 +6,11 @@ const game = 'World Of Warcraft III';
 
 function App() {
   return (
-    <div>
-      <div>Hello</div>
-      <div className="">
-        Hi {game}
-      </div>
+    <div className="box">
+      <img src={tal} />
+      <h1>My favorite game is:</h1>
+      <h2>{game}</h2>
+      <img src={wow3} />
     </div>
   );
 }
