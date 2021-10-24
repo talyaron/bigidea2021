@@ -14,12 +14,11 @@ function App() {
       </div>
       <div className='Article1'>
         <h2>Bitcoin</h2>
-        <p>Wednesday, October 20, Bitcoin reached a new all-time high of $ 66,899, surpassing that of last April.
-Bitcoin can be considered a reliable investment or is it the usual passing phenomenon</p>
+        <p>Wednesday, October 20, Bitcoin reached a new all-time high of $ 66,899, surpassing that of last April. Can Bitcoin be considered a reliable investment or is it the usual passing phenomenon?</p>
       </div>
       <div className="Article2">
         <h2>Marijuana</h2>
-        <p></p>
+        <p>Luxembourg will become the first country in Europe to legalize the production and consumption of marijuana, to counter the illegal market. The government has announced that adults over 18 will be able to grow up to four cannabis plants in their homes or gardens for their own use.</p>
       </div>
       <div className="Article3">
         <h2>Queen Elizabeth</h2>
