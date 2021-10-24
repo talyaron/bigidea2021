@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
     <div className="body">
-    <h1 className="header">Favorite Toys/Games</h1>
+    <h1 className="header">Favorite Toys/Games -> Jaime and Szymon</h1>
 
       <div className="box one">
       <h3>Catan</h3>
