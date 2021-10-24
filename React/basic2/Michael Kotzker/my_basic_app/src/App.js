@@ -22,8 +22,7 @@ function App() {
       </div>
       <div className="Article3">
         <h2>Queen Elizabeth</h2>
-        <p>Queen Elizabeth and the night in the hospital (as a precaution)
-After a dense series of commitments, The Queen followed the doctors' advice and gave up his trip to Northern Ireland.</p>
+        <p>Queen Elizabeth spent the night in the hospital (as a precaution). After a dense series of commitments, The Queen followed the doctors' advice and gave up her trip to Northern Ireland.</p>
       </div>
     </div>
   );
