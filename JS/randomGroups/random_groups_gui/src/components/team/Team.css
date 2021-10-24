@@ -1,0 +1,16 @@
+.team{
+background-color: wheat;
+}
+
+.team__member{
+    font-size: 2rem;
+}
+.team__member--active{
+    font-size: 2rem;
+    color: rgb(48, 48, 48);
+}
+
+.team__member--nonactive{
+    font-size: 2rem;
+    color: gray;
+}
