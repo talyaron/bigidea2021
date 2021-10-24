@@ -24,7 +24,8 @@ The government has announced that adults over 18 will be able to grow up to four
       </div>
       <div className="Article3">
         <h2>Queen Elizabeth</h2>
-        <p></p>
+        <p>Queen Elizabeth and the night in the hospital (as a precaution)
+After a dense series of commitments, The Queen followed the doctors' advice and gave up his trip to Northern Ireland.</p>
       </div>
     </div>
   );
