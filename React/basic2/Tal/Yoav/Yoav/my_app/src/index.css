@@ -1,0 +1,22 @@
+
+body{
+  background-color: red;
+}
+.img{
+  width: 500px;
+  height: 500px;
+  float: right;
+  border-style: solid;
+  border-color: aqua;
+  border-width: 20px;
+}
+
+.box{
+  border-style: double;
+  border-width: 150px;
+  border-color: beige;
+}
+
+.game{
+  font-size: 50px;
+}
