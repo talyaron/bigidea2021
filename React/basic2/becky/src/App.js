@@ -2,7 +2,7 @@ import hotweel from './hotweels.jpeg'
 import kitchen from './kitchen.png'
 import lego from './lego.jpg'
 import thomas from './thomas.jpeg'
-import ribecca from './ribecca.jpeg'
+import rebecca from './ribecca.jpeg'
 import nerf from './nerf.jpg'
 
 import './App.css';
@@ -11,15 +11,17 @@ import './App.css';
 function App(){
   return(
     <div className="cont">
-      <img className = 'pic' src ={hotweel} id = 'pic1' />
-      <img className = 'pic' src ={kitchen} id = 'pic2' />
-      <img className = 'pic' src ={lego} id = 'pic3' />
-      <img className = 'pic' src ={thomas} id = 'pic4' />
-      <img className = 'pic' src ={ribecca} id = 'pic5' />
-      <img className = 'pic' src ={nerf} id = 'pic6' />
+      <div className = 'pic' id = 'pic1'  alt='' style={{ backgroundImage: `url(${hotweel})` }}></div>
+      <div className = 'pic'  id = 'pic2'  alt=''style={{ backgroundImage: `url(${kitchen})` }}></div>
+      <div className = 'pic'  id = 'pic3'  alt=''style={{ backgroundImage: `url(${lego})` }}></div>
+      <div className = 'pic'  id = 'pic4'  alt=''style={{ backgroundImage: `url(${thomas})` }}></div>
+      <div className = 'pic'  id = 'pic5'  alt=''style={{ backgroundImage: `url(${rebecca})` }}></div>
+      <div className = 'pic'  id = 'pic6' alt=''style={{ backgroundImage: `url(${nerf})` }}></div>
       
     </div>
   );
 }
+
+
 
 export default App;
