@@ -1,10 +1,8 @@
-.card{
+.movie{
     padding: 20px 40px;
-    background-color: aqua;
+    background-color: goldenrod;
     background-size: contain;
     border-radius: 10px;
     box-shadow: 0px 0px 20px black;
     margin: 5px;
-    
 }
-
