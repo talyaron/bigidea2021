@@ -28,73 +28,73 @@ header{
 }
 
 .box{
-  width: 200px;
-  height: 200px;
-  background-image: 'pokerpic.jpg'; 
+  grid-row: 3 / 4;
+  grid-column: 1 / 3;
+  background-image: url('./bottleBeyblade.jpeg'); 
   position: relative;
   background-size: 200px 200px;
 }
 
 .box2{
-  width: 200px;
-  height: 200px;
-  background-image: 'pokerpic.jpg'; 
+  grid-row: 3 / 4;
+  grid-column: 4 / 6;
+  background-image: url('./theMets.jpg'); 
   position: relative;
   background-size: 200px 200px;
 }
 
 .box3{
-  width: 200px;
-  height: 200px;
-  background-image: 'kachow.jpg'; 
+  grid-row: 3 / 4;
+  grid-column: 7 / 9;
+  background-image: url('./kachow.jpg'); 
   position: relative;
   background-size: 200px 200px;
 }
 
 .box4{
-  width: 200px;
-  height: 200px;
-  background-image: 'pokerpic.jpg'; 
+  grid-row: 5 / 6;
+  grid-column: 1 / 3;
+  background-image: url('./chess.jpeg'); 
   position: relative;
   background-size: 200px 200px;
 }
 
 .box5{
-  width: 200px;
-  height: 200px;
-  background-image: 'Ninjago.jpg'; 
+  grid-row: 5 / 6;
+  grid-column: 4 / 6;
+  background-image: url('./Ninjago.jpg'); 
   position: relative;
   background-size: 200px 200px;
 }
 
 .box6{
-  width: 200px;
-  height: 200px;
-  background-image: 'Nerf.jpg'; 
+  grid-row: 5 / 6;
+  grid-column: 7 / 9;
+  background-image: url('./Nerf.jpg'); 
   position: relative;
   background-size: 200px 200px;
 }
 
 .box7{
-  width: 200px;
-  height: 200px;
-  background-image: 'pokerpic.jpg'; 
+  grid-row: 7 / 8;
+  grid-column: 1 / 3;
+  background-image: url('./magic.jpg');
   position: relative;
   background-size: 200px 200px;
 }
 
 .box8{
-  width: 200px;
-  height: 200px;
-  background-image: 'Webkinz.jpg'; 
+  grid-row: 7 / 8;
+  grid-column: 4 / 6;
+  background-image: url('./Webkinz.jpg'); 
   position: relative;
   background-size: 200px 200px;
 }
 
 .box9{
-  width: 200px;
-  height: 200px;
-  background-image: 'pokerpic.jpg'; 
+  grid-row: 7 / 8;
+  grid-column: 7 / 9;
+  background-image: url('./roblox.jpeg'); 
   position: relative;
   background-size: 200px 200px;
 }
@@ -160,12 +160,12 @@ header{
 
 @keyframes elliot {
   to{
-    background-color: green;
+    background-color: url('./childhoodElliot.JPG');
   }
 }
 
 @keyframes yoav {
   to{
-    background-image: 'yoav.jpg';
+    background-image: url('./yoav.jpg');
   }
 }

@@ -11,6 +11,8 @@ function App() {
 
       <div className="toyImage a" style={{backgroundImage:'url(${imageA})'}}>[Figure 1]
       </div>
+      <div className="toyImage b" style={{backgroundImage:'url(${imageB})'}}>[Figure 2]
+      </div>
 
       
       <div className="para1">These are all the games me and Yoav played as a kid.</div>
