@@ -8,13 +8,13 @@ const game = 'World Of Warcraft III';
 function App() {
   return (
     <div className="box">
-      <div className="image10"  />
+      <div className="image6" />
       <div className="image22"/>
+      <div className="image7" />
       <div className="image3" />
       <div className="image4" />
+      <div className="image10"  />
       <div className="image5" />
-      <div className="image6" />
-      <div className="image7" />
       <div className="image8" />
       <div className="image9" />
 
