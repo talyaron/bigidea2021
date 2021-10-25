@@ -1,10 +1,10 @@
 import './Card.css'
-import Michael from "./Michael.jpg"
+import JEJ from "./James Earl Jones.webp"
 
 function Card() {
     return (
         <div className="card">
-            <img src={Michael} alt="bla" />
+            <img src={JEJ} alt="bla" />
         </div>
     )
 }
