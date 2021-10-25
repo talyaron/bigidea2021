@@ -13,9 +13,7 @@ function Card(){
          <img src={image2} alt='bla' />
          
          </div>
-<div>
-
-“I use xanax to focus, ambien to sleep, weed to calm me down, cocaine to cheer me up and morphine because it's great. But, of all these, my favorite drug, well, is money."</div>
+<div></div>
          
          </div>
     )
