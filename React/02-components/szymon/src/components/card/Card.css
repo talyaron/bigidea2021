@@ -1,0 +1,9 @@
+.card{
+    padding: 20px 40px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.329);
+    margin: 5px;
+    /*background-image: url(./Dragons.jpg);
+    background-size: 250px;*/
+}

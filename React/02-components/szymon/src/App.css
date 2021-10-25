@@ -14,12 +14,12 @@
 }
 
 .App-header {
-  background-color: rgb(243, 232, 232);
+  background-color: #e8ebf0;
   min-height: 100vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   font-size: calc(10px + 2vmin);
-  color: black;
+  color: rgb(0, 0, 0);
 }
 
 .App-link {
