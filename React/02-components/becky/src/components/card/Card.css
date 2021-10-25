@@ -8,4 +8,7 @@
     background-size: 100%;
     width: 200px;
     height: 375px;
+    border-left: 50px;
+    color: black;
+    font-style: bold;
 }
