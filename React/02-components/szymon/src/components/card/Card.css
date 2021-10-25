@@ -7,3 +7,7 @@
     /*background-image: url(./Dragons.jpg);
     background-size: 250px;*/
 }
+
+.card img{
+    width: 100%;
+}
