@@ -5,6 +5,7 @@ function Card() {
     return (
         <div className = 'favoriteImage'>
             <img src={benedict} alt = 'avg' />
+            Benedict Cumberbatch
         </div>
     )
 
