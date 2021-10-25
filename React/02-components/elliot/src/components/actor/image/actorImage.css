@@ -1,0 +1,9 @@
+.favoriteImage{
+    color: rgb(89, 98, 230);
+    background-color: rgb(92, 18, 18);
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(218, 165, 32, 0.5);
+    padding : 20px 40px;
+    margin: 10px;
+    background-size: 60px;
+}
