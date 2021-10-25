@@ -11,16 +11,10 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          
+        “I use xanax to focus, ambien to sleep, weed to calm me down, cocaine to cheer me up and morphine because it's great. But, of all these, my favorite drug, well, is money. 
         </p>
         <a
           className="App-link"
