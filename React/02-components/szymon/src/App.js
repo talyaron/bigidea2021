@@ -3,6 +3,8 @@ import './App.css';
 
 //components
 import Card from './components/card/Card'
+import Text from './components/text/Text'
+import Movie from './components/movie/Movie'
 
 function App() {
   return (
@@ -11,13 +13,8 @@ function App() {
       <header className="App-header">
       
         <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+        <Text/>
+        <Movie/>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

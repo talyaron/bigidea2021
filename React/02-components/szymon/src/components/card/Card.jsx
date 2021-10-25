@@ -1,10 +1,11 @@
 import './Card.css'
 import dragon from "./Dragons.jpg"
+import actor from "./Actor.jpg"
 
 function Card(){
     return (
-        <div className="card">Card
-            <img src={dragon} alt='bla'/>
+        <div className="card">Tom Holland
+            <img src={actor} alt='bla'/>
         </div>
     )
 }
