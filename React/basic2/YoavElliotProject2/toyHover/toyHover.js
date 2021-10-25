@@ -1,5 +1,5 @@
 //import logo from './logo.svg';
-import './toyHover.css';
+import '../toyHover/toyHover.css';
 
 const abc = 123;
 
