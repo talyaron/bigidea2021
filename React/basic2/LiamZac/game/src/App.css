@@ -108,25 +108,25 @@ img{
 }
 
 .picture3 {
-  grid-area: "two";
+  grid-area: "three";
   background-image: url('./lego.jpg');
   background-size: 100%;
 }
 
 .picture4 {
-  grid-area: "two";
+  grid-area: "four";
   background-image: url('./thomas.jpeg');
   background-size: 100%;
 }
 
 .picture5 {
-  grid-area: "two";
+  grid-area: "five";
   background-image: url('./ribecca.jpeg');
   background-size: 100%;
 }
 
 .picture6 {
-  grid-area: "two";
+  grid-area: "six";
   background-image: url('./nerf.jpg');
   background-size: 100%;
 }
