@@ -11,9 +11,6 @@
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(9, 1fr);
-
-
-
 }
 
 header{
@@ -30,32 +27,6 @@ header{
   font-size: 60px;
 }
 
-.blogImageOne{
-  grid-row: 3 / 5;
-  grid-column: 2 / 3;
-  
-  color:rgb(133, 79, 8);
-  background-color: cadetblue;
-
-}
-
-.blogImageTwo{
-  grid-row: 3 / 5;
-  grid-column: 4 / 5;
-  
-  color:rgb(133, 79, 8);
-  background-color: cadetblue;
-
-}
-
-.blogImageThree{
-  grid-row: 3 / 5;
-  grid-column: 6 / 7;
-  
-  color:rgb(133, 79, 8);
-  background-color: cadetblue;
-
-}
 .box{
   width: 200px;
   height: 200px;
