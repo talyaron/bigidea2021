@@ -1,9 +1,10 @@
 import './FrozoneCard.css';
 
-function FrozoneCard(){
+function FrozoneCard(props){
     return(
         <div>
-            <div className="cardFroz"><br></br><br></br><br></br>Samuel L. Jackson</div>
+            <div className="card"><br></br><br></br><br></br>Samuel L. Jackson</div>
+            <p>Gender: {props.gender}</p>
         </div>
     )
 }

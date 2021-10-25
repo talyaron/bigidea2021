@@ -11,12 +11,12 @@ function App() {
     <div className="App">
       <header className="App-header">
 
-        <Card />
-        <Movie />
-        <Quote />
+
+        <Card name= 'Robby' gender= 'male' image= 'https://www.jewishexponent.com/wp-content/uploads/2019/03/3-21-barrack-photo-1.jpg'>
         <p></p>
         
         <img src={logo} className="App-logo" alt="logo" />
+        
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
