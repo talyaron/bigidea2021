@@ -1,80 +1,3 @@
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-img{
-  width: 300px;
-  height: 300px;
-}
-.Title{
-  font-family: fantasy;
-}
-.TextBold{
-  color: dimgrey;
-  font-family: sans-serif;
-}
-.TextNormal{
-  color: dimgrey;
-  font-family:monospace;
-}
-.parent{
-  display:grid;
-  grid-template-rows: 300px 300px 300px;
-  grid-template-areas: "item1 item2 item3";
-  gap: 30px;
-}
-.item1{
-  grid-area: item1;
-}
-.item2{
-  grid-area: item2;
-}
-.item3{
-  grid-area: item3;
-}
-.title{
-  font-weight: bolder;
-}
-.TextBold{
-  font-weight: bold;
-}
-.TextNormal{
-  font-weight: 300;
-} */
 
 .gridParent {
   display: grid;
@@ -91,52 +14,53 @@ img{
   border: 3px solid black;
   background-repeat: no-repeat;
   grid-area: "one";
+  background-size: 100%;
 }
 
 .picture1 {
   grid-area: "one";
-  background-image: url('./hotweels.jpeg');
-  background-size: 100%;
+  background-image: url('');
+
 }
 
 .picture2 {
   grid-area: "two";
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
-  background-image: url('./kitchen.png');
-  background-size: 100%;
+  background-image: url('');
+
 }
 
 .picture3 {
   grid-area: "three";
-  background-image: url('./lego.jpg');
-  background-size: 100%;
+  background-image: url('');
+
 }
 
 .picture4 {
   grid-area: "four";
-  background-image: url('./thomas.jpeg');
-  background-size: 100%;
+  background-image: url('');
+
 }
 
 .picture5 {
   grid-area: "five";
-  background-image: url('./ribecca.jpeg');
-  background-size: 100%;
+  background-image: url('');
+
 }
 
 .picture6 {
   grid-area: "six";
-  background-image: url('./nerf.jpg');
-  background-size: 100%;
+  background-image: url('');
+  
 }
 
 .Liam:hover {
   background-image: url("liam\ IRL.jpg");
-  background-size: 100%;
+
 }
 
 .Zachary:hover {
   background-image: url('./me.jpeg');
-  background-size: 100%;
+
 }
