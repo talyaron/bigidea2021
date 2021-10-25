@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #003950;
+  background-color: blue;
   min-height: 100vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
