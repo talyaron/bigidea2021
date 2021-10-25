@@ -4,7 +4,6 @@
 
 .App-header {
   background-color: #f1f1f1;
-
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   max-width: 500px;
