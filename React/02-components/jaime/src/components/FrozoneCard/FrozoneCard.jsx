@@ -3,7 +3,7 @@ import './FrozoneCard.css';
 function FrozoneCard(){
     return(
         <div>
-            <div className="card"><br></br><br></br><br></br>Samuel L. Jackson</div>
+            <div className="cardFroz"><br></br><br></br><br></br>Samuel L. Jackson</div>
         </div>
     )
 }

@@ -10,15 +10,10 @@ function App() {
        <img src={logo} className="App-logo" alt="logo" />
       <header className="App-header">
        
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card name='tal' gender='male' />
+        <Card name='robbert' gender='male' />
+        <Card name='becky' gender='female' />
+       
 
         <p>
           Edit <code>src/App.js</code> and save to reload.
