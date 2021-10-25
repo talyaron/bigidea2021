@@ -11,19 +11,15 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Card />
-        <Card />
-        <Card />
-        <Card />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        
+        
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://www.altadefinizione01.global/1096-the-wolf-of-wall-street-2013-ita-gratis-hd-13.html"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          watch the movie
         </a>
       </header>
     </div>

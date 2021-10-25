@@ -1,0 +1,8 @@
+.favoriteMovie{
+    color: rgb(89, 98, 230);
+    background-color: rgb(92, 18, 18);
+    padding : 10px 20px;
+    margin: 20px;
+    background-size: 40px;
+    text-align: center;
+}
