@@ -13,7 +13,7 @@ function App() {
         <p>
           My Favorite Actor: James Earl Jones
         </p>
-        <img src= {EPV}  />
+        <img src= {EPV}  alt='sdfsdf'/>
       </header>
     </div>
   );
