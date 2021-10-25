@@ -2,7 +2,11 @@ import './Best.css'
 
 function Best(){
     return(
-    <div className = 'Best'>Criminal Minds</div>
+    <div className = 'Best'>
+        Criminal Minds:
+        <br></br>
+        Shemar Moore
+    </div>
     )
 }
 
