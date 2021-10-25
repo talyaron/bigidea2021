@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import EPV from "./Empire.jpg"
 
 //components
 import Card from './components/card/Card';
@@ -8,27 +8,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
         <Card />
         
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          My Favorite Actor: James Earl Jones
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src= {EPV}  />
       </header>
     </div>
   );
