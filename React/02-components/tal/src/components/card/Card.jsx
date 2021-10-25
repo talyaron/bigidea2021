@@ -12,7 +12,7 @@ function Card(props) {
     
     return (
         <div className='card'>
-            <img src={tal} alt='bla' />
+            <img src={props.image} alt='bla' />
             <p>{props.name}</p>
             <p>Gender: {props.gender}</p>
         </div>
