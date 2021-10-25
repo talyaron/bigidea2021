@@ -1,11 +1,11 @@
-import hotweel from './hotweels.jpeg'
-import kitchen from './kitchen.png'
-import lego from './lego.jpg'
-import thomas from './thomas.jpeg'
-import rebecca from './ribecca.jpeg'
-import nerf from './nerf.jpg'
-import max from './max.png'
-import becky from './me.jpeg'
+// import hotweel from './hotweels.jpeg'
+// import kitchen from './kitchen.png'
+// import lego from './lego.jpg'
+// import thomas from './thomas.jpeg'
+// import rebecca from './ribecca.jpeg'
+// import nerf from './nerf.jpg'
+// import max from './max.png'
+// import becky from './me.jpeg'
 import './App.css';
 
 
