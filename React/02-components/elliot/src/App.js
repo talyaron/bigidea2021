@@ -10,33 +10,12 @@ function App() {
   return (
     <div className="App">
       <img src={logo} className="App-logo" alt="logo" />
-      <header className="App-header">
-        
+      <header className="App-headerActor">
         <header className='App-actorDisplay'>
           <ActorImage />
           <ActorLine />
           <ActorMovie />
         </header>
-
-        <header className="App-header">
-          <Card />
-          <Card />
-          <Card />
-        </header>
-
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-        
       </header>
     </div>
   );
