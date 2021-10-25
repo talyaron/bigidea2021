@@ -33,6 +33,9 @@ header{
   background-image: url('./bottleBeyblade.jpeg'); 
   position: relative;
   background-size: 200px 200px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
 }
 
 .box2{
@@ -41,6 +44,9 @@ header{
   background-image: url('./theMets.jpg'); 
   position: relative;
   background-size: 200px 200px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
 }
 
 .box3{
@@ -49,6 +55,9 @@ header{
   background-image: url('./kachow.jpg'); 
   position: relative;
   background-size: 200px 200px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
 }
 
 .box4{
@@ -57,6 +66,9 @@ header{
   background-image: url('./chess.jpeg'); 
   position: relative;
   background-size: 200px 200px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
 }
 
 .box5{
@@ -65,6 +77,9 @@ header{
   background-image: url('./Ninjago.jpg'); 
   position: relative;
   background-size: 200px 200px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
 }
 
 .box6{
@@ -73,6 +88,9 @@ header{
   background-image: url('./Nerf.jpg'); 
   position: relative;
   background-size: 200px 200px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
 }
 
 .box7{
@@ -81,6 +99,9 @@ header{
   background-image: url('./magic.jpg');
   position: relative;
   background-size: 200px 200px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
 }
 
 .box8{
@@ -89,6 +110,9 @@ header{
   background-image: url('./Webkinz.jpg'); 
   position: relative;
   background-size: 200px 200px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
 }
 
 .box9{
@@ -97,6 +121,9 @@ header{
   background-image: url('./roblox.jpeg'); 
   position: relative;
   background-size: 200px 200px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
 }
 
 
