@@ -8,8 +8,10 @@ import Card from './components/card/Card';
 function App() {
   return (
     <div className="App">
+      
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+       
+        <Card />
         <Card />
         <Card />
         <Card />
@@ -31,6 +33,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <img src={logo} className="App-logo" alt="logo" />
     </div>
   );
 }
