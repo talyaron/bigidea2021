@@ -16,6 +16,7 @@ function Card(props) {
             <p>{props.name}</p>
             <p>Gender: {props.gender}</p>
         </div>
+
     )
 }
 
