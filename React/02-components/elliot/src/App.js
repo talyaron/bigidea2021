@@ -8,14 +8,19 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        
+        <header className='App-header'>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </header>
+        
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -27,6 +32,8 @@ function App() {
         >
           Learn React
         </a>
+
+        
       </header>
     </div>
   );
