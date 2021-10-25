@@ -1,5 +1,4 @@
 //import logo from './logo.svg';
-import imageA from './pokerpic.jpg';
 import './toyHover.css';
 
 const abc = 123;
@@ -9,12 +8,6 @@ function App() {
     <div className="main">
       <div className="blogTitle">Childhood games</div>
 
-      <div className="toyImage a" style={{backgroundImage:'url(${imageA})'}}>[Figure 1]
-      </div>
-      <div className="toyImage b" style={{backgroundImage:'url(${imageB})'}}>[Figure 2]
-      </div>
-
-      
       <div className="para1">These are all the games me and Yoav played as a kid.</div>
 
       <div className = "box"></div>
