@@ -4,9 +4,9 @@
 
 .App-header {
   background-color: #f1f1f1;
-  min-height: 100vh;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  max-width: 500px;
   font-size: calc(10px + 2vmin);
   color: rgb(63, 63, 63);
 }
