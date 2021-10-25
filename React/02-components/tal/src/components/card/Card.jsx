@@ -2,7 +2,7 @@ import './Card.css'
 import tal from '../../img/tal.png'
 
 //Becky https://farm66.static.flickr.com/65535/51266845914_37d6047f37.jpg
-//Robby
+//Robby 
 //Tal 
 // https://www.google.com/search?q=tal+yaron&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiuzYOrt-XzAhVL_rsIHV76AZIQ_AUoAXoECAEQAw&biw=1152&bih=753&dpr=1#imgrc=m_lRqzeT_YUBRM
 
@@ -12,7 +12,7 @@ function Card(props) {
     
     return (
         <div className='card'>
-            <img src={tal} alt='bla' />
+            <img src={props.image} alt='bla' />
             <p>{props.name}</p>
             <p>Gender: {props.gender}</p>
         </div>
