@@ -1,7 +1,7 @@
 import './Card.css'
 import tal from '../../img/tal.png'
 
-//Becky
+//Becky https://farm66.static.flickr.com/65535/51266845914_37d6047f37.jpg
 //Robby
 
 function Card(props) {
