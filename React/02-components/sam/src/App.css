@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #004ce4;
+  background-color: #163572;
   min-height: 100vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -23,7 +23,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #fb6161;
 }
 
 @keyframes App-logo-spin {
