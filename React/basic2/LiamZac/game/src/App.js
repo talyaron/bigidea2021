@@ -46,17 +46,17 @@ function App() {
         <div className="gridParent">
 
 
-            <div className="Picture Liam">Wagwan</div>
+            <div className="picture Liam picture1">Wagwan</div>
 
-            <div className="Picture Zachary" >I'm</div>
+            <div className="picture Zachary picture2" >I'm</div>
 
-            <div className="Picture Zachary"  >John</div>
+            <div className="picture Zachary picture3"  >John</div>
 
-            <div className="Picture Liam"  >Xina</div>
+            <div className="picture Liam picture4"  >Xina</div>
 
-            <div className="Picture Zachary"  >CCP</div>
+            <div className="picture Zachary picture5"  >CCP</div>
 
-            <div className="Picture Liam" >Member</div>
+            <div className="picture Liam picture6" >Member</div>
 
 
         </div>
