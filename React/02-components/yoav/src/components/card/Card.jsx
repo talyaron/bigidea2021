@@ -5,7 +5,7 @@ function Card(){
     return(
     <div className='card'>
         <img src={Kachow} alt='bla' />
-        Card
+        Lightning McQueen
         </div>
 
     )

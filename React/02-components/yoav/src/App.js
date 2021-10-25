@@ -4,21 +4,18 @@ import './App.css';
 
 //components
 import Card from './components/card/Card';
+import Quote from './components/quote/Quote';
+import Movie from './components/movie/Movie';
 
 function App() {
   return (
     <div className="App">
+      <img src={logo} className="App-logo" alt="logo" />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        
         <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Quote />
+        <Movie />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -31,6 +28,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <img src={logo} className="App-logo" alt="logo" />
     </div>
   );
 }
