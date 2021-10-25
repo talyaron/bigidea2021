@@ -1,0 +1,11 @@
+.Movie{
+    padding: 20px 40px;
+    background-image: url('https://m.media-amazon.com/images/I/91OxromzoSL._AC_SL1500_.jpg');
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.548);
+    margin: 5px;
+    width: 280px;
+    height: 400px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

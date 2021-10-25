@@ -16,10 +16,8 @@
 .App-header {
   background-color: rgb(243, 232, 232);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   font-size: calc(10px + 2vmin);
   color: black;
 }
