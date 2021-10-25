@@ -10,7 +10,7 @@
 //     return (
 //         <div>
 //             <h2 className='h2'>Liam's favorite video games</h2>
-            
+
 //             <div className="Parent">
 //                 <div className="item item1">
 //                     <div className="Image"><img src={greta} alt="greta"/></div>
@@ -39,18 +39,28 @@
 import './App.css';
 
 
-function App(){
-  return(
-    <div className="cont">
-      <div className = 'picture' id = 'picture1'  alt=''></div>
-      <div className = 'picture'  id = 'picture2'  alt=''></div>
-      <div className = 'picture'  id = 'picture3'  alt=''></div>
-      <div className = 'picture'  id = 'picture4'  alt=''></div>
-      <div className = 'picture'  id = 'picture5'  alt=''></div>
-      <div className = 'picture'  id = 'picture6' alt=''></div>
-      
-    </div>
-  );
+function App() {
+
+    return (
+
+        <div className="gridParent">
+
+
+            <div className="picture Liam picture1">Wagwan</div>
+
+            <div className="picture Zachary picture2" >I'm</div>
+
+            <div className="picture Zachary picture3"  >John</div>
+
+            <div className="picture Liam picture4"  >Xina</div>
+
+            <div className="picture Zachary picture5"  >CCP</div>
+
+            <div className="picture Liam picture6" >Member</div>
+
+
+        </div>
+    );
 }
 
 
