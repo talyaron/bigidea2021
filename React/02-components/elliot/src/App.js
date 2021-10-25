@@ -6,9 +6,8 @@ import Card from './components/card/Card';
 function App() {
   return (
     <div className="App">
+      <img src={logo} className="App-logo" alt="logo" />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        
         <header className='App-header'>
           <Card />
           <Card />
@@ -20,7 +19,6 @@ function App() {
           <Card />
           <Card />
         </header>
-        
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
