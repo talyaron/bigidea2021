@@ -14,6 +14,11 @@ function App() {
         <Card />
         <Card />
         <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
