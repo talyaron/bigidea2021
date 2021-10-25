@@ -10,13 +10,18 @@ function App() {
   return (
     <div className="App">
       <img src={logo} className="App-logo" alt="logo" />
-      <header className="App-headerActor">
-        <header className='App-actorDisplay'>
-          <ActorImage />
-          <ActorLine />
-          <ActorMovie />
-        </header>
+      <header className="App-header">
+        <Card name='Elliot' gender='Male'/>
+        <Card name='Elon' gender='Male'/>
+        <Card name='Jessica' gender='Female'/>
       </header>
+
+      <header className='App-actorDisplay'>
+        <ActorImage />
+        <ActorLine />
+        <ActorMovie />
+      </header>
+      
     </div>
   );
 }

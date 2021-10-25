@@ -1,7 +1,7 @@
 import './actorImage.css';
 import benedict from './benedictCumberbatch.jpeg'
 
-function Card() {
+function actorImage() {
     return (
         <div className = 'favoriteImage'>
             <img src={benedict} alt = 'avg' />
@@ -11,4 +11,4 @@ function Card() {
 
 }
 
-export default Card;
+export default actorImage;
