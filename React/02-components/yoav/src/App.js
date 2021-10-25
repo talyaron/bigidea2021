@@ -10,24 +10,9 @@ import Movie from './components/movie/Movie';
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
       <img src={logo} className="App-logo" alt="logo" />
       <header className="App-header">
         
-=======
-      
-      <header className="App-header">
-       
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
->>>>>>> 50d78a2362a6acf391e98c8f2e14f5f03f1c14d7
         <Card />
         <Quote />
         <Movie />
