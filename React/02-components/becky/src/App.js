@@ -3,6 +3,8 @@ import './App.css';
 
 //components
 import Card from './components/card/Card';
+import Quote from './components/quote/Quote';
+import Best from './components/best/Best';
 
 function App() {
   return (
@@ -10,14 +12,8 @@ function App() {
       <img src={logo} className="App-logo" alt="logo" />
       <header className="App-header">
         <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+        <Best/>
+        <Quote/>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
