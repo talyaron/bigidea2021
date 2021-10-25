@@ -1,8 +1,10 @@
 import './Card.css'
 
-function Card(){
-return (
-    <div className= 'card'> <span className = 'text'>My Boy Chris Evans</span></div>
+function Card() {
+    return (
+        <div className='card'>
+            <div className='text'>My Boy Chris Evans</div>
+        </div>
     )
 }
 

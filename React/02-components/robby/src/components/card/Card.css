@@ -8,9 +8,11 @@
     height: 400px;
     background-size: contain;
     background-repeat: no-repeat;
+    position: relative;
 }
 .text{
     position: absolute;
+    bottom: 20px;
     font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
