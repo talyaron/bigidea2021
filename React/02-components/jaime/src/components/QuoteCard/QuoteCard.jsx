@@ -4,7 +4,8 @@ function QuoteCard(props){
     console.log(props);
     return(
         <div>
-            <div className="card"><br></br><br></br>"Honey, where's my super suit!?"<br></br><p>Name: {props.name}</p>
+            <div className="cardQuote"><br></br><br></br>"Honey, where's my super suit!?"<br></br>
+            <p>Name: {props.name}</p>
             <p>Gender: {props.gender}</p></div>
         </div>
     )
