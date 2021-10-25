@@ -91,52 +91,53 @@ img{
   border: 3px solid black;
   background-repeat: no-repeat;
   grid-area: "one";
+  background-size: 100%;
 }
 
 .picture1 {
   grid-area: "one";
-  background-image: url('./hotweels.jpeg');
-  background-size: 100%;
+  background-image: url('');
+
 }
 
 .picture2 {
   grid-area: "two";
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
-  background-image: url('./kitchen.png');
-  background-size: 100%;
+  background-image: url('');
+
 }
 
 .picture3 {
   grid-area: "three";
-  background-image: url('./lego.jpg');
-  background-size: 100%;
+  background-image: url('');
+
 }
 
 .picture4 {
   grid-area: "four";
-  background-image: url('./thomas.jpeg');
-  background-size: 100%;
+  background-image: url('');
+
 }
 
 .picture5 {
   grid-area: "five";
-  background-image: url('./ribecca.jpeg');
-  background-size: 100%;
+  background-image: url('');
+
 }
 
 .picture6 {
   grid-area: "six";
-  background-image: url('./nerf.jpg');
-  background-size: 100%;
+  background-image: url('');
+  
 }
 
 .Liam:hover {
   background-image: url("liam\ IRL.jpg");
-  background-size: 100%;
+
 }
 
 .Zachary:hover {
   background-image: url('./me.jpeg');
-  background-size: 100%;
+
 }
