@@ -15,7 +15,7 @@ function App() {
         </p>
         <br></br>
         <p>
-          ELLA: I met Ella in December 2018, on a Discord server about a book series we both liked at the time. We quickly became friends and have talked to each other and playedg games together often since then. Last Summer, we made plans to meet up with our families - my Dad lives in Florida, and so does Ella, so my Dad would take me to see her - , but due to scheduling differences we could not.
+          ELLA: I met Ella in December 2018, on a Discord server about a book series we both liked at the time. We quickly became friends and have talked to each other and played games together often since then. Last Summer, we made plans to meet up with our families - my Dad lives in Florida, and so does Ella, so my Dad would take me to see her - , but due to scheduling differences we could not.
         </p>
         <br></br>
         <p>
