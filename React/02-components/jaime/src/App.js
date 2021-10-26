@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 //components
@@ -10,9 +10,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <FrozoneCard />
-        <QuoteCard />
-        <MovieCard />
+        <FrozoneCard name='Samuel L. Jackson' gender='Male'/>
+        <QuoteCard name='Frozone'gender='Female'/>
+        <MovieCard name='Nick Fury' gender='Male'/>
       </header>
     </div>
   );
