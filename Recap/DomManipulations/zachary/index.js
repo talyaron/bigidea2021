@@ -23,3 +23,9 @@ textbox.addEventListener('keyup',()=>{
     const input=document.getElementById('text').value;
     output.innerHTML=input
 });
+const box=document.getElementById('box');
+let left=0
+box.addEventListener('mouseover',()=>{
+    left+=100;
+    box.style.left=`${left}px`
+});
