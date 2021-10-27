@@ -39,23 +39,3 @@ if(randWord >=0.5) {
 
 generateBoxNums(evenOrOdd(randNum1), evenOrOdd(randNum2));
 console.log(randNum1, randNum2);
-
-/*
-For odd number box:
-
--First generate rand num
--Round num
--Then check if even or odd
--If even, add one to num
--If odd, just continue
-*/
-
-/*
-For even number box:
-
--First generate rand num
--Round num
--Then check if even or odd
--If odd, add one to num
--If even, just continue
-*/
