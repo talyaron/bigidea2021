@@ -1,13 +1,13 @@
-document.addEventListener('mouseenter', () => {document.body.style.background = 'red'});
+//document.addEventListener('mouseenter', () => {document.body.style.background = 'red'});
 
-document.addEventListener('mouseleave', () => {document.body.style.background = 'white'});
+//document.addEventListener('mouseleave', () => {document.body.style.background = 'white'});
 
 //timer
-const root = document.getElementById('root');
-console.log(root)
-setInterval(() => {
-    root.innerHTML++
-}, 1000);
+//const root = document.getElementById('root');
+//console.log(root)
+//setInterval(() => {
+//    root.innerHTML++
+//}, 1000);
 
 function handleSubmit(ev){
     ev.preventDefault();
