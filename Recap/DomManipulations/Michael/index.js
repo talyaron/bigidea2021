@@ -8,6 +8,13 @@
 //setInterval(() => {
 //    root.innerHTML++
 //}, 1000);
+const box = document.getElementById('box');
+let left = 0;
+//add event listener
+box.addEventListener('mouseenter', ()=>{
+    left += 100;
+    box.style.left = `${left}px`;
+})
 
 function handleSubmit(ev){
     ev.preventDefault();
