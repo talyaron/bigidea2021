@@ -9,13 +9,13 @@
 #even{
     width: 100px;
     height: 100px;
-    background-color: blue;
+    background-color: goldenrod;
 }
 
 #odd{
     width: 100px;
     height: 100px;
-    background-color: red;
+    background-color: goldenrod;
 }
 
 .h{
