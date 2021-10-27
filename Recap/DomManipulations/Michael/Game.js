@@ -1,5 +1,7 @@
 const OddEven = document.getElementById("OddEven");
 const Clicker = document.getElementById("Clicker");
+const box1 = document.getElementById("box1");
+const box2 = document.getElementById ("box2");
 
 console.dir(OddEven);
 console.dir(Clicker);
@@ -30,3 +32,17 @@ function getOddorEven(){
 //}
 
 //console.log(Odd, Even);
+
+function getEvenNumbers(max){
+    const number = Math.ceil(Math.random()*max/2)*2;
+    return number
+}
+
+function getOddNumbers(max){
+    const number = Math.ceil(Math.random()*max/2)*2;
+    return number - 1
+}
+
+//Checking
+//console.log(getEvenNumbers(20));
+//console.log(getOddNumbers(20));
