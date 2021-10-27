@@ -24,11 +24,13 @@
   background-image: url("./Lego Thanos.jpg");
 }
 .image3{
-  height: 100%;
-  width: 100%;
-  background-size:cover;
-  background-repeat: no-repeat;
-  background-image: url("./Lego\ Vader.png");
+    background-image: url("./Lego Vader.png");
+    height: 100%;
+    width: 100%;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-image: url("./Lego\ Vader.png");
+
 }
 
 .image4{
