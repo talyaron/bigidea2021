@@ -3,7 +3,8 @@ document.addEventListener('mouseenter', () => {document.body.style.background = 
 document.addEventListener('mouseleave', () => {document.body.style.background = 'white'});
 
 //timer
-let i = 1
+const root = document.getElementById('root');
+console.log(root)
 setInterval(() => {
-    console.log(i), i++
+    root.innerHTML++
 }, 1000);
