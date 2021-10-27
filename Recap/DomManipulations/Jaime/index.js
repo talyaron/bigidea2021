@@ -14,6 +14,7 @@ function handleStartClick() {
 function handleGetTime() {
     var finalTime = document.getElementById("timer").innerHTML;
     console.log(`${finalTime}s`);
+    document.getElementById("finalTime").innerHTML = `Final Time: ${finalTime}s`;
 
     //stop timer somehow
 }
