@@ -1,3 +1,7 @@
+body{
+    background-color: rgb(161, 161, 161);
+}
+
 #box1{
     width: 200px;
     height: 200px;
@@ -5,6 +9,10 @@
     position: relative;
     left: 0px;
     transition: 1s all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
 }
 
 #box2{
@@ -14,4 +22,22 @@
     position: relative;
     left: 0px;
     transition: 1s all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+}
+
+#timer{
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.288);
+}
+
+#reset {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.288);
 }

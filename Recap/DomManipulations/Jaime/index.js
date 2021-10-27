@@ -1,6 +1,5 @@
 //timer and click functions
 var timeinterval;
-let rightwrong = document.getElementsById("rightwrong");
 
 function handleStartClick() {
     var startTime = Date.now();
@@ -80,6 +79,10 @@ function resetValues() {
     document.getElementById("finalTime").innerText = "";
     rightwrong.innerText = "";
 
+    document.getElementById("box1").style.left = `${Math.random()*1200}px`;
+    document.getElementById("box1").style.top = `${Math.random()*100}px`;
+    document.getElementById("box2").style.left = `${Math.random()*1200}px`;
+    document.getElementById("box2").style.top = `${Math.random()*100}px`;
     //generating numbers and word
     randWord = Math.random(); //word at top
     randNum1 = Math.ceil(Math.random()*10); //box1
