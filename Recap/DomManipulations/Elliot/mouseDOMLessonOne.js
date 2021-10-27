@@ -21,4 +21,9 @@ inputBox.addEventListener('change', ()=>{
 
 //For
 
-
+const box = document.getElementById('box');
+box.addEventListener('mouseover', ()=>{
+    let leftUpdateValue = box.style.left;
+    leftUpdateValue += 100;
+    box.style.left += `${leftUpdateValue}px`;
+})
