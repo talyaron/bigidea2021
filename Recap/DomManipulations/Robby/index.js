@@ -4,10 +4,10 @@
 function handleStartClick() {
     var startTime = Date.now;
 
-    var interval = setInterval(function() {
-        var elapsedTime = Date.now() - startTime;
-        document.getElementById("timer").innerHTML = (elapsedTime /100).toFixed(3);
-    }, 100);
+    setInterval(function timer(ev){
+        count += 1;
+        document.getElementById('timer').innerText = count;
+    }, 0.001)
 }
 
 document
