@@ -1,3 +1,15 @@
+
+
+//timer
+function handleStartClick() {
+    var startTime = Date.now;
+
+    var interval = setInterval(function() {
+        var elapsedTime = Date.now() - startTime;
+        document.getElementById("timer").innerHTML = (elapsedTime /100).toFixed(3);
+    }, 100);
+}
+
 document
     .addEventListener('mouseenter', () => {document.body.style.background= 'red'})
 document  
@@ -6,40 +18,18 @@ document
 const root= document.getElementById('root')
 console.log(root)
 
-//timer
-setInterval(() => {
 
-
-
-}, 1000);
-
-function handleSubmit(ev){
-    ev.preventDefault();
-    console.log(ev);
-
-    const text= ev.target.elements.Text.value;
-    let h1 = document.getElementsByTagName('h1')[0];
-    if(h1.innerHTML === "Text"){
-        h1.innerHTML = text + '<br>' ;
-    }
-    else{
-        h1.innerHTML += text + '<br>';
-    }
-    
-    
-    
-}
 
 const box1 = document.getElementById('box1');
 const box2 = document.getElementById('box2');
-const c12= document.getElementById('c12')
+const evenOrOdd= document.getElementById('evenOrOdd')
 
 let ranNum= Math.ceil(Math.random()*10);
 if (ranNum%2==0){
-    c12.innerText= "even";
+    evenOrOdd.innerText= "even";
 }
 else{
-    c12.innerText= "odd";
+    evenOrOdd.innerText= "odd";
 }
 //add event listner
 
@@ -57,14 +47,22 @@ if (ranNum2%2!=0){
 else{
     box2.innerText= ranNum2;
 }
+
+
+
+let pos= 0;
 box1.addEventListener('mouseover', ()=> {
-    pos+= 100; 
-    box1.style.position = `${pos}px`;
+    if(evenOrOdd.innerText== 'odd'){
+        pos= Math.random()*1000; 
+        box1.style.left = `${pos}px`;
+    }
 })
+
 
 let posss= 0;
 box2.addEventListener('mouseover', ()=> {
-    posss+= 100; 
-    box2.style.left= `${posss}px`;
+    if(evenOrOdd.innerText== 'even'){
+    posss= Math.random()*1000; 
+    box2.style.left= `${posss}px`
+    };
 })
-
