@@ -9,8 +9,15 @@
 
 </head>
 <body>
-    <h1 id="timer" onload="timer(event)">0</h1>
-    <div id="box"></div>
+    <button id="timer" onclick="handleStartClick()">Click to start</button> s
+    <h1 id="word">Even/Odd</h1>
+    <p id="finalTime"></p>
+    <div onclick="handleGetTime()">
+        <p id="box1"></p>
+    </div>
+    <div>
+        <p id="box2"></p>
+    </div>
     <script src="./index.js"></script>
 </body>
 </html>

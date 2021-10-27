@@ -1,0 +1,27 @@
+.number{
+    width:100px;
+    height: 100px;
+    background-color: wheat;
+    position:absolute;
+    color: red;
+    text-align: center;
+}
+.odd{
+    left:400px;
+    top:300px;
+}
+.even{
+    left:550px;
+    top:300px;
+}
+
+#evenOrOdd{
+    position:absolute;
+    left: 300px;
+    width: 400px;
+    height: 60px;
+    top:0px;
+    text-align: center;
+    font-size: x-large;
+    background-color: burlywood;
+}
