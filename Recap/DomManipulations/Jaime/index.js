@@ -1,18 +1,17 @@
-let count=0;
-const timer = document.getElementById('timer');
-console.log(timer);
-
 //timer
-setInterval(function timer(ev){
-    count += 1;
-    document.getElementById('timer').innerText = count;
-}, 0.001)
+function handleStartClick() {
+    var startTime = Date.now();
 
+    var interval = setInterval(function() {
+    var elapsedTime = Date.now() - startTime;
+    document.getElementById("timer").innerHTML = (elapsedTime / 1000).toFixed(3);
+    }, 100);
+}
 
 //generating number
-let randWord = Math.random();
-let randNum1 = Math.round(Math.random()*10);
-let randNum2 = Math.round(Math.random()*10);
+let randWord = Math.random(); //word at top
+let randNum1 = Math.round(Math.random()*10); //box1
+let randNum2 = Math.round(Math.random()*10); //box2
 
 //function for number determination
 function evenOrOdd(num) {
@@ -27,6 +26,7 @@ function generateBoxNums(value1, value2) {
     if(value1 === value2) {
         randNum1 -= 1;   
     }
+
 
     return randNum1, randNum2;
 }
