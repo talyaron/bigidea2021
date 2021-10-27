@@ -6,6 +6,16 @@ function handleStartClick() {
     var elapsedTime = Date.now() - startTime;
     document.getElementById("timer").innerHTML = (elapsedTime / 1000).toFixed(3);
     }, 100);
+
+    document.getElementById("box1").innerHTML = randNum1;
+    document.getElementById("box2").innerHTML = randNum2;
+}
+
+function handleGetTime() {
+    var finalTime = document.getElementById("timer").innerHTML;
+    console.log(`${finalTime}s`);
+
+    //stop timer somehow
 }
 
 //generating number
