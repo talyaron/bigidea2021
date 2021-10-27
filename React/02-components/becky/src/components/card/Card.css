@@ -1,11 +1,13 @@
 .Card{
-    background-color: rgb(63, 12, 182);
-    padding: 20px 40px;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.486);
     margin: 10px;
-    background-image: url(https://farm66.static.flickr.com/65535/51266845914_37d6047f37.jpg);
-    background-size: 100%;
-    width: 200px;
-    height: 375px;
+    background-size: 75%;
+    width: 100%;
+    border-left: 50px;
+    color: black;
+    font-style: bold;
+    max-width: 200vw;
+    
 }
+

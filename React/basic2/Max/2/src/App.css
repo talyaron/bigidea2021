@@ -1,0 +1,14 @@
+.cont{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 700px;
+}
+
+.card{
+  margin: 10px;
+  background-color: blanchedalmond;
+  border-radius: 9px;
+  
+}
+
+

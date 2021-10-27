@@ -18,6 +18,27 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-headerActor {
+  background-color: #004120;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-actorDisplay {
+  background-color: #004120;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 6fr 3fr 2fr 1fr;
 
   font-size: calc(10px + 2vmin);
   color: white;

@@ -6,12 +6,14 @@ function Card(){
     <div className= 'container'>
     <div className='card'> 
          <img src={image} alt='bla' />
+         
          </div>
          
          <div className='card'>
          <img src={image2} alt='bla' />
+         
          </div>
-
+<div></div>
          
          </div>
     )
