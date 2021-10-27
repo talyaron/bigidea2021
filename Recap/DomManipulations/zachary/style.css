@@ -1,0 +1,8 @@
+#box{
+    width:500px;
+    height: 200px;
+background-color: purple;
+position: relative;
+left: 0px;
+transition:1s all;
+}
