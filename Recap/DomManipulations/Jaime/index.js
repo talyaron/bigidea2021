@@ -1,5 +1,7 @@
 //timer and click functions
 var timeinterval;
+let rightwrong = document.getElementsById("rightwrong");
+
 function handleStartClick() {
     var startTime = Date.now();
 
@@ -33,9 +35,9 @@ function handleGetTime(ev) {
 
     checkIfRight(numToCheck);
     if(answer === "Correct") {
-        console.log("Correct!");
+        document.getElementById("rightwrong").innerText = "Correct!";
     } else if(answer === "Wrong") {
-        console.log("Wrong :(");
+        document.getElementById("rightwrong").innerText = "Wrong :(";
         return;
     }
 
@@ -43,6 +45,8 @@ function handleGetTime(ev) {
     var finalTime = document.getElementById("timer").innerHTML;
     console.log(`${finalTime}s`);
     document.getElementById("finalTime").innerHTML = `Final Time: ${finalTime}s`;
+
+    document.getElementById("timer").innerText = "Click to start", document.getElementById("box1").innerText = "", document.getElementById("box2").innerText = "";
 }
 
 //function for number determination
@@ -68,10 +72,34 @@ function generateBoxNums(value1, value2) {
     return randNum1, randNum2;
 }
 
+//resets all values with reset button
+function resetValues() {
+
+    //resets all scores and text from last round
+    document.getElementById("word").innerText = "Even/Odd";
+    document.getElementById("finalTime").innerText = "";
+    rightwrong.innerText = "";
+
+    //generating numbers and word
+    randWord = Math.random(); //word at top
+    randNum1 = Math.ceil(Math.random()*10); //box1
+    randNum2 = Math.ceil(Math.random()*10); //box2
+    if(randWord >=0.5) {
+        randWord = "Even";
+        console.log("even");
+    } else {
+        randWord = "Odd";
+        console.log("odd");
+    }
+    generateBoxNums(evenOrOdd(randNum1), evenOrOdd(randNum2));
+    console.log(randNum1, randNum2);
+}
+
+let randWord, randNum1, randNum2;
 //generating numbers
-let randWord = Math.random(); //word at top
-let randNum1 = Math.ceil(Math.random()*10); //box1
-let randNum2 = Math.ceil(Math.random()*10); //box2
+randWord = Math.random(); //word at top
+randNum1 = Math.ceil(Math.random()*10); //box1
+randNum2 = Math.ceil(Math.random()*10); //box2
 if(randWord >=0.5) {
     randWord = "Even";
     console.log("even");
