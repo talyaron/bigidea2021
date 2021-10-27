@@ -18,25 +18,25 @@ inputBox.addEventListener('change',()=>{
 
 
 
-// document.addEventListener('mouseenter', () => changeColor('green'));
+document.addEventListener('mouseenter', () => changeColor('green'));
 
-// document.addEventListener('mouseleave', () => changeColor('purple'));
-// document.addEventListener('dblclick', () => changeColor('red'))
+document.addEventListener('mouseleave', () => changeColor('purple'));
+document.addEventListener('dblclick', () => changeColor('red'))
 
-// const root = document.getElementById('root');
-// let counter = 1;
-// console.log(root)
-// //timer
-// setInterval(countHTML, 1000);
+const root = document.getElementById('root');
+let counter = 1;
+console.log(root)
+//timer
+setInterval(countHTML, 1000);
 
-// function changeColor(color) {
-//     console.log('changeColor')
-//     document.body.style.background = color
-// }
+function changeColor(color) {
+    console.log('changeColor')
+    document.body.style.background = color
+}
 
-// function countHTML() {
+function countHTML() {
 
-//     root.innerHTML = counter;
-//     counter++;
+    root.innerHTML = counter;
+    counter++;
 
-// }
+}
