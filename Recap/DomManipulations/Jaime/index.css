@@ -10,7 +10,7 @@
 #box2{
     width: 200px;
     height: 200px;
-    background-color: rgba(255, 0, 0, 0.3);
+    background-color: rgba(255, 0, 0, 0.5);
     position: relative;
     left: 0px;
     transition: 1s all;

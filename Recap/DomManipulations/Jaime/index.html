@@ -12,12 +12,13 @@
     <button id="timer" onclick="handleStartClick()">Click to start</button> s
     <h1 id="word">Even/Odd</h1>
     <p id="finalTime"></p>
-    <div onclick="handleGetTime()">
+    <div onclick="handleGetTime(event)">
         <p id="box1"></p>
     </div>
-    <div>
+    <div onclick="handleGetTime(event)">
         <p id="box2"></p>
     </div>
+    <h1 id="rightwrong"></h1>
     <script src="./index.js"></script>
 </body>
 </html>
