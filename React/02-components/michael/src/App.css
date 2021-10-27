@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #f1f1f1;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  max-width: 700px;
+  font-size: calc(10px + 2vmin);
+  color: rgb(63, 63, 63);
+}
+
+.img{
+  width: 400px;
+}

@@ -1,0 +1,13 @@
+.Card{
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.486);
+    margin: 10px;
+    background-size: 75%;
+    width: 100%;
+    border-left: 50px;
+    color: black;
+    font-style: bold;
+    max-width: 200vw;
+    
+}
+
