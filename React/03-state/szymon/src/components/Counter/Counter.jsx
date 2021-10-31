@@ -13,7 +13,9 @@ function handleclick(){
         <div 
         className="counter"
         onClick={handleclick}
-        >Counter: {counter}</div>
+        >Counter: {counter}
+        <input type="text" />
+        </div>
     )
 }
 
