@@ -15,7 +15,7 @@ function Hangman(){
                 console.log('!!!!!!!!!!! CORRECT LET')
                 setColor('green')
             }
-            else{
+            else {
                 console.log("no :(")
             }
         }
@@ -34,5 +34,17 @@ function Hangman(){
         
     
 
+    }
+
+    return (
+        <div className='cont'>
+            <input type="text" name="textinput" onKeyUp={handleSubmit} />
+            <div className='box' style={{ background: color }} ></div>
+        </div>
+
+
+
+    )
+}
 
 export default Hangman;

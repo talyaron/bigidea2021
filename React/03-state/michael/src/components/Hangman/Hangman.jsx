@@ -46,4 +46,3 @@ function Hangman() {
 
 
 export default Hangman;
-
