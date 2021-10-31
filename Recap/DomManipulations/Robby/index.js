@@ -2,12 +2,12 @@
 
 //timer
 function handleStartClick() {
-    var startTime = Date.now;
+    var startTime = Date.now();
 
-    setInterval(function timer(ev){
-        count += 1;
-        document.getElementById('timer').innerText = count;
-    }, 0.001)
+    var interval = setInterval(function() {
+    var elapsedTime = Date.now() - startTime;
+    document.getElementById("timer").innerHTML = (elapsedTime / 1000).toFixed(3);
+    }, 100);
 }
 
 document
@@ -15,8 +15,7 @@ document
 document  
     .addEventListener('mouseleave', () => {document.body.style.background= 'white'})
 
-const root= document.getElementById('root')
-console.log(root)
+
 
 
 
@@ -50,19 +49,15 @@ else{
 
 
 
-let pos= 0;
 box1.addEventListener('mouseover', ()=> {
     if(evenOrOdd.innerText== 'odd'){
-        pos= Math.random()*1000; 
-        box1.style.left = `${pos}px`;
+        box1.style.left = `${Math.random()*1000}px`;
     }
 })
 
 
-let posss= 0;
 box2.addEventListener('mouseover', ()=> {
     if(evenOrOdd.innerText== 'even'){
-    posss= Math.random()*1000; 
-    box2.style.left= `${posss}px`
+    box2.style.left= `${Math.random()*1000}px`;
     };
 })
