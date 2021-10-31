@@ -1,39 +1,38 @@
-import './hangman.css'
+import './Hangman.css'
 import {useState} from 'react';
 
 
+function Hangman(){
 
-
-function WordGuess(){
-    const[guess, setword] = useState()
+    const [color, setColor] = useState('red')
     let word = 'red'
-    let pieces = word.split("");
-    console.log(pieces)
+         
     
-   
     function handleSubmit(ev){
-        let [color, setColor] = useState('red')
-       let guess = ev.target.value
-       for(let i=0; i<= pieces.length; i++)
-            if (guess == pieces[i]){
+        guess = ev.target.value
+        for(let i=0; i<= word.length; i++)
+            if (guess == word.substring(i, i+1)){
                 console.log('!!!!!!!!!!! CORRECT LET')
-                let [color, setColor] = useState('green')
+                setColor('green')
             }
             else{
                 console.log("no :(")
             }
+        }
+        return(
+            <div className = 'cont'>
+            <input type="text" name="textinput" onKeyUp={handleSubmit}/>
+            <div className= 'box' style= {{background: color}} ></div>
+            </div>
+        
+        )
+        }
 
-    }
+        
 
-    return(
-        <div className = 'cont'>
-        <input type="text" name="textinput" onKeyUp={handleSubmit}/>
-        <div className= 'box' style= {{background: color}} ></div>
-        </div>
+        
+        
+    
 
 
-
-    )
-}
-
-export default WordGuess;
+export default Hangman;
