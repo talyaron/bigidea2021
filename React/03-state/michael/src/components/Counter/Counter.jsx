@@ -1,11 +1,23 @@
-import {useState} from 'react';
+import { useState } from 'react';
+import './Counter.css'
 
-function Counter(){
-//[state, setterofState] = useState (initial value)
-    const [counter, setCounter] = useState(1)
+//we will use useState hook
 
-    return(
-        <div>Counter: {counter}</div>
+function Counter() {
+    //[state, setterOfState] = useState (initial value)
+    const [counter, setCounter] = useState(1);
+
+    function handleClick() {
+        setCounter(counter + 1)
+    }
+
+
+    return (
+        <div
+            className='counter'
+            onClick={handleClick}>
+            Counter: {counter}
+        </div>
     )
 }
 

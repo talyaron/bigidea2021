@@ -1,14 +1,16 @@
+import logo from './logo.svg';
 import './App.css';
 
-//components
 import Counter from './components/Counter/Counter'
-
-//npx create-react-app <nameOfApp>
 
 function App() {
   return (
     <div className="App">
-        <Counter />
+      <header className="App-header">
+        <p>
+            <Counter />
+        </p>
+      </header>
     </div>
   );
 }

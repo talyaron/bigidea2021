@@ -1,14 +1,17 @@
+import logo from './logo.svg';
 import './App.css';
 
-//components
 import Counter from './components/Counter/Counter'
-
-//npx create-react-app <nameOfApp>
+import TextInput from './components/TextInput/TextInput'
 
 function App() {
   return (
     <div className="App">
+
         <Counter />
+        <TextInput />
+
+
     </div>
   );
 }
