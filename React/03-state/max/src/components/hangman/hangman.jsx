@@ -9,10 +9,8 @@ function WordGuess(){
     let word = 'red'
     let pieces = word.split("");
     console.log(pieces)
-    const [color, setColor]= useState('pink')
-   return(
-       <div className= 'box' style= {{background: color}}></div>
-       )
+    
+   
     function handleSubmit(ev){
   
        let guess = ev.target.value
