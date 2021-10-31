@@ -2,16 +2,19 @@ import {useState} from 'react';
 import './TextInput.css'
 
 function TextInput(){
-    const[text, setText]= useState('');
-    function handleonkeyup(){
-        setText(text)
+    const[text, setText]= useState('here');
+    function handleonkeyup(ev){
+        setText(ev.target.value)
     }
     
     return(
-        <div className= 'TextInput' onKeyUp={handleonkeyup}>Write Here --> {text} 
-        <input type= 'text'></input>
+        <div> 
+            
+        <input type= 'text' name = "TextInput" onKeyUp={handleonkeyup}></input>
 
+        <div id= "textHere">{text}</div>
         </div>
     )
 }
-export default TextInput;   
+export default TextInput;  
+
