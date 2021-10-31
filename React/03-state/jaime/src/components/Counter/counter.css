@@ -1,0 +1,9 @@
+.container{
+    margin: 10px;
+    border-radius: 5px;
+    background-color: lightcyan;
+    color: black;
+    user-select: none;
+    padding: 20px;
+    width: fit-content;
+}
