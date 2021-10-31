@@ -8,7 +8,7 @@ function HangmanGame(props){
         //style={{background: guessIndicatingColor}}
 
         let fullWordToGuess = props.letterToGuess;
-        let letterToCompare;
+        let letterToCompare = '';
 
         const [userGuessText, setText] = useState(''); //Text in this case being a single word
         let newLetterInput = '';
@@ -37,8 +37,8 @@ function HangmanGame(props){
 
         function compareGuess(){
             letterToCompare = userGuessText.substring(userGuessText.length);
-            newLetterInput = fullWordToGuess.indexOf(letterToCompare);
-            if (newLetterInput == -1){
+            newLetterInput = fullWordToGuess.match(letterToCompare);
+            if (newLetterInput == false){
                 isLetterPresent = false;
                 setColor('red');
             } else {
