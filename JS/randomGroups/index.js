@@ -24,6 +24,6 @@ function randomGroups(groupSize, array) {
     
 }
 
-const group = ["jaime", "robby", "elliot", "eitan", "zach", "szymon", "sam", "yoav", "becky", "max", "michael", "liam"];
+const group = ["jaime", "robby", "elliot", "eytan", "zach", "szymon", "yoav", "becky", "max", "michael", "liam"];
 
 console.log( randomGroups(2, group));
