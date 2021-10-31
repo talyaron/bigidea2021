@@ -13,10 +13,14 @@ function Counter() {
 
 
     return (
+        
         <div
             className='counter'
             onClick={handleClick}>
             Counter: {counter}
+<br/>
+            <input type='text' />
+            <p>Text</p>
         </div>
     )
 }
