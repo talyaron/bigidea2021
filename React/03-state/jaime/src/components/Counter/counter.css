@@ -1,7 +1,8 @@
 .container{
     margin: 10px;
+    border: 1.5px dashed black;
     border-radius: 5px;
-    background-color: lightcyan;
+    background-color: rgb(87, 150, 250);
     color: black;
     user-select: none;
     padding: 20px;
