@@ -1,9 +1,7 @@
-.container{
+.counter{
     margin: 10px;
-    border: 1.5px dashed black;
     border-radius: 5px;
-    background-color: rgb(87, 150, 250);
-    color: black;
+    background-color: antiquewhite;
     user-select: none;
     padding: 20px;
     width: fit-content;
