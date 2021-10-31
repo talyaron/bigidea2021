@@ -12,8 +12,8 @@ function WordGuess(){
    
     function handleSubmit(ev){
        let guess = ev.target.value
-       for(let i=0; i<= pieces.length; i++)
-            if (guess == pieces.substring(i)){
+       for(let i=0; i<= pieces.length(); i++)
+            if (guess === pieces.substring(i)){
                 console.log('!!!!!!!!!!! CORRECT LET')
             }
             else{
@@ -25,7 +25,7 @@ function WordGuess(){
     return(
         <div className = 'cont'>
         <input type="text" name="textinput" onSubmit={handleSubmit}/>
-        <input type="submit" name= 'submit' value='submit'></input>
+        <input type="submit"  value='submit'></input>
         </div>
 
     )
