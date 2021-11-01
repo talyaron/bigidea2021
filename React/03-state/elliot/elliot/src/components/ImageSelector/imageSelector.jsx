@@ -4,15 +4,12 @@ import './imageSelector.css'
 function ImageSelector(props){
     
     //[state, setterOfState] = useState(initialVal)  
-        const [image, setImage] = useState(); 
+        let chosenImage = '';
+        const [image, setImage] = useState(chosenImage); 
     
         function handleClick(ev){
-            let chosenImage = ev.target.style.background;
-            updateImage(chosenImage);
-        }
-    
-        function updateImage(newImage){
-            setImage(newImage);
+            chosenImage = ev.target.style.backgroundImage;
+            setImage(chosenImage);
         }
 
         return(
@@ -22,14 +19,14 @@ function ImageSelector(props){
                     id = 'imageOne'
                     type='button'
                     style={{background: props.imageOne}}
-                    onClick={handleClick(this)}>
+                    onClick={handleClick()}>
                 </input>
                 <input 
                     className = 'imageButton'
                     id = 'imageTwo'
                     type='button'
                     style={{background: props.imageTwo}}
-                    onClick={handleClick(this)}>
+                    onClick={handleClick()}>
                 </input>
                 <input 
                     className = 'imageButton'
