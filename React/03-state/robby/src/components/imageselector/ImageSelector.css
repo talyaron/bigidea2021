@@ -1,6 +1,5 @@
 .container{
 background-color: blue;
-display: flex;
 width: 1000px;
 height: 1000px;
 
@@ -29,11 +28,9 @@ height: 1000px;
     
 }
 .bigimage{
-
-    margin: 40px;
-    border-radius: 20px;
-    user-select: none;
-    padding: 20px;
+    display: flex;
+    top: -33400px;
+    left: -200px;
     width: 400px;
     height: 400px;
 
