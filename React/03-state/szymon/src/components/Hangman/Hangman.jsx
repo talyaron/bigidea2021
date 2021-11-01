@@ -1,22 +1,37 @@
 import {useState} from "react"
 import "./Hangman.css"
 
-    function Hangman() {
+let word=[a,b,c,d,e,f]
 
-        function handleSubmit(ev) {
-            ev.preventDefault();
-            console.log(ev.target.elements.word.value);
-    
-    
-        }
-    
-        return (
-            <div className="hangman">
-                <form onSubmit={handleSubmit}>
-                    <input type="password" name="word" id="" />
-                    <input type="submit" value="Hide" />
-                </form>
-            </div>
-        )
+function Hangman() {
+
+    const [password, setPassword] = useState();
+    const [showDom, setShowDom] = useState('block');
+
+
+    function handleSubmit(ev) {
+        ev.preventDefault();
+
+        setPassword(ev.target.elements.pass1.value);
+        // document.getElementById("container").style.display = 'none';
+        setShowDom('none');
     }
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit} id='container' style={{ display: showDom }}>
+                <input type="password" name='pass1' placeholder="Enter Password"></input>
+                <input type='submit'></input>
+            </form>
+            <div className="wrapper">
+                {
+                    word.map((leter,index)=>{
+                        return (<div key={index}>{letter}</div>)
+                    })
+                }
+            </div>
+        </div>
+    )
+
+}
     export default Hangman
