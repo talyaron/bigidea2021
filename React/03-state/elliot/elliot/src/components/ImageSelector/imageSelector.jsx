@@ -1,39 +1,42 @@
 import {useState} from 'react';
 import './imageSelector.css'
 
+import happy from './Images/happy.png'
+
 function ImageSelector(props){
     
     //[state, setterOfState] = useState(initialVal)  
-        let chosenImage = '';
-        const [image, setImage] = useState(chosenImage); 
+       
+        const [image, setImage] = useState(''); 
     
         function handleClick(ev){
-            chosenImage = ev.target.style.backgroundImage;
+            const chosenImage = ev.target.style.backgroundImage;
+            console.log(chosenImage)
             setImage(chosenImage);
         }
 
         return(
             <div className = 'container'>
-                <input 
+                <img 
                     className = 'imageButton'
                     id = 'imageOne'
                     type='button'
-                    style={{background: props.imageOne}}
-                    onClick={handleClick()}>
-                </input>
+                    src={props.imageOne}
+                    onClick={handleClick}>
+                </img>
                 <input 
                     className = 'imageButton'
                     id = 'imageTwo'
                     type='button'
                     style={{background: props.imageTwo}}
-                    onClick={handleClick()}>
+                    onClick={handleClick}>
                 </input>
                 <input 
                     className = 'imageButton'
                     id = 'imageThree'
                     type='button'
                     style={{background: props.imageThree}}
-                    onClick={handleClick(this)}>
+                    onClick={handleClick}>
                 </input>
                 <div 
                     className = 'imageFrame'
