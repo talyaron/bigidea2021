@@ -17,7 +17,7 @@ function Hangman() {
             console.log(true);
           
             setColor('green');   
-            setWidth(200)         
+            setWidth(300)         
         } else {
             console.log(false);
             
@@ -32,10 +32,21 @@ function Hangman() {
         checkText(char);
     }
 
+    function handleSubmit(ev) {
+        ev.preventDefault();
+        let guessWord;
+        guessWord = ev.target.value;
+    }
+
     return(
-        <div className="guessBox" style={{background:color, width:`${width}px`, height:`100px`}}>
+        <div className="guessBox" style={{background:color, width:`${width}px`, height:`150px`}}>
             <p>{color}</p>
             <input type="text" name="textBox" onChange={handleCheckText}></input>
+            <p></p>
+            <form onSubmit={handleSubmit}>
+                <input type="password" name="" id="" />
+                <input type="submit" value="Hide" />
+            </form>
         </div>
     )
 }
