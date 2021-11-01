@@ -10,3 +10,6 @@
     height: 500px;
     border-radius: 10px;
 }
+.wrapper{
+    display: flex;
+}
