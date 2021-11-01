@@ -1,0 +1,36 @@
+.container2{
+    width: 1000px;
+    height: 1000px;
+    margin: 10px;
+    border: 2px dotted black;
+    background-color: rgb(173, 0, 0);
+}
+
+.smaller{
+    background-repeat: no-repeat;
+    background-size: 200px 200px;
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+}
+
+.bigger{
+    background-repeat: no-repeat;
+}
+#one{
+    background-image: url('./BOTW.jpg');
+}
+
+#two{
+    background-image: url('./Gear\ Sekando.jpg');
+}
+
+#three{
+    background-image: url('./skisx.jpg');
+}
+
+#four{
+    border: 1.5px solid black;
+    max-width: 900px;
+    max-height: 500px;
+}
