@@ -4,6 +4,7 @@ import shark from '../../shark.jpg';
 import alaska from '../../alaska.jpg';
 import boat from '../../boat.jpg';
 
+let image = boat;
 function ImageSelector(){
 
     const[color, setColor] = useState('white');
