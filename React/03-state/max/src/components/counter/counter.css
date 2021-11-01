@@ -1,0 +1,6 @@
+.counter{
+    user-select: none;
+    background-color: cornflowerblue;
+    padding: 3px;
+    margin: 3px;
+}
