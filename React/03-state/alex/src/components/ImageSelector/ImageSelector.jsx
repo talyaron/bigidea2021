@@ -17,18 +17,18 @@ function ImageSelector(){
 
     return(
         <div>
-            <div className='box1' style={{width:"100px", height:"100px"}} onClick={changeSRC}>
-                <img src={shark}></img>
+            <div className='box1'  onClick={changeSRC}>
+                <img style={{width:"100px", height:"100px"}} src={shark}></img>
             </div>
-            <div className='box2' style={{width:"100px", height:"100px"}} onClick={changeSRC}>
-            <img src={boat}></img>
+            <div className='box2' onClick={changeSRC}>
+            <img src={boat} style={{width:"100px", height:"100px"}}></img>
             </div>
                 
-            <div className='box3' style={{width:"100px", height:"100px"}}  onClick={changeSRC}>
-            <img src={alaska}></img>
+            <div className='box3'  onClick={changeSRC}>
+            <img src={alaska} style={{width:"100px", height:"100px"}}></img>
             </div>
             <div className='changeBox' style={{width:"100px", height:"100px"}} >
-                <img src={variable}></img>
+                <img src={variable} style={{width:"100px", height:"100px"}}></img>
             </div>
         </div>
     )
