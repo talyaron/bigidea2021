@@ -6,13 +6,15 @@ import './Counter.css'
 function Counter() {
     //[state, setterOfState] = useState (initial value)
     const [counter, setCounter] = useState(1);
-    const [text, setText] = useState('')
+    const [text, setText] = useState('');
+    const [color, setColor] = ('pink')
 
     function handleClick() {
         setCounter(counter + 1)
     }
     
     function handleKeyUp(ev){
+        console.dir(ev.target.value)
         setText(ev.target.value)
     }
 
@@ -26,11 +28,11 @@ function Counter() {
             <br />
             <input type='text' onKeyUp={handleKeyUp} />
             <p>Text:{text}</p>
+            <div className='box' style={{background:color}}>
+
+            </div>
         </div>
     )
 }
-
-
-
 
 export default Counter;

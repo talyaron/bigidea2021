@@ -1,0 +1,7 @@
+.guessBox{
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+    border: 1.5px dashed black;
+    background-color: pink;
+}
