@@ -5,6 +5,7 @@ function Hangman() {
 
     const[color, setColor] = useState('white');
     const [width, setWidth] = useState(400);
+    const [showResults, setShowResults] = useState('block');
     const word = "Destiny";
 
     function checkText(letter) {
@@ -30,9 +31,14 @@ function Hangman() {
     }
 
     return(
-        <div className="guessBox" style={{background:color, width:`${width}px`, height:`100px`}}>
+        <div className="guessBox" style={{background:color, width:`${width}px`, height:`150px`}}>
             <p>{color}</p>
             <input type="text" name="textBox" onChange={handleCheckText}></input>
+            <p></p>
+            <form onSubmit={handleSubmit} style={{display:showResults}}>
+                <input type="password" name="word" id="" placeholder="Type your secret word"/>
+                <input type="submit" value="Hide" />
+            </form>
         </div>
     )
 }
