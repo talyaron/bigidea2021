@@ -5,6 +5,7 @@ function Hangman() {
 
     const[color, setColor] = useState('white');
     const [width, setWidth] = useState(400);
+    const [showResults, setShowResults] = useState('block');
     const word = "tiger";
 
     function checkText(letter) {
@@ -17,7 +18,7 @@ function Hangman() {
             console.log(true);
           
             setColor('green');   
-            setWidth(200)         
+            setWidth(300)         
         } else {
             console.log(false);
             
@@ -32,10 +33,22 @@ function Hangman() {
         checkText(char);
     }
 
+    function handleSubmit(ev) {
+        ev.preventDefault();
+        let guessWord = ev.target.elements.word.value;
+        console.log(guessWord);
+        setShowResults('none');
+    }
+
     return(
-        <div className="guessBox" style={{background:color, width:`${width}px`, height:`100px`}}>
+        <div className="guessBox" style={{background:color, width:`${width}px`, height:`150px`}}>
             <p>{color}</p>
             <input type="text" name="textBox" onChange={handleCheckText}></input>
+            <p></p>
+            <form onSubmit={handleSubmit} style={{display:showResults}}>
+                <input type="password" name="word" id="" placeholder="Type your secret word"/>
+                <input type="submit" value="Hide" />
+            </form>
         </div>
     )
 }
