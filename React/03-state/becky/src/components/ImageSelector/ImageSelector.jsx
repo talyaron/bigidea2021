@@ -16,15 +16,15 @@ function ImageSelector() {
     return (
         <div className='imageSelector'>
             <div className='box' id='box1' onClick={onClick}> 
-            <img>  src={Ace}</img>
+            <img src={Ace}/> 
             </div>
 
             <div className='box' id='box2' onClick={onClick}>
-            <img>  src={emma}</img>
+            <img src={emma}/> 
             </div>
 
             <div className='box' id='box3' onClick={onClick}>
-            <img> src={Israel}</img>
+            <img src={Israel}/>
             </div>
             <div className='box' id='box4' ></div>
         </div>

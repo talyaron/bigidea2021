@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import './ImageSelector.css';
-import shark from '../../shark.jpg';
-import alaska from '../../alaska.jpg';
-import boat from '../../boat.jpg';
+import Mountain from '../../MountEverest.jpg';
+import River from '../../River.jpg';
+import Waterfall from '../../Waterfall.jpg';
 
-let image = boat;
 function ImageSelector(){
 
+    const[color, setColor] = useState('white');
     const[variable, setVariable] = useState();
 
     function changeSRC(ev){
@@ -18,17 +18,17 @@ function ImageSelector(){
     return(
         <div>
             <div className='box1'  onClick={changeSRC}>
-                <img style={{width:"100px", height:"100px"}} src={shark} alt='Error'></img>
+                <img  src={Mountain} style={{width:"100px", height:"100px"}}></img>
             </div>
             <div className='box2' onClick={changeSRC}>
-                <img src={boat} style={{width:"100px", height:"100px"}} alt='Error'></img>
+            <img src={River} style={{width:"100px", height:"100px"}}></img>
             </div>
                 
             <div className='box3'  onClick={changeSRC}>
-                <img src={alaska} style={{width:"100px", height:"100px"}} alt='Error'></img>
+            <img src={Waterfall} style={{width:"100px", height:"100px"}}></img>
             </div>
-            <div className='changeBox'>
-                <img src={variable} style={{width:"100px", height:"100px"}} alt='No Image'></img>
+            <div className='changeBox' style={{width:"100px", height:"100px"}} >
+                <img src={variable} style={{width:"100px", height:"100px"}}></img>
             </div>
         </div>
     )

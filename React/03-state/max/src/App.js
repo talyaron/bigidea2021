@@ -1,20 +1,19 @@
 
 import './App.css';
-import Counter from './components/counter/counter';
-import TextInput from './components/textimput/input';
-import Hangman from './components/Hangman/Hangman'
+import Counter from './components/Counter/counter';
+import TextInput from './components/Textimput/input';
+import Hangman from './components/Hangman/Hangman';
+import ImageSelector from './components/ImageSelector/ImageSelector';
+
 
 function App() {
   return (
     <div className="App">
     
       <Counter/>
-      <Counter/>
-      <Counter/>
-      <Counter/>
-      <Counter/>
       <TextInput/>
       <Hangman/>
+      <ImageSelector/>
       
     </div>
   );
