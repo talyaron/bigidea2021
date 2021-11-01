@@ -21,7 +21,7 @@ function ImageSelector(props){
                     className = 'imageButton'
                     id = 'imageOne'
                     type='button'
-                    src={happy}
+                    src={props.imageOne}
                     onClick={handleClick}>
                 </img>
                 <input 
