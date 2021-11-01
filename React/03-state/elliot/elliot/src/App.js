@@ -2,6 +2,7 @@
 import './App.css';
 
 import Counter from './components/Counter/counter'
+import HangmanGame from './components/Hangman/hangman';
 //npx create-react-app <NameOfApp>
 
 
@@ -11,6 +12,8 @@ function App() {
   return (
     <div className="App">
       <Counter />
+      <HangmanGame guessWord = 'Tiger'/>
+
     </div>
   );
 }
