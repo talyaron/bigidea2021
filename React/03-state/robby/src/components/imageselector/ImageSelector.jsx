@@ -6,9 +6,9 @@ function ImageSelector(){
     const[ image1, setImage]= useState();
     function handleClick(ev)
     {
-        let id= ev.target.getAttribute('');
+        let src= ev.target.src;
         console.dir(ev.target.src);
-        setImage(id+1);
+        setImage(src);
     }
     
    return(
