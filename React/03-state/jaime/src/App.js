@@ -5,7 +5,7 @@ import Hangman from './components/Hangman/Hangman';
 function App() {
   return (
     <div className="App">
-        
+        <Counter />
         <Hangman />
     </div>
   );
