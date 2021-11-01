@@ -8,19 +8,16 @@ function Hangman() {
     const word = "Destiny";
 
     function checkText(letter) {
-
         letter = letter.toLowerCase();
         var format = letter;
         
-
         if(word.match(format)) {
             console.log(true);
-          
             setColor('green');   
             setWidth(200)         
-        } else {
+        }
+        else {
             console.log(false);
-            
             setColor('red');
             setWidth(500)
         }

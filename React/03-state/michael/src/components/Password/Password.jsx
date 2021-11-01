@@ -5,7 +5,6 @@ function Password(){
 
     const[password, setPassword] = useState();
 
-
     function handleSubmit(ev){
         ev.preventDefault();
 
@@ -19,9 +18,7 @@ function Password(){
             <input type="password" name='pass1' placeholder="Enter Password"></input>
             <input type='submit'></input>
             </form>
-
         </div>
     )
-
 }
 export default Password;
