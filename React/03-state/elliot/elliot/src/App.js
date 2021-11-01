@@ -11,7 +11,6 @@ import HangmanGame from './components/Hangman/hangman';
 function App() {
   return (
     <div className="App">
-      <Counter />
       <HangmanGame guessWord = 'Tiger'/>
 
     </div>
