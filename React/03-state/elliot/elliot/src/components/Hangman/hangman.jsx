@@ -5,7 +5,7 @@ function HangmanGame(props){
     
     //[state, setterOfState] = useState(initialVal)   
         const [color, setColor] = useState('gray'); 
-        let guessWord = props.letterToGuess;
+        let guessWord = props.guessWord;
     
         function handleWriting(ev){
             let inputGuess = ev.target.value;
