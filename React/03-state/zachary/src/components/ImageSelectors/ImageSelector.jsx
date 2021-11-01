@@ -31,7 +31,7 @@ function ImageSelector() {
             <img class='images'src={neutral} onClick={SelectImage} id="neutral" />
             <img class='images' src={sad} onClick={SelectImage} id="sad" />
         </div>
-        <img src={Image}></img></div>
+        <img src={Img} id='output'></img></div>
        
     )
 }
