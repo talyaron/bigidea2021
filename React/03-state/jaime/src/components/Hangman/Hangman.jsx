@@ -6,23 +6,17 @@ function Hangman() {
     const[color, setColor] = useState('white');
     const [width, setWidth] = useState(400);
     const [showResults, setShowResults] = useState('block');
-    const word = "tiger";
-    const [guessWordArray, setGuessWordArray] = useState([])
+    const [guessWordArray, setGuessWordArray] = useState([]);
     let guessWord, dashes = [];
 
     function checkText(letter) {
 
         letter = letter.toLowerCase();
-        let choice = guessWord.contains(letter);
 
-        if(choice) {
-            console.log(true);
-          
+        if(guessWord.includes(letter)) {
             setColor('green');   
             setWidth(300)         
         } else {
-            console.log(false);
-            
             setColor('red');
             setWidth(500)
         }
@@ -37,14 +31,15 @@ function Hangman() {
     function handleSubmit(ev) {
         ev.preventDefault();
         guessWord = ev.target.elements.word.value;
-        console.log(guessWord);
         let wordArr = guessWord.split("");
+        console.log(guessWord, wordArr);
         
         for(let i=0; i<wordArr.length; i++) {
             guessWordArray.push(wordArr[i]);
-            dashes[i]="_";
+            dashes[i]='_';
         }
         console.log(guessWordArray);
+        console.log(dashes);
         setShowResults('none');
     }
 
@@ -59,7 +54,7 @@ function Hangman() {
             <input type="text" name="guessBox" placeholder="Guess a letter" onKeyUp={handleCheckText} maxLength="1"/>
             {
             dashes.map((letter, index) => {
-                return(<div key={index}>"{letter}"</div>);
+                return(<div key={index}>"{letter}"</div>)
             })
         }
         </div>
