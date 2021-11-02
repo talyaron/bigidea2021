@@ -8,7 +8,7 @@ function Hangman() {
     const [showResults, setShowResults] = useState('block');
     const word = "tiger";
     const [guessWordArray, setGuessWordArray] = useState([])
-    let guessWord;
+    let guessWord, dashes = [];
 
     function checkText(letter) {
 
@@ -39,7 +39,12 @@ function Hangman() {
         ev.preventDefault();
         guessWord = ev.target.elements.word.value;
         console.log(guessWord);
-        setGuessWordArray(guessWord.split(""));
+        let wordArr = guessWord.split("");
+        
+        for(let i=0; i<wordArr.length; i++) {
+            guessWordArray.push(wordArr[i]);
+            dashes[i]="_";
+        }
         console.log(guessWordArray);
         setShowResults('none');
     }
@@ -51,10 +56,9 @@ function Hangman() {
                 <input type="password" name="word" id="" placeholder="Type your secret word" onChange={handleCheckText}/>
                 <input type="submit" value="Hide" />
             </form>
-            <div className="wrapper"></div>
             <p></p>
             {
-            guessWordArray.map((letter, index) => {
+            dashes.map((letter, index) => {
                 return(<p key={index}>"{letter}"</p>)
             })
         }
