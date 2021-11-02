@@ -5,3 +5,7 @@
     border: 1.5px dashed black;
     background-color: pink;
 }
+
+.wrapper{
+    display: flex;
+}
