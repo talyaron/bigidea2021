@@ -1,12 +1,17 @@
-import React, {useState} from 'react';
-import "./Password.css";
+import {useState} from "react"
+import "./Hangman.css"
 
-function Password() {
+let word=[a,b,c,d,e,f]
+
+function Hangman() {
+
     const [password, setPassword] = useState();
     const [showDom, setShowDom] = useState('block');
 
+
     function handleSubmit(ev) {
         ev.preventDefault();
+
         setPassword(ev.target.elements.pass1.value);
         // document.getElementById("container").style.display = 'none';
         setShowDom('none');
@@ -18,7 +23,15 @@ function Password() {
                 <input type="password" name='pass1' placeholder="Enter Password"></input>
                 <input type='submit'></input>
             </form>
+            <div className="wrapper">
+                {
+                    word.map((leter,index)=>{
+                        return (<div key={index}>{letter}</div>)
+                    })
+                }
+            </div>
         </div>
     )
+
 }
-export default Password;
+    export default Hangman

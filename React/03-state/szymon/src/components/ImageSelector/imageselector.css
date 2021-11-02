@@ -1,0 +1,24 @@
+.image{
+    text-align: center;
+    margin: 10px;
+}
+.angry{
+    width: 200px;
+    height: 200px;
+    margin: 50px;
+}
+.happy{
+    width: 200px;
+    height: 200px;
+    margin: 50px;
+}
+.sad{
+    width: 200px;
+    height: 200px;
+    margin: 50px;
+}
+.neutral{
+    width: 300px;
+    height: 300px;
+    margin: 150px;
+}

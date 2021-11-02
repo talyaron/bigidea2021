@@ -10,7 +10,7 @@ import ImageSelector from './components/ImageSelector/ImageSelector';
 function App() {
   return (
     <div className="App">
-      <ImageSelector/>
+      <Hangman/>
     </div>
   );
 }

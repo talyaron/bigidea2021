@@ -2,7 +2,8 @@
     background-color: gray;
     min-height: 20vh;
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     margin: 20px;
     font-size: calc(10px + 2vmin);
     color: white;
