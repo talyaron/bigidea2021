@@ -13,10 +13,9 @@ function Hangman() {
     function checkText(letter) {
 
         letter = letter.toLowerCase();
-        var format = letter;
-        
+        let choice = guessWord.contains(letter);
 
-        if(word.match(format)) {
+        if(choice) {
             console.log(true);
           
             setColor('green');   
@@ -53,13 +52,14 @@ function Hangman() {
         <div className="guessBox" style={{background:color, width:`${width}px`, height:`150px`}}>
             <p>{color}</p>
             <form onSubmit={handleSubmit} style={{display:showResults}}>
-                <input type="password" name="word" id="" placeholder="Type your secret word" onChange={handleCheckText}/>
+                <input type="password" name="word" placeholder="Type your secret word"/>
                 <input type="submit" value="Hide" />
             </form>
             <p></p>
+            <input type="text" name="guessBox" placeholder="Guess a letter" onKeyUp={handleCheckText} maxLength="1"/>
             {
             dashes.map((letter, index) => {
-                return(<p key={index}>"{letter}"</p>)
+                return(<div key={index}>"{letter}"</div>);
             })
         }
         </div>
