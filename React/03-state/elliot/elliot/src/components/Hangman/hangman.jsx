@@ -1,56 +1,83 @@
 import {useState} from 'react';
 import './hangman.css'
 
-var letters = /^[A-Za-z]+$/;
+//var letters = /^[A-Za-z]+$/;
 //let word = [a, c, t, u, a, l, l, y]
 //<div className = "wrapper"> {word.map(letter,index) => return( <p key={index}> {letter} </p> )} </div>
 //This creates a list of words
 
-function HangmanGame(props){
+function createHangmanBlanks(arr){
+    let listArray = arr.map((elm, index) => {
+            return {character:"_", id:index}
+        })
+    return listArray;
+}
+
+function HangmanGame(){
     
         const [color, setColor] = useState('gray');
-        const [guess, setGuess] = useState("");
-        const [secret, setSecret] = useState("");
         const [showSecret, setShowSecret] = useState('block');
+        const [showGuess, setShowGuess] = useState('none');
+        let wrongAnswerCounter = 0; //6 mistakes is game over
 
-        let fullSecretWord = "";
-        let inputGuess = "";
-        //let secretWordArray = fullSecretWord.split("");
-        //let emptyBoxes = secretWordArray;
-        //emptyBoxes.map(x => "_");
+        let guessCharacterIndex = -1;
+        const [guess, setGuess] = useState("");
+
+        let secretWordArray = [];
+        const [secret, setSecret] = useState("");
+        const [guessBlanksArray, setGuessBlanks] = useState([]);
 
         function handleSecretUpdate(ev){
-            setSecret(ev.target.value);
+            setSecret(ev.target.value.toLowerCase());
         }
 
         function handleSecretInput(){
-            if(secret.match("")){
+            console.log(secret);
+            if(secret === ""){
                 alert("Your secret word cannot be empty.")
+            } else if(secret.match(/[0-9]/i)){
+                alert("Your secret word cannot contain numbers.")
             } else {
                 setShowSecret('none')
-                fullSecretWord = secret.toLowerCase();
+                setShowGuess('block')
+                secretWordArray = [...secret];
+                setGuessBlanks(createHangmanBlanks(secretWordArray));
             }
         }
 
         function handleGuessUpdate(ev){
-            inputGuess = ev.target.value; //Stores the inserted guess
-            setGuess(inputGuess.slice(-1)); //Gets the last letter of the inserted guess
-            compareGuess(guess)
+            setGuess(ev.target.value.slice(-1));//Set to final character in guess text box
+            console.log(guess);
         }
 
         function handleGuessConfirm(ev){
-
-        }
-    
-        function compareGuess(letter){
-            letter = letter.toLowerCase();
-            
-            if (fullSecretWord.match(letter)){
-                setColor('green');
-            } else {
+            guessCharacterIndex = secret.indexOf(guess);
+            console.log("activating");
+            if (guessCharacterIndex === -1){
                 setColor('red');
+
+                wrongAnswerCounter++;
+                if(wrongAnswerCounter === 6){
+                    alert("The game is over, you lose...");
+                }
+            } else {
+                setColor('green');
+
+                const guessBlanksArrayTemp = [...guessBlanksArray];
+                for(var index = 0; index < secretWordArray.length; index++) {
+                    if(secretWordArray[index] === guess) {
+                        guessBlanksArrayTemp[index] = guess;
+                    }
+                }
+                setGuessBlanks(guessBlanksArrayTemp);
+
+                if (guessBlanksArray.indexOf("_") === -1) {
+                    alert("You win, good job!")
+                }
+
             }
         }
+
 
         return(
             <div className = 'container' style={{background: color}}>             
@@ -70,13 +97,16 @@ function HangmanGame(props){
                     onClick = {handleSecretInput}>
 
                 </input>
+                <div style = {{ display: showGuess}}></div>
+                <div style = {{ display: showGuess}}></div>
 
-
-                <div>
-                    Placeholder for empty text boxes
+                <div className = "container">
+                    {guessBlanksArray.map((elm, index) => 
+                        { return (<div key = {elm.id}> {elm.character} </div>) }
+                    )}
                 </div>
                 <div>
-                    Placeholder for empty space
+                    Placeholder for empty space.
                 </div>
 
 
@@ -84,6 +114,7 @@ function HangmanGame(props){
                     type='text'
                     placeholder='Input Your Guess Letter Here:'
                     id = 'inputStageTwoText'
+                    style = {{ display: showGuess}}
                     onKeyUp={handleGuessUpdate}>
 
                 </input>
@@ -91,9 +122,12 @@ function HangmanGame(props){
                     type='button'
                     value='Confirm Guess Letter'
                     id = 'inputStageTwoButton'
-                    onKeyUp={handleGuessConfirm}>
+                    style = {{ display: showGuess}}
+                    onClick={handleGuessConfirm}>
                     
                 </input>
+                <div style = {{ display: showSecret}}></div>
+                <div style = {{ display: showSecret}}></div>
             </div>
             
         )

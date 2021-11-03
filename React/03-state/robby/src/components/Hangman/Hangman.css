@@ -5,5 +5,43 @@
 .box{
     width:100px;
     height:100px;
-    background: blue;
+    background-color: blue;
+}
+.hangedMan{
+    width: 100px;
+    height: 100px;
+}
+#head{
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background-color: black;
+}
+#bodyy{
+    height: 40px;
+    width: 0.5px;
+    border: 1px solid black;
+    background-color: black;
+}
+#leftArm{
+    height: 15px;
+    width: 0.5px;
+    border: 1px solid black;
+    position: relative;
+    left: 10px;
+
+}
+#rightArm{
+    height: 15px;
+    width: 0.5px;
+    border: 1px solid black;
+    position: relative;
+    left: 10px;
+}
+.leftLeg{
+    
+}
+.rightLeg{
+  
 }
