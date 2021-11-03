@@ -3,7 +3,7 @@ import './Hangman.css';
 
 let word;
 let dashes = [];
-let wordarr= [];
+let wordarr = [];
 
 
 function Hangman() {
@@ -12,9 +12,9 @@ function Hangman() {
     const [showDom, setShowDom] = useState('block')
     const [guessWordArray, setGuessWordArray] = useState([])
     let userInput;
-    
-    
-    function handleSubmit(ev){
+
+
+    function handleSubmit(ev) {
         ev.preventDefault();
         word = ev.target.elements.secretWord.value
         wordarr = word.split("");
@@ -39,14 +39,19 @@ function Hangman() {
 
         if (word.includes(lastChar)) {
             console.log('YES');
-            setColor('green');
-            for(let x=0; x<=wordarr.length; x++){
-                if(lastChar==wordarr[x]){
-                    dashes[x]= lastChar;
+            // setColor('green');
+
+            const dashesTemp = [];
+
+            for (let x = 0; x <= wordarr.length; x++) {
+                if (lastChar == wordarr[x]) {
+                    dashesTemp[x] = lastChar;
                 }
             }
 
-            }
+            setDashes(dashesTemp)
+
+        }
         else {
             setColor('red');
         }
@@ -64,14 +69,14 @@ function Hangman() {
                 <input type="submit" value='hide' />
 
             </form>
-            <div className = 'box' style={{background:color}}></div>
-            Type your guess: 
-            <input type = 'text' maxLength = "1"
-                    placeholder = 'Input guess here'
-                    onKeyUp = {handleWriting} />
-            <div 
-            className = 'textContainer'
-            id = 'textbox'
+            <div className='box' style={{ background: color }}></div>
+            Type your guess:
+            <input type='text' maxLength="1"
+                placeholder='Input guess here'
+                onKeyUp={handleWriting} />
+            <div
+                className='textContainer'
+                id='textbox'
             />
             {text}
             <div className="wrapper">
