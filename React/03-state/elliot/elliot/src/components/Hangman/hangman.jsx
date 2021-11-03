@@ -21,14 +21,10 @@ function HangmanGame(props){
 
         function handleSecretUpdate(ev){
             setSecret(ev.target.value);
-            setSecret(ev.target.value);
-            console.log(secret);
         }
 
         function handleSecretInput(){
-            if(secret.match(letters) === false) {
-                alert("Your secret word can only contain letters.")
-            } else if(secret.match("")){
+            if(secret.match("")){
                 alert("Your secret word cannot be empty.")
             } else {
                 setShowSecret('none')
