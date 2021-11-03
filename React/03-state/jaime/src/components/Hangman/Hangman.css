@@ -3,5 +3,11 @@
     width: 200px;
     height: 200px;
     border: 1.5px dashed black;
+    border-radius: 5px;
     background-color: pink;
+}
+
+.wrapper{
+    display: flex;
+    text-align: center;
 }

@@ -10,7 +10,7 @@ function ImageSelector(props){
         const [image, setImage] = useState(''); 
     
         function handleClick(ev){
-            const chosenImage = ev.target.style.backgroundImage;
+            const chosenImage = ev.target.src;
             console.log(chosenImage)
             setImage(chosenImage);
         }
@@ -20,29 +20,28 @@ function ImageSelector(props){
                 <img 
                     className = 'imageButton'
                     id = 'imageOne'
-                    type='button'
                     src={props.imageOne}
                     onClick={handleClick}>
                 </img>
-                <input 
+                <img 
                     className = 'imageButton'
                     id = 'imageTwo'
-                    type='button'
-                    style={{background: props.imageTwo}}
+                    src={props.imageTwo}
                     onClick={handleClick}>
-                </input>
-                <input 
+                </img>
+                <img 
                     className = 'imageButton'
                     id = 'imageThree'
-                    type='button'
-                    style={{background: props.imageThree}}
+                    src={props.imageThree}
                     onClick={handleClick}>
-                </input>
-                <div 
+                </img>
+                <div id = 'emptySpace'></div>
+                <img 
                     className = 'imageFrame'
                     id='selectedImageDisplay'
-                    style={{background: image}}>
-                </div>
+                    src={image}>
+                </img>
+                <div id = 'emptySpace'></div>
             </div>
             
         )

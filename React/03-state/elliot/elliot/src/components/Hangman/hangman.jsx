@@ -1,47 +1,49 @@
 import {useState} from 'react';
 import './hangman.css'
 
+//let word = [a, c, t, u, a, l, l, y]
+//<div className = "wrapper"> {word.map(letter,index) => return( <p key={index}> {letter} </p> )} </div>
+//This creates a list of words
+
 function HangmanGame(props){
     
-    //[state, setterOfState] = useState(initialVal)   
-        const [color, setColor] = useState('gray'); 
-        let guessWord = props.guessWord;
-    
-        function handleWriting(ev){
-            let inputGuess = ev.target.value;
-            let inputChar = inputGuess.slice(-1)
+        const [color, setColor] = useState('gray');
+        let fullSecretWord = props.guessWord.toLowerCase();
+        let inputGuess = '';
+        let inputChar = '';
+
+        function handleNewGuess(ev){
+            inputGuess = ev.target.value; //Stores the inserted guess
+            inputChar = inputGuess.slice(-1) //Gets the last letter of the inserted guess
             compareGuess(inputChar)
         }
     
         function compareGuess(letter){
             letter = letter.toLowerCase();
-
-            if (guessWord.match(letter)){
-                setColor('red');
-            } else {
+            
+            if (fullSecretWord.match(letter)){
                 setColor('green');
+            } else {
+                setColor('red');
             }
         }
 
         return(
-            <div className = 'container' style={{background: color}}>
-                <div 
-                    className = 'textContainer'
-                    id='emptyPlaceholder'>
-                </div>
+            <div className = 'container' style={{background: color}}>             
                 <input 
                     type='text'
-                    placeholder='Input Words Here'
-                    onKeyUp={handleWriting}>
+                    placeholder='Input Your Guess Letters Here:'
+                    onKeyUp={handleNewGuess}>
                 </input>
+
                 <div 
                     className = 'textContainer'
                     id='textbox'>
-                    {userGuessText}
+                    {inputGuess}
                 </div>
             </div>
             
         )
     }
     
-    export default HangmanGame;
+export default HangmanGame;
