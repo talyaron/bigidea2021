@@ -1,8 +1,17 @@
 import { useState } from "react";
 
+function createIndex(arr){
+    const listArray = arr.map((elm, index)=>{
+        return {word:elm, id:index}
+    })
+
+    return listArray;
+}
 
 function List() {
-    const [words, setWords] = useState([{id:1,word:'apple'},{id:2,word:'baby'},{id:3,word:'cat'}]);
+    const list = ['a', 'b', 'c', 'd', 'e', 'f']
+    const listArray = createIndex(list)
+    const [words, setWords] = useState(listArray);
 
 
     function handleDelete(index) {
@@ -19,10 +28,10 @@ function List() {
         <div className="list">
             {words.map((word, index) => {
                 return <div
-                    key={index}
+                    key={word.id}
                     className="word"
                     onClick={() => handleDelete(index)}
-                >{word}</div>;
+                >{word.word},  id:{(word.id)}</div>;
             })}
         </div>
     )
