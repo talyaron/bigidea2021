@@ -1,14 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 
-import Counter from './components/Counter/Counter'
+// import Counter from './components/Counter/Counter'
+// import Select from './components/ImageSelector/imageselector'
+import Hangman from './components/Hangman/Hangman'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <p>
-            <Counter />
+            {/* <Counter/> */}
+            {/* {<Select/>} */}
+            {<Hangman/>}
         </p>
       </header>
     </div>

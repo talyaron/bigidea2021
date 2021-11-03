@@ -5,17 +5,31 @@ import emma from './emma.jpg'
 import Israel from './Israel.jpg'
 
 function ImageSelector() {
-    const [backgroundImage, setBackground] = useState('pink');
-    function onClick(ev) {
-        setBackground(ev.target.value);
+    const [background, setBackground] = useState('pink');
+    const[variable, setVariable] = useState();
 
+    function changeSource(ev){
+        let selectSRC = ev.target.currentSrc;
+        console.log(ev);
+        setVariable(selectSRC);
     }
+   
     return (
         <div className='imageSelector'>
-            <div className='box' id='box1' style={{ background: backgroundImage }} onClick={onClick}></div>
-            <div className='box' id='box2' style={{ background: backgroundImage }} onClick={onClick}></div>
-            <div className='box' id='box3' style={{ background: backgroundImage }} onClick={onClick}></div>
-            <div className='box' id='box4' style={{ background: backgroundImage }} ></div>
+            <div className='box' id='box1' onClick={changeSource}> 
+            <img style={{width:"300px", height:"300px"}} src={Ace}/> 
+            </div>
+
+            <div className='box' id='box2' onClick={changeSource}>
+            <img style={{width:"300px", height:"300px"}} src={emma}/> 
+            </div>
+
+            <div className='box' id='box3' onClick={changeSource}>
+            <img style={{width:"300px", height:"300px"}} src={Israel}/>
+            </div>
+            <div className='box' id='box4' >
+            <img src={variable} style={{width:"300px", height:"300px"}}/>
+            </div>
         </div>
     )
 }
