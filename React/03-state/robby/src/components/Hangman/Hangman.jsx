@@ -3,6 +3,8 @@ import './Hangman.css';
 
 let word; 
 let dashes = [];
+let wordarr= [];
+
 
 function Hangman() {
     const [text, setText] = useState();
@@ -11,10 +13,11 @@ function Hangman() {
     const [guessWordArray, setGuessWordArray] = useState([])
     let userInput;
     
+    
     function handleSubmit(ev){
         ev.preventDefault();
         word = ev.target.elements.secretWord.value
-        let wordarr = word.split("");
+        wordarr = word.split("");
         console.log(word);
         // ev.target.style.display = "none";
         setShowDom('none')
@@ -37,7 +40,8 @@ function Hangman() {
         if (word.includes(lastChar)) {
             console.log('YES');
             setColor('green');
-        }
+            
+            }
         else {
             setColor('red');
         }
@@ -57,7 +61,7 @@ function Hangman() {
             </form>
             <div className = 'box' style={{background:color}}></div>
             Type your guess: 
-            <input type = 'text' maxlength = "1"
+            <input type = 'text' maxLength = "1"
                     placeholder = 'Input guess here'
                     onKeyUp = {handleWriting} />
             <div 
