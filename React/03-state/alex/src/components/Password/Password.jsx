@@ -8,7 +8,8 @@ function Password() {
     const [password, setPassword] = useState();
     const [blankPasswordArray, setBlankPasswordArray] = useState([]);
     const [showDom, setShowDom] = useState('block');
-    const [text, setText] = useState();
+    const [showDom2, setShowDom2] = useState('block');
+    const [text, setText] = useState("Incorrect Guesses: ");
     const [color, setColor] = useState('red');
 
     function handleSubmit(ev) {
@@ -28,15 +29,31 @@ function Password() {
     }
 
     function handleWriting(ev){
-        setText(ev.target.value)
         const lastChar = ev.target.value.slice(-1)
 
-        if (password.includes(lastChar)) {
+        if(passwordArray.includes(lastChar)){
             setColor('green');
         }
         else {
+            setText(text + ev.target.value);
+            console.log(text.length)
             setColor('red');
         }
+
+        while (passwordArray.includes(lastChar)) {
+            blankPasswordArray[passwordArray.indexOf(lastChar)] = lastChar;
+            passwordArray[passwordArray.indexOf(lastChar)] = 'Guessed'
+        }
+
+        if(text.length == 24){
+            setText("You Lose!")
+            setShowDom2('none');
+        }
+        if(!blankPasswordArray.includes('[ ]')){
+            setText("You Win!");
+            setShowDom2('none');
+        }
+
             
     }
 
@@ -56,11 +73,14 @@ function Password() {
             </div>
             
             <div>
-                <div className='hangman'></div>
+                
                 <div className = 'box' style={{background:color}}></div>
 
-                Guess a letter: 
-                <input type = 'text' placeholder = 'Input guess here' onKeyUp = {handleWriting} maxLength="1" />
+                <div className = 'inputContainer' style={{ display: showDom2 }}>
+                    Guess a letter: 
+                    <input type = 'text' placeholder = 'Input guess here' onKeyUp = {handleWriting} maxLength="1" />
+                </div>
+
                 <div className = 'textContainer' id = 'textbox'/>
                 {text}
             </div>

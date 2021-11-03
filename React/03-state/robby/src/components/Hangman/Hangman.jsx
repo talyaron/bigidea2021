@@ -3,6 +3,8 @@ import './Hangman.css';
 
 let word;
 let dashes = [];
+let wordarr= [];
+
 
 function Hangman() {
     const [text, setText] = useState();
@@ -10,18 +12,19 @@ function Hangman() {
     const [showDom, setShowDom] = useState('block')
     const [guessWordArray, setGuessWordArray] = useState([])
     let userInput;
-
-    function handleSubmit(ev) {
+    
+    
+    function handleSubmit(ev){
         ev.preventDefault();
         word = ev.target.elements.secretWord.value
-        let wordarr = word.split("");
+        wordarr = word.split("");
         console.log(word);
         // ev.target.style.display = "none";
         setShowDom('none')
         // word.setShowDom()
         for (let i = 0; i < wordarr.length; i++) {
             guessWordArray.push(wordarr[i]);
-            dashes[i] = '_'
+            dashes[i] = '[]'
         }
         console.log(guessWordArray);
         console.log(dashes);
@@ -37,7 +40,13 @@ function Hangman() {
         if (word.includes(lastChar)) {
             console.log('YES');
             setColor('green');
-        }
+            for(let x=0; x<=wordarr.length; x++){
+                if(lastChar==wordarr[x]){
+                    dashes[x]= lastChar;
+                }
+            }
+
+            }
         else {
             setColor('red');
         }
@@ -55,19 +64,19 @@ function Hangman() {
                 <input type="submit" value='hide' />
 
             </form>
-            <div className='box' style={{ background: color }}></div>
-            Type your guess:
-            <input type='text' maxlength="1"
-                placeholder='Input guess here'
-                onKeyUp={handleWriting} />
-            <div
-                className='textContainer'
-                id='textbox'
+            <div className = 'box' style={{background:color}}></div>
+            Type your guess: 
+            <input type = 'text' maxLength = "1"
+                    placeholder = 'Input guess here'
+                    onKeyUp = {handleWriting} />
+            <div 
+            className = 'textContainer'
+            id = 'textbox'
             />
             {text}
             <div className="wrapper">
                 {dashes.map((letter, index) => {
-                    return (<div key={index}>"{letter}"</div>)
+                    return (<div key={index}>{letter}</div>)
                 }
                 )}
             </div>
