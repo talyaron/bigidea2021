@@ -2,38 +2,39 @@ import { useState } from 'react'
 import './HideWord.css'
 
 let SecWord = []
-let secWordBlanks = []
+
 let hiddenElements;
-    
 
 
-function HideWord(){
 
-    
-    
-    const[tempArr, setTempArr] = useState([])
+function HideWord() {
+
+
+
+    const [tempArr, setTempArr] = useState([])
     const [color, setColor] = useState('red');
     const [text, setText] = useState();
-    function handleSubmit(ev){
-        
-        
-        
+    const [secWordBlanks, setSecWordBlanks] = useState([]);
+    function handleHideWord(ev) {
+
+
         ev.preventDefault()
-        hiddenElements = ev.target.elements.hidden.value;     
-        ev.target.style.display='none'; 
+        hiddenElements = ev.target.elements.hidden.value;
+        ev.target.style.display = 'none';
         SecWord = hiddenElements.split('')
         console.log(SecWord)
+        const secWordBlanksTemp = [];
         
-        for(let i=0; i< SecWord.length; i++){
+        for (let i = 0; i < SecWord.length; i++) {
             tempArr.push(SecWord[i])
-            secWordBlanks[i]='_'
+            secWordBlanksTemp[i] = '_'
         }
-        console.log(secWordBlanks)
-
+        console.log(secWordBlanksTemp)
+        setSecWordBlanks(secWordBlanksTemp)
 
 
     }
-    function handleWriting(ev){
+    function handleWriting(ev) {
         setText(ev.target.value)
         const lastChar = ev.target.value.slice(-1)
 
@@ -44,26 +45,27 @@ function HideWord(){
         else {
             setColor('red');
         }
-            
+
     }
-    
-    return(
-        <div className = 'hangman'>
-            <form onSubmit = {handleSubmit}>
-                <input type="password" name='hidden'  />
-                <input type='submit' value='hide'  />
+
+    return (
+        <div className='hangman'>
+            <form onSubmit={handleHideWord}>
+                <input type="password" name='hidden' />
+                <input type='submit' value='hide' />
 
             </form>
-            <div className = 'box' style={{background:color}}></div>
-            Type your guess: 
-            <input type = 'text' maxLength = "1"
-                    placeholder = 'Input guess here'
-                    onKeyUp = {handleWriting} />
-            <div className = 'textContainer' id = 'textbox'/>
+            <div className='box' style={{ background: color }}></div>
+            Type your guess:
+            <input type='text' maxLength="1"
+                placeholder='Input guess here'
+                onKeyUp={handleWriting} />
+            <div className='textContainer' id='textbox' />
             {text}
-            <div className = "wrapper">
-             {secWordBlanks.map((letter, index)=>{
-                return(<div key={index}>"{letter}"</div>)})}
+            <div className="wrapper">
+                {secWordBlanks.map((letter, index) => {
+                    return (<div key={index}>"{letter}"</div>)
+                })}
             </div>
 
         </div>
