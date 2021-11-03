@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import "./Password.css";
 
+let passwordArray = [];
 
 function Password() {
 
     const [password, setPassword] = useState();
-    const [passwordArray, setPasswordArray] = useState([]);
+    const [blankPasswordArray, setBlankPasswordArray] = useState([]);
     const [showDom, setShowDom] = useState('block');
     const [text, setText] = useState();
     const [color, setColor] = useState('red');
@@ -16,8 +17,13 @@ function Password() {
         setPassword(ev.target.elements.pass1.value);
         // document.getElementById("container").style.display = 'none';
         setShowDom('none');
-        setPasswordArray(ev.target.elements.pass1.value.split(''));
+        passwordArray = (ev.target.elements.pass1.value.split(''));
         console.log(passwordArray);
+
+        for(let i = 0;i<passwordArray.length;i++){
+            blankPasswordArray.push('[ ]')
+        }
+        console.log(blankPasswordArray);
 
     }
 
@@ -43,8 +49,8 @@ function Password() {
 
             <div className='wrapper'>
                 {
-                passwordArray.map((letter,index)=>{
-                    return(<div key={index}>[  ]</div>)
+                blankPasswordArray.map((letter,index)=>{
+                    return(<div key={index}>{letter}</div>)
                 })
                 }
             </div>
