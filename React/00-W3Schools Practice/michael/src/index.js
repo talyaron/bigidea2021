@@ -9,4 +9,9 @@ if (x < 10) {
 
 const myelement = <h1>{text}</h1>;
 
+function Car() {
+  return <h2>Hi, I am a Car!</h2>;
+}
+
 ReactDOM.render(myelement, document.getElementById('root'));
+ReactDOM.render(<Car />, document.getElementById('root'));
