@@ -14,9 +14,9 @@ function Hangman() {
     const [guessWordArray, setGuessWordArray] = useState([])
     const [hideBody, setHideBody]= useState(1)
     let userInput;
-    
-    
-    function handleSubmit(ev){
+
+
+    function handleSubmit(ev) {
         ev.preventDefault();
         word = ev.target.elements.secretWord.value
         wordarr = word.split("");
@@ -57,7 +57,9 @@ function Hangman() {
                 }
             }
 
-            }
+            setDashes(dashesTemp)
+
+        }
         else {
             setColor('red');
         }
