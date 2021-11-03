@@ -1,7 +1,7 @@
 import {useState} from "react"
 import "./Hangman.css"
 
-let word=[a,b,c,d,e,f]
+let word=['a','b','c','d','e','f']
 
 function Hangman() {
 
@@ -25,7 +25,7 @@ function Hangman() {
             </form>
             <div className="wrapper">
                 {
-                    word.map((leter,index)=>{
+                    word.map((letter,index)=>{
                         return (<div key={index}>{letter}</div>)
                     })
                 }

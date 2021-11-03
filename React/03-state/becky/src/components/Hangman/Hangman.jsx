@@ -76,7 +76,7 @@ function Hangman() {
             className = 'textContainer'
             id = 'textbox'
             />
-            {text}
+            
             <div className = "wrapper">
              {dashes.map((letter, index)=>{
                 return(<div key={index}>{letter}</div>)
