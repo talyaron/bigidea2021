@@ -1,5 +1,7 @@
-import './Hangman.css'
+import './Hangman.css';
 
+
+let word = ['a', 'b', 'c', 'd', 'e', 'f']
 
 function Hangman() {
 
@@ -16,7 +18,16 @@ function Hangman() {
                 <input type="password" name="word" id="" />
                 <input type="submit" value="Hide" />
             </form>
+            <div className="wrapper">
+            {
+                word.map((letter, index) => {
+                    return (<div key={index}>"{letter}",</div>)
+                })
+            }
+            </div>
+
         </div>
+
     )
 }
 export default Hangman

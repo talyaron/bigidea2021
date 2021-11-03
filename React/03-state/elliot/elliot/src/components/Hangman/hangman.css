@@ -9,11 +9,15 @@
     color: white;
   }
   
-  .textContainer{
-      margin: 10px;
-      border-radius: 5px;
-      background-color: rgb(68, 170, 170);
-      user-select: none;       
-      padding: 15px;
-      width: fit-content;
-  }
+.textContainer{
+    margin: 10px;
+    border-radius: 5px;
+    background-color: rgb(68, 170, 170);
+    user-select: none;       
+    padding: 15px;
+    width: fit-content;
+}
+
+.wrapper{
+    display: flex;
+}
