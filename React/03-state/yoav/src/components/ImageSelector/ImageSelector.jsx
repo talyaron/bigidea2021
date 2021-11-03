@@ -21,16 +21,16 @@ function ImageSelector() {
     return (
         <div>
             <div className = 'box1' onClick={changeSRC}>
-                <img src={mcQueen}></img>
+                <img src={mcQueen} style = {{width: '100px',height: '100px'}}></img>
             </div>
             <div className='box2' onClick = {changeSRC}>
-                <img src={mcQueen2}></img>
+                <img src={mcQueen2} style = {{width: '100px', height: '100px'}}></img>
             </div>
             <div className='box3' onClick = {changeSRC}>
-                <img src = {buzz}></img>
+                <img src = {buzz} style = {{width: '100px', height: '100px'}}></img>
             </div>
             <div className = 'changeBox'>
-                <img src={variable}></img>
+                <img src={variable} style = {{width: '100px', height: '100px'}}></img>
             </div>
         </div>
         

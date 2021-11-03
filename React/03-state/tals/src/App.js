@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 //components
+import List from './components/List/List';
 import Counter from './components/Counter/Counter';
 import Hangman from './components/Hangman/Hangman';
 
@@ -10,15 +11,9 @@ import Hangman from './components/Hangman/Hangman';
 function App() {
   return (
     <div className="App">
-      
-<Hangman />
-        <Counter />
-        <Counter />
-        <Counter />
-        <Counter />
-        <Counter />
-        <Counter />
-        <Counter />
+      <List />
+{/* <Hangman /> */}
+        
 
 
     </div>
