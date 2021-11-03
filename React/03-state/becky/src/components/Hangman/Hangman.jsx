@@ -3,25 +3,27 @@ import './Hangman.css';
 
 let word; 
 let dashes = [];
+let wordarr =[];
 
 function Hangman() {
     const [text, setText] = useState();
     const [color, setColor] = useState('red');
     const [showDom, setShowDom] = useState('block')
     const [guessWordArray, setGuessWordArray] = useState([])
+    
     let userInput;
     
     function handleSubmit(ev){
         ev.preventDefault();
         word = ev.target.elements.secretWord.value
-        let wordarr = word.split("");
+        wordarr = word.split("");
         console.log(word);
         // ev.target.style.display = "none";
         setShowDom('none')
         // word.setShowDom()
         for(let i=0; i<wordarr.length; i++){
             guessWordArray.push(wordarr[i]);
-            dashes[i]= '_'
+            dashes[i]= '[]'
         }
         console.log(guessWordArray);
         console.log(dashes);
@@ -29,6 +31,11 @@ function Hangman() {
        
 
     }
+    // function createIndex(arr){
+    //     const listArray = arr.map((elm, i)=>{
+    //         return {word:elm, id:i}
+    //     })
+    // }
 
     function handleWriting(ev){
         setText(ev.target.value)
@@ -37,6 +44,11 @@ function Hangman() {
         if (word.includes(lastChar)) {
             console.log('YES');
             setColor('green');
+            for(let x =0; x<=wordarr.length; x++){
+                if(lastChar == wordarr[x]){
+                    dashes[x]=lastChar
+                }
+            }
         }
         else {
             setColor('red');
@@ -57,7 +69,7 @@ function Hangman() {
             </form>
             <div className = 'box' style={{background:color}}></div>
             Type your guess: 
-            <input type = 'text' maxlength = "1"
+            <input type = 'text' maxLength = "1"
                     placeholder = 'Input guess here'
                     onKeyUp = {handleWriting} />
             <div 
@@ -67,7 +79,7 @@ function Hangman() {
             {text}
             <div className = "wrapper">
              {dashes.map((letter, index)=>{
-                return(<div key={index}>"{letter}"</div>)
+                return(<div key={index}>{letter}</div>)
         }
             )}
             </div>
