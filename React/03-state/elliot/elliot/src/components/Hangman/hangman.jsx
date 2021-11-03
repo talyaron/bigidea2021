@@ -11,9 +11,12 @@ let secretWordArray = [], guessBlanksArray = [], wrongAnswerArray = [];
 function HangmanGame(){
     
         const [color, setColor] = useState('gray');
-        const canvas = document.querySelector('#stickFigureCanvas');
-        const ctx = canvas.getContext('2d');
-        drawLine([250, 0], [250, 100]);
+        const [showHead, setHead] = useState('none');
+        const [showTorso, setTorso] = useState('none');
+        const [showLA, setLA] = useState('none');
+        const [showRA, setRA] = useState('none');
+        const [showLL, setLL] = useState('none');
+        const [showRL, setRL] = useState('none');
 
         const [showSecret, setShowSecret] = useState('block');
         const [showGuess, setShowGuess] = useState('none');
@@ -52,22 +55,6 @@ function HangmanGame(){
             console.log(guess);
         }
 
-        function drawLine(begin, end, stroke = 'black', width = 1) {
-            if (stroke) {
-                ctx.strokeStyle = stroke;
-            }
-        
-            if (width) {
-                ctx.lineWidth = width;
-            }
-        
-            ctx.beginPath();
-            ctx.moveTo(...begin);
-            ctx.lineTo(...end);
-            ctx.stroke();
-        }
-        
-
         function handleGuessConfirm(){
             guessCharacterIndex = secret.indexOf(guess);
             console.log(wrongAnswerArray);
@@ -80,8 +67,29 @@ function HangmanGame(){
                     wrongAnswerArray.push(guess);
 
                     wrongAnswerCounter++;
-                    if(wrongAnswerCounter === 6){
-                        alert("The game is over, you lose...");
+                    switch(wrongAnswerCounter){
+                        case '1':
+                            console.log("activated");
+                            setHead('block');
+                            break;
+                        case '2':
+                            setTorso('block');
+                            break;
+                        case '3':
+                            setLA('block');
+                            break;
+                        case '4':
+                            setRA('block');
+                            break;
+                        case '5':
+                            setLL('block');
+                            break;
+                        case '6':
+                            setRL('block');
+                            alert("Game Over! You have lost. Refresh the page to play again.")
+                            break;
+                        default:
+                            break;
                     }
                 }
             } else {
@@ -127,7 +135,14 @@ function HangmanGame(){
                         { return (<div key = {index}>[{letter}]</div>) }
                     )}
                 </div>
-                <div></div>
+                <div className = "sticks">
+                    <div id = "headOne" style = {{ display: showHead}}></div>
+                    <div id = "torsoTwo" style = {{ display: showTorso}}></div>
+                    <div id = "lAThree" style = {{ display: showLA}}></div>
+                    <div id = "rAFour" style = {{ display: showRA}}></div>
+                    <div id = "lLFive" style = {{ display: showLL}}></div>
+                    <div id = "rLSix" style = {{ display: showRL}}></div>
+                </div>
 
 
                 <input 

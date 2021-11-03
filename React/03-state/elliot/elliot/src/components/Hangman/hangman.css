@@ -30,5 +30,60 @@
 
 .sticks{
     position: absolute;
-    color: black
+    color: black;
+    width: 300px;
+    height: 300px;
+}
+
+#headOne{
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    top: 150px;
+    left: 200px;
+    border: 1px solid black;
+}
+
+#torsoTwo{
+    height: 100px;
+    width: 0.5px;
+    top: 175px;
+    left: 200px;
+    border: 1px solid black;
+}
+
+#lAThree{
+    height: 15px;
+    width: 0.5px;
+    transform: rotate(150deg);
+    top: 225px;
+    left: 200px;
+    border: 1px solid black;
+}
+
+#rAFour{
+    height: 15px;
+    width: 0.5px;
+    transform: rotate(30deg);
+    top: 225px;
+    left: 200px;
+    border: 1px solid black;
+}
+
+#lLFive{
+    height: 15px;
+    width: 0.5px;
+    transform: rotate(240deg);
+    top: 240px;
+    left: 200px;
+    border: 1px solid black;
+}
+
+#rLSix{
+    height: 15px;
+    width: 0.5px;
+    transform: rotate(300deg);
+    top: 240px;
+    left: 200px;
+    border: 1px solid black;
 }
