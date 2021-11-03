@@ -1,7 +1,13 @@
 import React, {useState} from 'react';
 import './Hangman.css';
 
-
+function createIndex(arr){
+    const listArray = arr.map((letter, index)=>{
+        return {word:letter, id:index}
+    })
+    console.log(listArray);
+    return listArray;
+}
 
 function Hangman() {
     const [text, setText] = useState();
@@ -25,7 +31,7 @@ function Hangman() {
             wordArray[i] = password.substring(i, i+1);
         }
 
-        setWord(wordArray);
+        setWord(createIndex(wordArray));
         console.log(wordArray);
 
         

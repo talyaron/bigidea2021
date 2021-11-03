@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Hangman.css';
 
-let word; 
+let word;
 let dashes = [];
 let wordarr= [];
 
@@ -22,18 +22,18 @@ function Hangman() {
         // ev.target.style.display = "none";
         setShowDom('none')
         // word.setShowDom()
-        for(let i=0; i<wordarr.length; i++){
+        for (let i = 0; i < wordarr.length; i++) {
             guessWordArray.push(wordarr[i]);
-            dashes[i]= '_'
+            dashes[i] = '_'
         }
         console.log(guessWordArray);
         console.log(dashes);
-        
-       
+
+
 
     }
 
-    function handleWriting(ev){
+    function handleWriting(ev) {
         setText(ev.target.value)
         const lastChar = ev.target.value.slice(-1)
 
@@ -45,7 +45,7 @@ function Hangman() {
         else {
             setColor('red');
         }
-            
+
     }
 
 
@@ -54,10 +54,10 @@ function Hangman() {
 
         <div>
             <div className='hangman'></div>
-            <form onSubmit={handleSubmit} id = 'container' style = {{ display: showDom}}>
+            <form onSubmit={handleSubmit} id='container' style={{ display: showDom }}>
                 <input type="password" name="secretWord" id="form" />
-                <input type="submit"  value= 'hide' />
-                
+                <input type="submit" value='hide' />
+
             </form>
             <div className = 'box' style={{background:color}}></div>
             Type your guess: 
@@ -69,15 +69,15 @@ function Hangman() {
             id = 'textbox'
             />
             {text}
-            <div className = "wrapper">
-             {dashes.map((letter, index)=>{
-                return(<div key={index}>"{letter}"</div>)
-        }
-            )}
+            <div className="wrapper">
+                {dashes.map((letter, index) => {
+                    return (<div key={index}>"{letter}"</div>)
+                }
+                )}
             </div>
-           
+
         </div>
-       
+
     )
 }
 
