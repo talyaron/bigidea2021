@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './Hangman.css';
 
 let word;
+let guessCount= 6;
 let dashes = [];
 let wordarr= [];
-let body= [0, 0, 0, 0, 0, 0];
 
 
 function Hangman() {
@@ -44,11 +44,7 @@ function Hangman() {
             setColor('green');
             for(let x=0; x<=wordarr.length; x++){
                 if(lastChar==wordarr[x]){
-                    dashes[x]= lastChar;
-                    
-                }
-                else{
-                    body[x]+= 1;
+                    dashes[x]= lastChar;   
                 }
                 for(let k= 0; k<=wordarr.length; k++){
                     if(wordarr[k]==1){
@@ -57,11 +53,14 @@ function Hangman() {
                 }
             }
 
-            setDashes(dashesTemp)
+
 
         }
         else {
             setColor('red');
+            guessCount--;
+            console.log(guessCount);   
+
         }
 
     }
@@ -101,7 +100,7 @@ function Hangman() {
                 <div className= "hangedMan">
                     <div id= "head"></div>
                     <div id= "bodyy"></div>
-                    <div id= "leftArm"></div>
+                     <div id= "leftArm"></div>
                     <div id= "rightArm"></div>
                     <div id= "leftLeg"></div>
                     <div id= "rightLeg"></div>
