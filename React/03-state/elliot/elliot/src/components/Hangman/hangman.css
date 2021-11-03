@@ -18,6 +18,13 @@
     width: fit-content;
 }
 
-.wrapper{
+.containerTwo{
+    background-color: gray;
+    min-height: 20vh;
     display: flex;
+    align-content: stretch;
+    margin: 20px;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
+

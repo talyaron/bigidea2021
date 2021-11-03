@@ -6,12 +6,7 @@ import './hangman.css'
 //<div className = "wrapper"> {word.map(letter,index) => return( <p key={index}> {letter} </p> )} </div>
 //This creates a list of words
 
-function createHangmanBlanks(arr){
-    let listArray = arr.map((elm, index) => {
-            return {character:"_", id:index}
-        })
-    return listArray;
-}
+let secretWordArray = [], guessBlanksArray = [], wrongAnswerArray = [];
 
 function HangmanGame(){
     
@@ -23,9 +18,8 @@ function HangmanGame(){
         let guessCharacterIndex = -1;
         const [guess, setGuess] = useState("");
 
-        let secretWordArray = [];
+        let secretBlanks = "";
         const [secret, setSecret] = useState("");
-        const [guessBlanksArray, setGuessBlanks] = useState([]);
 
         function handleSecretUpdate(ev){
             setSecret(ev.target.value.toLowerCase());
@@ -41,37 +35,45 @@ function HangmanGame(){
                 setShowSecret('none')
                 setShowGuess('block')
                 secretWordArray = [...secret];
-                setGuessBlanks(createHangmanBlanks(secretWordArray));
+                for(let len = 0; len < secretWordArray.length; len++){
+                    secretBlanks += "_";
+                }
+                console.log(secretBlanks);
+                guessBlanksArray = [...secretBlanks];
             }
         }
 
         function handleGuessUpdate(ev){
-            setGuess(ev.target.value.slice(-1));//Set to final character in guess text box
+            setGuess(ev.target.value.slice(-1).toLowerCase());//Set to final character in guess text box
             console.log(guess);
         }
 
-        function handleGuessConfirm(ev){
+        function handleGuessConfirm(){
             guessCharacterIndex = secret.indexOf(guess);
-            console.log("activating");
+            console.log(wrongAnswerArray);
             if (guessCharacterIndex === -1){
                 setColor('red');
 
-                wrongAnswerCounter++;
-                if(wrongAnswerCounter === 6){
-                    alert("The game is over, you lose...");
+                if(wrongAnswerArray.includes(guess)) {
+                    alert("You have already guessed this letter, please try another.");
+                } else {
+                    wrongAnswerArray.push(guess);
+
+                    wrongAnswerCounter++;
+                    if(wrongAnswerCounter === 6){
+                        alert("The game is over, you lose...");
+                    }
                 }
             } else {
                 setColor('green');
 
-                const guessBlanksArrayTemp = [...guessBlanksArray];
                 for(var index = 0; index < secretWordArray.length; index++) {
                     if(secretWordArray[index] === guess) {
-                        guessBlanksArrayTemp[index] = guess;
+                        guessBlanksArray[index] = guess;
                     }
                 }
-                setGuessBlanks(guessBlanksArrayTemp);
 
-                if (guessBlanksArray.indexOf("_") === -1) {
+                if (guessBlanksArray.indexOf('_') === -1) {
                     alert("You win, good job!")
                 }
 
@@ -82,7 +84,7 @@ function HangmanGame(){
         return(
             <div className = 'container' style={{background: color}}>             
                 <input 
-                    type='text'
+                    type='password'
                     id = 'inputStageOneText'
                     placeholder='Input Your Secret Word Here:'
                     style = {{ display: showSecret}}
@@ -100,9 +102,9 @@ function HangmanGame(){
                 <div style = {{ display: showGuess}}></div>
                 <div style = {{ display: showGuess}}></div>
 
-                <div className = "container">
-                    {guessBlanksArray.map((elm, index) => 
-                        { return (<div key = {elm.id}> {elm.character} </div>) }
+                <div className = "containerTwo">
+                    {guessBlanksArray.map((letter, index) => 
+                        { return (<div key = {index}>[{letter}]</div>) }
                     )}
                 </div>
                 <div>
@@ -115,7 +117,7 @@ function HangmanGame(){
                     placeholder='Input Your Guess Letter Here:'
                     id = 'inputStageTwoText'
                     style = {{ display: showGuess}}
-                    onKeyUp={handleGuessUpdate}>
+                    onInput={handleGuessUpdate}>
 
                 </input>
                 <input
