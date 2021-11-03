@@ -11,6 +11,10 @@ let secretWordArray = [], guessBlanksArray = [], wrongAnswerArray = [];
 function HangmanGame(){
     
         const [color, setColor] = useState('gray');
+        const canvas = document.querySelector('#stickFigureCanvas');
+        const ctx = canvas.getContext('2d');
+        drawLine([250, 0], [250, 100]);
+
         const [showSecret, setShowSecret] = useState('block');
         const [showGuess, setShowGuess] = useState('none');
         let wrongAnswerCounter = 0; //6 mistakes is game over
@@ -47,6 +51,22 @@ function HangmanGame(){
             setGuess(ev.target.value.slice(-1).toLowerCase());//Set to final character in guess text box
             console.log(guess);
         }
+
+        function drawLine(begin, end, stroke = 'black', width = 1) {
+            if (stroke) {
+                ctx.strokeStyle = stroke;
+            }
+        
+            if (width) {
+                ctx.lineWidth = width;
+            }
+        
+            ctx.beginPath();
+            ctx.moveTo(...begin);
+            ctx.lineTo(...end);
+            ctx.stroke();
+        }
+        
 
         function handleGuessConfirm(){
             guessCharacterIndex = secret.indexOf(guess);
@@ -107,9 +127,7 @@ function HangmanGame(){
                         { return (<div key = {index}>[{letter}]</div>) }
                     )}
                 </div>
-                <div>
-                    Placeholder for empty space.
-                </div>
+                <div></div>
 
 
                 <input 
