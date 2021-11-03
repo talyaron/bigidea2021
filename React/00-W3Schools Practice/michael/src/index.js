@@ -1,29 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const myfirstelement = <h1>Hello React!</h1>
-
-ReactDOM.render(myfirstelement, document.getElementById('root'));
-
-class Car {
-  constructor(name) {
-    this.brand = name;
-  }
-
-  present() {
-    return 'I have a ' + this.brand;
-  }
+const x = 5;
+let text = "Goodbye";
+if (x < 10) {
+  text = "Hello";
 }
 
-class Model extends Car {
-  constructor(name, mod) {
-    super(name);
-    this.model = mod;
-  }  
-  show() {
-    return this.present() + ', it is a ' + this.model
-  }
+const myelement = <h1>{text}</h1>;
+
+function Car() {
+  return <h2>Hi, I am a Car!</h2>;
 }
 
-mycar = new Model("Ford", "Mustang");
-document.write(mycar.show());
+ReactDOM.render(myelement, document.getElementById('root'));
+ReactDOM.render(<Car />, document.getElementById('root'));

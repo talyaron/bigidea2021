@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './Hangman.css';
 
-let guessWord, dashes = [], wordArr =[];
+let guessWord, dashes = [], wordArr =[], guessesLeft = 6;
 
 function Hangman() {
 
@@ -15,10 +15,51 @@ function Hangman() {
 
         char = char.toLowerCase();
 
+        if(!char) {
+            return;
+        }
+
         if(wordArr.includes(char)) {
-            setColor('green');         
-        } else {
+            setColor('green');
+            for(let i=0; i<=wordArr.length; i++) {
+                if(char == wordArr[i]) {
+                    dashes[i] = char;
+                }
+            }         
+        } else { // incorrect
             setColor('red');
+            guessesLeft -= 1;
+            console.log(`You have ${guessesLeft} guesses left.`);
+
+            switch(guessesLeft) {
+
+                case 5:
+                    console.log("5");
+                    //add head
+                    break;
+                case 4:
+                    console.log("4");
+                    //add body
+                    break;
+                case 3:
+                    console.log("3");
+                    //add left arm
+                    break;
+                case 2:
+                    console.log("2");
+                    //add right arm
+                    break;
+                case 1:
+                    console.log("1");
+                    //add left leg
+                    break;
+                case 0:
+                    console.log("0 game over");
+                    //add right leg
+                    //Game Over
+                    setColor('darkred');
+                    break;
+            }
         }
     }
 
@@ -48,9 +89,17 @@ function Hangman() {
             <input type="text" name="guessBox" placeholder="Guess a letter" onKeyUp={handleCheckText} maxLength="1"/>
             <div className="wrapper">
             {dashes.map((letter, index) => {
-                return(<div key={index}>"{letter}"</div>)
+                return(<div key={index}>'{letter}'</div>)
             }
             )}
+            </div>
+            <div className="stickfigure">
+                <div id="head"></div>
+                <div id="stickBody"></div>
+                <div id="leftArm"></div>
+                <div id="rightArm"></div>
+                <div id="leftLeg"></div>
+                <div id="rightLeg"></div>
             </div>
         </div>
     )

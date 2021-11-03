@@ -30,6 +30,12 @@ function Hangman() {
                     })
                 }
             </div>
+            <div className="head"></div>
+            <div className="body"></div>
+            <div className="arm1"></div>
+            <div className="arm2"></div>
+            <div className="leg1"></div>
+            <div className="leg2"></div>
         </div>
     )
 

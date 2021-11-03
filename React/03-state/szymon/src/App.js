@@ -13,8 +13,8 @@ function App() {
         <p>
             {/* <Counter/> */}
             {/* {<Select/>} */}
-            {/* {<Hangman/>} */}
-            {<List/>}
+            {<Hangman/>}
+            {/* {<List/>} */}
         </p>
       </header>
     </div>
