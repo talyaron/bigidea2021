@@ -3,5 +3,37 @@
     width: 200px;
     height: 200px;
     border: 1.5px dashed black;
+    border-radius: 5px;
     background-color: pink;
+}
+
+.wrapper{
+    display: flex;
+    text-align: center;
+}
+
+#head{
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: black;
+}
+
+#stickBody{
+    height: 40px;
+    width: 0.5px;
+    border: 1px solid black;
+    position: relative;
+    left: 10px;
+}
+
+#leftArm{
+    height: 15px;
+    width: 15px;
+    border-bottom: 1px solid black;
+    transform: rotate(-45deg);
+    position: relative;
+    left: -8px;
+    top: -45px;
 }
