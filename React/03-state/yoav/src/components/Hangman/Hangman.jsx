@@ -16,6 +16,7 @@ function Hangman() {
     const [word, setWord] = useState([]);
     const [revealedWord, setrevealedWord] = useState([]);
     const [randomWord, setRandomWord] = useState([]);
+    const [wrongs, setWrongs] = useState(0);
 
     let userInput;
     let secretWord2;
@@ -73,6 +74,10 @@ function Hangman() {
         }
         else {
             setColor('red');
+            setWrongs(wrongs + 1);
+            if (wrongs >= 6) {
+                console.log("Game Over");
+            }
         }
 
     }
@@ -119,6 +124,8 @@ function Hangman() {
                     })
                 }
             </div>
+
+            <div className='structure'></div>
         </div>
 
 
