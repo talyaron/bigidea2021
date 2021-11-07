@@ -15,18 +15,24 @@ function Hangman() {
 
         char = char.toLowerCase();
 
-        if(!char) {
-            return;
-        }
+        
 
         if(wordArr.includes(char)) {
+
             setColor('green');
             for(let i=0; i<=wordArr.length; i++) {
                 if(char == wordArr[i]) {
                     dashes[i] = char;
                 }
-            }         
+            }    
+
         } else { // incorrect
+
+            if(!char) {
+                console.log("no letter");
+                return;
+            }
+
             setColor('red');
             guessesLeft -= 1;
             console.log(`You have ${guessesLeft} guesses left.`);
@@ -37,29 +43,38 @@ function Hangman() {
                     console.log("5");
                     //add head
                     break;
+
                 case 4:
                     console.log("4");
                     //add body
                     break;
+
                 case 3:
                     console.log("3");
                     //add left arm
                     break;
+
                 case 2:
                     console.log("2");
                     //add right arm
                     break;
+
                 case 1:
                     console.log("1");
                     //add left leg
                     break;
+
                 case 0:
                     console.log("0 game over");
                     //add right leg
                     //Game Over
                     setColor('darkred');
                     break;
+
+                default:
+                    break;
             }
+            
         }
     }
 
@@ -67,7 +82,7 @@ function Hangman() {
         ev.preventDefault();
         guessWord = ev.target.elements.word.value;
         wordArr = guessWord.split("");
-        console.log(guessWord, wordArr);
+        console.log(guessWord);
         
         for(let i=0; i<wordArr.length; i++) {
             guessWordArray.push(wordArr[i]);
@@ -79,7 +94,7 @@ function Hangman() {
     }
 
     return(
-        <div className="guessBox" style={{background:color, width:`500px`, height:`150px`}}>
+        <div className="guessBox" style={{background:color, width:`500px`, height:`210px`}}>
             <p>Hangman</p>
             <form onSubmit={handleSubmit} style={{display:showResults}}>
                 <input type="password" name="word" placeholder="Type your secret word"/>
@@ -93,6 +108,7 @@ function Hangman() {
             }
             )}
             </div>
+            <p></p>
             <div className="stickfigure">
                 <div id="head"></div>
                 <div id="stickBody"></div>
