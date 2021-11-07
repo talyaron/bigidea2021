@@ -14,3 +14,9 @@
     display: flex;
     
 }
+
+.structure{
+    width: 100px;
+    height: 5px;
+    color: black;
+}
