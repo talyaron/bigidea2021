@@ -3,6 +3,7 @@ import { useState } from 'react';
 import cornShrine from './cornShrine.jpg';
 import friedChicken from './friedChicken.jpeg';
 import InNOut from './InNOut.jpeg';
+import 
 
 //images
 
