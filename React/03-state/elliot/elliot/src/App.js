@@ -23,10 +23,9 @@ function App() {
   return (
     <div className="App">
       
-      <HangmanGame />
+      <HangmanGame wrongCounter = {0} />
 
     </div>
   );
 }
-
 export default App;
