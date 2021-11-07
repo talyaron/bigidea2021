@@ -1,5 +1,4 @@
 import './Card.css'
-import Alaska from '../../'
 
 function Card(){
     return(
