@@ -7,7 +7,7 @@ let SecWord = []
 let hiddenElements;
 let setLifeTemp = 0
 
-function HideWord() {
+function HideWord(props) {
     const [tempArr, setTempArr] = useState([])
     const [color, setColor] = useState('red');
     const [text, setText] = useState();
@@ -99,7 +99,7 @@ function HideWord() {
             <div className='box' style={{ background: color }}>Green = Correct letter<br/>Red = Wrong letter</div>
 
             <div className='hangCont'>
-                <img src={circle} alt="head" id='head'/>
+                <img src={circle} alt="head" id='head' className={Shows? 'show'}/>
                 <img src={line} alt="leg1" id='leg1' />
                 <img src={line} alt="leg2" id='leg2' />
                 <img src={line} alt="body" id='body' />
