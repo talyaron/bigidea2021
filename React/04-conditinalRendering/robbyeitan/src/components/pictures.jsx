@@ -11,20 +11,34 @@ import {useState} from 'react'
 
 
 const memory = [
-    { text: 'Tel-Aviv', id: 1 }, { img:"1" , id: 1 },
-    { text: 'Jerusalem', id: 2 }, { img: "2" , id: 2 },
+    { text: 'Philly', id: 1 }, { text:"1" , id: 1 },
+    { text: 'New York City', id: 2 }, { text: "2" , id: 2 },
+    { text: 'K', id: 2 }, { text: "2" , id: 2 },
+    { text: 'Paris', id: 2 }, { text: "2" , id: 2 },
 ]
 
+
+
+ 
 function Memory() {
     const [cards, setCards] = useState(shuffle(memory));
 
-
+    function TernaryOperator(props){
+        const isGood= props.isGood
+        const [good, setGood]= useState(isGood)
+            
+        function handleClick(){
+           setGood(!good);
+    
+        }
+     
+        
     return (
         <div className='cards'>
             {cards.map((card, i) => {
             console.log(card.img)
                 return (card.img ?
-                    <div key={i} className='card' style={{backgroundImage:`url(${card.img})`}}></div>
+                    <div key={i} className={good?"hide box2": "show box2"} onClick={handleClick} style={{backgroundImage:`url(${card.img})`}}></div>
                     :
                     <div key={i} className='card'>{card.text}</div>
                     
@@ -34,7 +48,10 @@ function Memory() {
             }
         </div>
     )
-}
+    }
+
+
+
 
 
 function shuffle(array) {
@@ -54,4 +71,5 @@ function shuffle(array) {
 
     return array;
 }
-export default Memory;
+}
+export default Memory
