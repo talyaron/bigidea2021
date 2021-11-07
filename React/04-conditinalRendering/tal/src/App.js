@@ -6,7 +6,7 @@ import TernaryOperator from './components/TernaryOperator/TernaryOperator';
 function App() {
   return (
     <div className="App">
-      <TernaryOperator />
+      <TernaryOperator isGood={false} />
       {/* <Box isOne={true} dkfjghdjkfhgjk='aaa' sdfhsdfg='23' />
       <Box isOne={false} dkfjghdjkfhgjk='bbb' skjdh={true} /> */}
       <Switch img='hangman1' />
