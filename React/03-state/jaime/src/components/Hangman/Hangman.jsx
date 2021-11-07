@@ -1,13 +1,14 @@
 import { useState } from "react";
 import './Hangman.css';
 
-let guessWord, dashes = [], wordArr =[], guessesLeft = 6;
+let guessWord, wordArr = [], guessesLeft = 6;
 
 function Hangman() {
 
-    const[color, setColor] = useState('orange');
+    const [color, setColor] = useState('orange');
     const [showResults, setShowResults] = useState('block');
     const [guessWordArray, setGuessWordArray] = useState([]);
+    const [dashes, setDashes] = useState([])
 
     function handleCheckText(ev) {
         let value = ev.target.value, char = value.slice(-1);
@@ -15,20 +16,21 @@ function Hangman() {
 
         char = char.toLowerCase();
 
-        
 
-        if(wordArr.includes(char)) {
 
+        if (wordArr.includes(char)) {
+            const tempDashes = [...dashes]
             setColor('green');
-            for(let i=0; i<=wordArr.length; i++) {
-                if(char == wordArr[i]) {
-                    dashes[i] = char;
+            for (let i = 0; i <= wordArr.length; i++) {
+                if (char == wordArr[i]) {
+                    tempDashes[i] = char;
                 }
-            }    
+            }
+            setDashes(tempDashes)
 
         } else { // incorrect
 
-            if(!char) {
+            if (!char) {
                 console.log("no letter");
                 return;
             }
@@ -37,7 +39,7 @@ function Hangman() {
             guessesLeft -= 1;
             console.log(`You have ${guessesLeft} guesses left.`);
 
-            switch(guessesLeft) {
+            switch (guessesLeft) {
 
                 case 5:
                     console.log("5");
@@ -74,7 +76,7 @@ function Hangman() {
                 default:
                     break;
             }
-            
+
         }
     }
 
@@ -83,30 +85,30 @@ function Hangman() {
         guessWord = ev.target.elements.word.value;
         wordArr = guessWord.split("");
         console.log(guessWord);
-        
-        for(let i=0; i<wordArr.length; i++) {
+
+        for (let i = 0; i < wordArr.length; i++) {
             guessWordArray.push(wordArr[i]);
-            dashes[i]='_';
+            dashes[i] = '_';
         }
         console.log(guessWordArray);
         console.log(dashes);
         setShowResults('none');
     }
 
-    return(
-        <div className="guessBox" style={{background:color, width:`500px`, height:`210px`}}>
+    return (
+        <div className="guessBox" style={{ background: color, width: `500px`, height: `210px` }}>
             <p>Hangman</p>
-            <form onSubmit={handleSubmit} style={{display:showResults}}>
-                <input type="password" name="word" placeholder="Type your secret word"/>
+            <form onSubmit={handleSubmit} style={{ display: showResults }}>
+                <input type="password" name="word" placeholder="Type your secret word" />
                 <input type="submit" value="Hide" />
             </form>
             <p></p>
-            <input type="text" name="guessBox" placeholder="Guess a letter" onKeyUp={handleCheckText} maxLength="1"/>
+            <input type="text" name="guessBox" placeholder="Guess a letter" onKeyUp={handleCheckText} maxLength="1" />
             <div className="wrapper">
-            {dashes.map((letter, index) => {
-                return(<div key={index}>'{letter}'</div>)
-            }
-            )}
+                {dashes.map((letter, index) => {
+                    return (<div key={index}>'{letter}'</div>)
+                }
+                )}
             </div>
             <p></p>
             <div className="stickfigure">
