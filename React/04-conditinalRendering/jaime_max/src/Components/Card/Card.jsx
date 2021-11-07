@@ -1,7 +1,11 @@
 import './Card.css';
 import { useState } from 'react';
+import cornShrine from './cornShrine.jpg';
+import friedChicken from './friedChicken.jpeg';
+import InNOut from './InNOut.jpeg';
+import 
 
-
+//images
 
 function Card(){
 
@@ -10,7 +14,14 @@ function Card(){
     function handleShuffle() {
         
         let tempCardArray = [
-            {text: 'text', id: 1}
+            { text: '7 Eleven', id: 1 }, { img: , id: 1 },
+            { text: "In N' Out", id: 2 }, { img: , id: 2 },
+            { text: "Raising Cane's Chicken Fingers", id: 3 }, { img: , id: 3 },
+            { text: 'Corn Shrine', id: 4 }, { img: , id: 4 },
+            { text: 'Beaver Creek', id: 5 }, { img: , id: 5 },
+            { text: 'Lake Lure', id: 6 }, { img: , id: 6 },
+            { text: 'Boston Harbor', id: 7 }, { img: , id: 7 },
+            { text: 'Santa Monica Pier', id: 8 }, { img: , id: 8 },
         ];
         let currentIndex = tempCardArray.length,  randomIndex;
         
