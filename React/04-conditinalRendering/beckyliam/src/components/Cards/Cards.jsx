@@ -5,14 +5,14 @@ import './Cards.css'
 
     
 //imgs
-import Alaska from '../img/alaska.jpg'
-import Colorado from '../img/colorado.jpg'
-import Dubai from '../img/dubai.jpg'
-import Egypt from '../img/egypt.jpg'
-import India from '../img/india.jpg'
-import Japan from '../img/japan.jpg'
-import Nayara from '../img/'
-import redLight from '../img/redlight.jpg'
+import Alaska from '../../components/img/alaska.jpg'
+import Colorado from '../../components/img/colorado.jpg'
+import Dubai from '../../components/img/dubai.jpg'
+import Egypt from '../../components/img/egypt.jpg'
+import India from '../../components/img/india.jpg'
+import Japan from '../../components/img/japan.jpg'
+import Nayara from '../../components/img/nayara.jpg'
+import redLight from '../../components/img/redlight.jpg'
 
 const memory = [
     { text: 'Alaska', id: 1 }, { img: Alaska, id: 1 },
