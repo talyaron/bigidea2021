@@ -56,11 +56,41 @@ function Hangman() {
 
 
         }
-        else {
+        else { // incorrect
             setColor('red');
-            guessCount--;
-            console.log(guessCount);   
+            guessCount -= 1;
+            console.log(`You have ${guessCount} guesses left.`);
 
+            switch(guessCount) {
+
+                case 5:
+                    console.log("5");
+                    //add head
+                    break;
+                case 4:
+                    console.log("4");
+                    //add body
+                    break;
+                case 3:
+                    console.log("3");
+                    //add left arm
+                    break;
+                case 2:
+                    console.log("2");
+                    //add right arm
+                    break;
+                case 1:
+                    console.log("1");
+                    //add left leg
+                    break;
+                case 0:
+                    console.log("0 game over");
+                    //add right leg
+                    //Game Over
+                    setColor('darkred');
+                    alert('game over')
+                    break;
+            }
         }
 
     }

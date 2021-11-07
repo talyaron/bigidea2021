@@ -1,3 +1,8 @@
+.hangman{
+	margin-top: 15px;
+}
+
+
 .wrapper {
 	display: flex;
 	flex-direction: row;
@@ -7,4 +12,53 @@
 .box {
 	height: 100px;
 	width: 100px;
+	justify-content: ;
+}
+
+.hangCont{
+	position: relative;
+	left: 50vw;
+	top: 10vw;
+}
+
+#leg1{
+	position: relative;
+	right: 357px;
+	top: 50px;
+	transform: rotate(30deg);
+	
+
+}
+#leg2{
+	position: relative;
+	right: 253px;
+	top: 50px;
+	transform: rotate(-30deg);
+	
+
+}
+#arm1{
+	position: relative;
+	right: 440px;
+	bottom: 200px;
+	transform: rotate(30deg);
+	
+}
+#arm2{
+	position: relative;
+	right: 350px;
+	bottom: 200px;
+	transform: rotate(-30deg);
+	
+}
+#body{
+	position: relative;
+	right: 350px;
+	bottom: 180px;
+
+}
+#head{
+	position: relative;
+	right: 190px;
+	bottom: 430px;
 }

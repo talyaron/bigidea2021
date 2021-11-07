@@ -1,22 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
+import './components/img.js';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <boximg imgsrc="https://static.wikia.nocookie.net/helltaker/images/4/4d/Lucifer1Idle.png/revision/latest/smart/width/250/height/250?cb=20200622001106"/>
       </header>
     </div>
   );
