@@ -1,9 +1,19 @@
 import './List.css';
 import { useState } from 'react';
 
+function createIndex(arr) {
+    const listArray = arr.map((elm, index) => {
+    return {word:elm, id:index};
+    })
+    
+    return listArray;
+}
+
 function List() {
 
-    const [words, setWords] = useState([{id:1, word:'apple'},{id:2, word:'baby'}, {id:3,word:'cool'}, {id:4,word:'duck'}, {id:5,word:'elk!'}]);
+    const list = ['a', 'b', 'c', 'd', 'e', 'f'];
+    const listArray = createIndex(list);
+    const [words, setWords] = useState(listArray);
 
     function handleDelete(index) {
         console.log('delete', index);

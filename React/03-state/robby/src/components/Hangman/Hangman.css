@@ -5,5 +5,71 @@
 .box{
     width:100px;
     height:100px;
-    background: blue;
+    background-color: blue;
+}
+.hangedMan{
+    width: 100px;
+    height: 100px;
+}
+#head{
+    width: 20px;
+    height: 20px;
+    border-radius: 40px;
+    border: 1px solid black;
+    background-color: black;
+    position: relative;
+    left: 11px;
+}
+#bodyy{
+    height: 40px;
+    width: 0.5px;
+    border: 1px solid black;
+    background-color: black;
+    position: relative;
+    left: 20px;
+
+}
+#leftArm{
+    height: 15px;
+    width: 0.5px;
+    border: 1px solid black;
+    position: relative;
+    left: 13px;
+    border-bottom: 1px solid black;
+    transform: rotate(45deg);
+    top: -40px;
+
+}
+#rightArm{
+    height: 15px;
+    width: 0.5px;
+    left: 27.25px;
+    border: 1px solid black;
+    position: relative;
+    border-bottom: 1px solid black;
+    transform: rotate(-45deg);
+    top: -58px;
+    
+
+}
+#leftLeg{
+    height: 15px;
+    width: 0.5px;
+    border: 1px solid black;
+    position: relative;
+    left: 13px;
+    border-bottom: 1px solid black;
+    transform: rotate(45deg);
+    top: -40px;
+
+}
+#rightLeg{
+    height: 15px;
+    width: 0.5px;
+    left: 27.25px;
+    border: 1px solid black;
+    position: relative;
+    border-bottom: 1px solid black;
+    transform: rotate(-45deg);
+    top: -55px;
 }
