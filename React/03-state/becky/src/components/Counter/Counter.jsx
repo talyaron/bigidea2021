@@ -5,6 +5,7 @@ import './Counter.css'
 function Counter(){
     const [counter, setCounter] = useState(1)
     const [text, setText] = useState()
+    const [color, setColor] = useState('pink')
 function handleClick(){
     setCounter(counter+1)
 }

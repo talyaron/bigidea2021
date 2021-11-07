@@ -1,0 +1,54 @@
+.wrapper{
+    display: grid;
+}
+.head{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background-color: black;
+    position: relative;
+    left: 47%;
+}
+.body{
+    width: 20px;
+    height: 200px;
+    background: black;
+    position: relative;
+    left: 50%;
+}
+.arm1{
+    width: 150px;
+    height: 20px;
+    background: black;
+    position: relative;
+    bottom: 150px;
+    left: 42%;
+    transform: rotate(-45deg)
+}
+.arm2{
+    width: 150px;
+    height: 20px;
+    background: black;
+    position: relative;
+    bottom: 175px;
+    left: 49%;
+    transform: rotate(45deg)
+}
+.leg1{
+    width: 20px;
+    height: 150px;
+    background: black;
+    position: relative;
+    bottom: 67px;
+    left: 46.5%;
+    transform: rotate(45deg)
+}
+.leg2{
+    width: 20px;
+    height: 150px;
+    background: black;
+    position: relative;
+    bottom: 223px;
+    left: 53%;
+    transform: rotate(-45deg)
+}

@@ -1,0 +1,11 @@
+.hangman{
+    margin: 10px;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    user-select: none;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+}

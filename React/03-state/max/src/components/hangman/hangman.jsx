@@ -1,40 +1,44 @@
-import './hangman.css'
-import { useState } from 'react';
+import React, {useState} from 'react';
+import './Hangman.css';
 
+let randomWord = 'tiger'; 
 
+function Hangman() {
+    const [text, setText] = useState();
+    const [color, setColor] = useState('red');
+    
 
+    function handleKeyPress(ev){
+        setText(ev.target.value)
+        let lastChar = ev.target.value.slice(-1)
 
-function WordGuess() {
-    const [guess, setword] = useState();
-    const [color, setColor] = useState('red')
-    let word = 'red'
-    let pieces = word.split("");
-    console.log(pieces)
-
-
-    function handleSubmit(ev) {
-     
-        let guess = ev.target.value
-        for (let i = 0; i <= pieces.length; i++)
-            if (guess == pieces[i]) {
-                console.log('!!!!!!!!!!! CORRECT LET')
-               setColor('green')
-            }
-            else {
-                console.log("no :(")
-            }
-
+        if (randomWord.includes(lastChar)) {
+            console.log('Correct letter');
+            setColor('green');
+            // console.log('GREEN')
+        }
+        else {
+            setColor('red');
+            // console.log('RED')
+        }
+            
     }
 
+
+
     return (
-        <div className='cont'>
-            <input type="text" name="textinput" onKeyUp={handleSubmit} />
-            <div className='box' style={{ background: color }} ></div>
+
+        <div>
+            <div className='hangman'></div>
+            <div className = 'box' style={{background:color}}></div>
+
+            Guess a letter 
+            <input type = 'text' onKeyUp = {handleKeyPress} />
+            <div className = 'textContainer'id = 'textbox'/>
+            {text}
         </div>
-
-
-
     )
 }
 
-export default WordGuess;
+
+export default Hangman;
