@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const x = 5;
-let text = "Goodbye";
-if (x < 10) {
-  text = "Hello";
+function Car(props) {
+  return <h2>I am a { props.brand }!</h2>;
 }
 
-const myelement = <h1>{text}</h1>;
-
-function Car() {
-  return <h2>Hi, I am a Car!</h2>;
+function Garage() {
+  return (
+    <>
+      <h1>Who lives in my garage?</h1>
+      <Car brand="Ford" />
+    </>
+  );
 }
 
-ReactDOM.render(myelement, document.getElementById('root'));
-ReactDOM.render(<Car />, document.getElementById('root'));
+ReactDOM.render(<Garage />, document.getElementById('root'));

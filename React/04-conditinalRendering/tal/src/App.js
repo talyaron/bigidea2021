@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import Box from './components/If/If';
+import Switch from './components/Switch/Switch';
+import TernaryOperator from './components/TernaryOperator/TernaryOperator';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TernaryOperator isGood={false} />
+      {/* <Box isOne={true} dkfjghdjkfhgjk='aaa' sdfhsdfg='23' />
+      <Box isOne={false} dkfjghdjkfhgjk='bbb' skjdh={true} /> */}
+      <Switch img='hangman1' />
+      <Switch img='hangman2' />
+      <Switch img='dragon' />
+      <Switch img='fish' />
     </div>
   );
 }
