@@ -10,6 +10,13 @@
     background-image: fill;
     background-color: coral;
 }
-
+div{
+    width: 200px;
+    height: 200px;
+    object-fit: fill;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
     
 

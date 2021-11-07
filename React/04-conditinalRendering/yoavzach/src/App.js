@@ -7,10 +7,26 @@ import mcQueen from './images/mcQueen.jpg';
 
 function App() {
   return (
-    <div className="App">
-      <Card source={buzz}/>
-      <Card source={mcQueen}/>
+    <div className="Container">
+      <Card source={buzz} />
+      <Card source={mcQueen}  />
+      <Card source={buzz} />
+      <Card source={mcQueen}  /> 
+      <Card source={buzz} />
+      <Card source={mcQueen}  />
+       <Card source={buzz} />
+      <Card source={mcQueen}  />
+       <Card source={buzz} />
+      <Card source={mcQueen}  />
+       <Card source={buzz} />
+      <Card source={mcQueen}  />
+       <Card source={buzz} />
+      <Card source={mcQueen}  />
+       <Card source={buzz} />
+      <Card source={mcQueen}  />
       
+
+
     </div>
   );
 }

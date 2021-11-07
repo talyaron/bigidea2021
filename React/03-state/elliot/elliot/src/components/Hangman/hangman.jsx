@@ -32,10 +32,6 @@ function HangmanGame(props){
         let secretBlanks = "";
         const [secret, setSecret] = useState("");
 
-        function handleImageUpdate(){
-
-
-        }
 
         function handleSecretUpdate(ev){
             setSecret(ev.target.value.toLowerCase());
