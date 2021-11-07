@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const x = 5;
-let text = "Goodbye";
-if (x < 10) {
-  text = "Hello";
+function Football() {
+  const shoot = (a, b) => {
+    alert(b.type);
+    /*
+    'b' represents the React event that triggered the function,
+    in this case the 'click' event
+    */
+  }
+
+  return (
+    <button onClick={(event) => shoot("Goal!", event)}>Take the shot!</button>
+  );
 }
 
-const myelement = <h1>{text}</h1>;
-
-function Car() {
-  return <h2>Hi, I am a Car!</h2>;
-}
-
-ReactDOM.render(myelement, document.getElementById('root'));
-ReactDOM.render(<Car />, document.getElementById('root'));
+ReactDOM.render(<Football />, document.getElementById('root'));

@@ -1,0 +1,13 @@
+.counter{
+    margin: 10px;
+    border-radius: 5px;
+    background-color: antiquewhite;
+    user-select: none;
+    padding: 20px;
+    width: fit-content;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+}
