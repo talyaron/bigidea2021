@@ -1,0 +1,1 @@
+import './ternaryOperator.css'
