@@ -1,0 +1,14 @@
+
+.blank 
+{
+ background-color: black;
+ padding: 20px 40px;
+ width: 40px;
+ height: 40px;
+ margin: 10px;
+ color: white;
+}
+.flipped{
+    background-color: white;
+    color: black;
+}
