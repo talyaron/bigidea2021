@@ -4,8 +4,8 @@
 }
 
 .box{
-    width:100px;
-    height:100px;
+    width:200px;
+    height:200px;
     background-color: blue;
     border-radius: 10px;
 }
@@ -22,7 +22,7 @@
     position: relative;
     left: 11px;
 }
-#bodyy{
+#body{
     height: 40px;
     width: 0.5px;
     border: 1px solid black;
