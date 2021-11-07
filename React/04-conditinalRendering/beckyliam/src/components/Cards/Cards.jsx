@@ -27,7 +27,11 @@ const memory = [
 
 function Cards() {
     const [cards, setCards] = useState(shuffle(memory));
+    const [, hideCards] =useState()
 
+    function onClick(){
+        
+    }
 
     return (
         <div className='cards'>
