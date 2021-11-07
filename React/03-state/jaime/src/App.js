@@ -11,6 +11,8 @@ function App() {
         <Hangman />
         <ImageSelector />
         <List />
+
+      
     </div>
   );
 }
