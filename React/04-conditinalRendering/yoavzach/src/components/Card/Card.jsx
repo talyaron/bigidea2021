@@ -1,12 +1,14 @@
 import './Card.css'
+import PropTypes from 'prop-types'
 
-function Card(){
-    return(
-    <div className='card'>
-        Lightning McQueen
-        </div>
-
-    )
+const Card = ({source,id}) =>{
+    return <div className='card'>
+    <img src={source} alt="Hi" />
+    </div>
 }
+    
+
+
+
 
 export default Card;
