@@ -10,75 +10,48 @@ import {useState} from 'react'
 
 
 
-function Memory(props){
-    const isGood = props.isGood;
-    const [good, setGood]= useState(isGood)
-    const memoryArray= [{text: 'Philly', id: '1'}, {picture:'' /* import picture*/, id: '1'}, {text: 'New York City', id: '2'}, {picture: ''/* import picture*/, id: '2'},]
-    function Memory(){
-        const [cards, setCards]= useState(shuffle(memory))
-    }
-  
-    function handleClick1(){
-       setGood(!good);
+const memory = [
+    { text: 'Tel-Aviv', id: 1 }, { img:"1" , id: 1 },
+    { text: 'Jerusalem', id: 2 }, { img: "2" , id: 2 },
+]
 
-    }
-    function handleClick2(){
-       setGood(!good);
+function Memory() {
+    const [cards, setCards] = useState(shuffle(memory));
 
-    }
-    function handleClick3(){
-       setGood(!good);
 
-    }
-    function handleClick4(){
-       setGood(!good);
-
-    }
-    function handleClick1(){
-       setGood(!good);
-
-    }
-    function handleClick1(){
-       setGood(!good);
-
-    }
-    function handleClick1(){
-       setGood(!good);
-
-    }
-    function handleClick1(){
-       setGood(!good);
-
-    }
     return (
-        <div className= "container">
-        <div className={good?"blank": "flipped 1"} onClick={handleClick1}>
-            
+        <div className='cards'>
+            {cards.map((card, i) => {
+            console.log(card.img)
+                return (card.img ?
+                    <div key={i} className='card' style={{backgroundImage:`url(${card.img})`}}></div>
+                    :
+                    <div key={i} className='card'>{card.text}</div>
+                    
+                )
+
+            })
+            }
         </div>
-        <div className={good?"blank": "flipped 1"} onClick={handleClick}>
-            
-        </div>
-        <div className={good?"blank": "flipped 2"} onClick={handleClick}>
-            
-        </div>
-        <div className={good?"blank ": "flipped 2"} onClick={handleClick}>
-            
-        </div>
-        <div className={good?"blank": "flipped 3"} onClick={handleClick}>
-            
-        </div>
-        <div className={good?"blank ": "flipped 3"} onClick={handleClick}>
-            
-        </div>
-        <div className={good?"blank ": "flipped 4"} onClick={handleClick}>
-            
-        </div>
-        <div className={good?"blank ": "flipped 4"} onClick={handleClick}>
-            
-        </div>
-        </div>
-    
     )
 }
 
-export default Memory
+
+function shuffle(array) {
+    let currentIndex = array.length, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (currentIndex !== 0) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
+}
+export default Memory;
