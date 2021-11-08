@@ -8,15 +8,19 @@ function Hangman() {
     const [color, setColor] = useState('orange');
     const [showResults, setShowResults] = useState('block');
     const [guessWordArray, setGuessWordArray] = useState([]);
-    const [dashes, setDashes] = useState([])
+    const [dashes, setDashes] = useState([]);
+    const [hideBox1, setHideBox1]= useState('none');
+    const [hideBox2, setHideBox2]= useState('none');
+    const [hideBox3, setHideBox3]= useState('none');
+    const [hideBox4, setHideBox4]= useState('none');
+    const [hideBox5, setHideBox5]= useState('none');
+    const [hideBox6, setHideBox6]= useState('none');
 
     function handleCheckText(ev) {
         let value = ev.target.value, char = value.slice(-1);
         console.log(char);
 
         char = char.toLowerCase();
-
-
 
         if (wordArr.includes(char)) {
             const tempDashes = [...dashes]
@@ -43,32 +47,32 @@ function Hangman() {
 
                 case 5:
                     console.log("5");
-                    //add head
+                    setHideBox1('block');
                     break;
 
                 case 4:
                     console.log("4");
-                    //add body
+                    setHideBox2('block');
                     break;
 
                 case 3:
                     console.log("3");
-                    //add left arm
+                    setHideBox3('block');
                     break;
 
                 case 2:
                     console.log("2");
-                    //add right arm
+                    setHideBox4('block');
                     break;
 
                 case 1:
                     console.log("1");
-                    //add left leg
+                    setHideBox5('block');
                     break;
 
                 case 0:
                     console.log("0 game over");
-                    //add right leg
+                    setHideBox6('block');
                     //Game Over
                     setColor('darkred');
                     break;
@@ -112,12 +116,12 @@ function Hangman() {
             </div>
             <p></p>
             <div className="stickfigure">
-                <div id="head"></div>
-                <div id="stickBody"></div>
-                <div id="leftArm"></div>
-                <div id="rightArm"></div>
-                <div id="leftLeg"></div>
-                <div id="rightLeg"></div>
+                <div id="head" display={hideBox1}></div>
+                <div id="stickBody" display={hideBox2}></div>
+                <div id="leftArm" display={hideBox3}></div>
+                <div id="rightArm" display={hideBox4}></div>
+                <div id="leftLeg" display={hideBox5}></div>
+                <div id="rightLeg" display={hideBox6}></div>
             </div>
         </div>
     )
