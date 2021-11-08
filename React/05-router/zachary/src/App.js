@@ -10,6 +10,7 @@ import Contact from "./views/Contact";
 function App() {
   return (
     <Router>
+      
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/blogs">Blogs</Link></li>
