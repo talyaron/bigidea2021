@@ -37,9 +37,9 @@ function App() {
        <Route path="/levelTwoA" element ={<LevelTwoA/>} />
        <Route path="/levelTwoB" element ={<LevelTwoB/>} />
        <Route path="/levelTwoC" element ={<LevelTwoC/>} />
-       <Route path= "/LevelThreeAA" element = {<LevelThreeAA/>} />
-       <Route path= "/LevelThreeAB" element = {<LevelThreeAB/>} />
-       <Route path= "/LevelThreeAC" element = {<LevelThreeAC/>} />
+       <Route path="/levelThreeA/LevelThreeAA" element = {<LevelThreeAA/>} />
+       <Route path= "LevelThreeAB" element = {<LevelThreeAB/>} />
+       <Route path= "LevelThreeAC" element = {<LevelThreeAC/>} />
        <Route path= "/LevelFourAAA" element = {<LevelFourAAA/>} />
        <Route path= "/LevelFourAAB" element = {<LevelFourAAB/>} />
        <Route path= "/LevelFourAAC" element = {<LevelFourAAC/>} />
