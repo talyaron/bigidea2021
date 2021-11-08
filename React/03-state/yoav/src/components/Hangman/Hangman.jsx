@@ -55,6 +55,7 @@ function Hangman() {
         if (randomWord.includes(lastChar)) {
 
             const revealedWordArray = [...revealedWord];
+            let tempWord = randomWord;
             
             console.log('YES');
             setColor('green');
@@ -63,8 +64,32 @@ function Hangman() {
     
             const index = revealedWordArray.findIndex(letter=> letter.word === lastChar);
             const wordArrayTemp = [...word];
+            
             wordArrayTemp[index] = lastChar;
+
+            console.log("random word = " + randomWord);
+            
+            tempWord = tempWord.slice(0, index) + tempWord.slice(index + 1);
+            console.log("temp word = " + tempWord);
+
+            if (tempWord.includes(lastChar)) {
+                const doubleLetterArray = [...tempWord];
+                const index2 = doubleLetterArray.indexOf(lastChar);
+                console.log("INDEX 2 " + index2);
                 
+                if (index2 > index) {
+                    wordArrayTemp[index2+1] = lastChar;
+                }
+                else if (index2 == index) {
+                    wordArrayTemp[index2 + 1] = lastChar;
+                }
+                else {
+                    wordArrayTemp[index2] = lastChar;
+                }
+
+            }
+            
+            console.log("WORD TEMP " + wordArrayTemp);
             setWord(wordArrayTemp);
             
             
@@ -125,7 +150,7 @@ function Hangman() {
                 }
             </div>
 
-            <div className='structure'></div>
+            {/* <div className='structureTop' style = {{display: setShowDom('none')}}></div> */}
         </div>
 
 

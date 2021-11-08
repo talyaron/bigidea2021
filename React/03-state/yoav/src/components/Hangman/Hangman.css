@@ -15,8 +15,9 @@
     
 }
 
-.structure{
+.structureTop{
     width: 100px;
     height: 5px;
-    color: black;
+    background-color: black;
 }
+
