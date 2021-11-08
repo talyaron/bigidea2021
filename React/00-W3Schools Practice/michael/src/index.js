@@ -1,22 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function Garage(props) {
-  const cars = props.cars;
+function Car(props) {
+  return <li>I am a { props.brand }</li>;
+}
+
+function Garage() {
+  const cars = [
+    {id: 1, brand: 'Ford'},
+    {id: 2, brand: 'BMW'},
+    {id: 3, brand: 'Audi'}
+  ];
   return (
     <>
-      <h1>Garage</h1>
-      {cars.length > 0 &&
-        <h2>
-          You have {cars.length} cars in your garage.
-        </h2>
-      }
+      <h1>Who lives in my garage?</h1>
+      <ul>
+        {cars.map((car) => <Car key={car.id} brand={car.brand} />)}
+      </ul>
     </>
   );
 }
 
-const cars = ['Ford', 'BMW', 'Audi', 'Honda'];
-ReactDOM.render(
-  <Garage cars={cars} />,
-  document.getElementById('root')
-);
+ReactDOM.render(<Garage />, document.getElementById('root'));
+

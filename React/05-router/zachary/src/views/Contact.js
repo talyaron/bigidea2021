@@ -1,0 +1,16 @@
+import { Link } from 'react-router-dom';
+import Pizza from '../images/pizza.jpg';
+import Fish from '../images/fish.jpg';
+import Images from '../components/Images';
+const Contact = () => {
+  return <div>
+    <h1>Which one is better?</h1>
+    <div className="Parent">
+      <Images source={Pizza} next='/Contact' name="Pizza" />
+      <Images source={Fish} next='/Blogs' name="Fish" />
+    </div>
+  </div>;
+
+};
+
+export default Contact;
