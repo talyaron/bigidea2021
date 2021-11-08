@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 
-//<li><Link to="/">Home</Link></li>
-
 const FortTwo = () => {
     return <div>
-        <h1>1</h1>
+        <h1>You will be a major CEO for a technology firm!</h1>
+        <li><Link to="/">Restart The Game.</Link></li>
     </div>;
 };
   
