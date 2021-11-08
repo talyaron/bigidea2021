@@ -1,14 +1,14 @@
 
 .cards 
 {
- background-color: black;
+ background-color: blue;
  display: grid;
  grid-template-columns: repeat(2, 100px);
  grid-template-rows: repeat(2, 100px);
  padding: 20px 40px;
  border-width: 10px;
  border-color: red;
- margin: 10px;
+ margin: 40px;
  color: white;
 }
 .flipped{
