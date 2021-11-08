@@ -6,6 +6,10 @@ import './App.css';
 import Home from "./views/Home";
 import Blogs from "./views/Blogs";
 import Contact from "./views/Contact";
+import Fortune1 from "./views/Fortune1";
+import Fortune2 from "./views/Fortune2";
+import Fortune3 from "./views/Fortune3";
+import Fortune4 from "./views/Fortune4";
 
 function App() {
   return (
@@ -20,6 +24,11 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/Blogs" element={<Blogs />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/Fortune1" element={<Fortune1/>}/>
+        <Route path="/Fortune2" element={<Fortune2/>}/>
+        <Route path="/Fortune3" element={<Fortune3/>}/>
+        <Route path="/Fortune4" element={<Fortune4/>}/>
+
       </Routes>
     </Router>
 
