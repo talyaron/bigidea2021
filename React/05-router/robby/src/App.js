@@ -43,7 +43,6 @@ import LevelFourCBB from "./views/levelOne/levelTwo/levelThreeC/levelFourCB/leve
 
 
 
-
 function App() {
   return (
     <Router>
@@ -69,6 +68,7 @@ function App() {
        <Route path= "/LevelFourACA" element = {<LevelFourACA/>} />
        <Route path= "/LevelFourACB" element = {<LevelFourACB/>} />
        <Route path= "/LevelFourACC" element = {<LevelFourACC/>} />
+
        <Route path ="LevelThreeBA/" element = {<LevelThreeBA/>} />
        <Route path ="LevelThreeBB/" element = {<LevelThreeBB/>} />
        <Route path ="LevelThreeBC/" element = {<LevelThreeBC/>} />
@@ -89,6 +89,9 @@ function App() {
        <Route path= "/LevelFourCBA" element = {<LevelFourCBA/>} />
        <Route path= "/LevelFourCBB" element = {<LevelFourCBB/>} />
 
+
+       <Route path="/levelThreeC/LevelThreeCA" element = {<LevelThreeCA/>} />
+       <Route path="/LevelThreeCB" element = {<LevelThreeCB/>} />
 
      
      </Routes>
