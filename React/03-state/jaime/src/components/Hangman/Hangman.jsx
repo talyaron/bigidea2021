@@ -117,12 +117,12 @@ function Hangman() {
             </div>
             <p></p>
             <div className="stickfigure">
-                <div id="head" display={hideBox1}></div>
-                <div id="stickBody" display={hideBox2}></div>
-                <div id="leftArm" display={hideBox3}></div>
-                <div id="rightArm" display={hideBox4}></div>
-                <div id="leftLeg" display={hideBox5}></div>
-                <div id="rightLeg" display={hideBox6}></div>
+                <div id="head" style={{display:hideBox1}}></div>
+                <div id="stickBody" style={{display:hideBox2}}></div>
+                <div id="leftArm" style={{display:hideBox3}}></div>
+                <div id="rightArm" style={{display:hideBox4}}></div>
+                <div id="leftLeg" style={{display:hideBox5}}></div>
+                <div id="rightLeg" style={{display:hideBox6}}></div>
             </div>
         </div>
     )
