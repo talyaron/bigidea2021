@@ -6,8 +6,8 @@ const Contact = () => {
   return <div>
     <h1>Which one is better?</h1>
     <div className="Parent">
-      <Images source={Pizza} next='/Contact' name="Pizza" />
-      <Images source={Fish} next='/Blogs' name="Fish" />
+      <Images source={Pizza} next='/Fortune3' name="Pizza" />
+      <Images source={Fish} next='/Fortune4' name="Fish" />
     </div>
   </div>;
 
