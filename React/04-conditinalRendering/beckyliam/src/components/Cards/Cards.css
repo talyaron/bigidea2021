@@ -17,6 +17,7 @@ div{
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    border: 1px solid black;
 }
     
 
