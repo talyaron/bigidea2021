@@ -20,6 +20,13 @@ import LevelFourABC from "./views/levelOne/levelTwo/levelThreeA/levelFourAB/leve
 import LevelFourACA from "./views/levelOne/levelTwo/levelThreeA/levelFourAC/levelFourACA";
 import LevelFourACB from "./views/levelOne/levelTwo/levelThreeA/levelFourAC/levelFourACB";
 import LevelFourACC from "./views/levelOne/levelTwo/levelThreeA/levelFourAC/levelFourACC";
+import LevelThreeCA from "./views/levelOne/levelTwo/levelThreeC/levelThreeCA";
+import LevelThreeCB from "./views/levelOne/levelTwo/levelThreeC/levelThreeCB";
+import LevelThreeCC from "./views/levelOne/levelTwo/levelThreeC/levelThreeCC";
+import LevelFourCAA from "./views/levelOne/levelTwo/levelThreeC/levelFourCA/levelFourCAA";
+import LevelFourCAB from "./views/levelOne/levelTwo/levelThreeC/levelFourCA/levelFourCAB";
+import LevelFourCBA from "./views/levelOne/levelTwo/levelThreeC/levelFourCB/levelFourCBA";
+import LevelFourCBB from "./views/levelOne/levelTwo/levelThreeC/levelFourCB/levelFourCBB";
 
 
 

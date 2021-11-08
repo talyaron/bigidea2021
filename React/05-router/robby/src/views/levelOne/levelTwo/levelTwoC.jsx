@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 const LevelTwoC = () => {
-    return <div><h1>Pick A game</h1>
-    <Link to ='/levelThreeCA'>Smash Bros</Link><br></br>
-    <Link to ='/levelThreeCB'>COD</Link><br></br>
-    <Link to ='/levelThreeCC'>Minecraft</Link><br></br>
+    return <div><h1>Pick A Planet</h1>
+    <Link to ='/levelThreeCA'>Mars</Link><br></br>
+    <Link to ='/levelThreeCB'>Earth</Link><br></br>
+    <Link to ='/levelThreeCC'>Uranus</Link><br></br>
     </div>
   };
   
