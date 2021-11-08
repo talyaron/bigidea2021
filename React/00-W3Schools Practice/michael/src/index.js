@@ -1,18 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function Football() {
-  const shoot = (a, b) => {
-    alert(b.type);
-    /*
-    'b' represents the React event that triggered the function,
-    in this case the 'click' event
-    */
-  }
-
+function Garage(props) {
+  const cars = props.cars;
   return (
-    <button onClick={(event) => shoot("Goal!", event)}>Take the shot!</button>
+    <>
+      <h1>Garage</h1>
+      {cars.length > 0 &&
+        <h2>
+          You have {cars.length} cars in your garage.
+        </h2>
+      }
+    </>
   );
 }
 
-ReactDOM.render(<Football />, document.getElementById('root'));
+const cars = ['Ford', 'BMW', 'Audi', 'Honda'];
+ReactDOM.render(
+  <Garage cars={cars} />,
+  document.getElementById('root')
+);

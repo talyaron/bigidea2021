@@ -17,6 +17,12 @@ function Hangman() {
     const [hideBox6, setHideBox6]= useState('none');
 
     function handleCheckText(ev) {
+
+        if((dashes.includes('_') == false)) {
+            alert("You Win! Hell yeah");
+            return;
+        }
+
         let value = ev.target.value, char = value.slice(-1);
         console.log(char);
 
@@ -42,6 +48,7 @@ function Hangman() {
             setColor('red');
             guessesLeft -= 1;
             console.log(`You have ${guessesLeft} guesses left.`);
+
 
             switch (guessesLeft) {
 
@@ -109,6 +116,7 @@ function Hangman() {
             </form>
             <p></p>
             <input type="text" name="guessBox" placeholder="Guess a letter" onKeyUp={handleCheckText} maxLength="1" />
+            <div>Lives left: {guessesLeft}</div>
             <div className="wrapper">
                 {dashes.map((letter, index) => {
                     return (<div key={index}>'{letter}'</div>)
@@ -123,7 +131,7 @@ function Hangman() {
                 <div id="rightArm" style={{display:hideBox4}}></div>
                 <div id="leftLeg" style={{display:hideBox5}}></div>
                 <div id="rightLeg" style={{display:hideBox6}}></div>
-            </div>
+        </div>
         </div>
     )
 }
