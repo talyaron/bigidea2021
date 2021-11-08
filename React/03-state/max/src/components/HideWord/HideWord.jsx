@@ -64,7 +64,6 @@ function HideWord(props) {
             else{
                 if(alert(`you won!!! the word was: ${hiddenElements}`)){}
                 else{window.location.reload();}
-                console.log("11111111111111111111111111111111111111")
             }
         }
     
