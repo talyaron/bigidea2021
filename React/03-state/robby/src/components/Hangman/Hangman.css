@@ -1,75 +1,72 @@
-.wrapper{
-    display: flex;
+.guessBox{
+    margin: 10px;
+    border: 1.5px dashed black;
+    border-radius: 5px;
+    background-color: pink;
 }
 
-.box{
-    width:100px;
-    height:100px;
-    background-color: blue;
+.wrapper{
+    display: flex;
+    text-align: center;
 }
-.hangedMan{
-    width: 100px;
-    height: 100px;
+
+.stickfigure{
+    position: relative;
+    left: 240px;
 }
+
 #head{
     width: 20px;
     height: 20px;
-    border-radius: 40px;
     border: 1px solid black;
+    border-radius: 20px;
     background-color: black;
-    position: relative;
-    left: 11px;
 }
-#bodyy{
+
+#stickBody{
     height: 40px;
     width: 0.5px;
     border: 1px solid black;
-    background-color: black;
     position: relative;
-    left: 20px;
-
+    left: 10px;
 }
+
 #leftArm{
     height: 15px;
-    width: 0.5px;
-    border: 1px solid black;
-    position: relative;
-    left: 13px;
+    width: 15px;
     border-bottom: 1px solid black;
-    transform: rotate(45deg);
-    top: -40px;
-
+    transform: rotate(-45deg);
+    position: relative;
+    left: -8px;
+    top: -45px;
 }
+
 #rightArm{
     height: 15px;
-    width: 0.5px;
-    left: 27.25px;
-    border: 1px solid black;
-    position: relative;
-    border-bottom: 1px solid black;
-    transform: rotate(-45deg);
-    top: -58px;
-    
-
-}
-#leftLeg{
-    height: 15px;
-    width: 0.5px;
-    border: 1px solid black;
-    position: relative;
-    left: 13px;
+    width: 15px;
     border-bottom: 1px solid black;
     transform: rotate(45deg);
-    top: -40px;
-
-}
-#rightLeg{
-    height: 15px;
-    width: 0.5px;
-    left: 27.25px;
-    border: 1px solid black;
     position: relative;
+    left: 15px;
+    top: -61px;
+}
+
+#leftLeg{
+    height: 15px;
+    width: 15px;
     border-bottom: 1px solid black;
     transform: rotate(-45deg);
-    top: -55px;
+    position: relative;
+    left: -8px;
+    top: -41px;
+}
+
+#rightLeg{
+    height: 15px;
+    width: 15px;
+    border-bottom: 1px solid black;
+    transform: rotate(45deg);
+    position: relative;
+    left: 15px;
+    top: -57px;
 }

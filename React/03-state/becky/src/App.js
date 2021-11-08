@@ -12,7 +12,7 @@ import Switch from './components/Hangman/Box/Box';
 function App() {
   return (
     <div className="App">
-      <Switch/>
+      <Hangman/>
     </div>
   );
 }

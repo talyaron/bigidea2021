@@ -15,8 +15,7 @@ import TernaryOperator from "./components/Box/TernaryOperator"
 function App() {
   return (
     <div className="App">
-  <TernaryOperator isGood={true}/>
-  <TernaryOperator isGood={false}/>
+ <Hangman />
    
 
 

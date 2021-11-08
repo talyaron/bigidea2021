@@ -14,14 +14,6 @@ function HideWord(props) {
     const [secWordBlanks, setSecWordBlanks] = useState([]);
     const [life, setLife] = useState(0)
 
-    // let leg1 = document.getElementById('leg1').style="display:none";
-    // let leg2 = document.getElementById('leg2').style="display:none";
-    // let arm1 = document.getElementById('arm1').style="display:none";
-    // let arm2 = document.getElementById('arm2').style="display:none";
-    // let head = document.getElementById('head').style="display:none";
-    // let body = document.getElementById('body').style="display:none";
-    
-    
     
     function handleHideWord(ev) {
 
@@ -39,76 +31,197 @@ function HideWord(props) {
         console.log(secWordBlanksTemp)
         setSecWordBlanks(secWordBlanksTemp)
     }
+    
+    let correctL = hiddenElements;
+    let correctGL = '';
+
+
     function handleWriting(ev) {
         setText(ev.target.value)
         const lastChar = ev.target.value.slice(-1)
+
         
-        
-        if (hiddenElements.includes(lastChar)) {
-            console.log('YES');
-            setColor('green');
-            for(let x = 0; x<=SecWord.length; x++){
-                if(lastChar === SecWord[x]){
-                    secWordBlanks[x] = lastChar
+        console.log(SecWord)
+        console.log(secWordBlanks)
+
+        if(correctGL != correctL){
+            if (hiddenElements.includes(lastChar)) {
+                    console.log('YES');
+                    setColor('green');
+                    correctGL = lastChar + correctL
+                    for(let x = 0; x<=SecWord.length; x++){
+                        if(lastChar === SecWord[x]){
+                            secWordBlanks[x] = lastChar
+                        }
+                    }
                 }
+                else {
+                    setColor('red');
+                    setLifeTemp ++
+                    setLife(setLifeTemp)
+                }
+        }
+            else{
+                if(alert(`you won!!! the word was: ${hiddenElements}`)){}
+                else{window.location.reload();}
+                console.log("11111111111111111111111111111111111111")
             }
         }
-        else {
-            setColor('red');
-            setLifeTemp ++
-            setLife(setLifeTemp)
-        }
-    }
+    
         switch(life){
+            case 0:
+                return(
+                    <div className='hangman'>
+                        <form onSubmit={handleHideWord}>
+                            <input type="password" placeholder='Input secret word here' name='hidden' />
+                            <input type='submit' value='hide' />
+                        </form>
+                        
+                        <input type='text' maxLength="1" placeholder='Input guess here' onKeyUp={handleWriting} />
+                        <div className='textContainer' id='textbox' /> 
+                        <div className="wrapper">
+                            {secWordBlanks.map((letter, index) => {
+                                return (<div key={index}>[{letter}]</div>
+                            )})}
+                        </div>
+                        <div className='box' style={{ background: color }}>Green = Correct letter<br/>Red = Wrong letter</div>
+                    </div>
+    )
+    
+    
             case 1:
                 console.log('1')
-                break;
+                return(
+                    <div className="hangman">
+                        <input type='text' maxLength="1" placeholder='Input guess here' onKeyUp={handleWriting} />
+                        <div className='textContainer' id='textbox' /> 
+                        <div className="wrapper">
+                            {secWordBlanks.map((letter, index) => {
+                                return (<div key={index}>[{letter}]</div>
+                            )})}
+                        </div>
+                        <div className='box' style={{ background: color }}>Green = Correct letter<br/>Red = Wrong letter</div> 
+                        <div className='hangCont'>
+                            <img src={circle} alt="head" id='head'/>
+                        </div>
+                    </div>
+
+                )
+                
             case 2:
                 console.log('2')
-                break;
+                return(
+                    <div className="hangman">
+                        <input type='text' maxLength="1" placeholder='Input guess here' onKeyUp={handleWriting} />
+                        <div className='textContainer' id='textbox' /> 
+                        <div className="wrapper">
+                            {secWordBlanks.map((letter, index) => {
+                                return (<div key={index}>[{letter}]</div>
+                            )})}
+                        </div>
+                        <div className='box' style={{ background: color }}>Green = Correct letter<br/>Red = Wrong letter</div> 
+                        <div className='hangCont'>
+                            <img src={line} alt="body" id='body' />
+                            <img src={circle} alt="head" id='head'/>
+                    </div></div>
+                    )
             case 3:
                 console.log('3')
-                break;
+                return(
+                    <div className="hangman">
+                        <input type='text' maxLength="1" placeholder='Input guess here' onKeyUp={handleWriting} />
+                        <div className='textContainer' id='textbox' /> 
+                        <div className="wrapper">
+                            {secWordBlanks.map((letter, index) => {
+                                return (<div key={index}>[{letter}]</div>
+                            )})}
+                        </div>
+                        <div className='box' style={{ background: color }}>Green = Correct letter<br/>Red = Wrong letter</div> 
+                        <div className='hangCont'>
+                            <img src={line} alt="body" id='body' />
+                            <img src={circle} alt="head" id='head'/>
+                            <img src={line} alt="arm1" id='arm1' />
+                        </div>
+                    </div>
+                    )
             case 4:
                 console.log('4')
-                break;
+                return(
+                    <div className="hangman">
+                        <input type='text' maxLength="1" placeholder='Input guess here' onKeyUp={handleWriting} />
+                        <div className='textContainer' id='textbox' /> 
+                        <div className="wrapper">
+                            {secWordBlanks.map((letter, index) => {
+                                return (<div key={index}>[{letter}]</div>
+                            )})}
+                        </div>
+                        <div className='box' style={{ background: color }}>Green = Correct letter<br/>Red = Wrong letter</div> 
+                        <div className='hangCont'>
+                            <img src={line} alt="body" id='body' />
+                            <img src={circle} alt="head" id='head'/>
+                            <img src={line} alt="arm1" id='arm1' />
+                            <img src={line} alt="arm2" id='arm2' />
+                        </div>
+                    </div>
+                    )
             case 5:
                 console.log('5')
-                break;
+                return(
+                    <div className="hangman">
+                        <input type='text' maxLength="1" placeholder='Input guess here' onKeyUp={handleWriting} />
+                        <div className='textContainer' id='textbox' /> 
+                        <div className="wrapper">
+                            {secWordBlanks.map((letter, index) => {
+                                return (<div key={index}>[{letter}]</div>
+                            )})}
+                        </div>
+                        <div className='box' style={{ background: color }}>Green = Correct letter<br/>Red = Wrong letter</div> 
+                        <div className='hangCont'>
+                            <img src={line} alt="body" id='body' />
+                            <img src={circle} alt="head" id='head'/>
+                            <img src={line} alt="arm1" id='arm1' />
+                            <img src={line} alt="arm2" id='arm2' />
+                            <img src={line} alt="leg1" id='leg1' />
+                        </div>
+                    </div>
+                    )
             case 6:
                 console.log('6')
-                break;
+                return(
+                    <div className="hangman">
+                        <input type='text' maxLength="1" placeholder='Input guess here' onKeyUp={handleWriting} />
+                        <div className='textContainer' id='textbox' /> 
+                        <div className="wrapper">
+                            {secWordBlanks.map((letter, index) => {
+                                return (<div key={index}>[{letter}]</div>
+                            )})}
+                        </div>
+                        <div className='box' style={{ background: color }}>Green = Correct letter<br/>Red = Wrong letter</div> 
+                        <div className='hangCont'>
+                            <img src={line} alt="body" id='body' />
+                            <img src={circle} alt="head" id='head'/>
+                            <img src={line} alt="arm1" id='arm1' />
+                            <img src={line} alt="arm2" id='arm2' />
+                            <img src={line} alt="leg1" id='leg1' />
+                            <img src={line} alt="leg2" id='leg2' />
+                        </div>
+                    </div>
+                    )
             case 7:
-                if(alert(`you lost the word was ${SecWord}`)){}
-                else    window.location.reload(); 
-        }
-    return (
-        <div className='hangman'>
-            <form onSubmit={handleHideWord}>
-                <input type="password" placeholder='Input secret word here' name='hidden' />
-                <input type='submit' value='hide' />
-            </form>
-            
-            <input type='text' maxLength="1" placeholder='Input guess here' onKeyUp={handleWriting} />
-            <div className='textContainer' id='textbox' /> 
-            <div className="wrapper">
-                {secWordBlanks.map((letter, index) => {
-                    return (<div key={index}>[{letter}]</div>
-                )})}
-            </div>
-            <div className='box' style={{ background: color }}>Green = Correct letter<br/>Red = Wrong letter</div>
-
-            <div className='hangCont'>
-                <img src={circle} alt="head" id='head' className={Shows? 'show'}/>
-                <img src={line} alt="leg1" id='leg1' />
-                <img src={line} alt="leg2" id='leg2' />
-                <img src={line} alt="body" id='body' />
-                <img src={line} alt="arm1" id='arm1' />
-                <img src={line} alt="arm2" id='arm2' />
+                if(alert(`you lost the word was ${hiddenElements}`)){}
+                else{window.location.reload();}
+                return(
+                        <div className='hangCont'>
+                            <img src={line} alt="body" id='body' />
+                            <img src={circle} alt="head" id='head'/>
+                            <img src={line} alt="arm1" id='arm1' />
+                            <img src={line} alt="arm2" id='arm2' />
+                            <img src={line} alt="leg1" id='leg1' />
+                            <img src={line} alt="leg2" id='leg2' />
+                        </div>
+                    )
                 
-            </div>
-        </div>
-    )
+        }
 }
 
 export default HideWord;

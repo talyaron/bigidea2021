@@ -1,13 +1,32 @@
 import {useState} from 'react';
 import './MatchingGame.css'
 
-import imageOne from '';
+import Apple from 'Apple.jpg';
+import Banana from 'Banana.jpg';
+import Coconut from 'Coconut.jpg';
+import DragonFruit from 'Dragon Fruit/jpg';
+import Orange from 'Orange.jpg';
+import Peach from 'Peach.jpg';
+import Pear from 'Pear.jpg';
+import Watermelon from 'Watermelon.jpg';
 
 
 const memory = [
     {text: 'Tel-Aviv', id: 1}, {img: telAviv, id: 1},
 
 ] 
+
+function shuffle(array) {
+    let currentIndex = array.length, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
+}
 
 function MatchingGame(){
 
@@ -29,9 +48,16 @@ function MatchingGame(){
     
     return(
         <div className = 'container'>             
-            {guessBlanksArray.map((letter, index) => 
-                { return (<div key = {index}>[{letter}]</div>) }
-            )}
+            {cards.map((card, i) => {
+            console.log(card.img)
+                return (card.img ?
+                    <div key={i} className='card' style={{backgroundImage:`url(${card.img})`}}></div>
+                    :
+                    <div key={i} className='card'>{card.text}</div>
+                )
+
+            })
+            }
         </div>
         
     )
