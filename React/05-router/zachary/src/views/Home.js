@@ -7,8 +7,8 @@ const Home = () => {
     return <div>
       <h1>What's your favourite animal?</h1>
       <div className="Parent">
-        <Images source={Dog} next='/contact.js' name="Dog" />
-        <Images source={Cat} next='/blogs.js' name="Cat"/>
+        <Images source={Dog} next='/Contact' name="Dog" />
+        <Images source={Cat} next='/Blogs' name="Cat"/>
       </div>
       </div>;
   };
