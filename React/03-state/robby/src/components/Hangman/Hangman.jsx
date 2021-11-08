@@ -8,12 +8,12 @@ const leftArm = document.getElementById('leftArm');
 const rightArm = document.getElementById('rightArm');
 const leftLeg = document.getElementById('leftLeg');
 const rightLeg = document.getElementById('rightLeg');
-// head.style.visibility='hidden'
-// stickBody.style.visibility='hidden'
-// leftArm.style.visibility='hidden'
-// rightArm.style.visibility='hidden'
-// leftLeg.style.visibility='hidden'
-// rightLeg.style.visibility='hidden'
+head.style.visibility='hidden'
+stickBody.style.visibility='hidden'
+leftArm.style.visibility='hidden'
+rightArm.style.visibility='hidden'
+leftLeg.style.visibility='hidden'
+rightLeg.style.visibility='hidden'
 
 function Hangman() {
 
