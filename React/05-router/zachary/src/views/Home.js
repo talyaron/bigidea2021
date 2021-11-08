@@ -2,6 +2,7 @@ import Dog from '../images/dog.jpg'
 import Cat from '../images/cat.jpg'
 import Images from '../components/Images';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+
 const Home = () => {
     return <div>
       <h1>What's your favourite animal?</h1>
