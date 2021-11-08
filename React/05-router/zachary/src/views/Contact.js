@@ -7,7 +7,7 @@ const Contact = () => {
     <h1>Which one is better?</h1>
     <div className="Parent">
       <Images source={Pizza} next='/contact.js' name="Pizza" />
-      <Images source={Fish} next='/blogs.js' name="Fish" />
+      <Images source={Fish} next='/Blogs.js' name="Fish" />
     </div>
   </div>;
 
