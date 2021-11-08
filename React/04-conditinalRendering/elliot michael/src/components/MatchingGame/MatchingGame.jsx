@@ -1,7 +1,14 @@
 import {useState} from 'react';
 import './MatchingGame.css'
 
-import imageOne from '';
+import Apple from 'Apple.jpg';
+import Banana from 'Banana.jpg';
+import Coconut from 'Coconut.jpg';
+import DragonFruit from 'Dragon Fruit/jpg';
+import Orange from 'Orange.jpg';
+import Peach from 'Peach.jpg';
+import Pear from 'Pear.jpg';
+import Watermelon from 'Watermelon.jpg';
 
 
 const memory = [

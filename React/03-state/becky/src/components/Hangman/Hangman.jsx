@@ -52,92 +52,287 @@ function Hangman() {
                     }
                 }
             }
-
-
-
         }
+
+
+
+        
         else { // incorrect
             setColor('red');
             guessCount -= 1;
             console.log(`You have ${guessCount} guesses left.`);
+        }}
 
             switch(guessCount) {
-
+                case 6:
+                    console.log("6")
+                    return(<div>
+                        <div className='hangman'></div>
+                        <form onSubmit={handleSubmit} id='container' style={{ display: showDom }}>
+                            <input type="password" name="secretWord" id="form" />
+                            <input type="submit" value='hide' />
+                       
+            
+                        </form>
+                        <div className = 'box' style={{background:color}}></div>
+                        Type your guess: 
+                        <input type = 'text' maxLength = "1"
+                                placeholder = 'Input guess here'
+                                onKeyUp = {handleWriting} />
+                                
+                        <div 
+                        className = 'textContainer'
+                        id = 'textbox'
+                        />
+                        {text}
+                        <div className="wrapper">
+                            {dashes.map((letter, index) => {
+                                return (<div key={index}>{letter}</div>)
+                            }
+                            )}
+                        
+                       
+            
+                        </div>
+                            
+                    </div>)
                 case 5:
                     console.log("5");
-                    //add head
-                    break;
+                    return(<div>
+                        <div className='hangman'></div>
+                        <form onSubmit={handleSubmit} id='container' style={{ display: showDom }}>
+                            <input type="password" name="secretWord" id="form" />
+                            <input type="submit" value='hide' />
+                       
+            
+                        </form>
+                        <div className = 'box' style={{background:color}}></div>
+                        Type your guess: 
+                        <input type = 'text' maxLength = "1"
+                                placeholder = 'Input guess here'
+                                onKeyUp = {handleWriting} />
+                                
+                        <div 
+                        className = 'textContainer'
+                        id = 'textbox'
+                        />
+                        {text}
+                        <div className="wrapper">
+                            {dashes.map((letter, index) => {
+                                return (<div key={index}>{letter}</div>)
+                            }
+                            )}
+                        
+                       
+            
+                        </div>
+                        <div className= "hangedMan">
+                                <div id= "head"></div>
+                                </div>
+                            
+                    </div>)
                 case 4:
                     console.log("4");
-                    //add body
-                    break;
+                    return(<div>
+                        <div className='hangman'></div>
+                        <form onSubmit={handleSubmit} id='container' style={{ display: showDom }}>
+                            <input type="password" name="secretWord" id="form" />
+                            <input type="submit" value='hide' />
+                       
+            
+                        </form>
+                        <div className = 'box' style={{background:color}}></div>
+                        Type your guess: 
+                        <input type = 'text' maxLength = "1"
+                                placeholder = 'Input guess here'
+                                onKeyUp = {handleWriting} />
+                                
+                        <div 
+                        className = 'textContainer'
+                        id = 'textbox'
+                        />
+                        {text}
+                        <div className="wrapper">
+                            {dashes.map((letter, index) => {
+                                return (<div key={index}>{letter}</div>)
+                            }
+                            )}
+                        
+                       
+            
+                        </div>
+                        <div className= "hangedMan">
+                                <div id= "head"></div>
+                                <div id ="body"></div>
+                                </div>
+                            
+                    </div>)
                 case 3:
                     console.log("3");
-                    //add left arm
-                    break;
+                    return(<div>
+                        <div className='hangman'></div>
+                        <form onSubmit={handleSubmit} id='container' style={{ display: showDom }}>
+                            <input type="password" name="secretWord" id="form" />
+                            <input type="submit" value='hide' />
+                       
+            
+                        </form>
+                        <div className = 'box' style={{background:color}}></div>
+                        Type your guess: 
+                        <input type = 'text' maxLength = "1"
+                                placeholder = 'Input guess here'
+                                onKeyUp = {handleWriting} />
+                                
+                        <div 
+                        className = 'textContainer'
+                        id = 'textbox'
+                        />
+                        {text}
+                        <div className="wrapper">
+                            {dashes.map((letter, index) => {
+                                return (<div key={index}>{letter}</div>)
+                            }
+                            )}
+                        
+                       
+            
+                        </div>
+                        <div className= "hangedMan">
+                                <div id= "head"></div>
+                                <div id ="body"></div>
+                                <div id ="leftArm"></div>
+                                </div>
+                            
+                    </div>)
                 case 2:
                     console.log("2");
-                    //add right arm
-                    break;
+                    return(<div>
+                        <div className='hangman'></div>
+                        <form onSubmit={handleSubmit} id='container' style={{ display: showDom }}>
+                            <input type="password" name="secretWord" id="form" />
+                            <input type="submit" value='hide' />
+                       
+            
+                        </form>
+                        <div className = 'box' style={{background:color}}></div>
+                        Type your guess: 
+                        <input type = 'text' maxLength = "1"
+                                placeholder = 'Input guess here'
+                                onKeyUp = {handleWriting} />
+                                
+                        <div 
+                        className = 'textContainer'
+                        id = 'textbox'
+                        />
+                        {text}
+                        <div className="wrapper">
+                            {dashes.map((letter, index) => {
+                                return (<div key={index}>{letter}</div>)
+                            }
+                            )}
+                        
+                       
+            
+                        </div>
+                        <div className= "hangedMan">
+                                <div id= "head"></div>
+                                <div id ="body"></div>
+                                <div id ="leftArm"></div>
+                                <div id="rightArm"></div>
+                                </div>
+                            
+                    </div>)
                 case 1:
                     console.log("1");
-                    //add left leg
-                    break;
+                    return(<div>
+                        <div className='hangman'></div>
+                        <form onSubmit={handleSubmit} id='container' style={{ display: showDom }}>
+                            <input type="password" name="secretWord" id="form" />
+                            <input type="submit" value='hide' />
+                       
+            
+                        </form>
+                        <div className = 'box' style={{background:color}}></div>
+                        Type your guess: 
+                        <input type = 'text' maxLength = "1"
+                                placeholder = 'Input guess here'
+                                onKeyUp = {handleWriting} />
+                                
+                        <div 
+                        className = 'textContainer'
+                        id = 'textbox'
+                        />
+                        {text}
+                        <div className="wrapper">
+                            {dashes.map((letter, index) => {
+                                return (<div key={index}>{letter}</div>)
+                            }
+                            )}
+                        
+                       
+            
+                        </div>
+                        <div className= "hangedMan">
+                                <div id= "head"></div>
+                                <div id ="body"></div>
+                                <div id ="leftArm"></div>
+                                <div id="rightArm"></div>
+                                <div id="leftLeg"></div>
+                                </div>
+                            
+                    </div>)
+                    
                 case 0:
                     console.log("0 game over");
-                    //add right leg
-                    //Game Over
-                    alert('game over')
+                    alert('game over');
+                    return(<div>
+                    <div className='hangman'></div>
+                    <form onSubmit={handleSubmit} id='container' style={{ display: showDom }}>
+                        <input type="password" name="secretWord" id="form" />
+                        <input type="submit" value='hide' />
+                   
+        
+                    </form>
+                    <div className = 'box' style={{background:color}}></div>
+                    Type your guess: 
+                    <input type = 'text' maxLength = "1"
+                            placeholder = 'Input guess here'
+                            onKeyUp = {handleWriting} />
+                            
+                    <div 
+                    className = 'textContainer'
+                    id = 'textbox'
+                    />
+                    {text}
+                    <div className="wrapper">
+                        {dashes.map((letter, index) => {
+                            return (<div key={index}>{letter}</div>)
+                        }
+                        )}
+                    
+                   
+        
+                    </div>
+                    <div className= "hangedMan">
+                            <div id= "head"></div>
+                            <div id ="body"></div>
+                            <div id ="leftArm"></div>
+                            <div id="rightArm"></div>
+                            <div id="leftLeg"></div>
+                            <div id = "rightLeg"></div>
+                            </div>
+                        
+                </div>
+                
+                );
+                
+                    
                     break;
             }
-        }
+        
 
-    }
+    
 
-
-
-    return (
-
-        <div>
-            <div className='hangman'></div>
-            <form onSubmit={handleSubmit} id='container' style={{ display: showDom }}>
-                <input type="password" name="secretWord" id="form" />
-                <input type="submit" value='hide' />
-           
-
-            </form>
-            <div className = 'box' style={{background:color}}></div>
-            Type your guess: 
-            <input type = 'text' maxLength = "1"
-                    placeholder = 'Input guess here'
-                    onKeyUp = {handleWriting} />
-                    
-            <div 
-            className = 'textContainer'
-            id = 'textbox'
-            />
-            {text}
-            <div className="wrapper">
-                {dashes.map((letter, index) => {
-                    return (<div key={index}>{letter}</div>)
-                }
-                )}
-            
-           
-
-            </div>
-                <div className= "hangedMan">
-                    <div id= "head"></div>
-                    <div id= "bodyy"></div>
-                     <div id= "leftArm"></div>
-                    <div id= "rightArm"></div>
-                    <div id= "leftLeg"></div>
-                    <div id= "rightLeg"></div>
-                </div>
-
-        </div>
-
-    )
 }
 
 
