@@ -72,6 +72,7 @@ function Hangman() {
 
                 case 0:
                     console.log("0 game over");
+                    alert("Game Over.")
                     setHideBox6('block');
                     //Game Over
                     setColor('darkred');
