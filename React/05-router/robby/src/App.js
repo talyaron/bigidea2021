@@ -20,6 +20,18 @@ import LevelFourABC from "./views/levelOne/levelTwo/levelThreeA/levelFourAB/leve
 import LevelFourACA from "./views/levelOne/levelTwo/levelThreeA/levelFourAC/levelFourACA";
 import LevelFourACB from "./views/levelOne/levelTwo/levelThreeA/levelFourAC/levelFourACB";
 import LevelFourACC from "./views/levelOne/levelTwo/levelThreeA/levelFourAC/levelFourACC";
+import LevelThreeBA from "./views/levelOne/levelTwo/levelThreeB/levelThreeBA";
+import LevelThreeBB from "./views/levelOne/levelTwo/levelThreeB/levelThreeBB";
+import LevelThreeBC from "./views/levelOne/levelTwo/levelThreeB/levelThreeBC";
+import LevelFourBAA from "./views/levelOne/levelTwo/levelThreeB/levelFourBA/levelFourBAA";
+import LevelFourBAB from "./views/levelOne/levelTwo/levelThreeB/levelFourBA/levelFourBAB";
+import LevelFourBAC from "./views/levelOne/levelTwo/levelThreeB/levelFourBB/levelFourBBC";
+import LevelFourBBA from "./views/levelOne/levelTwo/levelThreeB/levelFourBB/levelFourBBA";
+import LevelFourBBB from "./views/levelOne/levelTwo/levelThreeB/levelFourBB/levelFourBBB";
+import LevelFourBBC from "./views/levelOne/levelTwo/levelThreeB/levelFourBB/levelFourBBC";
+import LevelFourBCA from "./views/levelOne/levelTwo/levelThreeB/levelFourBC/levelFourBCA";
+import LevelFourBCB from "./views/levelOne/levelTwo/levelThreeB/levelFourBC/levelFourBCB";
+import LevelFourBCC from "./views/levelOne/levelTwo/levelThreeB/levelFourBC/levelFourBCC";
 import LevelThreeCA from "./views/levelOne/levelTwo/levelThreeC/levelThreeCA";
 import LevelThreeCB from "./views/levelOne/levelTwo/levelThreeC/levelThreeCB";
 import LevelThreeCC from "./views/levelOne/levelTwo/levelThreeC/levelThreeCC";
@@ -58,12 +70,27 @@ function App() {
        <Route path= "/LevelFourACA" element = {<LevelFourACA/>} />
        <Route path= "/LevelFourACB" element = {<LevelFourACB/>} />
        <Route path= "/LevelFourACC" element = {<LevelFourACC/>} />
+
+       <Route path ="LevelThreeBA/" element = {<LevelThreeBA/>} />
+       <Route path ="LevelThreeBB/" element = {<LevelThreeBB/>} />
+       <Route path ="LevelThreeBC/" element = {<LevelThreeBC/>} />
+       <Route path= "/LevelFourBAA" element = {<LevelFourBAA/>} />
+       <Route path= "/LevelFourBAB" element = {<LevelFourBAB/>} />
+       <Route path= "/LevelFourBAC" element = {<LevelFourBAC/>} />
+       <Route path= "/LevelFourBBA" element = {<LevelFourBBA/>} />
+       <Route path= "/LevelFourBBB" element = {<LevelFourBBB/>} />
+       <Route path= "/LevelFourBBC" element = {<LevelFourBBC/>} />
+       <Route path= "/LevelFourBCA" element = {<LevelFourBCA/>} />
+       <Route path= "/LevelFourBCB" element = {<LevelFourBCB/>} />
+       <Route path= "/LevelFourBCC" element = {<LevelFourBCC/>} />
+
        <Route path="/levelThreeC/LevelThreeCA" element = {<LevelThreeCA/>} />
        <Route path="/LevelThreeCB" element = {<LevelThreeCB/>} />
        <Route path="/LevelFourCAA" element = {<LevelThreeCAA/>} />
        <Route path="/LevelFourCAB" element = {<LevelThreeCAB/>} />
        <Route path="/LevelFourCBA" element = {<LevelThreeCBA/>} />
        <Route path="/LevelFourCBB" element = {<LevelThreeCBB/>} />
+     
      </Routes>
     </Router>
   );
