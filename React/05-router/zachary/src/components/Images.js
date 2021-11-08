@@ -1,9 +1,10 @@
 import React from 'react'
-
-const Images = ({source}) => {
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+const Images = ({source,next}) => {
     return (
         <div>
             <img src={source}></img>
+            <Link to={next}></Link>
         </div>
     )
 }
