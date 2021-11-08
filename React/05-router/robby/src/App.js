@@ -27,8 +27,8 @@ import LevelFourCAA from "./views/levelOne/levelTwo/levelThreeC/levelFourCA/leve
 import LevelFourCAB from "./views/levelOne/levelTwo/levelThreeC/levelFourCA/levelFourCAB";
 import LevelFourCBA from "./views/levelOne/levelTwo/levelThreeC/levelFourCB/levelFourCBA";
 import LevelFourCBB from "./views/levelOne/levelTwo/levelThreeC/levelFourCB/levelFourCBB";
-import LevelFourCCA from "./views/levelOne/levelTwo/levelThreeC/levelFourCB/levelFourCCA";
-import LevelFourCCB from "./views/levelOne/levelTwo/levelThreeC/levelFourCB/levelFourCCB";
+import LevelFourCCA from "./views/levelOne/levelTwo/levelThreeC/levelFourCC/levelFourCCA";
+import LevelFourCCB from "./views/levelOne/levelTwo/levelThreeC/levelFourCC/levelFourCCB";
 
 
 
@@ -58,7 +58,12 @@ function App() {
        <Route path= "/LevelFourACA" element = {<LevelFourACA/>} />
        <Route path= "/LevelFourACB" element = {<LevelFourACB/>} />
        <Route path= "/LevelFourACC" element = {<LevelFourACC/>} />
-     
+       <Route path="/levelThreeC/LevelThreeCA" element = {<LevelThreeCA/>} />
+       <Route path="/LevelThreeCB" element = {<LevelThreeCB/>} />
+       <Route path="/LevelFourCAA" element = {<LevelThreeCAA/>} />
+       <Route path="/LevelFourCAB" element = {<LevelThreeCAB/>} />
+       <Route path="/LevelFourCBA" element = {<LevelThreeCBA/>} />
+       <Route path="/LevelFourCBB" element = {<LevelThreeCBB/>} />
      </Routes>
     </Router>
   );
