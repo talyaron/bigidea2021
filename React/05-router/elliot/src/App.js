@@ -1,12 +1,15 @@
-import logo from './logo.svg';
+
 import './App.css';
-import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 //Pages
-import Home from './views/pages/Home/Home';
-import Blogs from './views/pages/Blogs/Blogs';
-import Contact from './views/pages/Contact/Contact';
+import CootieCatcher from './views/pages/CootieCatcher/CootieCatcher' 
+import SubOne from './views/pages/SubCatcherOne/SubCatcherOne'
+import SubTwo from './views/pages/SubCatcherTwo/SubCatcherTwo'
+import Fort1 from './views/pages/FortOne/FortOne'
+import Fort2 from './views/pages/FortTwo/FortTwo'
+import Fort3 from './views/pages/FortThree/FortThree'
+import Fort4 from './views/pages/FortFour/FortFour'
 
 
 function App() {
@@ -19,9 +22,13 @@ function App() {
       </u1>
 
       <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route path='/blogs' element={<Blogs />} />
-        <Route path='/contacts' element={<Contact />} />
+        <Route exact path='/' element={<CootieCatcher />} />
+        <Route path='/subOne' element={<SubOne />} />
+        <Route path='/subTwo' element={<SubTwo />} />
+        <Route path='/fort1' element={<Fort1 />} />
+        <Route path='/fort2' element={<Fort2 />} />
+        <Route path='/fort3' element={<Fort3 />} />
+        <Route path='/fort4' element={<Fort4 />} />
       </Routes>
     </Router>
   );

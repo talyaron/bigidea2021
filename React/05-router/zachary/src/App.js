@@ -6,6 +6,10 @@ import './App.css';
 import Home from "./views/Home";
 import Blogs from "./views/Blogs";
 import Contact from "./views/Contact";
+import Fortune1 from "./views/Fortune1";
+import Fortune2 from "./views/Fortune2";
+import Fortune3 from "./views/Fortune3";
+import Fortune4 from "./views/Fortune4";
 
 function App() {
   return (
@@ -13,13 +17,18 @@ function App() {
       
       <ul>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/blogs">Blogs</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
+        <li><Link to="/Blogs">Blogs</Link></li>
+        <li><Link to="/Contact">Contact</Link></li>
         </ul>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/Blogs" element={<Blogs />} />
+        <Route path="/Contact" element={<Contact />} />
+        <Route path="/Fortune1" element={<Fortune1/>}/>
+        <Route path="/Fortune2" element={<Fortune2/>}/>
+        <Route path="/Fortune3" element={<Fortune3/>}/>
+        <Route path="/Fortune4" element={<Fortune4/>}/>
+
       </Routes>
     </Router>
 
