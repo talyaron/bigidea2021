@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react'
 import logo from './logo.svg';
 import './App.css';
 import { db } from './functions/firebase/config';
-import { collection, setDoc, doc, getDoc, onSnapshot, updateDoc, addDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, onSnapshot, updateDoc, addDoc } from 'firebase/firestore'
 
 const catRef = doc(db, "cats", "0u7sBnlLCLbYIkef8uKf");
 
 function App() {
+
+  const [cats, setCats] = useState([])
+
   useEffect(() => {
     
     //once
@@ -20,11 +23,23 @@ function App() {
     })
 
     //add a cat
-    addDoc(collection(db, "cats"), {
-      name: "Los Angeles",
-      state: "CA",
-      country: "USA"
-    });
+    // addDoc(collection(db, "cats"), {
+    //   name: "Los Angeles",
+    //   state: "CA",
+    //   country: "USA"
+    // });
+
+    //ref to collection of cats
+    const catsRef = collection(db, 'cats');
+    onSnapshot(catsRef,catsDB=>{
+      const catsArr = [];
+
+      catsDB.forEach(catDB=>{
+        catsArr.push(catDB.data());
+      })
+
+      setCats(catsArr)
+    })
 
   }, []);
 
@@ -38,6 +53,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        {
+          cats.map((cat,i)=>{
+            return (<div key={i}>{cat.name}</div>)
+          })
+        }
 
         <input
           type='number'
