@@ -1,7 +1,28 @@
+import { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { db } from './functions/firebase/config';
+import { doc, getDoc, onSnapshot, setDoc } from "firebase/firestore";
 
 function App() {
+
+useEffect(()=>{
+  const catRef = doc(db, "cats", "s3iS4HfSwqvQPRedjtzb");
+
+  getDoc(catRef).then(catDB=>{
+    console.log(catDB.data());
+  })
+
+  onSnapshot(catRef,catDB=>{
+    console.log(catDB.data());
+  })
+
+  setDoc(doc(db, "cats", "Hello"),{
+    name:"Jeff"
+  })
+},[])
+
+
   return (
     <div className="App">
       <header className="App-header">
