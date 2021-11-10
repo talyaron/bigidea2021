@@ -2,15 +2,16 @@ import { useEffect, useState } from 'react'
 import logo from './logo.svg';
 import './App.css';
 import { db } from './functions/firebase/config';
-import { collection, getDocs, onSnapshot } from 'firebase/firestore'
+import { collection, doc, getDocs, onSnapshot, updateDoc } from 'firebase/firestore'
 
+const catsRef = collection(db, 'cats');
 
 function App() {
 
   const [cats, setCats] = useState([])
   //call this function only once when the component starts
   useEffect(() => {
-    const catsRef = collection(db, 'cats');
+
 
 
     //  getDocs(catsRef).then(catsDB=>{
@@ -28,7 +29,14 @@ function App() {
       setCats(catsArr);
     })
 
-  }, [])
+  }, []);
+
+  function handleSetName(ev) {
+    const age = ev.target.valueAsNumber;
+    const cheshRef = doc(db, 'cats','cheshire')
+    updateDoc(cheshRef, {age});
+
+  }
 
   return (
     <div className="App">
@@ -36,7 +44,13 @@ function App() {
         {cats.map((cat, i) => {
           return <div>{cat.name} is {cat.age} years old</div>
         })}
+         <input
+        type='number'
+        placeholder='Cheshire age'
+        onKeyUp={handleSetName}
+      />
       </header>
+     
     </div>
   );
 }
