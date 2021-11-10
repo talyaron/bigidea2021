@@ -15,6 +15,11 @@ import Fort4 from './views/pages/FortFour/FortFour'
 function App() {
   return (
     <Router>
+      <u1>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/blogs">Blogs</Link></li>
+        <li><Link to="/contacts">Contacts</Link></li>
+      </u1>
 
       <Routes>
         <Route exact path='/' element={<CootieCatcher />} />
