@@ -5,12 +5,15 @@ function MessageApp(){
     let userIndex = 0;
     const [textBoxSide, setSide] = useState('start'); //start at left side of the grid
     const [textMessageValue, setTextValue] = useState('');
+    const [userSide, setUserSide] = useState('User 1');
 
-    function setMessageSide(ev){
+    function setMessageSide(){
         if(userIndex == 0){
             setSide('start');
+            setUserSide('User 1');
         } else {
             setSide('end');
+            setUserSide('User 2');
         }
     }
 
@@ -33,7 +36,7 @@ function MessageApp(){
             <input
                 className = 'switchUserButton'
                 type='button'
-                value='Choose user side'
+                value={userSide}
                 id = 'userSideChooser'
                 onClick={setMessageSide}>
             </input>
