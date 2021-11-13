@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const x = 5;
-let text = "Goodbye";
-if (x < 10) {
-  text = "Hello";
+function Car(props) {
+  return <li>I am a { props.brand }</li>;
 }
 
-const myelement = <h1>{text}</h1>;
-
-function Car() {
-  return <h2>Hi, I am a Car!</h2>;
+function Garage() {
+  const cars = [
+    {id: 1, brand: 'Ford'},
+    {id: 2, brand: 'BMW'},
+    {id: 3, brand: 'Audi'}
+  ];
+  return (
+    <>
+      <h1>Who lives in my garage?</h1>
+      <ul>
+        {cars.map((car) => <Car key={car.id} brand={car.brand} />)}
+      </ul>
+    </>
+  );
 }
 
-ReactDOM.render(myelement, document.getElementById('root'));
-ReactDOM.render(<Car />, document.getElementById('root'));
+ReactDOM.render(<Garage />, document.getElementById('root'));
+

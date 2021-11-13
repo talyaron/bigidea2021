@@ -14,3 +14,14 @@
     display: flex;
     
 }
+
+.structureTop{
+    width: 100px;
+    height: 5px;
+    background-color: black;
+}
+
+.gameOver{
+    font-size: 25px;
+    font-weight: bold;
+}

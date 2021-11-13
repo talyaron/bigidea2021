@@ -1,7 +1,5 @@
 .guessBox{
     margin: 10px;
-    width: 200px;
-    height: 200px;
     border: 1.5px dashed black;
     border-radius: 5px;
     background-color: pink;
@@ -10,6 +8,11 @@
 .wrapper{
     display: flex;
     text-align: center;
+}
+
+.stickfigure{
+    position: relative;
+    left: 240px;
 }
 
 #head{
@@ -36,4 +39,34 @@
     position: relative;
     left: -8px;
     top: -45px;
+}
+
+#rightArm{
+    height: 15px;
+    width: 15px;
+    border-bottom: 1px solid black;
+    transform: rotate(45deg);
+    position: relative;
+    left: 15px;
+    top: -61px;
+}
+
+#leftLeg{
+    height: 15px;
+    width: 15px;
+    border-bottom: 1px solid black;
+    transform: rotate(-45deg);
+    position: relative;
+    left: -8px;
+    top: -41px;
+}
+
+#rightLeg{
+    height: 15px;
+    width: 15px;
+    border-bottom: 1px solid black;
+    transform: rotate(45deg);
+    position: relative;
+    left: 15px;
+    top: -57px;
 }

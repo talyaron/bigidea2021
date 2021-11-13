@@ -1,146 +1,140 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 import './Hangman.css';
 
-let word;
-let guessCount= 6;
-let dashes = [];
-let wordarr= [];
-
+let guessWord, wordArr = [], guessesLeft = 6;
+const head = document.getElementById('head');
+const stickBody = document.getElementById('stickBody');
+const leftArm = document.getElementById('leftArm');
+const rightArm = document.getElementById('rightArm');
+const leftLeg = document.getElementById('leftLeg');
+const rightLeg = document.getElementById('rightLeg');
+head.style.visibility='hidden'
+stickBody.style.visibility='hidden'
+leftArm.style.visibility='hidden'
+rightArm.style.visibility='hidden'
+leftLeg.style.visibility='hidden'
+rightLeg.style.visibility='hidden'
 
 function Hangman() {
-    const [text, setText] = useState();
-    const [color, setColor] = useState('red');
-    const [showDom, setShowDom] = useState('block')
-    const [guessWordArray, setGuessWordArray] = useState([])
-    const [hideBody, setHideBody]= useState(1)
-    let userInput;
 
+    const [color, setColor] = useState('orange');
+    const [showResults, setShowResults] = useState('block');
+    const [guessWordArray, setGuessWordArray] = useState([]);
+    const [dashes, setDashes] = useState([])
 
-    function handleSubmit(ev) {
-        ev.preventDefault();
-        word = ev.target.elements.secretWord.value
-        wordarr = word.split("");
-        console.log(word);
-        // ev.target.style.display = "none";
-        setShowDom('none')
-        // word.setShowDom()
-        for (let i = 0; i < wordarr.length; i++) {
-            guessWordArray.push(wordarr[i]);
-            dashes[i] = '[]'
-        }
-        console.log(guessWordArray);
-        console.log(dashes);
+    
+    
+    function handleCheckText(ev) {
+        let value = ev.target.value, char = value.slice(-1);
+        console.log(char);
+
+        char = char.toLowerCase();
 
 
 
-    }
-
-    function handleWriting(ev) {
-        setText(ev.target.value)
-        const lastChar = ev.target.value.slice(-1)
-
-        if (word.includes(lastChar)) {
-            console.log('YES');
+        if (wordArr.includes(char)) {
+            const tempDashes = [...dashes]
             setColor('green');
-            for(let x=0; x<=wordarr.length; x++){
-                if(lastChar==wordarr[x]){
-                    dashes[x]= lastChar;   
-                }
-                for(let k= 0; k<=wordarr.length; k++){
-                    if(wordarr[k]==1){
-                        //show corresponding body part
-                    }
+            for (let i = 0; i <= wordArr.length; i++) {
+                if (char == wordArr[i]) {
+                    tempDashes[i] = char;
                 }
             }
+            setDashes(tempDashes)
 
+        } else { // incorrect
 
+            if (!char) {
+                console.log("no letter");
+                return;
+            }
 
-        }
-        else { // incorrect
             setColor('red');
-            guessCount -= 1;
-            console.log(`You have ${guessCount} guesses left.`);
+            guessesLeft -= 1;
+            console.log(`You have ${guessesLeft} guesses left.`);
 
-            switch(guessCount) {
+            switch (guessesLeft) {
 
                 case 5:
                     console.log("5");
-                    //add head
+                    head.style.visibility='visible'
                     break;
+
                 case 4:
                     console.log("4");
-                    //add body
+                    stickBody.style.visibility='visible'
                     break;
+
                 case 3:
                     console.log("3");
-                    //add left arm
+                    leftArm.style.visibility='visible'
                     break;
+
                 case 2:
                     console.log("2");
-                    //add right arm
+                    rightArm.style.visibility='visible'
                     break;
+
                 case 1:
                     console.log("1");
-                    //add left leg
+                    leftLeg.style.visibility='visible'
                     break;
+
                 case 0:
                     console.log("0 game over");
-                    //add right leg
+                    rightLeg.style.visibility='visible'
                     //Game Over
                     setColor('darkred');
-                    alert('game over')
+                    break;
+
+                default:
                     break;
             }
-        }
 
+        }
     }
 
+    function handleSubmit(ev) {
+        ev.preventDefault();
+        guessWord = ev.target.elements.word.value;
+        wordArr = guessWord.split("");
+        console.log(guessWord);
 
+        for (let i = 0; i < wordArr.length; i++) {
+            guessWordArray.push(wordArr[i]);
+            dashes[i] = '_';
+        }
+        console.log(guessWordArray);
+        console.log(dashes);
+        setShowResults('none');
+    }
 
     return (
-
-        <div>
-            <div className='hangman'></div>
-            <form onSubmit={handleSubmit} id='container' style={{ display: showDom }}>
-                <input type="password" name="secretWord" id="form" />
-                <input type="submit" value='hide' />
-           
-
+        <div className="guessBox" style={{ background: color, width: `500px`, height: `210px` }}>
+            <p>Hangman</p>
+            <form onSubmit={handleSubmit} style={{ display: showResults }}>
+                <input type="password" name="word" placeholder="Type your secret word" />
+                <input type="submit" value="Hide" />
             </form>
-            <div className = 'box' style={{background:color}}></div>
-            Type your guess: 
-            <input type = 'text' maxLength = "1"
-                    placeholder = 'Input guess here'
-                    onKeyUp = {handleWriting} />
-                    
-            <div 
-            className = 'textContainer'
-            id = 'textbox'
-            />
-            {text}
+            <p></p>
+            <input type="text" name="guessBox" placeholder="Guess a letter" onKeyUp={handleCheckText} maxLength="1" />
             <div className="wrapper">
                 {dashes.map((letter, index) => {
-                    return (<div key={index}>{letter}</div>)
+                    return (<div key={index}>'{letter}'</div>)
                 }
                 )}
-            
-           
-
             </div>
-                <div className= "hangedMan">
-                    <div id= "head"></div>
-                    <div id= "bodyy"></div>
-                     <div id= "leftArm"></div>
-                    <div id= "rightArm"></div>
-                    <div id= "leftLeg"></div>
-                    <div id= "rightLeg"></div>
-                </div>
-
+            <p></p>
+            <div className="stickfigure">
+                <div id="head"  ></div>
+                <div id="stickBody"></div>
+                <div id="leftArm"></div>
+                <div id="rightArm"></div>
+                <div id="leftLeg"></div>
+                <div id="rightLeg"></div>
+            </div>
         </div>
-
     )
 }
 
-
 export default Hangman;
-

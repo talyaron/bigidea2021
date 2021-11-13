@@ -1,6 +1,14 @@
 import {useState} from 'react';
 import './hangman.css'
 
+import hangmanO from './hangImages/hangZero.png'
+import hangman1 from './hangImages/hangOne.png'
+import hangman2 from './hangImages/hangTwo.png'
+import hangman3 from './hangImages/hangThree.png'
+import hangman4 from './hangImages/hangFour.png'
+import hangman5 from './hangImages/hangFive.png'
+import hangman6 from './hangImages/hangSix.png'
+
 //var letters = /^[A-Za-z]+$/;
 //let word = [a, c, t, u, a, l, l, y]
 //<div className = "wrapper"> {word.map(letter,index) => return( <p key={index}> {letter} </p> )} </div>
@@ -8,25 +16,22 @@ import './hangman.css'
 
 let secretWordArray = [], guessBlanksArray = [], wrongAnswerArray = [];
 
-function HangmanGame(){
+function HangmanGame(props){
     
         const [color, setColor] = useState('gray');
-        const [showHead, setHead] = useState('none');
-        const [showTorso, setTorso] = useState('none');
-        const [showLA, setLA] = useState('none');
-        const [showRA, setRA] = useState('none');
-        const [showLL, setLL] = useState('none');
-        const [showRL, setRL] = useState('none');
+
 
         const [showSecret, setShowSecret] = useState('block');
         const [showGuess, setShowGuess] = useState('none');
-        let wrongAnswerCounter = 0; //6 mistakes is game over
+        const [wrongAnswerCounter, setWrongCounter] = useState(props.wrongCounter); //6 mistakes is game over
+        const [hangImage, setImage] = useState(hangmanO);
 
         let guessCharacterIndex = -1;
         const [guess, setGuess] = useState("");
 
         let secretBlanks = "";
         const [secret, setSecret] = useState("");
+
 
         function handleSecretUpdate(ev){
             setSecret(ev.target.value.toLowerCase());
@@ -66,29 +71,30 @@ function HangmanGame(){
                 } else {
                     wrongAnswerArray.push(guess);
 
-                    wrongAnswerCounter++;
+                    setWrongCounter(wrongAnswerCounter+1);
                     switch(wrongAnswerCounter){
-                        case '1':
-                            console.log("activated");
-                            setHead('block');
+                        case 1:
+                            setImage(hangman1);
+                            console.log('oneIncorrect');
                             break;
-                        case '2':
-                            setTorso('block');
+                        case 2:
+                            setImage(hangman2);
                             break;
-                        case '3':
-                            setLA('block');
+                        case 3:
+                            setImage(hangman3);
                             break;
-                        case '4':
-                            setRA('block');
+                        case 4:
+                            setImage(hangman4);
                             break;
-                        case '5':
-                            setLL('block');
+                        case 5:
+                            setImage(hangman5);
                             break;
-                        case '6':
-                            setRL('block');
+                        case 6:
+                            setImage(hangman6);
                             alert("Game Over! You have lost. Refresh the page to play again.")
                             break;
                         default:
+                            console.log('notWorking');
                             break;
                     }
                 }
@@ -136,14 +142,8 @@ function HangmanGame(){
                     )}
                 </div>
                 <div className = "sticks">
-                    <div id = "headOne" style = {{ display: showHead}}></div>
-                    <div id = "torsoTwo" style = {{ display: showTorso}}></div>
-                    <div id = "lAThree" style = {{ display: showLA}}></div>
-                    <div id = "rAFour" style = {{ display: showRA}}></div>
-                    <div id = "lLFive" style = {{ display: showLL}}></div>
-                    <div id = "rLSix" style = {{ display: showRL}}></div>
+                    <img className = "sticks" style = {{ display: showGuess}} src={hangImage} ></img>
                 </div>
-
 
                 <input 
                     type='text'
