@@ -5,7 +5,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 
 function App() {
   const [userObj, setUserObj] = useState({ name: '', image: '' })
-
+  const [answerObj, setAnswerObj] = useState({ name: '', answer: 0 })
   useEffect(() => {
     const userRef = doc(db, 'users', 'me')
     // setDoc(userRef,{name:'Tal', image:'https://dailygazette.com/wp-content/uploads/fly-images/126428/shutterstock_245726512-scaled-940x940.jpg'})
@@ -22,6 +22,12 @@ function App() {
       }
     })
 
+    const answersRef = doc(db, 'answers', 'answer')
+    onSnapshot(answersRef, (answerDB) => {
+      console.log(answerDB.data);
+      // const
+      // setAnswerObj()
+    })
   }, []);
 
 
@@ -29,8 +35,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className='userCard'>
-          <img src={userObj.image}></img>
-          <h1>{userObj.name}</h1>
+          {/* <img src={userObj.image}></img>
+          <h1>{userObj.name}</h1> */}
         </div>
       </header>
     </div>
