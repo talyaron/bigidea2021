@@ -6,6 +6,7 @@ import { collection, doc, getDoc, onSnapshot, setDoc, addDoc } from "firebase/fi
 
 function App() {
   const [cats, setCats] = useState([]);
+  const [text, setText] = useState([]);
 
   useEffect(() => {
     const catRef = doc(db, "cats", "93DaHniizYf0Vz9njQEB");
@@ -36,9 +37,9 @@ function App() {
 
   }, [])
 
-  function submitForm(){
-    document.getElementById(box).style.display = 'block'
-  }
+  // function submitForm(){
+  //   document.getElementById(box).style.display = 'block'
+  // }
 
   return (
     <div className="App">
