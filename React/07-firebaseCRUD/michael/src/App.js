@@ -1,30 +1,43 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react'
 import './App.css';
-import {db} from "./functions/firebase/config";
-import { doc, setDoc} from "firebase/firestore"
+import { db } from './functions/firebase/config';
+import { doc, onSnapshot } from "firebase/firestore";
 
 function App() {
-
-  useEffect(()=>{
+  const [userObj, setUserObj] = useState({ name: '', image: '' })
+  const [answerObj, setAnswerObj] = useState({ name: '', answer: 0 })
+  useEffect(() => {
     const userRef = doc(db, 'users', 'me')
-    setDoc(userRef,{name:"Michael", image: "https://cdn.vox-cdn.com/thumbor/Q8jaoy_BCjTa3iUBuA0WrKSGLGc=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22443557/revan_galaxy_of_heroes_tall.jpeg"})
-  },[]);
+    // setDoc(userRef,{name:'Tal', image:'https://dailygazette.com/wp-content/uploads/fly-images/126428/shutterstock_245726512-scaled-940x940.jpg'})
+    onSnapshot(userRef, userDB => {
+      if (userDB.exists()) {
+        console.log(userDB.data())
+        const { name, image } = userDB.data();
+        if (!name) console.error('No user in DB');
+        if (!image) console.error('No image in DB');
+
+        if (typeof image === 'string' && typeof name === 'string') {
+          setUserObj({ name, image })
+        }
+      }
+    })
+
+    const answersRef = doc(db, 'answers', 'answer')
+    onSnapshot(answersRef, (answerDB) => {
+      console.log(answerDB.data);
+      // const
+      // setAnswerObj()
+    })
+  }, []);
+
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className='userCard'>
+          {/* <img src={userObj.image}></img>
+          <h1>{userObj.name}</h1> */}
+        </div>
       </header>
     </div>
   );
