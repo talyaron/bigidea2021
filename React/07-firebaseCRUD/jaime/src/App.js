@@ -7,9 +7,11 @@ import { doc, setDoc, updateDoc } from 'firebase/firestore';
 function App() {
 
   function handleSet(ev) {
+    ev.preventDefault()
     const setName = ev.target.elements.nameBox.value;
     const setImage = ev.target.elements.imgBox.value;
-    updateDoc(doc(db, 'users', 'me'), {name: {setName}, image: {setImage}})
+    console.log(setName, setImage)
+    setDoc(doc(db, 'users', 'me'), {name: setName, image: setImage})
   }
 
   return (
