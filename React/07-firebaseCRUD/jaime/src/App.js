@@ -25,7 +25,7 @@ function App() {
       <form onSubmit={handleSet}>
       <input type='text' placeholder='Enter your name' name='nameBox'/>
       <input type='text' placeholder='Enter your image url' name='imgBox'/>
-      <input type='submit' id='setButton'>Set</input>
+      <input type='submit' id='setButton' value='OK'></input>
       </form>
     </div>
   );
