@@ -8,17 +8,15 @@ import { getFirestore } from 'firebase/firestore';
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBH2K4cux58YrZrgohTd-hjkC2U2-EKr7Q",
-  authDomain: "full-stuck.firebaseapp.com",
-  databaseURL: "https://full-stuck.firebaseio.com",
-  projectId: "full-stuck",
-  storageBucket: "full-stuck.appspot.com",
-  messagingSenderId: "334581568051",
-  appId: "1:334581568051:web:a62cb649bfec44c9750946",
-  measurementId: "G-ZFC07MTQG6"
+  apiKey: "AIzaSyDBrctixsp9hagB4axdLENPLTXSfzhOUl8",
+  authDomain: "common-tst.firebaseapp.com",
+  projectId: "common-tst",
+  storageBucket: "common-tst.appspot.com",
+  messagingSenderId: "253126688266",
+  appId: "1:253126688266:web:66b65b2bb48a5340e9e9f3",
+  measurementId: "G-0CELWFLDGP"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 export const db = getFirestore(app);
