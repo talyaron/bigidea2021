@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {db} from './functions/firebase/config';
-import { doc, setDoc, onSnapshot } from "firebase/firestore"
+import { doc, setDoc } from "firebase/firestore"
 
 function App() {
 
@@ -13,8 +13,9 @@ function App() {
 
   return (
     <div className="App">
-      
+      <button class="haha">Set</button>
     </div>
+
   );
 }
 
