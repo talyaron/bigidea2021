@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { db } from './functions/firebase/config';
-import { doc, getDoc, setDoc, onSnapshot, collection, updateDoc, addDoc } from "firebase/firestore";
+import { doc, query, orderBy, onSnapshot, collection, updateDoc, addDoc } from "firebase/firestore";
 import './App.css';
 
 function App() {
@@ -11,7 +11,8 @@ function App() {
     if(ev.keyCode === 13) {
 
       addDoc(collection(db, 'messages'), {
-        messageValue: ev.target.value
+        messageValue: ev.target.value,
+        time:new Date().getTime()
       });
 
       ev.preventDefault();
@@ -21,12 +22,15 @@ function App() {
   useEffect(() => {
 
     const messagesRef = collection(db, 'messages');
+    const q = query(messagesRef, orderBy('time', 'asc'))
     var input = document.getElementById('messageInput');
 
-    onSnapshot(messagesRef, messagesDB => {
+    onSnapshot(q, messagesDB => {
       const messageArr = [];
+
       messagesDB.forEach(messagesDB => {
         messageArr.push(messagesDB.data());
+        console.log(messagesDB.data().time)
       })
 
       setMessages(messageArr)
