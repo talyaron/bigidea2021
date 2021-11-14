@@ -13,8 +13,9 @@ function App() {
 
   return (
     <div className="App">
-      
+      <button class="haha" onClick={useEffect}>Set</button>
     </div>
+
   );
 }
 
