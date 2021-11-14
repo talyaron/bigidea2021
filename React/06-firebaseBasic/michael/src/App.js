@@ -1,23 +1,46 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import { db } from './firebase/config';
+import { doc, getDoc, setDoc, onSnapshot, collection, updateDoc, addDoc } from "firebase/firestore";
 import './App.css';
 
 function App() {
+
+  const [messages, setMessages] = useState([]);
+
+  function handleUpdate (ev) {
+    if(ev.keyCode === 13) {
+
+      addDoc(collection(db, 'messages'), {
+        messageValue: ev.target.value
+      });
+
+      ev.preventDefault();
+    }
+  }
+
+  useEffect(() => {
+
+    const messagesRef = collection(db, 'messages');
+    var input = document.getElementById('messageInput');
+
+    onSnapshot(messagesRef, messagesDB => {
+      const messageArr = [];
+      messagesDB.forEach(messagesDB => {
+        messageArr.push(messagesDB.data());
+      })
+
+      setMessages(messageArr)
+    })
+
+},[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {messages.map((message, i) =>{
+        return (<div key={i}>{message.messageValue}</div>)
+        })
+      }
+      <input type='text' placeholder='Type your message here' id='messageInput' onKeyUp={handleUpdate}/>
     </div>
   );
 }
