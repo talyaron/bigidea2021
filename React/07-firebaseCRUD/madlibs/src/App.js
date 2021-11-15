@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import ChooseName from './AlexRobbyEytan/chooseName.jsx'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         BLA BLA
+        <ChooseName/>
       </header>
     </div>
   );
