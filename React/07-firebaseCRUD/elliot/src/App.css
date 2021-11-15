@@ -28,14 +28,6 @@
   color: #61dafb;
 }
 
-.submit {
-  background-color: #282c34;
-  width: 100px;
-  height: 60px;
-  color: #61dafb;
-  border-radius: 15px;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
