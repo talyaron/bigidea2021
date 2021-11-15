@@ -1,33 +1,30 @@
-import {useState,useEffect} from 'react';
-import {db} from '../../functions/firebase/config'
-import {collection,getDocs,addDoc}from 'firebase/firestore'
-import{doc, setDoc} from 'firebase/firestore'
 
-function UserPhoto(){
-    
-    function handleSubmit(ev){
-        ev.preventDefault()
-        const usersCollectionRef=collection(db, "Images");
-        let userImage = ev.target.elements.imageURL.value
-        console.log(userImage)
-        // put into firebase
-        addDoc(usersCollectionRef,{ImageUrl:userImage});
-    }
+import { db } from '../../functions/firebase/config';
+import { collection, addDoc } from 'firebase/firestore';
 
-    
-    
-    return(
-        <div>
-            <form onSubmit={handleSubmit}>
-            <input> </input>
-                <input type='text' name='imageURL'>URL</input>
-                
-                <input type="submit"/>
 
-            </form>
-        </div>
+function UserPhoto() {
+	function handleSubmit(ev) {
+		ev.preventDefault();
+		let userImage = ev.target.elements.imageURL.value;
+		let userName = ev.target.elements.name.value;
+		const usersCollectionRef = collection(db, 'Images');
+		console.log(userImage, userName);
+		addDoc(usersCollectionRef, {
+			Name: userName,
+			ImageUrl: userImage,
+		});
+	}
 
-    )
+	return (
+		<div>
+			<form onSubmit={handleSubmit}>
+				<input type='text' name='name' placeholder='Name'></input>
+				<input type='text' name='imageURL' placeholder='Image URl'></input>
+				<input type='submit' />
+			</form>
+		</div>
+	);
 }
 
-export default UserPhoto
+export default UserPhoto;
