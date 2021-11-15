@@ -1,19 +1,21 @@
 
 import { db } from '../../functions/firebase/config';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc,setDoc} from 'firebase/firestore';
 
 
 function UserPhoto() {
 	function handleSubmit(ev) {
 		ev.preventDefault();
+
 		let userImage = ev.target.elements.imageURL.value;
 		let userName = ev.target.elements.name.value;
 		const usersCollectionRef = collection(db, 'Images');
 		console.log(userImage, userName);
 		addDoc(usersCollectionRef, {
-			Name: userName,
 			ImageUrl: userImage,
 		});
+        
+
 	}
 
 	return (
