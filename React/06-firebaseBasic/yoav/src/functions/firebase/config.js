@@ -16,7 +16,15 @@ const firebaseConfig = {
   measurementId: "G-BF81EZ7K2Z"
 };
 
+<<<<<<< Updated upstream
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 export const db = getFirestore(app);
+=======
+//Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+export const db = getFirestore(app);
+
+>>>>>>> Stashed changes
