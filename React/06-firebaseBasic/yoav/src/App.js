@@ -1,25 +1,3 @@
-<<<<<<< Updated upstream
-import { useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { db } from './functions/firebase/config';
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
-
-function App() {
-
-  useEffect(() => {
-    const catRef = doc(db, "cats", "nw03YaQ8CV4Zu6VS1sMy");
-
-    getDoc(catRef).then(catDB => {
-      console.log(catDB.data());
-    })
-
-    onSnapshot(catRef, catDB=>{
-     console.log(catDB.data())
-    })
-  }, [])
-
-=======
 import { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -84,7 +62,6 @@ function App() {
   }
 
   
->>>>>>> Stashed changes
   return (
     <div className="App">
      
