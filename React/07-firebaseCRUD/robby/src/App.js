@@ -4,6 +4,7 @@ import './App.css';
 import {db} from './functions/firebase/config';
 import {doc, setDoc} from 'firebase/firestore'
 import UserInput from './userInput/UserInput';
+import MathWork from './mathWork/MathWork'
 
 function App() {
 //   useEffect(()=> { const userRef= doc(db, 'users', 'me')
@@ -11,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <UserInput/>
+        <MathWork/>
       </header>
     </div>
   );
