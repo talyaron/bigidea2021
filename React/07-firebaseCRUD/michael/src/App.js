@@ -1,33 +1,32 @@
-import logo from './logo.svg';
+import { useEffect,useState } from 'react';
 import './App.css';
-import {db} from "./functions/firebase/config";
-import { doc, setDoc} from "firebase/firestore"
+import {db} from './functions/firebase/config';
+import { doc, setDoc } from "firebase/firestore"
 
 function App() {
 
-  useEffect(()=>{
-    const userRef = doc(db, 'users', 'me')
-    setDoc(userRef,{name:"Michael", image: "https://cdn.vox-cdn.com/thumbor/Q8jaoy_BCjTa3iUBuA0WrKSGLGc=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22443557/revan_galaxy_of_heroes_tall.jpeg"})
-  },[]);
+  // useEffect(()=>{
+  //   const userRef=doc(db,'users','me')
+  //   setDoc(userRef,{name:"szymon",image:"https://i.ytimg.com/vi/BCr7y4SLhck/maxresdefault.jpg"})
+  // },[])
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  function handleSubmit(ev){
+    ev.preventDefault();
+    const setName= ev.target.elements.name.value;
+    const hideName= ev.target.elements.name;
+    const setAnswer=Number(ev.target.elements.answer.value);
+    setDoc(doc(db,"answers","answer"),{answer:setAnswer,name:setName});
+    hideName.style.display="none"
+  }
+
+return (
+  <form onSubmit={handleSubmit}>
+    <input type="text" name="name"></input>
+    <input type="text" name="answer"></input>
+    <input type="submit" value="Submit"></input>
+  </form>
+)
+
 }
 
 export default App;
