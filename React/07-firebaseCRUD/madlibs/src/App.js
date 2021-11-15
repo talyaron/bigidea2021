@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import wordReader from './JaimeSzymonMichael/wordReader';
 
 function App() {
   return (
