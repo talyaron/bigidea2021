@@ -1,34 +1,78 @@
-import { useEffect } from 'react';
-import logo from './logo.svg';
+import { useEffect,useState } from 'react';
 import './App.css';
 import { db } from './functions/firebase/config';
-import { doc,setDoc } from 'firebase/firestore';
+import { doc, onSnapshot } from 'firebase/firestore';
 
+let firstFound = true;
+let useFirstNum,useSecondNum = 0;
 function App() {
-  let namePicked = "";
-  let imgPicked = "";
+  
+  const [firstNum, setFirstNum] = useState(0);
+  const [secondNum, setSecondNum] = useState(0);
+  const [answerObj, setAnswerObj] = useState({answer:0,name:""});
+  const [pointsArray, setPointsArray] = useState([]);
+  let tempPointsArray = [];
 
   useEffect(()=>{
-    const userRef = doc(db, 'users', 'me')
-    setDoc(userRef,{name:namePicked,image:imgPicked})
+
+    const answerRef=doc(db,'answers','answer')
+    onSnapshot(answerRef, answerDB =>{
+      //console.log(answerDB.data())
+      tempPointsArray = pointsArray;
+      if (answerDB.exists()){
+        const{ answer, name } = answerDB.data();
+        if(answerDB.data().answer===(useFirstNum+useSecondNum)&&firstFound === true){
+          let foundThisInstance = false;
+          firstFound = false;
+          for(let i = 0; i<tempPointsArray.length;i++){
+            if(tempPointsArray[i].name === answerDB.data().name){
+              tempPointsArray[i].points ++;
+              foundThisInstance = true;
+            }
+          }
+          if(foundThisInstance === false){
+            let tempObj = {name:name,points:1}
+            tempPointsArray.push(tempObj)
+          }
+          console.log(tempPointsArray);
+      }
+      
+        setPointsArray(tempPointsArray);
+        console.log(pointsArray)
+        
+      }
+    })
   },[])
 
-  function handleUpdate(ev){
-    namePicked=document.getElementById("nameInput").value;
-    imgPicked=document.getElementById("imgInput").value;
-    
-    const userRef = doc(db, 'users', 'me')
-    setDoc(userRef,{name:namePicked,image:imgPicked})
+  function newQuestion(ev){
+    useFirstNum = (Math.floor(Math.random() * 10) + 1)
+    useSecondNum = (Math.floor(Math.random() * 10) + 1)
+
+    setFirstNum(useFirstNum);
+    setSecondNum(useSecondNum);
+    console.log(useFirstNum,useSecondNum)
+    firstFound = true;
+    ev.preventDefault();
+
   }
+  
 
   return (
     <div className="App">
       <header className="App-header">
-      <div className = 'inputContainer' >
-                    <input type = 'text' id='nameInput' placeholder = 'name' />
-                    <input type = 'text' id = 'imgInput' placeholder = 'imgURL'></input>
-                    <input type="button" value = 'enter' onClick={handleUpdate}></input>
-                </div>
+        <form className='NewQuestion' onSubmit={newQuestion}>
+        <input type='submit' value='New Question'/>
+        </form>
+        <div className="displayQuestion">{firstNum}+{secondNum}</div>
+
+        <div className="Scoreboard">
+          {pointsArray.map((points, i)=>{
+            return(<div key = {i}>{points.name}:{points.points}</div>)
+          })
+        }
+        </div>
+
+      
       </header>
     </div>
   );
