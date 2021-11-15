@@ -6,6 +6,7 @@ import { doc, onSnapshot } from 'firebase/firestore';
 let firstFound = true;
 let useFirstNum, useSecondNum = 0;
 let correctResult = false;
+let wasAnswerFound = false;
 
 
 function App() {
@@ -18,36 +19,40 @@ function App() {
   let tempPointsArray = [];
 
   useEffect(() => {
-
+    
     const answerRef = doc(db, 'answers', 'answer')
     onSnapshot(answerRef, answerDB => {
-      //console.log(answerDB.data())
+      console.log(answerDB.data());
       tempPointsArray = [...pointsArray];
       if (answerDB.exists()) {
-       
-        
+        console.log('found.....')
+      
+
+
         //checking if the answer is correct, and it is the first person who found it
         const firstCorrectResponder = isUserFirst(answerDB.data(), correctResult, firstFound)
         if (firstCorrectResponder) {
+          firstFound = false;
+          console.log('found by', answerDB.data().name)
           setFirstPerson(answerDB.data().name)
-
+        
           //add it to the list
-          let index = tempPointsArray.findIndex(participent=>participent.name === firstCorrectResponder)
+          let index = tempPointsArray.findIndex(participent => participent.name === firstCorrectResponder)
 
           //if found
-          if(index !== -1){
-            tempPointsArray[index].points++
+          if (index !== -1) {
+            tempPointsArray[index].points = tempPointsArray[index].points+1
           } else {
-            tempPointsArray.push({name:firstCorrectResponder, points:1})
+            tempPointsArray.push({ name: firstCorrectResponder, points: 1 })
           }
-         
-          firstFound = false;
+
           
+          setPointsArray(tempPointsArray);
+          console.log(tempPointsArray)
 
         }
 
-        setPointsArray(tempPointsArray);
-        console.log(tempPointsArray)
+       
 
       }
     })
@@ -63,13 +68,13 @@ function App() {
   }
 
   function newQuestion(ev) {
-    useFirstNum = (Math.floor(Math.random() * 21) + 1)
-    useSecondNum = (Math.floor(Math.random() * 21) + 1)
+    useFirstNum = (Math.floor(Math.random() * 10) + 1)
+    useSecondNum = (Math.floor(Math.random() * 10) + 1)
 
     setFirstNum(useFirstNum);
     setSecondNum(useSecondNum);
-    
-    correctResult = useFirstNum*useSecondNum;
+
+    correctResult = useFirstNum * useSecondNum;
     firstFound = true;
     ev.preventDefault();
     setFirstPerson("");
@@ -92,7 +97,7 @@ function App() {
           }
           <h1>First to answer: {firstPerson}</h1>
         </div>
-
+        
 
       </header>
     </div>
