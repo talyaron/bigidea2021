@@ -1,6 +1,6 @@
 
 import { db } from '../../functions/firebase/config';
-import { collection, addDoc,setDoc} from 'firebase/firestore';
+import { doc, addDoc,setDoc} from 'firebase/firestore';
 
 
 function UserPhoto() {
@@ -9,9 +9,8 @@ function UserPhoto() {
 
 		let userImage = ev.target.elements.imageURL.value;
 		let userName = ev.target.elements.name.value;
-		const usersCollectionRef = collection(db, 'Images');
 		console.log(userImage, userName);
-		addDoc(usersCollectionRef, {
+		setDoc(doc(db, 'Images', userName),{
 			ImageUrl: userImage,
 		});
         
