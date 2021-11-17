@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {db} from './functions/firebase/config'
-import wordReader from './JaimeSzymonMichael/wordReader';
+import WordReader from './JaimeSzymonMichael/wordReader';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        BLA BLA
+        <WordReader />
       </header>
     </div>
   );
