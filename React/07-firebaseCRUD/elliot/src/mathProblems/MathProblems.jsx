@@ -3,23 +3,23 @@ import { doc, setDoc} from 'firebase/firestore'
 
 
 function MathProblems(){
-    function handleSubmit(ev) {
-        ev.preventDefault();
-        const setName= ev.target.elements.userName.value;
-        const setPic= ev.target.elements.userPicture.value;
-        console.log(ev)
-        console.log(ev.target.elements.userName.value)
-        console.log(ev.target.elements.userPicture.value)
-        setDoc(doc(db, 'users', 'me'), {name: setName, image: setPic});
-    }
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder='Input Name Here' name="userName" />
-            <input type="text" placeholder='Input Photo Here' name="userPicture" />
-            <input type="submit" value="Submit" />
-        </form>
-    );
+  function handleSubmit(ev){
+    ev.preventDefault();
+    const setName= ev.target.elements.name.value;
+    const hideName= ev.target.elements.name;
+    const setAnswer=Number(ev.target.elements.answer.value);
+    setDoc(doc(db,"answers","answer"),{answer:setAnswer,name:setName});
+    hideName.style.display="none"
+  }
+
+return (
+  <form onSubmit={handleSubmit}>
+    <input type="text" name="name"></input>
+    <input type="text" name="answer"></input>
+    <input type="submit" value="Submit"></input>
+  </form>
+)
 }
 
 export default MathProblems;
