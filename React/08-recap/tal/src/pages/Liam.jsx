@@ -12,18 +12,18 @@ const [name, setName] = useState('');
     //get all of us...
     const usRef = collection(db, 'us');
 
-    // getDocs(usRef).then(usDB => {
-    //   usDB.forEach(personDB => {
-    //     console.log(personDB.id)
-    //     console.log(personDB.data())
-    //   })
-    // })
+    getDocs(usRef).then(usDB => {
+      usDB.forEach(personDB => {
+        console.log(personDB.id)
+        console.log(personDB.data())
+      })
+    })
 
     //get only Michael and print it
     const docRef = doc(db, 'us', 'e1B12ECzbM9IfjYlZo8M');
-    // getDoc(docRef).then(docDB => {
-    //   console.log(docDB.data())
-    // })
+    getDoc(docRef).then(docDB => {
+      console.log(docDB.data())
+    })
 
     //listen to Micheal
     const unsubscribe = onSnapshot(docRef, docDB => {
