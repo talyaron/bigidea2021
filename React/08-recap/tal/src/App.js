@@ -1,42 +1,40 @@
 import { useEffect, useState } from 'react'
 import './App.css';
 import { db } from './functions/firebase/config';
-import { collection, doc, getDocs, getDoc, onSnapshot } from "firebase/firestore";
+import { collection, doc, getDocs, getDoc, onSnapshot, setDoc } from "firebase/firestore";
 
 function App() {
-  
-  const [name, setName] = useState('');
-  const [surprise, setSurprise] = useState('');
 
-  //get all of us...
+  const [link, setLink] = useState('LYwaBpL6njk');
 
-  //run only on start
+
+
   useEffect(() => {
-
-    const usRef = collection(db, 'us');
-    getDocs(usRef).then(dataDB => {
-      dataDB.forEach(datum => {
-        console.log(datum.data());
-      })
+    console.log('useeffect')
+    const moviesRef = doc(db, 'movies', 'movie');
+    onSnapshot(moviesRef, movieDB => {
+      const youtubeId = movieDB.data().url;
+      setLink(youtubeId);
     })
 
-    const michaelRef = doc(db, 'us', 'noeAEfNicuKOI0ndT4Nl');
-    getDoc(michaelRef).then(docDB => {
-      const name = docDB.data().name;
-      setName(name);
-    })
+  }, []);
 
-    const unsubscribe = onSnapshot( michaelRef, docDB => {
-      const surprise = docDB.data().surprise;
-      setSurprise(surprise);
-    })
+  function handleURLSubmit(ev) {
+    ev.preventDefault();
+    let url = ev.target.elements.link.value;
+    const moviesRef = doc(db, 'movies', 'movie');
+    setDoc((moviesRef), { url: url });
+  }
 
-  }, [])
-  
-  return(
+  return (
     <div className="App">
-      <h1>{name}</h1>
-      <h2>{surprise}</h2>
+      <form >
+        <input type='text' placeholder='Enter your link here' name="link" />
+        <input type='submit' value='Submit' />
+      </form>
+    
+      
+      <iframe width="560" height="315" src={`https://www.youtube.com/embed/${link}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   );
 }
