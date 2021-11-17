@@ -35,18 +35,22 @@ function App() {
   
   function addVideo(ev){
     ev.preventDefault();
-    if(ev.target)
+    if(ev.target.elements.link.value == ''){
+      alert("You must input a link into the text box. Please input a link and try again.");
+    } else {
+
+    }
   }
 
   return (
     <div className="App">
       <form className="submitPersonalVideo" display={submitVisible} onSubmit = {addVideo}>
-        <input type="text" name="" placeholder="Please input the link of your video here:"></input>
+        <input type="text" name="link" placeholder="Please input the link of your video here:"></input>
         <input type="button" placeholder="Confirm"></input>
       </form>
-      <form className="submitPersonalVideo" display = {videoVisible} onSubmit = {changeVideo}>
+      <form className="newVideoRequest" display = {videoVisible} onSubmit = {changeVideo}>
         <iframe width = "300" height = "300" max-width = "750" max-height = "750" src={videoSRC} frameborder="2" autoplay> </iframe>
-        <input type="button" placeholder="Confirm"></input>
+        <input type="button" placeholder="Generate New Video"></input>
       </form>
     </div>
   );
