@@ -57,7 +57,7 @@ function MatchingGame(){
                 )
 
             })
-            }
+            
         </div>
         
     )

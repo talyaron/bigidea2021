@@ -1,5 +1,8 @@
+import { useEffect, useState } from 'react'
 import logo from './logo.svg';
 import './App.css';
+import { db } from './functions/firebase/config';
+import { collection, doc, getDoc, onSnapshot, updateDoc, addDoc } from 'firebase/firestore'
 
 function App() {
   return (
