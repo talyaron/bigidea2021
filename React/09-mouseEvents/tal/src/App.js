@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import './App.css'
 import seaMP3 from './words/sea.mp3';
-import landMP3 from './words/land.mp3';
+//import landMP3 from './words/land.MP3';
 
 function App() {
 
