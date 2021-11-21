@@ -8,11 +8,11 @@
 }
 
 .brown{
-  background: brown;
+  background-color: rgb(226, 133, 45);
 }
 
 .circle{
-  background: red;
+  background-color: red;
   width: 10px;
   height: 10px;
   border-radius: 20px;
