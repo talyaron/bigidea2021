@@ -5,6 +5,15 @@ import { doc, onSnapshot, setDoc, collection } from 'firebase/firestore';
 
 function App() {
 	const [userVideo1, setUserVideo] = useState('DEV372Kof0g');
+	const movieRef = doc(db, 'us', 'movie')
+	useEffect(() => {
+		onSnapshot(movieRef, movieDB => {
+			const viedoId = movieDB.data().url;
+			if (typeof viedoId === 'string') {
+				setUserVideo(viedoId)
+			}
+		})
+	}, [])
 
 	function handleSubmit(ev) {
 		ev.preventDefault();
@@ -14,7 +23,7 @@ function App() {
 		if (typeof userVideo === 'string') {
 			setUserVideo(userVideo);
 			console.log(userVideo, userName);
-			setDoc(doc(db, 'us', 'movie'), {
+			setDoc(movieRef, {
 				videoURL: userVideo,
 				userName
 			});
