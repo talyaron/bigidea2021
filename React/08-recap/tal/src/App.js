@@ -5,10 +5,11 @@ import { doc, onSnapshot, setDoc, collection } from 'firebase/firestore';
 
 function App() {
 	const [userVideo1, setUserVideo] = useState('DEV372Kof0g');
-	const movieRef = doc(db, 'us', 'movie')
+	const movieRef = doc(db, 'movies', 'movie')
 	useEffect(() => {
 		onSnapshot(movieRef, movieDB => {
-			const viedoId = movieDB.data().url;
+			const viedoId = movieDB.data().videoURL;
+			alert('video with id:', viedoId)
 			if (typeof viedoId === 'string') {
 				setUserVideo(viedoId)
 			}
