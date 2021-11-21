@@ -1,0 +1,144 @@
+ /*Font support for MAC*/
+ @font-face{font-family:'Century Gothic';font-weight:normal;font-style:normal;src:local('Century Gothic'),url('/blobcontent/zty/fonts/CenturyGothic.ttf') format('truetype')}
+ @font-face{font-family:'Century Gothic';font-weight:bold;font-style:normal;src:local('Century Gothic Bold'),url('/blobcontent/zty/fonts/CenturyGothicBold.ttf') format('truetype')}
+ @font-face{font-family:'Century Gothic';font-weight:bold;font-style:italic;src:local('Century Gothic Bold Italic'),url('/blobcontent/zty/fonts/CenturyGothicBoldItalic.ttf') format('truetype')}
+ @font-face{font-family:'Century Gothic';font-weight:normal;font-style:italic;src:local('Century Gothic Italic'),url('/blobcontent/zty/fonts/CenturyGothicItalic.ttf') format('truetype')}
+
+ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;vertical-align:baseline;background:transparent}
+ #document.skn-srz6 table{font-size:inherit;color:inherit}
+ #document.skn-srz6 a img{border:none}
+
+ /*START content disc style for LI*/
+ #document.skn-srz6 ul,#document.skn-srz6 li{margin:0;padding:0;list-style-type:disc}
+ #document.skn-srz6 ul li{margin:0 0 0 16px;padding:0}
+ @-moz-document url-prefix() {#document.skn-srz6 ul li{margin:0 0 0 12px;padding:0 0 0 3px}}
+ /*END content disc style for LI*/
+
+ /*table style*/
+ #document.skn-srz6 table{border-collapse:collapse;border-spacing:0}
+ #document.skn-srz6 table.skills,#document.skn-srz6 .table_wrapper{margin-top:0;width:100%;word-wrap:break-word}
+ #document.skn-srz6 table.skills th,#document.skn-srz6 table.skills td{text-align:center;width:20%}
+ #document.skn-srz6 table.skills .skillname,#document.skn-srz6 table.skills .skillrating{text-align:left;width:35%}
+ #document.skn-srz6 table.skills .skillrating{width:20%}
+ #document.skn-srz6 table.skills .skillyears,#document.skn-srz6 table.skills .skilllast{width:19%}
+ #document.skn-srz6 table.skills .pad1{width:5%}
+ #document.skn-srz6 table.skills .pad2,#document.skn-srz6 table.skills .pad3{width:1%}
+
+ /*document*/
+ #document.skn-srz6{color:#343434;font-variant-ligatures:none;line-height:16px;min-height:792px;box-sizing:border-box}
+ #document.skn-srz6 .name{font-weight:700;padding:0;position:relative;text-align:left;word-wrap:break-word}
+ #document.skn-srz6 .address .singlecolumn{margin-left:0!important}
+ #document.skn-srz6 .heading{font-weight:700;line-height:15px;margin-bottom:10px}
+ #document.skn-srz6 .sectiontitle{word-wrap:break-word}
+ #document.skn-srz6 .degreeGap{margin-bottom:4px}
+ #document.skn-srz6 .locationGap{margin-top:4px}
+ #document.skn-srz6 .firstsection{padding-top:0!important}
+ #document.skn-srz6 .section:empty{display:none}
+ #document.skn-srz6 .education .joblocation{font-style:italic}
+
+ /*right box*/
+ #document.skn-srz6 .right-box{background:#003D73;box-sizing:initial;display:table-cell;padding:15px;box-sizing:content-box}
+ #document.skn-srz6 .right-box .section{position:relative;color:#fff}
+ #document.skn-srz6 .right-box .heading{line-height:1.5;margin-left:-15px;margin-right:-15px;padding:0 15px;position:relative}
+ #document.skn-srz6 .right-box .heading:before{content:'';position:absolute;left:0;top:0;background:#003D73;height:100%;width:100%;filter:brightness(0.8)}
+ #document.skn-srz6 .right-box .sectiontitle{padding:3px 0;text-align:left;position:relative}
+ #document.skn-srz6 .right-box .SECTION_CNTC{padding-top:20px!important}
+ #document.skn-srz6 .parentContainer{border-collapse:collapse;display:table;min-height:inherit;table-layout:fixed;width:100%}
+
+
+ /*left box*/
+ #document.skn-srz6 .left-box{display:table-cell;letter-spacing:.2px;padding:15px;vertical-align:top}
+ #document.skn-srz6 .left-box .section:first-child{padding-top:0}
+ #document.skn-srz6 .left-box .heading{border-bottom:1px solid #d5d6d6;border-top:1px solid #d5d6d6;letter-spacing:0;padding:5px 0}
+ #document.skn-srz6 .left-box .sectiontitle{color:#002e58}
+ #document.skn-srz6 .left-box .paddedline.date-content{position:absolute;margin-left:0;width:65px}
+ #document.skn-srz6 .paragraph .singlecolumn{position:relative}
+ #document.skn-srz6 .left-box .summary .singlecolumn{margin-left:0!important}
+
+ /*common css*/
+ #document.skn-srz6 .txtBold{font-weight:bold}
+ #document.skn-srz6 .txtItl{font-style:italic}
+ #document.skn-srz6 .paddedline{display:block}
+ #document.skn-srz6 .mt5{margin-top:5px}
+ #document.skn-srz6 .txtRight{text-align:right}
+ #document.skn-srz6 .word-break{word-wrap:break-word}
+
+ #document.skn-srz6 .right-box .outer-square,#document.skn-srz6 .right-box .inner-square,#document.skn-srz6 .left-box .outer-square,#document.skn-srz6 .left-box .inner-square{height:7px;position:relative}
+ #document.skn-srz6 .right-box .inner-square{background:#fff}
+ #document.skn-srz6 .left-box .outer-square{background:#d6d6d6}
+ #document.skn-srz6 .left-box .inner-square{background:#003D73}
+ #document.skn-srz6 > div{min-height:inherit}
+
+ /* Issues fix for builder page */
+ #displayResume #document.skn-srz6.document{min-height:792px}
+ #document.skn-srz6 .right-box .outer-square:before,#document.skn-srz6 .right-box .sortable-item.active .inner-square{background:#003D73}
+ #document.skn-srz6 .right-box .sortable-item.active .singlecolumn, #document.skn-srz6 .right-box .sortable-item.active .maincolumn{z-index:10}
+ #document.skn-srz6 .right-box .active *{color:#343434}
+ /* Only for firefox */
+ @-moz-document url-prefix() {#document.skn-srz6 .parentContainer{height:1px}}
+
+ /*PICT*/
+ #document.skn-srz6:not(.ZFR) .photo{display:none}
+ #document.skn-srz6.ZFR .prflPic,#document.skn-srz6.ZFR .prflPic > div{width:154px;height:154px}
+ #document.skn-srz6.ZFR .prflPic img{min-width:100%;max-width:100%;min-height:100%;max-height:100%}
+
+ /* IE support   */
+
+
+</style><style type="text/css" id="dynamic" data-time="Thu Nov 18 2021 17:13:30 GMT+0200 (Israel Standard Time)">
+ #document.skn-srz6,#document.skn-srz6 table{line-height:18px}
+ #document.skn-srz6.pagesize{width:612px}
+ #document.skn-srz6.fontface{font-family:Century Gothic}
+ #document.skn-srz6.fontsize{font-size:11px}
+ #document.skn-srz6 .section{padding-top:20px}
+ #document.skn-srz6 .right-box .section{padding-top:20px}
+ #document.skn-srz6 .firstparagraph{margin-top:0!important}
+ #document.skn-srz6 .paragraph{margin-top:10px}
+ #document.skn-srz6 .singlecolumn,#document.skn-srz6 .maincolumn{word-wrap:break-word}
+ #document.skn-srz6 .left-box .singlecolumn,#document.skn-srz6 .left-box .maincolumn{margin-left:0px}
+ #document.skn-srz6 table.skills td{padding-top:5px}
+ #document.skn-srz6 .jobdates{font-size:11px}
+ #document.skn-srz6 .jobtitle,#document.skn-srz6 .degree,#document.skn-srz6 .programline{font-size:14px}
+ #document.skn-srz6 .name{font-size:28px;line-height:31px}
+ #document.skn-srz6 .heading{line-height:22px}
+ #document.skn-srz6 .right-box .heading{line-height:22px}
+ #document.skn-srz6 .right-box .heading:before{background:#576d7b}
+ #document.skn-srz6 .sectiontitle{font-size:16px}
+ #document.skn-srz6 .resumeTitle{font-size:14px;padding-top:3px}
+ #document.skn-srz6 .right-box{background:#576d7b;width:154px}
+ #document.skn-srz6 .left-box .paragraph .singlecolumn{margin-left:91px}
+ #document.skn-srz6 .left-box .paddedline.date-content{left:-91px}
+ #document.skn-srz6 .right-box .outer-square:before{background:#576d7b;content:'';position:absolute;height:7px;width:100%;filter:brightness(.8)}
+ #document.skn-srz6 .left-box .inner-square{background:#576d7b;filter:brightness(.8)}
+ #document.skn-srz6 .left-box .sectiontitle{color:#576d7b}
+
+ /* Issues fix for builder page */
+ #document.skn-srz6 .left-box .sortable-item{padding-top:20px}
+ #document.skn-srz6 .right-box > .sortable-item.active > .wrapper .heading:before{background:none}
+ #document.skn-srz6 .right-box .sortable-item.active .outer-square:before{background:#d6d6d6}
+ #document.skn-srz6 .right-box .sortable-item.active .inner-square,#document.skn-srz6 .right-box .heading:before{background:#576d7b}
+
+ /* Phase 2: Issues fix for builder page */
+ #document.skn-srz6._single-parent-drag > .wrapper-bg + div{position:relative;z-index:8}
+ #document.skn-srz6._single-parent-drag .outer-square:before{background:#d6d6d6;content:'';position:absolute;height:7px;width:100%;filter:brightness(0.8)}
+ #document.skn-srz6._single-parent-drag .inner-square {background:#576d7b}
+ #document.skn-srz6._single-parent-drag .wrapper-bg + div .paragraph {margin-top:0}
+ #document.skn-srz6 .outer-square, #document.skn-srz6 .inner-square {height:7px;position:relative}
+ #document.skn-srz6 .wrapper{position:static}
+ #document.skn-srz6 .parent-drag.active .wrapper,#document.skn-srz6 .sortable-item .sectiontitle{position:relative}
+ /*.SRZ6#document.skn-srz6 .right-box .SortableItem-sibling{background:#576d7b}*/
+
+ /*Hover border style*/
+ #document.skn-srz6.active .wrapper-bg{left:-62px !important;right:-62px !important}
+ #document.skn-srz6.active .acrs-bdr{left:-60px !important}
+ #document.skn-srz6.active .acr-edit,#document.skn-srz6.active .acr-delete{left:-59px !important}
+ #document.skn-srz6.active .acr-move{right:-59px !important}
+
+ /* support for IE Browser */
+ @media screen and (min-width:0\0) {
+ #document.skn-srz6 .right-box{box-sizing:content-box}
+ #document.skn-srz6 .parentContainer{display:flex;}
+ #document.skn-srz6 .left-box{width:calc(100% - 154px)}
+ #document.skn-srz6 .left-box,#document.skn-srz6 .right-box{background:none;display:inline;position:relative}
+ #document.skn-srz6 .right-box:before{content:''; background:#576d7b; position:absolute; left:0; top:0; height:100%; width:100%; opacity:.9}
+ }
