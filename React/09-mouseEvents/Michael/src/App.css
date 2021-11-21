@@ -1,6 +1,6 @@
 .box{
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
 }
 
 .blue{
@@ -8,11 +8,11 @@
 }
 
 .brown{
-  background-color: rgb(226, 133, 45);
+  background: brown;
 }
 
 .circle{
-  background-color: red;
+  background: red;
   width: 10px;
   height: 10px;
   border-radius: 20px;
@@ -20,4 +20,10 @@
   top:0px;
   left:0px;
   transition: all 100ms;
+}
+
+.row{
+  width: 20px;
+  height: 20px;
+  background-color: gray;
 }

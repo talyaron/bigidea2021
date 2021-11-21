@@ -8,16 +8,16 @@
 }
 
 .brown{
-  background-color: rgb(226, 133, 45);
+  background-color: brown;
 }
 
 .circle{
   background-color: red;
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   border-radius: 20px;
   position: absolute;
-  top:0px;
-  left:0px;
-  transition: all 100ms;
+  top: 0px;
+  left: 0px;
+  transition: all;
 }
