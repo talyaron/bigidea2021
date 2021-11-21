@@ -1,8 +1,14 @@
+import './App.css'
 
 function App() {
   return (
    <div>
-     App
+     <div id='sea' className= 'box blue' onClick={handleClick}>
+
+     </div>
+     <div id='land' className= 'box brown'>
+       
+     </div>
    </div>
   );
 }
