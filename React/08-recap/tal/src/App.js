@@ -27,7 +27,7 @@ function App() {
 		<div>
 			<form onSubmit={handleSubmit}>
 				<input type='text' name='name' placeholder='Name'></input>
-				<input type='text' name='videoURL' placeholder='Video URl'></input>
+				<input type='text' name='videoURL' placeholder='Youtube video ID'></input>
 				<input type='submit' />
 			</form>
 			<iframe width="560" height="315" src={`https://www.youtube.com/embed/${userVideo1}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
