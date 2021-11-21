@@ -11,7 +11,7 @@ function App() {
 		const videoId = new RegExp('/^[A-Za-z0-9_-]{11}$/')
 		let userVideo = ev.target.elements.videoURL.value;
 		let userName = ev.target.elements.name.value;
-		if (typeof userVideo === 'string' && userVideo.match(videoId)) {
+		if (typeof userVideo === 'string') {
 			setUserVideo(userVideo);
 			console.log(userVideo, userName);
 			setDoc(doc(db, 'us', 'movie'), {
