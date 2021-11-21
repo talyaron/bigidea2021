@@ -13,6 +13,9 @@ function App() {
      <div id='land' className= 'box brown' onClick={handleClick}>
 
      </div>
+     <div id='sky' className='circle' onClick={handleClick}>
+
+     </div>
    </div>
   );
 }
