@@ -1,8 +1,12 @@
-.userCard{
-  width: 100vw;
-  max-height: 80vh;
-  text-align: center;
+.box{
+  width: 100px;
+  height: 100px;
 }
-.userCard img{
-  width: 100%;
+
+.blue{
+  background: blue;
+}
+
+.brown{
+  background: brown;
 }
