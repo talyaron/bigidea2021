@@ -8,7 +8,8 @@ function App() {
 	const movieRef = doc(db, 'movies', 'movie')
 	useEffect(() => {
 		onSnapshot(movieRef, movieDB => {
-			const viedoId = movieDB.data().url;
+			const viedoId = movieDB.data().videoURL;
+			alert('video with id:', viedoId)
 			if (typeof viedoId === 'string') {
 				setUserVideo(viedoId)
 			}
