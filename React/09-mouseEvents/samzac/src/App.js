@@ -4,6 +4,7 @@ import { db } from './firebase/config.js';
 import { useEffect, useState } from 'react';
 import { doc, setDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 
+
 function App() {
   // function ResetGame (){
   //   setDoc(doc(db, 'gameFiles', numberOfUsers), {});
