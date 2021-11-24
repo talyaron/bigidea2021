@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
 
-  const [messages, setMessages] = useState([]);
+  
 
   function handleUpdate (ev) {
     if(ev.keyCode === 13) {
