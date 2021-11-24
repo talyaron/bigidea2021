@@ -1,76 +1,135 @@
-import { useRef } from 'react';
-import './App.css'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import './App.css';
+import { useRef, useState } from 'react';
+import {doc, setDoc} from 'firebase/firestore';
 import seaMP3 from './words/sea.mp3';
 import landMP3 from './words/land.mp3';
+import {db} from './functions/firebase/config'
+import { FirebaseError } from '@firebase/util';
+
 
 function App() {
-
+	//await setDoc(doc(db, "players", "user"))
   const circle = useRef(null);
-  const sea = new Audio(seaMP3);
-  const land = new Audio(landMP3);
-  let value;
-  let value2;
-  let num= Math.random()*2;
-  let valueclick;
-
-  console.dir(circle);
+	const [circleLocation, setCircleLocation] = useState('Sea');
+	const [landSea, setlandSea] = useState('Sea');
+	const [color, setColor] = useState('green');
+  const [playing, setPlaying ]= useState(false);
+  const [score, setScore ]= useState(0);
 
 
-  function handleClick(ev) {
-    console.log(ev)
-    console.log(ev.target.id)
-    valueclick=ev.target.id;
-
-   
-    //get x and y of the click point
-    const x = ev.clientX;
-    const y = ev.clientY;
-
-    circle.current.style.top = `${y - 5}px`;
-    circle.current.style.left = `${x - 5}px`;
- 
- 
-    
-    
-  }
+  const seaSound = new Audio(seaMP3);
+  const landSound = new Audio(landMP3);
   
-function pickLocation(){
+  //Runs during the first round
+  function handleNameSubmit(ev){
+
+    ev.preventDefault();
+    const name= ev.target.elements.name.value;
+
+    if(name === ''){
+      alert('Cannot display an empty name! Please fill the name and try again.')
+    } else {
+
+      ev.target.elements.name.style.display= "none";
+      setPlaying(true);
+      //eventually will need to change the id to a random generated ID instead of the name
+      setDoc(doc(db, "players", `${name}`),{
+        name: name,
+        isPlaying: playing,
+        score: score
+      });
+
+      gameMec();
+    }
+  }
+
+  function checkPlayers(){
+    var anyPlayersPlaying = false;
+    FirebaseError.database().ref("landOrSea/players").on('value', function(snap){
+      snap.forEach(function(childNodes){
+        if(childNodes.val().isPlaying == true){
+          anyPlayersPlaying = true;
+        }
+      });
+    });
+
+    return anyPlayersPlaying;
+  }
+
+	function gameMec() {
     
-      if(num<=1){
-        sea.play();
-        
-        value= 'sea';
-       
-        
-      }
-      else{
-        land.play();
-   
-        value= 'land';
-     
-      }
-      console.log(value);
-      console.log(value2);
 
-      if(value=== valueclick){
+    let tempLandSea;
+		let i = Math.floor(Math.random() * 2); 
+			if (i === 1) {
+				tempLandSea = 'Sea';
+				console.log('Sea');
+        seaSound.play()
+			} else {
+				tempLandSea = 'Land'
+				console.log('Land');
+        landSound.play()
+			} 
+    setlandSea(tempLandSea)
+	}
+  function checkAnswer(id){
+    if(id === landSea){
+      console.log('true')
+      setScore(score++);
 
-      }
-      else{
-        alert("you lose");
-      }
+      return(true)
       
     }
-      setTimeout(pickLocation, Math.random()*1000+2000) 
-   
-  
-  return (
-    <div>
-      <div id='sea' className='box blue' onClick={handleClick}></div>
-      <div id='land' className='box brown' onClick={handleClick}></div>
-      <div ref={circle} className='circle'></div>
-      <input type='button' onClick={pickLocation}></input>
-    </div>
-  );
+    else{
+      alert('dumb ass mf')
+      setPlaying(false);
+      return(false)
+    }
+  }
+
+
+
+
+	function handleClick(ev) {
+		let location = ev.target.id;
+		const x = ev.clientX;
+		const y = ev.clientY;
+		circle.current.style.top = `${y - 5}px`;
+		circle.current.style.left = `${x - 5}px`;
+    setCircleLocation(location);
+		if (checkAnswer(location) === true){
+      gameMec()
+    }
+    else if( checkPlayers() === true){
+      
+    } else {
+      //end game with final score
+    }
+
+
+    
+
+	}
+
+	return (
+		<div>
+      <form onSubmit={handleNameSubmit}>
+        <input name= "name" type= "text"/>
+        <input name="submit" type= "submit" value= "Confirm"/> 
+      </form>
+			<div id='Sea' className='box blue' onClick={handleClick}></div>
+			<div id='Land' className='box brown' onClick={handleClick}></div>
+			<div id='redC' ref={circle} className='circle'></div>
+			<div className='landSea'>{landSea}</div>
+			<div className='row' style={{ background: color }}></div>
+		</div>
+	);
 }
 
 export default App;
+/* 
+      <div id='start' className='start' onClick={gameMec}>
+				start game
+			</div> 
+*/
