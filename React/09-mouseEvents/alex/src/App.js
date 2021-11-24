@@ -19,6 +19,7 @@ function App() {
   const [score, setScore] = useState([])
   const [youLose, setYouLose] = useState('')
   const [nameSubmited, setNameSubmitted] = useState('')
+  const [gameDisplay, setGameDisplay] = useState('inline')
   //const [correctLocation, setCorrectLocation] = useState('')
 
   const circleRef = useRef(null);
@@ -132,7 +133,8 @@ function handleTimer(){
       updateDoc(playernamesRef,{
         stillPlaying: false
       });
-      setYouLose("Game Over!!!")
+      setYouLose("Game Over!!!");
+      setGameDisplay('none');
     })
   }
   stopCondition = true;
@@ -228,11 +230,15 @@ async function sayPosition(){
      </form>
      <div>{nameSubmited}</div>
 
+
+    <div id='gameView' style={{display: gameDisplay}}>
      <div id='sea'className='box blue' onClick={handleClick}></div>
 
      <div id='land' className='box brown' onClick={handleClick}></div>
+     <div ref = {circleRef} className='circle' ></div>
+     </div>
 
-      <div ref = {circleRef} className='circle' ></div>
+
       <form onSubmit={checkPassword}>
       <input type='password' ref={passwordInputRef} placeholder='Alex Button Password' onClick={checkPassword}></input>
       <input type='submit' value = 'Submit Password'></input>
