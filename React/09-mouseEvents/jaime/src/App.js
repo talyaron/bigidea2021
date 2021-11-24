@@ -48,11 +48,11 @@ const getAllPlayers = [];
     if(id === landSea){
       console.log('true');
 
-      if(getAllPlayers.contains(name)) {
-        getAllPlayers[name] += 1;
-      } else {
-        // getAllPlayers.push([])
-      }
+      // if(getAllPlayers.contains(name)) {
+      //   getAllPlayers[name] += 1;
+      // } else {
+      //   // getAllPlayers.push([])
+      // }
       return(true);
     }
     else{
@@ -81,9 +81,26 @@ const getAllPlayers = [];
 
 	}
 
+  function handleSubmit (ev) {
+    ev.preventDefault();
+    let playerName = ev.target.nameBox.value;
+    let playerScore = 0;
+
+    console.log(playerName, playerScore);
+
+    const player = addDoc(collection(db, "players", {playerName}), {
+      score: 0,
+      isAlive: true
+    });
+  }
+
 	return (
 		<div>
-      <input type="text" placeholder='Enter your name' name="nameBox"/>
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder='Enter your name' name="nameBox"/>
+        <input type="submit" value='Submit'/>
+      </form>
+      
 			<div id='start' className='start' onClick={gameStart}>Start Game</div>
 			<div id='Sea' className='box blue' onClick={handleClick} />
 			<div id='Land' className='box brown' onClick={handleClick} />
