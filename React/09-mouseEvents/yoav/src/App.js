@@ -4,13 +4,14 @@ import seaMP3 from './words/sea.mp3';
 import landMP3 from './words/land.mp3';
 import buzz from './avatar/buzz.webp';
 import { db } from './functions/firebase/config';
-import { collection, doc, setDoc, updateDoc, getDoc, onSnapshot } from "firebase/firestore";
+import { collection, doc, setDoc, updateDoc, getDoc, onSnapshot, useRef } from "firebase/firestore";
 
 function App() {
   const circle = useRef(null);
   const sea = new Audio(seaMP3);
   const land = new Audio(landMP3);
   let instruction; 
+  let nameRef = useRef(null)
 
   console.dir(circle);
 
@@ -47,7 +48,7 @@ function App() {
   }
   
   function handleName(ev){
-    
+    nameRef = (doc('YB' , 'playerList' , ))
   }
 
   function handleClick(ev){
