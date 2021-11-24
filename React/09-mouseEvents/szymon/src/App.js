@@ -2,6 +2,8 @@ import { useRef } from 'react';
 import './App.css'
 import seaMP3 from './words/sea.mp3';
 import landMP3 from './words/land.mp3'
+import Sea from "./Sea.jpg"
+import Island from "./Island.png"
 
 function App() {
 
@@ -34,7 +36,7 @@ function App() {
       <div id='land' className='box brown' onClick={handleClick}></div>
       <div ref={circle} className='circle'></div> */}
       <div className="sea"></div>
-      <div className="land"></div>
+      <img className="land" src={Island} ></img>
     </div>
   );
 }
