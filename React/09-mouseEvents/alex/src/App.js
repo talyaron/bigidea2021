@@ -110,6 +110,9 @@ function handleClick(ev){
   }
  })
   
+
+ handleUpdateDom();
+ 
   
   circleRef.current.style.top = `${y-20}px`;
   circleRef.current.style.left = `${x-20}px`;
@@ -129,6 +132,23 @@ function handleTimer(){
     })
   }
   stopCondition = true;
+}
+
+async function handleUpdateDom(){
+  const q = query(collection(db, "names"));
+  const querySnapshot = await getDocs(q);
+
+   let tempArray = []
+   querySnapshot.forEach((doc) => {
+    let data = doc.data();
+    let tempObj = {
+      name: data.name,
+      score: data.score
+    }
+    tempArray.push(tempObj);
+    
+  })
+  setScore(tempArray);
 }
 
 async function sayPosition(){
@@ -167,17 +187,17 @@ async function sayPosition(){
    }else{
      //setYouLose("Game Over!!!")
    }
-   let tempArray = []
-   querySnapshot.forEach((doc) => {
-    let data = doc.data();
-    let tempObj = {
-      name: data.name,
-      score: data.score
-    }
-    tempArray.push(tempObj);
+  //  let tempArray = []
+  //  querySnapshot.forEach((doc) => {
+  //   let data = doc.data();
+  //   let tempObj = {
+  //     name: data.name,
+  //     score: data.score
+  //   }
+  //   tempArray.push(tempObj);
     
-  })
-  setScore(tempArray);
+  // })
+  // setScore(tempArray);
 
 };
 
