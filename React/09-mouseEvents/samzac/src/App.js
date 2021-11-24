@@ -24,6 +24,8 @@ function App() {
       <input type='text' placeholder='Enter your image url' name='imgBox'/>
       <input type="submit" placeholder="submit"></input>
       </form>
+      <div id="Sea"></div>
+      <div id="Land"></div>
       {/* <button onClick={ResetGame}></button> */}
     </div>
   );
