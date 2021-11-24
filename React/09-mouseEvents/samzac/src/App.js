@@ -48,7 +48,6 @@ function App() {
       {/* <button onClick={ResetGame}></button> */}
       <button onClick={StartGame}>Start Game</button>
     </div>
-
   );
 }
 
