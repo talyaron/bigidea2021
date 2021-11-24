@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import Land from './words/land.mp3'
 import Sea from './words/sea.mp3'
 import { db } from './functions/firebase/config';
+import {doc} from 'firebase/firestore'
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const seaSound = new Audio(Sea);
   const landSound = new Audio(Land);
   let instruction;
+  let nameRef = useRef(null)
 
   function seaOrLand() {
     if ((Math.floor(Math.random() * 2) + 1) == 1) {
@@ -53,8 +55,10 @@ function App() {
     setTimeout(function () { seaOrLand() }, 1000)
   }
 
-  function handleName(ev){
-    
+  function handleName(event){
+    event.preventDefault();
+    nameRef = doc(db , 'YB', 'playerList') 
+    console.log(event.target.elements.nameBox.value)
   }
 
 
@@ -64,10 +68,11 @@ function App() {
       <div id="sea" className='boxblue' onClick={handleClick}></div>
       <div id="land" className='boxgreen' onClick={handleClick}></div>
       <div ref={circle} className='circle'></div>
-      <input type='text' placeHolder='name' id = 'nameBox'/>
+      <form>
+      <input type='text' placeholder='name' id = 'nameBox'/>
       <input type='submit' value='submit' onClick={handleName}/>
       <input type='submit' value='start' onClick={handleStart} />
-
+      </form>
     </div>
   );
 }
