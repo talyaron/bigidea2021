@@ -73,7 +73,7 @@ function App() {
       <div id = 'sea' className = 'box blue' onClick = {handleClick}></div>
       <div id = 'land' className = 'box brown' onClick = {handleClick}></div>
       <img ref = {circle} className = 'circle' src = {buzz}></img>
-      <input id = 'nameBox' type = 'text' placeHolder = 'Name'/>
+      <input type = 'text' id = 'nameBox' placeholder = 'Name'/>
       <input type = 'submit' value = 'submit' onClick = {handleName}/>
       <input type = 'submit' value = "start" onClick = {handleStart}/>
     </div>
