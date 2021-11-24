@@ -3,9 +3,14 @@ import './App.css';
 import { db } from './firebase/config.js';
 import { useEffect, useState } from 'react';
 import { doc, setDoc, updateDoc, deleteDoc } from 'firebase/firestore';
+import landMP3 from './audio/land.mp3';
+import seaMP3 from './audio/sea.mp3';
 
 
 function App() {
+
+  const sea = new Audio(seaMP3);
+  const land = new Audio(landMP3);
   // function ResetGame (){
   //   setDoc(doc(db, 'gameFiles', numberOfUsers), {});
   // };
