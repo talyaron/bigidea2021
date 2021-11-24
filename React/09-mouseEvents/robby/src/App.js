@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import { useRef, useState } from 'react';
-import {doc, setDoc} from 'firebase/firestore';
+import {doc, setDoc, getDoc, onSnapshot, collection} from 'firebase/firestore';
+import {ref, getDatabase, onValue} from 'firebase/database';
 import seaMP3 from './words/sea.mp3';
 import landMP3 from './words/land.mp3';
 import {db} from './functions/firebase/config'
@@ -14,11 +15,14 @@ function App() {
 	const [circleLocation, setCircleLocation] = useState('Sea');
 	const [landSea, setlandSea] = useState('Sea');
 	const [color, setColor] = useState('green');
-  const [playing, setPlaying ]= useState(false);
+  const [playing, setPlaying ]= useState(true);
   const [score, setScore ]= useState(0);
   const [player, setPlayer]= useState("");
-  const [highScore, setHighScore]= useState(0);
-  const [highPlayer, setHighPlayer]= useState("");
+  const highScoreRef = doc(db, 'players', 'landOrSeaSetter');
+  const docSnap = getDoc(highScoreRef);
+  let highestScore = 0;
+  let highestPlayer = "";
+  var newScore;
 
 
   const seaSound = new Audio(seaMP3);
@@ -38,6 +42,7 @@ function App() {
       ev.target.elements.name.style.display= "none";
       setPlaying(true);
       //eventually will need to change the id to a random generated ID instead of the name
+      
       setDoc(doc(db, "players", `${name}`),{
         name: name,
         isPlaying: playing,
@@ -49,9 +54,11 @@ function App() {
   }
 
   function checkPlayers(){
+    const db= getDatabase();
+    const dbRef= ref(db, "landOrSea/players");
     var anyPlayersPlaying = false;
-    FirebaseError.database().ref("landOrSea/players").on('value', function(snap){
-      snap.forEach(function(childNodes){
+    onValue(dbRef, (snapshot)=>{
+      snapshot.forEach(function(childNodes){
         if(childNodes.val().isPlaying === true){
           anyPlayersPlaying = true;
         }
@@ -80,7 +87,11 @@ function App() {
   function checkAnswer(id){
     if(id === landSea){
       console.log('true')
-      setScore(score+1);
+      newScore = score;
+      newScore++;
+      setScore(newScore)
+      console.log("hi");
+      console.log(score)
 
       return(true)
       
@@ -96,6 +107,7 @@ function App() {
 
 
 	function handleClick(ev) {
+    ev.preventDefault();
 		let location = ev.target.id;
 		const x = ev.clientX;
 		const y = ev.clientY;
@@ -106,18 +118,34 @@ function App() {
       gameMec()
     }
     else if( checkPlayers() === true){
-      
-    } else {
-    FirebaseError.database().ref("landOrSea/players").on('value', function(snap){
-        snap.forEach(function(childNodes){
-          if(score>highScore){
-            setHighScore(score);
-            setHighPlayer(player);
-          }
-        });
-      });
+    }
+     else {
+   
+    const playersRef = collection(db, 'players');
+    onSnapshot(playersRef,playersDB=>{
+      const playersList = [];
+      playersDB.forEach(playerDB=>{
+        let data = playerDB.data();
+        if(data.score > highestScore){
+          highestScore = data.score;
+          highestPlayer = data.name;
+          console.log(highestScore);
+          console.log(highestPlayer);
+          alert(`you all suck, but ${highestPlayer} sucks the least because they got ${highestScore} points. Be Better.`)
+          console.log(`score: ${score}`)
+          console.log(player)
+        }
+      })
+
+    })
+
+
+  
+
+    
+
       }
-      alert(`you all suck, but ${highPlayer} sucks the least because they got ${highScore} points. Be Better.`)
+      
     }
 
 
