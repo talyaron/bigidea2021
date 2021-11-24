@@ -10,3 +10,15 @@
 .brown{
   background-color: brown;
 }
+
+.circle{
+  background-image: url(https://www.interpol.int/var/interpol/storage/images/3/8/2/4/4283-5-eng-GB/ITALY%20.png);
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transition: all;
+}

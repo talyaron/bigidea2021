@@ -6,8 +6,7 @@ import './App.css';
 
 function App() {
   const circle = useRef(null);
- // const sea = new Audio(seaMP3);
-  //const land = new Audio(landMP3);
+
 
   console.dir(circle);
 
@@ -15,15 +14,13 @@ function App() {
     console.log(ev);
     console.log(ev.target.id)
 
-    //get x and y of the click point
+    
     const x = ev.clientX;
     const y = ev.clientY;
 
     circle.current.style.top = `${y - 5}px`;
     circle.current.style.left = `${x - 5}px`;
 
-   // land.play();
-   // sea.play();
   }
   
   return (
