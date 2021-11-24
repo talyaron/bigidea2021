@@ -17,6 +17,7 @@ function App() {
 
   const [score, setScore] = useState([])
   const [youLose, setYouLose] = useState('')
+  const [nameSubmited, setNameSubmitted] = useState('')
   //const [correctLocation, setCorrectLocation] = useState('')
 
   const circleRef = useRef(null);
@@ -42,7 +43,7 @@ function handleNameInput(ev){
     stillPlaying: true
   });
   playerName = nameRef.current.value;
-  
+  setNameSubmitted("Name Submitted.")
 }
 useEffect(() => {
   
@@ -168,12 +169,12 @@ async function sayPosition(){
       if(pickLocation>5){
         updateDoc(landSeaRef, {
           LandOrSea: 'sea',
-          timer: Math.floor(Math.random()*(1500-500+1)+500)
+          timer: Math.floor(Math.random()*(1500-600+1)+600)
         });
       }else{
         updateDoc(landSeaRef, {
           LandOrSea: 'land',
-          timer: Math.floor(Math.random()*(1500-500+1)+500)
+          timer: Math.floor(Math.random()*(1500-600+1)+600)
         });
       }
 
@@ -209,6 +210,7 @@ async function sayPosition(){
       <input type='text' ref = {nameRef}></input>
       <input type='submit' value = "Submit Name"></input>
      </form>
+     <div>{nameSubmited}</div>
 
      <div id='sea'className='box blue' onClick={handleClick}></div>
 
