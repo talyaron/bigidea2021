@@ -12,18 +12,22 @@ let stopCondition = false;
 let scoreMath = 0;
 let continueGame = true;
 let playerName  = ''
+let passwordCorrect = false;
 
 function App() {
 
   const [score, setScore] = useState([])
   const [youLose, setYouLose] = useState('')
   const [nameSubmited, setNameSubmitted] = useState('')
+  const [gameDisplay, setGameDisplay] = useState('inline')
   //const [correctLocation, setCorrectLocation] = useState('')
 
   const circleRef = useRef(null);
   const nameRef = useRef(null);
+  const passwordInputRef = useRef(null);
   const landSeaRef = doc(db,'LandSea','LandSea')
   const namesRef = collection(db,'names')
+  const passwordRef = doc(db,'passwords','landSeaPassword')
   
   
 
@@ -129,7 +133,8 @@ function handleTimer(){
       updateDoc(playernamesRef,{
         stillPlaying: false
       });
-      setYouLose("Game Over!!!")
+      setYouLose("Game Over!!!");
+      setGameDisplay('none');
     })
   }
   stopCondition = true;
@@ -152,53 +157,66 @@ async function handleUpdateDom(){
   setScore(tempArray);
 }
 
-async function sayPosition(){
-  const q = query(collection(db, "names"));
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    let data = doc.data();
-    if(data.stillPlaying == true){
-      continueGame = true;
+function checkPassword(ev){
+  ev.preventDefault();
+  getDoc(passwordRef).then(docDB => {
+    let data = docDB.data();
+    if(data.password == passwordInputRef.current.value ){
+      passwordCorrect = true;
     }
   })
-  
-  
-  
-  if(continueGame == true){ 
-      const pickLocation = Math.floor(Math.random() * 10) + 1;
-      if(pickLocation>5){
-        updateDoc(landSeaRef, {
-          LandOrSea: 'sea',
-          timer: Math.floor(Math.random()*(1500-600+1)+600)
-        });
-      }else{
-        updateDoc(landSeaRef, {
-          LandOrSea: 'land',
-          timer: Math.floor(Math.random()*(1500-600+1)+600)
-        });
-      }
+}
 
-    console.log(stopCondition);
-        getDoc(landSeaRef).then(docDB => {
-          let data = docDB.data()
-          setTimeout(sayPosition,data.timer);
-        });
-        //setTimeout(sayPosition,Math.floor(Math.random()*(1500-500+1)+500));
-        continueGame = false;
-   }else{
-     //setYouLose("Game Over!!!")
-   }
-  //  let tempArray = []
-  //  querySnapshot.forEach((doc) => {
-  //   let data = doc.data();
-  //   let tempObj = {
-  //     name: data.name,
-  //     score: data.score
-  //   }
-  //   tempArray.push(tempObj);
+
+async function sayPosition(){
+  if(passwordCorrect === true){
+    const q = query(collection(db, "names"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      let data = doc.data();
+      if(data.stillPlaying == true){
+        continueGame = true;
+      }
+    })
     
-  // })
-  // setScore(tempArray);
+    
+    
+    if(continueGame == true){ 
+        const pickLocation = Math.floor(Math.random() * 10) + 1;
+        if(pickLocation>5){
+          updateDoc(landSeaRef, {
+            LandOrSea: 'sea',
+            timer: Math.floor(Math.random()*(1500-600+1)+600)
+          });
+        }else{
+          updateDoc(landSeaRef, {
+            LandOrSea: 'land',
+            timer: Math.floor(Math.random()*(1500-600+1)+600)
+          });
+        }
+
+      console.log(stopCondition);
+          getDoc(landSeaRef).then(docDB => {
+            let data = docDB.data()
+            setTimeout(sayPosition,data.timer);
+          });
+          //setTimeout(sayPosition,Math.floor(Math.random()*(1500-500+1)+500));
+          continueGame = false;
+    }else{
+      //setYouLose("Game Over!!!")
+    }
+    //  let tempArray = []
+    //  querySnapshot.forEach((doc) => {
+    //   let data = doc.data();
+    //   let tempObj = {
+    //     name: data.name,
+    //     score: data.score
+    //   }
+    //   tempArray.push(tempObj);
+      
+    // })
+    // setScore(tempArray);
+  }else{console.log("FUCK OFF LIAM")}
 
 };
 
@@ -212,12 +230,20 @@ async function sayPosition(){
      </form>
      <div>{nameSubmited}</div>
 
+
+    <div id='gameView' style={{display: gameDisplay}}>
      <div id='sea'className='box blue' onClick={handleClick}></div>
 
      <div id='land' className='box brown' onClick={handleClick}></div>
+     <div ref = {circleRef} className='circle' ></div>
+     </div>
 
-      <div ref = {circleRef} className='circle' ></div>
 
+      <form onSubmit={checkPassword}>
+      <input type='password' ref={passwordInputRef} placeholder='Alex Button Password' onClick={checkPassword}></input>
+      <input type='submit' value = 'Submit Password'></input>
+      </form>
+      
       <input type="button" value="ONLY CLICK IF YOURE ALEX" onClick={sayPosition}></input>
       <div className="Scoreboard">
           {score.map((points, i) => {
