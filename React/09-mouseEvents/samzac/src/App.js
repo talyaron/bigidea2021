@@ -32,6 +32,7 @@ function App() {
       </form>
       {/* <button onClick={ResetGame}></button> */}
     </div>
+    
   );
 }
 
