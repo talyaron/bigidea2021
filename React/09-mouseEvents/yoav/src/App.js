@@ -1,84 +1,136 @@
-import {useRef} from 'react';
+import logo from './logo.svg';
 import './App.css';
-import seaMP3 from './words/sea.mp3';
-import landMP3 from './words/land.mp3';
-import buzz from './avatar/buzz.webp';
+import React, { useRef, useState } from 'react';
+import Land from './words/land.mp3'
+import Sea from './words/sea.mp3'
 import { db } from './functions/firebase/config';
-import { collection, doc, setDoc, updateDoc, getDoc, onSnapshot, useRef } from "firebase/firestore";
+import { doc, addDoc, collection, setDoc, query, where, getDocs } from 'firebase/firestore'
+
 
 function App() {
-  const circle = useRef(null);
-  const sea = new Audio(seaMP3);
-  const land = new Audio(landMP3);
-  let instruction; 
-  let nameRef = useRef(null)
+    const circle = useRef(null);
+    console.dir(circle);
+    const seaSound = new Audio(Sea);
+    const landSound = new Audio(Land);
+    let instruction;
+    let playerName; 
+    let userChoice = true; 
+    let seaOrLandRef = doc(db, 'YB', 'seaOrLand');
+    
+    const [display, setDisplay] = useState('inline');
 
-  console.dir(circle);
+   async function numPlayersLeft(){
+      const q = query(collection(db, 'YB', 'Players', 'playerList'));
 
-  function seaOrLand(){
-    let randomDigit = Math.floor(Math.random()*2) + 1;
-    console.log(randomDigit);
-    if (randomDigit === 1) {
-      sea.play();
-      instruction = 'sea'; 
-    }
-    else if (randomDigit === 2) {
-      land.play();
-      instruction = 'land'; 
-    }
+      const querySnapshot = await getDocs(q);
 
-
-  }
-
-
-  function checkAnswer(id) {
-    if (id == instruction) {
-      console.log("true");
-      return (true);
-    }
-    else {
-      console.log("You are wrong");
-      alert("You lost");
-      return (false);
-    }
-  }
-
-  function handleStart(){
-    setTimeout(function(){seaOrLand()},1000);
-  }
-  
-  function handleName(ev){
-    nameRef = (doc('YB' , 'playerList' , ))
-  }
-
-  function handleClick(ev){
-    console.log(ev)
-    console.log(ev.target.id)
-
-    //get x and y of the click point
-    const x = ev.clientX;
-    const y = ev.clientY;
-
-    circle.current.style.top = `${y - 5}px`;
-    circle.current.style.left = `${x - 5}px`;
-
-    if (checkAnswer(ev.target.id) == true) {
-      setTimeout(function(){seaOrLand()},1000);
-    }
-
-  }
-
-  return (
-    <div>
+      let playersLeft = 0;
+      let onePlayerLeft = false;
+      let gameOver = false;
       
-      <div id = 'sea' className = 'box blue' onClick = {handleClick}></div>
-      <div id = 'land' className = 'box brown' onClick = {handleClick}></div>
-      <img ref = {circle} className = 'circle' src = {buzz}></img>
-      <input type = 'text' id = 'nameBox' placeholder = 'Name'/>
-      <input type = 'submit' value = 'submit' onClick = {handleName}/>
-      <input type = 'submit' value = "start" onClick = {handleStart}/>
-    </div>
-  );
+      querySnapshot.forEach((doc) => {
+        if (userChoice == true) {
+          playersLeft++;
+        }
+      })
+
+      if (playersLeft < 1) {
+        console.log("game over");
+      }
+
+      else if (playersLeft == 1) {
+        console.log("Last remaining")
+      }
+
+      else if (playersLeft > 1) {
+        console.log("Players Left = " + playersLeft);
+      }
+
+    }
+    
+
+    function seaOrLand() {
+        if ((Math.floor(Math.random() * 2) + 1) == 1) {
+            seaSound.play()
+            instruction = 'sea';
+            setDoc(seaOrLandRef, {Answer: instruction});
+        }
+        else {
+            landSound.play()
+            instruction = 'land';
+            setDoc(seaOrLandRef, {Answer: instruction});
+        }
+    }
+
+    function checkAnswer(id) {
+        let userAnswerRef = doc(db, 'YB', 'Players', 'playerList', playerName);
+        let correct = true; 
+        
+        if (id == instruction) {
+            setDoc(userAnswerRef, {userAnswer: id, userChoice: true});
+            numPlayersLeft();
+            console.log('true')
+            return (true)
+        }
+        else {
+            setDoc(userAnswerRef, {userAnswer: id, userChoice: false});
+            setDisplay('none');
+            alert('You lost');
+            numPlayersLeft();
+            return (false)
+        }
+
+    }
+
+
+
+    function handleClick(ev) {
+        console.log(ev)
+        console.log(ev.target.id)
+        const x = ev.clientX;
+        const y = ev.clientY;
+        circle.current.style.top = `${y - 50}px`;
+        circle.current.style.left = `${x - 50}px`;
+        if (checkAnswer(ev.target.id) == true) {
+            setTimeout(function () { seaOrLand() }, 1000)
+        }
+    }
+    function handleStart() {
+        setTimeout(function () { seaOrLand() }, 1000)
+    } 
+
+    function handleName(event) {
+        event.preventDefault();
+    
+        playerName = event.target.elements.nameBox.value;
+        const nameRef = doc(db, 'YB', 'Players', 'playerList', playerName);
+        console.log(playerName)
+        if (playerName.length >0) {
+          setDoc(nameRef, {name:playerName, userChoice: true})
+          
+        }
+
+
+
+    }
+
+
+    return (
+        <div className="App">
+        <div className = "Container" style={{display: display}}>
+
+            <div id="sea" className='box blue' onClick={handleClick}></div>
+            <div id="land" className='box brown' onClick={handleClick}></div>
+            <div ref={circle} className='circle'></div>
+            <form onSubmit={handleName}>
+                <input type='text' placeholder='name' name='nameBox' />
+                <input type='submit' value='submit' />
+            
+            </form>
+              <input type = 'button' value = 'start' onClick = {handleStart}/>
+        </div>
+        </div>
+    );
 }
 
 export default App;
