@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: navy;
+  min-height: 5vh;
+  font-size: larger;
+  color: white;
+}
+
+.Body{
+  background-color: wheat;
+  margin-left: 20px;
+  margin-right: 20px;
+}
