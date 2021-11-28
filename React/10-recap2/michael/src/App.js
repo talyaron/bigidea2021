@@ -15,6 +15,7 @@ function App() {
       <br></br>
       <form onSubmit= {handleSubmit}>
         <label htmlFor="date">When were you born?</label>
+        <br></br>
         <input type="date" name="date" id="date" />
         <input type="submit" id="submit" />
       </form>
