@@ -29,6 +29,6 @@ function handleSubmit(ev){
   const text= ev.target.elements.date.value;
   let newText = document.getElementsByTagName('div')[0];
   
-  newText.innerHTML += 'Your birthday is ' + text + '<br>';
+  newText.innerHTML += 'Your birthday is: ' + text + '<br>';
 }
 export default App;
