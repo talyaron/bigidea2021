@@ -1,21 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+        <a>
+          <b>
+          So far in Israel, I have had a very positive experience. While there have been issues, overall I have enjoyed my time here.
+          The land is very interesting, and it is fun to see all the history scattered around the country.
+          In Jerusalem, particularly the Old City.
+          </b>
+          <b>
+            <input type='date' />
+            <button>submit</button>
+          </b>
         </a>
       </header>
     </div>
