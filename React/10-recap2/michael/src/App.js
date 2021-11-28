@@ -12,8 +12,22 @@ function App() {
         Aside from sprituality, Jerusalem overall has a very unique aesthetic and atmosphere when compared to other cities,
         and it is cool to experience it firsthand and see what the place has to offer.
       </div>
+      <br></br>
+      <form onSubmit= {handleSubmit}>
+        <label htmlFor="date">When were you born?</label>
+        <input type="date" name="date" id="date" />
+        <input type="submit" id="submit" />
+      </form>
     </div>
   );
 }
+function handleSubmit(ev){
+  ev.preventDefault();
+  console.log(ev);
 
+  const text= ev.target.elements.date.value;
+  let newText = document.getElementsByTagName('div')[0];
+  
+  newText.innerHTML += 'Your birthday is ' + text + '<br>';
+}
 export default App;
