@@ -9,14 +9,15 @@ function App() {
   
   var bDate
 
-  function dateToAge(dateString) {
+  function dateToAge() {
     var actualDate = new Date();
-    var birthDate = new Date(dateString);
+    var birthDate = new Date('dateString');
     var age = actualDate.getFullYear() - birthDate.getFullYear();
     var m = actualDate.getMonth() - birthDate.getMonth();
     if (m < 0 || (m === 0 && actualDate.getDate() < birthDate.getDate())) {
         age--;
     }
+    console.log(age)
     return age;
   }
   
@@ -30,8 +31,10 @@ function App() {
             ablablablablablablabla
           </b>
           <b>
-            <input type='date'  />
-            <button onClick='dateToAge()'>:)</button>
+            <form onSubmit={dateToAge} className='App-row' >
+              <input type='date' name='dateString' />
+              <input type='submit' value='submit' className='button'/>
+            </form>
           </b>
         </a>
       </header>

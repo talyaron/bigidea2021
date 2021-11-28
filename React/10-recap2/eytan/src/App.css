@@ -21,7 +21,7 @@
   padding: 10%;
 }
 
-button {
+.button {
   height: 40px;
   background-color: #DCDEE6;
   color: #494E65;
@@ -65,6 +65,10 @@ input:hover {
   background-color: #b7bac4
 }
 
-button:hover {
+.button:hover {
   background-color: #b7bac4
+}
+
+.App-row {
+  flex-direction: column;
 }
