@@ -1,6 +1,6 @@
 import './App.css';
 
-import { setDoc, doc, onSnapshot, collection, updateDoc, addDoc, getDoc, getDocs } from "firebase/firestore";
+import { setDoc, doc, onSnapshot, collection, updateDoc, addDoc, getDoc, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useRef, useState } from 'react';
 import seaMP3 from './words/sea.mp3';
 import landMP3 from './words/land.mp3';
@@ -8,12 +8,14 @@ import { db } from './functions/firebase/config';
 
 const playersRef = collection(db, 'players');
 const getAllPlayers = [];
+let playerNameGlobal;
 
 function App() {
   const circle = useRef(null);
   const [circleLocation, setCircleLocation] = useState('Sea'), [landSea, setlandSea] = useState(''), [color, setColor] = useState('green');
   const seaSound = new Audio(seaMP3), landSound = new Audio(landMP3);
   const [players, setPlayers] = useState([]);
+  const [ContinueGame, setContinueGame] = useState(true);
 
   useEffect(() => {
 
@@ -42,6 +44,9 @@ function App() {
       landSound.play();
     }
     setlandSea(tempLandSea);
+    
+    let playersArr = [];
+    
   }
 
   //check answer
@@ -49,17 +54,33 @@ function App() {
     if (id === landSea) {
       console.log('true');
 
-      // if(getAllPlayers.contains(name)) {
-      //   getAllPlayers[name] += 1;
-      // } else {
-      //   // getAllPlayers.push([])
-      // }
+      let playerNameRef = doc(db, 'players', name);
+      getDoc(playerNameRef).then(docDB => {
+
+        let currentScore = docDB.data().score;
+        currentScore += 1;
+        const playerNameRef = doc(db, 'players', name);
+        updateDoc(playerNameRef, {
+        score: currentScore
+      })
+      })
+
+      // const q = query(collection(db, "players", name) //where("name", "==", name));
+      // const querySnapshot = await getDocs(q);
+      // querySnapshot.forEach((doc) => {
+        
+      //   doc.data().score += 1;
+      // });
+
       return (true);
     }
     else {
       alert('Game over.');
-      //run game over function for indivdual player
-      //hide all elements except scoreboard for individual player
+      const playerNameRef = doc(db, 'players', name);
+      updateDoc(playerNameRef, {
+        isAlive: false
+      })
+      setContinueGame(false);
       return (false);
     }
   }
@@ -73,9 +94,7 @@ function App() {
     setCircleLocation(location);
     console.log(location);
 
-    // let name = ev.target.elements.nameBox.value;
-    let name;
-    if (checkAnswer(location, name) === true) {
+    if (checkAnswer(location, playerNameGlobal) === true) {
       gameStart();
     }
 
@@ -85,6 +104,7 @@ function App() {
   function handleSubmit(ev) {
     ev.preventDefault();
     const playerName = ev.target.elements.nameBox.value;
+    playerNameGlobal = playerName;
 
     const playerRef = doc(db, "players", playerName);
     setDoc(playerRef, {
@@ -101,14 +121,22 @@ function App() {
         <input type="submit" value='Submit' />
       </form>
 
-      <div id='start' className='start' onClick={gameStart}>Start Game</div>
-      <div id='Sea' className='box blue' onClick={handleClick} />
-      <div id='Land' className='box brown' onClick={handleClick} />
-      <div id='redC' ref={circle} className='circle' />
-      <div className='landSea'>{landSea}</div>
-      <div className='row' style={{ background: color }}></div>
+      {ContinueGame? <button onClick ={gameStart} className="start">Start Game</button>: null}
+      {ContinueGame? <div id='Sea' className='box blue' onClick={handleClick} /> : <p>You're out</p>}
+      {ContinueGame? <div id='Land' className='box brown' onClick={handleClick} />: null}
+      {ContinueGame? <div id='redC' ref={circle} className='circle' />: null}
+      {ContinueGame? <div className='landSea'>{landSea}</div>: null}
+      {ContinueGame? <div className='row' style={{ background: color }}></div>: null}
 
-      <p>players</p>
+      <div>
+        <p>Scoreboard</p>
+        <p>
+        {playersArr.map((letter, index) => {
+                    return (<div key={index}>'{letter}'</div>)
+                }
+                )}//mapping players to scoreboard
+        </p>
+      </div>
     </div>
   );
 }
