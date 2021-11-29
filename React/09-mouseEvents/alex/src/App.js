@@ -6,7 +6,8 @@ import landMP3 from './words/land.mp3';
 import { useState } from 'react';
 import { db } from './functions/firebase/config';
 import { doc, onSnapshot,setDoc,addDoc, collection,updateDoc,getDoc,getDocs,query } from 'firebase/firestore';
-
+import Sea from "./Sea.jpg"
+import Island from "./Island.png"
 
 let stopCondition = false;
 let scoreMath = 0;
@@ -106,6 +107,7 @@ function handleClick(ev){
       updateDoc(playernamesRef,{
         score: newScore
       });
+      handleUpdateDom();
       console.log(data.score); //1  
   })
     
@@ -231,11 +233,18 @@ async function sayPosition(){
      <div>{nameSubmited}</div>
 
 
-    <div id='gameView' style={{display: gameDisplay}}>
-     <div id='sea'className='box blue' onClick={handleClick}></div>
+    <tr style={{display: gameDisplay}}>
+    <div className='sea'id="sea" onClick={handleClick}></div>
+      <img className='land'id="land" src={Island} onClick={handleClick} ></img>
+      <div ref = {circleRef} className='circle' ></div>
+    </tr>
 
-     <div id='land' className='box brown' onClick={handleClick}></div>
-     <div ref = {circleRef} className='circle' ></div>
+
+    <div id='gameView' style={{display: 'none'}}>
+     <div id='sea1'className='box blue' onClick={handleClick}></div>
+
+     <div id='land1' className='box brown' onClick={handleClick}></div>
+     
      </div>
 
 

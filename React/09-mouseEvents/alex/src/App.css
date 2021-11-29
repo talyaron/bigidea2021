@@ -18,3 +18,22 @@
   top:40px;
   left:10px;
 }
+.sea{
+  width: 400px;
+  height: 400px;
+  background-color: blue;
+  background-image:url(https://ak.picdn.net/shutterstock/videos/26857564/thumb/1.jpg);
+  background-size: contain;
+  position: absolute;
+  top: 39%;
+  left: 43.5%;
+}
+.land{
+  width: 270px;
+  height: 270px;
+  background-image:url(https://opengameart.org/sites/default/files/isle_3.png);
+  background-size:contain;
+  position: absolute;
+  top: 47%;
+  left: 50%;
+}
