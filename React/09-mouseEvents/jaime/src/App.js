@@ -61,6 +61,7 @@ function App() {
     }
     setlandSea(tempLandSea);
     
+    //set DB to startGame
   }
 
   //check answer
