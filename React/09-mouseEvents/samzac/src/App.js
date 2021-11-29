@@ -7,12 +7,13 @@ import landMP3 from './audio/land.mp3';
 import seaMP3 from './audio/sea.mp3';
 
 let choice = ""
-let isPlay = true;
+
 let seaLandFirestore;
 let seaOrLand;
 
 
 function App() {
+  const [isPlay,setIsPlay]=useState(true)
   const [firestoreSL,setFirestoreSL]=useState("")
   const [userName, setUserName] = useState("")
   const circle = useRef(null);
@@ -45,7 +46,9 @@ function App() {
     if(chosen===seaOrLand){
       console.log("yay")
     }
-    else{isPlay=false}
+    else{
+    setIsPlay=false
+    console.log(isPlay)}
   };
 
   const sea = new Audio(seaMP3);
