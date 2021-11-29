@@ -1,5 +1,7 @@
 import './App.css';
 
+var calculatedAge = ''
+var age = 'age'
 var year_born = prompt("Please enter your date of birth:", "Type here");
 var d = new Date();
 var n = d.getFullYear();
