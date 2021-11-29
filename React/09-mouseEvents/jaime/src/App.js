@@ -16,11 +16,12 @@ function App() {
   const seaSound = new Audio(seaMP3), landSound = new Audio(landMP3);
   const [players, setPlayers] = useState([]);
   const [ContinueGame, setContinueGame] = useState(true);
+  const [playersArr, setPlayersArr] = useState([]);
+
 
   useEffect(() => {
 
     const unsubscribe = onSnapshot(playersRef, playersDB => {
-      //
 
       playersDB.forEach(playerDB => {
         console.log(playerDB.data());
@@ -30,6 +31,21 @@ function App() {
     })
 
   }, [])
+
+  function setScoreboard() {
+    const tempPlayersArr = [];
+    const playersRef = collection(db,'players');
+    getDocs(playersRef).then(playersDB => {
+      
+      playersDB.forEach(playerDB => {
+        let data = playerDB.data();
+        tempPlayersArr.push({name:data.name, score:data.score});
+        
+        
+      });
+      setPlayersArr(tempPlayersArr);
+    })
+  }
 
   function gameStart() {
     let tempLandSea;
@@ -45,8 +61,7 @@ function App() {
     }
     setlandSea(tempLandSea);
     
-    let playersArr = [];
-    
+    //set DB to startGame
   }
 
   //check answer
@@ -63,14 +78,9 @@ function App() {
         updateDoc(playerNameRef, {
         score: currentScore
       })
-      })
 
-      // const q = query(collection(db, "players", name) //where("name", "==", name));
-      // const querySnapshot = await getDocs(q);
-      // querySnapshot.forEach((doc) => {
-        
-      //   doc.data().score += 1;
-      // });
+        setScoreboard();
+      })
 
       return (true);
     }
@@ -95,10 +105,12 @@ function App() {
     console.log(location);
 
     if (checkAnswer(location, playerNameGlobal) === true) {
+
+
+      console.log(playersArr);
+      //check here if players are left
       gameStart();
     }
-
-
   }
 
   function handleSubmit(ev) {
@@ -116,11 +128,12 @@ function App() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <input type="text" placeholder='Enter your name' name="nameBox" />
         <input type="submit" value='Submit' />
       </form>
 
+      <div className="game">
       {ContinueGame? <button onClick ={gameStart} className="start">Start Game</button>: null}
       {ContinueGame? <div id='Sea' className='box blue' onClick={handleClick} /> : <p>You're out</p>}
       {ContinueGame? <div id='Land' className='box brown' onClick={handleClick} />: null}
@@ -128,14 +141,15 @@ function App() {
       {ContinueGame? <div className='landSea'>{landSea}</div>: null}
       {ContinueGame? <div className='row' style={{ background: color }}></div>: null}
 
-      <div>
+      <div className="scoreboard">
         <p>Scoreboard</p>
-        <p>
-        {playersArr.map((letter, index) => {
-                    return (<div key={index}>'{letter}'</div>)
+        <div>
+        {playersArr.map((player, i) => {
+                    return (<div key={i}>{player.name}:{player.score}</div>)
                 }
-                )}//mapping players to scoreboard
-        </p>
+                )}
+          </div>
+        </div>
       </div>
     </div>
   );
