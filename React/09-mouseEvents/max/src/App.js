@@ -18,6 +18,8 @@ let enteredName = false;
 let stop = true;
 const gameDataRef = doc(db, 'SoL', 'game');
 let playerIn = true;
+let playerScoreCur = 0
+
 
 function App() {
 	const circle = useRef(null);
@@ -27,122 +29,91 @@ function App() {
 	const [playerList, setPlayerList] = useState([]);
 	const seaSound = new Audio(seaMP3);
 	const landSound = new Audio(landMP3);
-
-
-
 	let playerListRef;
 
-	// onSnapshot the players isAlive value
-
 	useEffect(() => {
-		try {
-			// attempting to snapshot game start and round time
-			const playersListRef = collection(db, 'SoL', 'players', 'playerList')
-			onSnapshot(playersListRef, playersDB => {
-				const playersArr = [];
-				playersDB.forEach(playerDB => {
-					playersArr.push(playerDB.data())
-				})
-				console.log(playersArr)
+		const playersListRef = collection(db, 'SoL', 'players', 'playerList')
+		onSnapshot(playersListRef, playersDB => {
+			const playersArr = [];
+			playersDB.forEach(playerDB => {
+				playersArr.push(playerDB.data())
 			})
-		} catch (err) {
-			console.error(err)
-		}
+			console.log(playersArr)
+			setPlayerList(playersArr)
+		})
 	}, []);
 
 	function handleSubmit(ev) {
-		try {
-			ev.preventDefault();
-			let playerColorTemp = ev.target.elements.playerColor.value;
-			setPlayerColor(playerColorTemp);
-			let playerNameTemp = ev.target.elements.playerName.value;
-			setPlayerName(playerNameTemp);
-			playerListRef = doc(
+		ev.preventDefault();
+		let playerColorTemp = ev.target.elements.playerColor.value;
+		setPlayerColor(playerColorTemp);
+		let playerNameTemp = ev.target.elements.playerName.value;
+		setPlayerName(playerNameTemp);
+		playerListRef = doc(
+			db,
+			'SoL',
+			'players',
+			'playerList',
+			`${playerNameTemp}`
+		);
+		setDoc(playerListRef, {
+			playerName: `${playerNameTemp}`,
+			userColor: `${playerColorTemp}`,
+			playerScore: 0,
+			isAlive: true,
+			isStarter: false,
+		});
+		enteredName = true;
+
+	}
+
+	function handleStart() {
+		if (enteredName == true) {
+
+			const playerListRef = doc(
 				db,
 				'SoL',
 				'players',
 				'playerList',
-				`${playerNameTemp}`
+				`${playerName}`
 			);
-			setDoc(playerListRef, {
-				playerName: `${playerNameTemp}`,
-				userColor: `${playerColorTemp}`,
-				playerScore: 0,
-				isAlive: true,
-				isStarter: false,
-			});
-			enteredName = true;
-
-			console.log('HSub ping', 'enters name ', enteredName);
-		} catch (err) {
-			console.error(err)
-		}
-	}
-
-	function handleStart() {
-		try {
-			if (enteredName == true) {
-
-				const playerListRef = doc(
-					db,
-					'SoL',
-					'players',
-					'playerList',
-					`${playerName}`
-				);
-				GameStart = true;
-				console.log(GameStart, 'game start')
-				updateDoc(playerListRef, {
-					isStarter: true,
-				}).then(
-					updateDoc(gameDataRef, {
-						gameStart: true,
-					}).catch(err => {
-						console.error(err)
-					})
-				).catch(err => {
+			GameStart = true;
+			updateDoc(playerListRef, {
+				isStarter: true,
+			}).then(
+				updateDoc(gameDataRef, {
+					gameStart: true,
+				}).catch(err => {
 					console.error(err)
-				});
-			}
-			console.log('Hstart ping');
-			gameMec();
-		} catch (err) {
-			console.error(err)
+				})
+			).catch(err => {
+				console.error(err)
+			});
 		}
+		gameMec();
+
 	}
 
 	function gameMec() {
-		try {
-			console.log('ping');
-			setTimeout(youLose, 2000); // make the time connected to the server
-			let tempLandSea;
-			let i = Math.floor(Math.random() * 2);
+		setTimeout(youLose, 2000); // make the time connected to the server
+		let tempLandSea;
+		let i = Math.floor(Math.random() * 2);
 
-			if (i === 1) {
-				tempLandSea = 'Sea';
-				seaSound.play();
-			} else {
-				tempLandSea = 'Land';
-				landSound.play();
-			}
-			setLandSea(tempLandSea);
-		} catch (err) {
-			console.error(err)
+		if (i === 1) {
+			tempLandSea = 'Sea';
+			seaSound.play();
+		} else {
+			tempLandSea = 'Land';
+			landSound.play();
 		}
+		setLandSea(tempLandSea);
+
 	}
 	function checkAnswer(id) {
 		try {
-			const playerRef = doc(db, 'SoL', 'players', 'playerList', playerName)
 			if (id === landSea) {
 				stop = false;
-				updateDoc(playerRef, {
-					playerScore: 1, // make this work properly
-				})
-					.catch(err => {
-						console.error(err)
-					}).catch(err => {
-						console.error(err)
-					});
+				playerScoreCur++
 				return true;
 			} else {
 				stop = true;
@@ -155,7 +126,6 @@ function App() {
 
 	function handleClick(ev) {
 		try {
-			console.log('click', GameStart, 'game start = ')
 			if (GameStart !== false) {
 				let location = ev.target.id;
 				const x = ev.clientX;
@@ -171,29 +141,35 @@ function App() {
 		}
 	}
 	function youLose() {
-		try {
-			const playerRef = doc(db, 'SoL', 'players', 'playerList', playerName)
-			if (stop === true) {
-				// debugger
-				updateDoc(playerRef, {
-					isAlive: false,
-				}).catch(err => {
-					console.error(err)
-				});
-				alert('You lost :(');
-			}
-			stop = true;
-		} catch (err) {
-			console.error(err)
+		const playerRef = doc(db, 'SoL', 'players', 'playerList', playerName)
+		if (stop === true) {
+
+			updateDoc(playerRef, {
+				isAlive: false,
+			}).then(updateDoc(playerRef, {
+				playerScore: playerScoreCur,
+			}))
+			alert('You lost :(');
+			playerIn = false;
 		}
+		stop = true;
+		playerIn = false;
 	};
 
-	if (playerIn != true) {
-		// conditional render so once you lose all you see is score board
+	if (playerIn !== true) {
 		return (
-			<div>You are out, your score was #scoreHere#</div>
-
-			//.map all the players
+			<div>
+				<div>{playerList.map(({ playerName, userColor, isAlive, playerScore }) => (
+					<div className='nameList'>
+						<h3>{playerName} Playing as the color: {userColor}</h3>
+						<br />
+						Score:{playerScore}
+						<br />
+						is still playing: {isAlive}
+					</div>
+				))}
+				</div>
+			</div>
 		);
 	} else {
 		return (
@@ -216,17 +192,9 @@ function App() {
 					style={{ background: playerColor }}>
 					{playerName}
 				</div>
-				<div className='landSea'>{landSea}</div>
+				<div className='landSea'>{landSea} {playerScoreCur}</div>
 
-				{playerList.map(({ playerName, userColor, isAlive, playerScore }) => (
-					<div className='nameList'>
-						{playerName} Playing as the color:{userColor}
-						<br />
-						Score:{playerScore}
-						<br />
-						is still playing: {isAlive}
-					</div>
-				))}
+
 			</div>
 		);
 	}
