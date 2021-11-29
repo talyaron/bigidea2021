@@ -1,6 +1,6 @@
 import './App.css';
 
-
+var username = prompt("What is your name?");
 
 function handleSet(ev) {
   ev.preventDefault();
