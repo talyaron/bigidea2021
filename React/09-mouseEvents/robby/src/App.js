@@ -7,7 +7,12 @@ import seaMP3 from './words/sea.mp3';
 import landMP3 from './words/land.mp3';
 import {db} from './functions/firebase/config'
 import { FirebaseError } from '@firebase/util';
-
+let highestScore = 0;
+let highestPlayer = "";
+var newScore;
+const seaSound = new Audio(seaMP3);
+const landSound = new Audio(landMP3);
+let isPlaying = true;
 
 function App() {
 	//await setDoc(doc(db, "players", "user"))
@@ -20,13 +25,10 @@ function App() {
   const [player, setPlayer]= useState("");
   const highScoreRef = doc(db, 'players', 'landOrSeaSetter');
   const docSnap = getDoc(highScoreRef);
-  let highestScore = 0;
-  let highestPlayer = "";
-  var newScore;
+ 
 
 
-  const seaSound = new Audio(seaMP3);
-  const landSound = new Audio(landMP3);
+ 
   
   //Runs during the first round
   function handleNameSubmit(ev){
@@ -41,11 +43,12 @@ function App() {
 
       ev.target.elements.name.style.display= "none";
       setPlaying(true);
+   
       //eventually will need to change the id to a random generated ID instead of the name
       
       setDoc(doc(db, "players", `${name}`),{
         name: name,
-        isPlaying: playing,
+        isPlaying: isPlaying,
         score: score
       });
 
