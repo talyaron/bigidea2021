@@ -16,9 +16,9 @@ import landMP3 from './words/land.mp3';
 let GameStart = false;
 let enteredName = false;
 let stop = true;
-const gameDataRef = doc(db, 'SoL', 'game');
 let playerIn = true;
 let playerScoreCur = 0
+const gameDataRef = doc(db, 'SoL', 'game');
 
 
 function App() {
@@ -40,6 +40,14 @@ function App() {
 			})
 			console.log(playersArr)
 			setPlayerList(playersArr)
+		})
+
+		const gameDataRef = doc(db, 'SoL', 'game');
+		onSnapshot(gameDataRef, gameDataDB =>{
+			console.log(gameDataDB.data())
+			if(gameDataDB.data().gameStart === true){
+				gameMec()
+			}
 		})
 	}, []);
 
