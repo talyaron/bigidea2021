@@ -31,9 +31,14 @@ function App() {
 
 	useEffect(() => {
 		// attempting to snapshot game start and round time
-		// db.collection('SoL', 'players', 'playerList').onSnapshot(snapshot =>{
-		// 	setPlayerList(snapshot.docs.map(doc => doc.data()))
-		// })
+		const playersListRef = collection(db, 'SoL', 'players', 'playerList')
+		onSnapshot(playersListRef, playersDB => {
+			const playersArr = [];
+			playersDB.forEach(playerDB => {
+				playersArr.push(playerDB.data())
+			})
+			console.log(playersArr)
+		})
 	}, []);
 
 	function handleSubmit(ev) {
@@ -58,7 +63,7 @@ function App() {
 		});
 		enteredName = true;
 
-		console.log('HSub ping', 'enters name ',enteredName);
+		console.log('HSub ping', 'enters name ', enteredName);
 	}
 
 	function handleStart() {
