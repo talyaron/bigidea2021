@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 import Land from './words/land.mp3'
 import Sea from './words/sea.mp3'
 import { db } from './functions/firebase/config';
-import { doc, addDoc, collection, setDoc, query, where, getDocs } from 'firebase/firestore'
+import { doc, addDoc, collection, setDoc, query, where, getDocs, onSnapshot } from 'firebase/firestore'
 
 
 function App() {
@@ -16,6 +16,9 @@ function App() {
     let playerName; 
     let userChoice = true; 
     let seaOrLandRef = doc(db, 'YB', 'seaOrLand');
+    let gameRef = doc(db, 'YB', 'seaOrLand');
+    setDoc(gameRef, {start: false});
+    
     
     const [display, setDisplay] = useState('inline');
 
@@ -54,12 +57,12 @@ function App() {
         if ((Math.floor(Math.random() * 2) + 1) == 1) {
             seaSound.play()
             instruction = 'sea';
-            setDoc(seaOrLandRef, {Answer: instruction});
+            setDoc(seaOrLandRef, {Answer: instruction, start: true});
         }
         else {
             landSound.play()
             instruction = 'land';
-            setDoc(seaOrLandRef, {Answer: instruction});
+            setDoc(seaOrLandRef, {Answer: instruction, start: true});
         }
     }
 
@@ -99,7 +102,8 @@ function App() {
         }
     }
     function handleStart() {
-        setTimeout(function () { seaOrLand() }, 1000)
+      setDoc(gameRef, {start: true})
+      setTimeout(function () { seaOrLand() }, 1000)
     } 
 
     function handleName(event) {
@@ -116,6 +120,16 @@ function App() {
 
 
     }
+
+    const q = query(collection(db, 'YB'), where("start", "==", "false"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === "modified") {
+            console.log("Game Starting:", change.doc.data());
+        }
+      });
+    });
+    
 
 
     return (
