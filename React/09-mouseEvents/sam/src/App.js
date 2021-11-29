@@ -1,4 +1,5 @@
 import './App.css';
+import { doc, setDoc } from 'firebase/firestore';
 
 var calculatedAge = ''
 var age = 'age'
@@ -14,12 +15,13 @@ function getAge(birthYear){
 calculatedAge = getAge(year_born);
 alert("Hello, " + "you are " + calculatedAge + " years old!");
 
+
+
 function handleSet(ev) {
   ev.preventDefault();
   const setName = ev.target.elements.nameBox.value;
   const lowerName = setName.toLowerCase();
 }
-
  
 function App() {
   return (
