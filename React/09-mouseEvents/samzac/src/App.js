@@ -43,14 +43,9 @@ function App() {
   }
   function check(chosen,seaOrLand){
     if(chosen===seaOrLand){
-      console.log(chosen)
-      console.log(seaOrLand)
-      console.log("true")
+      console.log("yay")
     }
-    else{
-    console.log(chosen)
-  console.log(seaOrLand)
-console.log("false")}
+    else{isPlay=false}
   };
 
   const sea = new Audio(seaMP3);
