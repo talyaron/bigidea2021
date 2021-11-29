@@ -9,40 +9,38 @@ import {db} from './functions/firebase/config'
 import { FirebaseError } from '@firebase/util';
 let highestScore = 0;
 let highestPlayer = "";
-var newScore;
 const seaSound = new Audio(seaMP3);
 const landSound = new Audio(landMP3);
 let isPlaying = true;
+let player= "";
+let score= 0;
+let scoreArr=[];
 
 function App() {
 	//await setDoc(doc(db, "players", "user"))
+  
   const circle = useRef(null);
 	const [circleLocation, setCircleLocation] = useState('Sea');
 	const [landSea, setlandSea] = useState('Sea');
 	const [color, setColor] = useState('green');
-  const [playing, setPlaying ]= useState(true);
-  const [score, setScore ]= useState(0);
-  const [player, setPlayer]= useState("");
   const highScoreRef = doc(db, 'players', 'landOrSeaSetter');
   const docSnap = getDoc(highScoreRef);
  
 
-
- 
-  
   //Runs during the first round
   function handleNameSubmit(ev){
 
     ev.preventDefault();
     const name= ev.target.elements.name.value;
-    setPlayer(name);
+    player = name;
 
     if(name === ''){
       alert('Cannot display an empty name! Please fill the name and try again.')
     } else {
 
       ev.target.elements.name.style.display= "none";
-      setPlaying(true);
+      ev.target.elements.submit.style.display= "none";
+      isPlaying =true;
    
       //eventually will need to change the id to a random generated ID instead of the name
       
@@ -90,9 +88,7 @@ function App() {
   function checkAnswer(id){
     if(id === landSea){
       console.log('true')
-      newScore = score;
-      newScore++;
-      setScore(newScore)
+      score++;
       console.log("hi");
       console.log(score)
 
@@ -101,12 +97,10 @@ function App() {
     }
     else{
       alert('dumb ass mf')
-      setPlaying(false);
+      isPlaying= false;
       return(false)
     }
   }
-
-
 
 
 	function handleClick(ev) {
@@ -121,33 +115,25 @@ function App() {
       gameMec()
     }
     else if( checkPlayers() === true){
+      //Kept in a still state where the scoreboard updates but the player cannot continue
     }
-     else {
-   
+    else {
+    //Player is out and there are no players left playing
     const playersRef = collection(db, 'players');
     onSnapshot(playersRef,playersDB=>{
       const playersList = [];
       playersDB.forEach(playerDB=>{
         let data = playerDB.data();
+        scoreArr.push(data.score);
         if(data.score > highestScore){
-          highestScore = data.score;
-          highestPlayer = data.name;
-          console.log(highestScore);
-          console.log(highestPlayer);
-          alert(`you all suck, but ${highestPlayer} sucks the least because they got ${highestScore} points. Be Better.`)
-          console.log(`score: ${score}`)
-          console.log(player)
+          highestScore = score;
+          highestPlayer = player;
         }
       })
-
+      alert(`you all suck, but ${highestPlayer} sucks the least because they got ${highestScore} points. Be Better.`)
+      console.log(`Your score is: ${player} = ${score}`)
     })
-
-
-  
-
-    
-
-      }
+  }
       
     }
 
@@ -158,9 +144,16 @@ function App() {
           <input name= "name" type= "text"/>
           <input name="submit" type= "submit" value= "Confirm"/> 
         </form>
+
         <div id='Sea' className='box blue' onClick={handleClick}></div>
         <div id='Land' className='box brown' onClick={handleClick}></div>
         <div id='redC' ref={circle} className='circle'></div>
+        <div className= 'Scoreboard'>
+          {scoreArr.map((points, i) => {
+            return(<div key={i}>{points.name}:{points.score} </div>)
+          })
+          }
+        </div>
         <div className='landSea'>{landSea}</div>
         <div className='row' style={{ background: color }}></div>
       </div>
