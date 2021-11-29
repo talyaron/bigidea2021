@@ -29,7 +29,8 @@ function App() {
       let gameOver = false;
       
       querySnapshot.forEach((doc) => {
-        if (userChoice == true) {
+        let data = doc.data();
+        if (data.userChoice == true) {
           playersLeft++;
         }
       })
@@ -64,7 +65,6 @@ function App() {
 
     function checkAnswer(id) {
         let userAnswerRef = doc(db, 'YB', 'Players', 'playerList', playerName);
-        let correct = true; 
         
         if (id == instruction) {
             setDoc(userAnswerRef, {userAnswer: id, userChoice: true});
@@ -79,6 +79,9 @@ function App() {
             numPlayersLeft();
             return (false)
         }
+
+        
+        
 
     }
 
