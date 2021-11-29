@@ -47,6 +47,7 @@ function App() {
 			console.log(gameDataDB.data())
 			if(gameDataDB.data().gameStart === true){
 				gameMec()
+				GameStart = true
 			}
 		})
 	}, []);
