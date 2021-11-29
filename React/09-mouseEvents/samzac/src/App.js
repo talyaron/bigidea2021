@@ -9,15 +9,15 @@ import seaMP3 from './audio/sea.mp3';
 let choice = ""
 let isPlay = true;
 let seaLandFirestore;
+let seaOrLand;
 
 
 function App() {
   const [firestoreSL,setFirestoreSL]=useState("")
-
   const [userName, setUserName] = useState("")
   const circle = useRef(null);
-  console.dir(circle);
-
+  // console.dir(circle);
+  const [seaLandState,setSeaLandState]=useState("")
   useEffect(() => {
     const unsubsscribe = onSnapshot(doc(db, "gameFiles", "seaOrLand"), (refreshSeaLand) => {
       setFirestoreSL = refreshSeaLand.data().decision;
@@ -29,24 +29,35 @@ function App() {
   function handleClick(ev) {
     const x = ev.clientX;
     const y = ev.clientY;
-    choice = ev.target.id;
+    let chosen = ev.target.id;
     circle.current.style.top = `${y - 5}px`;
     circle.current.style.left = `${x - 5}px`;
     setDoc(doc(db, 'users', userName), { userX: x, userY: y })
-    if (choice === seaLandFirestore) {
-      console.log("yay")
-    }
-    else {
-      isPlay = false
-    }
+    // if (choice === seaLandFirestore) {
+    //   console.log("yay")
+    // }
+    // else {
+    //   isPlay = false
+    // }
+    check(chosen,seaOrLand);
   }
+  function check(chosen,seaOrLand){
+    if(chosen===seaOrLand){
+      console.log(chosen)
+      console.log(seaOrLand)
+      console.log("true")
+    }
+    else{
+    console.log(chosen)
+  console.log(seaOrLand)
+console.log("false")}
+  };
 
   const sea = new Audio(seaMP3);
   const land = new Audio(landMP3);
   function StartGame() {
     setInterval(function () {
       const random = Math.random();
-      let seaOrLand;
       if (random < 0.5) {
         seaOrLand = "Sea";
         sea.play()
@@ -57,7 +68,7 @@ function App() {
       }
       console.log(seaOrLand)
       setDoc(doc(db, 'gameFiles', "seaOrLand"), { decision: seaOrLand });
-    }, 1000)
+    }, 5000)
   }
 
   // function ResetGame (){
