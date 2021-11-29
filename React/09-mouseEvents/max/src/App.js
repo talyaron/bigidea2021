@@ -42,7 +42,7 @@ function App() {
 			setPlayerList(playersArr)
 		})
 
-		const gameDataRef = doc(db, 'SoL', 'game');
+
 		onSnapshot(gameDataRef, gameDataDB =>{
 			console.log(gameDataDB.data())
 			if(gameDataDB.data().gameStart === true){
