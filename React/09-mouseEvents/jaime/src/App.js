@@ -1,13 +1,12 @@
 import './App.css';
 
-import { setDoc, doc, onSnapshot, collection, updateDoc, addDoc, getDoc, getDocs, query, where } from "firebase/firestore";
+import { setDoc, doc, onSnapshot, collection, updateDoc, getDoc, getDocs } from "firebase/firestore";
 import { useEffect, useRef, useState } from 'react';
 import seaMP3 from './words/sea.mp3';
 import landMP3 from './words/land.mp3';
 import { db } from './functions/firebase/config';
 
 const playersRef = collection(db, 'players');
-const getAllPlayers = [];
 let playerNameGlobal;
 
 function App() {
@@ -17,7 +16,7 @@ function App() {
   const [players, setPlayers] = useState([]);
   const [ContinueGame, setContinueGame] = useState(true);
   const [playersArr, setPlayersArr] = useState([]);
-
+  const gameStartRef = doc(db, 'gameStart', 'start');
 
   useEffect(() => {
 
@@ -29,6 +28,19 @@ function App() {
       
       return () => { unsubscribe() }
     })
+
+    // const checkgamestart = onSnapshot(gameStartRef, gameStartDB => {
+      
+    //   gameStartDB.forEach(startDB => {
+    //     console.log(startDB.data());
+    //     if(gameStart.data().gameStart === true) {
+    //       gameStart();
+    //     } else {
+    //       console.log("Awaiting Start");
+    //     }
+    //   });
+
+    // })
 
   }, [])
 
@@ -45,6 +57,15 @@ function App() {
       });
       setPlayersArr(tempPlayersArr);
     })
+  }
+
+  function checkGameStart (){
+
+    updateDoc(gameStartRef, {
+
+      gameStart: true
+    })
+
   }
 
   function gameStart() {
@@ -134,7 +155,7 @@ function App() {
       </form>
 
       <div className="game">
-      {ContinueGame? <button onClick ={gameStart} className="start">Start Game</button>: null}
+      {ContinueGame? <button onClick ={checkGameStart} className="start">Start Game</button>: null}
       {ContinueGame? <div id='Sea' className='box blue' onClick={handleClick} /> : <p>You're out</p>}
       {ContinueGame? <div id='Land' className='box brown' onClick={handleClick} />: null}
       {ContinueGame? <div id='redC' ref={circle} className='circle' />: null}
