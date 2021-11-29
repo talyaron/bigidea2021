@@ -1,11 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+
+
+
+function handleSet(ev) {
+  ev.preventDefault();
+  const setName = ev.target.elements.nameBox.value;
+  const lowerName = setName.toLowerCase();
+}
+
 
 function App() {
   return (
     <div className="App">
       <form onSubmit={handleSet}>
-        <input type='text' placeholder='Enter your name' name='nameBox' />
+        <input type='text' placeholder='Enter your Age' name='nameBox' />
         <input type="submit" placeholder="submit"></input>
       </form>
     </div>
