@@ -66,7 +66,7 @@ function App() {
 			`${playerNameTemp}`
 		);
 		setDoc(playerListRef, {
-			playerName: `${playerNameTemp}`,
+			playerName2: `${playerNameTemp}`,
 			userColor: `${playerColorTemp}`,
 			playerScore: 0,
 			isAlive: true,
@@ -150,6 +150,8 @@ function App() {
 		}
 	}
 	function youLose() {
+		console.log(playerName)
+		if(playerName.length> 0){
 		const playerRef = doc(db, 'SoL', 'players', 'playerList', playerName)
 		if (stop === true) {
 
@@ -160,17 +162,19 @@ function App() {
 			}))
 			alert('You lost :(');
 			playerIn = false;
+			GameStart = false
 		}
 		stop = true;
 		playerIn = false;
-	};
+		GameStart = false
+	}};
 
 	if (playerIn !== true) {
 		return (
 			<div>
-				<div>{playerList.map(({ playerName, userColor, isAlive, playerScore }) => (
+				<div>{playerList.map(({ playerName2, userColor, isAlive, playerScore }) => (
 					<div className='nameList'>
-						<h3>{playerName} Playing as the color: {userColor}</h3>
+						<h3>{playerName2} Playing as the color: {userColor}</h3>
 						<br />
 						Score:{playerScore}
 						<br />
@@ -189,7 +193,7 @@ function App() {
 					<input type='submit' />
 				</form>
 
-				<div id='start' className='start' onClick={handleStart}>
+				{playerName.length > 0 ? <><div id='start' className='start' onClick={handleStart}>
 					start game
 				</div>
 				<div id='Sea' className='box blue' onClick={handleClick}></div>
@@ -202,6 +206,10 @@ function App() {
 					{playerName}
 				</div>
 				<div className='landSea'>{landSea} {playerScoreCur}</div>
+				</>
+				:
+				<h3>Enter a Name</h3>
+		}
 
 
 			</div>
