@@ -2,6 +2,12 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Liam from './pages/Liam';
 import Michael from './pages/Michael';
 
+  function handleURLSubmit(ev) {
+    ev.preventDefault();
+    let url = ev.target.elements.link.value;
+    const moviesRef = doc(db, 'movies', 'movie');
+    setDoc((moviesRef), { url: url });
+  }
 
 function App() {
   return (

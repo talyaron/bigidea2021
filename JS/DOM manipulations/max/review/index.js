@@ -1,10 +1,14 @@
-setInterval(() =>{
-   
-    let numb = document.getElementById('numb') 
-    console.log(numb)
-    numb.innerHTML ++
+let target = 9
+let numAry = [2,7,11,15]
 
-},1000)
+var twoSum = function(nums, target) {
+    let len = nums.length;
+    for(let i=0; i<len; i++);
+    for(let j=1;j<len; j++){
+    if(i+j === target){
+        return(i,j)
+    }
+    }
+};
 
-
-Handle
+console.log(twoSum(numAry, target))
