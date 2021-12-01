@@ -1,57 +1,28 @@
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Liam from './pages/Liam';
+import Michael from './pages/Michael';
 
-//GROUP 1
-//import { useEffect} from 'react'
-//import './App.css';
-//import { db } from './functions/firebase/config';
-//import { doc, onSnapshot, getDoc, getDocs, collection, setState} from "firebase/firestore";
-
-import {BrowserRouter, Routes, Route, Link} from 'react-dom';
-import { db } from './functions/firebase/config';
-import Liam from "./pages/Liam";
-import Michael from "./pages/Michael";
+  function handleURLSubmit(ev) {
+    ev.preventDefault();
+    let url = ev.target.elements.link.value;
+    const moviesRef = doc(db, 'movies', 'movie');
+    setDoc((moviesRef), { url: url });
+  }
 
 function App() {
-  
-
   return (
     <BrowserRouter>
-      <u1>
-        <li></li>
-      </u1>
-    
+    <ul>
+      <li><Link to='/michael'>Michael</Link></li>
+      <li><Link to='/liam'>Liam</Link></li>
+    </ul>
+      <Routes>
+        <Route exact={true} path="/" element={<Liam />} />
+        <Route path="/liam" element={<Liam />} />
+        <Route path="/michael" element={<Michael />} />
+      </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
-
-
-  //GROUP 1
-  //Makes sure to run only once in the beginning
-  /*const ourDatabase = collection(db, "us");
-  const ourElement = doc(db, "us", 'kNdaVEOJxe9bYlnlbQaT');
-
-  useEffect(()=>{
-    let ourDBArray = [];
-
-    getDocs(ourDatabase).then(dataDB => {
-      dataDB.forEach(datum => {
-        ourDBArray.push(datum.data())
-        console.log(datum.id)
-        console.log(datum.data())
-      })
-      console.log(ourDBArray)
-      console.log("stage 1")
-    })
-    
-    getDoc(ourElement).then(docDB => {
-      console.log(docDB.data())
-      console.log("stage 2")
-    })
-    
-    const unsubscribe = onSnapshot(ourElement, (doc) => {
-      console.log('Current Data: ' + doc.data());
-      console.log("stage 3")
-    })
-
-  },[]) GROUP 1 ENDS HERE*/

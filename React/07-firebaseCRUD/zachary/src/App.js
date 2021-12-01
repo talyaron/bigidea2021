@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import { getDoc, doc } from 'firebase/firestore';
+import { db } from "./functionism/config.js";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [person, setPerson] = useState("")
+  useEffect(() => {
+    getData()
+  }, [])
+  async function getData() {
+    let docRef = doc(db, 'zachary', 'person');
+    let results = await getDoc(docRef);
+    console.log(results.data().name)
+    const name = results.data().name+" ?";
+    if (typeof name === 'string') {
+      setPerson(name);
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      What's up {person}
     </div>
   );
 }

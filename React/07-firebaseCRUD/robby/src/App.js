@@ -5,6 +5,8 @@ import { db } from './functions/firebase/config';
 import { doc, setDoc } from 'firebase/firestore';
 import UserInput from './userInput/UserInput';
 import MathWork from './mathWork/MathWork';
+import Temp from '../../madlibs/src/AlexRobbyEytan/addName'
+import Temp2 from './mathWork/chooseName'
 
 function App() {
 	//   useEffect(()=> { const userRef= doc(db, 'users', 'me')
@@ -12,7 +14,7 @@ function App() {
 	return (
 		<div className='App'>
 			<header className='App-header'>
-				<MathWork />
+				<Temp2 />
 			</header>
 		</div>
 	);

@@ -1,0 +1,29 @@
+.box{
+  width: 200px;
+  height: 200px;
+}
+
+.blue{
+  background: blue;
+}
+
+.brown{
+  background: brown;
+}
+
+.circle{
+  background: red;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  top:0px;
+  left:0px;
+  transition: all 100ms;
+}
+
+.row{
+  width: 20px;
+  height: 20px;
+  background-color: gray;
+}
