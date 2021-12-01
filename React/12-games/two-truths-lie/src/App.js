@@ -4,7 +4,7 @@ import './App.css';
 //Pages
 import EnterQuestion from './views/pages/EnterQuestion/EnterQuestion';
 import GuessQuestion from './views/pages/Guess/Guess';
-import Login from './views/pages/Guess/Guess';
+import Login from './views/pages/Login/Login';
 
 function App() {
   return (
