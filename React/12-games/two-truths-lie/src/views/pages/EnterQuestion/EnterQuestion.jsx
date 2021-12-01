@@ -1,9 +1,14 @@
 import './EnterQuestion.css';
 
 function EnterQuestions() {
+
     function handleSubmit(ev) {
-        ev.preventDefault()
-        console.log(ev)
+        ev.preventDefault();
+        console.log(ev);
+        let truth1 = ev.target.elements.truthOne.value, truth2 = ev.target.elements.truthTwo.value, lie = ev.target.elements.lie.value;
+
+        let Question = {truth1: truth1, truth2: truth2, lie: lie};
+        console.log(Question);
     }
 
 
