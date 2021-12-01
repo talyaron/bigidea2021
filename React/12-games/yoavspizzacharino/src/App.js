@@ -19,10 +19,10 @@ function App() {
       querySnapshot.forEach((doc) => {
         let data = doc.data();
         let tempObj = {
-          // name: data.user.name,
+          name: data.user.name,
           true1: data.true1,
           true2: data.true2,
-          false: data.false,
+          false: data.untrue,
           index:i
         }
        i++;
