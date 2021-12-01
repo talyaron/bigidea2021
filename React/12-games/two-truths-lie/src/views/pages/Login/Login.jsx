@@ -4,11 +4,9 @@ import { useState } from 'react';
 
 import './Login.css';
 
-function Login() {
+function Login({user, setUser}) {
     const [isLoggedIn, setIsLoggedIn]= useState(false);
-    const [user, setUser]= useState(
-      {name: "", image: ""}
-    )
+  
      
     function handleSubmit(ev) {
 

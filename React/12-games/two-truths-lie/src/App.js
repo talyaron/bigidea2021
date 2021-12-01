@@ -1,7 +1,4 @@
-
-import { db } from './functions/firebase/config';
-import { doc, getDoc, setDoc, onSnapshot, collection } from 'firebase/firestore'
-import { useState } from 'react';
+import {useState} from 'react'
 import Login from './views/pages/Login/Login'
 
 import './App.css';
@@ -9,9 +6,15 @@ import EnterQuestions from './views/pages/EnterQuestion/EnterQuestion';
 
 
 function App() {
+
+  const [user, setUser]= useState(
+    {name: "", image: ""}
+  )
+
   return (
     <div className="App">
-      <EnterQuestions />
+      <EnterQuestions user={user} />
+      <Login user={user} setUser={setUser} />
     </div>
   );
 }
