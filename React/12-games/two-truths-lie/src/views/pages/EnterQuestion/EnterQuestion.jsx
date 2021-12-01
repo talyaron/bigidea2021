@@ -1,4 +1,4 @@
-// import './EnterQuestions.css'
+import './EnterQuestion.css';
 
 function EnterQuestions() {
     function handleSubmit(ev) {
@@ -11,9 +11,12 @@ function EnterQuestions() {
     return (
         <div className='Container'>
             <form onSubmit={handleSubmit}>
-                <input type='text' name='truth1' placeholder='enter first truth here' />
-                <input type='text' name='truth2' placeholder='enter second truth here' />
-                <input type='text' name='lie' placeholder='enter lie here' />
+                <label for = 'truthOne'> Enter first truth</label>
+                <input type='text'name='truth1' id = 'truthOne' placeholder='truth' />
+                <label for = 'truthTwo'> Enter second truth</label>
+                <input type='text' name='truth2' id = 'truthTwo' placeholder='truth' />
+                <label for = 'lie'> Enter lie</label>
+                <input type='text' name='lie' id = 'lie'placeholder='lie' />
                 <input type='submit' value='submit' />
             </form>
         </div>
