@@ -6,13 +6,16 @@ import EnterQuestion from './views/pages/EnterQuestion/EnterQuestion';
 import GuessQuestion from './views/pages/Guess/Guess';
 import Login from './views/pages/Login/Login';
 
+//Components
+import LinkHeader from './components/LinkHeader/LinkHeader';
+
 function App() {
   return (
     <Router>
     <nav>
       <div className="App">
         <header className="App-header">
-          <Link to ="/">Click to Begin!</Link>
+          <LinkHeader page="login"></LinkHeader>
         </header>
       </div>
     </nav>
