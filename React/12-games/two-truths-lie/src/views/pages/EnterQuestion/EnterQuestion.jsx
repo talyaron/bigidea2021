@@ -20,7 +20,7 @@ function EnterQuestions({user}) {
         addDoc(questionsRef, {true1, true2, untrue, user});
 
         setquestionAnswered(false);
-        // setAnswers(Answers);
+        setAnswers(`Truth 1: ${true1}, Truth 2: ${true2}, Lie: ${untrue}`);
     }
 
 
@@ -35,7 +35,7 @@ function EnterQuestions({user}) {
                 <label className = 'label3' htmlFor = 'lie'> Enter lie</label>
                 <input type='text' name='lie' id = 'lie'placeholder='lie' />
                 <input className = 'submit' type='submit' value='submit' />
-            </form> : <p>Truth 1:{answers.truth1}, Truth 2:{answers.truth2}, Lie:{answers.lie}</p>}
+            </form> : <p>Truth 1:{answers.true1}, Truth 2:{answers.true2}, Lie:{answers.untrue}</p>}
         </div>
     )
 
