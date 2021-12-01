@@ -1,7 +1,7 @@
 import './EnterQuestion.css';
 import { useState } from 'react';
 import { db } from '../../../functions/firebase/config';
-import { onSnapshot, doc, getDoc,  } from 'firebase/firestore';
+import { onSnapshot, doc, getDoc, addDoc, collection } from 'firebase/firestore';
 
 function EnterQuestions() {
 
@@ -15,6 +15,11 @@ function EnterQuestions() {
 
         let Answers = {truth1: truth1, truth2: truth2, lie: lie};
         console.log(Answers);
+
+        //addDoc to DB
+        const questionsRef = collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions');
+        addDoc(questionsRef, {Answers});
+
         setquestionAnswered(false);
         setAnswers(Answers);
     }
