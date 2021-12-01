@@ -1,4 +1,4 @@
-import { db } from '../functions/firebase/config';
+//import { db } from ;
 import { doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore'
 
 function setUserInfo() {
