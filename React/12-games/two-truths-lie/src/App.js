@@ -5,11 +5,15 @@ import { useState } from 'react';
 import Login from './views/pages/Login/Login'
 
 import './App.css';
+import EnterQuestions from './views/pages/EnterQuestion/EnterQuestion';
+
 
 function App() {
   return (
-    <Login />
-  )
+    <div className="App">
+      <EnterQuestions />
+    </div>
+  );
 }
 
 
