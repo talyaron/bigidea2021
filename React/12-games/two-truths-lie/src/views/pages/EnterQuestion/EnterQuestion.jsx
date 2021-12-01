@@ -35,7 +35,7 @@ function EnterQuestions({user}) {
                 <label className = 'label3' htmlFor = 'lie'> Enter lie</label>
                 <input type='text' name='lie' id = 'lie'placeholder='lie' />
                 <input className = 'submit' type='submit' value='submit' />
-            </form> : <p>Truth 1:{answers.true1}, Truth 2:{answers.true2}, Lie:{answers.untrue}</p>}
+            </form> : <p>{answers}</p>}
         </div>
     )
 
