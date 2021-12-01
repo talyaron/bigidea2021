@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-
+let x;
 
 function App() {
   let untruePosition;
