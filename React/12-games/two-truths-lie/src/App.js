@@ -17,13 +17,9 @@ function App() {
       </div>
     </nav>
     <Routes>
-      <Route path="/" element={<Login />}/>
-      <Route path="/EnterQ" element={<EnterQuestion />}>
-        <Route path="GuessQ" element={<GuessQuestion />} />
-      </Route>
-      <Route path="/GuessQ" element={<GuessQuestion />}>
-        <Route path="EnterQ" element={<EnterQuestion />} />
-      </Route>
+      <Route path="/" element={<Login />} />
+      <Route path="/EnterQ" element={<EnterQuestion />} />
+      <Route path="/GuessQ" element={<GuessQuestion />} />
     </Routes>
   </Router>
   );
