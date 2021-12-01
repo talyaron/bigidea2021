@@ -1,4 +1,6 @@
 import './EnterQuestion.css';
+import { db } from '../../../functions/firebase/config';
+import { onSnapshot, doc, getDoc,  } from 'firebase/firestore';
 
 function EnterQuestions() {
 
