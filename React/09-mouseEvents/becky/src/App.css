@@ -1,0 +1,19 @@
+.boxblue{
+  background-color: blue;
+  width: 200px;
+  height: 200px;
+}
+.boxgreen{
+  background-color: green;
+  width: 200px;
+  height: 200px;
+}
+.circle{
+  background-color: red;
+  width:100px;
+  height: 100px;
+  border-radius:100px;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+}

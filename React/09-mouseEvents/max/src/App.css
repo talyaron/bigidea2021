@@ -1,0 +1,24 @@
+.box {
+	height: 300px;
+	width: 300px;
+}
+.brown {
+	background-color: rgb(224, 208, 135);
+}
+.blue {
+	background-color: rgb(122, 122, 236);
+}
+.circle {
+	position: absolute;
+	background-color: red;
+	width: 30px;
+	height: 30px;
+	border-radius: 60px;
+	top: 55px;
+	left: 10px;
+}
+.row {
+	width: 20px;
+	height: 20px;
+	background-color: gray;
+}

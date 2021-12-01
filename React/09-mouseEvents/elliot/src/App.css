@@ -1,0 +1,23 @@
+.box{
+  width: 100px;
+  height: 100px;
+}
+
+.blue{
+  background-color: blue;
+}
+
+.brown{
+  background-color: rgb(119, 43, 43);
+}
+
+.circle{
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  position: absolute;
+  top:90px;
+  left:40px;
+  transition: all;
+}

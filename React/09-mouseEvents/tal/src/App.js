@@ -1,36 +1,44 @@
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import './App.css'
+import { db } from './functions/firebase/config'
 import seaMP3 from './words/sea.mp3';
-import landMP3 from './words/land.mp3';
+import { doc, getDoc, updateDoc, onSnapshot } from 'firebase/firestore';
+//import landMP3 from './words/land.MP3';
+
+const docRef = doc(db, 'test', 'test');
 
 function App() {
+  const [result, setResult] = useState(0)
+  useEffect(() => {
 
-  const circle = useRef(null);
-  const sea = new Audio(seaMP3);
+    getDoc(docRef).then(res => {
+      console.log(res.data())
+      let results = res.data().aa + 20;
+      setResult(results);
+    });
+let x = 345;
 
-  console.dir(circle);
+    // const playerRef = doc(db, 'players', playerId)
+    console.log('rerun')
+    onSnapshot(docRef, (docDB) => {
+      console.log(docDB.data());
+    });
+  }, []);
 
+  async function getData() {
 
-  function handleClick(ev) {
-    console.log(ev)
-    console.log(ev.target.id)
-   
-    //get x and y of the click point
-    const x = ev.clientX;
-    const y = ev.clientY;
+    let results = await getDoc(docRef);
+    console.log(results.data())
+    results = results.data().aa + 20;
 
-    circle.current.style.top = `${y - 5}px`;
-    circle.current.style.left = `${x - 5}px`;
-
-    sea.play();
-
+    updateDoc(docRef, { aa: results })
+    setResult(results);
   }
 
   return (
     <div>
-      <div id='sea' className='box blue' onClick={handleClick}></div>
-      <div id='land' className='box brown' onClick={handleClick}></div>
-      <div ref={circle} className='circle'></div>
+      sTART: {result}
+      <button onClick={getData}>GET DATA</button>
     </div>
   );
 }
