@@ -22,7 +22,7 @@ function Hangman() {
     const [guessWordArray, setGuessWordArray] = useState([]);
     const [dashes, setDashes] = useState([])
 
-    
+ 
     
     function handleCheckText(ev) {
         let value = ev.target.value, char = value.slice(-1);
