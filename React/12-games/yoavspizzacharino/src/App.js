@@ -2,23 +2,20 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  let randomLiePosition;
+
+  function liePosition() {
+    let randomNumber = Math.ceil(Math.random() * 3)
+    console.log(randomNumber);
+    return (randomNumber);
+  }
+
+  randomLiePosition = liePosition();
+  console.log(randomLiePosition);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className="App"></div>
   );
 }
 
