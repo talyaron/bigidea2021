@@ -1,5 +1,7 @@
 import './EnterQuestion.css';
 import { useState } from 'react';
+import { db } from '../../../functions/firebase/config';
+import { onSnapshot, doc, getDoc,  } from 'firebase/firestore';
 
 function EnterQuestions() {
 
