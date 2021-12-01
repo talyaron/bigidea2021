@@ -1,0 +1,48 @@
+.linkHeader{
+    position: absolute;
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "Login Title CurrentPage"
+    "EnterQuestion Title CurrentPage"
+    "GuessQuestion Title CurrentPage";
+    
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 80px;
+    padding: 30px 50px;
+
+    background-color: rgb(41, 168, 247);
+}
+
+.title{
+    margin: 20px;
+    grid-area: Title;
+}
+
+.currentPage{
+    padding-right: 30px;
+    padding-top: 25px;
+    grid-area: CurrentPage;
+}
+
+.pageButton{
+    text-align: center;
+    width: auto;
+    max-width: 200px;
+    height: 20px;
+}
+
+.login{
+    grid-area: Login;
+}
+
+.enter{
+    grid-area: EnterQuestion;
+}
+
+.guess{
+    grid-area: GuessQuestion;
+}

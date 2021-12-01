@@ -1,9 +1,15 @@
-import {useState} from 'react'
-import Login from './views/pages/Login/Login'
-
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import React from 'react';
 import './App.css';
 import EnterQuestions from './views/pages/EnterQuestion/EnterQuestion';
 
+//Pages
+import EnterQuestion from './views/pages/EnterQuestion/EnterQuestion';
+import GuessQuestion from './views/pages/Guess/Guess';
+import Login from './views/pages/Login/Login';
+
+//Components
+import LinkHeader from './views/components/LinkHeader/LinkHeader';
 
 function App() {
 
@@ -12,10 +18,20 @@ function App() {
   )
 
   return (
-    <div className="App">
-      <EnterQuestions user={user} />
-      <Login user={user} setUser={setUser} />
-    </div>
+    <Router>
+    <nav>
+      <div className="App">
+        <header className="App-header">
+          <LinkHeader page='login'></LinkHeader>
+        </header>
+      </div>
+    </nav>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/EnterQ" element={<EnterQuestion />} />
+      <Route path="/GuessQ" element={<GuessQuestion />} />
+    </Routes>
+  </Router>
   );
 }
 
