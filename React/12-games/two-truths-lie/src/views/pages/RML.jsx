@@ -10,6 +10,7 @@ function setUserInfo() {
         const setPic= ev.target.elements.userPicture.value;
         console.log(ev.target.elements.userName.value)
         console.log(ev.target.elements.userPicture.value)
+        
       
         
     }
