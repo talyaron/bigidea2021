@@ -1,4 +1,5 @@
-import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import React from 'react';
 import './App.css';
 
 //Pages
@@ -7,7 +8,7 @@ import GuessQuestion from './views/pages/Guess/Guess';
 import Login from './views/pages/Login/Login';
 
 //Components
-import LinkHeader from './components/LinkHeader/LinkHeader';
+import LinkHeader from './views/components/LinkHeader/LinkHeader';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
     <nav>
       <div className="App">
         <header className="App-header">
-          <LinkHeader page="login"></LinkHeader>
+          <LinkHeader page='login'></LinkHeader>
         </header>
       </div>
     </nav>
