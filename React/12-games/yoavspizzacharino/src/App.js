@@ -5,7 +5,7 @@ import { doc, setDoc, updateDoc, deleteDoc, onSnapshot, collection,query,getDocs
 
 let questionsRef
 let questionsArr = []
-
+let q
 function App() {
   
 
@@ -13,7 +13,7 @@ function App() {
     
     async function OnStartup() {
       //questionsRef = await collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions')
-      const q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions'));
+      q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions'));
       const querySnapshot = await getDocs(q);
       let i=1;
       querySnapshot.forEach((doc) => {
@@ -22,7 +22,7 @@ function App() {
           name: data.user.name,
           true1: data.true1,
           true2: data.true2,
-          false: data.untrue,
+          untrue: data.untrue,
           index:i
         }
        i++;
@@ -34,17 +34,20 @@ function App() {
    
   }, []);
 
-
+  function nextRound(){
+    let indexChosen=Math.floor(Math.random()*questionsArr.length);
+    let data=questionsArr[indexChosen]
+    const useRef=doc(db,'true-lie','qocj2PnYZcvmDXOf4mCn')
+    updateDoc(useRef,{selectedQuestion:{
+      true1:data.true1,
+      true2:data.true2,
+      untrue:data.untrue,
+      user:{name:data.name}
+    }})
+  }
   let randomLiePosition;
 
 
-
-  function nextRound() {
-    randomise()
-  }
-  async function randomise() {
-    let random = Math.floor(Math.random() * 6)
-  }
 
   function liePosition() {
     let randomNumber = Math.ceil(Math.random() * 3)
@@ -57,7 +60,10 @@ function App() {
 
 
   return (
-    <div className="App"></div>
+    <div className="App">
+      <button onClick={nextRound}>My Name Jeff</button>
+    </div>
+    
   );
 }
 
