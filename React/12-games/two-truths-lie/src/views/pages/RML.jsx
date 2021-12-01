@@ -23,4 +23,18 @@ function setUserInfo() {
     );
 }
 
+
+class User: NSObject {
+    var name: String
+    var email: String?
+
+    static var sharedInstance: User!
+
+    init(name: String, email: String) {
+         self.name = name
+         self.email = email
+    }
+
+}
+
 export default setUserInfo;
