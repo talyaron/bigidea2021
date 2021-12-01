@@ -1,25 +1,33 @@
 import logo from './logo.svg';
+import { db } from './functions/firebase/config';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  function setUserInfo() {
+
+    function handleSubmit(ev) {
+
+        ev.preventDefault();
+        const setName= ev.target.elements.userName.value;
+        const setPic= ev.target.elements.userPicture.value;
+        console.log(ev.target.elements.userName.value)
+        console.log(ev.target.elements.userPicture.value)
+        const user = {name:setName, image:setPic};
+        db.ref('/person').push(person);
+        
+      
+        
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input type="text" placeholder='Input Name Here' name="userName" />
+            <input type="text" placeholder='Input Photo Here' name="userPicture" />
+            <input type="submit" value="Submit" />
+        </form>
+    );
+}
+
 }
 
 export default App;
