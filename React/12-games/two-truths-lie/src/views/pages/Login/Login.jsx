@@ -1,8 +1,10 @@
 import { db } from '../../../functions/firebase/config';
 import { doc, getDoc, setDoc, onSnapshot, collection } from 'firebase/firestore'
 import { useState } from 'react';
+import LinkHeader from '../../components/LinkHeader/LinkHeader';
 
 import './Login.css';
+import { Link } from 'react-router-dom';
 
 function Login({user, setUser}) {
     const [isLoggedIn, setIsLoggedIn]= useState(false);
@@ -34,6 +36,7 @@ function Login({user, setUser}) {
     if(!isLoggedIn){
       return (
         <div>
+          <LinkHeader page = 'login'/>
           <form onSubmit={handleSubmit}>
               <input type="text" placeholder='Input Name Here' name="userName" />
               <input type="text" placeholder='Input Photo Here' name="userPicture" />

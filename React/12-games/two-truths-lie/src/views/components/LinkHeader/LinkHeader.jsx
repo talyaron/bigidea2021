@@ -46,7 +46,7 @@ function LinkHeader(props){
             setVisibleLinks('guess');
             currentPageText = 'Guess';
         } else if(ev.target.id === 'login'){
-            navigate('/');
+            navigate('/Login');
             setVisibleLinks('login');
             currentPageText = 'Login';
         } else {

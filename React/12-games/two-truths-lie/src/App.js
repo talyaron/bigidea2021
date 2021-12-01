@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import React from 'react';
 import './App.css';
 import EnterQuestions from './views/pages/EnterQuestion/EnterQuestion';
-
+import { useState } from "react";
 //Pages
 import EnterQuestion from './views/pages/EnterQuestion/EnterQuestion';
 import GuessQuestion from './views/pages/Guess/Guess';
@@ -27,9 +27,9 @@ function App() {
       </div>
     </nav>
     <Routes>
-      <Route path="/" element={<Login />} />
       <Route path="/EnterQ" element={<EnterQuestion />} />
       <Route path="/GuessQ" element={<GuessQuestion />} />
+      <Route path="/Login" element={<Login />} />
     </Routes>
   </Router>
   );
