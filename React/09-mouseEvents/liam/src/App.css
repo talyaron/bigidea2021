@@ -1,0 +1,20 @@
+
+.box{
+  width: 100px;
+  height: 100px;
+}
+.blue{
+  background: blue;
+}
+.brown{
+  background: brown;
+}
+.circle{
+  background-image: url(https://i.insider.com/60f1a53d7b0ec5001800a721?width=1000&format=jpeg&auto=webp);
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top:0px;
+  left:0px;
+  transition: all 100ms;
+}
