@@ -100,7 +100,7 @@ function App({ user, setUser }) {
   }
   async function handleClick(ev) {
     if (ev.target.id === "untrue") {
-      alert("user", user.name, user.id, "got one point");
+      // alert("user", user.name, user.id, "got one point");
       const userID = user.name;
       console.log(userID, "is name");
       const userRef = doc(
