@@ -67,12 +67,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className = "container"> 
-        <div className = "box1" onClick = {handleClick}>{box1}</div>
-        <div className = "box2" onClick = {handleClick}>{box2}</div>
-        <div className = "box3" onClick = {handleClick}>{box3}</div>
-
-      </div>
+     App
     </div>
   );
 }
