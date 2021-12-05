@@ -18,13 +18,31 @@ function App({ user, setUser }) {
   const [true1, setTrue1] = useState('');
   const [true2, setTrue2] = useState('');
   const [untrue, setUntrue] = useState('');
-  
+  const [box1, setBox1] = useState("temp");
+  const [box2, setBox2] = useState("temp");
+  const [box3, setBox3] = useState("temp");
+
   useEffect(() => {
     onSnapshot(selectedQuestionRef, (question) => {
-      const selectedQuestion = question.data().selectedQuestion
-      setTrue1('true 1', selectedQuestion.true1)
-      setTrue2('true 2', selectedQuestion.true2)
-      setUntrue('untrue', selectedQuestion.untrue)
+      const selectedQuestion = question.data().selectedQuestion;
+      let answers = [
+        {
+          answer: selectedQuestion.true1,
+          id: 'true1'
+        },
+        {
+          answer: selectedQuestion.true2,
+          id: 'true2'
+        },
+        {
+          answer: selectedQuestion.untrue,
+          id: 'untrue'
+        },
+      ]
+      answers = shuffle(answers)
+      setBox1(answers[0]);
+      setBox2(answers[1]);
+      setBox3(answers[2]);
     })
 
 
@@ -79,6 +97,11 @@ function App({ user, setUser }) {
     console.log(randomNumber);
     return (randomNumber);
   }
+  function handleClick(ev) {
+    if (ev.target.id === 'untrue') {
+      alert('user', user.name, user.id, 'got one point')
+    }
+  }
 
   randomLiePosition = liePosition();
   console.log(randomLiePosition);
@@ -88,8 +111,13 @@ function App({ user, setUser }) {
       <div className="App">
 
         <button onClick={nextRound}>Set a new round</button>
-        <div className='questionBox'></div>
-        <Shuffle true1 = {true1} true2 = {true2} untrue={untrue}/>
+        <div className="container">
+          <div id={box1.id} className="box1" onClick={handleClick}>{box1.answer}</div>
+          <div id={box2.id} className="box2" onClick={handleClick}>{box2.answer}</div>
+          <div id={box3.id} className="box3" onClick={handleClick}>{box3.answer}</div>
+
+        </div>
+
         <Scoreboard />
       </div>
 
@@ -100,3 +128,22 @@ function App({ user, setUser }) {
 }
 
 export default App;
+
+
+function shuffle(array) {
+  let currentIndex = array.length, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
