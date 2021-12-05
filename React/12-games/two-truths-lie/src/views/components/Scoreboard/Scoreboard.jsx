@@ -8,8 +8,8 @@ function Scoreboard() {
 
     //players
     const [players, setPlayers] = useState([
-        { id: 'aaa', name: 'Syzmon', image: '', score: 12 },
-        { id: 'bbb', name: 'Max', image: '', score: 10 }
+        // { id: 'aaa', name: 'Syzmon', image: '', score: 12 },
+        // { id: 'bbb', name: 'Max', image: '', score: 10 }
     ])
     const q = query(collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players"))
     useEffect(() => {
