@@ -22,9 +22,13 @@ function Scoreboard() {
             });
             //sort by score
             list = list.sort((a,b)=>b.score - a.score)
-            console.log(list);
+           
             setPlayers(list)
         });
+
+        return ()=>{
+            unsubscribe();
+        }
 
     }, [])
 

@@ -1,7 +1,7 @@
 import './Game.css';
 import { db } from '../../../functions/firebase/config';
 import { useEffect, useState } from 'react';
-import { doc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, getDocs } from 'firebase/firestore';
+import { doc,getDoc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, getDocs } from 'firebase/firestore';
 
 //components
 import Scoreboard from '../../components/Scoreboard/Scoreboard'
@@ -23,7 +23,7 @@ function App({ user, setUser }) {
   const [box3, setBox3] = useState("temp");
 
   useEffect(() => {
-    onSnapshot(selectedQuestionRef, (question) => {
+    const unsubscribe = onSnapshot(selectedQuestionRef, (question) => {
       const selectedQuestion = question.data().selectedQuestion;
       let answers = [
         {
@@ -43,6 +43,11 @@ function App({ user, setUser }) {
       setBox1(answers[0]);
       setBox2(answers[1]);
       setBox3(answers[2]);
+
+      return ()=>{
+        unsubscribe();
+      }
+   
     })
 
 
@@ -99,7 +104,15 @@ function App({ user, setUser }) {
   }
   function handleClick(ev) {
     if (ev.target.id === 'untrue') {
-      alert('user', user.name, user.id, 'got one point')
+     
+      const userId = user.name;
+      //get user score
+
+      const userRef = doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'players', userId);
+      getDoc(userRef).then(userDB=>{
+        const userScore = userDB.data().score;
+        updateDoc(userRef, {score:userScore+1})
+      })
     }
   }
 
