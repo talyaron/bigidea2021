@@ -8,10 +8,12 @@ import Scoreboard from '../../components/Scoreboard/Scoreboard'
 
 
 let questionsArr = []
-let q
+let questionBoxes = doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'selectedQuestion');
+let questionUntrue = questionBoxes.untrue.value();
 
 
 
+<<<<<<< Updated upstream
 function App({ user, setUser }) {
   const selectedQuestionRef = doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn');
   const [questionAuthor, setQuestionAuthor] = useState('');
@@ -46,6 +48,10 @@ function App({ user, setUser }) {
     })
 
 
+=======
+  useEffect(() => {
+    
+>>>>>>> Stashed changes
 
 
     async function OnStartup() {
