@@ -15,13 +15,16 @@ let q
 function App({ user, setUser }) {
   const selectedQuestionRef = doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn');
   const [questionAuthor, setQuestionAuthor] = useState('');
-  const [true1, setQuestionAuthor] = useState('');
-
+  const [true1, setTrue1] = useState('');
+  const [true2, setTrue2] = useState('');
+  const [untrue, setUntrue] = useState('');
   
   useEffect(() => {
     onSnapshot(selectedQuestionRef, (question) => {
-      console.log(question.data())
-
+      const selectedQuestion = question.data().selectedQuestion
+      setTrue1('true 1', selectedQuestion.true1)
+      setTrue2('true 2', selectedQuestion.true2)
+      setUntrue('untrue', selectedQuestion.untrue)
     })
 
 
@@ -43,7 +46,7 @@ function App({ user, setUser }) {
         }
         i++;
         questionsArr.push(tempObj)
-        console.log(questionsArr);
+        // console.log(questionsArr);
       })
     }
     OnStartup();
@@ -85,6 +88,7 @@ function App({ user, setUser }) {
       <div className="App">
 
         <button onClick={nextRound}>Set a new round</button>
+        <div className='questionBox'></div>
         <Shuffle true1 = {true1} true2 = {true2} untrue={untrue}/>
         <Scoreboard />
       </div>
