@@ -1,7 +1,6 @@
 import "./Scoreboard.css"
-import "./config.js"
 import { useEffect, useState } from "react"
-import { db } from './config'
+import { db } from '../../../functions/firebase/config';
 import { doc, collection, query, where, getDocs, onSnapshot } from 'firebase/firestore'
 
 function Scoreboard() {
