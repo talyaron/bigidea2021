@@ -32,7 +32,7 @@ function App() {
         </div>
       </nav>
       <Routes>
-        <Route path="/Login" element={<Login />} />
+        <Route path="/Login" element={<Login user={user} setUser={setUser} />} />
         <Route path="/EnterQ" element={<EnterQuestion />} />
         <Route path="/GuessQ" element={<Game />} />
 
