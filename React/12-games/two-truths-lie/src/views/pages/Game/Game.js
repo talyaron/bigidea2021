@@ -1,5 +1,5 @@
-import '.game.css';
-import { db } from './firebase/config.js';
+import './Game.css';
+import { db } from '../../../functions/firebase/config';
 import { useEffect, useState } from 'react';
 import { doc, setDoc, updateDoc, deleteDoc, onSnapshot, collection,query,getDocs } from 'firebase/firestore';
 
