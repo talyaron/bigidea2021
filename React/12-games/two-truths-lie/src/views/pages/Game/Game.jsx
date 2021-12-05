@@ -6,7 +6,6 @@ import { doc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, getDo
 //components
 import Scoreboard from '../../components/Scoreboard/Scoreboard'
 
-let questionsRef
 let questionsArr = []
 let q
 
