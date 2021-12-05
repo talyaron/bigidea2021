@@ -11,7 +11,7 @@ let questionsArr = []
 let q
 
 
-function App() {
+function App({ user, setUser }) {
 
 
   useEffect(() => {
@@ -68,14 +68,18 @@ function App() {
   randomLiePosition = liePosition();
   console.log(randomLiePosition);
 
+  if (user.name.length > 0) {
+    return (
+      <div className="App">
 
-  return (
-    <div className="App">
-      <button onClick={nextRound}>Set a new round</button>
-      <Scoreboard />
-    </div>
+        <button onClick={nextRound}>Set a new round</button>
+        <Scoreboard />
+      </div>
 
-  );
+    );
+  } else {
+    <h1>Please login</h1>
+  }
 }
 
 export default App;

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { db } from '../../../functions/firebase/config';
 import { onSnapshot, doc, getDoc, addDoc, collection } from 'firebase/firestore';
 
-function EnterQuestions({user}) {
+function EnterQuestions({user, setUser}) {
 
     console.log(user)
 

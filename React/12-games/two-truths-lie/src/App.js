@@ -13,9 +13,7 @@ import LinkHeader from './views/components/LinkHeader/LinkHeader';
 
 function App() {
 
-  const [user, setUser] = useState(
-    { name: "", image: "" }
-  )
+  const [user, setUser] = useState({ name: "", image: "" })
 
   return (
     <Router>
@@ -33,8 +31,8 @@ function App() {
       </nav>
       <Routes>
         <Route path="/Login" element={<Login user={user} setUser={setUser} />} />
-        <Route path="/EnterQ" element={<EnterQuestion />} />
-        <Route path="/GuessQ" element={<Game />} />
+        <Route path="/EnterQ" element={<EnterQuestion user={user} setUser={setUser} />} />
+        <Route path="/GuessQ" element={<Game user={user} setUser={setUser} />} />
 
       </Routes>
     </Router>
