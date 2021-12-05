@@ -5,7 +5,7 @@ import { doc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, getDo
 
 //components
 import Scoreboard from '../../components/Scoreboard/Scoreboard'
-import Shuffle from '../../components/Shuffle/Shuffle'
+
 
 let questionsArr = []
 let q
