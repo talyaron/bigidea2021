@@ -5,15 +5,27 @@ import { doc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, getDo
 
 //components
 import Scoreboard from '../../components/Scoreboard/Scoreboard'
+import Shuffle from '../../components/Shuffle/Shuffle'
 
 let questionsArr = []
 let q
 
 
+
 function App({ user, setUser }) {
+  const selectedQuestionRef = doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn');
+  const [questionAuthor, setQuestionAuthor] = useState('');
+  const [true1, setQuestionAuthor] = useState('');
 
-
+  
   useEffect(() => {
+    onSnapshot(selectedQuestionRef, (question) => {
+      console.log(question.data())
+
+    })
+
+
+
 
     async function OnStartup() {
       //questionsRef = await collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions')
@@ -43,9 +55,9 @@ function App({ user, setUser }) {
     //radmoly get a question
     let indexChosen = Math.floor(Math.random() * questionsArr.length);
     let data = questionsArr[indexChosen];
-    const useRef = doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn')
+    const selectedQuestionRef = doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn')
 
-    updateDoc(useRef, {
+    updateDoc(selectedQuestionRef, {
       selectedQuestion: {
         true1: data.true1,
         true2: data.true2,
@@ -53,6 +65,7 @@ function App({ user, setUser }) {
         user: { name: data.name }
       }
     })
+
   }
   let randomLiePosition;
 
@@ -72,6 +85,7 @@ function App({ user, setUser }) {
       <div className="App">
 
         <button onClick={nextRound}>Set a new round</button>
+        <Shuffle true1 = {true1} true2 = {true2} untrue={untrue}/>
         <Scoreboard />
       </div>
 
