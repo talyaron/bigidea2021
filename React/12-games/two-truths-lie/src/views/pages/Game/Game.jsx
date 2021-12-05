@@ -78,7 +78,7 @@ function App({ user, setUser }) {
 
     );
   } else {
-    <h1>Please login</h1>
+    return <h1>Please login</h1>
   }
 }
 
