@@ -1,8 +1,8 @@
 import "./Scoreboard.css"
 import "./config.js"
 import { useEffect, useState } from "react"
-import {db} from './config'
-import {doc,collection,query,where,getDocs,onSnapshot} from 'firebase/firestore'
+import { db } from './config'
+import { doc, collection, query, where, getDocs, onSnapshot } from 'firebase/firestore'
 
 function Scoreboard() {
 
@@ -11,24 +11,21 @@ function Scoreboard() {
         { id: 'aaa', name: 'Syzmon', image: '', score: 12 },
         { id: 'bbb', name: 'Max', image: '', score: 10 }
     ])
-    const q=query(collection(db,"true-lie","qocj2PnYZcvmDXOf4mCn","players" ))
+    const q = query(collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players"))
     useEffect(() => {
         //listen to palyers
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-        const list = [];
-        querySnapshot.forEach((doc) => {
-            list.push(doc.data());
-
-            for(let i=0; i<= list.length; i++){
-                for(let k=0; k<= list.length; k++){
-                    //if num is higher, move to front
-                    //if lower move to back
-        }
-        }
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            let list = [];
+            querySnapshot.forEach((doc) => {
+                list.push(doc.data());
+                
+               
+            });
+            //sort by score
+            list = list.sort((a,b)=>b.score - a.score)
+            console.log(list);
+            setPlayers(list)
         });
-        console.log(list);
-        setPlayers(list)
-      });      
 
     }, [])
 
@@ -37,7 +34,7 @@ function Scoreboard() {
             {players.map(player => {
                 return (
                     <div key={player.id} className='nametag'>
-                        <img className="img"src={player.image}></img>
+                        <img className="img" src={player.image}></img>
                         {player.name}: {player.score}
                     </div>
                 )
