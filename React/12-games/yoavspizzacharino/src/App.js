@@ -1,67 +1,72 @@
 import './App.css';
-import { db } from './firebase/config.js';
-import { useEffect, useState } from 'react';
-import { doc, setDoc, updateDoc, deleteDoc, onSnapshot, collection,query,getDocs } from 'firebase/firestore';
+import React, { useState } from 'react';
 
-let questionsRef
-let questionsArr = []
-let q
+
+
+
 function App() {
-  
+  // const [true1, setTrue1] = useState("Testing true 1");
+  // const [true2, setTrue2] = useState("Testing true 2");
+  // const [untrue, setUntrue] = useState("Testing untrue");
+  let true1 = "true1";
+  let true2 = "true2";
+  let untrue = "untrue";
+  let untruePosition;
+  const [box1, setBox1] = useState("temp");
+  const [box2, setBox2] = useState("temp");
+  const [box3, setBox3] = useState("temp");
 
-  useEffect(() => {
-    
-    async function OnStartup() {
-      //questionsRef = await collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions')
-      q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions'));
-      const querySnapshot = await getDocs(q);
-      let i=1;
-      querySnapshot.forEach((doc) => {
-        let data = doc.data();
-        let tempObj = {
-          name: data.user.name,
-          true1: data.true1,
-          true2: data.true2,
-          untrue: data.untrue,
-          index:i
-        }
-       i++;
-        questionsArr.push(tempObj)
-        console.log(questionsArr);
-      })
+  function shufflePositions() {
+    untruePosition = Math.ceil(Math.random() * 3)
+    let randomNumber2 = Math.ceil(Math.random() * 2)
+    if (randomNumber2 === 1) {
+      if (untruePosition === 1) {
+        setBox1(untrue);
+        setBox2(true1);
+        setBox3(true2);
+      }
+      else if (untruePosition === 2) {
+        setBox1(true1);
+        setBox2(untrue);
+        setBox3(true2);
+      }
+      else if (untruePosition === 3) {
+        setBox1(true1);
+        setBox2(true2);
+        setBox3(untrue);
+      }
     }
-    OnStartup();
-   
-  }, []);
+    if (randomNumber2 === 2) {
+      if (untruePosition === 1) {
+        setBox1(untrue);
+        setBox2(true2);
+        setBox3(true1);
+      }
+      else if (untruePosition === 2) {
+        setBox1(true2);
+        setBox2(untrue);
+        setBox3(true1);
+      }
+      else if (untruePosition === 3) {
+        setBox1(true2);
+        setBox2(true1);
+        setBox3(untrue);
+      }
+    }
 
-  function nextRound(){
-    let indexChosen=Math.floor(Math.random()*questionsArr.length);
-    let data=questionsArr[indexChosen]
-    const useRef=doc(db,'true-lie','qocj2PnYZcvmDXOf4mCn')
-    updateDoc(useRef,{selectedQuestion:{
-      true1:data.true1,
-      true2:data.true2,
-      untrue:data.untrue,
-      user:{name:data.name}
-    }})
-  }
-  let randomLiePosition;
-
-
-
-  function liePosition() {
-    let randomNumber = Math.ceil(Math.random() * 3)
-    console.log(randomNumber);
-    return (randomNumber);
+    
   }
 
-  randomLiePosition = liePosition();
-  console.log(randomLiePosition);
+  function handleClick(ev){
+    ev.preventDefault();
+    shufflePositions();
+  }
+  
 
 
   return (
     <div className="App">
-      <button onClick={nextRound}>My Name Jeff</button>
+     App
     </div>
     
   );
