@@ -3,13 +3,11 @@ import React, { useState } from 'react';
 
 
 
-function Shuffle() {
+function Shuffle({true1, true2, untrue}) {
   // const [true1, setTrue1] = useState("Testing true 1");
   // const [true2, setTrue2] = useState("Testing true 2");
   // const [untrue, setUntrue] = useState("Testing untrue");
-  let true1 = "true1";
-  let true2 = "true2";
-  let untrue = "untrue";
+  
   let untruePosition;
   const [box1, setBox1] = useState("temp");
   const [box2, setBox2] = useState("temp");
