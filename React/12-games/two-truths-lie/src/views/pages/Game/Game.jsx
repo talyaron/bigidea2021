@@ -7,52 +7,9 @@ import { doc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, getDo
 import Scoreboard from '../../components/Scoreboard/Scoreboard'
 
 
-let questionsArr = []
-let questionBoxes = doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'selectedQuestion');
-let questionUntrue = questionBoxes.untrue.value();
-
-
-
-<<<<<<< Updated upstream
-function App({ user, setUser }) {
-  const selectedQuestionRef = doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn');
-  const [questionAuthor, setQuestionAuthor] = useState('');
-  const [true1, setTrue1] = useState('');
-  const [true2, setTrue2] = useState('');
-  const [untrue, setUntrue] = useState('');
-  const [box1, setBox1] = useState("temp");
-  const [box2, setBox2] = useState("temp");
-  const [box3, setBox3] = useState("temp");
+let questionsArr = [];
 
   useEffect(() => {
-    onSnapshot(selectedQuestionRef, (question) => {
-      const selectedQuestion = question.data().selectedQuestion;
-      let answers = [
-        {
-          answer: selectedQuestion.true1,
-          id: 'true1'
-        },
-        {
-          answer: selectedQuestion.true2,
-          id: 'true2'
-        },
-        {
-          answer: selectedQuestion.untrue,
-          id: 'untrue'
-        },
-      ]
-      answers = shuffle(answers)
-      setBox1(answers[0]);
-      setBox2(answers[1]);
-      setBox3(answers[2]);
-    })
-
-
-=======
-  useEffect(() => {
-    
->>>>>>> Stashed changes
-
 
     async function OnStartup() {
       //questionsRef = await collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions')
@@ -105,7 +62,8 @@ function App({ user, setUser }) {
   }
   function handleClick(ev) {
     if (ev.target.id === 'untrue') {
-      alert('user', user.name, user.id, 'got one point')
+      alert('user', user.name, user.id, 'got one point');
+
     }
   }
 
