@@ -47,9 +47,9 @@ function App({ user, setUser }) {
           id: "untrue",
         },
       ];
-     let userNameTemp = selectedQuestion.user.name
-     setQuestionName(userNameTemp)
-      
+      let userNameTemp = selectedQuestion.user.name
+      setQuestionName(userNameTemp)
+
       answers = shuffle(answers);
       setBox1(answers[0]);
       setBox2(answers[1]);
@@ -129,17 +129,27 @@ function App({ user, setUser }) {
   if (user.name.length > 0) {
     return (
       <div className="App">
-        <button onClick={nextRound}>Set a new round</button>
+        <button className="RoundButton" onClick={nextRound}>Set a new round</button>
         <div className="container">
-          <h3>{questionName}</h3>
-          <div id={box1.id} className="box1" onClick={handleClick}>
-            {box1.answer}
+          <div className="NameContainer">
+            <h3>{questionName}</h3>
           </div>
-          <div id={box2.id} className="box2" onClick={handleClick}>
-            {box2.answer}
-          </div>
-          <div id={box3.id} className="box3" onClick={handleClick}>
-            {box3.answer}
+          <div className="questionsContainer">
+            <div className="box 1">
+              <div id={box1.id} className="box1" onClick={handleClick}>
+                {box1.answer}
+              </div>
+            </div>
+            <div className="box 2">
+              <div id={box2.id} className="box2" onClick={handleClick}>
+                {box2.answer}
+              </div>
+            </div>
+            <div className="box 3">
+              <div id={box3.id} className="box3" onClick={handleClick}>
+                {box3.answer}
+              </div>
+            </div>
           </div>
         </div>
 
