@@ -158,8 +158,9 @@ function App({ user, setUser }) {
         <button onClick={resetGame}>Reset Scores</button>
         <div>Remaining Questions: {remainingQuestions}</div>
         <button onClick={handleClear}>Clear All Questions</button>
-        <div className="container">
+        <div className="optionsWrapper">
           <h3>{questionName}</h3>
+          
           <div id={box1.id} className="box1 hover" onClick={handleClick}>
             {box1.answer}
           </div>

@@ -21,10 +21,14 @@ div.box1{
 
 
 }
-
+.hover{
+  cursor: pointer;
+  user-select: none;
+}
 .hover:hover{
     padding: 5%;
     background-color: blue;
+
 }
 div.box2{
     border: 3px solid blue;
