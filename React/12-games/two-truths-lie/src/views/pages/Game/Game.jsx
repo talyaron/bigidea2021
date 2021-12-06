@@ -9,6 +9,8 @@ import { func } from "prop-types";
 
 let questionsArr = [];
 let q;
+let roundIsClicked = false;
+let chosenAnswer = '';
 
 function App({ user, setUser }) {
   const selectedQuestionRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
@@ -93,6 +95,9 @@ function App({ user, setUser }) {
 
   function nextRound() {
     //radmoly get a question
+    setQuestionResult('');
+    roundIsClicked = false;
+    chosenAnswer = '';
     let indexChosen = Math.floor(Math.random() * questionsArr.length);
     let data = questionsArr[indexChosen];
     if (questionsArr.length >= 1){
@@ -129,7 +134,11 @@ function App({ user, setUser }) {
     return randomNumber;
   }
   async function handleClick(ev) {
-    if (ev.target.id === "untrue") {
+    chosenAnswer = ev.target.id;
+
+    if ((chosenAnswer === "untrue") && (roundIsClicked === false)) {
+      setQuestionResult('Correct');
+      
       // alert("user", user.name, user.id, "got one point");
       const userID = user.name;
       // console.log(userID, "is name");
@@ -146,16 +155,11 @@ function App({ user, setUser }) {
       updateDoc(userRef, {
         score: userScore,
       });
-      
-     
-    }
-    else {
-
-      setDisplay("none")
-      ev.target.style.display = display;
+    } else if(roundIsClicked === false){
+      setQuestionResult('Incorrect');
     }
 
-    setShowQuestions(false)
+    roundIsClicked = true;
   }
   async function handleClear() {
     const q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions'));
@@ -189,6 +193,7 @@ function App({ user, setUser }) {
           <div id={box3.id} className="box3 hover" onClick={handleClick}>
             {box3.answer}
           </div>
+          <h2>{questionResult}</h2>
         </div>
 
         <Scoreboard />
