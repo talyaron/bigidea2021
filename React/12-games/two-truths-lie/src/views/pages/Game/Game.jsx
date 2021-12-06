@@ -132,13 +132,13 @@ function App({ user, setUser }) {
         <button onClick={nextRound}>Set a new round</button>
         <div className="container">
           <h3>{questionName}</h3>
-          <div id={box1.id} className="box1" onClick={handleClick}>
+          <div id={box1.id} className="box1 hover" onClick={handleClick}>
             {box1.answer}
           </div>
-          <div id={box2.id} className="box2" onClick={handleClick}>
+          <div id={box2.id} className="box2 hover"  onClick={handleClick}>
             {box2.answer}
           </div>
-          <div id={box3.id} className="box3" onClick={handleClick}>
+          <div id={box3.id} className="box3 hover" onClick={handleClick}>
             {box3.answer}
           </div>
         </div>
