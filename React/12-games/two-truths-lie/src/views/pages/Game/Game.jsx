@@ -22,6 +22,7 @@ function App({ user, setUser }) {
   const [showQuestions, setShowQuestions] = useState(true);
   const [questionName, setQuestionName] = useState('name place holder')
   const [display, setDisplay] = useState("block");
+  const[remainingQuestions,setRemainingQuestions]=useState(0)
 
   useEffect(() => {
    const unsubscribe =  onSnapshot(selectedQuestionRef, (question) => {
@@ -70,6 +71,7 @@ function App({ user, setUser }) {
         questionsArrTemp.push(tempObj);
       });
       questionsArr = questionsArrTemp
+      setRemainingQuestions(questionsArr.length)
     }
     OnStartup();
 
@@ -93,6 +95,7 @@ function App({ user, setUser }) {
         },
       });
       console.log(questionsArr);
+      setRemainingQuestions(questionsArr.length)
     } else{
         alert('Game Over!')
       }
@@ -143,8 +146,10 @@ function App({ user, setUser }) {
   if (user.name.length > 0) {
     return (
       <div className="App">
+        
         <button onClick={nextRound}>Set a new round</button>
         <button onClick={resetGame}>Reset Scores</button>
+        <div>Remaining Questions: {remainingQuestions}</div>
         <div className="container">
           <h3>{questionName}</h3>
           {showQuestions?
@@ -164,6 +169,8 @@ function App({ user, setUser }) {
         </div>
 
         <Scoreboard />
+        
+
       </div>
     );
   } else {
@@ -189,6 +196,7 @@ function shuffle(array) {
       array[currentIndex],
     ];
   }
+  
 
   return array;
 }
