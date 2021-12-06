@@ -122,6 +122,8 @@ function App({ user, setUser }) {
       updateDoc(userRef, {
         score: userScore,
       });
+      setDisplay("none")
+      ev.target.style.display= display;
     }
     else{
 
