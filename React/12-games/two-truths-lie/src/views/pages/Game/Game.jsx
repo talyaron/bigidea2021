@@ -25,7 +25,8 @@ function App({ user, setUser }) {
   const [questionName, setQuestionName] = useState('name place holder')
   const [display, setDisplay] = useState("block");
   const[remainingQuestions,setRemainingQuestions]=useState(0)
-  const [remainingNames,setRemainingNames]=useState("")
+  const [remainingNames,setRemainingNames]=useState("");
+  const [questionResult, setQuestionResult] = useState('');
   const remainingNamestemp=[]
 
   useEffect(() => {
