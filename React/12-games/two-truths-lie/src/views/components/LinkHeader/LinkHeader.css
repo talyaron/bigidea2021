@@ -3,18 +3,18 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
-    text-align: center;
     grid-template-areas: 
+
     "Login Title CurrentPage"
     "EnterQuestion Title CurrentPage"
     "GuessQuestion Title CurrentPage";
-    
     top: 0px;
     left: 0px;
     width: 100%;
     height: 80px;
     padding: 30px 50px;
-
+    border: orangered;
+    border-width: 10px;
     background-color: rgb(41, 168, 247);
 }
 
@@ -50,6 +50,12 @@
 
 ul{
     display: grid;
+    
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    height: 50px;
     list-style-type: none;
+    text-align: center;
+    background-color: orange;
+ 
+
 }
