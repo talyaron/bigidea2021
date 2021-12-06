@@ -9,11 +9,17 @@ import Scoreboard from '../../components/Scoreboard/Scoreboard'
 
 let questionsArr = [];
 
+function Game({user, setUser}) {
+
+  const [box1, setBox1] = useState('temp');
+  const [box2, setBox2] = useState('temp');
+  const [box3, setBox3] = useState('temp');
+
   useEffect(() => {
 
     async function OnStartup() {
       //questionsRef = await collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions')
-      q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions'));
+      const q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions'));
       const querySnapshot = await getDocs(q);
       let i = 1;
       querySnapshot.forEach((doc) => {
@@ -91,7 +97,8 @@ let questionsArr = [];
   }
 }
 
-export default App;
+
+export default Game;
 
 
 function shuffle(array) {
