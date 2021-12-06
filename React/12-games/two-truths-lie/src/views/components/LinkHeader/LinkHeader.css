@@ -1,8 +1,9 @@
 .linkHeader{
     position: absolute;
     display: grid;
-    grid-template-columns: 2fr 3fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
+    text-align: center;
     grid-template-areas: 
     "Login Title CurrentPage"
     "EnterQuestion Title CurrentPage"
