@@ -124,14 +124,9 @@ function App({ user, setUser }) {
       });
     }
     else{
-      if(ev.target.id=== 'true1'){
-        //get rid of box with true1
+
         setDisplay("none")
         ev.target.style.display= display;
-      }
-      else{
-        //get rid of box with true2
-      }
      }
   }
 
