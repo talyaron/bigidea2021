@@ -55,7 +55,7 @@ function Login({ user, setUser }) {
         </div>
         <div id="picture">
           Here's a fun picture
-          <img src={user.image} />
+          <img id="picture2" src={user.image} />
         </div>
       </div>
 
