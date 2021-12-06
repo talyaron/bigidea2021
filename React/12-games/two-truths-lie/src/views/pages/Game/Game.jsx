@@ -14,6 +14,7 @@ function Game({user, setUser}) {
   const [box1, setBox1] = useState('temp');
   const [box2, setBox2] = useState('temp');
   const [box3, setBox3] = useState('temp');
+  const [display, setDisplay] = useState();
 
   useEffect(() => {
 
@@ -69,8 +70,8 @@ function Game({user, setUser}) {
   function handleClick(ev) {
     if (ev.target.id === 'untrue') {
       alert('user', user.name, user.id, 'got one point');
-
     }
+    // else(ev.target.style.display == `none`)
   }
 
   randomLiePosition = liePosition();
@@ -81,7 +82,7 @@ function Game({user, setUser}) {
       <div className="App">
 
         <button onClick={nextRound}>Set a new round</button>
-        <div className="container">
+        <div className="container" display={{}}>
           <div id={box1.id} className="box1" onClick={handleClick}>{box1.answer}</div>
           <div id={box2.id} className="box2" onClick={handleClick}>{box2.answer}</div>
           <div id={box3.id} className="box3" onClick={handleClick}>{box3.answer}</div>
