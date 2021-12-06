@@ -1,17 +1,7 @@
 import "./Game.css";
 import { db } from "../../../functions/firebase/config";
 import { useEffect, useState } from "react";
-import {
-  doc,
-  setDoc,
-  updateDoc,
-  deleteDoc,
-  onSnapshot,
-  collection,
-  query,
-  getDocs,
-  getDoc,
-} from "firebase/firestore";
+import { doc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, getDocs, getDoc } from "firebase/firestore";
 
 //components
 import Scoreboard from "../../components/Scoreboard/Scoreboard";
@@ -31,7 +21,7 @@ function App({ user, setUser }) {
   const [box3, setBox3] = useState("temp");
 
   useEffect(() => {
-    onSnapshot(selectedQuestionRef, (question) => {
+   const unsubscribe =  onSnapshot(selectedQuestionRef, (question) => {
       const selectedQuestion = question.data().selectedQuestion;
       let answers = [
         {
@@ -75,6 +65,10 @@ function App({ user, setUser }) {
       });
     }
     OnStartup();
+
+    return ()=>{
+      unsubscribe()
+    }
   }, []);
 
   function nextRound() {
@@ -127,6 +121,7 @@ function App({ user, setUser }) {
     return (
       <div className="App">
         <button onClick={nextRound}>Set a new round</button>
+        <button onClick={resetGame}>Reset Scores</button>
         <div className="container">
           <div id={box1.id} className="box1" onClick={handleClick}>
             {box1.answer}
@@ -170,6 +165,13 @@ function shuffle(array) {
 }
 
 function resetGame () {
-  const userID = user.name;
-  const userRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players", userID);
+
+  const scoresRef = collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players");
+  getDocs(scoresRef).then(usersDB => {
+    usersDB.forEach(user => {
+      let userID = user.id;
+      const userRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players", userID);
+      updateDoc(userRef, {score: 0});
+    })
+  })
 }
