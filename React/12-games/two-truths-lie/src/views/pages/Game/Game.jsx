@@ -14,9 +14,8 @@ function Game({user, setUser}) {
   const [box1, setBox1] = useState('temp');
   const [box2, setBox2] = useState('temp');
   const [box3, setBox3] = useState('temp');
-  const [display1, setDisplay1] = useState("block");
-  const [display2, setDisplay2] = useState("block");
-  const [display3, setDisplay3] = useState("block");
+  const [display, setDisplay] = useState("block");
+
 
   useEffect(() => {
 
@@ -76,6 +75,8 @@ function Game({user, setUser}) {
      else{
       if(ev.target.id=== 'true1'){
         //get rid of box with true1
+        setDisplay("none")
+        ev.target.style.display= display;
       }
       else{
         //get rid of box with true2
@@ -92,9 +93,9 @@ function Game({user, setUser}) {
 
         <button onClick={nextRound}>Set a new round</button>
         <div className="container" display={{}}>
-          <div id={box1.id} className="box1" display= {display1} onClick={handleClick}>{box1.answer}  </div>
-          <div id={box2.id} className="box2" display= {display2} onClick={handleClick}>{box2.answer}</div>
-          <div id={box3.id} className="box3" display= {display3}  onClick={handleClick}>{box3.answer}</div>
+          <div id={box1.id} className="box1"  onClick={handleClick}>{box1.answer}  </div>
+          <div id={box2.id} className="box2"  onClick={handleClick}>{box2.answer}</div>
+          <div id={box3.id} className="box3"  onClick={handleClick}>{box3.answer}</div>
 
         </div>
 
