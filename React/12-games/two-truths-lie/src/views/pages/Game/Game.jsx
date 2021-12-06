@@ -84,18 +84,24 @@ function App({ user, setUser }) {
     //radmoly get a question
     let indexChosen = Math.floor(Math.random() * questionsArr.length);
     let data = questionsArr[indexChosen];
-
-    updateDoc(selectedQuestionRef, {
-      selectedQuestion: {
-        true1: data.true1,
-        true2: data.true2,
-        untrue: data.untrue,
-        user: { name: data.name },
-      },
-    });
-    questionsArr.splice(indexChosen,1);
-    console.log(questionsArr);
-  }
+    if (questionsArr.length >= 1){
+      questionsArr.splice(indexChosen,1);
+      updateDoc(selectedQuestionRef, {
+        selectedQuestion: {
+          true1: data.true1,
+          true2: data.true2,
+          untrue: data.untrue,
+          user: { name: data.name },
+        },
+      });
+      console.log(questionsArr);
+    } else{
+        alert('Game Over!')
+      }
+    
+    
+    }
+   
   let randomLiePosition;
 
   function liePosition() {
