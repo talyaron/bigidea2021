@@ -28,6 +28,7 @@ function App({ user, setUser }) {
   const [box1, setBox1] = useState("temp");
   const [box2, setBox2] = useState("temp");
   const [box3, setBox3] = useState("temp");
+  const [questionName, setQuestionName] = useState('name place holder')
 
   useEffect(() => {
     onSnapshot(selectedQuestionRef, (question) => {
@@ -46,6 +47,9 @@ function App({ user, setUser }) {
           id: "untrue",
         },
       ];
+     let userNameTemp = selectedQuestion.user.name
+     setQuestionName(userNameTemp)
+      
       answers = shuffle(answers);
       setBox1(answers[0]);
       setBox2(answers[1]);
@@ -95,14 +99,14 @@ function App({ user, setUser }) {
 
   function liePosition() {
     let randomNumber = Math.ceil(Math.random() * 3);
-    console.log(randomNumber);
+    // console.log(randomNumber);
     return randomNumber;
   }
   async function handleClick(ev) {
     if (ev.target.id === "untrue") {
       // alert("user", user.name, user.id, "got one point");
       const userID = user.name;
-      console.log(userID, "is name");
+      // console.log(userID, "is name");
       const userRef = doc(
         db,
         "true-lie",
@@ -120,13 +124,14 @@ function App({ user, setUser }) {
   }
 
   randomLiePosition = liePosition();
-  console.log(randomLiePosition);
+  // console.log(randomLiePosition);
 
   if (user.name.length > 0) {
     return (
       <div className="App">
         <button onClick={nextRound}>Set a new round</button>
         <div className="container">
+          <h3>{questionName}</h3>
           <div id={box1.id} className="box1" onClick={handleClick}>
             {box1.answer}
           </div>
