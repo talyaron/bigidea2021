@@ -28,6 +28,7 @@ function App({ user, setUser }) {
   const [box1, setBox1] = useState("temp");
   const [box2, setBox2] = useState("temp");
   const [box3, setBox3] = useState("temp");
+  const [showQuestions, setShowQuestions] = useState(true);
   const [questionName, setQuestionName] = useState('name place holder')
   const [display, setDisplay] = useState("block");
 
@@ -48,9 +49,9 @@ function App({ user, setUser }) {
           id: "untrue",
         },
       ];
-     let userNameTemp = selectedQuestion.user.name
-     setQuestionName(userNameTemp)
-      
+      let userNameTemp = selectedQuestion.user.name
+      setQuestionName(userNameTemp)
+      setShowQuestions(true)
       answers = shuffle(answers);
       setBox1(answers[0]);
       setBox2(answers[1]);
@@ -94,7 +95,7 @@ function App({ user, setUser }) {
         user: { name: data.name },
       },
     });
-    questionsArr.splice(indexChosen,1);
+    questionsArr.splice(indexChosen, 1);
     console.log(questionsArr);
   }
   let randomLiePosition;
@@ -122,14 +123,16 @@ function App({ user, setUser }) {
       updateDoc(userRef, {
         score: userScore,
       });
-      setDisplay("none")
-      ev.target.style.display= display;
+      
+     
     }
-    else{
+    else {
 
-        setDisplay("none")
-        ev.target.style.display= display;
-     }
+      setDisplay("none")
+      ev.target.style.display = display;
+    }
+
+    setShowQuestions(false)
   }
 
   randomLiePosition = liePosition();
@@ -141,15 +144,20 @@ function App({ user, setUser }) {
         <button onClick={nextRound}>Set a new round</button>
         <div className="container">
           <h3>{questionName}</h3>
-          <div id={box1.id} className="box1" onClick={handleClick}>
-            {box1.answer}
+          {showQuestions?
+          <div className='optionsWrapper'>
+            <div id={box1.id} className="box1" onClick={handleClick}>
+              {box1.answer}
+            </div>
+            <div id={box2.id} className="box2" onClick={handleClick}>
+              {box2.answer}
+            </div>
+            <div id={box3.id} className="box3" onClick={handleClick}>
+              {box3.answer}
+            </div>
+            
           </div>
-          <div id={box2.id} className="box2" onClick={handleClick}>
-            {box2.answer}
-          </div>
-          <div id={box3.id} className="box3" onClick={handleClick}>
-            {box3.answer}
-          </div>
+          : null}
         </div>
 
         <Scoreboard />
