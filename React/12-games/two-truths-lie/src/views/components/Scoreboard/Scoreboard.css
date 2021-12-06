@@ -1,14 +1,20 @@
 .nametag{
     background-color: wheat;
-    height:auto;
-    width: 190px;
+    height: auto;
+    min-width: 130px;
+    width: auto;
     border-radius: 20px;
     background-size: contain;
+    margin: 10px 20px;
+    padding: 20px 5px;
+    text-align: center;
 }
 .scoreboard{
     background-color: grey;
     height: auto;
     width: auto;
+    display: flex;
+    flex-wrap: wrap;
 }
 .img{
     width: 40px;
@@ -17,4 +23,8 @@
     background-repeat: no-repeat;
     background-size: contain;
     border: 1px solid red;
+}
+
+.info{
+    
 }
