@@ -1,0 +1,20 @@
+.nametag{
+    background-color: wheat;
+    height:auto;
+    width: 190px;
+    border-radius: 20px;
+    background-size: contain;
+}
+.scoreboard{
+    background-color: grey;
+    height: auto;
+    width: auto;
+}
+.img{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid red;
+}
