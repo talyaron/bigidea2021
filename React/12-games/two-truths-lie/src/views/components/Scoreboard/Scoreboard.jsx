@@ -34,7 +34,7 @@ function Scoreboard() {
                 return (
                     <div key={player.id} className='nametag'>
                         <img className="img" src={player.image}></img>
-                        {player.name}: {player.score}
+                        <div>{player.name}: {player.score}</div>
                     </div>
                 )
             })
