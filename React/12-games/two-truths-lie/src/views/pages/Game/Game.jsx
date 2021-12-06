@@ -12,6 +12,7 @@ let q;
 let roundIsClicked = false;
 let chosenAnswer = '';
 
+
 function App({ user, setUser }) {
   const selectedQuestionRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
   const [questionAuthor, setQuestionAuthor] = useState("");
@@ -22,8 +23,9 @@ function App({ user, setUser }) {
   const [box2, setBox2] = useState("temp");
   const [box3, setBox3] = useState("temp");
   const [showQuestions, setShowQuestions] = useState(true);
-  const [questionName, setQuestionName] = useState('name place holder')
+  const [questionName, setQuestionName] = useState('name place holder');
   const [display, setDisplay] = useState("block");
+  const [answered, setAnswered] = useState(0);
   const[remainingQuestions,setRemainingQuestions]=useState(0)
   const [remainingNames,setRemainingNames]=useState("");
   const [questionResult, setQuestionResult] = useState('');
@@ -94,7 +96,7 @@ function App({ user, setUser }) {
     }
   }, []);
 
-  function nextRound() {
+  async function nextRound() {
     //radmoly get a question
     setQuestionResult('');
     roundIsClicked = false;
@@ -123,8 +125,11 @@ function App({ user, setUser }) {
     } else{
         alert('Game Over!')
       }
+      const gameRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
+      let gameDoc = await getDoc(gameRef);
   
-    
+      updateDoc(gameRef, { answered: 0 })
+      setAnswered(0);
     }
    
   let randomLiePosition;
@@ -161,6 +166,18 @@ function App({ user, setUser }) {
     }
 
     roundIsClicked = true;
+
+    //get previous count before adding to it
+    setShowQuestions(false);
+    const gameRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
+    let gameDoc = await getDoc(gameRef);
+
+    let addNum = gameDoc.data().answered + 1;
+    updateDoc(gameRef, {
+      answered: addNum
+    })
+    
+    setAnswered(addNum);
   }
   async function handleClear() {
     const q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions'));
@@ -170,13 +187,25 @@ function App({ user, setUser }) {
     });
 }
 
+  async function resetGame () {
+
+    const scoresRef = collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players");
+    getDocs(scoresRef).then(usersDB => {
+      usersDB.forEach(user => {
+        let userID = user.id;
+        const userRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players", userID);
+        updateDoc(userRef, {score: 0});
+      })
+    })
+  }
+
   randomLiePosition = liePosition();
   // console.log(randomLiePosition);
 
   if (user.name.length > 0) {
     return (
       <div className="App">
-        
+        <div className="answered">{answered} people have answered so far.</div>
         <button onClick={nextRound}>Set a new round</button>
         <button onClick={resetGame}>Reset Scores</button>
         <button onClick={handleClear}>Clear All Questions</button> 
@@ -230,14 +259,3 @@ function shuffle(array) {
   return array;
 }
 
-function resetGame () {
-
-  const scoresRef = collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players");
-  getDocs(scoresRef).then(usersDB => {
-    usersDB.forEach(user => {
-      let userID = user.id;
-      const userRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players", userID);
-      updateDoc(userRef, {score: 0});
-    })
-  })
-}
