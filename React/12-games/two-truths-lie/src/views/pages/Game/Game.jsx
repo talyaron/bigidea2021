@@ -56,6 +56,7 @@ function App({ user, setUser }) {
       );
       const querySnapshot = await getDocs(q);
       let i = 1;
+      const questionsArrTemp = [];
       querySnapshot.forEach((doc) => {
         let data = doc.data();
         let tempObj = {
@@ -66,9 +67,9 @@ function App({ user, setUser }) {
           index: i,
         };
         i++;
-        questionsArr.push(tempObj);
-        // console.log(questionsArr);
+        questionsArrTemp.push(tempObj);
       });
+      questionsArr = questionsArrTemp
     }
     OnStartup();
 
