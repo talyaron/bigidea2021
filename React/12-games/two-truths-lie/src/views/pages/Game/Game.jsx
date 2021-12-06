@@ -160,20 +160,15 @@ function App({ user, setUser }) {
         <button onClick={handleClear}>Clear All Questions</button>
         <div className="container">
           <h3>{questionName}</h3>
-          {showQuestions?
-          <div className='optionsWrapper'>
-            <div id={box1.id} className="box1" onClick={handleClick}>
-              {box1.answer}
-            </div>
-            <div id={box2.id} className="box2" onClick={handleClick}>
-              {box2.answer}
-            </div>
-            <div id={box3.id} className="box3" onClick={handleClick}>
-              {box3.answer}
-            </div>
-            
+          <div id={box1.id} className="box1 hover" onClick={handleClick}>
+            {box1.answer}
           </div>
-          : null}
+          <div id={box2.id} className="box2 hover"  onClick={handleClick}>
+            {box2.answer}
+          </div>
+          <div id={box3.id} className="box3 hover" onClick={handleClick}>
+            {box3.answer}
+          </div>
         </div>
 
         <Scoreboard />
