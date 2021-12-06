@@ -33,6 +33,7 @@ function App({ user, setUser }) {
 
   useEffect(() => {
    const unsubscribe =  onSnapshot(selectedQuestionRef, (question) => {
+    setAnswered(question.data().answered)
       const selectedQuestion = question.data().selectedQuestion;
       let answers = [
         {
