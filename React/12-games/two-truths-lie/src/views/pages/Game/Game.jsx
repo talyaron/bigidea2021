@@ -18,6 +18,8 @@ import Scoreboard from "../../components/Scoreboard/Scoreboard";
 
 let questionsArr = [];
 let q;
+let roundIsClicked = false;
+let chosenAnswer = '';
 
 function App({ user, setUser }) {
   const selectedQuestionRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
@@ -29,6 +31,7 @@ function App({ user, setUser }) {
   const [box2, setBox2] = useState("temp");
   const [box3, setBox3] = useState("temp");
   const [questionName, setQuestionName] = useState('name place holder')
+  const [questionResult, setQuestionResult] = useState('');
 
   useEffect(() => {
     onSnapshot(selectedQuestionRef, (question) => {
@@ -82,6 +85,9 @@ function App({ user, setUser }) {
 
   function nextRound() {
     //radmoly get a question
+    setQuestionResult('');
+    roundIsClicked = false;
+    chosenAnswer = '';
     let indexChosen = Math.floor(Math.random() * questionsArr.length);
     let data = questionsArr[indexChosen];
     const selectedQuestionRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
@@ -95,6 +101,7 @@ function App({ user, setUser }) {
       },
     });
   }
+
   let randomLiePosition;
 
   function liePosition() {
@@ -103,7 +110,11 @@ function App({ user, setUser }) {
     return randomNumber;
   }
   async function handleClick(ev) {
-    if (ev.target.id === "untrue") {
+    chosenAnswer = ev.target.id;
+
+    if ((chosenAnswer === "untrue") && (roundIsClicked === false)) {
+      setQuestionResult('Correct');
+      
       // alert("user", user.name, user.id, "got one point");
       const userID = user.name;
       // console.log(userID, "is name");
@@ -120,7 +131,11 @@ function App({ user, setUser }) {
       updateDoc(userRef, {
         score: userScore,
       });
+    } else if(roundIsClicked === false){
+      setQuestionResult('Incorrect');
     }
+
+    roundIsClicked = true;
   }
 
   randomLiePosition = liePosition();
@@ -141,6 +156,7 @@ function App({ user, setUser }) {
           <div id={box3.id} className="box3" onClick={handleClick}>
             {box3.answer}
           </div>
+          <h2>{questionResult}</h2>
         </div>
 
         <Scoreboard />
