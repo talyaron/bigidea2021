@@ -10,6 +10,7 @@ import { func } from "prop-types";
 let questionsArr = [];
 let q;
 
+
 function App({ user, setUser }) {
   const selectedQuestionRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
   const [questionAuthor, setQuestionAuthor] = useState("");
@@ -22,6 +23,7 @@ function App({ user, setUser }) {
   const [showQuestions, setShowQuestions] = useState(true);
   const [questionName, setQuestionName] = useState('name place holder');
   const [display, setDisplay] = useState("block");
+  const [answered, setAnswered] = useState(0);
 
   useEffect(() => {
    const unsubscribe =  onSnapshot(selectedQuestionRef, (question) => {
@@ -77,7 +79,7 @@ function App({ user, setUser }) {
     }
   }, []);
 
-  function nextRound() {
+  async function nextRound() {
     //radmoly get a question
     let indexChosen = Math.floor(Math.random() * questionsArr.length);
     let data = questionsArr[indexChosen];
@@ -95,8 +97,11 @@ function App({ user, setUser }) {
     } else{
         alert('Game Over!')
       }
-    
-    
+      const gameRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
+      let gameDoc = await getDoc(gameRef);
+  
+      updateDoc(gameRef, { answered: 0 })
+      setAnswered(0);
     }
    
   let randomLiePosition;
@@ -133,7 +138,30 @@ function App({ user, setUser }) {
       ev.target.style.display = display;
     }
 
-    setShowQuestions(false)
+    setShowQuestions(false);
+
+    //get previous count before adding to it
+    const gameRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
+    let gameDoc = await getDoc(gameRef);
+
+    let addNum = gameDoc.data().answered + 1;
+    
+    updateDoc(gameRef, {
+      answered: addNum
+    })
+    setAnswered(addNum);
+  }
+
+  async function resetGame () {
+
+    const scoresRef = collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players");
+    getDocs(scoresRef).then(usersDB => {
+      usersDB.forEach(user => {
+        let userID = user.id;
+        const userRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players", userID);
+        updateDoc(userRef, {score: 0});
+      })
+    })
   }
 
   randomLiePosition = liePosition();
@@ -142,6 +170,7 @@ function App({ user, setUser }) {
   if (user.name.length > 0) {
     return (
       <div className="App">
+        <div className="answered">{answered} people have answered so far.</div>
         <button onClick={nextRound}>Set a new round</button>
         <button onClick={resetGame}>Reset Scores</button>
         <div className="container">
@@ -192,14 +221,3 @@ function shuffle(array) {
   return array;
 }
 
-function resetGame () {
-
-  const scoresRef = collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players");
-  getDocs(scoresRef).then(usersDB => {
-    usersDB.forEach(user => {
-      let userID = user.id;
-      const userRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players", userID);
-      updateDoc(userRef, {score: 0});
-    })
-  })
-}
