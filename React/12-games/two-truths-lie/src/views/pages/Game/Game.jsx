@@ -84,7 +84,6 @@ function App({ user, setUser }) {
     //radmoly get a question
     let indexChosen = Math.floor(Math.random() * questionsArr.length);
     let data = questionsArr[indexChosen];
-    const selectedQuestionRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
 
     updateDoc(selectedQuestionRef, {
       selectedQuestion: {
@@ -94,6 +93,8 @@ function App({ user, setUser }) {
         user: { name: data.name },
       },
     });
+    questionsArr.splice(indexChosen,1);
+    console.log(questionsArr);
   }
   let randomLiePosition;
 
