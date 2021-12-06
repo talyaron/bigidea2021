@@ -1,0 +1,47 @@
+div.container{
+    text-align: center;
+    display: flex;
+    margin: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+
+}
+div.box1{
+    border: 3px solid blue;
+    flex: 1;
+    
+  background: #ff0000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ff0000, #9932cc); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ff0000, #9932cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+
+}
+div.box2{
+    border: 3px solid blue;
+    flex: 1;
+    
+  background: #ff0000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ff0000, #9932cc); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ff0000, #9932cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+}
+div.box3{
+    border: 3px solid blue;
+    flex: 1;
+    
+  background: #ff0000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ff0000, #9932cc); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ff0000, #9932cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+}
