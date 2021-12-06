@@ -7,7 +7,6 @@ import { async } from '@firebase/util';
 function EnterQuestions({ user, setUser }) {
 
     // console.log(user)
-    const questionCollectionRef = collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions')
     const [questionAnswered, setquestionAnswered] = useState(true);
     const [answers, setAnswers] = useState("");
 
@@ -25,19 +24,10 @@ function EnterQuestions({ user, setUser }) {
     }
 
 
-    async function handleClear() {
-        const q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions'));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((docDB) => {
-            deleteDoc(doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions', docDB.id))
-        });
-    }
-
 
 
     return (
         <div className='Container'>
-            <button onClick={handleClear}>Clear All Questions</button>
             {questionAnswered ? <form className='form' onSubmit={handleSubmit}>
                 <label className='label1' htmlFor='truthOne'> Enter first truth</label>
                 <input type='text' name='truth1' id='truthOne' placeholder='truth' />

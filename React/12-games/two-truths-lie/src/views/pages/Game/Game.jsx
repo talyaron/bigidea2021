@@ -139,6 +139,13 @@ function App({ user, setUser }) {
 
     setShowQuestions(false)
   }
+  async function handleClear() {
+    const q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions'));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((docDB) => {
+        deleteDoc(doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions', docDB.id))
+    });
+}
 
   randomLiePosition = liePosition();
   // console.log(randomLiePosition);
@@ -150,6 +157,7 @@ function App({ user, setUser }) {
         <button onClick={nextRound}>Set a new round</button>
         <button onClick={resetGame}>Reset Scores</button>
         <div>Remaining Questions: {remainingQuestions}</div>
+        <button onClick={handleClear}>Clear All Questions</button>
         <div className="container">
           <h3>{questionName}</h3>
           {showQuestions?
