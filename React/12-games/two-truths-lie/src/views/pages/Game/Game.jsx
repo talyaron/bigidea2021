@@ -32,6 +32,10 @@ function App({ user, setUser }) {
   const remainingNamestemp=[]
 
   useEffect(() => {
+
+    //listen to the number of players
+    
+
    const unsubscribe =  onSnapshot(selectedQuestionRef, (question) => {
     setAnswered(question.data().answered)
       const selectedQuestion = question.data().selectedQuestion;
