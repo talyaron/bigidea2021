@@ -23,6 +23,8 @@ function App({ user, setUser }) {
   const [questionName, setQuestionName] = useState('name place holder')
   const [display, setDisplay] = useState("block");
   const[remainingQuestions,setRemainingQuestions]=useState(0)
+  const [remainingNames,setRemainingNames]=useState("")
+  const remainingNamestemp=[]
 
   useEffect(() => {
    const unsubscribe =  onSnapshot(selectedQuestionRef, (question) => {
@@ -71,7 +73,16 @@ function App({ user, setUser }) {
         questionsArrTemp.push(tempObj);
       });
       questionsArr = questionsArrTemp
+
       setRemainingQuestions(questionsArr.length)
+     
+      questionsArr.forEach((doc)=>{
+        let name=doc.name;
+        remainingNamestemp.push(name+", ")
+      }
+      
+      )
+      setRemainingNames(remainingNamestemp)
     }
     OnStartup();
 
@@ -96,10 +107,17 @@ function App({ user, setUser }) {
       });
       console.log(questionsArr);
       setRemainingQuestions(questionsArr.length)
+      questionsArr.forEach((doc)=>{
+        let name=doc.name;
+        remainingNamestemp.push(name+", ")
+      }
+      
+      )
+      setRemainingNames(remainingNamestemp)
     } else{
         alert('Game Over!')
       }
-    
+  
     
     }
    
@@ -150,6 +168,7 @@ function App({ user, setUser }) {
         <button onClick={nextRound}>Set a new round</button>
         <button onClick={resetGame}>Reset Scores</button>
         <div>Remaining Questions: {remainingQuestions}</div>
+        <div>Player names Remaining: {remainingNames}</div>
         <div className="container">
           <h3>{questionName}</h3>
           {showQuestions?
