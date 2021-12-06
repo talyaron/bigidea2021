@@ -174,6 +174,7 @@ function App({ user, setUser }) {
         
         <button onClick={nextRound}>Set a new round</button>
         <button onClick={resetGame}>Reset Scores</button>
+        <button onClick={handleClear}>Clear All Questions</button> 
         <div>Remaining Questions: {remainingQuestions}</div>
         <div>Player names Remaining: {remainingNames}</div>
         <div className="optionsWrapper">
