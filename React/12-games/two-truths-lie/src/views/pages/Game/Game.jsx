@@ -20,7 +20,7 @@ function App({ user, setUser }) {
   const [box2, setBox2] = useState("temp");
   const [box3, setBox3] = useState("temp");
   const [showQuestions, setShowQuestions] = useState(true);
-  const [questionName, setQuestionName] = useState('name place holder')
+  const [questionName, setQuestionName] = useState('name place holder');
   const [display, setDisplay] = useState("block");
 
   useEffect(() => {
