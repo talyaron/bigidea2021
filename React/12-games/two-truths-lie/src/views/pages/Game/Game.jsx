@@ -15,10 +15,6 @@ let chosenAnswer = '';
 
 function App({ user, setUser }) {
   const selectedQuestionRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
-  const [questionAuthor, setQuestionAuthor] = useState("");
-  const [true1, setTrue1] = useState("");
-  const [true2, setTrue2] = useState("");
-  const [untrue, setUntrue] = useState("");
   const [box1, setBox1] = useState("temp");
   const [box2, setBox2] = useState("temp");
   const [box3, setBox3] = useState("temp");
@@ -63,7 +59,6 @@ function App({ user, setUser }) {
     });
 
     async function OnStartup() {
-      //questionsRef = await collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions')
       q = query(
         collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "questions")
       );
@@ -184,7 +179,7 @@ function App({ user, setUser }) {
 
     setAnswered(addNum);
   }
-  async function handleClear() {
+  async function handleClear() {// clears all questions 
     const q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions'));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((docDB) => {
@@ -192,9 +187,17 @@ function App({ user, setUser }) {
     });
     alert('questions successfully cleared')
 }
+async function handleNameClear() { // clears all names
 
-  async function resetGame() {
+  console.log('clearname')
+  const q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'players'));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((docDB) => {
+      deleteDoc(doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'players', docDB.id))
+  });
+}
 
+  async function resetGame () {// sets all players scores to 0 
     const scoresRef = collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players");
     getDocs(scoresRef).then(usersDB => {
       usersDB.forEach(user => {
@@ -214,7 +217,8 @@ function App({ user, setUser }) {
         <div className="answered">{answered} people have answered so far.</div>
         <button onClick={nextRound}>Set a new round</button>
         <button onClick={resetGame}>Reset Scores</button>
-        <button onClick={handleClear}>Clear All Questions</button>
+        <button onClick={handleClear}>Clear All Questions</button> 
+        <button onClick={handleNameClear}>Clear All Names</button> 
         <div>Remaining Questions: {remainingQuestions}</div>
         <div>Player names Remaining: {remainingNames}</div>
         <div className="optionsWrapper">
