@@ -1,7 +1,7 @@
 .root{
-    --mainbackgroundcolor: black;
+    --mainbackgroundcolor: #000000;
     --textcolor: white;
-    --color3: blue;
-    --color3hover: darkblue;
+    --color3: #4f13cd;
+    --color3hover: #4312af;
 }
 
