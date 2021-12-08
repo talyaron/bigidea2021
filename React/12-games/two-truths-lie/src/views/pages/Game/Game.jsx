@@ -55,7 +55,7 @@ function App({ user, setUser }) {
       ];
       let userNameTemp = selectedQuestion.user.name
       setQuestionName(userNameTemp)
-      setShowQuestions(true)
+      //setShowQuestions(true)
       answers = shuffle(answers);
       setBox1(answers[0]);
       setBox2(answers[1]);
@@ -169,7 +169,7 @@ function App({ user, setUser }) {
      
     } else if(roundIsClicked === false){
       setQuestionResult('Incorrect');
-      setShowQuestions(false);
+ 
     }
 
     roundIsClicked = true;
