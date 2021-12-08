@@ -4,4 +4,8 @@
     --color3: #4f13cd;
     --color3hover: #11002c;
 }
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Varela+Round&display=swap');
 
+body{
+    font-family: 'Varela Round', sans-serif;
+}
