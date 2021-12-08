@@ -18,14 +18,11 @@ function App({ user, setUser }) {
 
   const gameReferncesRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "reference", "values");
   const selectedQuestionRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
-<<<<<<< Updated upstream
-=======
   const playersRef = collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players");
   const [questionAuthor, setQuestionAuthor] = useState("");
   const [true1, setTrue1] = useState("");
   const [true2, setTrue2] = useState("");
   const [untrue, setUntrue] = useState("");
->>>>>>> Stashed changes
   const [box1, setBox1] = useState("temp");
   const [box2, setBox2] = useState("temp");
   const [box3, setBox3] = useState("temp");
@@ -198,16 +195,8 @@ function App({ user, setUser }) {
 
     roundIsClicked = true;
     setShowQuestions(false);
-<<<<<<< Updated upstream
-    //get previous count before adding to it
-  
-    console.log(showQuestions)
-    const gameRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
-    let gameDoc = await getDoc(gameRef);
-=======
 
     let gameDoc = await getDoc(gameReferncesRef);
->>>>>>> Stashed changes
 
     let addNum = gameDoc.data().answered + 1;
     updateDoc(gameReferncesRef, {
@@ -223,21 +212,7 @@ function App({ user, setUser }) {
       deleteDoc(doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions', docDB.id))
     });
     alert('questions successfully cleared')
-<<<<<<< Updated upstream
-}
-async function handleNameClear() { // clears all names
-
-  console.log('clearname')
-  const q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'players'));
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((docDB) => {
-      deleteDoc(doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'players', docDB.id))
-  });
-  alert('names successfully cleared')
-}
-=======
   }
->>>>>>> Stashed changes
 
   async function resetGame () {// sets all players scores to 0 
     const scoresRef = collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players");
