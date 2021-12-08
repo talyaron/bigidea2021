@@ -1,7 +1,7 @@
 import "./Game.css";
 import { db } from "../../../functions/firebase/config";
 import { useEffect, useState } from "react";
-import { doc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, getDocs, getDoc } from "firebase/firestore";
+import { doc, setDoc, updateDoc, where,deleteDoc, onSnapshot, collection, query, getDocs, getDoc} from "firebase/firestore";
 
 //components
 import Scoreboard from "../../components/Scoreboard/Scoreboard";
@@ -34,6 +34,7 @@ function App({ user, setUser }) {
   const [remainingNames, setRemainingNames] = useState("");
   const [questionResult, setQuestionResult] = useState('');
   const remainingNamestemp = []
+  const valuesRef= doc(db,"true-lie","qocj2PnYZcvmDXOf4mCn","reference","values");
 
   useEffect(() => {
 
@@ -80,6 +81,35 @@ function App({ user, setUser }) {
       setBox2(answers[1]);
       setBox3(answers[2]);
     });
+
+    const unsubscribe = onSnapshot(selectedQuestionRef, (question) => {
+          setAnswered(question.data().answered)
+          const selectedQuestion = question.data().selectedQuestion;
+          let answers = [
+            {
+              answer: selectedQuestion.true1,
+              id: "true1",
+            },
+            {
+              answer: selectedQuestion.true2,
+              id: "true2",
+            },
+            {
+              answer: selectedQuestion.untrue,
+              id: "untrue",
+            },
+          ];
+          console.log("Hi tal")
+          let userNameTemp = selectedQuestion.user.name
+          setQuestionName(userNameTemp)
+          setShowQuestions(true)
+          answers = shuffle(answers);
+          setBox1(answers[0]);
+          setBox2(answers[1]);
+          setBox3(answers[2]);
+        }
+      
+    );
 
     async function OnStartup() {
       q = query(
