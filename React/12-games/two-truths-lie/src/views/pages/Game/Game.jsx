@@ -71,9 +71,7 @@ function App({ user, setUser }) {
         questionsArr.push(tempObj);
         // console.log(questionsArr);
       });
-<<<<<<< Updated upstream
-=======
-      questionsArr = questionsArrTemp
+      questionsArr = questionsArrTemp;
 
       setRemainingQuestions(questionsArr.length);
      
@@ -84,7 +82,6 @@ function App({ user, setUser }) {
       
       )
       setRemainingNames(remainingNamestemp);
->>>>>>> Stashed changes
     }
     OnStartup();
 
