@@ -71,6 +71,20 @@ function App({ user, setUser }) {
         questionsArr.push(tempObj);
         // console.log(questionsArr);
       });
+<<<<<<< Updated upstream
+=======
+      questionsArr = questionsArrTemp
+
+      setRemainingQuestions(questionsArr.length);
+     
+      questionsArr.forEach((doc)=>{
+        let name=doc.name;
+        remainingNamestemp.push(name+", ")
+      }
+      
+      )
+      setRemainingNames(remainingNamestemp);
+>>>>>>> Stashed changes
     }
     OnStartup();
 
