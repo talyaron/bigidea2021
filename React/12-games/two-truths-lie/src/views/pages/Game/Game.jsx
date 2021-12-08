@@ -195,6 +195,7 @@ async function handleNameClear() { // clears all names
   querySnapshot.forEach((docDB) => {
       deleteDoc(doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'players', docDB.id))
   });
+  alert('names successfully cleared')
 }
 
   async function resetGame () {// sets all players scores to 0 
