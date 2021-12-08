@@ -51,7 +51,7 @@ function Login({ user, setUser }) {
   else {
     console.log('isLoggedIn')
     return (
-      <div>
+      <div className="box">
         <div id="namebox">
           Your name is: {user.name}
         </div>

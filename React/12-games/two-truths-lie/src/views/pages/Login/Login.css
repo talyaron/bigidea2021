@@ -7,8 +7,6 @@
     position: absolute;
     width:100px;
     height:100px;
-    left: 640px;
-    top: 50px;
     color: black;
     font-family:Georgia, 'Times New Roman', Times, serif ;
   }
@@ -19,13 +17,48 @@
     height:50px;
     position:relative;
     font-family:Georgia, 'Times New Roman', Times, serif ;
-    left:400px;
-    top:100px;
-    max-width: 200px;
-    max-height: 200px;
+    width: 200px;
+    height: 200px;
   }
   #picture2{
-    max-height: 200px;
-    max-width: 200px;
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
   }
-  
+
+  .txtinput{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    color: #121212;
+    height: 30px;
+    width: 310px;
+    border-width: 0px;
+    border-bottom-width: 2px;
+    border-color: black;
+    margin: 10px;
+    background: transparent;
+  }
+
+  .submit{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    color: #ffffff;
+    height: 60px;
+    width: 310px;
+    background-color: #516BEB;
+    border: none;
+    margin: 10px;
+    border-radius: 10pt;
+  }
+
+  .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+  }
