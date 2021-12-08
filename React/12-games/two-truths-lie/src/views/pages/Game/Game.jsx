@@ -15,10 +15,6 @@ let chosenAnswer = '';
 
 function App({ user, setUser }) {
   const selectedQuestionRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
-  const [questionAuthor, setQuestionAuthor] = useState("");
-  const [true1, setTrue1] = useState("");
-  const [true2, setTrue2] = useState("");
-  const [untrue, setUntrue] = useState("");
   const [box1, setBox1] = useState("temp");
   const [box2, setBox2] = useState("temp");
   const [box3, setBox3] = useState("temp");
@@ -26,18 +22,18 @@ function App({ user, setUser }) {
   const [questionName, setQuestionName] = useState('name place holder');
   const [display, setDisplay] = useState("block");
   const [answered, setAnswered] = useState(0);
-  const[remainingQuestions,setRemainingQuestions]=useState(0)
-  const [remainingNames,setRemainingNames]=useState("");
+  const [remainingQuestions, setRemainingQuestions] = useState(0)
+  const [remainingNames, setRemainingNames] = useState("");
   const [questionResult, setQuestionResult] = useState('');
-  const remainingNamestemp=[]
+  const remainingNamestemp = []
 
   useEffect(() => {
 
     //listen to the number of players
-    
 
-   const unsubscribe =  onSnapshot(selectedQuestionRef, (question) => {
-    setAnswered(question.data().answered)
+
+    const unsubscribe = onSnapshot(selectedQuestionRef, (question) => {
+      setAnswered(question.data().answered)
       const selectedQuestion = question.data().selectedQuestion;
       let answers = [
         {
@@ -63,7 +59,6 @@ function App({ user, setUser }) {
     });
 
     async function OnStartup() {
-      //questionsRef = await collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions')
       q = query(
         collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "questions")
       );
@@ -85,18 +80,18 @@ function App({ user, setUser }) {
       questionsArr = questionsArrTemp
 
       setRemainingQuestions(questionsArr.length)
-     
-      questionsArr.forEach((doc)=>{
-        let name=doc.name;
-        remainingNamestemp.push(name+", ")
+
+      questionsArr.forEach((doc) => {
+        let name = doc.name;
+        remainingNamestemp.push(name + ", ")
       }
-      
+
       )
       setRemainingNames(remainingNamestemp)
     }
     OnStartup();
 
-    return ()=>{
+    return () => {
       unsubscribe()
     }
   }, []);
@@ -108,8 +103,8 @@ function App({ user, setUser }) {
     chosenAnswer = '';
     let indexChosen = Math.floor(Math.random() * questionsArr.length);
     let data = questionsArr[indexChosen];
-    if (questionsArr.length >= 1){
-      questionsArr.splice(indexChosen,1);
+    if (questionsArr.length >= 1) {
+      questionsArr.splice(indexChosen, 1);
       updateDoc(selectedQuestionRef, {
         selectedQuestion: {
           true1: data.true1,
@@ -120,23 +115,23 @@ function App({ user, setUser }) {
       });
       console.log(questionsArr);
       setRemainingQuestions(questionsArr.length)
-      questionsArr.forEach((doc)=>{
-        let name=doc.name;
-        remainingNamestemp.push(name+", ")
+      questionsArr.forEach((doc) => {
+        let name = doc.name;
+        remainingNamestemp.push(name + ", ")
       }
-      
+
       )
       setRemainingNames(remainingNamestemp)
-    } else{
-        alert('Game Over!')
-      }
-      const gameRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
-      let gameDoc = await getDoc(gameRef);
-  
-      updateDoc(gameRef, { answered: 0 })
-      setAnswered(0);
+    } else {
+      alert('Game Over!')
     }
-   
+    const gameRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
+    let gameDoc = await getDoc(gameRef);
+
+    updateDoc(gameRef, { answered: 0 })
+    setAnswered(0);
+  }
+
   let randomLiePosition;
 
   function liePosition() {
@@ -149,7 +144,7 @@ function App({ user, setUser }) {
 
     if ((chosenAnswer === "untrue") && (roundIsClicked === false)) {
       setQuestionResult('Correct');
-      
+
       // alert("user", user.name, user.id, "got one point");
       const userID = user.name;
       // console.log(userID, "is name");
@@ -184,25 +179,35 @@ function App({ user, setUser }) {
     updateDoc(gameRef, {
       answered: addNum
     })
-    
+
     setAnswered(addNum);
   }
-  async function handleClear() {
+  async function handleClear() {// clears all questions 
     const q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions'));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((docDB) => {
-        deleteDoc(doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions', docDB.id))
+      deleteDoc(doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions', docDB.id))
     });
+    alert('questions successfully cleared')
+}
+async function handleNameClear() { // clears all names
+
+  console.log('clearname')
+  const q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'players'));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((docDB) => {
+      deleteDoc(doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'players', docDB.id))
+  });
+  alert('names successfully cleared')
 }
 
-  async function resetGame () {
-
+  async function resetGame () {// sets all players scores to 0 
     const scoresRef = collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players");
     getDocs(scoresRef).then(usersDB => {
       usersDB.forEach(user => {
         let userID = user.id;
         const userRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players", userID);
-        updateDoc(userRef, {score: 0});
+        updateDoc(userRef, { score: 0 });
       })
     })
   }
@@ -212,21 +217,22 @@ function App({ user, setUser }) {
 
   if (user.name.length > 0) {
     return (
-      <div className="App">
+      <div className="App page">
         <div className="answered">{answered} people have answered so far.</div>
         <button onClick={nextRound}>Set a new round</button>
         <button onClick={resetGame}>Reset Scores</button>
         <button onClick={handleClear}>Clear All Questions</button> 
+        <button onClick={handleNameClear}>Clear All Names</button> 
         <div>Remaining Questions: {remainingQuestions}</div>
         <div>Player names Remaining: {remainingNames}</div>
       {showQuestions ?
         <div className="optionsWrapper">
           <h3>{questionName}</h3>
-          
+
           <div id={box1.id} className="box1 hover" onClick={handleClick}>
             {box1.answer}
           </div>
-          <div id={box2.id} className="box2 hover"  onClick={handleClick}>
+          <div id={box2.id} className="box2 hover" onClick={handleClick}>
             {box2.answer}
           </div>
           <div id={box3.id} className="box3 hover" onClick={handleClick}>
@@ -237,12 +243,14 @@ function App({ user, setUser }) {
         : null}
 
         <Scoreboard />
-        
+
 
       </div>
     );
   } else {
-    return <h1>Please login</h1>;
+    return <div className='page'>
+      <h1>Please login</h1>;
+    </div>
   }
 }
 
@@ -264,7 +272,7 @@ function shuffle(array) {
       array[currentIndex],
     ];
   }
-  
+
 
   return array;
 }

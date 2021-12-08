@@ -38,11 +38,11 @@ function Login({ user, setUser }) {
   if (!isLoggedIn) {
     console.log('!isLoggedIn')
     return (
-      <div className="box">
-        <form onSubmit={handleSubmit} className="box">
-          <input type="text" placeholder='Username' name="userName" className="txtinput" />
-          <input type="text" placeholder='User Picture' name="userPicture" className="txtinput" />
-          <input type="submit" value="Submit" className="submit"/>
+      <div className='page'>
+        <form onSubmit={handleSubmit}>
+          <input type="text" placeholder='Input Name Here' name="userName" />
+          <input type="text" placeholder='Input Photo Here' name="userPicture" />
+          <input type="submit" value="Submit" />
         </form>
 
       </div>
