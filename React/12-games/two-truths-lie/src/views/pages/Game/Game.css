@@ -59,10 +59,4 @@ div.box3{
 
 }
 
-button{
-  background-color: var(--color3);
-  color: var(--color2);
-  border: var(--color3hover);
-  margin: 5px;
-  border-radius: 100px;
-}
+
