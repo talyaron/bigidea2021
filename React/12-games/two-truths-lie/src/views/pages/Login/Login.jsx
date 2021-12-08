@@ -1,5 +1,5 @@
 import { db } from '../../../functions/firebase/config';
-import { doc, getDoc, setDoc, onSnapshot, collection } from 'firebase/firestore'
+import { doc, getDoc, setDoc, onSnapshot, collection, updateDoc } from 'firebase/firestore'
 import { useState } from 'react';
 import LinkHeader from '../../components/LinkHeader/LinkHeader';
 
@@ -10,13 +10,15 @@ function Login({ user, setUser }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   console.log('login', user)
 
-  function handleSubmit(ev) {
+  async function handleSubmit(ev) {
 
     ev.preventDefault();
     const setName = ev.target.elements.userName.value;
     const setPic = ev.target.elements.userPicture.value;
-    console.log(ev.target.elements.userName.value)
-    console.log(ev.target.elements.userPicture.value)
+    console.log(ev.target.elements.userName.value);
+    console.log(ev.target.elements.userPicture.value);
+    
+
     setDoc(doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players", setName), {
       image: setPic,
       score: 0,

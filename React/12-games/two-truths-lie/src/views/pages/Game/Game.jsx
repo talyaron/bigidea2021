@@ -9,6 +9,9 @@ import { func } from "prop-types";
 
 let questionsArr = [];
 let q;
+let roundIsClicked = false;
+let chosenAnswer = '';
+
 
 function App({ user, setUser }) {
   const selectedQuestionRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
@@ -20,11 +23,21 @@ function App({ user, setUser }) {
   const [box2, setBox2] = useState("temp");
   const [box3, setBox3] = useState("temp");
   const [showQuestions, setShowQuestions] = useState(true);
-  const [questionName, setQuestionName] = useState('name place holder')
+  const [questionName, setQuestionName] = useState('name place holder');
   const [display, setDisplay] = useState("block");
+  const [answered, setAnswered] = useState(0);
+  const[remainingQuestions,setRemainingQuestions]=useState(0)
+  const [remainingNames,setRemainingNames]=useState("");
+  const [questionResult, setQuestionResult] = useState('');
+  const remainingNamestemp=[]
 
   useEffect(() => {
+
+    //listen to the number of players
+    
+
    const unsubscribe =  onSnapshot(selectedQuestionRef, (question) => {
+    setAnswered(question.data().answered)
       const selectedQuestion = question.data().selectedQuestion;
       let answers = [
         {
@@ -70,6 +83,16 @@ function App({ user, setUser }) {
         questionsArrTemp.push(tempObj);
       });
       questionsArr = questionsArrTemp
+
+      setRemainingQuestions(questionsArr.length)
+     
+      questionsArr.forEach((doc)=>{
+        let name=doc.name;
+        remainingNamestemp.push(name+", ")
+      }
+      
+      )
+      setRemainingNames(remainingNamestemp)
     }
     OnStartup();
 
@@ -78,8 +101,11 @@ function App({ user, setUser }) {
     }
   }, []);
 
-  function nextRound() {
+  async function nextRound() {
     //radmoly get a question
+    setQuestionResult('');
+    roundIsClicked = false;
+    chosenAnswer = '';
     let indexChosen = Math.floor(Math.random() * questionsArr.length);
     let data = questionsArr[indexChosen];
     if (questionsArr.length >= 1){
@@ -93,11 +119,22 @@ function App({ user, setUser }) {
         },
       });
       console.log(questionsArr);
+      setRemainingQuestions(questionsArr.length)
+      questionsArr.forEach((doc)=>{
+        let name=doc.name;
+        remainingNamestemp.push(name+", ")
+      }
+      
+      )
+      setRemainingNames(remainingNamestemp)
     } else{
         alert('Game Over!')
       }
-    
-    
+      const gameRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
+      let gameDoc = await getDoc(gameRef);
+  
+      updateDoc(gameRef, { answered: 0 })
+      setAnswered(0);
     }
    
   let randomLiePosition;
@@ -108,7 +145,11 @@ function App({ user, setUser }) {
     return randomNumber;
   }
   async function handleClick(ev) {
-    if (ev.target.id === "untrue") {
+    chosenAnswer = ev.target.id;
+
+    if ((chosenAnswer === "untrue") && (roundIsClicked === false)) {
+      setQuestionResult('Correct');
+      
       // alert("user", user.name, user.id, "got one point");
       const userID = user.name;
       // console.log(userID, "is name");
@@ -125,16 +166,42 @@ function App({ user, setUser }) {
       updateDoc(userRef, {
         score: userScore,
       });
-      
-     
-    }
-    else {
-
-      setDisplay("none")
-      ev.target.style.display = display;
+    } else if(roundIsClicked === false){
+      setQuestionResult('Incorrect');
     }
 
-    setShowQuestions(false)
+    roundIsClicked = true;
+
+    //get previous count before adding to it
+    setShowQuestions(false);
+    const gameRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
+    let gameDoc = await getDoc(gameRef);
+
+    let addNum = gameDoc.data().answered + 1;
+    updateDoc(gameRef, {
+      answered: addNum
+    })
+    
+    setAnswered(addNum);
+  }
+  async function handleClear() {
+    const q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions'));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((docDB) => {
+        deleteDoc(doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions', docDB.id))
+    });
+}
+
+  async function resetGame () {
+
+    const scoresRef = collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players");
+    getDocs(scoresRef).then(usersDB => {
+      usersDB.forEach(user => {
+        let userID = user.id;
+        const userRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players", userID);
+        updateDoc(userRef, {score: 0});
+      })
+    })
   }
 
   randomLiePosition = liePosition();
@@ -143,27 +210,30 @@ function App({ user, setUser }) {
   if (user.name.length > 0) {
     return (
       <div className="App">
+        <div className="answered">{answered} people have answered so far.</div>
         <button onClick={nextRound}>Set a new round</button>
         <button onClick={resetGame}>Reset Scores</button>
-        <div className="container">
+        <button onClick={handleClear}>Clear All Questions</button> 
+        <div>Remaining Questions: {remainingQuestions}</div>
+        <div>Player names Remaining: {remainingNames}</div>
+        <div className="optionsWrapper">
           <h3>{questionName}</h3>
-          {showQuestions?
-          <div className='optionsWrapper'>
-            <div id={box1.id} className="box1" onClick={handleClick}>
-              {box1.answer}
-            </div>
-            <div id={box2.id} className="box2" onClick={handleClick}>
-              {box2.answer}
-            </div>
-            <div id={box3.id} className="box3" onClick={handleClick}>
-              {box3.answer}
-            </div>
-            
+          
+          <div id={box1.id} className="box1 hover" onClick={handleClick}>
+            {box1.answer}
           </div>
-          : null}
+          <div id={box2.id} className="box2 hover"  onClick={handleClick}>
+            {box2.answer}
+          </div>
+          <div id={box3.id} className="box3 hover" onClick={handleClick}>
+            {box3.answer}
+          </div>
+          <h2>{questionResult}</h2>
         </div>
 
         <Scoreboard />
+        
+
       </div>
     );
   } else {
@@ -189,18 +259,8 @@ function shuffle(array) {
       array[currentIndex],
     ];
   }
+  
 
   return array;
 }
 
-function resetGame () {
-
-  const scoresRef = collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players");
-  getDocs(scoresRef).then(usersDB => {
-    usersDB.forEach(user => {
-      let userID = user.id;
-      const userRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players", userID);
-      updateDoc(userRef, {score: 0});
-    })
-  })
-}

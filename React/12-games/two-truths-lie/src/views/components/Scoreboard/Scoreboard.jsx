@@ -15,13 +15,16 @@ function Scoreboard() {
         //listen to palyers
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             let list = [];
-            querySnapshot.forEach((doc) => {
-                list.push(doc.data());
-                
-               
+            querySnapshot.forEach((docDB) => {
+                const playerTemp = docDB.data();
+                playerTemp.id = docDB.id;
+
+                list.push(playerTemp);
+
+
             });
             //sort by score
-            list = list.sort((a,b)=>b.score - a.score)
+            list = list.sort((a, b) => b.score - a.score)
             console.log(list);
             setPlayers(list)
         });
@@ -31,6 +34,7 @@ function Scoreboard() {
     return (
         <div className="scoreboard">
             {players.map(player => {
+                console.log(player.id)
                 return (
                     <div key={player.id} className='nametag'>
                         <img className="img" src={player.image}></img>
