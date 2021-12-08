@@ -6,6 +6,7 @@ import LinkHeader from '../../components/LinkHeader/LinkHeader';
 import './Login.css';
 import { Link } from 'react-router-dom';
 
+
 function Login({ user, setUser }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   console.log('login', user)
@@ -53,7 +54,7 @@ function Login({ user, setUser }) {
     return (
       <div className="box">
         <div id="namebox">
-          Your name is: {user.name}
+          Username: {user.name}
         </div>
         <div id="picture">
           Here's a fun picture

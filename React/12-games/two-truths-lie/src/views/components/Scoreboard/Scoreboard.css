@@ -1,5 +1,5 @@
 .nametag{
-    background-color: wheat;
+    background-color: var(--color3);
     height: auto;
     min-width: 130px;
     width: auto;
@@ -8,9 +8,10 @@
     margin: 10px 20px;
     padding: 20px 5px;
     text-align: center;
+    color: var(--color2);
 }
 .scoreboard{
-    background-color: grey;
+    background-color: var(--mainbackgroundcolor);
     height: auto;
     width: auto;
     display: flex;
@@ -22,7 +23,7 @@
     border-radius: 20px;
     background-repeat: no-repeat;
     background-size: contain;
-    border: 1px solid red;
+    border: 1px solid var(--color3hover);
 }
 
 .info{
