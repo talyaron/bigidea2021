@@ -56,31 +56,7 @@ function App({ user, setUser }) {
       }
     })
 
-    // const unsubscribe = onSnapshot(selectedQuestionRef, (question) => {
-
-    //   const selectedQuestion = question.data().selectedQuestion;
-    //   let answers = [
-    //     {
-    //       answer: selectedQuestion.true1,
-    //       id: "true1",
-    //     },
-    //     {
-    //       answer: selectedQuestion.true2,
-    //       id: "true2",
-    //     },
-    //     {
-    //       answer: selectedQuestion.untrue,
-    //       id: "untrue",
-    //     },
-    //   ];
-    //   let userNameTemp = selectedQuestion.user.name
-    //   setQuestionName(userNameTemp)
-    //   //setShowQuestions(true)
-    //   answers = shuffle(answers);
-    //   setBox1(answers[0]);
-    //   setBox2(answers[1]);
-    //   setBox3(answers[2]);
-    // });
+    
 
     const unsubscribe = onSnapshot(selectedQuestionRef, (question) => {
       setAnswered(question.data().answered)
