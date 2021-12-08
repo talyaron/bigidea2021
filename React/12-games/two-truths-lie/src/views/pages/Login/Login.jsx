@@ -18,7 +18,7 @@ function Login({ user, setUser }) {
     const setPic = ev.target.elements.userPicture.value;
     console.log(ev.target.elements.userName.value);
     console.log(ev.target.elements.userPicture.value);
-    
+
 
     setDoc(doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players", setName), {
       image: setPic,
@@ -43,7 +43,7 @@ function Login({ user, setUser }) {
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder='Input Name Here' name="userName" />
           <input type="text" placeholder='Input Photo Here' name="userPicture" />
-          <input type="submit" value="Submit" />
+          <button type='submit'>Join the team!</button>
         </form>
 
       </div>
