@@ -54,7 +54,7 @@ function Login({ user, setUser }) {
     return (
       <div className="box">
         <div id="namebox">
-          Your name is: {user.name}
+          Username: {user.name}
         </div>
         <div id="picture">
           Here's a fun picture
