@@ -190,7 +190,8 @@ function App({ user, setUser }) {
     querySnapshot.forEach((docDB) => {
       deleteDoc(doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'questions', docDB.id))
     });
-  }
+    alert('questions successfully cleared')
+}
 
   async function resetGame() {
 
