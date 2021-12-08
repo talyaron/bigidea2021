@@ -244,18 +244,18 @@ function App({ user, setUser }) {
 
   if (user.name.length > 0) {
     return (
-      <div className="App page">
+      <div className="pageWrapper">
         <div className="answered">{answered} people have answered so far.</div>
-        <button onClick={nextRound}>Set a new round</button>
-        <button onClick={resetGame}>Reset Scores</button>
-        <button onClick={handleClear}>Clear All Questions</button>
-        <button onClick={handleNameClear}>Clear All Names</button>
+        <button onClick={nextRound} className = 'gameButtons'>Set a new round</button>
+        <button onClick={resetGame} className = 'gameButtons'>Reset Scores</button>
+        <button onClick={handleClear} className = 'gameButtons'>Clear All Questions</button>
+        <button onClick={handleNameClear} className = 'gameButtons'>Clear All Names</button>
         <div>Remaining Questions: {remainingQuestions}</div>
         <div>Player names Remaining: {remainingNames}</div>
         {showQuestions ?
+        <div>
+          <h3 className ='questionName'>{questionName}</h3>
           <div className="optionsWrapper">
-            <h3>{questionName}</h3>
-
             <div id={box1.id} className="box1 hover" onClick={handleClick}>
               {box1.answer}
             </div>
@@ -266,6 +266,7 @@ function App({ user, setUser }) {
               {box3.answer}
             </div>
             <h2>{questionResult}</h2>
+          </div>
           </div>
           : null}
 
