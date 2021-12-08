@@ -55,31 +55,7 @@ function App({ user, setUser }) {
       }
     })
 
-    // const unsubscribe = onSnapshot(selectedQuestionRef, (question) => {
-
-    //   const selectedQuestion = question.data().selectedQuestion;
-    //   let answers = [
-    //     {
-    //       answer: selectedQuestion.true1,
-    //       id: "true1",
-    //     },
-    //     {
-    //       answer: selectedQuestion.true2,
-    //       id: "true2",
-    //     },
-    //     {
-    //       answer: selectedQuestion.untrue,
-    //       id: "untrue",
-    //     },
-    //   ];
-    //   let userNameTemp = selectedQuestion.user.name
-    //   setQuestionName(userNameTemp)
-    //   //setShowQuestions(true)
-    //   answers = shuffle(answers);
-    //   setBox1(answers[0]);
-    //   setBox2(answers[1]);
-    //   setBox3(answers[2]);
-    // });
+    
 
     const unsubscribe = onSnapshot(selectedQuestionRef, (question) => {
       setAnswered(question.data().answered)
@@ -263,28 +239,29 @@ function App({ user, setUser }) {
 
   if (user.name.length > 0) {
     return (
-      <div className="App page">
+      <div className="pageWrapper">
         <div className="answered">{answered} people have answered so far.</div>
-        <button onClick={nextRound}>Set a new round</button>
-        <button onClick={resetGame}>Reset Scores</button>
-        <button onClick={handleClear}>Clear All Questions</button>
-        <button onClick={handleNameClear}>Clear All Names</button>
+        <button onClick={nextRound} className = 'gameButtons'>Set a new round</button>
+        <button onClick={resetGame} className = 'gameButtons'>Reset Scores</button>
+        <button onClick={handleClear} className = 'gameButtons'>Clear All Questions</button>
+        <button onClick={handleNameClear} className = 'gameButtons'>Clear All Names</button>
         <div>Remaining Questions: {remainingQuestions}</div>
-        <div>Player names Remaining: {remainingNames}</div>
+        <div>Questions remaining from: {remainingNames}</div>
         {showQuestions ?
+        <div>
+          <h3 className ='questionName'>{questionName}</h3>
           <div className="optionsWrapper">
-            <h3>{questionName}</h3>
-
-            <div id={box1.id} className="box1 hover" onClick={handleClick}>
+            <div id={box1.id} className="box1 hover boxes" onClick={handleClick}>
               {box1.answer}
             </div>
-            <div id={box2.id} className="box2 hover" onClick={handleClick}>
+            <div id={box2.id} className="box2 hover boxes" onClick={handleClick}>
               {box2.answer}
             </div>
-            <div id={box3.id} className="box3 hover" onClick={handleClick}>
+            <div id={box3.id} className="box3 hover boxes" onClick={handleClick}>
               {box3.answer}
             </div>
             <h2>{questionResult}</h2>
+          </div>
           </div>
           : null}
 

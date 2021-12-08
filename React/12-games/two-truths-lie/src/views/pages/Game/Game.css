@@ -1,3 +1,16 @@
+.pageWrapper{
+  max-width: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+/* .gameButtons{
+  border-radius: 6px;
+  padding: 3px;
+  background-color: var(--color3);
+  color: var(--color1);
+} */
+
 .page{
   background-color: var(--mainBkgColor);
 }
@@ -9,19 +22,30 @@ div.optionsWrapper{
   margin-top: 10px;
   margin-bottom: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  gap: 7px;
   
 
 }
+.questionName{
+  width: 100%;
+  text-align: center;
+}
+.boxes{
+  color: var(--color2);
+  padding: 20px;
+  border: 3px solid var(--color3);
+  flex: 1;
+  border-radius: 10px;
+}
 div.box1{
-    border: 3px solid var(--color3);
-    flex: 1;
-    
+   
+   
   background: var(--mainbackgroundcolor); /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #ff0000, #9932cc); /* Chrome 10-25, Safari 5.1-6 */
   /* background: linear-gradient(to right, #ff0000, #9932cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
   -webkit-background-clip: text;
   background-clip: text;*/
-  color: var(--color2);
+ 
 
 
 }
@@ -30,31 +54,29 @@ div.box1{
   user-select: none;
 }
 .hover:hover{
-    padding: 5%;
+    /* padding: 5%; */
     background-color: var(--color3);
 
 }
 div.box2{
-    border: 3px solid var(--color3);
-    flex: 1;
-    
+   
     background: var(--mainbackgroundcolor); /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #ff0000, #9932cc); /* Chrome 10-25, Safari 5.1-6 */
     /* background: linear-gradient(to right, #ff0000, #9932cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
     -webkit-background-clip: text;
     background-clip: text;*/
-    color: var(--color2);
+   
 
 }
 div.box3{
-    border: 3px solid var(--color3);
-    flex: 1;
-    
+   
     background: var(--mainbackgroundcolor); /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #ff0000, #9932cc); /* Chrome 10-25, Safari 5.1-6 */
     /* background: linear-gradient(to right, #ff0000, #9932cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
     -webkit-background-clip: text;
     background-clip: text;*/
-    color: var(--color2);
+    
 
 }
+
+

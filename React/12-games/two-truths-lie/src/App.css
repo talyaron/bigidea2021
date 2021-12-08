@@ -1,7 +1,72 @@
-:root{
+:root {
     --mainbackgroundcolor: #000000;
     --color2: white;
     --color3: #4f13cd;
+    --color4: lightblue;
     --color3hover: #11002c;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Varela+Round&display=swap');
+
+body {
+    font-family: 'Varela Round', sans-serif;
+}
+
+
+input {
+    padding: 20px 30px;
+    border: 2px solid var(--color4);
+    ;
+    border-radius: 10px;
+    background-color: var(--mainbackgroundcolor);
+    color: var(--color2);
+    margin: 4px;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--color4);
+    opacity: 1;
+    /* Firefox */
+}
+
+.App-header {
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+ul {
+    display: grid;
+    border: 1px solid var(--color3hover);
+    padding: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    height: 50px;
+    list-style-type: none;
+    text-align: center;
+    color: white;
+
+
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li:hover {
+    background-color: #646778;
+}
+
+button {
+    background-color: var(--color3);
+    color: var(--color2);
+    border: var(--color3hover);
+    margin: 5px;
+    border-radius: 10px;
+    padding: 20px 40px;
+}
