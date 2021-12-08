@@ -64,5 +64,5 @@ button{
   color: var(--color2);
   border: var(--color3hover);
   margin: 5px;
-  border-radius: 100px;
+  border-radius: 5px;
 }
