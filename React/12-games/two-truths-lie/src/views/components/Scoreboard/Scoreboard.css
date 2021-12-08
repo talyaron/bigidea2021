@@ -8,7 +8,7 @@
     margin: 10px 20px;
     padding: 20px 5px;
     text-align: center;
-    color: var(--textcolor);
+    color: var(--color2);
 }
 .scoreboard{
     background-color: var(--mainbackgroundcolor);
