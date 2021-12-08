@@ -166,14 +166,17 @@ function App({ user, setUser }) {
       updateDoc(userRef, {
         score: userScore,
       });
+     
     } else if(roundIsClicked === false){
       setQuestionResult('Incorrect');
+      setShowQuestions(false);
     }
 
     roundIsClicked = true;
-
-    //get previous count before adding to it
     setShowQuestions(false);
+    //get previous count before adding to it
+  
+    console.log(showQuestions)
     const gameRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn");
     let gameDoc = await getDoc(gameRef);
 
@@ -216,6 +219,7 @@ function App({ user, setUser }) {
         <button onClick={handleClear}>Clear All Questions</button> 
         <div>Remaining Questions: {remainingQuestions}</div>
         <div>Player names Remaining: {remainingNames}</div>
+      {showQuestions ?
         <div className="optionsWrapper">
           <h3>{questionName}</h3>
           
@@ -230,6 +234,7 @@ function App({ user, setUser }) {
           </div>
           <h2>{questionResult}</h2>
         </div>
+        : null}
 
         <Scoreboard />
         
