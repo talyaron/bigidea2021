@@ -251,13 +251,13 @@ function App({ user, setUser }) {
         <div>
           <h3 className ='questionName'>{questionName}</h3>
           <div className="optionsWrapper">
-            <div id={box1.id} className="box1 hover" onClick={handleClick}>
+            <div id={box1.id} className="box1 hover boxes" onClick={handleClick}>
               {box1.answer}
             </div>
-            <div id={box2.id} className="box2 hover" onClick={handleClick}>
+            <div id={box2.id} className="box2 hover boxes" onClick={handleClick}>
               {box2.answer}
             </div>
-            <div id={box3.id} className="box3 hover" onClick={handleClick}>
+            <div id={box3.id} className="box3 hover boxes" onClick={handleClick}>
               {box3.answer}
             </div>
             <h2>{questionResult}</h2>

@@ -30,16 +30,22 @@ div.optionsWrapper{
   width: 100%;
   text-align: center;
 }
+.boxes{
+  color: var(--color2);
+  padding: 20px;
+  border: 3px solid var(--color3);
+  flex: 1;
+  border-radius: 10px;
+}
 div.box1{
-    border: 3px solid var(--color3);
-    flex: 1;
-    border-radius: 20px;
+   
+   
   background: var(--mainbackgroundcolor); /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #ff0000, #9932cc); /* Chrome 10-25, Safari 5.1-6 */
   /* background: linear-gradient(to right, #ff0000, #9932cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
   -webkit-background-clip: text;
   background-clip: text;*/
-  color: var(--color2);
+ 
 
 
 }
@@ -53,27 +59,23 @@ div.box1{
 
 }
 div.box2{
-    border: 3px solid var(--color3);
-    flex: 1;
-    border-radius: 20px;
+   
     background: var(--mainbackgroundcolor); /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #ff0000, #9932cc); /* Chrome 10-25, Safari 5.1-6 */
     /* background: linear-gradient(to right, #ff0000, #9932cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
     -webkit-background-clip: text;
     background-clip: text;*/
-    color: var(--color2);
+   
 
 }
 div.box3{
-    border: 3px solid var(--color3);
-    flex: 1;
-    border-radius: 20px;
+   
     background: var(--mainbackgroundcolor); /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #ff0000, #9932cc); /* Chrome 10-25, Safari 5.1-6 */
     /* background: linear-gradient(to right, #ff0000, #9932cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
     -webkit-background-clip: text;
     background-clip: text;*/
-    color: var(--color2);
+    
 
 }
 
