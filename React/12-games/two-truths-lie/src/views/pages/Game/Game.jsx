@@ -1,7 +1,7 @@
 import "./Game.css";
 import { db } from "../../../functions/firebase/config";
 import { useEffect, useState } from "react";
-import { doc, setDoc, updateDoc, where,deleteDoc, onSnapshot, collection, query, getDocs, getDoc} from "firebase/firestore";
+import { doc, setDoc, updateDoc, where, deleteDoc, onSnapshot, collection, query, getDocs, getDoc } from "firebase/firestore";
 
 //components
 import Scoreboard from "../../components/Scoreboard/Scoreboard";
@@ -34,14 +34,14 @@ function App({ user, setUser }) {
   const [remainingNames, setRemainingNames] = useState("");
   const [questionResult, setQuestionResult] = useState('');
   const remainingNamestemp = []
-  const valuesRef= doc(db,"true-lie","qocj2PnYZcvmDXOf4mCn","reference","values");
+  const valuesRef = doc(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "reference", "values");
 
   useEffect(() => {
 
 
 
     //listen to the number of players
-    const unsubscribePlayers = onSnapshot(playersRef, playerDB=>{
+    const unsubscribePlayers = onSnapshot(playersRef, playerDB => {
       numAnswers = playerDB.size;
     })
 
@@ -56,8 +56,34 @@ function App({ user, setUser }) {
       }
     })
 
-    const unsubscribe = onSnapshot(selectedQuestionRef, (question) => {
+    // const unsubscribe = onSnapshot(selectedQuestionRef, (question) => {
 
+    //   const selectedQuestion = question.data().selectedQuestion;
+    //   let answers = [
+    //     {
+    //       answer: selectedQuestion.true1,
+    //       id: "true1",
+    //     },
+    //     {
+    //       answer: selectedQuestion.true2,
+    //       id: "true2",
+    //     },
+    //     {
+    //       answer: selectedQuestion.untrue,
+    //       id: "untrue",
+    //     },
+    //   ];
+    //   let userNameTemp = selectedQuestion.user.name
+    //   setQuestionName(userNameTemp)
+    //   //setShowQuestions(true)
+    //   answers = shuffle(answers);
+    //   setBox1(answers[0]);
+    //   setBox2(answers[1]);
+    //   setBox3(answers[2]);
+    // });
+
+    const unsubscribe = onSnapshot(selectedQuestionRef, (question) => {
+      setAnswered(question.data().answered)
       const selectedQuestion = question.data().selectedQuestion;
       let answers = [
         {
@@ -73,43 +99,15 @@ function App({ user, setUser }) {
           id: "untrue",
         },
       ];
+      console.log("Hi tal")
       let userNameTemp = selectedQuestion.user.name
       setQuestionName(userNameTemp)
-      //setShowQuestions(true)
+      setShowQuestions(true)
       answers = shuffle(answers);
       setBox1(answers[0]);
       setBox2(answers[1]);
       setBox3(answers[2]);
     });
-
-    const unsubscribe = onSnapshot(selectedQuestionRef, (question) => {
-          setAnswered(question.data().answered)
-          const selectedQuestion = question.data().selectedQuestion;
-          let answers = [
-            {
-              answer: selectedQuestion.true1,
-              id: "true1",
-            },
-            {
-              answer: selectedQuestion.true2,
-              id: "true2",
-            },
-            {
-              answer: selectedQuestion.untrue,
-              id: "untrue",
-            },
-          ];
-          console.log("Hi tal")
-          let userNameTemp = selectedQuestion.user.name
-          setQuestionName(userNameTemp)
-          setShowQuestions(true)
-          answers = shuffle(answers);
-          setBox1(answers[0]);
-          setBox2(answers[1]);
-          setBox3(answers[2]);
-        }
-      
-    );
 
     async function OnStartup() {
       q = query(
@@ -182,7 +180,7 @@ function App({ user, setUser }) {
 
     let gameDoc = await getDoc(gameReferncesRef);
 
-    
+
 
     updateDoc(gameReferncesRef, { answered: 0 })
     setAnswered(`${0}/${numAnswers}`);
@@ -217,10 +215,10 @@ function App({ user, setUser }) {
       updateDoc(userRef, {
         score: userScore,
       });
-     
-    } else if(roundIsClicked === false){
+
+    } else if (roundIsClicked === false) {
       setQuestionResult('Incorrect');
- 
+
     }
 
     roundIsClicked = true;
@@ -244,7 +242,7 @@ function App({ user, setUser }) {
     alert('questions successfully cleared')
   }
 
-  async function resetGame () {// sets all players scores to 0 
+  async function resetGame() {// sets all players scores to 0 
     const scoresRef = collection(db, "true-lie", "qocj2PnYZcvmDXOf4mCn", "players");
     getDocs(scoresRef).then(usersDB => {
       usersDB.forEach(user => {
@@ -253,7 +251,17 @@ function App({ user, setUser }) {
         updateDoc(userRef, { score: 0 });
       })
     })
-  }
+  };
+
+  async function handleNameClear() { // clears all names 
+ 
+    console.log('clearname') 
+    const q = query(collection(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'players')); 
+    const querySnapshot = await getDocs(q); 
+    querySnapshot.forEach((docDB) => { 
+        deleteDoc(doc(db, 'true-lie', 'qocj2PnYZcvmDXOf4mCn', 'players', docDB.id)) 
+    }); 
+  } 
 
   randomLiePosition = liePosition();
   // console.log(randomLiePosition);
@@ -264,26 +272,26 @@ function App({ user, setUser }) {
         <div className="answered">{answered} people have answered so far.</div>
         <button onClick={nextRound}>Set a new round</button>
         <button onClick={resetGame}>Reset Scores</button>
-        <button onClick={handleClear}>Clear All Questions</button> 
-        <button onClick={handleNameClear}>Clear All Names</button> 
+        <button onClick={handleClear}>Clear All Questions</button>
+        <button onClick={handleNameClear}>Clear All Names</button>
         <div>Remaining Questions: {remainingQuestions}</div>
         <div>Player names Remaining: {remainingNames}</div>
-      {showQuestions ?
-        <div className="optionsWrapper">
-          <h3>{questionName}</h3>
+        {showQuestions ?
+          <div className="optionsWrapper">
+            <h3>{questionName}</h3>
 
-          <div id={box1.id} className="box1 hover" onClick={handleClick}>
-            {box1.answer}
+            <div id={box1.id} className="box1 hover" onClick={handleClick}>
+              {box1.answer}
+            </div>
+            <div id={box2.id} className="box2 hover" onClick={handleClick}>
+              {box2.answer}
+            </div>
+            <div id={box3.id} className="box3 hover" onClick={handleClick}>
+              {box3.answer}
+            </div>
+            <h2>{questionResult}</h2>
           </div>
-          <div id={box2.id} className="box2 hover" onClick={handleClick}>
-            {box2.answer}
-          </div>
-          <div id={box3.id} className="box3 hover" onClick={handleClick}>
-            {box3.answer}
-          </div>
-          <h2>{questionResult}</h2>
-        </div>
-        : null}
+          : null}
 
         <Scoreboard />
 
