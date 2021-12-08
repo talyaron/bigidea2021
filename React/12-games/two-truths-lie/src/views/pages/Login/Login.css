@@ -1,5 +1,8 @@
+.page{
+  background-color: var(--mainBkgColor);
+}
 #namebox{
-    background-color:orange;
+  
     padding:5px;
     position: absolute;
     width:100px;

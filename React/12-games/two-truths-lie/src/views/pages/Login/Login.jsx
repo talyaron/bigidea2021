@@ -38,7 +38,7 @@ function Login({ user, setUser }) {
   if (!isLoggedIn) {
     console.log('!isLoggedIn')
     return (
-      <div>
+      <div className='page'>
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder='Input Name Here' name="userName" />
           <input type="text" placeholder='Input Photo Here' name="userPicture" />

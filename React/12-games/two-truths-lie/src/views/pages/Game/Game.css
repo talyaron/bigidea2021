@@ -1,3 +1,7 @@
+.page{
+  background-color: var(--mainBkgColor);
+}
+
 div.optionsWrapper{
   text-align: center;
   display: flex;
