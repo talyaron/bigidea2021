@@ -9,7 +9,6 @@ import { func } from "prop-types";
 
 let questionsArr = [];
 let q;
-let roundIsClicked = false;
 let chosenAnswer = '';
 let numAnswers;
 
@@ -151,7 +150,6 @@ function App({ user, setUser }) {
   async function nextRound() {
     //radmoly get a question
     setQuestionResult('');
-    roundIsClicked = false;
     chosenAnswer = '';
     let indexChosen = Math.floor(Math.random() * questionsArr.length);
     let data = questionsArr[indexChosen];
@@ -195,10 +193,9 @@ function App({ user, setUser }) {
   }
   async function handleClick(ev) {
     chosenAnswer = ev.target.id;
-
-    if ((chosenAnswer === "untrue") && (roundIsClicked === false)) {
+    if ((chosenAnswer === "untrue")) {
       setQuestionResult('Correct');
-
+      console.log("correct choice")
       // alert("user", user.name, user.id, "got one point");
       const userID = user.name;
       // console.log(userID, "is name");
@@ -216,12 +213,10 @@ function App({ user, setUser }) {
         score: userScore,
       });
 
-    } else if (roundIsClicked === false) {
+    } else {
       setQuestionResult('Incorrect');
 
     }
-
-    roundIsClicked = true;
     setShowQuestions(false);
 
     let gameDoc = await getDoc(gameReferncesRef);
