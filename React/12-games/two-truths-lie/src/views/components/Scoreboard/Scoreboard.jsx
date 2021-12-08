@@ -25,7 +25,7 @@ function Scoreboard() {
             });
             //sort by score
             list = list.sort((a, b) => b.score - a.score)
-            console.log(list);
+          
             setPlayers(list)
         });
 
@@ -34,7 +34,7 @@ function Scoreboard() {
     return (
         <div className="scoreboard">
             {players.map(player => {
-                console.log(player.id)
+              
                 return (
                     <div key={player.id} className='nametag'>
                         <img className="img" src={player.image}></img>
