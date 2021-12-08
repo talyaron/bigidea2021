@@ -251,7 +251,7 @@ function App({ user, setUser }) {
         <button onClick={handleClear}>Clear All Questions</button>
         <button onClick={handleNameClear}>Clear All Names</button>
         <div>Remaining Questions: {remainingQuestions}</div>
-        <div>Player names Remaining: {remainingNames}</div>
+        <div>Questions remaining by: {remainingNames}</div>
         {showQuestions ?
           <div className="optionsWrapper">
             <h3>{questionName}</h3>
