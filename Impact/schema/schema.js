@@ -4,6 +4,7 @@ const DB =[
             name:'JoeDoe',
             email:'JoeDoe@gmail.com',
             userID:'123ABC345daef123',
+            profilePhoto:{profileImage},
             sex:'male/female/nonBinary/other',
             age:0,
             location:'jerusalem, Israel',
