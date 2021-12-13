@@ -2,7 +2,7 @@ import "./MainPage.css";
 import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
 import { query, orderByChild } from "firebase/database";
-import { collection, query, orderBy, limit, where, getDocs, onSnapshot } from 'firebase/firestore';
+import { collection, orderBy, limit, where, getDocs, onSnapshot } from 'firebase/firestore';
 
 
 function App(){
