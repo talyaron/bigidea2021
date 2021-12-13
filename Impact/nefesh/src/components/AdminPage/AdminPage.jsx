@@ -1,6 +1,8 @@
 import React from "react";
+import './AdminPage.css';
  
 const AdminPage = props => {
+    
   return (
     <div className="popup-box">
       <div className="box">

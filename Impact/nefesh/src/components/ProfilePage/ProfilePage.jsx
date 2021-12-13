@@ -1,16 +1,24 @@
+import AdminPage from '../AdminPage/AdminPage';
+import React, { useState } from 'react';
 
 function ProfilePage(){
-    function adminPageButton(){
-        //render admin popup
-    }
-
-
+    
+    const [isOpen, setIsOpen] = useState(false);
+    const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
 
     return(
         <div>
             <h4>userNameHere</h4>
-            <button onClick='adminPageButton' name='adminButton'/>
-
+            <input type="button" value="User Settings" onClick={togglePopup} className="adminButton"/>
+            {isOpen && <AdminPage
+            content={<>
+                <b>Username</b>
+                <p>Random Text</p>
+            </>}
+            handleClose={togglePopup}
+            />}
         </div>
     )
 }
