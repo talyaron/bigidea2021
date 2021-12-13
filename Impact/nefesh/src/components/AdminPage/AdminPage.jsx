@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import './AdminPage.css';
-import { db } from '../../functions/firebase/config';
-import { doc, collection, query, where, getDoc, onSnapshot } from 'firebase/firestore'
-import { async } from '@firebase/util';
+// import { db } from '../../functions/firebase/config';
+// import { doc, collection, query, where, getDoc, onSnapshot } from 'firebase/firestore'
+// import { async } from '@firebase/util';
 
 const AdminPage = (props) => {
 // const userIDRef = 'pvfu0JLfWT8omzrVMPqY' // this will change based on the profile page pulled rn
