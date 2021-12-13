@@ -5,7 +5,7 @@
     align-items: center;   
     flex-direction: column  ; 
 }
-form{
+.form{
     display:flex;
     flex-direction: column;
     max-width: 600px;
@@ -15,18 +15,18 @@ form{
     transform: translateY(-50%);
 }
 
-input, textarea{
+.input, textarea{
     border-radius: 10px;
     margin-bottom: 20px;
     border:1px solid gray;
 }
 
-label{
+.label{
     background-color: whitesmoke;
     font-size: larger;
 }
 
-header{
+.header{
     font-size: xx-large;
     background-color: slategray;
     width: 100%;
