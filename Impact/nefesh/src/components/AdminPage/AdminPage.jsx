@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './AdminPage.css';
+import { db } from '../../functions/firebase/config';
+import { doc, collection, query, where, getDoc, onSnapshot } from 'firebase/firestore'
+import { async } from '@firebase/util';
 
 const AdminPage = (props) => {
+// const userIDRef = 'pvfu0JLfWT8omzrVMPqY' // this will change based on the profile page pulled rn
+// const userDocRef = doc(db, 'users', userIDRef)
+
+// useEffect(()=>{
+
+// 	console.log(getDoc(userDocRef), 'hi')
+// },[])
 
 	function handleChangeDisplayName(ev){
 
@@ -11,7 +21,43 @@ const AdminPage = (props) => {
 		// console.log(ev , username);
         // updateDoc(ref, id) {
         //     displayName: username
-        // }
+		// 	 }
+		(async () => {
+			// create and show the notification
+			const showNotification = () => {
+				// create a new notification
+				const notification = new Notification('UPDATE', {
+					body: 'CHANGES SAVED'
+				});
+		
+				// close the notification after 10 seconds
+				setTimeout(() => {
+					notification.close();
+				}, 10 * 1000);
+		
+			}
+		
+			// show an error message
+			const showError = () => {
+				const error = document.querySelector('.error');
+				error.style.display = 'block';
+				error.textContent = 'You blocked the notifications';
+			}
+		
+			// check notification permission
+			let granted = false;
+		
+			if (Notification.permission === 'granted') {
+				granted = true;
+			} else if (Notification.permission !== 'denied') {
+				let permission = await Notification.requestPermission();
+				granted = permission === 'granted' ? true : false;
+			}
+		
+			// show notification or error
+			granted ? showNotification() : showError();
+		
+		})();
 	}
 	function handleSetRoleToOle(ev){
 		console.log(ev ,'handleSetRoleToOle');
