@@ -5,6 +5,7 @@ export function isAuthorised(role, permissionedRole){
         return true
     }
     else {
+        console.log("not allowed")
         return false;
     }
   

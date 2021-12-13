@@ -1,11 +1,15 @@
 import React from "react";
 import { isAuthorised } from "../../functions/general";
 import {useEffect}from "react"
-import {Navigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+
+
 function Home ({role}){
+  const navigate = useNavigate();
+  
   useEffect(()=>{
    if (! isAuthorised(role,["superAdmin","orgAdmin"])) {
-    <Navigate to="/401"></Navigate>
+    navigate('/401')
    }
     
   },[])
