@@ -4,9 +4,7 @@ import React, { useState } from 'react';
 function ProfilePage(){
     
     const [isOpen, setIsOpen] = useState(false);
-    const togglePopup = () => {
-    setIsOpen(!isOpen);
-  }
+    const togglePopup = () => {setIsOpen(!isOpen);}
 
     return(
         <div>
