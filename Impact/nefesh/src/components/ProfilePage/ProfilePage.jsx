@@ -1,6 +1,8 @@
 import AdminPage from '../AdminPage/AdminPage';
 import React, { useState } from 'react';
 
+var isAdmin = false
+
 function ProfilePage(){
     
     const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +13,7 @@ function ProfilePage(){
     return(
         <div>
             <h4>userNameHere</h4>
-            <input type="button" value="User Settings" onClick={togglePopup} className="adminButton"/>
+            {isAdmin ? <input type="button" value="User Settings" onClick={togglePopup} className="adminButton"/> : null}
             {isOpen && <AdminPage
             content={<>
                 <b>Username</b>
