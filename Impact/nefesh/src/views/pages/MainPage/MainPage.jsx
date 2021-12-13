@@ -2,7 +2,7 @@ import "./MainPage.css";
 import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
 import { query, orderByChild } from "firebase/database";
-import { collection, query, orderBy, limit, where, getDocs, onSnapshot } from 'firebase/firestore';
+import { collection, orderBy, limit, where, getDocs, onSnapshot } from 'firebase/firestore';
 
 
 function App(){
@@ -41,6 +41,11 @@ function App(){
         }
     }
 
+    function changeEventFilter(ev){
+        setFilter(ev.target.elements.eventFilterType.value);
+        sortMappedEvents();
+    }
+
     function goToProfile(ev){
 
     }
@@ -52,7 +57,7 @@ function App(){
     return(
         <div className="container">
             <div className="userInterfaceContainer">
-                <form className="filterEvents" onSubmit={setFilter(this.value), sortMappedEvents}>
+                <form className="filterEvents" onSubmit={changeEventFilter}>
                     <label for="eventFilterType">Sort out the events displayed:</label>
                     <select name="eventFilterType" id="eventFilterType">
                         <option value="newest">Newest to Oldest</option>
