@@ -15,6 +15,10 @@ function Welcome(){
                     <div className="pointer2"></div>
                 </div>
                 <button className="SignUp" type="submit">Sign Up</button>
+                <div className="box">
+                <label>If you already have an account clike here</label>
+                <button type="submit">Sign In</button>
+                </div>
      </p>
     )
 }

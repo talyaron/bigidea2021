@@ -35,5 +35,18 @@
     display:flex;
     flex-wrap:wrap;
     justify-content: space-evenly;
-    margin: 10px auto
+    margin: 10px auto;
+    width: 200px;
+}
+.box{
+    position: relative;
+    max-width: 500px;
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 10px auto;
+    top: 100px;
+    width: auto; 
+    text-align: center;
 }
