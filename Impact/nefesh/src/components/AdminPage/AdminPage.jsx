@@ -2,20 +2,28 @@ import React from 'react';
 import './AdminPage.css';
 
 const AdminPage = (props) => {
+
 	function handleChangeDisplayName(ev){
-		console.log(ev ,'handleChangeDisplayName')
+
+        /* make sure to check that username is not taken */
+
+        // let username = prompt("Enter your new username.")
+		// console.log(ev , username);
+        // updateDoc(ref, id) {
+        //     displayName: username
+        // }
 	}
 	function handleSetRoleToOle(ev){
-		console.log(ev ,'handleSetRoleToOle')
+		console.log(ev ,'handleSetRoleToOle');
 	}
 	function handleSetRoleToOrgAdmin(ev){
-		console.log(ev ,'handleSetRoleToOrgAdmin')
+		console.log(ev ,'handleSetRoleToOrgAdmin');
 	}
 	function handleSuspendUser(ev){
-		console.log(ev ,'handleSuspendUser')
+		console.log(ev ,'handleSuspendUser');
 	}
 	function handleBanUser(ev){
-		console.log(ev ,'handleBanUser')
+		console.log(ev ,'handleBanUser');
 	}
 
 	return (
