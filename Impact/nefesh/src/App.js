@@ -1,24 +1,24 @@
-import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./pages/Layout";
-import Home from "./pages/Home";
-import Blogs from "./pages/Blogs";
-import Contact from "./pages/Contact";
-import NoPage from "./pages/NoPage";
+import { render } from "react-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} />
+// import your route components too
+
+render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<Login />} />
+        <Route path="teams" element={<Teams />}>
+          <Route path=":teamId" element={<Team />} />
+          <Route path="new" element={<NewTeamForm />} />
+          <Route index element={<LeagueStandings />} />
         </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-ReactDOM.render(<App />, document.getElementById("root"));
+      </Route>
+    </Routes>
+  </BrowserRouter>,
+  document.getElementById("root")
+);
