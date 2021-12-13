@@ -1,4 +1,5 @@
 import 'Login.css';
+import 'SignUp.css'
 import './App.css';
 
 function App() {
