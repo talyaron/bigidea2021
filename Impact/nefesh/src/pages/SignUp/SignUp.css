@@ -1,0 +1,22 @@
+.header{
+    text-align: center;
+    background-color: white;
+}
+.wrapper{
+    max-width: 200px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    margin: 10px auto;
+    background-color: blue;
+    color: white;
+}
+.submit{
+    position: relative;
+    top: 100px;
+    border-radius: 20px;
+    background-color: white;
+}
+div{
+    background-color: blue;
+}
