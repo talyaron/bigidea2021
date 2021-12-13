@@ -41,6 +41,11 @@ function App(){
         }
     }
 
+    function changeEventFilter(ev){
+        setFilter(ev.target.elements.eventFilterType.value);
+        sortMappedEvents();
+    }
+
     function goToProfile(ev){
 
     }
@@ -52,7 +57,7 @@ function App(){
     return(
         <div className="container">
             <div className="userInterfaceContainer">
-                <form className="filterEvents" onSubmit={setFilter(this.value), sortMappedEvents}>
+                <form className="filterEvents" onSubmit={changeEventFilter}>
                     <label for="eventFilterType">Sort out the events displayed:</label>
                     <select name="eventFilterType" id="eventFilterType">
                         <option value="newest">Newest to Oldest</option>
