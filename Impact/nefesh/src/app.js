@@ -11,8 +11,12 @@ import Home from "./pages/home/Home.js"
 import Error from "./pages/404/404.js"
 import Unauthorised from "./pages/401/401.js"
 import Hi from "./pages/hi/Hi.js"
+import {checkRole} from "./functions/general.js"
 
+let role=""
+let permissionedRole
 function App() {
+
     return (
         <BrowserRouter>
             <nav>
@@ -22,7 +26,7 @@ function App() {
             </nav>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="home" element={<Home />} />
+                <Route path="home" element={<Home role={role}/>} />
                 <Route path="login" element={<Login />} />
                 <Route path="hi" element={<Hi />} />
                 <Route path="404" element={<Error />} />
