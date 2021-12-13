@@ -10,7 +10,11 @@ function Welcome(){
               Do you Need an Account?
           </h1>
                 <div className="arrow"></div>
-                <div className="pointer"></div>
+                <div className="container">
+                    <div className="pointer1"></div>
+                    <div className="pointer2"></div>
+                </div>
+                <button className="SignUp" type="submit">Sign Up</button>
      </p>
     )
 }

@@ -10,10 +10,27 @@
     margin: 10px auto
 }
 
-.pointer{
+.container{
+    max-width: 200px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    margin: 10px auto;
+}
+.pointer1{
     background-color: black;
-    width: 100px;
+    width: 10px;
     height: 100px;
+    transform: rotate(-45deg);
+}
+.pointer2{
+    background-color: black;
+    width: 10px;
+    height: 100px;
+    transform: rotate( 45deg);
+}
+.SignUp{
+    position: relative;
     max-width: 200px;
     display:flex;
     flex-wrap:wrap;
