@@ -1,0 +1,22 @@
+.contactWrapper{
+    background-color: red;
+    height: 300px;
+  }
+  .phoneNum{
+    color: mediumseagreen;
+    text-align: left;
+    font-size: 60px;
+  
+  }
+  .email{
+    color: wheat;
+    text-align: right;
+    font-size: 60px;
+  
+  }
+  .or{
+    color: purple;
+    text-align: center;
+    font-size: 60px;
+  
+  }
