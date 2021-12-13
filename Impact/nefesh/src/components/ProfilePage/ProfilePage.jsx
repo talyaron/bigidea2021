@@ -1,7 +1,7 @@
 import AdminPage from '../AdminPage/AdminPage';
 import React, { useState } from 'react';
 
-var isAdmin = false
+var isAdmin = true;
 
 function ProfilePage(){
     

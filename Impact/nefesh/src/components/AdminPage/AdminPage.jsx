@@ -10,8 +10,8 @@ const AdminPage = (props) => {
 				</span>
 				{props.content}
                 <div className='button container'>
-                    <button id='changeDisplayName' onClick={handleChangeDisplayName}>Change Display Name</button>
-                    <button id='changeDisplayName' onClick={handleChangeDisplayName}>Change Display Name</button>
+                    <button id='changeDisplayName' /*onClick={handleChangeDisplayName} */>Change Display Name</button>
+                    <button id='changeDisplayName' /*onClick={handleChangeDisplayName} */>Change Display Name</button>
                 </div>
 			</div>
 		</div>
