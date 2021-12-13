@@ -7,7 +7,7 @@ const DB = [
             userID: '123ABC345daef123',
             sex: 'male/female/nonBinary/other',
             age: 0,
-            location: 'jerusalem, Israel',
+            location: 'Jerusalem',
             role: 'ole/admin/superAdmin',
             organization: 'Soup Kitchen',
             userPref: [
