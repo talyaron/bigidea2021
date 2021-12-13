@@ -2,7 +2,7 @@ const DB = [
     {
         users,
         userID: {
-            name: 'JoeDoe',
+            displayName: 'JoeDoe',
             email: 'JoeDoe@gmail.com',
             userID: '123ABC345daef123',
             sex: 'male/female/nonBinary/other',
