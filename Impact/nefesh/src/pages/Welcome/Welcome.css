@@ -1,0 +1,22 @@
+.arrow{
+    background-color: black;
+    width: 10px;
+    height: 200px;
+    position: relative;
+    max-width: 200px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    margin: 10px auto
+}
+
+.pointer{
+    background-color: black;
+    width: 100px;
+    height: 100px;
+    max-width: 200px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    margin: 10px auto
+}

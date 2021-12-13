@@ -6,9 +6,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <SignUp/>
+      {/* <SignUp/> */}
       {/* <Pages/> */}
-      {/* <Welcome/> */}
+      <Welcome/>
     </div>
   );
 }
