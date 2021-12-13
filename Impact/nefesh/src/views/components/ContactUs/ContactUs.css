@@ -1,0 +1,8 @@
+.bottomBox{
+    position: absolute;
+    display: flex;
+    width: 100px;
+    height: 40px;
+    bottom: 5px;
+
+}
