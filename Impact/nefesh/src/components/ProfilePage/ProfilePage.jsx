@@ -11,6 +11,7 @@ function ProfilePage() {
 	const [displayName, setDisplayName] = useState('displayName');
 	const [userID, setUserID] = useState('ID');
 	const [isOpen, setIsOpen] = useState(false);
+	const [profilePicImg, setProfilePicImg] = useState('')
 	const togglePopup = () => {
 		setIsOpen(!isOpen);
 	};
@@ -27,7 +28,7 @@ function ProfilePage() {
 		
         //get user profile pic
         const profilePic = getDoc(googleProfilePicRef, (userDB) => {
-            let profilePicImg = userDB.data.userIcon;
+			setProfilePicImg(userDB.data().userIcon);
         });
         
 	}, []);
@@ -35,7 +36,7 @@ function ProfilePage() {
 	return (
 		<div>
             <div className = 'containerDetails'>
-                <div id = "profilePic" style = {background-image: url(profilePicImg)}/>
+                <div id = "profilePic" style = {{backgroundImage: `url(${profilePicImg})`	}}/>
 			    <h4>{displayName}</h4>
                 <div className = 'containerEvents'>
                     <p>Events list goes here</p>
