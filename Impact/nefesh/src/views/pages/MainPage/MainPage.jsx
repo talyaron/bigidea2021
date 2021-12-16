@@ -13,7 +13,7 @@ function App(){
     let q = query(eventsRef);
 
     useEffect(() => {
-        sortMappedEvents();
+        //sortMappedEvents();
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             let list = [];
@@ -24,12 +24,15 @@ function App(){
                list.push(eventTemp);
             });
 
-            setEvents(list)
+            console.log(list);
+            setEvents(list);
         });
 
     }, [])
 
     function sortMappedEvents(){
+        alert(filterType);
+        //Always stays as "newest"
         if (filterType === "newest"){
             q = query(eventsRef, orderByChild('eventDate'), limit(4));
         } else if (filterType === "popular"){
@@ -40,11 +43,13 @@ function App(){
         } else {
             alert("error, filterType is not registered");
         }
+        
     }
 
     function changeEventFilter(ev){
         setFilter(ev.target.elements.eventFilterType.value);
-        sortMappedEvents();
+        sortMappedEvents();//Causes the code to not finish when run
+        alert("changeEventFilter is activated");
     }
 
     function goToProfile(ev){
