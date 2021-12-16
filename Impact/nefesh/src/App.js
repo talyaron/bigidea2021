@@ -18,11 +18,16 @@ function App() {
     {isOpen && <ArticleCreation
       content={<>
         <b>Input information here</b>
+        <br/>
         <input type= "text" placeholder= "Enter article title here"/>
         <br/>
         <input type= "text" placeholder= "Enter name here"/>
         <br/>
         <input type= "text" placeholder= "Enter text here"/>
+        <br/>
+        <input type= "image" placeholder= "Enter cover image here"/>
+        <br/>
+        <input type= "text" placeholder= "Enter date here"/>
         <br/>
         <button>Create Article</button>
       </>}
