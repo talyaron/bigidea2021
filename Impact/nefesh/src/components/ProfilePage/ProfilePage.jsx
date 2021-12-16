@@ -17,15 +17,23 @@ function ProfilePage(){
         //pull userId of selected user and set for superAdmin page
         //on snapshot displayName
         const userData = onSnapshot(userDocRef, (userDB) => {
-            console.log("Current data: ", userDB.data());
+            console.log("Current data: ", userDB.data().displayName);
+            let displayNameTemp = userDB.data().displayName
+            setDisplayName(displayNameTemp);
+
         });        
         //get doc user ID
+        const tempUserID = getDoc(userDocRef,(userIdDB)=>{
+            console.log(userIdDB.data().userID);
+            
+        })
 
+        setUserID(tempUserID);
     },[])
 
     return(
         <div>
-            <h4>userNameHere</h4>
+            <h4>{displayName}</h4>
             {isAdmin ? <input type="button" value="User Settings" onClick={togglePopup} className="adminButton"/> : null}
             {isOpen && <AdminPage
             content={<>
