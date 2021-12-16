@@ -36,6 +36,8 @@ function App() {
                 getDoc(doc(db, "users", uid)).then(userDB => {
                     if (userDB.exists()) {
                         console.log("user exists")
+                        setUserState({thing:"Username"})
+                        console.log(userState)
                     }
                     else {
                         //if user exist in db get the user from DB and get the role 
@@ -44,7 +46,8 @@ function App() {
                             displayName: user.displayName,
                             email: user.email,
                             userIcon: user.photoURL,
-                            role: "ole"
+                            role: "ole",
+                            userID:uid
                         })
                     }
                 })
