@@ -1,5 +1,5 @@
 import SignUp from "./pages/SignUp/SignUp"
-import Pages from "./pages/Login/Login"
+// import Pages from "./pages/login/Login"
 import Welcome from "./pages/Welcome/Welcome"
 import './App.css';
 import {
