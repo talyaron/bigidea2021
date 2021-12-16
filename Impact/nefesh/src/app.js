@@ -1,9 +1,9 @@
 import './app.css';
 import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link
+    BrowserRouter,
+    Routes,
+    Route,
+    Link
 } from "react-router-dom";
 
 import Login from "./pages/login/Login.js"
@@ -24,53 +24,56 @@ const auth = getAuth();
 
 function App() {
 
-  const [userState, setUserState] = useState({})
+    const [userState, setUserState] = useState({})
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log('user logged in')
-        const uid = user.uid;
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log('user logged in')
+                const uid = user.uid;
 
-        //get user from db
-        getDoc(doc(db, "users", uid)).then(userDB => {
-          if (userDB.exists()) {
-            console.log("user exists")
-          }
-          else {
-            console.log("user does not exist")
-            setDoc(doc(db, "users", uid), {
-              displayName: user.displayName,
-              email: user.email,
-              userIcon: user.photoURL,
-              role: "ole"
-            })
-          }
-      }
-      // getDoc
+                //get user from db
+                getDoc(doc(db, "users", uid)).then(userDB => {
+                    if (userDB.exists()) {
+                        console.log("user exists")
+                    }
+                    else {
+                        //if user exist in db get the user from DB and get the role 
+                        console.log("user does not exist")
+                        setDoc(doc(db, "users", uid), {
+                            displayName: user.displayName,
+                            email: user.email,
+                            userIcon: user.photoURL,
+                            role: "ole"
+                        })
+                    }
+                })
+            } else {
+                // user logged out
+                console.log('User loged out')
 
-      // if no user --> set the database (with 'ole')
-
-      //if user exist in db get the user from DB and get the role 
+            }
+        })
 
     }, [])
     return (
-      <BrowserRouter>
-        <nav>
-          <Link to="/login">Login</Link>
-          <Link to="/home">Home</Link>
-          <Link to="/hi">Hi</Link>
-        </nav>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="home" element={<Home role={role} />} />
-          <Route path="login" element={<Login />} />
-          <Route path="hi" element={<Hi />} />
-          <Route path="404" element={<Error />} />
-          <Route path="401" element={<Unauthorised />} />
-        </Routes>
-      </BrowserRouter>
+        <BrowserRouter>
+            <nav>
+                <Link to="/login">Login</Link>
+                <Link to="/home">Home</Link>
+                <Link to="/hi">Hi</Link>
+            </nav>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="home" element={<Home role={role} />} />
+                <Route path="login" element={<Login />} />
+                <Route path="hi" element={<Hi />} />
+                <Route path="404" element={<Error />} />
+                <Route path="401" element={<Unauthorised />} />
+            </Routes>
+        </BrowserRouter>
     )
-  }
+}
+
 
 export default App;
