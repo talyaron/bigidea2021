@@ -26,6 +26,9 @@ function App(){
             });
 
             setEvents(list);
+        }, e=> {
+            console.error('on use effect in MainPage:')
+            console.error(e)
         });
 
     }, [])
