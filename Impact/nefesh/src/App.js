@@ -3,12 +3,41 @@ import ArticleCreation from './articleCreation/ArticleCreation';
  
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [title, setTitle]= useState("")
+  const [name, setName]= useState("")
+  const [text, setText]= useState("")
+  const [image, setImage]= useState("")
+  const [date, setDate]= useState("")
+   
  
   const togglePopup = () => {
     setIsOpen(!isOpen);
+
+
+    }
+    function handleCreateArticle(ev){
+      ev.preventDefault();
+      let title= ev.target.elements.title.value;
+      let name= ev.target.elements.name.value;
+      let text= ev.target.elements.text.value;
+      let image= ev.target.elements.image.value;
+      let date= ev.target.elements.date.value;
+      setTitle(title);
+      setName(name);
+      setText(text);
+      setImage(image);
+      setDate(date);
   }
+
+
+  
  
   return <div>
+    <div>{title}</div>
+    <div>{name}</div>
+    <div>{text}</div>
+    <div>{image}</div>
+    <div>{date}</div>
     <input
       type="button"
       value="Click to Create Article"
@@ -19,20 +48,24 @@ function App() {
       content={<>
         <b>Input information here</b>
         <br/>
-        <input type= "text" placeholder= "Enter article title here"/>
+        <form onSubmit={handleCreateArticle}>
+        <input type= "text" name= "title" placeholder= "Enter article title here"/>
         <br/>
-        <input type= "text" placeholder= "Enter name here"/>
+        <input type= "text" name= "name" placeholder= "Enter name here"/>
         <br/>
-        <input type= "text" placeholder= "Enter text here"/>
+        <input type= "text" name= "text" placeholder= "Enter text here"/>
         <br/>
-        <input type= "image" placeholder= "Enter cover image here"/>
+        <input type= "text" name= "image" placeholder= "Enter cover image url here"/>
         <br/>
-        <input type= "text" placeholder= "Enter date here"/>
+        <input type= "text" name= "date" placeholder= "Enter date here"/>
         <br/>
-        <button>Create Article</button>
+        <button type="submit">Create Article</button>
+        </form>
+        
       </>}
       handleClose={togglePopup}
     />}
+    
   </div>
 }
  
