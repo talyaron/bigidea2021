@@ -4,6 +4,10 @@
     border-radius: 10px;
     background-color: var(--buttoncolor);
     color: white;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    margin: 10px auto;
 }
 body{
     background-color: rgb(0, 0, 58);
