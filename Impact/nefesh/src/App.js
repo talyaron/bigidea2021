@@ -9,11 +9,11 @@ import {
   Link
 } from "react-router-dom";
 
-import Login from "./pages/login/Login.js"
-import Home from "./pages/home/Home.js"
+import Login from "./pages/Login/Login.js"
+import Home from "./pages/Home/Home.js"
 import Error from "./pages/404/404.js"
 import Unauthorised from "./pages/401/401.js"
-import Hi from "./pages/hi/Hi.js"
+// import Hi from "./pages/hi/Hi.js"
 import {checkRole} from "./functions/general.js"
 
 let role="ole"
