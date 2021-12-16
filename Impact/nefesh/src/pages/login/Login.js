@@ -2,6 +2,7 @@ import {db} from "../../functions/firebase/config"
 import React from "react"
 import {authentication} from "../../functions/firebase/config"
 import {signInWithPopup, GoogleAuthProvider} from "firebase/auth";
+import {doc,setDoc} from "firebase/firestore"
 function Login(){
 
 const SignIn=(ev)=>{
@@ -10,6 +11,15 @@ const SignIn=(ev)=>{
   signInWithPopup(authentication, provider)
   .then((re)=>{
     console.log(re)
+    console.log(re.user.displayName)
+    console.log(re.user.email)
+    console.log(re.user.photoURL)
+    let userEmail=re.user.email
+    setDoc(doc(db,"users",{userEmail}),{
+      displayName:re.user.displayName,
+      email:re.user.email,
+      userIcon:re.user.photoURL
+    })
   })
   .catch((err)=>{
     console.log(err)
