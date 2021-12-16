@@ -25,6 +25,21 @@ function App() {
       {/* <SignUp/> */}
       {/* <Pages/> */}
       <Welcome/>
+      <BrowserRouter>
+            <nav>
+                <Link to="/login">Login</Link>
+                <Link to="/home">Home</Link>
+                <Link to="/hi">Hi</Link>
+            </nav>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="home" element={<Home role={role}/>} />
+                <Route path="login" element={<Login />} />
+                <Route path="hi" element={<Hi />} />
+                <Route path="404" element={<Error />} />
+                <Route path="401" element={<Unauthorised />} />
+            </Routes>
+        </BrowserRouter>
     </div>
   );
 }
