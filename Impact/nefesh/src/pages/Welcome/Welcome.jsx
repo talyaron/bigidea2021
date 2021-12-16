@@ -17,7 +17,7 @@ function Welcome(){
                 <button className="SignUp" type="submit">Sign Up</button>
                 <div className="box">
                 <label>If you already have an account clike here</label>
-                <button type="submit">Sign In</button>
+                <button type="submit">Login</button>
                 </div>
      </p>
     )
