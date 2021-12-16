@@ -1,5 +1,5 @@
 import "./MainPage.css";
-import { useEffect, useState } from "react"
+import { useEffect} from "react"
 import { db } from '../../../functions/firebase/config';
 import { query, orderByChild } from "firebase/database";
 import { collection, limit, onSnapshot } from 'firebase/firestore';
@@ -7,7 +7,7 @@ import { collection, limit, onSnapshot } from 'firebase/firestore';
 
 function App(){
 
-    const [events, setEvents] = useState([]);
+    let events = [];
     let filterType = 'newest';
     const eventsRef = collection(db, "events", "f5AIE25ec8IPxC9TBAVk", "basic-events");
     let q = query(eventsRef);
@@ -22,13 +22,18 @@ function App(){
             querySnapshot.forEach((docDB) => {
                const eventTemp = docDB.data();
                eventTemp.id = docDB.id;
+               console.log(eventTemp);
                list.push(eventTemp);
             });
 
+<<<<<<< Updated upstream
             setEvents(list);
         }, e=> {
             console.error('on use effect in MainPage:')
             console.error(e)
+=======
+            events = list;
+>>>>>>> Stashed changes
         });
 
     }, [])
@@ -54,10 +59,6 @@ function App(){
     }
 
     function goToProfile(ev){
-
-    }
-
-    function contactUsDisplay(ev){
 
     }
 
@@ -89,8 +90,8 @@ function App(){
                 }
             </div>
 
-            <div className="contactUsContainer">
-                <input type="button" className="contactUs" onClick={contactUsDisplay}></input>
+            <div className="profileContainer">
+                <input type="button" className="profile" onClick={goToProfile}></input>
             </div>
         </div>
 
