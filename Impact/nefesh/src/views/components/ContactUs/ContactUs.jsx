@@ -1,5 +1,11 @@
 import './ContactUs.css';
 function ContactUs (){
+    function redirect(){ 
+
+      var email = "xyz@something.com"
+      var mailto_link = 'mailto:' + email
+      
+}
     return(
         <div>
       <div>You can contact us at: </div>
@@ -8,7 +14,7 @@ function ContactUs (){
            Phone number: ###-###-####
            </div>
         <div className= "or">OR</div>
-        <div className= "email">Email:email@gmail.com</div>
+        <a href="mailto:Nefesh@nefesh.com?subject=Contacting Creators!&body=Hi! I wanted to contact you to tell you that (type here)"className="email">Click here to email us</a>
         </div>
         </div>
 
