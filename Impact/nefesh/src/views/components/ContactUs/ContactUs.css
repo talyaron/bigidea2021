@@ -1,5 +1,5 @@
 .contactWrapper{
-    background-color: red;
+    background-color: blue;
     height: 300px;
   }
   .phoneNum{
@@ -16,7 +16,6 @@
   }
   .or{
     color: purple;
-    text-align: center;
     font-size: 60px;
   
   }
