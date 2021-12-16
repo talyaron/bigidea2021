@@ -14,7 +14,6 @@ function ProfilePage(){
     const togglePopup = () => {setIsOpen(!isOpen);}
 
     useEffect(()=>{
-        //pull userId of selected user and set for superAdmin page
         //on snapshot displayName
         const userData = onSnapshot(userDocRef, (userDB) => {
             console.log("Current data: ", userDB.data().displayName);
@@ -22,13 +21,14 @@ function ProfilePage(){
             setDisplayName(displayNameTemp);
 
         });        
-        //get doc user ID
-        const tempUserID = getDoc(userDocRef,(userIdDB)=>{
+        
+        //pull userId of selected user and set for superAdmin page
+        const tempUserID = getDoc(userDocRef, (userIdDB) => {
             console.log(userIdDB.data().userID);
             
-        })
-
+        });
         setUserID(tempUserID);
+
     },[])
 
     return(
