@@ -5,45 +5,63 @@ import { doc, getDoc, onSnapshot } from 'firebase/firestore';
 
 var isAdmin = true;
 const userDocRef = doc(db, 'users', 'pvfu0JLfWT8omzrVMPqY');
+const googleProfilePicRef = doc(db, 'users', 'e2s45clXtKNY3mK8Ykl44qjnkYy2');
 
+function ProfilePage() {
+	const [displayName, setDisplayName] = useState('displayName');
+	const [userID, setUserID] = useState('ID');
+	const [isOpen, setIsOpen] = useState(false);
+	const togglePopup = () => {
+		setIsOpen(!isOpen);
+	};
 
-function ProfilePage(){
-    const [displayName, setDisplayName] = useState("displayName");
-	const [userID, setUserID] = useState("ID");
-    const [isOpen, setIsOpen] = useState(false);
-    const togglePopup = () => {setIsOpen(!isOpen);}
-
-    useEffect(()=>{
-        //on snapshot displayName
-        const userData = onSnapshot(userDocRef, (userDB) => {
-            console.log("Current data: ", userDB.data().displayName);
-            let displayNameTemp = userDB.data().displayName
-            setDisplayName(displayNameTemp);
-
-        });        
-        
-        //pull userId of selected user and set for superAdmin page
-        const tempUserID = getDoc(userDocRef, (userIdDB) => {
-            console.log(userIdDB.data().userID);
-            
+	useEffect(() => {
+		//pull userId of selected user and set for superAdmin page
+		//on snapshot displayName
+		const userData = onSnapshot(userDocRef, (userDB) => {
+			let displayNameTemp = userDB.data().displayName;
+            let userIDTemp = userDB.data().userID;
+			setDisplayName(displayNameTemp);
+            setUserID(userIDTemp);
+		});
+		
+        //get user profile pic
+        const profilePic = getDoc(googleProfilePicRef, (userDB) => {
+            let profilePicImg = userDB.data.userIcon;
         });
-        setUserID(tempUserID);
+        
+	}, []);
 
-    },[])
-
-    return(
-        <div>
-            <h4>{displayName}</h4>
-            {isAdmin ? <input type="button" value="User Settings" onClick={togglePopup} className="adminButton"/> : null}
-            {isOpen && <AdminPage
-            content={<>
-                <b>{displayName}</b>
-                <p>{userID}</p>
-            </>}
-            handleClose={togglePopup}
-            />}
-        </div>
-    )
+	return (
+		<div>
+            <div className = 'containerDetails'>
+                <div id = "profilePic" style = {background-image: url(profilePicImg)}/>
+			    <h4>{displayName}</h4>
+                <div className = 'containerEvents'>
+                    <p>Events list goes here</p>
+                </div>
+            </div>
+			{isAdmin ? (
+				<input
+					type='button'
+					value='User Settings'
+					onClick={togglePopup}
+					className='adminButton'
+				/>
+			) : null}
+			{isOpen && (
+				<AdminPage
+					content={
+						<>
+							<b>{displayName}</b>
+							<p> UserID: '{userID}'</p>
+						</>
+					}
+					handleClose={togglePopup}
+				/>
+			)}
+		</div>
+	);
 }
 
 export default ProfilePage;
