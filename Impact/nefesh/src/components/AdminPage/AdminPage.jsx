@@ -58,9 +58,75 @@ const AdminPage = (props) => {
 	}
 	function handleSetRoleToOle(ev) {
 		console.log(ev, 'handleSetRoleToOle');
+		/* make sure to check that username is not taken */
+		
+		updateDoc(userDocRef, {
+			role: 'ole',
+		}).then(async () => {
+			// create and show the notification
+			const showNotification = () => {
+				// create a new notification
+				const notification = new Notification('UPDATE', {
+					body: 'CHANGES SAVED',
+				});
+				// close the notification after 10 seconds
+				setTimeout(() => {
+					notification.close();
+				}, 10 * 1000);
+			};
+			// show an error message
+			const showError = () => {
+				const error = document.querySelector('.error');
+				error.style.display = 'block';
+				error.textContent = 'You blocked the notifications';
+			};
+			// check notification permission
+			let granted = false;
+			if (Notification.permission === 'granted') {
+				granted = true;
+			} else if (Notification.permission !== 'denied') {
+				let permission = await Notification.requestPermission();
+				granted = permission === 'granted' ? true : false;
+			}
+			// show notification or error
+			granted ? showNotification() : showError();
+		});
 	}
 	function handleSetRoleToOrgAdmin(ev) {
 		console.log(ev, 'handleSetRoleToOrgAdmin');
+		/* make sure to check that username is not taken */
+		
+		updateDoc(userDocRef, {
+			role: 'orgAdmin',
+		}).then(async () => {
+			// create and show the notification
+			const showNotification = () => {
+				// create a new notification
+				const notification = new Notification('UPDATE', {
+					body: 'CHANGES SAVED',
+				});
+				// close the notification after 10 seconds
+				setTimeout(() => {
+					notification.close();
+				}, 10 * 1000);
+			};
+			// show an error message
+			const showError = () => {
+				const error = document.querySelector('.error');
+				error.style.display = 'block';
+				error.textContent = 'You blocked the notifications';
+			};
+			// check notification permission
+			let granted = false;
+			if (Notification.permission === 'granted') {
+				granted = true;
+			} else if (Notification.permission !== 'denied') {
+				let permission = await Notification.requestPermission();
+				granted = permission === 'granted' ? true : false;
+			}
+			// show notification or error
+			granted ? showNotification() : showError();
+		});
 	}
 	function handleSuspendUser(ev) {
 		console.log(ev, 'handleSuspendUser');
@@ -87,10 +153,10 @@ const AdminPage = (props) => {
 						Set Role To Org Admin
 					</button>
 					<button id='suspendUser' onClick={handleSuspendUser}>
-						Suspend User
+						Suspend User *not in MVP
 					</button>
 					<button id='banUser' onClick={handleBanUser}>
-						Ban User
+						Ban User *not in MVP
 					</button>
 				</div>
 			</div>
