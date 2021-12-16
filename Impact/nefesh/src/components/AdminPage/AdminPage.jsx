@@ -1,23 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AdminPage.css';
 import { db } from '../../functions/firebase/config';
-import {
-	doc,
-	collection,
-	query,
-	where,
-	getDoc,
-	onSnapshot,
-	updateDoc,
-} from 'firebase/firestore';
-import { async } from '@firebase/util';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+
 
 const AdminPage = (props) => {
 	const userIDRef = 'pvfu0JLfWT8omzrVMPqY'; // this will change based on the profile page pulled rn
 	const userDocRef = doc(db, 'users', 'pvfu0JLfWT8omzrVMPqY');
 
 	useEffect(() => {
-		console.log(getDoc(userDocRef), 'hi');
+		// console.log(getDoc(userDocRef), 'hi');
 	}, []);
 
 	function handleChangeDisplayName(ev) {
@@ -31,7 +23,7 @@ const AdminPage = (props) => {
 			const showNotification = () => {
 				// create a new notification
 				const notification = new Notification('UPDATE', {
-					body: 'CHANGES SAVED',
+					body: `NAME SUCCESSFULLY UPDATED TO ${username}`,
 				});
 				// close the notification after 10 seconds
 				setTimeout(() => {
@@ -40,9 +32,10 @@ const AdminPage = (props) => {
 			};
 			// show an error message
 			const showError = () => {
-				const error = document.querySelector('.error');
-				error.style.display = 'block';
-				error.textContent = 'You blocked the notifications';
+				// const error = document.querySelector('.error');
+				// error.style.display = 'block';
+				// error.textContent = 'You blocked the notifications';
+				alert('Notifications disabled');
 			};
 			// check notification permission
 			let granted = false;
@@ -59,7 +52,7 @@ const AdminPage = (props) => {
 	function handleSetRoleToOle(ev) {
 		console.log(ev, 'handleSetRoleToOle');
 		/* make sure to check that username is not taken */
-		
+
 		updateDoc(userDocRef, {
 			role: 'ole',
 		}).then(async () => {
@@ -67,7 +60,7 @@ const AdminPage = (props) => {
 			const showNotification = () => {
 				// create a new notification
 				const notification = new Notification('UPDATE', {
-					body: 'CHANGES SAVED',
+					body: 'ROLE UPDATED TO OLE',
 				});
 				// close the notification after 10 seconds
 				setTimeout(() => {
@@ -76,9 +69,10 @@ const AdminPage = (props) => {
 			};
 			// show an error message
 			const showError = () => {
-				const error = document.querySelector('.error');
-				error.style.display = 'block';
-				error.textContent = 'You blocked the notifications';
+				// const error = document.querySelector('.error');
+				// error.style.display = 'block';
+				// error.textContent = 'You blocked the notifications';
+				alert('Notifications disabled');
 			};
 			// check notification permission
 			let granted = false;
@@ -95,7 +89,7 @@ const AdminPage = (props) => {
 	function handleSetRoleToOrgAdmin(ev) {
 		console.log(ev, 'handleSetRoleToOrgAdmin');
 		/* make sure to check that username is not taken */
-		
+
 		updateDoc(userDocRef, {
 			role: 'orgAdmin',
 		}).then(async () => {
@@ -103,7 +97,7 @@ const AdminPage = (props) => {
 			const showNotification = () => {
 				// create a new notification
 				const notification = new Notification('UPDATE', {
-					body: 'CHANGES SAVED',
+					body: 'ROLE UPDATED TO orgADMIN',
 				});
 				// close the notification after 10 seconds
 				setTimeout(() => {
@@ -112,9 +106,10 @@ const AdminPage = (props) => {
 			};
 			// show an error message
 			const showError = () => {
-				const error = document.querySelector('.error');
-				error.style.display = 'block';
-				error.textContent = 'You blocked the notifications';
+				// const error = document.querySelector('.error');
+				// error.style.display = 'block';
+				// error.textContent = 'You blocked the notifications';
+				alert('Notifications disabled');
 			};
 			// check notification permission
 			let granted = false;
