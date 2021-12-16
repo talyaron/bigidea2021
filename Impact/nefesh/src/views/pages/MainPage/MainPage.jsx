@@ -2,15 +2,15 @@ import "./MainPage.css";
 import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
 import { query, orderByChild } from "firebase/database";
-import { collection, orderBy, limit, where, getDocs, onSnapshot } from 'firebase/firestore';
+import { collection, limit, onSnapshot } from 'firebase/firestore';
 
 
 function App(){
 
     const [events, setEvents] = useState([]);
-    const [filterType, setFilter] = useState("popular");
+    const [filterType, setFilter] = useState("newest");
     const eventsRef = collection(db, "events", "f5AIE25ec8IPxC9TBAVk", "basic-events");
-    const q = query(eventsRef);
+    let q = query(eventsRef);
 
     useEffect(() => {
         sortMappedEvents();
@@ -19,9 +19,9 @@ function App(){
             let list = [];
 
             querySnapshot.forEach((docDB) => {
-                const eventTemp = docDB.data();
-                eventTemp.id = docDB.id;
-                list.push(eventTemp);
+               const eventTemp = docDB.data();
+               eventTemp.id = docDB.id;
+               list.push(eventTemp);
             });
 
             setEvents(list)
@@ -34,6 +34,7 @@ function App(){
             q = query(eventsRef, orderByChild('eventDate'), limit(4));
         } else if (filterType === "popular"){
             q = query(eventsRef, orderByChild('views'), limit(4));
+            alert("for some reason views cannot be compared...");
         } else if (filterType === "recent"){
             q = query(eventsRef, orderByChild('createdDate'), limit(4));
         } else {
