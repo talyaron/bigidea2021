@@ -1,5 +1,5 @@
 import "./MainPage.css";
-import { useEffect} from "react"
+import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
 import { query, orderByChild } from "firebase/database";
 import { collection, limit, onSnapshot } from 'firebase/firestore';
@@ -7,7 +7,7 @@ import { collection, limit, onSnapshot } from 'firebase/firestore';
 
 function App(){
 
-    let events = [];
+    const [events, setEvents] = useState([]);
     let filterType = 'newest';
     const eventsRef = collection(db, "events", "f5AIE25ec8IPxC9TBAVk", "basic-events");
     let q = query(eventsRef);
@@ -22,40 +22,48 @@ function App(){
             querySnapshot.forEach((docDB) => {
                const eventTemp = docDB.data();
                eventTemp.id = docDB.id;
-               console.log(eventTemp);
                list.push(eventTemp);
             });
-
-<<<<<<< Updated upstream
+            console.log(list)
             setEvents(list);
+
         }, e=> {
             console.error('on use effect in MainPage:')
             console.error(e)
-=======
-            events = list;
->>>>>>> Stashed changes
         });
 
     }, [])
 
     function sortMappedEvents(filter){
-        alert(filter);
+        let listSorted = events;
         //Always stays as "newest"
         if (filter === "newest"){
-            q = query(eventsRef, orderByChild('eventDate'), limit(4));
+            //q = query(eventsRef, orderByChild('eventDate'));
+            //listSorted = events.concat(this).sort((a, b) => a.eventDate.seconds > b.eventDate.seconds ? 1 : -1);
+
+
         } else if (filter === "popular"){
-            //q = query(eventsRef, orderByChild('views'), limit(4));
+            //q = query(eventsRef, orderByChild('views'));
+            //listSorted = events.concat(this).sort((a, b) => a.views > b.views ? 1 : -1);
             //alert("for some reason views cannot be compared...");
+
+
         } else if (filter === "recent"){
-            q = query(eventsRef, orderByChild('createdDate'), limit(4));
+            //q = query(eventsRef, orderByChild('createdDate'));
+            //listSorted = events.concat(this).sort((a, b) => a.createdDate.seconds > b.createdDate.seconds ? 1 : -1);
+
+
         } else {
             alert("error, filterType is not registered");
         }
+        console.log(listSorted);
+        setEvents(listSorted);
     }
 
     function changeEventFilter(ev){
         filterType = ev.target.value;
         sortMappedEvents(filterType);//Causes the code to not finish when run
+        console.log(events);
     }
 
     function goToProfile(ev){
@@ -64,6 +72,10 @@ function App(){
 
     return(
         <div className="container">
+            <div className="searchBar">
+                <h1>Placeholder for a future search bar</h1>
+            </div>
+
             <div className="userInterfaceContainer">
                 <form className="filterEvents">
                     <label for="eventFilterType">Sort out the events displayed:</label>
@@ -82,7 +94,7 @@ function App(){
                     return(
                         <div key={event.id} className='nametag'>
                             <h1>{event.name}</h1>
-                            <div>This event will take place on: {event.eventDate}</div>
+                            <div>This event will take place on: {event.eventDate.seconds}</div>
                             <div>{event.views} many people have viewed this event</div>
                         </div>
                     )
