@@ -16,7 +16,7 @@ import {checkRole} from "./functions/general.js"
 let role="ole"
 let permissionedRole
 function App() {
-
+    let role="ole"
     return (
         <BrowserRouter>
             <nav>

@@ -4,9 +4,12 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 
 
+
+
 function Home({ role }) {
+  
   const navigate = useNavigate();
-  const authurised = ["superAdmin", "orgAdmin"];
+  const authurised = ["ole","superAdmin", "orgAdmin"];
 
   useEffect(() => {
     if (!isAuthorised(role, authurised)) {
