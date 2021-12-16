@@ -1,6 +1,6 @@
 import './Login.css';
 
-function Page() {
+function Login() {
     return (
       <div className="login">
           <header className='header'>Login</header>
@@ -17,4 +17,4 @@ function Page() {
     );
 }
 
-export default Page;
+export default Login;

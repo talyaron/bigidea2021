@@ -23,19 +23,19 @@ function App() {
   return (
     <div className="App">
       {/* <SignUp/> */}
-      {/* <Pages/> */}
-      <Welcome/>
+      {/* <Login/> */}
+      {/* <Welcome/> */}
       <BrowserRouter>
             <nav>
+                <Link to="/Welcome">Welcome</Link>
                 <Link to="/login">Login</Link>
-                <Link to="/home">Home</Link>
-                <Link to="/hi">Hi</Link>
+                <Link to="/SignUp">SignUp</Link>
             </nav>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="home" element={<Home role={role}/>} />
+                <Route path="/" element={<Welcome /*Home*/ />} />
+                <Route path="Welcome" element={<Welcome /*role={role}*//>} />
                 <Route path="login" element={<Login />} />
-                <Route path="hi" element={<Hi />} />
+                <Route path="SignUp" element={<SignUp />} />
                 <Route path="404" element={<Error />} />
                 <Route path="401" element={<Unauthorised />} />
             </Routes>
