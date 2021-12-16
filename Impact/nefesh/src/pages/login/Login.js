@@ -1,4 +1,21 @@
+import {db} from "../../functions/firebase/config"
+import React from "react"
+import {authentication} from "../../functions/firebase/config"
+import {signInWithPopup, GoogleAuthProvider} from "firebase/auth";
 function Login(){
+
+const SignIn=(ev)=>{
+  ev.preventDefault()
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(authentication, provider)
+  .then((re)=>{
+    console.log(re)
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+
     return(<div>
       <h1>
             login
@@ -7,6 +24,7 @@ function Login(){
         <input placeholder="Email Address"></input>
         <input type="password" placeholder="Password"></input>
         <input type="submit"></input>
+        <button onClick={SignIn}>Sign In with google</button>
       </form>
     </div>)
   }

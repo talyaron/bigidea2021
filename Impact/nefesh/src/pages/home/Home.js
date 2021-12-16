@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 function Home({ role }) {
   const navigate = useNavigate();
-  const authurised = ["superAdmin", "orgAdmin"];
+  const authorised = ["superAdmin", "orgAdmin"];
 
   useEffect(() => {
-    if (!isAuthorised(role, authurised)) {
+    if (!isAuthorised(role, authorised)) {
       navigate('/401')
     }
 
