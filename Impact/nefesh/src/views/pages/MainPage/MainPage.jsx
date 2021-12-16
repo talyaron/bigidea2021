@@ -8,9 +8,10 @@ import { collection, limit, onSnapshot } from 'firebase/firestore';
 function App(){
 
     const [events, setEvents] = useState([]);
-    const [filterType, setFilter] = useState("newest");
+    const [filterType, setFilter] = useState('newest');
     const eventsRef = collection(db, "events", "f5AIE25ec8IPxC9TBAVk", "basic-events");
     let q = query(eventsRef);
+
 
     useEffect(() => {
         //sortMappedEvents();
@@ -30,15 +31,15 @@ function App(){
 
     }, [])
 
-    function sortMappedEvents(){
-        alert(filterType);
+    function sortMappedEvents(filter){
+        alert(filter);
         //Always stays as "newest"
-        if (filterType === "newest"){
+        if (filter === "newest"){
             q = query(eventsRef, orderByChild('eventDate'), limit(4));
-        } else if (filterType === "popular"){
+        } else if (filter === "popular"){
             q = query(eventsRef, orderByChild('views'), limit(4));
             alert("for some reason views cannot be compared...");
-        } else if (filterType === "recent"){
+        } else if (filter === "recent"){
             q = query(eventsRef, orderByChild('createdDate'), limit(4));
         } else {
             alert("error, filterType is not registered");
@@ -47,8 +48,10 @@ function App(){
     }
 
     function changeEventFilter(ev){
-        setFilter(ev.target.elements.eventFilterType.value);
-        sortMappedEvents();//Causes the code to not finish when run
+        const filter2 = ev.target.value;
+        setFilter(ev.target.value);
+        console.log(ev.target.value);
+        sortMappedEvents(filter2);//Causes the code to not finish when run
         alert("changeEventFilter is activated");
     }
 
@@ -65,7 +68,9 @@ function App(){
             <div className="userInterfaceContainer">
                 <form className="filterEvents" onSubmit={changeEventFilter}>
                     <label for="eventFilterType">Sort out the events displayed:</label>
-                    <select name="eventFilterType" id="eventFilterType">
+           
+              
+                    <select name="eventFilterType" id="eventFilterType" onChange={changeEventFilter}>
                         <option value="newest">Newest to Oldest</option>
                         <option value="popular">Most Popular</option>
                         <option value="recent">Most Recent</option>
