@@ -24,10 +24,9 @@ const AdminPage = (props) => {
 		/* make sure to check that username is not taken */
 		let username = prompt('Enter your new username.');
 		console.log(ev, username);
-		updateDoc(userDocRef,{
-				displayName: username
-			})
-		.then(async () => {
+		updateDoc(userDocRef, {
+			displayName: username,
+		}).then(async () => {
 			// create and show the notification
 			const showNotification = () => {
 				// create a new notification
