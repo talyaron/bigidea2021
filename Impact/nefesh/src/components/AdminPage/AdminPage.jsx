@@ -79,6 +79,7 @@ const AdminPage = (props) => {
 					x
 				</span>
 				{props.content}
+                {/* Buttons for user settings */}
                 <div className='buttonContainer'>
                     <button id='changeDisplayName' onClick={handleChangeDisplayName}>Change Display Name</button>
                     <button id='setRoleToOle' onClick={handleSetRoleToOle}>Set Role To Ole</button>
