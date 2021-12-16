@@ -13,7 +13,7 @@ function App(){
     let q = query(eventsRef);
 
     useEffect(() => {
-        //sortMappedEvents();
+        sortMappedEvents();
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             let list = [];
@@ -24,7 +24,6 @@ function App(){
                list.push(eventTemp);
             });
 
-            console.log(list);
             setEvents(list);
         });
 
@@ -32,6 +31,7 @@ function App(){
 
     function sortMappedEvents(){
         alert(filterType);
+        
         //Always stays as "newest"
         if (filterType === "newest"){
             q = query(eventsRef, orderByChild('eventDate'), limit(4));
@@ -43,7 +43,6 @@ function App(){
         } else {
             alert("error, filterType is not registered");
         }
-        
     }
 
     function changeEventFilter(ev){
