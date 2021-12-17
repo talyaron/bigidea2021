@@ -11,7 +11,7 @@ function ProfilePage() {
 	const [displayName, setDisplayName] = useState('displayName');
 	const [userID, setUserID] = useState('ID');
 	const [isOpen, setIsOpen] = useState(false);
-	const [profilePicImg, setProfilePicImg] = useState('')
+	const [profilePicImg, setProfilePicImg] = useState('');
 	const togglePopup = () => {
 		setIsOpen(!isOpen);
 	};
@@ -21,27 +21,29 @@ function ProfilePage() {
 		//on snapshot displayName
 		const userData = onSnapshot(userDocRef, (userDB) => {
 			let displayNameTemp = userDB.data().displayName;
-            let userIDTemp = userDB.data().userID;
+			let userIDTemp = userDB.data().userID;
 			setDisplayName(displayNameTemp);
-            setUserID(userIDTemp);
+			setUserID(userIDTemp);
 		});
-		
-        //get user profile pic
-        const profilePic = getDoc(googleProfilePicRef, (userDB) => {
+
+		//get user profile pic
+		const profilePic = getDoc(googleProfilePicRef, (userDB) => {
 			setProfilePicImg(userDB.data().userIcon);
-        });
-        
+		});
 	}, []);
 
 	return (
 		<div>
-            <div className = 'containerDetails'>
-                <div id = "profilePic" style = {{backgroundImage: `url(${profilePicImg})`	}}/>
-			    <h4>{displayName}</h4>
-                <div className = 'containerEvents'>
-                    <p>Events list goes here</p>
-                </div>
-            </div>
+			<div className='containerDetails'>
+				<div
+					id='profilePic'
+					style={{ backgroundImage: `url(${profilePicImg})` }}
+				/>
+				<h4>{displayName}</h4>
+				<div className='containerEvents'>
+					<p>Events list goes here</p>
+				</div>
+			</div>
 			{isAdmin ? (
 				<input
 					type='button'
