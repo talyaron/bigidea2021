@@ -1,0 +1,24 @@
+body{
+    background-color: var(--backgroundcolor1);
+}
+.userIcon{
+    background-color: var(--buttoncolor);
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    position: relative;
+    left: 90%;
+}
+.topBar{
+    background-color: var(--buttoncolor);
+    width: 95%;
+    height: 20px;
+    border-radius: 5px;
+    position: relative;
+    top: 2vh;
+}
+.middle{
+    background-color: var(--backgroundcolor2);
+    width: 95%;
+    height: 500px;
+}
