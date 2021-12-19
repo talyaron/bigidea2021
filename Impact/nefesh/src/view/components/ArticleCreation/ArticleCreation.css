@@ -1,14 +1,12 @@
 .popup-box {
-    position: absolute;
-    top: 50px;
-    left: 50px;
+    position: relative;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%, -50%);
     background: #ffffff;
-    top: 0;
-    left: 0;
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.274);
     width: fit-content;
     height: fit-content;
-    margin: auto;
     border-radius: 10px;
     padding: 20px;
 }
