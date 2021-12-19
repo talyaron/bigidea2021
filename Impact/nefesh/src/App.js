@@ -22,7 +22,7 @@ import { doc, setDoc, getDoc } from "firebase/firestore"
 import { db } from "./functions/firebase/config"
 
 
-let role = "superAdmin"
+let role = "none"
 let permissionedRole
 const auth = getAuth();
 
@@ -87,7 +87,7 @@ function App() {
                 <Route path="hi" element={<Hi />} />
                 <Route path="404" element={<Error />} />
                 <Route path="401" element={<Unauthorised />} />
-                <Route path="MainPage" element={<MainPage/>} />
+                <Route path="MainPage" element={<MainPage role={role}/>} />
                 <Route path="ContactUs" element={<ContactUs/>} />
                 <Route path="ArticleCreation" element = {<ArticleCreation/>} />
                 <Route path="ProfilePage" element = {<ProfilePage/>} />

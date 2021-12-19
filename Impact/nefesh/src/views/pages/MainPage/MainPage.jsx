@@ -1,69 +1,77 @@
 import "./MainPage.css";
 import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
-import { collection, query, where, orderBy, onSnapshot} from 'firebase/firestore';
+import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
+import { isAuthorised } from "../../../functions/general";
+import { useNavigate } from "react-router-dom";
 
-
-function App(){
+function MainPage({role}) {
 
     const [events, setEvents] = useState([]);
     let filterType = 'newest';
     const eventsRef = collection(db, "events", "f5AIE25ec8IPxC9TBAVk", "basic-events");
     let q = query(eventsRef);
+    const navigate = useNavigate();
+    const authorised = ["superAdmin", "orgAdmin", 'ole'];
 
     useEffect(() => {
+
+        if (!isAuthorised(role, authorised)) {
+            navigate('/401')
+        }
+
         //sortMappedEvents(filterType);
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             let list = [];
 
             querySnapshot.forEach((docDB) => {
-               const eventTemp = docDB.data();
-               eventTemp.id = docDB.id;
-               list.push(eventTemp);
+                const eventTemp = docDB.data();
+                eventTemp.id = docDB.id;
+                list.push(eventTemp);
             });
             console.log(list)
             setEvents(list);
 
-        }, e=> {
+        }, e => {
             console.error('on use effect in MainPage:')
             console.error(e)
         });
 
     }, [])
 
-    function sortMappedEvents(filter){
+    function sortMappedEvents(filter) {
         let sortingList = [];
         let sortingListTrue = [];
         //filter activates correctly, next stage is tested
-        if (filter === "newest"){
+        if (filter === "newest") {
             events.forEach((docDB) => {
                 console.log(docDB.eventDate);
                 sortingList.push(docDB.eventDate.seconds);
                 sortingListTrue.push(docDB);
-             });
+            });
 
-        } else if (filter === "popular"){
+        } else if (filter === "popular") {
             events.forEach((docDB) => {
                 console.log(docDB.views);
                 sortingList.push(docDB.views);
                 sortingListTrue.push(docDB);
-             });
+            });
 
-        } else if (filter === "recent"){
+        } else if (filter === "recent") {
             events.forEach((docDB) => {
                 console.log(docDB.newestDate);
                 sortingList.push(docDB.createdDate.seconds);
                 sortingListTrue.push(docDB);
-             });
+            });
 
         } else {
             alert("error, filterType is not registered");
         }
 
-        for(let i = 0; i < sortingList.length; i++){
-            for(let j = 0; j < sortingList.length - i; j++){
-                if(sortingList[j] < sortingList[j + 1]){
+        for (let i = 0; i < sortingList.length; i++) {
+            for (let j = 0; j < sortingList.length - i; j++) {
+                if (sortingList[j] < sortingList[j + 1]) {
                     let temp = sortingList[j];
                     let tempTrue = sortingListTrue[j];
                     sortingList[j] = sortingList[j + 1];
@@ -75,24 +83,24 @@ function App(){
         }
 
         console.log(sortingList);
-        if(sortingListTrue === []){
+        if (sortingListTrue === []) {
             alert("cannot make events list empty");
         } else {
             setEvents(sortingListTrue);
         }
     }
 
-    function changeEventFilter(ev){
+    function changeEventFilter(ev) {
         filterType = ev.target.value;
         sortMappedEvents(filterType);//Causes the code to not finish when run
         //console.log(events);
     }
 
-    function goToProfile(ev){
+    function goToProfile(ev) {
 
     }
 
-    return(
+    return (
         <div className="container">
             <div className="searchBar">
                 <h1>Placeholder for a future search bar</h1>
@@ -113,7 +121,7 @@ function App(){
 
             <div className="eventMapContainer">
                 {events.map(event => {
-                    return(
+                    return (
                         <div key={event.id} className='nametag'>
                             <h1>{event.name}</h1>
                             <div>This event will take place on: {event.eventDate.seconds}</div>
@@ -132,4 +140,4 @@ function App(){
     );
 }
 
-export default App;
+export default MainPage;
