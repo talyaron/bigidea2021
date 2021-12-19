@@ -1,8 +1,7 @@
 import "./MainPage.css";
 import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
-import { query, orderByChild } from "firebase/database";
-import { collection, limit, onSnapshot } from 'firebase/firestore';
+import { collection, query, where, orderBy, onSnapshot} from 'firebase/firestore';
 
 
 function App(){
@@ -11,7 +10,6 @@ function App(){
     let filterType = 'newest';
     const eventsRef = collection(db, "events", "f5AIE25ec8IPxC9TBAVk", "basic-events");
     let q = query(eventsRef);
-
 
     useEffect(() => {
         //sortMappedEvents(filterType);
@@ -35,35 +33,59 @@ function App(){
     }, [])
 
     function sortMappedEvents(filter){
-        let listSorted = events;
-        //Always stays as "newest"
+        let sortingList = [];
+        let sortingListTrue = [];
+        //filter activates correctly, next stage is tested
         if (filter === "newest"){
-            //q = query(eventsRef, orderByChild('eventDate'));
-            //listSorted = events.concat(this).sort((a, b) => a.eventDate.seconds > b.eventDate.seconds ? 1 : -1);
-
+            events.forEach((docDB) => {
+                console.log(docDB.eventDate);
+                sortingList.push(docDB.eventDate.seconds);
+                sortingListTrue.push(docDB);
+             });
 
         } else if (filter === "popular"){
-            //q = query(eventsRef, orderByChild('views'));
-            //listSorted = events.concat(this).sort((a, b) => a.views > b.views ? 1 : -1);
-            //alert("for some reason views cannot be compared...");
-
+            events.forEach((docDB) => {
+                console.log(docDB.views);
+                sortingList.push(docDB.views);
+                sortingListTrue.push(docDB);
+             });
 
         } else if (filter === "recent"){
-            //q = query(eventsRef, orderByChild('createdDate'));
-            //listSorted = events.concat(this).sort((a, b) => a.createdDate.seconds > b.createdDate.seconds ? 1 : -1);
-
+            events.forEach((docDB) => {
+                console.log(docDB.newestDate);
+                sortingList.push(docDB.createdDate.seconds);
+                sortingListTrue.push(docDB);
+             });
 
         } else {
             alert("error, filterType is not registered");
         }
-        console.log(listSorted);
-        setEvents(listSorted);
+
+        for(let i = 0; i < sortingList.length; i++){
+            for(let j = 0; j < sortingList.length - i; j++){
+                if(sortingList[j] < sortingList[j + 1]){
+                    let temp = sortingList[j];
+                    let tempTrue = sortingListTrue[j];
+                    sortingList[j] = sortingList[j + 1];
+                    sortingListTrue[j] = sortingListTrue[j + 1];
+                    sortingList[j + 1] = temp;
+                    sortingListTrue[j + 1] = tempTrue;
+                }
+            }
+        }
+
+        console.log(sortingList);
+        if(sortingListTrue === []){
+            alert("cannot make events list empty");
+        } else {
+            setEvents(sortingListTrue);
+        }
     }
 
     function changeEventFilter(ev){
         filterType = ev.target.value;
         sortMappedEvents(filterType);//Causes the code to not finish when run
-        console.log(events);
+        //console.log(events);
     }
 
     function goToProfile(ev){
