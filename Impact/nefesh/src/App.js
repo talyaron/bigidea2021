@@ -35,6 +35,7 @@ function App() {
             if (user) {
                 console.log('user logged in')
                 const uid = user.uid;
+                userID=uid
 
                 //get user from db
                 getDoc(doc(db, "users", uid)).then(userDB => {
@@ -58,7 +59,7 @@ function App() {
                             userIcon: user.photoURL,
                             userPref:["null"]
                         })
-                        userID=uid
+                       
                     }
                 })
             } else {
