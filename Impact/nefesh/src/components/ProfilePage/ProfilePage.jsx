@@ -36,7 +36,7 @@ function ProfilePage() {
 	return (
 		<div>
             <div className = 'containerDetails'>
-                <div id = "profilePic" style = {{backgroundImage: `url(${profilePicImg})`	}}/>
+                <div id = "profilePic" style = {{backgroundImage: profilePicImg}}/>
 			    <h4>{displayName}</h4>
                 <div className = 'containerEvents'>
                     <p>Events list goes here</p>
