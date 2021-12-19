@@ -32,7 +32,7 @@ function ArticleCreation({userID}) {
             Image:image,
             Text:text,
             Organization:name,
-            Creator:userID
+            creator:userID
         })
         
     }
