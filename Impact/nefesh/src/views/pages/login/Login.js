@@ -1,4 +1,3 @@
-import { db } from "../../../functions/firebase/config"
 import React from "react"
 import { authentication } from "../../../functions/firebase/config"
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
@@ -13,7 +12,6 @@ function Login() {
         console.log(re.user.displayName)
         console.log(re.user.email)
         console.log(re.user.photoURL)
-        let userEmail = re.user.email
       })
       .catch((err) => {
         console.log(err)

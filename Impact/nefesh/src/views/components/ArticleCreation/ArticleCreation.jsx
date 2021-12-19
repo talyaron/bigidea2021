@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './ArticleCreation.css';
-import ''
-
-function ArticleCreation() {
+import {doc, setDoc} from "firebase/firestore"
+import {db} from "../../../functions/firebase/config"
+let role = "superAdmin"
+function ArticleCreation({userID}) {
     const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState("")
     const [name, setName] = useState("")
@@ -10,7 +11,7 @@ function ArticleCreation() {
     const [image, setImage] = useState("")
     const [date, setDate] = useState("")
 
-
+    
     const togglePopup = () => {
         setIsOpen(!isOpen);
 
@@ -23,11 +24,17 @@ function ArticleCreation() {
         let text = ev.target.elements.text.value;
         let image = ev.target.elements.image.value;
         let date = ev.target.elements.date.value;
-        setTitle(title);
-        setName(name);
-        setText(text);
-        setImage(image);
-        setDate(date);
+        
+        console.log("clicked")
+        setDoc(doc(db,"events",title),{
+            Title:title,
+            Date:date,
+            Image:image,
+            Text:text,
+            Organization:name,
+            Creator:userID
+        })
+        
     }
 
 

@@ -8,7 +8,7 @@ function App(){
 
     const [events, setEvents] = useState([]);
     let filterType = 'newest';
-    const eventsRef = collection(db, "events", "f5AIE25ec8IPxC9TBAVk", "basic-events");
+    const eventsRef = collection(db, "events");
     let q = query(eventsRef);
 
     useEffect(() => {

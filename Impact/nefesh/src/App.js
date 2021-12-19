@@ -21,7 +21,7 @@ import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from "firebase/firestore"
 import { db } from "./functions/firebase/config"
 
-
+let userID=""
 let role = "superAdmin"
 let permissionedRole
 const auth = getAuth();
@@ -58,6 +58,7 @@ function App() {
                             userIcon: user.photoURL,
                             userPref:["null"]
                         })
+                        userID=uid
                     }
                 })
             } else {
@@ -89,13 +90,12 @@ function App() {
                 <Route path="401" element={<Unauthorised />} />
                 <Route path="MainPage" element={<MainPage/>} />
                 <Route path="ContactUs" element={<ContactUs/>} />
-                <Route path="ArticleCreation" element = {<ArticleCreation/>} />
+                <Route path="ArticleCreation" element = {<ArticleCreation userID={userID}/>} />
                 <Route path="ProfilePage" element = {<ProfilePage/>} />
 
             </Routes>
         </BrowserRouter>
     )
 }
-
 
 export default App;
