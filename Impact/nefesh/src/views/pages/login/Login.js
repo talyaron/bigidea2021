@@ -1,6 +1,6 @@
-import { db } from "../../functions/firebase/config"
+import { db } from "../../../functions/firebase/config"
 import React from "react"
-import { authentication } from "../../functions/firebase/config"
+import { authentication } from "../../../functions/firebase/config"
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 function Login() {
 

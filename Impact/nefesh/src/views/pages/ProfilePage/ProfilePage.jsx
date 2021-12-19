@@ -1,4 +1,4 @@
-import AdminPage from '../AdminPage/AdminPage';
+import AdminPage from '../../components/AdminPage/AdminPage';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../../functions/firebase/config';
 import { doc, getDoc, onSnapshot } from 'firebase/firestore';

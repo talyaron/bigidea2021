@@ -22,7 +22,7 @@ import { doc, setDoc, getDoc } from "firebase/firestore"
 import { db } from "./functions/firebase/config"
 
 
-let role = "ole"
+let role = "superAdmin"
 let permissionedRole
 const auth = getAuth();
 

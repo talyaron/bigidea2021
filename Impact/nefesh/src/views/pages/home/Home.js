@@ -1,5 +1,5 @@
 import React from "react";
-import { isAuthorised } from "../../functions/general";
+import { isAuthorised } from "../../../functions/general";
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 
