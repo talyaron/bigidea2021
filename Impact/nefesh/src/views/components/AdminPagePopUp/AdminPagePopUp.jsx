@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './AdminPage.css';
+import './AdminPagePopUp.css';
 import { db } from '../../../functions/firebase/config';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
@@ -131,13 +131,13 @@ const AdminPage = (props) => {
 	}
 
 	return (
-		<div className='popup-box'>
-			<div className='box'>
-				<span className='close-icon' onClick={props.handleClose}>
+		<div className='popupAdmin-box'>
+			<div className='adminBox'>
+				<span className='closeAdmin-icon' onClick={props.handleClose}>
 					x
 				</span>
 				{props.content}
-				<div className='buttonContainer'>
+				<div className='adminButtonContainer'>
 					<button id='changeDisplayName' onClick={handleChangeDisplayName}>
 						Change Display Name
 					</button>

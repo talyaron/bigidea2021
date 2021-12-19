@@ -1,4 +1,5 @@
-import './App.css';
+import './app.css';
+import './views/components/AdminPagePopUp/AdminPagePopUp'
 import {
     BrowserRouter,
     Routes,

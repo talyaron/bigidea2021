@@ -1,4 +1,4 @@
-import AdminPage from '../../components/AdminPage/AdminPage';
+import AdminPagePopUp from '../../components/AdminPagePopUp/AdminPagePopUp';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../../functions/firebase/config';
 import { doc, getDoc, onSnapshot } from 'firebase/firestore';
@@ -53,7 +53,7 @@ function ProfilePage() {
 				/>
 			) : null}
 			{isOpen && (
-				<AdminPage
+				<AdminPagePopUp
 					content={
 						<>
 							<b>{displayName}</b>
