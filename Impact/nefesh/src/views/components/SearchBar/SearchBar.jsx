@@ -1,17 +1,38 @@
-import './ContactUs.css';
-function SearchBar (){
+import './SearchBar.css';
 
-return(
-<div>
-<div class="topnav">
-  <div class="search-container">
-    <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search"/>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-</div></div>
-)
+const tags = ['aaa','bbb']
+
+function SearchBar() {
+  function getTarget(ev) {
+    // var input, filter, ul, li, a, i, txtValue;
+    // input = ev.elements.target.
+    // filter = input.value.toUpperCase();
+    //  ul = document.getElementById("myUL");
+    // li = ul.getElementsByTagName('li');  
+    //   for (i = 0; i < li.length; i++) {
+    //     a = li[i].getElementsByTagName("a")[0];
+    //     txtValue = a.textContent || a.innerText;
+    //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    //       li[i].style.display = "";
+    //     } else {
+    //       li[i].style.display = "none";
+    //     }
+    //   }
+
+    console.dir(ev.target.value)
+  }
+  return (
+    <div>
+      <input type="text" list="data" onChange={getTarget} />
+
+      <datalist id="data">
+        {tags.map((item, key) =>
+          <option key={key} value={item} />
+        )}
+      </datalist>
+
+    </div>
+  )
 }
 
 export default SearchBar;

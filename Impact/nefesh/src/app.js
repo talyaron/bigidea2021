@@ -13,7 +13,7 @@ import Unauthorised from "./pages/401/401.js"
 import Hi from "./pages/hi/Hi.js"
 import ContactUs from "./views/components/ContactUs/ContactUs"
 import MainPage from "./views/pages/MainPage/MainPage"
-
+import SearchBar from './views/components/SearchBar/SearchBar';
 function App() {
     return (
         <BrowserRouter>
@@ -23,6 +23,7 @@ function App() {
                 <Link to="/hi">Hi  </Link>
                 <Link to ="/contactUs">Contact Us  </Link>
                 <Link to ="/mainPage">Main Page</Link>
+                <Link to ="/searchBar">Search Bar</Link>
             </nav>
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -33,6 +34,7 @@ function App() {
                 <Route path="401" element={<Unauthorised />} />
                 <Route path="contactUs" element={<ContactUs/>} />
                 <Route path ="mainPage" element ={<MainPage/>} />
+                <Route path ="searchBar" element ={<SearchBar/>} />
             </Routes>
         </BrowserRouter>
     )
