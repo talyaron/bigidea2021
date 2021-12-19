@@ -43,11 +43,16 @@ function App() {
                         //if user exist in db get the user from DB and get the role 
                         console.log("user does not exist")
                         setDoc(doc(db, "users", uid), {
+                            age:"null",
                             displayName: user.displayName,
                             email: user.email,
-                            userIcon: user.photoURL,
+                            location:"null",
+                            organization:"null",
                             role: "ole",
-                            userID:uid
+                            sex:"null",
+                            userID:uid,
+                            userIcon: user.photoURL,
+                            userPref:["null"]
                         })
                     }
                 })
