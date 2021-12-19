@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './AdminPage.css';
-import { db } from '../../functions/firebase/config';
+import { db } from '../../../functions/firebase/config';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
 
