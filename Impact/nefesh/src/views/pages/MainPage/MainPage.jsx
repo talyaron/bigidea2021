@@ -5,7 +5,7 @@ import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestor
 import { isAuthorised } from "../../../functions/general";
 import { useNavigate } from "react-router-dom";
 
-function MainPage({role}) {
+function MainPage({ role }) {
 
     const [events, setEvents] = useState([]);
     let filterType = 'newest';
@@ -37,6 +37,10 @@ function MainPage({role}) {
             console.error('on use effect in MainPage:')
             console.error(e)
         });
+
+        return () => {
+            unsubscribe();
+        }
 
     }, [])
 
