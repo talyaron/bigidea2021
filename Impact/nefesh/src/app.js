@@ -21,7 +21,7 @@ import { db } from "./functions/firebase/config"
 let role = "ole"
 let permissionedRole
 const auth = getAuth();
-
+// lfrg
 function App() {
 
     const [userState, setUserState] = useState({})
