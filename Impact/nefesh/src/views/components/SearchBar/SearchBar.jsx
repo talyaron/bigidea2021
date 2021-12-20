@@ -1,35 +1,47 @@
 import './SearchBar.css';
+import { useState, useEffect} from 'react';
+import { db } from '../../../functions/firebase/config';
+import { collection, query, where, orderBy, onSnapshot} from 'firebase/firestore';
 
-const tags = ['aaa','bbb']
+const tags = ['newest','popular', 'recent'];
+const tempArticles= ["NEWEST", "POPULAR", 'RECENT'];
+
 
 function SearchBar() {
-  function getTarget(ev) {
-    // var input, filter, ul, li, a, i, txtValue;
-    // input = ev.elements.target.
-    // filter = input.value.toUpperCase();
-    //  ul = document.getElementById("myUL");
-    // li = ul.getElementsByTagName('li');  
-    //   for (i = 0; i < li.length; i++) {
-    //     a = li[i].getElementsByTagName("a")[0];
-    //     txtValue = a.textContent || a.innerText;
-    //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-    //       li[i].style.display = "";
-    //     } else {
-    //       li[i].style.display = "none";
-    //     }
-    //   }
+   var searchOption;
+   const [articles, setArticles]= useState("")
 
-    console.dir(ev.target.value)
+  
+  function getTarget(ev) {
+    ev.preventDefault();
+    searchOption= ev.target.value;
+    console.log(searchOption);
+    if(searchOption=== 'newest'){
+     setArticles(tempArticles[0]);
+      
+
+    }
+    else if(searchOption=== 'popular'){
+      setArticles(tempArticles[1])
+      
+    }
+    else if(searchOption=== 'recent'){
+      setArticles(tempArticles[2])
+
+    }
+
+  
   }
   return (
     <div>
-      <input type="text" list="data" onChange={getTarget} />
+      <input type="text" id= "searchBar" name= "searchBar" list="data" onChange={getTarget} />
 
       <datalist id="data">
         {tags.map((item, key) =>
           <option key={key} value={item} />
         )}
       </datalist>
+          <div name= "articles">{articles}</div>
 
     </div>
   )
