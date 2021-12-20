@@ -1,5 +1,6 @@
 body{
     background-color: var(--backgroundcolor1);
+    text-align: center;
 }
 .userIcon{
     background-color: var(--buttoncolor);
@@ -7,22 +8,73 @@ body{
     height: 50px;
     border-radius: 25px;
     position: relative;
-    left: 90%;
+    left: 70%;
 }
 .topBar{
     background-color: var(--buttoncolor);
-    width: 95%;
-    height: 20px;
-    border-radius: 5px;
+    width: 50%;
+    height: 50px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     position: relative;
     top: 2vh;
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    margin: 10px auto;
 }
 .middle{
     background-color: var(--backgroundcolor2);
-    width: 95%;
-    height: 500px;
+    width: 50%;
+    height: 600px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    margin: 10px auto;
 }
-
-.contaienr{
-    
+.selectedbutton{
+    background-color: rgb(75, 95, 250);
+    color: white;
+    width: 150px;
+    border-radius: 10px;
+    height: 30px;
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: center;
+    margin: 10px 10px auto;
+    text-align: center;
+}
+.unselectedbutton{
+    background-color: white;
+    color: var(--buttoncolor);
+    width: 150px;
+    border-radius: 10px;
+    height: 30px;
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: center;
+    margin: 10px 10px 10px auto;
+    text-align: center;
+}
+.article{
+    background-color: var(--buttoncolor);
+    color: white;
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    position: relative;
+    left: 85%;
+    top: 93%;
+}
+.contact{
+    background-color: var(--buttoncolor);
+    color: white;
+    width: 50%;
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
 }

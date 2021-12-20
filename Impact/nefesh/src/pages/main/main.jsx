@@ -5,8 +5,16 @@ function Page(){
     return(
         <div className="container">
             <div className="userIcon"></div>
-            <div className="topBar"></div>
-            <div className="middle"></div>
+            <div className="topBar">
+                <button className="selectedbutton">all</button>
+                <button className="unselectedbutton">preferance 1</button>
+                <button className="unselectedbutton">preferance 2</button>
+                <button className="unselectedbutton">preferance 3</button>
+            </div>
+            <div className="middle">
+                <button className="article">add article</button>
+            </div>
+            <button type="submit" className="contact">Contact Us</button>
         </div>
     )
 }
