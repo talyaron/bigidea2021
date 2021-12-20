@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './ArticleCreation.css';
-import {doc, setDoc} from "firebase/firestore"
+import {collection, addDoc} from "firebase/firestore"
 import {db} from "../../../functions/firebase/config"
 let role = "superAdmin"
 function ArticleCreation({userID}) {
@@ -26,7 +26,7 @@ function ArticleCreation({userID}) {
         let date = ev.target.elements.date.value;
         
         console.log("clicked")
-        setDoc(doc(db,"events",title),{
+        addDoc(collection(db,"events"),{
             Title:title,
             Date:date,
             Image:image,
