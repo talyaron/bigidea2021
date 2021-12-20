@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './AdminPagePopUp.css';
 import { db } from '../../../functions/firebase/config';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { userIDAdm } from '../../pages/AdminPage/AdminPage';
 
+let tempUserIDAdm = userIDAdm;
 
 const AdminPagePopUp = (props) => {
+
+	console.log(tempUserIDAdm);
+
 	const userIDRef = 'pvfu0JLfWT8omzrVMPqY'; // this will change based on the profile page pulled rn
 	const userDocRef = doc(db, 'users', 'pvfu0JLfWT8omzrVMPqY');
 
@@ -128,6 +133,7 @@ const AdminPagePopUp = (props) => {
 	}
 	function handleBanUser(ev) {
 		console.log(ev, 'handleBanUser');
+		console.log(tempUserIDAdm()); //log var
 	}
 
 	return (
