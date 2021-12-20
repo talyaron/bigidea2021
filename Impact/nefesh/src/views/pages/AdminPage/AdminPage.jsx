@@ -2,15 +2,22 @@ import './AdminPage.css';
 import AdminPagePopUp from '../../components/AdminPagePopUp/AdminPagePopUp';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../../functions/firebase/config';
-import { onSnapshot, collection, query } from 'firebase/firestore';
+import { onSnapshot, collection, query, getDoc } from 'firebase/firestore';
 
 var isAdmin = true;
+let userIDAdmin;
 
 function AdminPage() {
 	const [displayName, setDisplayName] = useState('displayName');
 	const [userID, setUserID] = useState('ID');
 	const [isOpen, setIsOpen] = useState(false);
-	const togglePopup = () => {
+	function togglePopup(ev) {
+
+		//get ID for changing settings
+		userIDAdmin = ev.target.innerHTML;
+		console.log(userIDAdmin);
+
+		//open popup
 		setIsOpen(!isOpen);
 	};
 
@@ -37,15 +44,14 @@ function AdminPage() {
 					{Names.map((names) => {
 						return (
 							<div key={names.userID} className='nametag'>
-								<button
+								<div
 									value='User Settings'
-									onClick={togglePopup}
 									className='adminButton'
 									name='userSelect'>
 									<h4>{names.displayName}</h4>
                                     <h5>{names.email}</h5>
-									<h5>{names.userID}</h5>
-								</button>
+									<button onClick={togglePopup} name = "userButtonID">{names.userID}</button>
+								</div>
 							</div>
 						);
 					})}
@@ -66,4 +72,9 @@ function AdminPage() {
 	);
 }
 
+function userIDAdm() {
+	const userIDAdm = userIDAdmin;
+	return userIDAdm;
+}
+export { userIDAdm };
 export default AdminPage;
