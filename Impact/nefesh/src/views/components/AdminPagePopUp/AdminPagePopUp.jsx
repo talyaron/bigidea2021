@@ -4,7 +4,7 @@ import { db } from '../../../functions/firebase/config';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
 
-const AdminPage = (props) => {
+const AdminPagePopUp = (props) => {
 	const userIDRef = 'pvfu0JLfWT8omzrVMPqY'; // this will change based on the profile page pulled rn
 	const userDocRef = doc(db, 'users', 'pvfu0JLfWT8omzrVMPqY');
 
@@ -159,4 +159,4 @@ const AdminPage = (props) => {
 	);
 };
 
-export default AdminPage;
+export default AdminPagePopUp;
