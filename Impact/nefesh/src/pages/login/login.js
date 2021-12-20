@@ -12,6 +12,8 @@ function Login() {
                 <input className='input' type="text" name="text" id="text" />
                 <br />
                 <button classname= 'button'>Submit</button>
+                <br />
+                <button classname= 'button'>Sign in with Google</button>
             </form>
        
       </div>
