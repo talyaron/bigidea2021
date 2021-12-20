@@ -3,7 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;   
-    flex-direction: column  ; 
+    flex-direction: column;
+    --backgroundcolor1:#152238;
 }
 .form{
     display:flex;
@@ -13,22 +14,21 @@
     position: relative;
     top:30vh;
     transform: translateY(-50%);
+    --backgroundcolor2:#23395D;
 }
 
 .input, textarea{
     border-radius: 10px;
     margin-bottom: 20px;
-    border:1px solid gray;
+    border:1px solid;
+    background-color: var(--buttoncolor#4A90E2);
 }
 
 .label{
-    background-color: whitesmoke;
     font-size: larger;
 }
 
 .header{
     font-size: xx-large;
-    background-color: slategray;
     width: 100%;
 }
-
