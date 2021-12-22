@@ -7,8 +7,9 @@ import { addDoc } from "@firebase/firestore";
 
 function Login() {
 
+  console.log("activates stage 1");
   const [disableInput, setDisableInput] = useState(false);
-  const [visibleSignUp, setVisibleSignUp] = useState('none');
+  const [registerVisible, setRegisterVisible] = useState(false);
   const usernameList = []; 
   //Replaces using database of usernames 
   //as a reference since it doesn't exist yet
@@ -30,13 +31,14 @@ function Login() {
   }
 
   function SignUp(ev){
-    alert("activates");
+    alert("activates stage 2");
     setDisableInput(true);
-    setVisibleSignUp('block');
+    setRegisterVisible(true);
   }
 
   function enterAccountDetails(ev){
     console.log(ev);//To see structure of ev
+    alert("activates stage 3");
     let userResult = usernameQualifies(ev.username.value);
     let userPreference = ev.preferences.value;
     if(userResult === 1){
@@ -64,58 +66,6 @@ function Login() {
   }
 
 
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //yoav's attempt at writing his function
 
   /*
@@ -129,7 +79,23 @@ function Login() {
   */
 
 
-
+/* Need to figure out how to get this to display*/
+    const AccountRegister = () => (
+    <div className="RegisterAccount">
+      <form className="AccountData" onSubmit={enterAccountDetails}>
+        <input type = "text" placeholder = "Enter a username" id = "username">Username, make into a text box</input>
+        <select placeholder = "Choose a preference" id = "preferences">
+          <option value="A"></option>
+          <option value="B"></option>
+          <option value="C"></option>
+          <option value="D"></option>
+        </select>
+        <input type = "" placeholder = "" id = "location">Location, optional, make a geolocation</input>
+        <input type = "" placeholder = "" id = "portrait">Profile pic, optional, make an input link or if possible a fancy file drag-n-drop</input>
+        <input type="submit">Submit when done</input>
+      </form>
+    </div>
+    )
 
 
 
@@ -155,20 +121,11 @@ function Login() {
       <button onClick={SignUp} disabled={disableInput}>Sign Up for New Account</button>
     </form>
 
-    <div className="RegisterAccount">
-      <form className="AccountData" onSubmit={enterAccountDetails}>
-        <input type = "text" placeholder = "Enter a username" id = "username">Username, make into a text box</input>
-        <select placeholder = "Choose a preference" id = "preferences">
-          <option value="A"></option>
-          <option value="B"></option>
-          <option value="C"></option>
-          <option value="D"></option>
-        </select>
-        <input type = "" placeholder = "" id = "location">Location, optional, make a geolocation</input>
-        <input type = "" placeholder = "" id = "portrait">Profile pic, optional, make an input link or if possible a fancy file drag-n-drop</input>
-        <input type="submit">Submit when done</input>
-      </form>
+    <div>
+      { registerVisible ? <AccountRegister /> : null }
     </div>
+    
+
   </div>)
 }
 
