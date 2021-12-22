@@ -12,14 +12,13 @@ function AdminPage() {
 	const [userID, setUserID] = useState('ID');
 	const [isOpen, setIsOpen] = useState(false);
 	function togglePopup(ev) {
-
 		//get ID for changing settings
 		userIDAdmin = ev.target.innerHTML;
 		console.log(userIDAdmin);
 
 		//open popup
 		setIsOpen(!isOpen);
-	};
+	}
 
 	const namesRef = collection(db, 'users');
 	const [Names, setNames] = useState([]);
@@ -49,8 +48,10 @@ function AdminPage() {
 									className='adminButton'
 									name='userSelect'>
 									<h4>{names.displayName}</h4>
-                                    <h5>{names.email}</h5>
-									<button onClick={togglePopup} name = "userButtonID">{names.userID}</button>
+									<h5>{names.email}</h5>
+									<button onClick={togglePopup} name='userButtonID'>
+										{names.userID}
+									</button>
 								</div>
 							</div>
 						);
