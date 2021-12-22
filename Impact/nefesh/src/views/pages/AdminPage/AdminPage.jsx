@@ -50,7 +50,7 @@ function AdminPage() {
 	let q = query(namesRef);
 
 	useEffect(() => {
-		//snapshot all names and set them to 'Names'
+        //snapshot all names and set them to 'Names'
 		const namesQuery = onSnapshot(q, (snapshot) => {
 			let list = [];
 			snapshot.forEach((namesDB) => {
