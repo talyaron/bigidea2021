@@ -2,6 +2,7 @@ import Button from './components/Buttons/button';
 import Page from './pages/main/main';
 import Login from './pages/login/login';
 import Createev from './pages/create event/createev';
+import Userpage from './pages/User/user';
 import './App.css';
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
       {/* <Login/> */}
       {/* <Page/> */}
       {/* <Button/> */}
-      <Createev/>
+      <Userpage/>
     </div>
   );
 }
