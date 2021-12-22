@@ -21,18 +21,17 @@ function AdminPage() {
 
 		//this is where you were fixing the code trying to get the username to display on the popup
 		let ref = userIDAdm();
-		const userSpecRef = getDoc(db, 'users', ref);
-        let userNameTemp = userSpecRef.data().displayName
-		setDisplayName(userNameTemp);
+		const tempUsername = getDoc(db, 'users', ref);
+		setDisplayName(tempUsername.data().displayName);
 		setUserID(userIDAdm());
-	}
+	};
 
 	const namesRef = collection(db, 'users');
 	const [Names, setNames] = useState([]);
 	let q = query(namesRef);
 
 	useEffect(() => {
-		//snapshot all names and set them to 'Names'
+        //snapshot all names and set them to 'Names'
 		const namesQuery = onSnapshot(q, (snapshot) => {
 			let list = [];
 			snapshot.forEach((namesDB) => {
