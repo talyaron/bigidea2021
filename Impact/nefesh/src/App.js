@@ -1,8 +1,8 @@
-import Superadmin from './pages/Superadmin/Superadmin'
-import Page from './pages/main/main'
-import Login from './pages/login/login'
+import Superadmin from './CSSpages/Superadmin/Superadmin'
+import Page from './CSSpages/main/main'
+import Login from './CSSpages/login/login'
 import Button from './components/Buttons/button';
-import Createev from './pages/create event/createev';
+import Createev from './CSSpages/create event/createev';
 import './App.css';
 
 function App() {
