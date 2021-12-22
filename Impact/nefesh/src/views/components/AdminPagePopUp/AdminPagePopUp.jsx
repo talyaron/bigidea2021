@@ -10,8 +10,8 @@ const AdminPagePopUp = (props) => {
 
 	console.log(tempUserIDAdm);
 
-	const userIDRef = 'pvfu0JLfWT8omzrVMPqY'; // this will change based on the profile page pulled rn
-	const userDocRef = doc(db, 'users', 'pvfu0JLfWT8omzrVMPqY');
+	let userIDRef = tempUserIDAdm(); // this will change based on the profile page pulled rn
+	let userDocRef = doc(db, 'users', userIDRef);
 
 	useEffect(() => {
 		// console.log(getDoc(userDocRef), 'hi');
