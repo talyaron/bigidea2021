@@ -42,7 +42,7 @@ function App() {
             <button onClick={test}>Hi</button>
             <div className="userInterfaceContainer">
                 <form className="filterEvents">
-                    <label for="eventFilterType">Sort out the events displayed:</label>
+                    <label htmlFor="eventFilterType">Sort out the events displayed:</label>
                     <select name="eventFilterType" id="eventFilterType" 
                     onChange={changeEventFilter}
                     >
