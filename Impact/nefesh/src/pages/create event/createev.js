@@ -4,6 +4,7 @@ function CreateEvent() {
     return(
         <div classname= 'createev'>
             <header classname= 'header'>Create Event</header>
+            
             <form className='form' onSubmit='handleSubmit(event)'>
                 <label className='label' for="text">Event Name:</label>
                 <input className='input' type="text" name="text" id="text" />
