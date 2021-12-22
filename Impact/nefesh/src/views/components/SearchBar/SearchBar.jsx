@@ -1,6 +1,7 @@
 import './SearchBar.css';
 import { useState } from 'react';
-import { getDatabase, ref, onValue, collection, query, where, getDocs } from "firebase/database";
+import { getDatabase, ref, onValue, query, db } from "firebase/database";
+import { collection, getDocs, where, getFirestore} from '@firebase/firestore';
 
 
 const tags = ['newest','popular', 'recent'];
@@ -10,22 +11,32 @@ const tags = ['newest','popular', 'recent'];
 
 function SearchBar() {
    var searchOption;
+   const db = getFirestore();
    const [articles, setArticles]= useState("")
-   var arr=[];
+   const [hidden, setHidden] = useState(true)
+   
 
-  
+  async function getFilter(ev){
+    ev.preventDefault();
+    const arr= [];
+    setHidden(false)
+    console.log("hi")
+  }
   async function getTarget(ev) {
+    const arr2=[];
     if (ev.key === 'Enter') {
     ev.preventDefault();
     searchOption= ev.target.value;
     console.log(searchOption);
-    const q = query(collection(db, "cities"), where("capital", "==", true));
-
+    const q = query(collection(db, "events"), where("Title", "==", searchOption));
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
+    querySnapshot.forEach((doc) => {  
+      // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
+      arr2.push(doc.id);
     });
-    console.log(arr)
+    
+    console.log(arr2)
 
     }
 
@@ -42,15 +53,14 @@ function SearchBar() {
   }
   return (
     <div>
-      <input type="text" name= "filterData" list="data" onKeyPress={getTarget} />
-
-      {/* <datalist id="data">
+      
+      <input type="text" name= "filterData" list="data" onClick={getFilter} />
+        <datalist id="data">
         {tags.map((item, key) =>
           <option key={key} value={item} />
         )}
       </datalist>
-          <div name= "articles"></div> */}
-
+      <input type="text" name= "searchBar" hidden= {hidden} onKeyPress={getTarget} />
     </div>
   )
 }
