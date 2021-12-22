@@ -89,7 +89,7 @@ function App() {
                 <Route path="hi" element={<Hi />} />
                 <Route path="404" element={<Error />} />
                 <Route path="401" element={<Unauthorised />} />
-                <Route path="MainPage" element={<MainPage/>} />
+                <Route path="MainPage" element={<MainPage />} />
                 <Route path="ContactUs" element={<ContactUs/>} />
                 <Route path="ArticleCreation" element = {<ArticleCreation userID={userID}/>} />
                 <Route path="ProfilePage" element = {<ProfilePage/>} />
