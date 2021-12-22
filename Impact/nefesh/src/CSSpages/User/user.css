@@ -21,6 +21,10 @@ body{
     padding-left: 35px;
     border-radius: 10px 10px 10px 10px;;
 }
-.input{
-    color: violet;
+.grid{
+    display: table;
+}
+.child{
+    vertical-align: middle;
+    display:table-cell;
 }
