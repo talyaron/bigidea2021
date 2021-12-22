@@ -28,13 +28,13 @@ function App() {
         let eventListTemp=eventListState;
         let eventListComparedValues=[]
         eventFilter=ev.target.value
-        if (eventFilter===popular) {
-            eventListTemp.forEach((event)=>{
-                let valueTemp=event.views
-                eventListComparedValues
+        // if (eventFilter==="popular") {
+        //     eventListTemp.forEach((event)=>{
+        //         let valueTemp=event.views
+        //         eventListComparedValues
 
-            })
-        }       
+        //     })
+        // }       
     }
     return (
         <div>
