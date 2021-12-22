@@ -24,6 +24,8 @@
     display: flex;
     justify-content: left;
     color: white;
+    position: relative;
+    left: 25vw;
 }
 .username{
     color: white;
