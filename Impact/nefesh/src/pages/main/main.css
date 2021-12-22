@@ -50,9 +50,10 @@ body{
 .unselectedbutton{
     background-color: white;
     color: var(--buttoncolor);
-    width: 150px;
+    width: 262px;
+    height: 44px;
     border-radius: 10px;
-    height: 30px;
+    box-shadow: black 45 0 1 5;
     display:flex;
     flex-direction: row;
     flex-wrap:wrap;
@@ -61,20 +62,22 @@ body{
     text-align: center;
 }
 .article{
+    width: 262px;
+    height: 44px;
+    border-radius: 10px;
     background-color: var(--buttoncolor);
     color: white;
-    height: 30px;
-    width: 100px;
-    border-radius: 10px;
+    box-shadow: black 45 0 1 5;
     position: relative;
     left: 85%;
     top: 93%;
 }
 .contact{
+    width: 262px;
+    height: 44px;
+    border-radius: 10px;
     background-color: var(--buttoncolor);
     color: white;
-    width: 50%;
-    height: 50px;
-    border-radius: 10px;
+    box-shadow: black 45 0 1 5;
     text-align: center;
 }
