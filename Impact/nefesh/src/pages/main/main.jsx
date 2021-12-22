@@ -3,7 +3,7 @@ import "./main.css"
 
 function Page(){
     return(
-        <div className="container">
+        <div>
             <div className="userIcon"></div>
             <div className="topBar">
                 <button className="selectedbutton">all</button>
