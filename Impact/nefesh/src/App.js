@@ -3,6 +3,7 @@ import Page from './CSSpages/main/main'
 import Login from './CSSpages/login/login'
 import Button from './components/Buttons/button';
 import Createev from './CSSpages/create event/createev';
+import Userpage from './CSSpages/User/user'
 import './App.css';
 
 function App() {
@@ -11,9 +12,9 @@ function App() {
       {/* <Login/> */}
       {/* <Page/> */}
       {/* <Button/> */}
-      {/* <Superadmin/> */}
+      <Superadmin/>
       {/* <Createev/> */}
-      <Userpage/>
+      {/* <Userpage/> */}
     </div>
   );
 }
