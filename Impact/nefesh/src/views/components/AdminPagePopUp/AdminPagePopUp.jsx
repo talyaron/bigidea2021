@@ -4,13 +4,13 @@ import { db } from '../../../functions/firebase/config';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { userIDAdm } from '../../pages/AdminPage/AdminPage';
 
-let tempUserIDAdm = userIDAdm;
 
-const AdminPagePopUp = (props) => {
 
-	console.log(tempUserIDAdm);
+const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 
-	let userIDRef = tempUserIDAdm(); // this will change based on the profile page pulled rn
+	
+
+	let userIDRef = tempUserIDAdm; // this will change based on the profile page pulled rn
 	let userDocRef = doc(db, 'users', userIDRef);
 
 	useEffect(() => {
@@ -139,10 +139,10 @@ const AdminPagePopUp = (props) => {
 	return (
 		<div className='popupAdmin-box'>
 			<div className='adminBox'>
-				<span className='closeAdmin-icon' onClick={props.handleClose}>
+				<span className='closeAdmin-icon' onClick={handleClose}>
 					x
 				</span>
-				{props.content}
+				{content}
 				<div className='adminButtonContainer'>
 					<button id='changeDisplayName' onClick={handleChangeDisplayName}>
 						Change Display Name
