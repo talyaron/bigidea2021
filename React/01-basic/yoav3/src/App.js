@@ -9,6 +9,7 @@ import westHamLogo from './logos/113.png';
 
 //components
 
+let variable =0
 
 function App() {
 
@@ -18,6 +19,8 @@ function App() {
   const [game2Display, setGame2Display] = useState();
   const [game3Display, setGame3Display] = useState();
   const [baseGameDisplay, setBaseGameDisplay] = useState(game1Display);
+  const [team1,setTeam1]=useState("");
+  const [team2,setTeam2]=useState("")
 
   //Array of Teams with Data
   let arrayTeams = [];
@@ -154,7 +157,17 @@ function App() {
 
   function handleClick(){
     console.log("arrived");
-    setBaseGameDisplay(game1Display);
+    variable+=1
+    if (variable%3==0){
+      setTeam1("manUtd")
+    }
+    else if (variable%3==1){
+      setTeam1("man City")
+    }
+    else{
+      setTeam1("wolves")
+    }
+    
     
   }
 
@@ -182,8 +195,9 @@ function App() {
         <div className="winner">Who Will Win?</div>
         <div className="next" onClick = {handleClick}>Next</div>
         <div className="previous">Previous</div>    
-
-        <button onClick={() => setGame2Display((l) => !l)}>Next</button>
+        <div>{team1}</div>
+        
+        {/* <button onClick={() => setGame2Display((l) => !l)}>Next</button>
 
         <div style={{ display: game1Display ? "block" : "none" }}>
           <img className="logoRight" src={manCityLogo}></img>
@@ -228,9 +242,9 @@ function App() {
           <img className="logoRight" src={manUtdLogo}></img>
           <img className="logoLeft" src={wolvesLogo}></img>
           <div className="time">{game2.gameTime}</div>
-        </div>
+  </div> */}
 
-      </div>
+      </div> 
 
     </div>
 
