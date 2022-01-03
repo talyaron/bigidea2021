@@ -1,0 +1,114 @@
+
+.box{
+  position: relative;
+  left: 200px;
+  top:100px;
+  width: 500px;
+  height: 500px;
+  text-align: center;
+  background-color: rgb(233, 233, 215);
+  border: 5px solid black;
+}
+
+.line{
+  top: 10px;
+  position: relative;
+  width: 500px;
+  height: 1px;
+  background-color: black;
+} 
+
+.logoRight{
+  position: relative;
+  width: 50px;
+  height: 50px;
+  top: 30px;
+  left: 100px;
+}
+
+.logoLeft{
+  position:relative;
+  width: 50px;
+  height: 50px;
+  top: 30px;
+  right: 100px;
+}
+.time{
+  position: relative;
+  left: 215px;
+  top: -20px;
+  font-size: 30px;
+  width: 0px;
+  height: 0px;
+  color: blue;
+}
+
+.winner{
+  position: relative;
+  font-size: 20px;
+  top: 200px;
+}
+
+.option1{
+  position: relative;
+  top: 150px;
+  left: 20px;
+  font-size: 20px;
+  text-align: center;
+  width: 110px;
+  height: 60px;
+  border-radius: 8px;
+  border: 2px solid blue;
+  background-color: white;
+}
+
+.option2{
+  position: relative;
+  top: 85px;
+  left: 190px;
+  font-size: 20px;
+  text-align: center;
+  width: 110px;
+  height: 60px;
+  border-radius: 8px;
+  border: 2px solid blue;
+  background-color: white;
+}
+
+.option3{
+  position: relative;
+  top: 22px;
+  left: 360px;
+  font-size: 20px;
+  text-align: center;
+  width: 110px;
+  height: 60px;
+  border-radius: 8px;
+  border: 2px solid blue;
+  background-color: white;
+}
+
+.button2{
+  font-size: 20px;
+  background-color: white;
+  position: relative;
+  top:75px;
+}
+
+.next{
+  top: 360px;
+  left: 450px;
+  position: relative;
+  width: 0px;
+  height: 0px;
+  color: blue;
+}
+
+.previous{
+  top: 360px;
+  left: 10px;
+  position: relative;
+  width: 0px;
+  height: 0px;
+  color: blue;
+}
