@@ -9,10 +9,10 @@ import westHamLogo from './logos/113.png';
 
 //components
 
-let variable =0
+
 
 function App() {
-
+  let variable =0
   const [display, setDisplay] = useState();
   const [logo, setLogo] = useState();
   const [game1Display, setGame1Display] = useState();
