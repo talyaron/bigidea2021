@@ -154,7 +154,7 @@ function App() {
 
   function handleClick(){
     console.log("arrived");
-    setBaseGameDisplay(game2Display);
+    setBaseGameDisplay(game1Display);
     
   }
 
