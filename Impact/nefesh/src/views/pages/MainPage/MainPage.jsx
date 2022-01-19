@@ -8,7 +8,7 @@ function App(){
 
     const [events, setEvents] = useState([]);
     let filterType = 'newest';
-    const eventsRef = collection(db, "events", "f5AIE25ec8IPxC9TBAVk", "basic-events");
+    const eventsRef = collection(db, "events");
     let q = query(eventsRef);
 
     useEffect(() => {
@@ -38,22 +38,19 @@ function App(){
         //filter activates correctly, next stage is tested
         if (filter === "newest"){
             events.forEach((docDB) => {
-                console.log(docDB.eventDate);
-                sortingList.push(docDB.eventDate.seconds);
+                sortingList.push(docDB.Date);
                 sortingListTrue.push(docDB);
              });
 
         } else if (filter === "popular"){
             events.forEach((docDB) => {
-                console.log(docDB.views);
                 sortingList.push(docDB.views);
                 sortingListTrue.push(docDB);
              });
 
         } else if (filter === "recent"){
             events.forEach((docDB) => {
-                console.log(docDB.newestDate);
-                sortingList.push(docDB.createdDate.seconds);
+                sortingList.push(docDB.dateAdded.seconds);
                 sortingListTrue.push(docDB);
              });
 
@@ -88,10 +85,6 @@ function App(){
         //console.log(events);
     }
 
-    function goToProfile(ev){
-
-    }
-
     return(
         <div className="container">
             <div className="searchBar">
@@ -107,25 +100,23 @@ function App(){
                         <option value="recent">Most Recent</option>
                     </select>
                 </form>
-
-                <input type="button" className="goToProfile" onClick={goToProfile}></input>
             </div>
 
             <div className="eventMapContainer">
                 {events.map(event => {
                     return(
                         <div key={event.id} className='nametag'>
-                            <h1>{event.name}</h1>
-                            <div>This event will take place on: {event.eventDate.seconds}</div>
-                            <div>{event.views} many people have viewed this event</div>
+                            <h3>=======================================================</h3>
+                            <h1>{event.Title}</h1>
+                            <h2>{event.Image} **Not set up yet**</h2>
+                            <div>This event will take place on: {event.Date}</div>
+                            <div>Number of people who viewed this event: {event.views}</div>
+                            <div>Number of people attending this event: {event.views} **Not Set Up Yet**</div>
+                            <h3>=======================================================</h3>
                         </div>
                     )
                 })
                 }
-            </div>
-
-            <div className="profileContainer">
-                <input type="button" className="profile" onClick={goToProfile}></input>
             </div>
         </div>
 
