@@ -2,7 +2,8 @@ import './AdminPage.css';
 import AdminPagePopUp from '../../components/AdminPagePopUp/AdminPagePopUp';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../../functions/firebase/config';
-import { onSnapshot, collection, query, doc, getDoc } from 'firebase/firestore';
+import { onSnapshot, collection, query, doc, getDoc, where, getDocs } from 'firebase/firestore';
+import { async } from '@firebase/util';
 
 var isAdmin = true;
 let userIDAdmin;
@@ -47,6 +48,7 @@ function AdminPage() {
 
 	const namesRef = collection(db, 'users');
 	const [Names, setNames] = useState([]);
+	const [searchCont, setSearchCont] = useState('')
 	let q = query(namesRef);
 
 	useEffect(() => {
@@ -62,9 +64,26 @@ function AdminPage() {
 		});
 	}, []);
 
+	function handleSearchChange(ev){
+		ev.preventDefault()
+		let tempSearch = ev.target.value
+		setSearchCont(tempSearch)
+	}
+	async function handleSearch(){
+		let q = query(collection(db, 'users'), where ('userID', '<=', searchCont))
+		const userIDSnapshot = await getDocs(q);
+		userIDSnapshot.forEach((userDB) => {  
+		console.log(userDB.data());
+		});
+
+	}
+
 	return (
 		<div>
 			{isAdmin ? (
+				<div className='adminPage_container'>
+					<input type='text' placeholder='Enter User ID' name='adminPageSearch' id='search_box_AdminPage' onChange={handleSearchChange}/>
+					<button onClick={handleSearch} id='search_button_AdminPage'>Search</button>
 				<div className='eventMapContainer'>
 					{Names.map((names) => {
 						return (
@@ -82,6 +101,7 @@ function AdminPage() {
 							</div>
 						);
 					})}
+				</div>
 				</div>
 			) : null}
 			{isOpen && (
