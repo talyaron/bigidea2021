@@ -160,8 +160,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 					<button id='setRoleToOle' >
 						Current Role: 
 						Ole
-						<label class="switch" onClick={handleSetRoleToOle}>
-						toggleAttribute("false")
+						<label class="switch" onClick={handleSetRoleToOle} toggleAttribute= "false">
   						<input type="checkbox" value = "false"/>
   						<span class="slider round"></span>
 						</label>
