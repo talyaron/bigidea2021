@@ -1,83 +1,113 @@
-body{
-    background-color: var(--backgroundcolor1);
+.article
+{
+    font-size: 20px;
+    color: darkred;
+    font-family:  Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+    border: red;
+    background-color: royalblue;
+    border-width: 5px;
+    height: 60px;
+    width: 40px;
+    padding: 10px;
+    top: 90px;
+    left: 90px;
+    margin: 10px 10px;
+    text-decoration: none;
+
+    /*
+  needs
+    X font choices
+    X radius
+    X border
+    X height 
+    X width
+    X position (left and top)
+    X background color
+  
+  
+  */
+}
+
+.userInterfaceContainer{
+    border: 3px solid green;
+    background-color: ivory;
+    top: 0px;
+    padding: 5px;
+
+}
+
+.searchBar
+{
+        color: green;
+
+    /*
+    needs
+    X font choices
+    X radius
+    border
+    height 
+    width
+    position (left and top)
+    X background color
+    */
+
+}
+.button{
+    width: 500px;
+    height: 500px;
+    line-height: 500px;
+    border-radius: 25%;
+    font-size: 50px;
     text-align: center;
+    color:orange;
+    background: peru;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+
+    /*
+    needs
+        font choices
+        border
+        
+    */
 }
-.userIcon{
-    background-color: var(--buttoncolor);
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    position: relative;
-    left: 70%;
+.circle{
+    position: absolute;
+    display: flex;
+    border-radius: 45px;
+    background-color: red;
+    top: 5px;
+    right: 5px;
+    height: 45px;
+    width: 45px;
 }
-.topBar{
-    background-color: var(--buttoncolor);
-    width: 50%;
-    height: 50px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    position: relative;
-    top: 2vh;
-    display:flex;
-    flex-direction: row;
-    flex-wrap:wrap;
-    margin: 10px auto;
-}
-.middle{
-    background-color: var(--backgroundcolor2);
-    width: 50%;
-    height: 600px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    display:flex;
-    flex-direction: row;
-    flex-wrap:wrap;
-    margin: 10px auto;
-}
-.selectedbutton{
-    background-color: rgb(75, 95, 250);
-    color: white;
-    width: 150px;
-    border-radius: 10px;
+
+.profile{
+    position: absolute;
+    width: 80px;
     height: 30px;
-    display:flex;
-    flex-direction: row;
-    flex-wrap:wrap;
-    justify-content: center;
-    margin: 10px 10px auto;
+    bottom: 5px;
+    background-color: blue;
+}
+
+.box{
+    position: absolute;
+    width: 120px;
+    height: 50px;
     text-align: center;
+    right: 100px;
 }
-.unselectedbutton{
-    background-color: white;
-    color: var(--buttoncolor);
-    width: 262px;
-    height: 44px;
-    border-radius: 10px;
-    box-shadow: black 45 0 1 5;
-    display:flex;
-    flex-direction: row;
-    flex-wrap:wrap;
-    justify-content: center;
-    margin: 10px 10px 10px auto;
-    text-align: center;
-}
-.article{
-    width: 262px;
-    height: 44px;
-    border-radius: 10px;
-    background-color: var(--buttoncolor);
-    color: white;
-    box-shadow: black 45 0 1 5;
-    position: relative;
-    left: 85%;
-    top: 93%;
-}
-.contact{
-    width: 262px;
-    height: 44px;
-    border-radius: 10px;
-    background-color: var(--buttoncolor);
-    color: white;
-    box-shadow: black 45 0 1 5;
-    text-align: center;
-}
+
+/*
+    container
+    searchBar
+    userInterfaceContainer
+    filterEvents
+    eventFilterType
+    eventMapContainer
+    nametag
+
+
+
+*/
