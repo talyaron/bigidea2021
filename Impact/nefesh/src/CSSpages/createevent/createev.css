@@ -1,0 +1,45 @@
+.createev{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    flex-direction: column;
+    background-color:#152238;
+}
+
+form{
+    display:flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 600px;
+    height: 620px;
+    position: relative;
+    top:30vh;
+    transform: translateY(-50%);
+    background-color:#23395D;
+    border-radius: 10px;
+}
+
+.input, textarea{
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border:1px solid;
+}
+
+button{
+    color: white;
+    background-color: #4A90E2;
+    border-radius: 10px;
+}
+
+.label{
+    font-size: larger;
+    color: white;
+}
+
+header{
+    font-size: xx-large;
+    width: 100%;
+    color: white;
+    background-color:#23395D;
+}
