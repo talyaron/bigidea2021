@@ -42,9 +42,21 @@ function SearchBar() {
       console.log(doc.id, " => ", doc.data());
       arr2.push(doc.data());
     });
-    //if(tag= "popular"){
-    arr2.sort(function(a, b){return a-b});
-  //}
+    if(tag=== "popular"){
+      for (var i = 1; i < arr2.length; i++)
+      for (var j = 0; j < i; j++)
+          if (arr2[i] < arr2[j]) {
+            var x = arr2[i];
+            arr2[i] = arr2[j];
+            arr2[j] = x;
+          }
+  
+
+    console.log("ayyyoooo")
+  }
+  else if(tag=== "recent"){
+
+  };
     setArticles(arr2);
     console.log(arr2)
 
@@ -64,7 +76,7 @@ function SearchBar() {
   return (
     <div>
       
-      <input type="text" name= "filterData" list="data" onClick={getFilter} />
+      <input type="text" name= "filterData" list="data" onChange={getFilter} />
         <datalist id="data">
         {tags.map((item, key) =>
           <option key={key} value={item} />
