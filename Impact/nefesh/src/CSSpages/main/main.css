@@ -1,0 +1,83 @@
+body{
+    background-color: var(--backgroundcolor1);
+    text-align: center;
+}
+.userIcon{
+    background-color: var(--buttoncolor);
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    position: relative;
+    left: 70%;
+}
+.topBar{
+    background-color: var(--buttoncolor);
+    width: 50%;
+    height: 50px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+    top: 2vh;
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    margin: 10px auto;
+}
+.middle{
+    background-color: var(--backgroundcolor2);
+    width: 50%;
+    height: 600px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    margin: 10px auto;
+}
+.selectedbutton{
+    background-color: rgb(75, 95, 250);
+    color: white;
+    width: 150px;
+    border-radius: 10px;
+    height: 30px;
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: center;
+    margin: 10px 10px auto;
+    text-align: center;
+}
+.unselectedbutton{
+    background-color: white;
+    color: var(--buttoncolor);
+    width: 262px;
+    height: 44px;
+    border-radius: 10px;
+    box-shadow: black 45 0 1 5;
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: center;
+    margin: 10px 10px 10px auto;
+    text-align: center;
+}
+.article{
+    width: 262px;
+    height: 44px;
+    border-radius: 10px;
+    background-color: var(--buttoncolor);
+    color: white;
+    box-shadow: black 45 0 1 5;
+    position: relative;
+    left: 85%;
+    top: 93%;
+}
+.contact{
+    width: 262px;
+    height: 44px;
+    border-radius: 10px;
+    background-color: var(--buttoncolor);
+    color: white;
+    box-shadow: black 45 0 1 5;
+    text-align: center;
+}
