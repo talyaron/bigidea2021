@@ -12,7 +12,7 @@ const tags = ['newest','popular', 'recent'];
 function SearchBar() {
    var searchOption;
    const db = getFirestore();
-   const [articles, setArticles]= useState("")
+   const [articles, setArticles]= useState([])
    const [hidden, setHidden] = useState(true)
    
 
@@ -20,22 +20,23 @@ function SearchBar() {
     ev.preventDefault();
     const arr= [];
     setHidden(false)
-    console.log("hi")
+ 
   }
   async function getTarget(ev) {
-    const arr2=[];
+    let arr2= [];
     if (ev.key === 'Enter') {
     ev.preventDefault();
     searchOption= ev.target.value;
     console.log(searchOption);
-    const q = query(collection(db, "events"), where("Title", "==", searchOption));
+    const q = query(collection(db, "events"), where("Title", ">=", searchOption));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {  
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
-      arr2.push(doc.id);
+      arr2.push(doc.data());
     });
-    
+    arr2.sort(function(a, b){return a-b});
+    setArticles(arr2);
     console.log(arr2)
 
     }
@@ -61,6 +62,11 @@ function SearchBar() {
         )}
       </datalist>
       <input type="text" name= "searchBar" hidden= {hidden} onKeyPress={getTarget} />
+      {articles.map((article, i) => (
+    <li className="travelcompany-input" key={i}>
+        <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image}/> 
+    </li>
+))}
     </div>
   )
 }
