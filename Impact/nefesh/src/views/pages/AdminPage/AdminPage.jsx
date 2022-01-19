@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { db } from '../../../functions/firebase/config';
 import { onSnapshot, collection, query, doc, getDoc, where, getDocs } from 'firebase/firestore';
 import { async } from '@firebase/util';
+import { push } from 'firebase/database';
 
 var isAdmin = true;
 let userIDAdmin;
@@ -69,20 +70,29 @@ function AdminPage() {
 		let tempSearch = ev.target.value
 		setSearchCont(tempSearch)
 	}
+	
+	
 	async function handleSearch(){
-		let q = query(collection(db, 'users'), where ('userID', '<=', searchCont))
+		let q = query(collection(db, 'users'), where ('userID', '==', searchCont))
+		let tempArr = []
 		const userIDSnapshot = await getDocs(q);
 		userIDSnapshot.forEach((userDB) => {  
-		console.log(userDB.data());
+			console.log(userDB.data(),'user data');
+			
+			tempArr.push(userDB.data())
+			console.log(tempArr, 'tempArr')
+			
+		
 		});
-
+		setNames(tempArr)
+		console.log(Names, 'Names')
 	}
 
 	return (
 		<div>
 			{isAdmin ? (
 				<div className='adminPage_container'>
-					<input type='text' placeholder='Enter User ID' name='adminPageSearch' id='search_box_AdminPage' onChange={handleSearchChange}/>
+					<input type='text' placeholder='Enter Full User ID' name='adminPageSearch' id='search_box_AdminPage' onChange={handleSearchChange}/>
 					<button onClick={handleSearch} id='search_button_AdminPage'>Search</button>
 				<div className='eventMapContainer'>
 					{Names.map((names) => {
