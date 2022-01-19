@@ -9,17 +9,24 @@ const tags = ['newest','popular', 'recent'];
 
 
 
+
 function SearchBar() {
    var searchOption;
+   var filterOption;
    const db = getFirestore();
    const [articles, setArticles]= useState([])
    const [hidden, setHidden] = useState(true)
-   
+   const [tag, setTag] = useState("")    
 
   async function getFilter(ev){
     ev.preventDefault();
     const arr= [];
     setHidden(false)
+    filterOption= ev.target.value;
+    setTag(filterOption)
+    console.log(ev)
+    console.log(filterOption)
+
  
   }
   async function getTarget(ev) {
@@ -35,7 +42,9 @@ function SearchBar() {
       console.log(doc.id, " => ", doc.data());
       arr2.push(doc.data());
     });
+    //if(tag= "popular"){
     arr2.sort(function(a, b){return a-b});
+  //}
     setArticles(arr2);
     console.log(arr2)
 
