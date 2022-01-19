@@ -45,17 +45,31 @@ function SearchBar() {
     if(tag=== "popular"){
       for (var i = 1; i < arr2.length; i++)
       for (var j = 0; j < i; j++)
-          if (arr2[i].views < arr2[j].views) {
+          if (arr2[i].views > arr2[j].views) {
             var x = arr2[i];
             arr2[i] = arr2[j];
             arr2[j] = x;
           }
   
 
-    console.log("ayyyoooo")
   }
+  else if (tag=== "newest"){
+    for (var i = 1; i < arr2.length; i++)
+    for (var j = 0; j < i; j++)
+        if (arr2[i].Date > arr2[j].Date) {
+          var x = arr2[i];
+          arr2[i] = arr2[j];
+          arr2[j] = x;
+        }
+      }
   else if(tag=== "recent"){
-
+    for (var i = 1; i < arr2.length; i++)
+    for (var j = 0; j < i; j++)
+        if (arr2[i].dateAdded > arr2[j].dateAdded) {
+          var x = arr2[i];
+          arr2[i] = arr2[j];
+          arr2[j] = x;
+        }
   };
     setArticles(arr2);
     console.log(arr2)
