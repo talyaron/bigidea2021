@@ -45,7 +45,7 @@ function SearchBar() {
     if(tag=== "popular"){
       for (var i = 1; i < arr2.length; i++)
       for (var j = 0; j < i; j++)
-          if (arr2[i] < arr2[j]) {
+          if (arr2[i].views < arr2[j].views) {
             var x = arr2[i];
             arr2[i] = arr2[j];
             arr2[j] = x;
