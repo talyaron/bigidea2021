@@ -108,7 +108,7 @@ function App(){
                         <div key={event.id} className='nametag'>
                             <h3>=======================================================</h3>
                             <h1>{event.Title}</h1>
-                            <h2>{event.Image} **Not set up yet**</h2>
+                            <img src={event.Image} alt='Image Not Found'/>
                             <div>This event will take place on: {event.Date}</div>
                             <div>Number of people who viewed this event: {event.views}</div>
                             <div>Number of people attending this event: {event.views} **Not Set Up Yet**</div>
