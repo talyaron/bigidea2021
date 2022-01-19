@@ -55,9 +55,15 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 		});
 	}
 	function handleSetRoleToOle(ev) {
+		var label = document.querySelector('label');
+		var input = document.querySelector('input');
+
+		label.addEventListener("click", function(){
+			input.toggleAttribute('true');
+		})
+
 		console.log(ev, 'handleSetRoleToOle');
 		/* make sure to check that username is not taken */
-
 		updateDoc(userDocRef, {
 			role: 'ole',
 		}).then(async () => {
@@ -90,44 +96,45 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 			// show notification or error
 			granted ? showNotification() : showError();
 		});
+		
 	}
-	function handleSetRoleToOrgAdmin(ev) {
-		console.log(ev, 'handleSetRoleToOrgAdmin');
-		/* make sure to check that username is not taken */
+	// function handleSetRoleToOrgAdmin(ev) {
+	// 	console.log(ev, 'handleSetRoleToOrgAdmin');
+	// 	/* make sure to check that username is not taken */
 
-		updateDoc(userDocRef, {
-			role: 'orgAdmin',
-		}).then(async () => {
-			// create and show the notification
-			const showNotification = () => {
-				// create a new notification
-				const notification = new Notification('UPDATE', {
-					body: 'ROLE UPDATED TO orgADMIN',
-				});
-				// close the notification after 10 seconds
-				setTimeout(() => {
-					notification.close();
-				}, 10 * 1000);
-			};
-			// show an error message
-			const showError = () => {
-				// const error = document.querySelector('.error');
-				// error.style.display = 'block';
-				// error.textContent = 'You blocked the notifications';
-				alert('Notifications disabled');
-			};
-			// check notification permission
-			let granted = false;
-			if (Notification.permission === 'granted') {
-				granted = true;
-			} else if (Notification.permission !== 'denied') {
-				let permission = await Notification.requestPermission();
-				granted = permission === 'granted' ? true : false;
-			}
-			// show notification or error
-			granted ? showNotification() : showError();
-		});
-	}
+	// 	updateDoc(userDocRef, {
+	// 		role: 'orgAdmin',
+	// 	}).then(async () => {
+	// 		// create and show the notification
+	// 		const showNotification = () => {
+	// 			// create a new notification
+	// 			const notification = new Notification('UPDATE', {
+	// 				body: 'ROLE UPDATED TO orgADMIN',
+	// 			});
+	// 			// close the notification after 10 seconds
+	// 			setTimeout(() => {
+	// 				notification.close();
+	// 			}, 10 * 1000);
+	// 		};
+	// 		// show an error message
+	// 		const showError = () => {
+	// 			// const error = document.querySelector('.error');
+	// 			// error.style.display = 'block';
+	// 			// error.textContent = 'You blocked the notifications';
+	// 			alert('Notifications disabled');
+	// 		};
+	// 		// check notification permission
+	// 		let granted = false;
+	// 		if (Notification.permission === 'granted') {
+	// 			granted = true;
+	// 		} else if (Notification.permission !== 'denied') {
+	// 			let permission = await Notification.requestPermission();
+	// 			granted = permission === 'granted' ? true : false;
+	// 		}
+	// 		// show notification or error
+	// 		granted ? showNotification() : showError();
+	// 	});
+	// }
 	function handleSuspendUser(ev) {
 		console.log(ev, 'handleSuspendUser');
 	}
@@ -147,12 +154,23 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 					<button id='changeDisplayName' onClick={handleChangeDisplayName}>
 						Change Display Name
 					</button>
-					<button id='setRoleToOle' onClick={handleSetRoleToOle}>
-						Set Role To Ole
+
+					
+
+					<button id='setRoleToOle' >
+						Current Role: 
+						Ole
+						<label class="switch" onClick={handleSetRoleToOle}>
+						toggleAttribute("false")
+  						<input type="checkbox" value = "false"/>
+  						<span class="slider round"></span>
+						</label>
+						Organization Admin
 					</button>
-					<button id='setRoleToOrgAdmin' onClick={handleSetRoleToOrgAdmin}>
+
+					{/* <button id='setRoleToOrgAdmin' onClick={handleSetRoleToOrgAdmin}>
 						Set Role To Org Admin
-					</button>
+					</button> */}
 					<button id='suspendUser' onClick={handleSuspendUser}>
 						Suspend User *not in MVP
 					</button>
