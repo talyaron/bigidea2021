@@ -65,14 +65,49 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 
 
 		if (clicked === true) {
-			console.log("true", 'ole');
+			console.log("true", 'org admin');
 
+			console.log(ev, 'handleSetRoleToOrgAdmin');
+		/* make sure to check that username is not taken */
+
+		updateDoc(userDocRef, {
+			role: 'orgAdmin',
+		}).then(async () => {
+			// create and show the notification
+			const showNotification = () => {
+				// create a new notification
+				const notification = new Notification('UPDATE', {
+					body: 'ROLE UPDATED TO orgADMIN',
+				});
+				// close the notification after 10 seconds
+				setTimeout(() => {
+					notification.close();
+				}, 10 * 1000);
+			};
+			// show an error message
+			const showError = () => {
+				// const error = document.querySelector('.error');
+				// error.style.display = 'block';
+				// error.textContent = 'You blocked the notifications';
+				alert('Notifications disabled');
+			};
+			// check notification permission
+			let granted = false;
+			if (Notification.permission === 'granted') {
+				granted = true;
+			} else if (Notification.permission !== 'denied') {
+				let permission = await Notification.requestPermission();
+				granted = permission === 'granted' ? true : false;
+			}
+			// show notification or error
+			granted ? showNotification() : showError();
+		});
 
 		} else {
-			console.log("false", 'admin');
-		}
+			console.log("false", 'ole');
 
-		/* make sure to check that username is not taken */
+			console.log(ev, 'handleSetRoleToOle');
+			/* make sure to check that username is not taken */
 		updateDoc(userDocRef, {
 			role: 'ole',
 		}).then(async () => {
@@ -105,45 +140,11 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 			// show notification or error
 			granted ? showNotification() : showError();
 		});
+		}
+
 
 	}
-	// function handleSetRoleToOrgAdmin(ev) {
-	// 	console.log(ev, 'handleSetRoleToOrgAdmin');
-	// 	/* make sure to check that username is not taken */
 
-	// 	updateDoc(userDocRef, {
-	// 		role: 'orgAdmin',
-	// 	}).then(async () => {
-	// 		// create and show the notification
-	// 		const showNotification = () => {
-	// 			// create a new notification
-	// 			const notification = new Notification('UPDATE', {
-	// 				body: 'ROLE UPDATED TO orgADMIN',
-	// 			});
-	// 			// close the notification after 10 seconds
-	// 			setTimeout(() => {
-	// 				notification.close();
-	// 			}, 10 * 1000);
-	// 		};
-	// 		// show an error message
-	// 		const showError = () => {
-	// 			// const error = document.querySelector('.error');
-	// 			// error.style.display = 'block';
-	// 			// error.textContent = 'You blocked the notifications';
-	// 			alert('Notifications disabled');
-	// 		};
-	// 		// check notification permission
-	// 		let granted = false;
-	// 		if (Notification.permission === 'granted') {
-	// 			granted = true;
-	// 		} else if (Notification.permission !== 'denied') {
-	// 			let permission = await Notification.requestPermission();
-	// 			granted = permission === 'granted' ? true : false;
-	// 		}
-	// 		// show notification or error
-	// 		granted ? showNotification() : showError();
-	// 	});
-	// }
 	function handleSuspendUser(ev) {
 		console.log(ev, 'handleSuspendUser');
 	}
