@@ -1,7 +1,10 @@
 import "./MainPage.css";
 import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
-import { collection, query, where, orderBy, onSnapshot} from 'firebase/firestore';
+import { collection, getDocs,  query, where, orderBy, getFirestore, onSnapshot} from 'firebase/firestore';
+import { getDatabase, ref, onValue, query, db } from "firebase/database";
+
+
 
 
 function App(){
@@ -10,7 +13,83 @@ function App(){
     let filterType = 'newest';
     const eventsRef = collection(db, "events");
     let q = query(eventsRef);
-
+    function SearchBar() {
+        var searchOption;
+        var filterOption;
+        const db = getFirestore();
+        const [articles, setArticles]= useState([])
+        const [hidden, setHidden] = useState(true)
+        const [tag, setTag] = useState("")    
+     
+       async function getFilter(ev){
+         ev.preventDefault();
+         const arr= [];
+         setHidden(false)
+         filterOption= ev.target.value;
+         setTag(filterOption)
+         console.log(ev)
+         console.log(filterOption)
+     
+      
+       }
+       async function getTarget(ev) {
+         let arr2= [];
+         if (ev.key === 'Enter') {
+         ev.preventDefault();
+         searchOption= ev.target.value;
+         console.log(searchOption);
+         const q = query(collection(db, "events"), where("Title", ">=", searchOption));
+         const querySnapshot = await getDocs(q);
+         querySnapshot.forEach((doc) => {  
+           // doc.data() is never undefined for query doc snapshots
+           console.log(doc.id, " => ", doc.data());
+           arr2.push(doc.data());
+         });
+         if(tag=== "popular"){
+           for (var i = 1; i < arr2.length; i++)
+           for (var j = 0; j < i; j++)
+               if (arr2[i].views > arr2[j].views) {
+                 var x = arr2[i];
+                 arr2[i] = arr2[j];
+                 arr2[j] = x;
+               }
+       
+     
+       }
+       else if (tag=== "newest"){
+         for (var i = 1; i < arr2.length; i++)
+         for (var j = 0; j < i; j++)
+             if (arr2[i].Date > arr2[j].Date) {
+               var x = arr2[i];
+               arr2[i] = arr2[j];
+               arr2[j] = x;
+             }
+           }
+       else if(tag=== "recent"){
+         for (var i = 1; i < arr2.length; i++)
+         for (var j = 0; j < i; j++)
+             if (arr2[i].dateAdded > arr2[j].dateAdded) {
+               var x = arr2[i];
+               arr2[i] = arr2[j];
+               arr2[j] = x;
+             }
+       };
+         setArticles(arr2);
+         console.log(arr2)
+     
+         }
+     
+         //insert filters
+         //find articles with word in it, sort by which article has the word appear the most
+         //for each article 
+         // if newest --> check by date
+         // if recent --> check by creation date
+         // if popular --> check by most views
+     
+     
+     
+       
+       }}
     useEffect(() => {
         //sortMappedEvents(filterType);
 
@@ -87,9 +166,21 @@ function App(){
 
     return(
         <div className="container">
-            <div className="searchBar">
+             
+      <input type="text" name= "filterData" list="data" onChange={getFilter} />
+        <datalist id="data">
+        {tags.map((item, key) =>
+          <option key={key} value={item} />
+        )}
+      </datalist>
+      <input type="text" name= "searchBar" hidden= {hidden} onKeyPress={getTarget} />
+      {articles.map((article, i) => (
+    <li className="travelcompany-input" key={i}>
+        <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image}/> 
+    </li>
+))}
                 <h1>Placeholder for a future search bar</h1>
-            </div>
+
 
             <div className="userInterfaceContainer">
                 <form className="filterEvents">
