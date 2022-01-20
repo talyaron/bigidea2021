@@ -1,8 +1,6 @@
 import './App.css';
 
 
-
-
 import {
     BrowserRouter,
     Routes,
@@ -63,7 +61,7 @@ function App() {
                             userIcon: user.photoURL,
                             userPref:["null"]
                         })
-                       
+                    
                     }
                 })
             } else {

@@ -43,6 +43,7 @@ const DB = [
                 email: 'joeDoe@gmail.com',
                 website: 'www.google.com',
             },
+            isSubmitted: true
         }
     }
 ]
