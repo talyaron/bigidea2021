@@ -137,7 +137,7 @@ function MainPage({ role }) {
             </div>
 
             <div className="profileContainer">
-                <input type="button" className="profile" onClick={goToProfile}></input>
+                <input type="button" className="profile" onClick={goToProfile} value= "hidden"></input>
             </div>
         </div>
 
