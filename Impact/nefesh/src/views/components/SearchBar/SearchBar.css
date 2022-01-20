@@ -1,4 +1,4 @@
-#myInput {
+/* #myInput {
    
     background-position: 10px 12px;
     background-repeat: no-repeat;
@@ -17,15 +17,34 @@
   
   #myUL li a {
     border: 1px solid #ddd;
-    margin-top: -1px; /* Prevent double borders */
+    margin-top: -1px; Prevent double borders
     background-color: #f6f6f6;
     padding: 12px;
     text-decoration: none;
     font-size: 18px;
     color: black;
     display: block;
-  }
+  } */
   
-  #myUL li a:hover:not(.header) {
+  /* #myUL li a:hover:not(.header) {
     background-color: #eee;
-  }
+  } */
+
+.container {
+  display: grid;
+  grid-template-columns: 500px;
+  grid-template-rows: auto;
+  box-sizing: border-box;
+  width: 500px;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filterData {
+  max-height: 100px;
+}
+
+.searchBar {
+  max-height: 100px;
+}

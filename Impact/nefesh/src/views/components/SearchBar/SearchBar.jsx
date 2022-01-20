@@ -88,15 +88,15 @@ function SearchBar() {
   
   }
   return (
-    <div>
+    <div className='container'>
       
-      <input type="text" name= "filterData" list="data" onChange={getFilter} />
-        <datalist id="data">
+      <input className='filterData' type="text" name= "filterData" list="data" onChange={getFilter} />
+        <datalist className='data' id="data">
         {tags.map((item, key) =>
           <option key={key} value={item} />
         )}
       </datalist>
-      <input type="text" name= "searchBar" hidden= {hidden} onKeyPress={getTarget} />
+      <input className='searchBar' type="text" name= "searchBar" hidden= {hidden} onKeyPress={getTarget} />
       {articles.map((article, i) => (
     <li className="travelcompany-input" key={i}>
         <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image}/> 
