@@ -8,11 +8,32 @@ import { getDatabase, ref, onValue } from "firebase/database";
 
 
 function App(){
-
+    const tags = ['newest','popular', 'recent'];
     const [events, setEvents] = useState([]);
     let filterType = 'newest';
     const eventsRef = collection(db, "events");
     let q = query(eventsRef);
+    
+    useEffect(() => {
+        //sortMappedEvents(filterType);
+
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            let list = [];
+
+            querySnapshot.forEach((docDB) => {
+               const eventTemp = docDB.data();
+               eventTemp.id = docDB.id;
+               list.push(eventTemp);
+            });
+            console.log(list)
+            setEvents(list);
+
+        }, e=> {
+            console.error('on use effect in MainPage:')
+            console.error(e)
+        });
+
+    }, [])
     function SearchBar() {
         var searchOption;
         var filterOption;
@@ -90,26 +111,6 @@ function App(){
      
        
        }}
-    useEffect(() => {
-        //sortMappedEvents(filterType);
-
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            let list = [];
-
-            querySnapshot.forEach((docDB) => {
-               const eventTemp = docDB.data();
-               eventTemp.id = docDB.id;
-               list.push(eventTemp);
-            });
-            console.log(list)
-            setEvents(list);
-
-        }, e=> {
-            console.error('on use effect in MainPage:')
-            console.error(e)
-        });
-
-    }, [])
 
     function sortMappedEvents(filter){
         let sortingList = [];
