@@ -58,7 +58,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 		var label = document.querySelector('label');
 		var input = document.querySelector('input');
 
-		label.addEventListener("click", function(){
+		label.addEventListener("click", function(ev){
 			input.toggleAttribute('true');
 		})
 
@@ -160,10 +160,20 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 					<button id='setRoleToOle' >
 						Current Role: 
 						Ole
-						<label class="switch" onClick={handleSetRoleToOle} toggleAttribute= "false">
-  						<input type="checkbox" value = "false"/>
-  						<span class="slider round"></span>
-						</label>
+						{/* <label class="switch" onClick={handleSetRoleToOle} toggleAttribute= "false">
+  						<input type="checkbox"/>	
+  						<span class="slider round" value = "off">
+						<option value="off">Off</option>
+						<option value="on">On</option>
+						</span>
+						</label> */}
+						  
+						<label for="flip-1">Flip switch:</label>
+						<select name="flip-1" id="flip-1" data-role="toggle">
+						<option value="off">Off</option>
+						<option value="on">On</option>
+						</select> 
+						
 						Organization Admin
 					</button>
 
