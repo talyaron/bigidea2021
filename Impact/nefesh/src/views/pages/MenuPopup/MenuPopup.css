@@ -3,4 +3,8 @@
     grid-row-gap: 50px;
   }
 
-  
+  .Menu{
+    position: fixed;
+    top: 5px;
+    
+  }

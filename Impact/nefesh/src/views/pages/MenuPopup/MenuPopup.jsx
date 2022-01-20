@@ -9,27 +9,33 @@ const button = styled.button`
   margin: 10px 0px;
   `;
 
-function MenuPopup (ev){ 
+function MenuPopup (){ 
 
 return (
 <div className="container">
 
-    
+    <div className="Menu">
+        <p>Menu</p>
+    </div>
+
     <div className="Logout">
         <button onClick={() => this.handleClick()}>
         Logout
         </button>
     </div>
+
     <div className="Profile">
         <button onClick={() => this.handleClick()}>
             Profile
         </button>
     </div>
+
     <div className="Admin Page">
         <button onClick={() => this.handleClick()}>
             Admin Page
         </button>
     </div>
+    
 </div>
 )
 }
