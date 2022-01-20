@@ -110,6 +110,7 @@ function SearchBar() {
     </li>
    ))}
    </div>
+   <button className='Button2'>Home Page</button>
     </div>
   )
 }
