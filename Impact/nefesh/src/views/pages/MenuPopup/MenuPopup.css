@@ -1,10 +1,30 @@
-.container {
+.container{
     display: grid;
     grid-row-gap: 50px;
+    background-color: white;
   }
 
   .Menu{
     position: fixed;
     top: 5px;
-    
   }
+
+  .Logout{
+   background-color: blue;
+   height: 30px;
+   width: 60px;
+  }
+
+  .Profile{
+    background-color: blue;
+    height: 30px;
+    width: 60px;
+  }
+
+  .AdminPage{
+    background-color: blue;
+    height: 30px;
+    width: 60px;
+  }
+
+  

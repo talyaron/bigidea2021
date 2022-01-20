@@ -4,6 +4,7 @@ import { db } from '../../../functions/firebase/config';
 import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
 import { isAuthorised } from "../../../functions/general";
 import { useNavigate } from "react-router-dom";
+import MenuPopup from "../MenuPopup/MenuPopup";
 
 function MainPage({ role }) {
 
@@ -109,7 +110,7 @@ function MainPage({ role }) {
             <div className="searchBar">
                 <h1>Placeholder for a future search bar</h1>
             </div>
-
+            <MenuPopup/>
             <div className="userInterfaceContainer">
                 <form className="filterEvents">
                     <label for="eventFilterType">Sort out the events displayed:</label>

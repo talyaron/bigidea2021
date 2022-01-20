@@ -1,15 +1,14 @@
 import "./MenuPopup.css";
+import React from "react";
 
-const button = styled.button`
-  background-color: blue;
-  color: white;
-  font-size: 20px;
-  padding: 10px 60px;
-  border-radius: 5px;
-  margin: 10px 0px;
-  `;
 
-function MenuPopup (){ 
+
+
+  function MenuPopup (){ 
+
+    function handleClick(){
+        console.log('hi')
+    }
 
 return (
 <div className="container">
@@ -19,19 +18,19 @@ return (
     </div>
 
     <div className="Logout">
-        <button onClick={() => this.handleClick()}>
+        <button onClick={handleClick}>
         Logout
         </button>
     </div>
 
     <div className="Profile">
-        <button onClick={() => this.handleClick()}>
+        <button onClick={handleClick}>
             Profile
         </button>
     </div>
 
     <div className="Admin Page">
-        <button onClick={() => this.handleClick()}>
+        <button onClick={handleClick}>
             Admin Page
         </button>
     </div>
