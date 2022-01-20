@@ -2,6 +2,7 @@ import './SearchBar.css';
 import { useState } from 'react';
 import { getDatabase, ref, onValue, query, db } from "firebase/database";
 import { collection, getDocs, where, getFirestore} from '@firebase/firestore';
+import Logo from '../images/Logo.jpg';
 
 
 const tags = ['newest','popular', 'recent'];
@@ -90,6 +91,12 @@ function SearchBar() {
   return (
     <div className='container'>
       
+      <div className="sectionOne">
+        <img className='Logo' src= {Logo} />
+        <h1>Nefesh B'Nefesh</h1>
+        <button onChange={console.log("does nothing yet")}>|||</button>
+      </div>
+      
       <input className='filterData' type="text" name= "filterData" list="data" onChange={getFilter} />
         <datalist className='data' id="data">
         {tags.map((item, key) =>
@@ -101,7 +108,7 @@ function SearchBar() {
     <li className="travelcompany-input" key={i}>
         <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image}/> 
     </li>
-))}
+   ))}
     </div>
   )
 }

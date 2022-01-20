@@ -48,3 +48,25 @@
 .searchBar {
   max-height: 100px;
 }
+
+.Logo {
+  max-height: 50%;
+  max-width: 50%;
+}
+
+.sectionOne{
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  max-height: 100px;
+}
+
+.Logo{
+  max-height: 200px;
+  max-width: 200px;
+  height: 150px;
+  width: 150px;
+}
+button{
+  width: 100px;
+  height: 100px;
+}
