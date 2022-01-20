@@ -75,7 +75,12 @@ function Home({ role }) {
         <div key={event.id}>
           <Link to={`/articlePage/${event.id}`}
           >
-              <h1>Hi</h1>
+            <div>
+              <h2>{event.Title}</h2>
+              <div>This event will take place on: {event.Date}</div>
+              <div>This event will be hosted by: {event.Organization}</div>
+              <div>{event.views} many people have viewed this event</div>
+            </div>
           </Link>
         </div>
       )  
