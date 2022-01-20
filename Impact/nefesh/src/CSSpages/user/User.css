@@ -9,20 +9,14 @@ body{
 }
 .proimg{
     background-image: url(https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png);
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
 }
-.butt{
-    float: left;
-    background-color: #4A90E2;
-    color: white;
-    border-radius: 25px 25px 25px 25px;
-}
-.Uset{
-    background-color: #4A90E2;
-    color: white;
-    padding-right: 35px;
-    padding-left: 35px;
-    border-radius: 10px 10px 10px 10px;;
+
+.border{
+    border: gray 1px solid;
+    text-align:center ;
 }
 .grid-container {
     display: grid;

@@ -3,13 +3,13 @@ import "./user.css";
 function Userpage() {
 return (
     <div>
-    <button className="Butt"> Button </button>
     
     <form>
         <div classname="grid-container">
             <div classname="gridcol">
                 <div classname="gridrow">
                     <div className="proimg"> </div>
+                    <br/>
                     <button onclick="">Edit Profile</button>
                 </div>
                 <div classname="gridrow">
