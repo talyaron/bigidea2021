@@ -49,15 +49,18 @@ function submitArticle(){
     })
 }
 function saveDraft(){
+    console.log(statesSumbitted)
+    const {title,name,date,text,image,views} = statesSumbitted;
+
     addDoc(collection(db, "events"), {
-        title: statesSubmitted.title,
-        date: date,
-        image: image,
-        text: text,
+        title,
+        date,
+        image,
+        text,
         organization: name,
         creator: userID,
-        views: views,
-        dateAdded:dateAdded,
+        views,
+        dateAdded:new Date(),
         isPublished:false
     })
 
