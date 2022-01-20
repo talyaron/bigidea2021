@@ -10,37 +10,14 @@ import { getDatabase, ref, onValue } from "firebase/database";
 function App(){
     const tags = ['newest','popular', 'recent'];
     const [events, setEvents] = useState([]);
-    let filterType = 'newest';
-    const eventsRef = collection(db, "events");
-    let q = query(eventsRef);
+    var searchOption;
+    var filterOption;
+    const db = getFirestore();
+    const [articles, setArticles]= useState([])
+    const [hidden, setHidden] = useState(true)
+    const [tag, setTag] = useState("")     
     
-    useEffect(() => {
-        //sortMappedEvents(filterType);
 
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            let list = [];
-
-            querySnapshot.forEach((docDB) => {
-               const eventTemp = docDB.data();
-               eventTemp.id = docDB.id;
-               list.push(eventTemp);
-            });
-            console.log(list)
-            setEvents(list);
-
-        }, e=> {
-            console.error('on use effect in MainPage:')
-            console.error(e)
-        });
-
-    }, [])
-    function SearchBar() {
-        var searchOption;
-        var filterOption;
-        const db = getFirestore();
-        const [articles, setArticles]= useState([])
-        const [hidden, setHidden] = useState(true)
-        const [tag, setTag] = useState("")    
      
        async function getFilter(ev){
          ev.preventDefault();
@@ -110,7 +87,7 @@ function App(){
      
      
        
-       }}
+       }
 
     function sortMappedEvents(filter){
         let sortingList = [];
@@ -159,11 +136,7 @@ function App(){
         }
     }
 
-    function changeEventFilter(ev){
-        filterType = ev.target.value;
-        sortMappedEvents(filterType);//Causes the code to not finish when run
-        //console.log(events);
-    }
+    
 
     return(
         <div className="container">
@@ -180,19 +153,10 @@ function App(){
         <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image}/> 
     </li>
 ))}
-                <h1>Placeholder for a future search bar</h1>
+            \
 
 
-            <div className="userInterfaceContainer">
-                <form className="filterEvents">
-                    <label for="eventFilterType">Sort out the events displayed:</label>
-                    <select name="eventFilterType" id="eventFilterType" onChange={changeEventFilter}>
-                        <option value="newest">Newest to Oldest</option>
-                        <option value="popular">Most Popular</option>
-                        <option value="recent">Most Recent</option>
-                    </select>
-                </form>
-            </div>
+
 
             <div className="eventMapContainer">
                 {events.map(event => {
