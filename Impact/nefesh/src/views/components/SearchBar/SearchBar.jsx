@@ -90,7 +90,7 @@ function SearchBar() {
   }
   return (
     <div className='container'>
-      
+      <div className='contianer2'>
       <div className="sectionOne">
         <img className='Logo' src= {Logo} />
         <h1>Nefesh B'Nefesh</h1>
@@ -109,6 +109,7 @@ function SearchBar() {
         <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image}/> 
     </li>
    ))}
+   </div>
     </div>
   )
 }

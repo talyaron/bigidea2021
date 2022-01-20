@@ -140,7 +140,7 @@ function App(){
 
     return(
         <div className="container">
-             
+        
       <input type="text" name= "filterData" list="data" onChange={getFilter} />
         <datalist id="data">
         {tags.map((item, key) =>
