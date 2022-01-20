@@ -77,7 +77,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 			const showNotification = () => {
 				// create a new notification
 				const notification = new Notification('UPDATE', {
-					body: 'ROLE UPDATED TO orgADMIN',
+					body: 'ROLE UPDATED TO org admin',
 				});
 				// close the notification after 10 seconds
 				setTimeout(() => {
