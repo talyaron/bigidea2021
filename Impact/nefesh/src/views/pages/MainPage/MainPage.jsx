@@ -153,10 +153,6 @@ function App(){
         <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image}/> 
     </li>
 ))}
-            \
-
-
-
 
             <div className="eventMapContainer">
                 {events.map(event => {
