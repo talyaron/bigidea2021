@@ -5,10 +5,10 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { userIDAdm } from '../../pages/AdminPage/AdminPage';
 
 
-
+let clicked = false;
 const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 
-	
+
 
 	let userIDRef = tempUserIDAdm; // this will change based on the profile page pulled rn
 	let userDocRef = doc(db, 'users', userIDRef);
@@ -16,6 +16,8 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 	useEffect(() => {
 		// console.log(getDoc(userDocRef), 'hi');
 	}, []);
+
+
 
 	function handleChangeDisplayName(ev) {
 		/* make sure to check that username is not taken */
@@ -54,16 +56,58 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 			granted ? showNotification() : showError();
 		});
 	}
+
+
+
 	function handleSetRoleToOle(ev) {
-		var label = document.querySelector('label');
-		var input = document.querySelector('input');
+		clicked = !clicked;
+		console.log(`Clicked: ${clicked}`);
 
-		label.addEventListener("click", function(ev){
-			input.toggleAttribute('true');
-		})
 
-		console.log(ev, 'handleSetRoleToOle');
+		if (clicked === true) {
+			console.log("true", 'org admin');
+
+			console.log(ev, 'handleSetRoleToOrgAdmin');
 		/* make sure to check that username is not taken */
+
+		updateDoc(userDocRef, {
+			role: 'orgAdmin',
+		}).then(async () => {
+			// create and show the notification
+			const showNotification = () => {
+				// create a new notification
+				const notification = new Notification('UPDATE', {
+					body: 'ROLE UPDATED TO orgADMIN',
+				});
+				// close the notification after 10 seconds
+				setTimeout(() => {
+					notification.close();
+				}, 10 * 1000);
+			};
+			// show an error message
+			const showError = () => {
+				// const error = document.querySelector('.error');
+				// error.style.display = 'block';
+				// error.textContent = 'You blocked the notifications';
+				alert('Notifications disabled');
+			};
+			// check notification permission
+			let granted = false;
+			if (Notification.permission === 'granted') {
+				granted = true;
+			} else if (Notification.permission !== 'denied') {
+				let permission = await Notification.requestPermission();
+				granted = permission === 'granted' ? true : false;
+			}
+			// show notification or error
+			granted ? showNotification() : showError();
+		});
+
+		} else {
+			console.log("false", 'ole');
+
+			console.log(ev, 'handleSetRoleToOle');
+			/* make sure to check that username is not taken */
 		updateDoc(userDocRef, {
 			role: 'ole',
 		}).then(async () => {
@@ -96,45 +140,11 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 			// show notification or error
 			granted ? showNotification() : showError();
 		});
-		
-	}
-	// function handleSetRoleToOrgAdmin(ev) {
-	// 	console.log(ev, 'handleSetRoleToOrgAdmin');
-	// 	/* make sure to check that username is not taken */
+		}
 
-	// 	updateDoc(userDocRef, {
-	// 		role: 'orgAdmin',
-	// 	}).then(async () => {
-	// 		// create and show the notification
-	// 		const showNotification = () => {
-	// 			// create a new notification
-	// 			const notification = new Notification('UPDATE', {
-	// 				body: 'ROLE UPDATED TO orgADMIN',
-	// 			});
-	// 			// close the notification after 10 seconds
-	// 			setTimeout(() => {
-	// 				notification.close();
-	// 			}, 10 * 1000);
-	// 		};
-	// 		// show an error message
-	// 		const showError = () => {
-	// 			// const error = document.querySelector('.error');
-	// 			// error.style.display = 'block';
-	// 			// error.textContent = 'You blocked the notifications';
-	// 			alert('Notifications disabled');
-	// 		};
-	// 		// check notification permission
-	// 		let granted = false;
-	// 		if (Notification.permission === 'granted') {
-	// 			granted = true;
-	// 		} else if (Notification.permission !== 'denied') {
-	// 			let permission = await Notification.requestPermission();
-	// 			granted = permission === 'granted' ? true : false;
-	// 		}
-	// 		// show notification or error
-	// 		granted ? showNotification() : showError();
-	// 	});
-	// }
+
+	}
+
 	function handleSuspendUser(ev) {
 		console.log(ev, 'handleSuspendUser');
 	}
@@ -155,27 +165,20 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 						Change Display Name
 					</button>
 
-					
 
-					<button id='setRoleToOle' >
-						Current Role: 
+
+					<div id='setRoleToOle'>
+						Current Role:
 						Ole
-						{/* <label class="switch" onClick={handleSetRoleToOle} toggleAttribute= "false">
-  						<input type="checkbox"/>	
-  						<span class="slider round" value = "off">
-						<option value="off">Off</option>
-						<option value="on">On</option>
-						</span>
-						</label> */}
-						  
-						<label for="flip-1">Flip switch:</label>
-						<select name="flip-1" id="flip-1" data-role="toggle">
-						<option value="off">Off</option>
-						<option value="on">On</option>
-						</select> 
-						
+						<label className="switch" >
+							<input type="checkbox" onClick={handleSetRoleToOle}/>
+							<span className="slider round" >
+							</span>
+						</label>
+
 						Organization Admin
-					</button>
+					</div>
+
 
 					{/* <button id='setRoleToOrgAdmin' onClick={handleSetRoleToOrgAdmin}>
 						Set Role To Org Admin
