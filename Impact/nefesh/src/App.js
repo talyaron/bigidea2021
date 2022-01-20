@@ -1,10 +1,13 @@
 import './App.css';
+import './views/components/AdminPagePopUp/AdminPagePopUp'
 import {
     BrowserRouter,
     Routes,
     Route,
     Link
 } from "react-router-dom";
+   
+
 
 import Login from "./views/pages/login/Login.js"
 import Home from "./views/pages/home/Home.js"
@@ -20,6 +23,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from "firebase/firestore"
 import { db } from "./functions/firebase/config"
+import AdminPage from './views/pages/AdminPage/AdminPage'
 
 //hi
 let role = "superAdmin"
@@ -78,6 +82,7 @@ function App() {
                 <Link to='/ContactUs'>Contact Us</Link>
                 <Link to='/ArticleCreation'>Article Creation</Link>
                 <Link to='/ProfilePage'>Profile Page</Link>
+                <Link to='/AdminPage'>*** Admin Page***</Link>
 
             </nav>
             <Routes>
@@ -91,6 +96,8 @@ function App() {
                 <Route path="ContactUs" element={<ContactUs/>} />
                 <Route path="ArticleCreation" element = {<ArticleCreation/>} />
                 <Route path="ProfilePage" element = {<ProfilePage/>} />
+                <Route path='AdminPage' element={<AdminPage/>}/>
+                
 
             </Routes>
         </BrowserRouter>
