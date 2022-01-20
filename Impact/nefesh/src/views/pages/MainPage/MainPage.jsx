@@ -2,7 +2,7 @@ import "./MainPage.css";
 import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
 import { collection, getDocs,  query, where, orderBy, getFirestore, onSnapshot} from 'firebase/firestore';
-import { getDatabase, ref, onValue, query, db } from "firebase/database";
+import { getDatabase, ref, onValue } from "firebase/database";
 
 
 
