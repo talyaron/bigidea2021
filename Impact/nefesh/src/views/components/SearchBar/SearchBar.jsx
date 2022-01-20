@@ -2,7 +2,7 @@ import './SearchBar.css';
 import { useState } from 'react';
 import { getDatabase, ref, onValue, query, db } from "firebase/database";
 import { collection, getDocs, where, getFirestore} from '@firebase/firestore';
-import Logo from '../images/Logo.jpg';
+import Logo from '../images/Logo.png';
 
 
 const tags = ['newest','popular', 'recent'];
