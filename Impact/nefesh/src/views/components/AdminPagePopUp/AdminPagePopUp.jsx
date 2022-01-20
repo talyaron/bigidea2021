@@ -55,7 +55,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 		});
 	}
 	function handleSetRoleToOle(ev) {
-		console.log('eeeeeeeee', ev)
+		console.log('eeeeeeeee', ev) ;
 
 		var label = document.querySelector('label');
 		var input = document.querySelector('input');
