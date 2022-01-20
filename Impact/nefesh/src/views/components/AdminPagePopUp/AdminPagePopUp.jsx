@@ -5,9 +5,9 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { userIDAdm } from '../../pages/AdminPage/AdminPage';
 
 
-
+let clicked = false;
 const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
-
+	
 	
 
 	let userIDRef = tempUserIDAdm; // this will change based on the profile page pulled rn
@@ -16,6 +16,8 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 	useEffect(() => {
 		// console.log(getDoc(userDocRef), 'hi');
 	}, []);
+
+
 
 	function handleChangeDisplayName(ev) {
 		/* make sure to check that username is not taken */
@@ -54,17 +56,22 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 			granted ? showNotification() : showError();
 		});
 	}
+
+	
+
 	function handleSetRoleToOle(ev) {
-		console.log('eeeeeeeee', ev) ;
+		clicked = !clicked;
+		console.log(`Clicked: ${clicked}`);
+		
 
-		var label = document.querySelector('label');
-		var input = document.querySelector('input');
+		if(clicked === true) {
+			console.log("true", 'ole');
 
-		label.addEventListener("click", function(ev){
-			input.toggleAttribute('true');
-		})
+			
+		} else {
+			console.log("false", 'admin');
+		}
 
-		console.log(ev, 'handleSetRoleToOle');
 		/* make sure to check that username is not taken */
 		updateDoc(userDocRef, {
 			role: 'ole',
@@ -159,7 +166,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 
 					
 
-					<button id='setRoleToOle' >
+					<div id='setRoleToOle'>
 						Current Role: 
 						Ole
 						<label className="switch" onClick={handleSetRoleToOle}>
@@ -169,7 +176,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 						</label>
 						  
 						Organization Admin
-					</button>
+					</div>
 					
 
 					{/* <button id='setRoleToOrgAdmin' onClick={handleSetRoleToOrgAdmin}>
