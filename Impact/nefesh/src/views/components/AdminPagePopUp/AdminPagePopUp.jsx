@@ -7,8 +7,8 @@ import { userIDAdm } from '../../pages/AdminPage/AdminPage';
 
 let clicked = false;
 const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
-	
-	
+
+
 
 	let userIDRef = tempUserIDAdm; // this will change based on the profile page pulled rn
 	let userDocRef = doc(db, 'users', userIDRef);
@@ -57,17 +57,17 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 		});
 	}
 
-	
+
 
 	function handleSetRoleToOle(ev) {
 		clicked = !clicked;
 		console.log(`Clicked: ${clicked}`);
-		
 
-		if(clicked === true) {
+
+		if (clicked === true) {
 			console.log("true", 'ole');
 
-			
+
 		} else {
 			console.log("false", 'admin');
 		}
@@ -105,7 +105,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 			// show notification or error
 			granted ? showNotification() : showError();
 		});
-		
+
 	}
 	// function handleSetRoleToOrgAdmin(ev) {
 	// 	console.log(ev, 'handleSetRoleToOrgAdmin');
@@ -164,20 +164,20 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 						Change Display Name
 					</button>
 
-					
+
 
 					<div id='setRoleToOle'>
-						Current Role: 
+						Current Role:
 						Ole
-						<label className="switch" onClick={handleSetRoleToOle}>
-  						<input type="checkbox"/>	
-  						<span className="slider round" >
-						</span>
+						<label className="switch" >
+							<input type="checkbox" onClick={handleSetRoleToOle}/>
+							<span className="slider round" >
+							</span>
 						</label>
-						  
+
 						Organization Admin
 					</div>
-					
+
 
 					{/* <button id='setRoleToOrgAdmin' onClick={handleSetRoleToOrgAdmin}>
 						Set Role To Org Admin
