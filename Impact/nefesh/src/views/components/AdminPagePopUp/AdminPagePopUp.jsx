@@ -55,6 +55,8 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 		});
 	}
 	function handleSetRoleToOle(ev) {
+		console.log('eeeeeeeee', ev)
+
 		var label = document.querySelector('label');
 		var input = document.querySelector('input');
 
@@ -160,22 +162,15 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 					<button id='setRoleToOle' >
 						Current Role: 
 						Ole
-						{/* <label class="switch" onClick={handleSetRoleToOle} toggleAttribute= "false">
+						<label className="switch" onClick={handleSetRoleToOle}>
   						<input type="checkbox"/>	
-  						<span class="slider round" value = "off">
-						<option value="off">Off</option>
-						<option value="on">On</option>
+  						<span className="slider round" >
 						</span>
-						</label> */}
+						</label>
 						  
-						<label for="flip-1">Flip switch:</label>
-						<select name="flip-1" id="flip-1" data-role="toggle">
-						<option value="off">Off</option>
-						<option value="on">On</option>
-						</select> 
-						
 						Organization Admin
 					</button>
+					
 
 					{/* <button id='setRoleToOrgAdmin' onClick={handleSetRoleToOrgAdmin}>
 						Set Role To Org Admin
