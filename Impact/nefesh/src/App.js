@@ -14,6 +14,7 @@ import Hi from "./views/pages/hi/Hi.js"
 import ProfilePage from './views/pages/ProfilePage/ProfilePage';
 import ContactUs from './views/components/ContactUs/ContactUs';
 import ArticleCreation from './views/components/ArticleCreation/ArticleCreation';
+import ArticlePage from './views/pages/articlePage/articlePage';
 import MainPage from './views/pages/MainPage/MainPage';
 import { checkRole } from "./functions/general.js"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -78,6 +79,7 @@ function App() {
                 <Link to='/ContactUs'>Contact Us</Link>
                 <Link to='/ArticleCreation'>Article Creation</Link>
                 <Link to='/ProfilePage'>Profile Page</Link>
+                <Link to="/articlePage">ArticlePage</Link>
 
             </nav>
             <Routes>
@@ -91,6 +93,7 @@ function App() {
                 <Route path="ContactUs" element={<ContactUs/>} />
                 <Route path="ArticleCreation" element = {<ArticleCreation/>} />
                 <Route path="ProfilePage" element = {<ProfilePage/>} />
+                <Route path="articlePage" element = {<ArticlePage/>} />
 
             </Routes>
         </BrowserRouter>

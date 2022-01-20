@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
 import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
 import { isAuthorised } from "../../../functions/general";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 function MainPage({ role }) {
 
