@@ -79,7 +79,7 @@ function App() {
                 <Link to='/ContactUs'>Contact Us</Link>
                 <Link to='/ArticleCreation'>Article Creation</Link>
                 <Link to='/ProfilePage'>Profile Page</Link>
-                <Link to="/articlePage">ArticlePage</Link>
+                
 
             </nav>
             <Routes>

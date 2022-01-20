@@ -73,7 +73,7 @@ function Home({ role }) {
       console.log(event);
       return (
         <div key={event.id}>
-          <Link to={`articlePage/${event.id}`}
+          <Link to={`/articlePage/${event.id}`}
           >
               <h1>Hi</h1>
           </Link>
