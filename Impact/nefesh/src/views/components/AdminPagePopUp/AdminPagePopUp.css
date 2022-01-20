@@ -56,7 +56,7 @@
     flex-direction: row;
   }
   /* The switch - the box around the slider */
-label.switch {
+  label.switch {
   position: relative;
   display: inline-block;
   width: 60px;
