@@ -93,7 +93,7 @@ function App() {
                 <Route path="ContactUs" element={<ContactUs/>} />
                 <Route path="ArticleCreation" element = {<ArticleCreation/>} />
                 <Route path="ProfilePage" element = {<ProfilePage/>} />
-                <Route path="articlePage" element = {<ArticlePage/>} />
+                <Route path="articlePage/:id" element = {<ArticlePage/>} />
 
             </Routes>
         </BrowserRouter>

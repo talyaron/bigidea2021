@@ -20,6 +20,7 @@ function Home({ role }) {
     if (!isAuthorised(role, authorised)) {
       navigate('/401')
     }
+
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let list = [];
 
@@ -41,7 +42,7 @@ function Home({ role }) {
   }, [])
   console.log(role)
   
-  function sortMappedEvents(filter) {
+  function sortMappedEvents() {
     let sortingList = [];
     let sortingListTrue = [];
     //filter is automaticallu for newest
@@ -63,28 +64,18 @@ function Home({ role }) {
             }
         }
     }
-
     console.log(sortingList);
-    if (sortingListTrue === []) {
-        alert("cannot make events list empty");
-    } else {
-        setEvents(sortingListTrue);
-    }
 }
   
   return(
   <div>
     {events.map(event => {
-      let key=event.id;
-      console.log(key);
+      console.log(event);
       return (
-        <div key={key}>
-          <Link to={{
-            pathname: '/articlePage',
-            state: {key}
-            }}
+        <div key={event.id}>
+          <Link to={`articlePage/${event.id}`}
           >
-              <h1>{key}</h1>
+              <h1>Hi</h1>
           </Link>
         </div>
       )  
