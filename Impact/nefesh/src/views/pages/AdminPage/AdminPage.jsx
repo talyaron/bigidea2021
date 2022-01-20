@@ -50,20 +50,32 @@ function AdminPage() {
 	const namesRef = collection(db, 'users');
 	const [Names, setNames] = useState([]);
 	const [searchCont, setSearchCont] = useState('')
+	const [searchField, setSearchField] = useState('UserID')
 	let q = query(namesRef);
 
 	useEffect(() => {
         //snapshot all names and set them to 'Names'
+		getNames()
+	}, []);
+
+	function getNames(){
 		const namesQuery = onSnapshot(q, (snapshot) => {
 			let list = [];
 			snapshot.forEach((namesDB) => {
 				const namesTemp = namesDB.data();
 				list.push(namesTemp);
 			});
-			console.log(list);
 			setNames(list);
 		});
-	}, []);
+	}
+
+
+	function handleSearchByChange(ev){
+		let temp = ev.target.value
+		setSearchField(temp)
+	}
+
+
 
 	function handleSearchChange(ev){
 		ev.preventDefault()
@@ -73,27 +85,36 @@ function AdminPage() {
 	
 	
 	async function handleSearch(){
-		let q = query(collection(db, 'users'), where ('userID', '==', searchCont))
+		let q = query(collection(db, 'users'), where (searchField, '==', searchCont))
 		let tempArr = []
 		const userIDSnapshot = await getDocs(q);
 		userIDSnapshot.forEach((userDB) => {  
-			console.log(userDB.data(),'user data');
-			
 			tempArr.push(userDB.data())
-			console.log(tempArr, 'tempArr')
-			
-		
 		});
 		setNames(tempArr)
-		console.log(Names, 'Names')
+	}
+	function handleClearFilter(){
+		getNames()
 	}
 
 	return (
 		<div>
 			{isAdmin ? (
 				<div className='adminPage_container'>
-					<input type='text' placeholder='Enter Full User ID' name='adminPageSearch' id='search_box_AdminPage' onChange={handleSearchChange}/>
+					<div className='search_Container'>
+						<form className='searchFor' onChange={handleSearchByChange}>
+							<label for='searchFor' >Search for:</label>
+							<select name='searchFor'>
+								<option value='userID'>userID's</option>
+								<option value='displayName'>DisplayName's</option>
+								<option value='email'>Email's</option>
+								<option value='role'>Role's</option>
+							</select>
+						</form>
+					<input type='text' placeholder={`Enter Full ${searchField}`} name='adminPageSearch' id='search_Box_AdminPage' onChange={handleSearchChange}/>
 					<button onClick={handleSearch} id='search_button_AdminPage'>Search</button>
+					<button onClick={handleClearFilter} id='clearFilter'>Clear Search</button>
+					</div>
 				<div className='eventMapContainer'>
 					{Names.map((names) => {
 						return (
