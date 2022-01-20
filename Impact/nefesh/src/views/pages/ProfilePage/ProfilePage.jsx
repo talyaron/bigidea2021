@@ -57,10 +57,12 @@ function ProfilePage() {
 		}
 
 		function changePreferences(ev){
-
 		setChoosingPrefs(true)
-		const fontSize= ev.target.elements.newFontSize.value;
+		}
+		function submitChangePreferences(ev){
+		const fontSize= ev.target.value;
 		setTextSize(fontSize);
+
 
 		 
 		}
@@ -86,8 +88,8 @@ function ProfilePage() {
 			</div>
 			<button type= "button" onClick= {changePreferences} name= "settingbtn">Preferences</button>
 			{choosingPrefs?<div className= 'settings'>
-   	<form onSubmit={changeProfile}>
-	 Current Font Size: {textSize} <br/>
+   	<form onSubmit={submitChangePreferences}>
+
 	 Change Font Size: <input type="text" name="newFontSize" /><br/>
 	 <button type="submit"  name = "prfbtn"> Submit Changes</button>
 	 </form>
