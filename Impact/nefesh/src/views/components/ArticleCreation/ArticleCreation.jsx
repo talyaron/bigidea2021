@@ -10,16 +10,10 @@ let image
 let date
 let views
 let dateAdded
-let statesSumbitted={}
+let statesSumbitted={title:"",name:"",date:"",text:"",isPublished:"",image:"",views:0}
 function ArticleCreation({ userID }) {
    
     const [isOpen, setIsOpen] = useState(false);
-    // const [title, setTitle] = useState("")
-    // const [name, setName] = useState("")
-    // const [text, setText] = useState("")
-    // const [image, setImage] = useState("")
-    // const [date, setDate] = useState("")
-
 
  
     function handleCreateArticle(ev) {
@@ -34,16 +28,7 @@ function ArticleCreation({ userID }) {
         dateAdded.toDateString()
         console.log("clicked")
         console.log(userID)
-        addDoc(collection(db, "events"), {
-            Title: title,
-            Date: date,
-            Image: image,
-            Text: text,
-            Organization: name,
-            creator: userID,
-            views: views,
-            dateAdded:dateAdded
-        })
+        
        
 
     }
@@ -51,9 +36,30 @@ function ping(){
     console.log(statesSumbitted)
 }
 function submitArticle(){
-    
+    addDoc(collection(db, "events"), {
+        Title: title,
+        Date: date,
+        Image: image,
+        Text: text,
+        Organization: name,
+        creator: userID,
+        views: views,
+        dateAdded:dateAdded,
+        isPublished:true
+    })
 }
 function saveDraft(){
+    addDoc(collection(db, "events"), {
+        title: statesSubmitted.title,
+        date: date,
+        image: image,
+        text: text,
+        organization: name,
+        creator: userID,
+        views: views,
+        dateAdded:dateAdded,
+        isPublished:false
+    })
 
 }
 // function createRandomId(){
@@ -87,7 +93,7 @@ function changeState(ev){
                 <br />
                 <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here" />
                 <br />
-                <input type="date" name="date" onKeyUp={changeState} placeholder="Enter date here" />
+                <input type="date" name="date" onChange={changeState} placeholder="Enter date here" />
                 <br />
                 <input type="number" name="views" onKeyUp={changeState} placeholder='Views (delete me later)' />
                 <button onClick={ping}></button>
@@ -96,7 +102,6 @@ function changeState(ev){
 
             
         </div>
-       
     </div>
 }
 
