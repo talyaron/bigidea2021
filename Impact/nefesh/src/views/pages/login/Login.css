@@ -1,0 +1,46 @@
+.loginPage {
+	position: relative;
+	top: 20vh;
+	justify-content: center;
+}
+.header_Login {
+	text-align: center;
+	position: relative;
+}
+
+#googleLogin {
+	height: 65px;
+	border-radius: 30px;
+	width: 220px;
+	background-color: Var(--Light);
+}
+
+#googleLogin:hover {
+	background-color: Var(--Light-D2);
+}
+.googleLoginForm {
+	text-align: center;
+}
+
+#logo_LoginPage {
+	max-width: 100vw;
+	height: 75%;
+}
+#googleLogo {
+	max-height: 40px;
+    display: inline;
+    margin-right: 5%;
+	
+}
+#googleText {
+	bottom: 23%;
+	display: inline;
+    margin: auto 0;
+    position: relative;
+	
+}
+
+#art_login {
+	position: fixed;
+	bottom: 0vw;
+}

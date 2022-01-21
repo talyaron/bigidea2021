@@ -86,21 +86,17 @@ function App() {
 						</Routes>
 					</BrowserRouter>
 					<div id='stickyBanner'>
-					    {/* <Link to='/home'>Home</Link>  */}
+                        <h5>Developed by: Big Idea</h5>
 					</div>
 				</div>
 			) : (
 				<div className='container_App'>
 				<BrowserRouter>
-					<nav>
-						{/* <Link to='/login'>Login</Link> */}
-					</nav>
 					<Routes>
 						<Route path='/' element={<Login />} />
 						<Route path='login' element={<Login />} />
 					</Routes>
 				</BrowserRouter>
-					<div id='stickyBanner'></div>
 				</div>
 			)}
 		</div>
