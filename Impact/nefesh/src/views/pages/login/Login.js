@@ -2,6 +2,7 @@ import { db } from "../../../functions/firebase/config"
 import React from "react"
 import { authentication } from "../../../functions/firebase/config"
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import './Login.css'
 function Login() {
 
   const SignIn = (ev) => {
@@ -20,15 +21,13 @@ function Login() {
       })
   }
 
-  return (<div>
-    <h1>
-      login
+  return (
+  <div className="loginPage">
+    <h1 className="header_Login">
+      Login to see content
     </h1>
-    <form className="Login">
-      <input placeholder="Email Address"></input>
-      <input type="password" placeholder="Password"></input>
-      <input type="submit"></input>
-      <button onClick={SignIn}>Sign In with google</button>
+    <form className="googleLoginForm">
+      <button onClick={SignIn} id="googleLogin">Sign In with google</button>
     </form>
   </div>)
 }

@@ -2,21 +2,13 @@
 /* name change */
 body{
     font-family: 'Poppins', sans-serif;
+    margin: 0px;
 }
 
-nav{
-    display: flex;
-
-}
-
-nav a{
-    padding: 10px;
-    background-color: rgb(138, 138, 138);
-    color: white;
-    text-decoration: none;
-}
-
-nav a:hover{
-    padding: 10px;
-    background-color: rgb(116, 116, 116);
+#stickyBanner{
+    position: fixed;
+    bottom: 0px;
+    background-color: blue;
+    width: 100vw;
+    height: 8Vh;
 }
