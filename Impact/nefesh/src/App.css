@@ -1,14 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /* name change */
+
+:root {
+    --Dark: #04080C;
+    --Dark-L1: #0E1317;
+    --Dark-L2: #191E22;
+    --Grey: #6F839F;
+    --Grey-D1: #637897;
+    --Grey-D2: #586D8E;
+    --Light: #F7FBFF;
+    --Light-D1: #EDF2F6;
+    --Light-D2: #E4E8EC;
+    --Primary: #0077CC;
+    --Light-blue: #C8E6FF;
+    
+}
+
 body{
     font-family: 'Poppins', sans-serif;
     margin: 0px;
+    background-color: Var(--Light-blue);
+
 }
 
 #stickyBanner{
     position: fixed;
     bottom: 0px;
-    background-color: blue;
+    background-color: var(--Dark-L2);
     width: 100vw;
     height: 8Vh;
 }
