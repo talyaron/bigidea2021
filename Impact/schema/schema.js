@@ -21,7 +21,7 @@ const DB = [
     events,
         autoID: {
             eventName: 'Dinner with the Rabbi',
-            organization: 'Soup Kitchen',
+            organiser: 'Soup Kitchen',
             address: {
                 streetName: 'streetname',
                 houseNumber: 123,

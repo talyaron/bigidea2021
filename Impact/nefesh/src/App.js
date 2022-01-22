@@ -23,54 +23,61 @@ import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from "firebase/firestore"
 import { db } from "./functions/firebase/config"
 
-let userID=""
+
+let userID = ""
 let role = "superAdmin"
 let permissionedRole
 const auth = getAuth();
-
 function App() {
-
+    const [userOrg, setUserOrg] = useState({})
     const [userState, setUserState] = useState({})
-
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+    const fetchOrganization = async () => {
+        await getDoc(doc(db, "users", userID)).then(userDB => {
+            setUserOrg(userDB.data().organization)
+        })
+    }
+    useEffect(async () => {
+        onAuthStateChanged(auth, async (user) => {
             if (user) {
                 console.log('user logged in')
                 const uid = user.uid;
-                userID=uid
+                userID = uid
+
 
                 //get user from db
                 getDoc(doc(db, "users", uid)).then(userDB => {
                     if (userDB.exists()) {
                         console.log("user exists")
-                        setUserState({userName:userDB.data().displayName})
-                    role=userDB.data().role
+                        setUserState({ userName: userDB.data().displayName,userOrg:userDB.data().organization})
+                        role = userDB.data().role;
                     }
                     else {
-                        //if user exist in db get the user from DB and get the role 
+                        //if user doesn't exist in db get the user from DB and get the role 
                         console.log("user does not exist")
                         setDoc(doc(db, "users", uid), {
-                            age:"null",
+                            age: "null",
                             displayName: user.displayName,
                             email: user.email,
-                            location:"null",
-                            organization:"null",
+                            location: "null",
+                            organization: "null",
                             role: "ole",
-                            sex:"null",
-                            userID:uid,
+                            sex: "null",
+                            userID: uid,
                             userIcon: user.photoURL,
-                            userPref:["null"]
+                            userPref: ["null"]
                         })
-                    
+
                     }
                 })
-            } else {
+
+            }
+            else {
                 // user logged out
                 console.log('User loged out')
 
             }
         })
-
+        fetchOrganization()
     }, [])
     return (
         <BrowserRouter>
@@ -92,10 +99,9 @@ function App() {
                 <Route path="404" element={<Error />} />
                 <Route path="401" element={<Unauthorised />} />
                 <Route path="MainPage" element={<MainPage />} />
-                <Route path="ContactUs" element={<ContactUs/>} />
-                <Route path="ArticleCreation" element = {<ArticleCreation userID={userID}/>} />
-                <Route path="ProfilePage" element = {<ProfilePage/>} />
-
+                <Route path="ContactUs" element={<ContactUs />} />
+                <Route path="ArticleCreation" element={<ArticleCreation userID={userID} userOrg={userState.userOrg}/>} />
+                {/* <Route path="ProfilePage" element = {<ProfilePage/>} /> */}
             </Routes>
         </BrowserRouter>
     )
