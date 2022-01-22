@@ -13,3 +13,7 @@
 	--Navy-blue: #043c6c;
 	--Light-blue: #54a4d4;
 }
+
+body{
+	background-color: var(--Background-light);
+}
