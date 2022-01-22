@@ -21,7 +21,7 @@ const DB = [
     events,
         autoID: {
             eventName: 'Dinner with the Rabbi',
-            organization: 'Soup Kitchen',
+            organiser: 'Soup Kitchen',
             address: {
                 streetName: 'streetname',
                 houseNumber: 123,
@@ -43,7 +43,7 @@ const DB = [
                 email: 'joeDoe@gmail.com',
                 website: 'www.google.com',
             },
-            isPublished: true,
+            isSubmitted: true
         }
     }
 ]
