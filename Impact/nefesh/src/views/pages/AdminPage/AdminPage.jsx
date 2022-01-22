@@ -9,17 +9,22 @@ import { push } from 'firebase/database';
 var isAdmin = true;
 let userIDAdmin;
 
+
 function AdminPage() {
 	const [displayName, setDisplayName] = useState('displayName');
-	const [userID, setUserID] = useState('ID');
+	const [userID, setUserID] = useState('id');
 	const [isOpen, setIsOpen] = useState(false);
 
 
 	function togglePopup(ev) {
-		//get ID for changing settings
-		// userIDAdmin = ev.target.innerHTML;
-		try {
 
+		try {
+			const userIdSpec = ev.target.id;
+
+			//get ID for changing settings
+			var userIDforPopup = userIdSpec;
+			console.log('26', userIDforPopup);
+			sessionStorage.setItem("userIDforPopup", userIDforPopup);
 
 			//open popup
 			setIsOpen(!isOpen);
@@ -28,12 +33,12 @@ function AdminPage() {
 			// let ref = userIDAdm();
 
 		
-			const userIdSpec = ev.target.id;
+			
 			const userRef = doc(db, "users", userIdSpec)
 
 			getDoc(userRef).then(userDB => {
-				console.log(userDB.data())
-				console.log(userDB.exists())
+				// console.log(userDB.data())
+				// console.log(userDB.exists())
 				let userNameTemp = userDB.data().displayName
 				setDisplayName(userNameTemp);
 				setUserID(userIdSpec);

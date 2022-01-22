@@ -6,18 +6,28 @@ import { userIDAdm } from '../../pages/AdminPage/AdminPage';
 
 
 let clicked = false;
+
 const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
-
-
 
 	let userIDRef = tempUserIDAdm; // this will change based on the profile page pulled rn
 	let userDocRef = doc(db, 'users', userIDRef);
+	const [userIDforPopup, setuserIDforPopup] = useState('id');
+	const [userRole, setUserRole] = useState('ole')
+
 
 	useEffect(() => {
-		// console.log(getDoc(userDocRef), 'hi');
-	}, []);
 
+		setuserIDforPopup(sessionStorage.getItem("userIDforPopup"));
+		console.log(`String passed successfully: ${userIDforPopup}`);
 
+		const userRefRole = doc(db, 'users', `${userIDforPopup}`);
+		console.log(userRefRole);
+
+    		 let userRoletemp = async () => await getDoc(userRefRole).then(docDB => {
+      	console.log(docDB.data().role); //works when given an id, must fix how id is transferred from AdminPage.jsx to this file on lines 12 and 13
+				setUserRole(userRoletemp)
+    	})
+	},[])
 
 	function handleChangeDisplayName(ev) {
 		/* make sure to check that username is not taken */
@@ -57,14 +67,21 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 		});
 	}
 
+	async function handleSetRoleToOle(ev) {
 
+		console.log(userRole);
+		console.log(userIDforPopup);
 
-	function handleSetRoleToOle(ev) {
-		clicked = !clicked;
-		console.log(`Clicked: ${clicked}`);
+		console.log(`Current Role: ${userRole}`);
 
+		//get user current role
+		if(userRole === "ole") {
+			console.log("ole");
+		} else {
+			console.log("orgAdmin");
+		}
 
-		if (clicked === true) {
+		if (userRole === "ole") {
 			console.log("true", 'org admin');
 
 			console.log(ev, 'handleSetRoleToOrgAdmin');
@@ -169,15 +186,14 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 
 
 					<div id='setRoleToOle'>
-						Current Role:
-						Ole
+						<span>Current Role: Insert Role Here</span>
+						<p>Ole</p>
 						<label className="switch" >
 							<input type="checkbox" onClick={handleSetRoleToOle}/>
 							<span className="slider round" >
 							</span>
 						</label>
-
-						Organization Admin
+						<p>Organization Admin</p>
 					</div>
 
 
