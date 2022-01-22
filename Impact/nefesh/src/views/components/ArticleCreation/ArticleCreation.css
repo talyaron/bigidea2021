@@ -11,6 +11,7 @@
     padding: 20px;
     display: grid;
     grid-template-columns: auto auto;
+    
 }
 
 .box {
@@ -61,4 +62,12 @@
 
 .personalInfo{
     grid-column: 1/3;
+}
+
+button{
+    border-radius: 20px;
+}
+
+body{
+    background-color: var(--Background-light);
 }
