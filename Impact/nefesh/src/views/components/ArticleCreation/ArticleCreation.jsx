@@ -7,7 +7,7 @@ let statesSumbitted = { views: 0, startTime: "", endTime: "" }
 function ArticleCreation(props) {
     const [tagsState, setTagsState] = useState([])
     function submitArticle() {
-        const { title, name, date, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity } = statesSumbitted;
+        const { title, name, date, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity,phone, website, email} = statesSumbitted;
         addDoc(collection(db, "events"), {
             title,
             date,
@@ -19,6 +19,12 @@ function ArticleCreation(props) {
                 houseNumber: houseNumber,
                 city: city
             },
+            contactInfo:{
+                phone,
+                email,
+                website
+            },
+            tags:tagsState,
             creatorUID: props.userID,
             creatorOrg: props.userOrg,
             views,
@@ -49,6 +55,7 @@ function ArticleCreation(props) {
                 email,
                 website
             },
+            tags:tagsState,
             creatorUID: props.userID,
             creatorOrg: props.userOrg,
             views,
