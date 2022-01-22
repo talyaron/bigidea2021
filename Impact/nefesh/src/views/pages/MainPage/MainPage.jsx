@@ -2,80 +2,146 @@ import "./MainPage.css";
 import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
 import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
-let eventFilter = ""
-let eventListTemp = []
+import { isAuthorised } from "../../../functions/general";
+import { useNavigate } from "react-router-dom";
 
-function App() {
-    const [eventListState, setEventListState] = useState([])
+function MainPage({ role }) {
 
-    // const [eventFilterState,setEventFilterState]=useState("")
+    const [events, setEvents] = useState([]);
+    let filterType = 'newest';
+    const eventsRef = collection(db, "events", "f5AIE25ec8IPxC9TBAVk", "basic-events");
+    let q = query(eventsRef);
+    const navigate = useNavigate();
+    const authorised = ["superAdmin", "orgAdmin", 'ole'];
+
     useEffect(() => {
-        const q = query(collection(db, "events"))
-        const unsub = onSnapshot(q, (querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                const eventTemp = doc.data();
-                eventTemp.id = doc.id;
-                eventListTemp.push(eventTemp)
-            })
-            console.log('ping!')
-            setEventListState(eventListTemp)
-        })
 
+        if (!isAuthorised(role, authorised)) {
+            navigate('/401')
+        }
+
+        //sortMappedEvents(filterType);
+
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            let list = [];
+
+            querySnapshot.forEach((docDB) => {
+                const eventTemp = docDB.data();
+                eventTemp.id = docDB.id;
+                list.push(eventTemp);
+            });
+            console.log(list)
+            setEvents(list);
+
+        }, e => {
+            console.error('on use effect in MainPage:')
+            console.error(e)
+        });
+
+        return () => {
+            unsubscribe();
+        }
 
     }, [])
-    function test() {
-        console.log(eventListTemp)
+
+    function sortMappedEvents(filter) {
+        let sortingList = [];
+        let sortingListTrue = [];
+        //filter activates correctly, next stage is tested
+        if (filter === "newest") {
+            events.forEach((docDB) => {
+                console.log(docDB.eventDate);
+                sortingList.push(docDB.eventDate.seconds);
+                sortingListTrue.push(docDB);
+            });
+
+        } else if (filter === "popular") {
+            events.forEach((docDB) => {
+                console.log(docDB.views);
+                sortingList.push(docDB.views);
+                sortingListTrue.push(docDB);
+            });
+
+        } else if (filter === "recent") {
+            events.forEach((docDB) => {
+                console.log(docDB.newestDate);
+                sortingList.push(docDB.createdDate.seconds);
+                sortingListTrue.push(docDB);
+            });
+
+        } else {
+            alert("error, filterType is not registered");
+        }
+
+        for (let i = 0; i < sortingList.length; i++) {
+            for (let j = 0; j < sortingList.length - i; j++) {
+                if (sortingList[j] < sortingList[j + 1]) {
+                    let temp = sortingList[j];
+                    let tempTrue = sortingListTrue[j];
+                    sortingList[j] = sortingList[j + 1];
+                    sortingListTrue[j] = sortingListTrue[j + 1];
+                    sortingList[j + 1] = temp;
+                    sortingListTrue[j + 1] = tempTrue;
+                }
+            }
+        }
+
+        console.log(sortingList);
+        if (sortingListTrue === []) {
+            alert("cannot make events list empty");
+        } else {
+            setEvents(sortingListTrue);
+        }
     }
+
     function changeEventFilter(ev) {
-        // console.log('ping! changeeventfilter')
-        eventListTemp = [...eventListState];
-        eventFilter = ev.target.value
-        if (eventFilter === "popular") {
-            eventListTemp.sort(function (a, b) { return b.views - a.views })
-            setEventListState(eventListTemp)
-            console.log(eventListState)
-        }
-        if (eventFilter === "newest") {
-            eventListTemp.forEach((doc) => {
-                doc.dateCompare = doc.Date.replace(/\D/g, '')
-            })
-            eventListTemp.sort(function (a, b) { return b.dateAdded.seconds - a.dateAdded.seconds })
-            setEventListState(eventListTemp)
-            console.log(eventListTemp)
-            console.log(eventListState)
-        }
+        filterType = ev.target.value;
+        sortMappedEvents(filterType);//Causes the code to not finish when run
+        //console.log(events);
     }
+
+    function goToProfile(ev) {
+
+    }
+
     return (
-        <div>
-            Hi
-            <button onClick={test}>Hi</button>
+        <div className="container">
+            <div className="searchBar">
+                <h1>Placeholder for a future search bar</h1>
+            </div>
+
             <div className="userInterfaceContainer">
                 <form className="filterEvents">
-                    <label htmlFor="eventFilterType">Sort out the events displayed:</label>
-                    <select name="eventFilterType" id="eventFilterType"
-                        onChange={changeEventFilter}
-                    >
+                    <label for="eventFilterType">Sort out the events displayed:</label>
+                    <select name="eventFilterType" id="eventFilterType" onChange={changeEventFilter}>
                         <option value="newest">Newest to Oldest</option>
                         <option value="popular">Most Popular</option>
                         <option value="recent">Most Recent</option>
                     </select>
                 </form>
-                <div className="eventMapContainer">
-                    {eventListState.map(event => {
-                        return (
-                            <div key={event.id} className='nametag'>
-                                <h1>{event.Title}</h1>
-                                <div>{event.id}</div>
-                                <img src={event.Image} style={{ width: "100px" }}></img>
-                                <div>This event will take place on: {event.Date}</div>
-                                <div>{event.views} many people have viewed this event</div>
-                            </div>
-                        )
-                    })
-                    }
-                </div>
+
+                <input type="button" className="goToProfile" onClick={goToProfile}></input>
+            </div>
+
+            <div className="eventMapContainer">
+                {events.map(event => {
+                    return (
+                        <div key={event.id} className='nametag'>
+                            <h1>{event.name}</h1>
+                            <div>This event will take place on: {event.eventDate.seconds}</div>
+                            <div>{event.views} many people have viewed this event</div>
+                        </div>
+                    )
+                })
+                }
+            </div>
+
+            <div className="profileContainer">
+                <input type="button" className="profile" onClick={goToProfile}></input>
             </div>
         </div>
-    )
+
+    );
 }
-export default App
+
+export default MainPage;
