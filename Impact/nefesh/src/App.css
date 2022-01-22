@@ -2,31 +2,31 @@
 /* name change */
 
 :root {
-    --Dark: #04080C;
-    --Dark-L1: #0E1317;
-    --Dark-L2: #191E22;
-    --Grey: #6F839F;
-    --Grey-D1: #637897;
-    --Grey-D2: #586D8E;
-    --Light: #F7FBFF;
-    --Light-D1: #EDF2F6;
-    --Light-D2: #E4E8EC;
-    --Primary: #0077CC;
-    --Light-blue: #C8E6FF;
-    
+	--Dark: #040404;
+	--Dark-L1: #0e1317;
+	--Dark-L2: #191e22;
+	--Grey: #6f839f;
+	--Grey-D1: #637897;
+	--Grey-D2: #586d8e;
+	--Light: #f7fbff;
+	--Light-D1: #edf2f6;
+	--Light-D2: #e4e8ec;
+	--Primary: #0077cc;
+	--Background-light: #c8e6ff;
+	--Navy-blue: #043c6c;
+	--Light-blue: #54a4d4;
 }
 
-body{
-    font-family: 'Poppins', sans-serif;
-    margin: 0px;
-    background-color: Var(--Light-blue);
-
+body {
+	font-family: 'Poppins', sans-serif;
+	margin: 0px;
+	background-color: Var(--Background-light);
 }
 
-#stickyBanner{
-    position: fixed;
-    bottom: 0px;
-    background-color: var(--Dark-L2);
-    width: 100vw;
-    height: 8Vh;
+#stickyBanner {
+	position: fixed;
+	bottom: 0px;
+	background-color: var(--Dark-L2);
+	width: 100vw;
+	height: 8vh;
 }

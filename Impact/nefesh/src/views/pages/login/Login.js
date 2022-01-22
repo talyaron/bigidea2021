@@ -29,7 +29,7 @@ function Login() {
 			<div className='loginPage'>
 				<img id='logo_LoginPage' src={NefishLogo} alt="Nefish B' Nefish" />
 				<form className='googleLoginForm'>
-					<button onClick={SignIn} id='googleLogin'>
+					<button onClick={SignIn} id='googleLogin' className='shadow'>
 						<img id='googleLogo' src={GoogleLogo} alt='google' />
 						<h4 id='googleText'> Sign In with google</h4>
 					</button>
