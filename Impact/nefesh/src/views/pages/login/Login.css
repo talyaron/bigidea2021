@@ -46,5 +46,7 @@
 
 #art_login {
 	position: fixed;
-	bottom: 0vw;
+	bottom: -17vw;
+	z-index: -6;
+
 }
