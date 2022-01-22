@@ -5,7 +5,7 @@
     transform: translate(-50%, -50%);
     background: #ffffff;
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.274);
-    width: fit-content;
+    width: 79%;
     height: fit-content;
     border-radius: 10px;
     padding: 20px;
@@ -68,7 +68,10 @@
 .submitButton1{
     background-color: var(--Grey-D2);
     border-radius: 20px;
+    margin-top: 10px;
 }
 .textInput_articalCP{
     background-color: var(--Grey);
+    border-radius: 5px;
+    margin-top: 10px;
 }

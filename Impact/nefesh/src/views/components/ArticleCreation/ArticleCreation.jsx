@@ -95,7 +95,7 @@ function ArticleCreation(props) {
             <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here" className='textInput_articalCP'/>
             <input type="text" name="text" onKeyUp={changeState} placeholder="Enter text here" className='textInput_articalCP'/>
             <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here" className='textInput_articalCP'/>
-            <input type="date" name="date" onChange={changeState} placeholder="Enter date here" className='textInput_articalCP'/>
+            <input type="date" name="date" onChange={changeState} placeholder="Enter date here" className='textInput_articalCP'/>           
             <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" className='textInput_articalCP'/>
             <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" className='textInput_articalCP'/>
             <input type="text" name="city" onChange={changeState} placeholder="Enter city here" className='textInput_articalCP'/>
