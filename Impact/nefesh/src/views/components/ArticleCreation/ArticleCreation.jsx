@@ -99,15 +99,17 @@ function ArticleCreation(props) {
             <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" />
             <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" />
             <input type="text" name="city" onChange={changeState} placeholder="Enter city here" />
+            <div className='timeData'>
             <div>Start Time</div>
             <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" />
             <div>End Time</div>
             <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" />
+            </div>
             <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here" />
-            <form onSubmit={addTags}>
+            <form className='Tags' onSubmit={addTags}>
                 <input type="text" name="tagsInput" placeholder="Enter tag here" />
-                <button type="submit">Submit</button>
             </form>
+            <button className='submitButton' type="submit">Submit</button>
 
             <div className="tagsMapContainer">
                 {tagsState.map(tag => {
@@ -120,9 +122,11 @@ function ArticleCreation(props) {
                 })
                 }
             </div>
+            <div className='personalInfo'>
             <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here" />
             <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here" />
             <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" />
+            </div>
             <button onClick={saveDraft}>Save Draft</button>
             <button onClick={submitArticle}>Submit Article</button>
 
