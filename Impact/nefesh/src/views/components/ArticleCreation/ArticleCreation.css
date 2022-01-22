@@ -10,8 +10,9 @@
     border-radius: 10px;
     padding: 20px;
     display: grid;
-    grid-template-columns: auto auto;
-    
+    grid-template-columns: auto;
+    background-color: var(--Navy-blue);
+    color: var(--Light-D2);
 }
 
 .box {
@@ -66,8 +67,5 @@
 
 button{
     border-radius: 20px;
-}
-
-body{
-    background-color: var(--Background-light);
+    background-color: var(--Grey);
 }
