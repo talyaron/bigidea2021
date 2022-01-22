@@ -138,7 +138,6 @@ function ArticleCreation(props) {
             <br />
             <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" />
             <button onClick={saveDraft}>Save Draft</button>
-            <button onClick={ping}>Hi</button>
             <button onClick={submitArticle}>Submit Article</button>
 
 
