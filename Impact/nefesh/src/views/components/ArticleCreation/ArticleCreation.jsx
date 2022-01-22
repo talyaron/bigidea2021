@@ -95,31 +95,43 @@ function ArticleCreation(props) {
 
             <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here" />
             <br />
+
             <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here" />
             <br />
+
             <input type="text" name="text" onKeyUp={changeState} placeholder="Enter text here" />
             <br />
+
             <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here" />
             <br />
+
             <input type="date" name="date" onChange={changeState} placeholder="Enter date here" />
             <br />
+
             <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" />
             <br />
+
             <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" />
             <br />
+
             <input type="text" name="city" onChange={changeState} placeholder="Enter city here" />
             <br />
+
+
             <div>Start Time</div>
             <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" />
             <div>End Time</div>
             <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" />
             <br />
+
             <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here" />
             <br />
+
             <form onSubmit={addTags}>
                 <input type="text" name="tagsInput" placeholder="Enter tag here" />
                 <button type="submit">Submit</button>
             </form>
+
             <div className="tagsMapContainer">
                 {tagsState.map(tag => {
                     return (
@@ -132,6 +144,7 @@ function ArticleCreation(props) {
                 }
             </div>
             <br />
+
             <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here" />
             <br />
             <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here" />
