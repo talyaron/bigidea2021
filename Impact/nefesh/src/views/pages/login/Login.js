@@ -5,7 +5,7 @@ import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import './Login.css';
 import NefishLogo from "../../components/Images/Nefish_B'Nefish_Logo.png";
 import GoogleLogo from '../../components/Images/Google.png';
-import LoginArt from '../../components/Images/Art_Signin.png';
+import LoginArt from '../../components/Images/signin_img.svg';
 
 function Login() {
 	const SignIn = (ev) => {
