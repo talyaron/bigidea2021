@@ -65,7 +65,10 @@
     grid-column: 1/3;
 }
 
-button{
+.submitButton1{
+    background-color: var(--Grey-D2);
     border-radius: 20px;
+}
+.textInput_articalCP{
     background-color: var(--Grey);
 }
