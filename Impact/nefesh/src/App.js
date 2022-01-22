@@ -31,11 +31,6 @@ const auth = getAuth();
 function App() {
     const [userOrg, setUserOrg] = useState({})
     const [userState, setUserState] = useState({})
-    const fetchOrganization = async () => {
-        await getDoc(doc(db, "users", userID)).then(userDB => {
-            setUserOrg(userDB.data().organization)
-        })
-    }
     useEffect(async () => {
         onAuthStateChanged(auth, async (user) => {
             if (user) {
@@ -50,6 +45,7 @@ function App() {
                         console.log("user exists")
                         setUserState({ userName: userDB.data().displayName,userOrg:userDB.data().organization})
                         role = userDB.data().role;
+
                     }
                     else {
                         //if user doesn't exist in db get the user from DB and get the role 
@@ -77,7 +73,6 @@ function App() {
 
             }
         })
-        fetchOrganization()
     }, [])
     return (
         <BrowserRouter>
