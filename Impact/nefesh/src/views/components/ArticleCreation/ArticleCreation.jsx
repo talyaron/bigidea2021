@@ -89,7 +89,7 @@ function ArticleCreation(props) {
     }
     return <div>
         <div className='popup-box'>
-            <b>Input information here</b>
+            <b className='infoTitle'>Input information here</b>
 
             <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here" />
             <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here" />
