@@ -84,7 +84,6 @@ function ArticleCreation(props) {
         // debugger
         ev.preventDefault()
         let tempArray=tagsState
-        console.log(ev.currentTarget[0].id)
         tempArray.splice(ev.currentTarget[0].id,1)
         setTagsState(tempArray)
     }
