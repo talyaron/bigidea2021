@@ -1,15 +1,40 @@
-.bluebutt{
+.blue{
     background-color: var(--Primary);
     color: white;
 }
-.blackbutt{
+.black{
     background-color: black;
     color: white;
+    height: 20px;
+    margin-top: 140%;
 }
 .backgrey{
     background-color: var(--Light-D2);
 }
 
-table{
-    border-collapse: collapse;
+
+
+.cont{
+    display: grid;
+    grid-template-columns: 10vw;
+    text-align: center;
+    /* display: flex;
+    flex-direction: row;
+    text-align: center;
+    flex-wrap: wrap;
+    max-width: 30vw;
+    justify-content: center;
+    gap: 10px; */
+}
+.cont2{
+    display: grid;
+    grid-template-columns: auto auto ;
+}
+.cont3{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.cont4{
+    display: grid;
+    grid-template-columns: auto auto;
 }

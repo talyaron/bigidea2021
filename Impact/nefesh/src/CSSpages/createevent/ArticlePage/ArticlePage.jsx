@@ -1,46 +1,33 @@
 import "./ArticlePage.css";
 function Article(){
     return(
-        <div>
-            <button className="bluebutt"> Back </button>
-            <table>
+        <div className="cont">
+            <button className="blue butt"> Back </button>
             <div className="backgrey">
-                <tr>
-
-                <th> <h2> Event Name </h2> </th>
-
-                </tr>
-                <tr>
-                    <td>  DD/MM/YYYY </td>
-                    <td> location </td>
-                </tr>
-                <tr>
-                    Event description bla blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
-                </tr>
+            <h2 className="Eventname"> Event Name </h2>
+            <div className="cont2">
+            <p className="year"> DD/MM/YYYY </p>
+            <p className="location"> location </p>
             </div>
-                <tr>
-                    <td> <button className="blackbutt"> signup </button> </td>
-                    <td> <h3> Signed / General Kanobi </h3> </td>
-                    <td> <button className="blackbutt"> Share </button> </td>
-                </tr>
-                <tr className="backgrey">
-                
-                    <td>
-                        <button className="bluebutt"> Home </button>
-                    </td>
-                    <td>
-                        <button className="bluebutt"> Share </button>
-                    </td>
-                </tr>
-                
-            </table>
             
-                  
-                <footer >   </footer>
+            <p className="descrpition"> Event description bla blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla </p>
+            </div>
+            <div className="cont3">
+            <button className="black butt4"> signup </button>
+            <h3 className="name"> Signed / General Kanobi </h3>
+            <button className="black butt5"> Share </button>
+            </div>
+            <div className="cont4 backgrey">
+            <button className="blue butt2"> Home </button>
+            <button className="blue butt2 "> Share </button>
+            </div>
+        </div>
+               
+            
             
             
 
-        </div>
+        
                 
     )
 }
