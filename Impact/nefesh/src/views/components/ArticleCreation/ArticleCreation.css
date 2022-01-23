@@ -36,14 +36,14 @@
 }
 
 .submitButton{
-    background-color: var(--Grey-D2);
+    background-color: var(--Grey);
     height: 20px;
     border-radius: 20px;
     margin-top: 10px;
 }
 
 .textBasic{
-    background-color: var(--Grey);
+    background-color: var(--Dark-D2);
     border-radius: 5px;
     margin-top: 10px;
 }
@@ -53,18 +53,20 @@
     max-width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    background-color: var(--background-light);
-    color: var(--Grey-D2);
+    background-color: var(--Background-blue);
+    color: var(--Navy-blue);
     margin: 15px;
     display: flex;
     flex-direction: column;
+    padding: 5px;
+    border-radius: 10px;
     /*grid-template-columns: repeat(6, 1fr); /*6 columns*/
     /*grid-template-rows: repeat(14, auto); /*14 rows*/
     
     
 }
 .createArticle-popup-box input{
-    background-color: rgb(231, 231, 231);
+    background-color: /*rgb(231, 231, 231)*/var(--Light-D2);
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 10px;
@@ -85,7 +87,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 */
 .expandBox {
     display: block;
-    background-color: rgb(231, 231, 231);
+    background-color: /*rgb(231, 231, 231)*/ var(--Light-D2);
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 10px;

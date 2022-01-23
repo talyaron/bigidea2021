@@ -93,7 +93,7 @@ function ArticleCreation(props) {
         <div className='createArticle-popup-box'>
 
             <b className='infoTitle'>Input information here</b>
-            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here"  />
+            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here"   />
             <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here"  />
             <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here"  />
             <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" />
@@ -108,7 +108,7 @@ function ArticleCreation(props) {
             <div>Event Start Time:</div>
             <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" />
             <div>Event End Time:</div>
-            <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here"/>
+            <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" />
             <div className="expandBox"><span className="textarea" name="text" role="textbox" onKeyUp={changeState} placeholder='Enter event description here' contentEditable></span></div>
 
 
