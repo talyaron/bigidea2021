@@ -1,0 +1,15 @@
+.bluebutt{
+    background-color: var(--Primary);
+    color: white;
+}
+.blackbutt{
+    background-color: black;
+    color: white;
+}
+.backgrey{
+    background-color: var(--Light-D2);
+}
+
+table{
+    border-collapse: collapse;
+}

@@ -20,6 +20,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from "firebase/firestore"
 import { db } from "./functions/firebase/config"
+import ArticlePage from "./CSSpages/createevent/ArticlePage/ArticlePage";
 
 //hi
 let role = "superAdmin"
@@ -78,6 +79,7 @@ function App() {
                 <Link to='/ContactUs'>Contact Us</Link>
                 <Link to='/ArticleCreation'>Article Creation</Link>
                 <Link to='/ProfilePage'>Profile Page</Link>
+                <Link to='/ArticlePage'>Article Page</Link>
 
             </nav>
             <Routes>
@@ -91,6 +93,7 @@ function App() {
                 <Route path="ContactUs" element={<ContactUs/>} />
                 <Route path="ArticleCreation" element = {<ArticleCreation/>} />
                 <Route path="ProfilePage" element = {<ProfilePage/>} />
+                <Route path="ArticlePage" element = {<ArticlePage/>} />
 
             </Routes>
         </BrowserRouter>
