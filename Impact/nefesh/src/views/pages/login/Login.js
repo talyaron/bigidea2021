@@ -5,7 +5,7 @@ import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import './Login.css';
 import NefishLogo from "../../components/Images/Nefish_B'Nefish_Logo.png";
 import GoogleLogo from '../../components/Images/Google.png';
-import LoginArt from '../../components/Images/Art_Signin.png';
+import LoginArt from '../../components/Images/signin_img.svg';
 
 function Login() {
 	const SignIn = (ev) => {
@@ -27,7 +27,11 @@ function Login() {
 	return (
 		<div>
 			<div className='loginPage'>
-				<img id='logo_LoginPage' src={NefishLogo} alt="Nefish B' Nefish" />
+				<div className='centerImg_Login'>
+					<div>
+						<img id='logo_LoginPage' src={NefishLogo} alt="Nefish B' Nefish" />
+					</div>
+				</div>
 				<form className='googleLoginForm'>
 					<button onClick={SignIn} id='googleLogin' className='shadow'>
 						<img id='googleLogo' src={GoogleLogo} alt='google' />
