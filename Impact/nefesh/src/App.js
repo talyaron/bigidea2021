@@ -63,7 +63,7 @@ function App() {
 		});
 	}, []);
 	return (
-		<div>
+		<div className='container_AppMain'>
 			{loggedIn ? (
 				<div className='container_App'>
 					<BrowserRouter>

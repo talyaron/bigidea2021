@@ -27,7 +27,11 @@ function Login() {
 	return (
 		<div>
 			<div className='loginPage'>
-				<img id='logo_LoginPage' src={NefishLogo} alt="Nefish B' Nefish" />
+				<div className='centerImg_Login'>
+					<div>
+						<img id='logo_LoginPage' src={NefishLogo} alt="Nefish B' Nefish" />
+					</div>
+				</div>
 				<form className='googleLoginForm'>
 					<button onClick={SignIn} id='googleLogin' className='shadow'>
 						<img id='googleLogo' src={GoogleLogo} alt='google' />
