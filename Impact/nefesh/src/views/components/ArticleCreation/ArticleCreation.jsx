@@ -106,20 +106,20 @@ function ArticleCreation(props) {
             <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here"  />
             <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here"  />
 
-            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" className='textBasic webUrl' />
+            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" />
 
-            <input type="date" name="date" onChange={changeState} placeholder="Enter date here" className='textBasic date' />
+            <div>Event Date:</div>
+            <input type="date" name="date" onChange={changeState} placeholder="Enter date here" />
+            <div>Event Start Time:</div>
+            <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" />
+            <div>Event End Time:</div>
+            <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here"/>
 
-            <div>Start Time</div>
-            <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" className='textBasic' />
-            <div>End Time</div>
-            <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" className='textBasic' />
 
-
-            <input type="text" name="text" onKeyUp={changeState} placeholder="Enter text here" className='textBasic description' />
+            <input type="text" name="text" onKeyUp={changeState} placeholder="Enter text here"/>
 
             <form className='Tags' onSubmit={addTags}>
-                <input type="text" name="tagsInput" placeholder="Enter tag here" className='textBasic' />
+                <input type="text" name="tagsInput" placeholder="Enter tag here" />
                 <button className='submitButton' type="submit">Submit</button>
             </form>
 
