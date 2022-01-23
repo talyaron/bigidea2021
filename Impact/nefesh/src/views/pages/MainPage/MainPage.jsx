@@ -79,4 +79,4 @@ function App() {
     )
 }
 
-export default MainPage;
+export default App;
