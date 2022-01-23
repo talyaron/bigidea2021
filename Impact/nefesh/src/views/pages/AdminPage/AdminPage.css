@@ -1,0 +1,61 @@
+.adminPage_container {
+    position: absolute;
+    margin-left: 1%;
+    background-color: Var(--Navy-blue);
+    padding: 10px;
+    border: 4px solid Var(--Dark);
+}
+
+.adminButton {
+    border: 2px solid black;
+    background-color: Var(--Primary);
+    display: inline-block;
+    margin: 3px;
+}
+
+.userButtonID {
+    background-color: Var(--Light);
+    border-radius: 5px;
+    border: 1px solid Var(--Dark);
+    box-shadow: 1px 1px 2px 2px Var(--Dark-L2);
+    font-size: small;
+    margin: 4px;
+}
+
+.userButtonID:hover {
+    background-color: Var(--Grey);
+    color: Var(--Light);
+}
+
+.cardInfo {
+    padding-left: 10px;
+}
+
+#searchDropdown {
+    background-color: Var(--Light);
+    margin-left: 5px;
+    border-radius: 10px;
+}
+
+#search_button_AdminPage {
+    background-color: Var(--Light=);
+    border-radius: 30px;
+}
+
+#search_button_AdminPage:hover, #clearFilter:hover, #searchDropdown:hover {
+    background-color: Var(--Background-light);
+}
+
+#searchFor {
+    color: Var(--Light-blue);
+}
+
+.scroll {
+    margin: 4px, 4px;
+    padding: 4px;
+    width: 500px;
+    height: 550px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: justify;
+}
