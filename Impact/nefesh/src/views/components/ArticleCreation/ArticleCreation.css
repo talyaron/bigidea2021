@@ -1,7 +1,7 @@
 .popup-box {
     position: relative;
-    left: 50vw;
-    top: 50vh;
+    left: 44.5vw;
+    top: 30vh;
     transform: translate(-50%, -50%);
     background: #ffffff;
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.274);
