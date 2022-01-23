@@ -5,7 +5,7 @@
 	--Dark: #040404;
 	--Dark-L1: #0e1317;
 	--Dark-L2: #191e22;
-	--Grey: #A4B0C1;
+	--Grey: #a4b0c1;
 	--Grey-D1: #637897;
 	--Grey-D2: #586d8e;
 	--Light: #f7fbff;
@@ -26,7 +26,35 @@ body {
 #stickyBanner {
 	position: fixed;
 	bottom: 0px;
-	background-color: var(--Dark-L2);
+	background-color: var(--Light-blue);
+	max-width: 500px;
+	width: 100%;
+	height: 20px;
+}
+.container_AppMain{
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+}
+
+.container_App {
 	width: 100vw;
-	height: 8vh;
+	max-width: 500px;
+	border: var(--Light-blue) 1px solid;
+	overflow-y: scroll; /* Hide vertical scrollbar */
+	overflow-x: hidden; /* Hide horizontal scrollbar */
+	max-height: 100vh;
+	height: 100vh;
+	margin: 0px;
+}
+
+.container_App::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.container_App {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 }
