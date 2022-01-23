@@ -1,40 +1,78 @@
-.blue{
+.backButton{
     background-color: var(--Primary);
     color: white;
+
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 80px;
+    height: 40px;
+    font-size: 20px;
+
+    text-align: center;
 }
 .black{
     background-color: black;
     color: white;
-    height: 20px;
-    margin-top: 140%;
-}
-.backgrey{
-    background-color: var(--Light-D2);
-}
 
+    height: 30px;
+    width: 90px;
 
-
-.cont{
-    display: grid;
-    grid-template-columns: 10vw;
     text-align: center;
-    /* display: flex;
+}
+.eventData{
+    background-color: var(--Light-D2);
+
+    width: 100vw;
+    display: inline-block;
+
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.secondaryInfo{
+    display: flex;
     flex-direction: row;
+    justify-content: space-around;
+
+    margin-bottom: 10px;
+    margin-top: -20px;
+    font-size: 20px;
+}
+
+.eventDescription{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.mainContainer{
+    display: flex;
+    flex-direction: column;
     text-align: center;
     flex-wrap: wrap;
-    max-width: 30vw;
+
+    width: 100vw;
+
     justify-content: center;
-    gap: 10px; */
 }
-.cont2{
-    display: grid;
-    grid-template-columns: auto auto ;
-}
-.cont3{
-    display: grid;
-    grid-template-columns: auto auto auto;
+
+.userPromptContainer{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 .cont4{
     display: grid;
     grid-template-columns: auto auto;
 }
+
+.articleImage{
+    position: relative;
+    width: 100vw;
+    height: 225px;
+    background-image: url("https://amymhaddad.s3.amazonaws.com/morocco-blue.png");
+}
+

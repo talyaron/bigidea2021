@@ -1,25 +1,29 @@
 import "./ArticlePage.css";
 function Article(){
     return(
-        <div className="cont">
-            <button className="blue butt"> Back </button>
-            <div className="backgrey">
-            <h2 className="Eventname"> Event Name </h2>
-            <div className="cont2">
-            <p className="year"> DD/MM/YYYY </p>
-            <p className="location"> location </p>
+        <div className="mainContainer">
+            <div className="articleImage">
+                <button className="backButton"> &#60; Back </button>
             </div>
-            
-            <p className="descrpition"> Event description bla blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla </p>
+
+            <div className="eventData">
+                <h1 className="eventName"> Event Name </h1>
+                <div className="secondaryInfo">
+                    <p className="eventDate"> DD/MM/YYYY </p>
+                    <p className="eventLocation"> location </p>
+                </div>
+                <p className="eventDescription"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
-            <div className="cont3">
-            <button className="black butt4"> signup </button>
-            <h3 className="name"> Signed / General Kanobi </h3>
-            <button className="black butt5"> Share </button>
+
+            <div className="userPromptContainer">
+                <button className="signUpButton black"> Sign Up </button>
+                <h3 className="username"> Signed / General Kanobi </h3>
+                <button className="shareButton black"> Share </button>
             </div>
+
             <div className="cont4 backgrey">
-            <button className="blue butt2"> Home </button>
-            <button className="blue butt2 "> Share </button>
+                <button className="blue butt2"> Home </button>
+                <button className="blue butt2 "> Share </button>
             </div>
         </div>
                
