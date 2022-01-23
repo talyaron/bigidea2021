@@ -20,11 +20,13 @@ import AdminPage from './views/pages/AdminPage/AdminPage';
 let role = 'superAdmin';
 let permissionedRole;
 const auth = getAuth();
+let userID = ""
 let loggedIn;
 
 function App() {
 	const [userState, setUserState] = useState({});
 
+	const [userState, setUserState] = useState({})
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
