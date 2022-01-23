@@ -80,7 +80,7 @@ function App() {
 							<Route path='404' element={<Error />} />
 							<Route path='401' element={<Unauthorised />} />
 							<Route path='MainPage' element={<MainPage role={role} />} />
-							<Route path='MainPage/*' element={<EventPage  />} />
+							<Route path='Event/:eventID' element={<EventPage  />} />
 							<Route path='ContactUs' element={<ContactUs />} />
 							<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 							<Route path='ProfilePage' element={<ProfilePage  uid={userID} />} />

@@ -3,12 +3,13 @@ import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
 import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
 import EventPage from "../../components/Event Page/eventPage"
-import { BrowserRouter, Routes, Route, Link,useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link,useNavigate,useParams} from 'react-router-dom';
 let eventFilter = ""
 let eventListTemp = []
 
 function App() {
     let navigate = useNavigate();
+    
     const [eventListState, setEventListState] = useState([])
 
     // const [eventFilterState,setEventFilterState]=useState("")
@@ -74,11 +75,11 @@ function App() {
                                     <div>{event.views} many people have viewed this event</div>
                                     <div> Host Organization website<a href={event.contactInfo.website}>{event.contactInfo.website}</a></div>
                                     <button onClick={()=>{
-                                        navigate("/MainPage/",event.id)
+                                        navigate(`/Event/${event.id}`)
                                     }}>
                                         Open Event
                                     </button>
-                                    <nav><Link to={"/MainPage",event.id}>Open Event</Link>
+                                    <nav><Link to={event.id}>Open Event</Link>
                                     </nav>
                                     <Routes>
                                 <Route path={"/MainPage",event.id} element={<EventPage event={event} />}></Route>
