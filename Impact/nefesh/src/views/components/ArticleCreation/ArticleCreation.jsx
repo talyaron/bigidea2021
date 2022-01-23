@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ArticleCreation.css';
+
 import { collection, addDoc, arrayRemove } from "firebase/firestore"
 import { db } from "../../../functions/firebase/config"
 let i = 0
@@ -72,44 +72,46 @@ function ArticleCreation(props) {
         let parse = ev.target.name
         statesSumbitted = { ...statesSumbitted, [parse]: ev.target.value }
     }
-    function ping() {
-        console.log(tagsState)
-    }
+
     function addTags(ev) {
         ev.preventDefault()
         setTagsState([...tagsState, { id: i, tag: ev.target[0].value }])
         i++
+        console.log(ev.target[0].value)
     }
     function deleteTag(tag){
         // debugger
         tag.preventDefault()
+        
         let tempArray=[...tagsState]
         tempArray.splice(tag,1)
         setTagsState(tempArray)
     }
     return <div>
         <div className='popup-box'>
+
             <b className='infoTitle'>Input information here</b>
 
-            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here" className='textInput_articalCP'/>
-            <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here" className='textInput_articalCP'/>
-            <input type="text" name="text" onKeyUp={changeState} placeholder="Enter text here" className='textInput_articalCP'/>
-            <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here" className='textInput_articalCP'/>
-            <input type="date" name="date" onChange={changeState} placeholder="Enter date here" className='textInput_articalCP'/>           
-            <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" className='textInput_articalCP'/>
-            <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" className='textInput_articalCP'/>
-            <input type="text" name="city" onChange={changeState} placeholder="Enter city here" className='textInput_articalCP'/>
+            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here" className='textBasic'/>
+            <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here" className='textBasic'/>
+            <input type="text" name="text" onKeyUp={changeState} placeholder="Enter text here" className='textBasic'/>
+            <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here" className='textBasic'/>
+            <input type="date" name="date" onChange={changeState} placeholder="Enter date here" className='textBasic'/>           
+            <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" className='textBasic'/>
+            <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" className='textBasic'/>
+            <input type="text" name="city" onChange={changeState} placeholder="Enter city here" className='textBasic'/>
             <div className='timeData'>
             <div>Start Time</div>
-            <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" className='textInput_articalCP'/>
+            <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" className='textBasic'/>
             <div>End Time</div>
-            <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" className='textInput_articalCP'/>
+            <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" className='textBasic'/>
             </div>
-            <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here" className='textInput_articalCP'/>
+            <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here" className='textBasic'/>
             <form className='Tags' onSubmit={addTags}>
-                <input type="text" name="tagsInput" placeholder="Enter tag here" className='textInput_articalCP'/>
+                <input type="text" name="tagsInput" placeholder="Enter tag here" className='textBasic'/>
+                <button className='submitButton1' type="submit">Submit</button>
             </form>
-            <button className='submitButton1' type="submit">Submit</button>
+            
 
             <div className="tagsMapContainer">
                 {tagsState.map(tag => {
@@ -123,9 +125,9 @@ function ArticleCreation(props) {
                 }
             </div>
             <div className='personalInfo'>
-            <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here" className='textInput_articalCP'/>
-            <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here" className='textInput_articalCP'/>
-            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" className='textInput_articalCP'/>
+            <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here" className='textBasic'/>
+            <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here" className='textBasic'/>
+            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" className='textBasic'/>
             </div>
             <button className='submitButton1' onClick={saveDraft}>Save Draft</button>
             <button className='submitButton1' onClick={submitArticle}>Submit Article</button>
