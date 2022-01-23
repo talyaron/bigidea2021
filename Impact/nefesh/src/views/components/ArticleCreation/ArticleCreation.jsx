@@ -4,6 +4,7 @@ import { collection, addDoc, arrayRemove } from "firebase/firestore"
 import { db } from "../../../functions/firebase/config"
 let i = 0
 let statesSumbitted = { views: 0, startTime: "", endTime: "" }
+
 function ArticleCreation(props) {
     const [tagsState, setTagsState] = useState([])
     function submitArticle() {
@@ -117,6 +118,8 @@ function ArticleCreation(props) {
 
 
             <input type="text" name="text" onKeyUp={changeState} placeholder="Enter an event description here"/>
+            <p><strong>Enter an event description here:</strong> <span class="textarea" role="textbox" contenteditable></span></p>
+
 
             <form className='Tags' onSubmit={addTags}>
                 <input type="text" name="tagsInput" placeholder="Enter event tags here" />
