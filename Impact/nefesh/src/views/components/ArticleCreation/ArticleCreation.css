@@ -134,37 +134,33 @@
     margin-top: 10px;
 }
 
-.popup-box {
+.createArticle-popup-box {
     position: relative;
     left: 50vw;
-    top: 50vh;
-    transform: translate(-50%, -50%);
+    top: 25vh;
+    
+    height: 60vh;
+    overflow-y: auto;
+    transform: translate(-50%, -25%);
     background: #ffffff;
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.274);
     width: 79%;
-    height: fit-content;
+   
     border-radius: 10px;
     padding: 20px;
     background-color: var(--Navy-blue);
     color: var(--Light-D2);
     
-    display: grid;
+    display: flex;
+    flex-direction: column;
     /*grid-template-columns: repeat(6, 1fr); /*6 columns*/
     /*grid-template-rows: repeat(14, auto); /*14 rows*/
-    grid-template-areas: 
-    "title"
-    "inputTitle"
-    "hostName"
-    "imgUrl"
-    "street city"
-    "building maxCap"
-    "phoneNum email"
-    "webUrl"
-    "date timeData"
-    "description"
-    "description"
-    "tagSubmit"
-    "tagSubmit"
-    "draftSave trueSubmit";
     
+    
+}
+.createArticle-popup-box input{
+    background-color: rgb(231, 231, 231);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
 }
