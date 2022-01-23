@@ -41,7 +41,6 @@ body {
 .container_App {
 	width: 100vw;
 	max-width: 500px;
-	border: var(--Light-blue) 1px solid;
 	overflow-y: scroll; /* Hide vertical scrollbar */
 	overflow-x: hidden; /* Hide horizontal scrollbar */
 	max-height: 100vh;
