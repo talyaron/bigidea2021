@@ -17,6 +17,7 @@ import ArticleCreation from './views/components/ArticleCreation/ArticleCreation'
 import MainPage from './views/pages/MainPage/MainPage';
 import { checkRole } from "./functions/general.js"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Event from './CSSpages/createevent/createev';
 import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from "firebase/firestore"
 import { db } from "./functions/firebase/config"
@@ -78,6 +79,7 @@ function App() {
                 <Link to='/ContactUs'>Contact Us</Link>
                 <Link to='/ArticleCreation'>Article Creation</Link>
                 <Link to='/ProfilePage'>Profile Page</Link>
+                <Link to='/Event'>Profile Page</Link>
 
             </nav>
             <Routes>
@@ -91,6 +93,7 @@ function App() {
                 <Route path="ContactUs" element={<ContactUs/>} />
                 <Route path="ArticleCreation" element = {<ArticleCreation/>} />
                 <Route path="ProfilePage" element = {<ProfilePage/>} />
+                <Route path="Event" element = {<Event/>} />
 
             </Routes>
         </BrowserRouter>
