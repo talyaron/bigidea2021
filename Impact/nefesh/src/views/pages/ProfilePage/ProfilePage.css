@@ -1,15 +1,18 @@
 #profilePicCont{
     width: 100px;
     height: 100px;
+    
 }
 
 #profilePic{
-    height: 100%;
-    width: 100%;
+    height: 150%;
+    width: 150%;
     border-radius: 20px;
     background-image: none;
     background-size: 100% auto;
     background-color: blue;
+    position: relative;
+    left: 145%;
    
     
     
@@ -23,6 +26,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     color: darkblue;
+
 
 }
 #profileEditor{
@@ -73,3 +77,4 @@
     margin: 70px;
 
 }
+

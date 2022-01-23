@@ -78,7 +78,10 @@ function ProfilePage(props) {
 		console.log(props.uid)
 	}
 	return (
+		
+
 		<div>
+			<div class="loader"></div>
 			<div className='containerDetails'>
 				<div id='profilePicCont'>
 					<div
@@ -92,7 +95,7 @@ function ProfilePage(props) {
 					Address: {userAddress}<br />
 				</h4>
 				<div className='containerEvents'>
-					<p>Events list goes here</p>
+					<p>My events:</p>
 				</div>
 			</div>
 			<button type="button" class="mnButton" onClick={changePreferences} name="settingbtn">Preferences</button>
