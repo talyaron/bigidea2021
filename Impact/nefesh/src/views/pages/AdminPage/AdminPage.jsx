@@ -74,7 +74,6 @@ function AdminPage() {
 				list.push(namesTemp);
 			});
 			setNames(list);
-			console.log(list)
 		});
 	}
 

@@ -1,9 +1,10 @@
 .adminPage_container {
     position: absolute;
-    margin-left: 1%;
     background-color: Var(--Navy-blue);
     padding: 10px;
-    border: 4px solid Var(--Dark);
+    border: 4px solid Var(--Dark-L1);
+    width: 80%;
+    box-shadow: 3px 3px 4px 2px Var(--Dark-L2);
 }
 
 .adminButton {
@@ -35,10 +36,11 @@
     background-color: Var(--Light);
     margin-left: 5px;
     border-radius: 10px;
+    border: 2px solid Var(--Dark);
 }
 
 #search_button_AdminPage {
-    background-color: Var(--Light=);
+    background-color: Var(--Light);
     border-radius: 30px;
 }
 
