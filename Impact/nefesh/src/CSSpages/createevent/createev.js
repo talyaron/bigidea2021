@@ -1,6 +1,6 @@
 import './createev.css';
 
-function CreateEvent() {
+function Event() {
     return(
         <div classname= 'createev'>
             <header classname= 'header'>Create Event</header>
@@ -25,4 +25,4 @@ function CreateEvent() {
     );
 }
 
-export default CreateEvent;
+export default Event;
