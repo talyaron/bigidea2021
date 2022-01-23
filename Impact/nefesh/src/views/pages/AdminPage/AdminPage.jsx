@@ -9,17 +9,25 @@ import { push } from 'firebase/database';
 var isAdmin = true;
 let userIDAdmin;
 
+
 function AdminPage() {
 	const [displayName, setDisplayName] = useState('displayName');
-	const [userID, setUserID] = useState('ID');
+	const [userID, setUserID] = useState('id');
 	const [isOpen, setIsOpen] = useState(false);
+	const [role, setRole] = useState('ole');
 
 
-	function togglePopup(ev) {
-		//get ID for changing settings
-		// userIDAdmin = ev.target.innerHTML;
+	function togglePopup(name) {
+
 		try {
+			
+			const userIdSpec = name.userID;
+			setRole(name.role || 'ole');
 
+			//get ID for changing settings
+			var userIDforPopup = userIdSpec;
+			console.log('26', userIDforPopup);
+			sessionStorage.setItem("userIDforPopup", userIDforPopup);
 
 			//open popup
 			setIsOpen(!isOpen);
@@ -28,12 +36,12 @@ function AdminPage() {
 			// let ref = userIDAdm();
 
 		
-			const userIdSpec = ev.target.id;
+			
 			const userRef = doc(db, "users", userIdSpec)
 
 			getDoc(userRef).then(userDB => {
-				console.log(userDB.data())
-				console.log(userDB.exists())
+				// console.log(userDB.data())
+				// console.log(userDB.exists())
 				let userNameTemp = userDB.data().displayName
 				setDisplayName(userNameTemp);
 				setUserID(userIdSpec);
@@ -66,6 +74,7 @@ function AdminPage() {
 				list.push(namesTemp);
 			});
 			setNames(list);
+			console.log(list)
 		});
 	}
 
@@ -103,8 +112,8 @@ function AdminPage() {
 				<div className='adminPage_container'>
 					<div className='search_Container'>
 						<form className='searchFor' onChange={handleSearchByChange}>
-							<label for='searchFor' >Search for:</label>
-							<select name='searchFor'>
+							<label for='searchFor' id='searchFor'>Search for:</label>
+							<select id="searchDropdown" name='searchFor'>
 								<option value='userID'>userID's</option>
 								<option value='displayName'>DisplayName's</option>
 								<option value='email'>Email's</option>
@@ -112,10 +121,10 @@ function AdminPage() {
 							</select>
 						</form>
 					<input type='text' placeholder={`Enter Full ${searchField}`} name='adminPageSearch' id='search_Box_AdminPage' onChange={handleSearchChange}/>
-					<button onClick={handleSearch} id='search_button_AdminPage'>Search</button>
+					<button onClick={handleSearch} id='search_button_AdminPage'>🔍</button>
 					<button onClick={handleClearFilter} id='clearFilter'>Clear Search</button>
 					</div>
-				<div className='eventMapContainer'>
+				<div className='eventMapContainer scroll'>
 					{Names.map((names) => {
 						return (
 							<div key={names.userID} className='nametag'>
@@ -123,9 +132,9 @@ function AdminPage() {
 									value='User Settings'
 									className='adminButton'
 									name='userSelect'>
-									<h4>{names.displayName}</h4>
-									<h5>{names.email}</h5>
-									<button onClick={togglePopup} name='userButtonID' id={names.userID}>
+									<h4 className="cardInfo">{names.displayName}</h4>
+									<h5 className="cardInfo">{names.email}</h5>
+									<button onClick={()=>togglePopup(names)} name='userButtonID' id={names.userID} className="userButtonID cardInfo">
 										{names.userID}
 									</button>
 								</div>
@@ -138,10 +147,11 @@ function AdminPage() {
 			{isOpen && (
 				<AdminPagePopUp
 					tempUserIDAdm={userID}
+					role={role}
 					content={
 						<>
-							<b>{displayName}</b>
-							<p> UserID: '{userID}'</p>
+							<b id='displayName'>{displayName}</b>
+							<p id='userIDdisplay'> UserID: '{userID}'</p>
 						</>
 					}
 					handleClose={togglePopup}
