@@ -1,11 +1,11 @@
 import './ProfilePage.css';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../../functions/firebase/config';
-import { doc, getDoc, onSnapshot, } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot,setDoc } from 'firebase/firestore';
 
 const userDocRef = doc(db, 'users', '0vtoIVm41lXvBJhSStUSmBqBq873');
 
-function ProfilePage() {
+function ProfilePage(props) {
 	const [displayName, setDisplayName] = useState('loading');
 	const [profilePicImg, setProfilePicImg] = useState('loading');
 	const [userEmail, setUserEmail]= useState('loading')
@@ -54,6 +54,14 @@ function ProfilePage() {
 			setUserGender(gender);
 
 			setEditing(false)
+			setDoc(doc(db, "users",props.uid),{
+				displayName:name,
+				userIcon:profilePic,
+				email:email,
+				sex:gender,
+				location:address,
+
+			})
 		}
 
 		function changePreferences(ev){
@@ -65,6 +73,9 @@ function ProfilePage() {
 
 
 		 
+		}
+		function debug(){
+			console.log(props.uid)
 		}
 	return (
 		<div>
@@ -105,7 +116,10 @@ function ProfilePage() {
    	 Enter New Gender: <input type="text" name="newGender" /><br/>
 	 Enter New Address: <input type="text" name="newAddress" />
 	 <button type="submit"  name = "editbtn"> Submit Changes</button>
+	
 	 </form>
+	 
+	 
 	</div>:null}
 
 

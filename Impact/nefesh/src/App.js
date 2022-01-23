@@ -29,16 +29,17 @@ import AdminPage from './views/pages/AdminPage/AdminPage'
 let role = "superAdmin"
 let permissionedRole
 const auth = getAuth();
-
+let userID=""
 function App() {
 
     const [userState, setUserState] = useState({})
 
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+    useEffect(async() => {
+        onAuthStateChanged(auth, async (user) => {
             if (user) {
                 console.log('user logged in')
                 const uid = user.uid;
+                userID=uid
 
                 //get user from db
                 getDoc(doc(db, "users", uid)).then(userDB => {
@@ -95,7 +96,7 @@ function App() {
                 <Route path="MainPage" element={<MainPage role={role}/>} />
                 <Route path="ContactUs" element={<ContactUs/>} />
                 <Route path="ArticleCreation" element = {<ArticleCreation/>} />
-                <Route path="ProfilePage" element = {<ProfilePage/>} />
+                <Route path="ProfilePage" element = {<ProfilePage uid={userID}/>} />
                 <Route path='AdminPage' element={<AdminPage/>}/>
                 
 
