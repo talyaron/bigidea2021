@@ -7,13 +7,14 @@ import { userIDAdm } from '../../pages/AdminPage/AdminPage';
 import { query } from 'firebase/database';
 
 let currentID;
-const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
+const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role }) => {
 
 
 	let userIDRef = tempUserIDAdm; // this will change based on the profile page pulled rn
 	let usersRef = collection(db, 'users');
 	let userDocRef = doc(db, 'users', userIDRef);
-	const [userRole, setUserRole] = useState('role');
+	
+	const [isAdmin, setIsAdmin] = useState(role === 'orgAdmin'?true:false);
 
 	useEffect(() => {
 		// console.log(getDoc(userDocRef), 'hi');
@@ -27,7 +28,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 		let username = prompt('Enter your new username.');
 		console.log(ev, username);
 
-		if(username === null) {
+		if (username === null) {
 			return;
 		} else {
 			updateDoc(userDocRef, {
@@ -67,6 +68,10 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 
 	async function handleSetRoleToOle(ev) {
 
+
+
+
+		setIsAdmin(!isAdmin)
 		currentID = sessionStorage.getItem("userIDforPopup");
 		console.log(currentID); //works when getting just id, need to get string from "role" field in the db
 
@@ -76,84 +81,84 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 			console.log(doc.data());
 		})
 
-		setUserRole(currentID);
-		console.log(userRole); //role shows up as what it was initialized to, doesn't change b/c of lines above ^^^
-		if (userRole === 'ole') {
+		// setUserRole(currentID);
+		console.log(isAdmin); //role shows up as what it was initialized to, doesn't change b/c of lines above ^^^
+		if (isAdmin === false) {
 			console.log("true", 'org admin');
 
 			console.log(ev, 'handleSetRoleToOrgAdmin');
-		/* make sure to check that username is not taken */
+			/* make sure to check that username is not taken */
 
-		updateDoc(userDocRef, {
-			role: 'orgAdmin',
-		}).then(async () => {
-			// create and show the notification
-			const showNotification = () => {
-				// create a new notification
-				const notification = new Notification('UPDATE', {
-					body: 'ROLE UPDATED TO org admin',
-				});
-				// close the notification after 10 seconds
-				setTimeout(() => {
-					notification.close();
-				}, 10 * 1000);
-			};
-			// show an error message
-			const showError = () => {
-				// const error = document.querySelector('.error');
-				// error.style.display = 'block';
-				// error.textContent = 'You blocked the notifications';
-				alert('Notifications disabled');
-			};
-			// check notification permission
-			let granted = false;
-			if (Notification.permission === 'granted') {
-				granted = true;
-			} else if (Notification.permission !== 'denied') {
-				let permission = await Notification.requestPermission();
-				granted = permission === 'granted' ? true : false;
-			}
-			// show notification or error
-			granted ? showNotification() : showError();
-		});
+			updateDoc(userDocRef, {
+				role: 'orgAdmin',
+			}).then(async () => {
+				// create and show the notification
+				const showNotification = () => {
+					// create a new notification
+					const notification = new Notification('UPDATE', {
+						body: 'ROLE UPDATED TO org admin',
+					});
+					// close the notification after 10 seconds
+					setTimeout(() => {
+						notification.close();
+					}, 10 * 1000);
+				};
+				// show an error message
+				const showError = () => {
+					// const error = document.querySelector('.error');
+					// error.style.display = 'block';
+					// error.textContent = 'You blocked the notifications';
+					alert('Notifications disabled');
+				};
+				// check notification permission
+				let granted = false;
+				if (Notification.permission === 'granted') {
+					granted = true;
+				} else if (Notification.permission !== 'denied') {
+					let permission = await Notification.requestPermission();
+					granted = permission === 'granted' ? true : false;
+				}
+				// show notification or error
+				granted ? showNotification() : showError();
+			});
 
 		} else {
 			console.log("false", 'ole');
 
 			console.log(ev, 'handleSetRoleToOle');
 			/* make sure to check that username is not taken */
-		updateDoc(userDocRef, {
-			role: 'ole',
-		}).then(async () => {
-			// create and show the notification
-			const showNotification = () => {
-				// create a new notification
-				const notification = new Notification('UPDATE', {
-					body: 'ROLE UPDATED TO OLE',
-				});
-				// close the notification after 10 seconds
-				setTimeout(() => {
-					notification.close();
-				}, 10 * 1000);
-			};
-			// show an error message
-			const showError = () => {
-				// const error = document.querySelector('.error');
-				// error.style.display = 'block';
-				// error.textContent = 'You blocked the notifications';
-				alert('Notifications disabled');
-			};
-			// check notification permission
-			let granted = false;
-			if (Notification.permission === 'granted') {
-				granted = true;
-			} else if (Notification.permission !== 'denied') {
-				let permission = await Notification.requestPermission();
-				granted = permission === 'granted' ? true : false;
-			}
-			// show notification or error
-			granted ? showNotification() : showError();
-		});
+			updateDoc(userDocRef, {
+				role: 'ole',
+			}).then(async () => {
+				// create and show the notification
+				const showNotification = () => {
+					// create a new notification
+					const notification = new Notification('UPDATE', {
+						body: 'ROLE UPDATED TO OLE',
+					});
+					// close the notification after 10 seconds
+					setTimeout(() => {
+						notification.close();
+					}, 10 * 1000);
+				};
+				// show an error message
+				const showError = () => {
+					// const error = document.querySelector('.error');
+					// error.style.display = 'block';
+					// error.textContent = 'You blocked the notifications';
+					alert('Notifications disabled');
+				};
+				// check notification permission
+				let granted = false;
+				if (Notification.permission === 'granted') {
+					granted = true;
+				} else if (Notification.permission !== 'denied') {
+					let permission = await Notification.requestPermission();
+					granted = permission === 'granted' ? true : false;
+				}
+				// show notification or error
+				granted ? showNotification() : showError();
+			});
 		}
 
 
@@ -184,7 +189,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose }) => {
 						Current Role:
 						Ole
 						<label className="switch" >
-							<input type="checkbox" onClick={handleSetRoleToOle}/>
+							<input type="checkbox" onClick={handleSetRoleToOle} checked={isAdmin} />
 							<span className="slider round" >
 							</span>
 						</label>

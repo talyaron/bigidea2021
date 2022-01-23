@@ -14,12 +14,15 @@ function AdminPage() {
 	const [displayName, setDisplayName] = useState('displayName');
 	const [userID, setUserID] = useState('id');
 	const [isOpen, setIsOpen] = useState(false);
+	const [role, setRole] = useState('ole');
 
 
-	function togglePopup(ev) {
+	function togglePopup(name) {
 
 		try {
-			const userIdSpec = ev.target.id;
+			
+			const userIdSpec = name.userID;
+			setRole(name.role || 'ole');
 
 			//get ID for changing settings
 			var userIDforPopup = userIdSpec;
@@ -71,6 +74,7 @@ function AdminPage() {
 				list.push(namesTemp);
 			});
 			setNames(list);
+			console.log(list)
 		});
 	}
 
@@ -130,7 +134,7 @@ function AdminPage() {
 									name='userSelect'>
 									<h4 className="cardInfo">{names.displayName}</h4>
 									<h5 className="cardInfo">{names.email}</h5>
-									<button onClick={togglePopup} name='userButtonID' id={names.userID} className="userButtonID cardInfo">
+									<button onClick={()=>togglePopup(names)} name='userButtonID' id={names.userID} className="userButtonID cardInfo">
 										{names.userID}
 									</button>
 								</div>
@@ -143,6 +147,7 @@ function AdminPage() {
 			{isOpen && (
 				<AdminPagePopUp
 					tempUserIDAdm={userID}
+					role={role}
 					content={
 						<>
 							<b id='displayName'>{displayName}</b>
