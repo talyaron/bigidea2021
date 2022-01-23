@@ -2,6 +2,7 @@ import './App.css';
 import './views/components/AdminPagePopUp/AdminPagePopUp';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
+
 import Login from './views/pages/login/Login.js';
 import Error from './views/pages/404/404.js';
 import Unauthorised from './views/pages/401/401.js';
@@ -15,6 +16,7 @@ import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from './functions/firebase/config';
 import AdminPage from './views/pages/AdminPage/AdminPage';
+import ArticlePage from '../src/CSSpages/createevent/ArticlePage/ArticlePage';
 
 //hi
 let role = 'superAdmin';
@@ -74,6 +76,7 @@ function App() {
 							<Link to='/ArticleCreation'>Article Creation</Link>
 							<Link to='/ProfilePage'>Profile Page</Link>
 							<Link to='/AdminPage'>*** Admin Page***</Link>
+							<Link to='/ArticlePage'>ArticlePage</Link>
 						</nav>
 						<Routes>
 							<Route path='/' element={<MainPage role={role} />} />
@@ -84,6 +87,7 @@ function App() {
 							<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 							<Route path='ProfilePage' element={<ProfilePage  uid={userID} />} />
 							<Route path='AdminPage' element={<AdminPage />} />
+							<Route path='ArticlePage' element={<ArticlePage />} />
 						</Routes>
 					</BrowserRouter>
 					<div id='stickyBanner'>

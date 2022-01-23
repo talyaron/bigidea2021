@@ -21,9 +21,9 @@ function Article(){
                 <button className="shareButton black"> Share </button>
             </div>
 
-            <div className="cont4 backgrey">
-                <button className="blue butt2"> Home </button>
-                <button className="blue butt2 "> Share </button>
+            <div className="userNavigation">
+                <button className="black"> Home </button>
+                <button className="black"> Share </button>
             </div>
         </div>
                
