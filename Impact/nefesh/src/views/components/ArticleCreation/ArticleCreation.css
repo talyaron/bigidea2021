@@ -1,4 +1,4 @@
-.popup-box {
+/*.popup-box {
     position: relative;
     left: 44.5vw;
     top: 30vh;
@@ -13,7 +13,7 @@
     grid-template-columns: auto;
     background-color: var(--Navy-blue);
     color: var(--Light-D2);
-}
+}*/
 
 .box {
     position: relative;
@@ -50,23 +50,84 @@
     grid-area: "title";
 }
 
+.inputTitle{
+    grid-area: "inputTitle";
+}
+
+.hostName{
+    grid-area: "hostName";
+}
+
+.imgUrl{
+    grid-area: "imgUrl";
+}
+
+.date{
+    grid-area: "date";
+}
+
+.street{
+    grid-area: "street";
+}
+
+.city{
+    grid-area: "city";
+}
+
+.building{
+    grid-area: "building";
+}
+
+.maxCap{
+    grid-area: "maxCap";
+}
+
+.phoneNum{
+    grid-area: "phoneNum";
+}
+
+.email{
+    grid-area: "email";
+}
+
+.webUrl{
+    grid-area: "webUrl";
+}
+
+.date{
+    grid-area: "date";
+}
+
 .timeData{
     text-align: center;
+    grid-area: "timeData";
 }
+
+
+.description{
+    grid-area: "description";
+}
+
 
 .Tags{
     text-align: center;
+    grid-area: "tagSubmit";
 }
 
-.personalInfo{
-    text-align: center;
+.draftSave{
+    grid-area: "draftSave";
 }
 
-.submitButton1{
+.trueSubmit{
+    grid-area: "trueSubmit";
+}
+
+.submitButton{
     background-color: var(--Grey-D2);
     border-radius: 20px;
     margin-top: 10px;
 }
+
 .textBasic{
     background-color: var(--Grey);
     border-radius: 5px;
@@ -88,22 +149,22 @@
     color: var(--Light-D2);
     
     display: grid;
-    grid-template-columns: 1vw 1vw 1vw 1vw 1vw 1vw; /*6 columns*/
-    grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto; /*14 rows*/
+    /*grid-template-columns: repeat(6, 1fr); /*6 columns*/
+    /*grid-template-rows: repeat(14, auto); /*14 rows*/
     grid-template-areas: 
-    "title title title title title title"
-    "inputTitle inputTitle inputTitle inputTitle inputTitle inputTitle"
-    "hostName hostName hostName hostName hostName hostName"
-    "imgUrl imgUrl imgUrl imgUrl imgUrl imgUrl"
-    "street street street city city city"
-    "building building building maxCap maxCap maxCap"
-    "phoneNum phoneNum phoneNum email email email"
-    "webUrl webUrl webUrl webUrl webUrl webUrl"
-    "date date start start end end"
-    "description description description description description description"
-    "description description description description description description"
-    "tagSubmit tagSubmit tagSubmit tagSubmit tagSubmit tagSubmit"
-    "tagSubmit tagSubmit tagSubmit tagSubmit tagSubmit tagSubmit"
-    "draftSave draftSave draftSave trueSubmit trueSubmit trueSubmit"
+    "title"
+    "inputTitle"
+    "hostName"
+    "imgUrl"
+    "street city"
+    "building maxCap"
+    "phoneNum email"
+    "webUrl"
+    "date timeData"
+    "description"
+    "description"
+    "tagSubmit"
+    "tagSubmit"
+    "draftSave trueSubmit";
     
 }
