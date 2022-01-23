@@ -106,9 +106,9 @@ function AdminPage() {
 	}
 
 	return (
-		<div>
+		<div className='HSADBVIABSLVF'>
 			{isAdmin ? (
-				<div className='adminPage_container'>
+				<div className='adminPageCont'>
 					<div className='search_Container'>
 						<form className='searchFor' onChange={handleSearchByChange}>
 							<label for='searchFor' id='searchFor'>Search for:</label>
@@ -123,7 +123,7 @@ function AdminPage() {
 					<button onClick={handleSearch} id='search_button_AdminPage'>🔍</button>
 					<button onClick={handleClearFilter} id='clearFilter'>Clear Search</button>
 					</div>
-				<div className='eventMapContainer scroll'>
+				<div className='eventMapContainer'>
 					{Names.map((names) => {
 						return (
 							<div key={names.userID} className='nametag'>
