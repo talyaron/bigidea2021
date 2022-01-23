@@ -37,6 +37,7 @@
 
 .submitButton{
     background-color: var(--Grey-D2);
+    height: 20px;
     border-radius: 20px;
     margin-top: 10px;
 }
@@ -101,7 +102,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
   
 .textarea[contenteditable]:empty::before {
-  content: "Enter event tags here";
+  content: "Enter event description";
   color: #586d8e;
 }
 /*Autogrowing box changes end here*/

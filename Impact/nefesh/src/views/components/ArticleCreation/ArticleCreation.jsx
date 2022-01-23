@@ -109,8 +109,7 @@ function ArticleCreation(props) {
             <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" />
             <div>Event End Time:</div>
             <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here"/>
-            <input type="text" name="text" onKeyUp={changeState} placeholder="Enter an event description here"/>
-            <div className="expandBox"><span className="textarea" name="text" role="textbox" onKeyUp={changeState} contentEditable></span></div>
+            <div className="expandBox"><span className="textarea" name="text" role="textbox" onKeyUp={changeState} placeholder='Enter event description here' contentEditable></span></div>
 
 
             <form className='Tags' onSubmit={addTags}>
