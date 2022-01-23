@@ -1,3 +1,19 @@
+.popup-box {
+    position: relative;
+    left: 44.5vw;
+    top: 30vh;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.274);
+    width: 79%;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: auto;
+    background-color: var(--Navy-blue);
+    color: var(--Light-D2);
+}
 
 .box {
     position: relative;
