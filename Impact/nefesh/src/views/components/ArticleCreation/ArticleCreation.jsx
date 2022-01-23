@@ -123,17 +123,18 @@ function ArticleCreation(props) {
                 <button className='submitButton' type="submit">Submit</button>
             </form>
 
-
-            <div className="tagsMapContainer">
-                {tagsState.map(tag => {
-                    return (
-                        <form onSubmit={deleteTag} key={tag.id}>
-                            <div className='nametag'>{tag.tag}</div>
-                            <button type="submit">X</button>
-                        </form>
-                    )
-                })
-                }
+            <div className='tagBox'>
+                <div className="tagsMapContainer">
+                    {tagsState.map(tag => {
+                        return (
+                            <form onSubmit={deleteTag} key={tag.id} className='tagForm'>
+                                <div className='nameTag'>{tag.tag}</div>
+                                <button type="submit">X</button>
+                            </form>
+                        )
+                    })
+                    }
+                </div>
             </div>
             <button className='submitButton' onClick={saveDraft}>Save Draft</button>
             <button className='submitButton' onClick={submitArticle}>Submit Article</button>
