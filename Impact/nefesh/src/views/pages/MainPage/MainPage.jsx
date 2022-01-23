@@ -2,10 +2,13 @@ import "./MainPage.css";
 import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
 import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
+import EventPage from "../../components/Event Page/eventPage"
+import { BrowserRouter, Routes, Route, Link,useNavigate } from 'react-router-dom';
 let eventFilter = ""
 let eventListTemp = []
 
 function App() {
+    let navigate = useNavigate();
     const [eventListState, setEventListState] = useState([])
 
     // const [eventFilterState,setEventFilterState]=useState("")
@@ -63,13 +66,25 @@ function App() {
                 <div className="eventMapContainer">
                     {eventListState.map(event => {
                         return (
-                            <div key={event.id} className='nametag'>
-                                <h1>{event.Title}</h1>
-                                <div>{event.id}</div>
-                                <img src={event.Image} style={{ width: "100px" }}></img>
-                                <div>This event will take place on: {event.Date}</div>
-                                <div>{event.views} many people have viewed this event</div>
-                            </div>
+                            event.isPublished ?
+                                <div key={event.id} className='nametag'>
+                                    <h1>{event.title}</h1>
+                                    <img src={event.coverImage} style={{ width: "100px" }}></img>
+                                    <div>Date: {event.date} between {event.startTime} and {event.endTime}</div>
+                                    <div>{event.views} many people have viewed this event</div>
+                                    <div> Host Organization website<a href={event.contactInfo.website}>{event.contactInfo.website}</a></div>
+                                    <button onClick={()=>{
+                                        navigate("/MainPage/",event.id)
+                                    }}>
+                                        Open Event
+                                    </button>
+                                    <nav><Link to={"/MainPage",event.id}>Open Event</Link>
+                                    </nav>
+                                    <Routes>
+                                <Route path={"/MainPage",event.id} element={<EventPage event={event} />}></Route>
+                                    </Routes>
+                                </div>
+                                : null
                         )
                     })
                     }

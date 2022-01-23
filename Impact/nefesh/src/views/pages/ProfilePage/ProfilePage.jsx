@@ -81,10 +81,6 @@ function ProfilePage(props) {
 					Gender: {userGender} <br />
 					Email: {userEmail}<br />
 					Address: {userAddress}<br />
-
-
-
-
 				</h4>
 				<div className='containerEvents'>
 					<p>Events list goes here</p>
