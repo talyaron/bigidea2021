@@ -116,10 +116,10 @@ function ArticleCreation(props) {
             <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here"/>
 
 
-            <input type="text" name="text" onKeyUp={changeState} placeholder="Enter text here"/>
+            <input type="text" name="text" onKeyUp={changeState} placeholder="Enter an event description here"/>
 
             <form className='Tags' onSubmit={addTags}>
-                <input type="text" name="tagsInput" placeholder="Enter tag here" />
+                <input type="text" name="tagsInput" placeholder="Enter event tags here" />
                 <button className='submitButton' type="submit">Submit</button>
             </form>
 
