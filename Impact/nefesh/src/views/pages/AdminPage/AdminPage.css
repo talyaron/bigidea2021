@@ -10,7 +10,7 @@
     flex-direction: column;
 }
 .eventMapContainer{
-    top: 20%;
+    margin-top: 20%;
     position: relative;
 }
 
@@ -43,13 +43,18 @@
 #searchDropdown {
     background-color: Var(--Light);
     margin-left: 5px;
-    border-radius: 10px;
-    border: 2px solid Var(--Dark);
+    border-radius: 5px;
+    border: 1px solid Var(--Dark);
+}
+.searchAmenities{
+    border: 1px solid Var(--Dark);
+    border-collapse: collapse;
 }
 
 #search_button_AdminPage {
     background-color: Var(--Light);
-    border-radius: 30px;
+    border: 1px solid Var(--Light);
+    
 }
 
 #search_button_AdminPage:hover, #clearFilter:hover, #searchDropdown:hover {
@@ -63,7 +68,23 @@
 .search_Container{
     position: fixed;
     background-color: var(--Light);
-    max-width: 100%;
-    width: 100%;
+    width: 60%;
     z-index: 9;
+    margin-bottom: 5%;
+    padding: 1%;
+    padding-right: 0%;
+    flex: none;
+}
+#search_Box_AdminPage {
+    height: 5vh;
+    width: 40vw;
+    border: 1px solid Var(--Light)
+
+}
+#clearFilter{
+    height: 6vh;
+    width: auto;
+    border: 1px solid Var(--Grey);
+    background-color: Var(--Light);
+    color: Var(--Grey-D2);
 }
