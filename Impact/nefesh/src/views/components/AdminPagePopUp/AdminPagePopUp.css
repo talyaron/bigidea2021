@@ -14,10 +14,10 @@
     height: auto;
     max-height: 70vh;
     margin-top: calc(100vh - 85vh - 20px);
-    background: rgb(92, 92, 92);
+    background: Var(--Light-blue);
     border-radius: 4px;
     padding: 20px;
-    border: 1px solid #999;
+    border: 2px solid Var(--Dark-L2);
     overflow: auto;
   }
   
@@ -42,19 +42,29 @@
     border-radius: 5px;
     background-color:salmon;
   }
+
   #changeDisplayName, #setRoleToOle, #setRoleToOrgAdmin, #suspendUser, #banUser{
     padding: 10px;
+    margin-bottom: 10px;
     border-radius: 5px;
+    border: 1px solid Var(--Dark-L1);
+    box-shadow: 1px 1px 3px 2px Var(--Dark);
     height: auto;
     display: flex;
     flex-direction: column;
     margin-top: 5px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: bold;
-  } 
+    background-color: Var(--Light);
+  }
   #setRoleToOle{
     flex-direction: row;
   }
+  #displayName, #userIDdisplay {
+    color: Var(--Dark);
+    font-size: larger;
+  }
+
   /* The switch - the box around the slider */
   label.switch {
   position: relative;

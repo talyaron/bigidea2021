@@ -25,6 +25,7 @@ body {
 
 #stickyBanner {
 	position: fixed;
+	vertical-align: top;
 	bottom: 0px;
 	background-color: var(--Light-blue);
 	max-width: 500px;
