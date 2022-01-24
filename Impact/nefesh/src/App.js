@@ -81,7 +81,7 @@ function App() {
 							<Link to='/ContactUs'>Contact Us</Link>
 							<Link to='/ArticleCreation'>Article Creation</Link>
 							<Link to='/ProfilePage'>Profile Page</Link>
-							{isAdmin? <Link to='/AdminPage'>Admin Page</Link> : null}
+							{isAdmin && <Link to='/AdminPage'>Admin Page</Link>}
 						</nav>
 						<Routes>
 							<Route path='/' element={<MainPage role={role} />} />
