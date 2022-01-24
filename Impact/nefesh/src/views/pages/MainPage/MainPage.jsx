@@ -1,7 +1,6 @@
 import './MainPage.css';
 import { useEffect, useState } from 'react';
 import { db } from '../../../functions/firebase/config';
-import {collection, orderBy, onSnapshot, getDocs, where, getFirestore, query} from 'firebase/firestore';
 import { getDatabase, ref, onValue, query } from 'firebase/database';
 import {
 	collection,
@@ -95,6 +94,7 @@ function App() {
 				const eventTemp = doc.data();
 				eventTemp.id = doc.id;
 				eventListTemp.push(eventTemp);
+			});
 			console.log('ping!');
 			setEventListState(eventListTemp);
 		});
@@ -195,6 +195,5 @@ function App() {
 			</div>
 		</div>
 	);
-			});
 }
 export default App;
