@@ -61,7 +61,8 @@ function ProfilePage(props) {
 		setChoosingPrefs(true)
 	}
 	function submitChangePreferences(ev) {
-		const fontSize = ev.target.value;
+		ev.preventDefault();
+		const fontSize = ev.target[0].value;
 		setTextSize(fontSize);
 
 
@@ -77,10 +78,12 @@ function ProfilePage(props) {
 					id='profilePic'
 					style={{ backgroundImage: 'url(' + profilePicImg + ')' }}
 				/>
-				<h4>Name: {displayName}<br />
+				<h4 style = {{fontSize: textSize + 'px'}}>
+					Name: {displayName}<br />
 					Gender: {userGender} <br />
 					Email: {userEmail}<br />
 					Address: {userAddress}<br />
+					Font Size: {textSize}
 
 
 
