@@ -26,6 +26,7 @@
     content: 'x';
     cursor: pointer;
     position: fixed;
+    left: 93%;
     right: calc(15% - 30px);
     top: calc(100vh - 85vh - 33px);
     background: #ededed;
