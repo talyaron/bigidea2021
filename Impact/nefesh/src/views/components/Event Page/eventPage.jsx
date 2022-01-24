@@ -30,7 +30,7 @@ function EventPage() {
         <div name="currentCapacity">{eventData.currentCapacity}</div>
         <div name="hostName">{eventData.hostName}</div>
         <div name="organizationName">{eventData.creatorOrg}</div>
-        <div name="views">{eventData.views}</div>
+        <div name="views">Views: {eventData.views}</div>
         {tags.map((tags)=>{
             return(
             <div key={tags.id}>{tags.tag}</div>

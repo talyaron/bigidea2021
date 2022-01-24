@@ -73,7 +73,7 @@ function ArticleCreation(props) {
         statesSumbitted = { ...statesSumbitted, [parse]: ev.target.value }
     }
     function ping() {
-        console.log(tagsState)
+        console.log(props.userID)
     }
     function addTags(ev) {
         ev.preventDefault()
