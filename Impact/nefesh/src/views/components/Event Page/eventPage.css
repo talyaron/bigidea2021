@@ -1,0 +1,196 @@
+
+/* Can be used to position multiple buttons in a single row
+.buttonContainer{
+    display: flex;
+    flex-flow: row nowrap; //Direction and wrap
+    justify-content: safe space-between;
+    align-items: center;
+    align-content: center;
+
+}*/
+
+/*
+.buttonElement{
+    order: 1; //Determines order of item display
+    flex-grow: 0; //Divides the total space in flex
+    flex-shrink: 0; //Reduces potential max size
+    flex-basis: auto;//Default element size
+}
+*/
+
+button{
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex-wrap: wrap;
+
+    width: 100vw;
+
+    justify-content: center;
+}
+
+/*Article Image Section starts here*/
+.articleImage{
+    position: relative;
+    width: 100vw;
+    height: 225px;
+    background-image: url(https://images.app.goo.gl/zwAQKKfULvPaYiAA9);
+}
+.backButton{
+    float: left;
+    margin-left: 20px;
+    margin-top: 30px;
+    width: 80px;
+    height: 50px;
+    font-size: 20px;
+}
+.eventContact{
+    float: center;
+    margin-top: 25px;
+    width: 100px;
+    height: 60px;
+    font-size: 20px;
+}
+.addEventButton{
+    float: right;
+    margin-right: 20px;
+    margin-top: 25px;
+    width: 80px;
+    height: 60px;
+    font-size: 20px;
+}
+/*Article Image Section ends here*/
+
+
+/*Article Event Data starts here*/
+.eventData{
+    background-color: var(--Light-D2);
+
+    width: 100vw;
+    display: inline-block;
+
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+/*
+.eventName{
+    link to autoID.eventName
+}
+*/
+
+.secondaryInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    margin-top: -20px;
+    font-size: 20px;
+}
+
+.eventTimeContainer{
+    width: 40%;
+    padding: 10px;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    align-content: stretch;
+}
+.eventDate{
+    flex: 0 1 50%;
+}
+.eventStartTime{
+    flex: 0 1 25%;
+}
+.eventEndTime{
+    flex: 0 1 25%;
+}
+
+.eventLocationContainer{
+    width: 40%;
+    padding: 10px;
+    
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    align-content: stretch;
+}
+.eventStreet{
+    flex: 0 1 33%;
+}
+.eventHouse{
+    flex: 0 1 33%;
+}
+.eventCity{
+    flex: 0 1 33%;
+}
+
+.eventDescription{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/*
+.username{
+    link to autoID.eventName
+}
+*/
+/*Article Event Data ends here*/
+
+
+/*Article User Prompt starts here*/
+.userPromptContainer{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.signUpButton{
+    width: 70px;
+    height: 30px;
+}
+
+/*
+.capacityValues{
+    //Add Border to 
+}
+.viewedAmount{
+}
+.maxCap{
+}
+*/
+
+.shareButton{
+    width: 60px;
+    height: 30px;
+}
+/*Article User Prompt ends here*/
+
+
+
+.testingSpace{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+    width: 100vw;
+    height: 50vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--Grey-D2);
+}
+
