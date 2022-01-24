@@ -24,6 +24,7 @@ let userID = ""
 let loggedIn;
 function App() {
 	const [userState, setUserState] = useState({})
+
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
