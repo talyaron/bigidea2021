@@ -12,14 +12,13 @@
     background-size: 100% auto;
     background-color: blue;
     position: relative;
-    left: 145%;
-   
+ 
     
     
 }
 
 .containerDetails{
-    margin: 20px;
+    margin: 50px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 45px;
     display: flex;
