@@ -4,6 +4,7 @@ import { db } from '../../../functions/firebase/config';
 import { getDatabase, ref, onValue, query } from "firebase/database";
 import { collection,  orderBy, onSnapshot, getDocs, where, getFirestore} from 'firebase/firestore';
 
+
 const tags = ['newest','popular', 'recent'];
 let eventFilter = ""
 let eventListTemp = []
@@ -17,20 +18,14 @@ function App() {
    var filterOption;
    const db = getFirestore();
    const [articles, setArticles]= useState([])
-   const [hidden, setHidden] = useState(true)
-   const [tag, setTag] = useState("")    
+   const [searchField, setSearchField] = useState('')
+   
 
-  async function getFilter(ev){
-    ev.preventDefault();
-    const arr= [];
-    setHidden(false)
-    filterOption= ev.target.value;
-    setTag(filterOption)
-    console.log(ev)
-    console.log(filterOption)
+   function handleSearchByChange(ev){
+    let temp = ev.target.value
+    setSearchField(temp)
+}
 
- 
-  }
   async function getTarget(ev) {
     let arr2= [];
     if (ev.key === 'Enter') {
@@ -44,7 +39,7 @@ function App() {
       console.log(doc.id, " => ", doc.data());
       arr2.push(doc.data());
     });
-    if(tag=== "popular"){
+    if(searchField=== "popular"){
       for (var i = 1; i < arr2.length; i++)
       for (var j = 0; j < i; j++)
           if (arr2[i].views > arr2[j].views) {
@@ -55,7 +50,7 @@ function App() {
   
 
   }
-  else if (tag=== "newest"){
+  else if (searchField=== "newest"){
     for (var i = 1; i < arr2.length; i++)
     for (var j = 0; j < i; j++)
         if (arr2[i].Date > arr2[j].Date) {
@@ -64,7 +59,7 @@ function App() {
           arr2[j] = x;
         }
       }
-  else if(tag=== "recent"){
+  else if(searchField=== "recent"){
     for (var i = 1; i < arr2.length; i++)
     for (var j = 0; j < i; j++)
         if (arr2[i].dateAdded > arr2[j].dateAdded) {
@@ -132,8 +127,21 @@ function App() {
     }
     return (
         <div>
-            Hi
-            <button onClick={test}>Hi</button>
+                
+                <form className='searchFor' onChange={handleSearchByChange}>
+							<label for='searchFor' id='searchFor'>Search for:</label>
+							<select id="searchDropdown" name='searchFor'>
+								<option value='userID'>popular</option>
+								<option value='displayName'>newest</option>
+								<option value='email'>recent</option>
+							</select>
+						</form>
+              <input className='searchBar' type="text" name= "searchBar" onKeyPress={getTarget} />
+              {articles.map((article, i) => (
+            <li className="travelcompany-input" key={i}>
+                <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image}/> 
+            </li>
+           ))}
             <div className="userInterfaceContainer">
                 <form className="filterEvents">
                     <label htmlFor="eventFilterType">Sort out the events displayed:</label>
@@ -168,19 +176,7 @@ function App() {
                 <h1>Nefesh B'Nefesh</h1>
                 <button onChange={console.log("does nothing yet")}>|||</button>
               </div>
-              
-              <input className='filterData' type="text" name= "filterData" list="data" onChange={getFilter} />
-                <datalist className='data' id="data">
-                {tags.map((item, key) =>
-                  <option key={key} value={item} />
-                )}
-              </datalist>
-              <input className='searchBar' type="text" name= "searchBar" hidden= {hidden} onKeyPress={getTarget} />
-              {articles.map((article, i) => (
-            <li className="travelcompany-input" key={i}>
-                <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image}/> 
-            </li>
-           ))}
+          
            </div>
            <button className='Button2'>Home Page</button>
             </div>
