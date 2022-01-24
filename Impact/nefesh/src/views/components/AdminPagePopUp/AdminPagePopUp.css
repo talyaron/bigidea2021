@@ -60,6 +60,7 @@
   }
   #setRoleToOle{
     flex-direction: row;
+    width: fit-content;
   }
   #displayName, #userIDdisplay {
     color: Var(--Light);
