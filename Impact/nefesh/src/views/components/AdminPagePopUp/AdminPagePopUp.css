@@ -59,8 +59,12 @@
     background-color: Var(--Light);
   }
   #setRoleToOle{
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
     width: fit-content;
+    
   }
   #displayName, #userIDdisplay {
     color: Var(--Light);
@@ -75,6 +79,8 @@
   display: inline-block;
   width: 60px;
   height: 34px;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 /* Hide default HTML checkbox */
