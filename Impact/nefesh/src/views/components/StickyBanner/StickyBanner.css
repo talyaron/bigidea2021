@@ -1,0 +1,28 @@
+.menuList_Container{
+	position: fixed;
+	background-color: var(--Grey-D1) ;
+	display: flex;
+	flex-direction: column;
+	bottom: 50px;
+	width: 100vw;
+}
+
+#MenuButton{
+	max-height: 46px;
+}
+#homeButton{
+	max-height: 46px;
+}
+
+#stickyBanner {
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	vertical-align: top;
+	bottom: 0px;
+	background-color: var(--Light-blue);
+	max-width: 500px;
+	width: 100%;
+	height: 50px;
+}

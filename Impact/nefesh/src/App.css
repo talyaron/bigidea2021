@@ -21,23 +21,10 @@ body {
 	font-family: 'Poppins', sans-serif;
 	margin: 0px;
 	background-color: Var(--Background-light);
+	max-height: calc(100vh - 50px);
 }
 
-#stickyBanner {
-	position: fixed;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	vertical-align: top;
-	bottom: 0px;
-	background-color: var(--Light-blue);
-	max-width: 500px;
-	width: 100%;
-	height: 50px;
-}
-.homeButton{
-	max-height: 50px;
-}
+
 .container_AppMain{
 	position: relative;
 	align-items: center;
