@@ -136,7 +136,6 @@ function ProfilePage(props) {
 
 			</div> : null}
 
-
 		</div>
 
 
