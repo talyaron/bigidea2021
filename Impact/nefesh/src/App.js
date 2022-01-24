@@ -20,8 +20,8 @@ import AdminPage from './views/pages/AdminPage/AdminPage';
 let role = 'superAdmin';
 let permissionedRole;
 const auth = getAuth();
-let userID = ""
-let loggedIn;
+let userID = "";
+let loggedIn, isAdmin;
 function App() {
 	const [userState, setUserState] = useState({})
 
@@ -63,6 +63,13 @@ function App() {
 				loggedIn = false;
 			}
 		});
+
+		if(role === 'superAdmin') {
+			isAdmin = true;
+		} else {
+			isAdmin = false;
+		}
+
 	}, []);
 	return (
 		<div className='container_AppMain'>
@@ -74,7 +81,7 @@ function App() {
 							<Link to='/ContactUs'>Contact Us</Link>
 							<Link to='/ArticleCreation'>Article Creation</Link>
 							<Link to='/ProfilePage'>Profile Page</Link>
-							<Link to='/AdminPage'>*** Admin Page***</Link>
+							{isAdmin? <Link to='/AdminPage'>Admin Page</Link> : null}
 						</nav>
 						<Routes>
 							<Route path='/' element={<MainPage role={role} />} />
