@@ -1,45 +1,73 @@
-.adminPage_container {
-    position: absolute;
-    margin-left: 1%;
-    background-color: Var(--Navy-blue);
-    padding: 10px;
-    border: 4px solid Var(--Dark);
+.adminPageCont{
+    position: relative;
+    max-width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background-color: var(--background-light);
+    color: var(--Dark);
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.eventMapContainer{
+    margin-top: 33%;
+    position: relative;
 }
 
 .adminButton {
-    border: 2px solid black;
-    background-color: Var(--Primary);
+    border: 2px solid Var(--Dark);
+    background-color: Var(--Navy-blue);
     display: inline-block;
     margin: 3px;
+    width: 95%;
+    color: Var(--Light);
+    border-radius: 5px;
+    text-shadow: 0 0 3px Var(--Dark), 0 0 5px Var(--Dark);
 }
 
 .userButtonID {
-    background-color: Var(--Light);
+    background-color: Var(--Light-D2);
     border-radius: 5px;
-    border: 1px solid Var(--Dark);
-    box-shadow: 1px 1px 2px 2px Var(--Dark-L2);
+    border: 1px solid Var(--Navy-blue);
+    box-shadow: 1px 1px 2px 2px Var(--Navy-blue);
     font-size: small;
-    margin: 4px;
+    margin: 10px;
+    color: Var(--Navy-blue);
 }
 
 .userButtonID:hover {
-    background-color: Var(--Grey);
+    background-color: Var(--Light-blue);
     color: Var(--Light);
 }
 
 .cardInfo {
     padding-left: 10px;
+    font-weight:500;
 }
 
 #searchDropdown {
     background-color: Var(--Light);
     margin-left: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: 1px solid Var(--Grey-D2);
+    color: Var(--Navy-blue);
+}
+.searchAmenities{
+    border: 1px solid Var(--Dark);
+    border-collapse: collapse;
 }
 
 #search_button_AdminPage {
-    background-color: Var(--Light=);
-    border-radius: 30px;
+    background-color: Var(--Light);
+    border: 1px solid Var(--Light);
+    height: 5.7vh;
+    width: 10vw;
+    font-size:large;
+    margin-left: .3vw;
+    margin-right: .3vw;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+    
 }
 
 #search_button_AdminPage:hover, #clearFilter:hover, #searchDropdown:hover {
@@ -47,15 +75,35 @@
 }
 
 #searchFor {
-    color: Var(--Light-blue);
+    color: Var(--Navy-blue);
 }
 
-.scroll {
-    margin: 4px, 4px;
-    padding: 4px;
-    width: 500px;
-    height: 550px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    text-align: justify;
+.search_Container{
+    position: fixed;
+    top: 20; /* change to zero when nav bar is on the bottom */
+    left: 0;
+    background-color: var(--Light);
+    width: 100%;
+    z-index: 8;
+    margin-bottom: 5%;
+    padding: 1%;
+    padding-right: 0%;
+    flex: none;
+    display: inline;
+
+}
+#search_Box_AdminPage {
+    height: 5vh;
+    width: 60vw;
+    border: 1px solid Var(--Light);
+    background-color: Var(--Light);
+    
+}
+#clearFilter{
+    height: 6vh;
+    width: 25vw;
+    background-color: Var(--Light);
+    color: Var(--Grey-D2);
+    display: inline;
+    border: 1px solid Var(--Grey);
 }
