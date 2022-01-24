@@ -31,6 +31,7 @@ function Login() {
 					<div>
 						<img id='logo_LoginPage' src={NefishLogo} alt="Nefish B' Nefish" />
 					</div>
+					
 				</div>
 				<form className='googleLoginForm'>
 					<button onClick={SignIn} id='googleLogin' className='shadow'>
@@ -38,6 +39,7 @@ function Login() {
 						<h4 id='googleText'> Sign In with google</h4>
 					</button>
 				</form>
+				<h6 id='bigIdeaTag'>Developed by: Big Idea</h6>
 				<div className='artContainer_Login'>
 					<img id='art_login' src={LoginArt} alt='art' />
 				</div>

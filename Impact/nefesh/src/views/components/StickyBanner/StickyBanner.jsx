@@ -26,16 +26,13 @@ function StickyBanner() {
 				}}>
 				<img src={HomeButton} alt='Home' id='homeButton' />
 			</div>
-
-			<h6>Developed by: Big Idea</h6>
-
 			<div className='Menu_container'>
 				{navToggle ? (
 					<div>
 						<img src={X} alt='X' id='MenuButton' onClick={handleMenu} />
 						<div className='menuList_Container'>
 							<ul className='menuList'>
-								<li>
+								<li className='ListItemElement'>
 									<div
 										className='menuItem'
 										onClick={() => {
@@ -44,7 +41,7 @@ function StickyBanner() {
 										ProfilePag
 									</div>
 								</li>
-								<li>
+								<li className='ListItemElement'>
 									<div
 										className='menuItem'
 										onClick={() => {
@@ -53,7 +50,7 @@ function StickyBanner() {
 										contactUs
 									</div>
 								</li>
-								<li>
+								<li className='ListItemElement'>
 									<div
 										className='menuItem'
 										onClick={() => {
@@ -63,7 +60,7 @@ function StickyBanner() {
 										RequestOrg
 									</div>
 								</li>
-								<li>
+								<li className='ListItemElement'>
 									<div
 										className='menuItem'
 										onClick={() => {
@@ -72,7 +69,7 @@ function StickyBanner() {
 										ArticleCreation
 									</div>
 								</li>
-								<li>
+								<li className='ListItemElement'>
 									<div
 										className='menuItem'
 										onClick={() => {
