@@ -44,7 +44,8 @@
     background-color: Var(--Light);
     margin-left: 5px;
     border-radius: 5px;
-    border: 1px solid Var(--Dark);
+    border: 1px solid Var(--Grey-D2);
+    color: Var(--Light-blue);
 }
 .searchAmenities{
     border: 1px solid Var(--Dark);
@@ -54,6 +55,9 @@
 #search_button_AdminPage {
     background-color: Var(--Light);
     border: 1px solid Var(--Light);
+    height: 5vh;
+    width: 10vw;
+    font-size:large;
     
 }
 
@@ -67,8 +71,10 @@
 
 .search_Container{
     position: fixed;
+    top: 20;
+    left: 0;
     background-color: var(--Light);
-    width: 88.5%;
+    width: 100%;
     z-index: 9;
     margin-bottom: 5%;
     padding: 1%;
@@ -77,13 +83,13 @@
 }
 #search_Box_AdminPage {
     height: 5vh;
-    width: 40vw;
+    width: 60vw;
     border: 1px solid Var(--Light)
 
 }
 #clearFilter{
     height: 6vh;
-    width: auto;
+    width: 25vw;
     border: 1px solid Var(--Grey);
     background-color: Var(--Light);
     color: Var(--Grey-D2);
