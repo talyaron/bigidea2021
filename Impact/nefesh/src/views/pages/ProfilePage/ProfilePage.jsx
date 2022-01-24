@@ -85,28 +85,7 @@ function ProfilePage(props) {
 
 
 
-	}
-	function debug() {
-		console.log(props.uid)
-	}
-	return (
-		<div>
-			<div className='containerDetails'>
-				<div id='profilePicCont'>
-					<div
-						id='profilePic'
-						style={{ backgroundImage: 'url(' + profilePicImg + ')' }}
-					/>
-				</div>
-		
-				<h4 id='header4' style={{ fontSize: `${textSize}px` }}>
-					Name: {displayName}<br />
-					Gender: {userGender} <br />
-					Email: {userEmail}<br />
-					Address: {userAddress}<br />
-					FontSize: {textSize}
 				</h4>
-					
 				<div className='containerEvents'>
 					<p>Events list goes here</p>
 				</div>
