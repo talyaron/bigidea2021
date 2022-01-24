@@ -128,7 +128,7 @@ function App() {
     return (
         <div>
                 
-                <form className='searchFor' onChange={handleSearchByChange}>
+                <form className='searchFor' className="dropDown" onChange={handleSearchByChange}>
 							<label for='searchFor' id='searchFor'>Search for:</label>
 							<select id="searchDropdown" name='searchFor'>
 								<option value='userID'>popular</option>
