@@ -10,34 +10,39 @@
     flex-direction: column;
 }
 .eventMapContainer{
-    margin-top: 20%;
+    margin-top: 33%;
     position: relative;
 }
 
 .adminButton {
-    border: 2px solid black;
-    background-color: Var(--Primary);
+    border: 2px solid Var(--Dark);
+    background-color: Var(--Navy-blue);
     display: inline-block;
     margin: 3px;
     width: 95%;
+    color: Var(--Light);
+    border-radius: 5px;
+    text-shadow: 0 0 3px Var(--Dark), 0 0 5px Var(--Dark);
 }
 
 .userButtonID {
-    background-color: Var(--Light);
+    background-color: Var(--Light-D2);
     border-radius: 5px;
-    border: 1px solid Var(--Dark);
-    box-shadow: 1px 1px 2px 2px Var(--Dark-L2);
+    border: 1px solid Var(--Navy-blue);
+    box-shadow: 1px 1px 2px 2px Var(--Navy-blue);
     font-size: small;
-    margin: 4px;
+    margin: 10px;
+    color: Var(--Navy-blue);
 }
 
 .userButtonID:hover {
-    background-color: Var(--Grey);
+    background-color: Var(--Light-blue);
     color: Var(--Light);
 }
 
 .cardInfo {
     padding-left: 10px;
+    font-weight:500;
 }
 
 #searchDropdown {
@@ -45,7 +50,7 @@
     margin-left: 5px;
     border-radius: 5px;
     border: 1px solid Var(--Grey-D2);
-    color: Var(--Light-blue);
+    color: Var(--Navy-blue);
 }
 .searchAmenities{
     border: 1px solid Var(--Dark);
@@ -55,9 +60,13 @@
 #search_button_AdminPage {
     background-color: Var(--Light);
     border: 1px solid Var(--Light);
-    height: 5vh;
+    height: 5.7vh;
     width: 10vw;
     font-size:large;
+    margin-left: .3vw;
+    margin-right: .3vw;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
     
 }
 
@@ -66,12 +75,12 @@
 }
 
 #searchFor {
-    color: Var(--Light-blue);
+    color: Var(--Navy-blue);
 }
 
 .search_Container{
     position: fixed;
-    top: 20;
+    top: 20; /* change to zero when nav bar is on the bottom */
     left: 0;
     background-color: var(--Light);
     width: 100%;
@@ -80,17 +89,21 @@
     padding: 1%;
     padding-right: 0%;
     flex: none;
+    display: inline;
+
 }
 #search_Box_AdminPage {
     height: 5vh;
     width: 60vw;
-    border: 1px solid Var(--Light)
-
+    border: 1px solid Var(--Light);
+    background-color: Var(--Light);
+    
 }
 #clearFilter{
     height: 6vh;
     width: 25vw;
-    border: 1px solid Var(--Grey);
     background-color: Var(--Light);
     color: Var(--Grey-D2);
+    display: inline;
+    border: 1px solid Var(--Grey);
 }
