@@ -22,23 +22,22 @@ let permissionedRole;
 const auth = getAuth();
 let userID = ""
 let loggedIn;
-
 function App() {
-	const [userState, setUserState] = useState({});
-
 	const [userState, setUserState] = useState({})
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
 				console.log('user logged in');
 				const uid = user.uid;
-
+				userID=uid
 				//get user from db
 				getDoc(doc(db, 'users', uid)).then((userDB) => {
 					if (userDB.exists()) {
 						console.log('user exists');
-						setUserState({ userName: userDB.data().displayName });
+						setUserState({ userName: userDB.data().displayName, userOrg:userDB.data().organization});
 						role = userDB.data().role;
+						const uid=userDB.data().userID;
+						userID=uid
 					} else {
 						//if user exist in db get the user from DB and get the role
 						console.log('user does not exist');
@@ -82,8 +81,8 @@ function App() {
 							<Route path='401' element={<Unauthorised />} />
 							<Route path='MainPage' element={<MainPage role={role} />} />
 							<Route path='ContactUs' element={<ContactUs />} />
-							<Route path='ArticleCreation' element={<ArticleCreation />} />
-							<Route path='ProfilePage' element={<ProfilePage />} />
+							<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
+							<Route path='ProfilePage' element={<ProfilePage  uid={userID} />} />
 							<Route path='AdminPage' element={<AdminPage />} />
 						</Routes>
 					</BrowserRouter>
