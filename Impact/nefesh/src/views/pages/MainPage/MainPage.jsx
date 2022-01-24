@@ -78,4 +78,9 @@ function App() {
         </div>
     )
 }
+<<<<<<< HEAD
 export default App
+=======
+
+export default App;
+>>>>>>> parent of 7468d03... Merge branch 'yoavSpizpreferences' into Dev
