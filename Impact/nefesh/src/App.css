@@ -25,6 +25,9 @@ body {
 
 #stickyBanner {
 	position: fixed;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
 	vertical-align: top;
 	bottom: 0px;
 	background-color: var(--Light-blue);

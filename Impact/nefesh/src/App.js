@@ -15,7 +15,10 @@ import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from './functions/firebase/config';
 import AdminPage from './views/pages/AdminPage/AdminPage';
+
+//icons
 import HomeButton from './views/components/Images/home.svg'
+import Menu from './views/components/Images/Menu.svg'
 
 //hi
 let role = 'superAdmin';
@@ -72,7 +75,6 @@ function App() {
 			{loggedIn ? (
 				<div className='container_App'>
 						<nav>
-							<Link to='/MainPage'>Main Page</Link>
 							<Link to='/ContactUs'>Contact Us</Link>
 							<Link to='/ArticleCreation'>Article Creation</Link>
 							<Link to='/ProfilePage'>Profile Page</Link>
@@ -95,6 +97,12 @@ function App() {
 							<img src={HomeButton} alt='Home' className='homeButton'/>
 						</div>
 						<h5>Developed by: Big Idea</h5>
+						<div className='Menu_container' onClick={()=>{
+							navigate("/ProfilePage")
+						}} >
+							<img src={Menu} alt='Home' className='homeButton'/>
+						</div>
+						
 					</div>
 				</div>
 			) : (
