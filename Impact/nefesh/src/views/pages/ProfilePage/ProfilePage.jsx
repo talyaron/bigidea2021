@@ -1,5 +1,5 @@
 import './ProfilePage.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import { db } from '../../../functions/firebase/config';
 import { doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore';
 
@@ -12,9 +12,10 @@ function ProfilePage(props) {
 	const [userAddress, setUserAddress] = useState('loading')
 	const [userGender, setUserGender] = useState('loading')
 	const [userArticles, setUserArticles] = useState('loading');
-	const [textSize, setTextSize] = useState('')
+	const [textSize, setTextSize] = useState()
 	const [editing, setEditing] = useState(false)
 	const [choosingPrefs, setChoosingPrefs] = useState(false)
+	
 
 	useEffect(() => {
 		//pull userId of selected user and set for superAdmin page
@@ -68,9 +69,13 @@ function ProfilePage(props) {
 		setChoosingPrefs(true)
 	}
 	function submitChangePreferences(ev) {
-		const fontSize = ev.target.value;
-		setTextSize(fontSize);
+		ev.preventDefault();	
+		const newFontSize = ev.target[0].value;
+		
+		setTextSize(newFontSize);
+		console.log(textSize);
 
+		
 
 
 	}
@@ -86,34 +91,36 @@ function ProfilePage(props) {
 						style={{ backgroundImage: 'url(' + profilePicImg + ')' }}
 					/>
 				</div>
-				<h4>Name: {displayName}<br />
+				<h4 id = 'header4' style = {{fontSize: textSize}}>
+					Name: {displayName}<br />
 					Gender: {userGender} <br />
 					Email: {userEmail}<br />
 					Address: {userAddress}<br />
+					FontSize: {textSize}
 				</h4>
 				<div className='containerEvents'>
 					<p>Events list goes here</p>
 				</div>
 			</div>
-			<button type="button" class="mnButton" onClick={changePreferences} name="settingbtn">Preferences</button>
+			<button type="button" className="mnButton" onClick={changePreferences} name="settingbtn">Preferences</button>
 			{choosingPrefs ? <div className='settings'>
 				<form onSubmit={submitChangePreferences}>
 
-					Change Font Size: <input type="text" name="newFontSize" class="textBox" /><br />
-					<button type="submit" class="submitButton" name="prfbtn"> Submit Changes</button>
+					Change Font Size: <input type="text" name="newFontSize" className="textBox" /><br />
+					<button type="submit" className="submitButton" name="prfbtn"> Submit Changes</button>
 				</form>
 			</div> : null}
 
-			<button type="button" class= "mnButton" onClick={editProfile} name="editbtn"> Edit Profile!</button>
+			<button type="button" className= "mnButton" onClick={editProfile} name="editbtn"> Edit Profile!</button>
 			{editing ? <div className='profileEditor'	>
 				
 				<form onSubmit={changeProfile}>
-					Enter New Name: <input type="text" name="newName" class="textBox" /><br />
-					Enter New Image : <input type="text" name="newImg" class="textBox" /><br />
-					Enter New Email: <input type="text" name="newEmail" class="textBox" /><br />
-					Enter New Gender: <input type="text" name="newGender" class="textBox" /><br />
-					Enter New Address: <input type="text" name="newAddress" class="textBox" /><br />
-					<button type="submit" class="submitButton" name="editbtn"> Submit Changes</button>
+					Enter New Name: <input type="text" name="newName" className="textBox" /><br />
+					Enter New Image : <input type="text" name="newImg" className="textBox" /><br />
+					Enter New Email: <input type="text" name="newEmail" className="textBox" /><br />
+					Enter New Gender: <input type="text" name="newGender" className="textBox" /><br />
+					Enter New Address: <input type="text" name="newAddress" className="textBox" /><br />
+					<button type="submit" className="submitButton" name="editbtn"> Submit Changes</button>
 
 				</form>
 
