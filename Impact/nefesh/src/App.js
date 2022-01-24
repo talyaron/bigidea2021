@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from './functions/firebase/config';
 import AdminPage from './views/pages/AdminPage/AdminPage';
-
+import EventPage from "./views/components/Event Page/eventPage"
 //hi
 let role = 'superAdmin';
 let permissionedRole;
@@ -76,10 +76,11 @@ function App() {
 							<Link to='/AdminPage'>*** Admin Page***</Link>
 						</nav>
 						<Routes>
-							<Route path='/' element={<MainPage role={role} />} />
+							<Route path='' element={<MainPage role={role} />} />
 							<Route path='404' element={<Error />} />
 							<Route path='401' element={<Unauthorised />} />
 							<Route path='MainPage' element={<MainPage role={role} />} />
+							<Route path='Event/:eventID' element={<EventPage  />} />
 							<Route path='ContactUs' element={<ContactUs />} />
 							<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 							<Route path='ProfilePage' element={<ProfilePage  uid={userID} />} />
