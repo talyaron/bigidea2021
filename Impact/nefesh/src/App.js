@@ -1,6 +1,6 @@
 import './App.css';
 import './views/components/AdminPagePopUp/AdminPagePopUp';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 
 import Login from './views/pages/login/Login.js';
 import Error from './views/pages/404/404.js';
@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from './functions/firebase/config';
 import AdminPage from './views/pages/AdminPage/AdminPage';
+import HomeButton from './views/components/Images/home.svg'
 
 //hi
 let role = 'superAdmin';
@@ -24,6 +25,8 @@ let userID = ""
 let loggedIn;
 function App() {
 	const [userState, setUserState] = useState({})
+	const navigate = useNavigate();
+
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
@@ -63,11 +66,11 @@ function App() {
 			}
 		});
 	}, []);
+
 	return (
 		<div className='container_AppMain'>
 			{loggedIn ? (
 				<div className='container_App'>
-					<BrowserRouter>
 						<nav>
 							<Link to='/MainPage'>Main Page</Link>
 							<Link to='/ContactUs'>Contact Us</Link>
@@ -85,19 +88,21 @@ function App() {
 							<Route path='ProfilePage' element={<ProfilePage  uid={userID} />} />
 							<Route path='AdminPage' element={<AdminPage />} />
 						</Routes>
-					</BrowserRouter>
 					<div id='stickyBanner'>
+						<div className='homeB_container' onClick={()=>{
+							navigate("/MainPage")
+						}} >
+							<img src={HomeButton} alt='Home' className='homeButton'/>
+						</div>
 						<h5>Developed by: Big Idea</h5>
 					</div>
 				</div>
 			) : (
 				<div className='container_App'>
-					<BrowserRouter>
 						<Routes>
 							<Route path='/' element={<Login />} />
 							<Route path='login' element={<Login />} />
 						</Routes>
-					</BrowserRouter>
 				</div>
 			)}
 		</div>
