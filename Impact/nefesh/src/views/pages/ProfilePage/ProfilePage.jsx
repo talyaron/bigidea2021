@@ -1,5 +1,5 @@
 import './ProfilePage.css';
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { db } from '../../../functions/firebase/config';
 import { doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore';
 
@@ -12,10 +12,10 @@ function ProfilePage(props) {
 	const [userAddress, setUserAddress] = useState('loading')
 	const [userGender, setUserGender] = useState('loading')
 	const [userArticles, setUserArticles] = useState('loading');
-	const [textSize, setTextSize] = useState()
+	const [textSize, setTextSize] = useState(50)
 	const [editing, setEditing] = useState(false)
 	const [choosingPrefs, setChoosingPrefs] = useState(false)
-	
+
 
 	useEffect(() => {
 		//pull userId of selected user and set for superAdmin page
@@ -69,13 +69,13 @@ function ProfilePage(props) {
 		setChoosingPrefs(true)
 	}
 	function submitChangePreferences(ev) {
-		ev.preventDefault();	
+		ev.preventDefault();
 		const newFontSize = ev.target[0].value;
-		
+
 		setTextSize(newFontSize);
 		console.log(textSize);
 
-		
+
 
 
 	}
@@ -91,13 +91,15 @@ function ProfilePage(props) {
 						style={{ backgroundImage: 'url(' + profilePicImg + ')' }}
 					/>
 				</div>
-				<h4 id = 'header4' style = {{fontSize: textSize}}>
+		
+				<h4 id='header4' style={{ fontSize: `${textSize}px` }}>
 					Name: {displayName}<br />
 					Gender: {userGender} <br />
 					Email: {userEmail}<br />
 					Address: {userAddress}<br />
 					FontSize: {textSize}
 				</h4>
+					
 				<div className='containerEvents'>
 					<p>Events list goes here</p>
 				</div>
@@ -111,9 +113,9 @@ function ProfilePage(props) {
 				</form>
 			</div> : null}
 
-			<button type="button" className= "mnButton" onClick={editProfile} name="editbtn"> Edit Profile!</button>
+			<button type="button" className="mnButton" onClick={editProfile} name="editbtn"> Edit Profile!</button>
 			{editing ? <div className='profileEditor'	>
-				
+
 				<form onSubmit={changeProfile}>
 					Enter New Name: <input type="text" name="newName" className="textBox" /><br />
 					Enter New Image : <input type="text" name="newImg" className="textBox" /><br />
