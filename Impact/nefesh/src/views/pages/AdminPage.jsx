@@ -1,7 +1,7 @@
 import '../../stylesheets/page/AdminPage.css';
 import AdminPagePopUp from '../templates/AdminPagePopUp';
 import React, { useEffect, useState } from 'react';
-import { db } from '../../functions/firebase/config';
+import { db } from '../../scripts/firebase/config';
 import { onSnapshot, collection, query, doc, getDoc, where, getDocs } from 'firebase/firestore';
 import { async } from '@firebase/util';
 import { push } from 'firebase/database';

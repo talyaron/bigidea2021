@@ -32,22 +32,23 @@ body {
 	display: flex;
 }
 
-.container_App {
+/* .container_App {
 	width: 100vw;
 	max-width: 500px;
-	overflow-y: scroll; /* Hide vertical scrollbar */
-	overflow-x: hidden; /* Hide horizontal scrollbar */
+	overflow-y: scroll; 
+	overflow-x: hidden;
 	max-height: 100vh;
 	height: 100vh;
 	margin: 0px;
-}
-
+}*/
+/*
 .container_App::-webkit-scrollbar {
 	display: none;
-}
+}*/
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.container_App {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
+/* .container_App {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
+*/

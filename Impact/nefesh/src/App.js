@@ -1,6 +1,8 @@
 import './stylesheets/page/App.css';
+import './stylesheets/scrollbar.css';
+import Menu from "./views/components/menu";
 import './views/templates/AdminPagePopUp';
-import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import Login from './views/pages/Login.js';
 import Error from './views/pages/404.js';
@@ -9,13 +11,13 @@ import ProfilePage from './views/pages/ProfilePage';
 import ContactUs from './views/templates/ContactUs';
 import ArticleCreation from './views/templates/ArticleCreation';
 import MainPage from './views/pages/MainPage';
-import { checkRole } from './functions/general.js';
+import { checkRole } from './scripts/general.js';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
-import { db } from './functions/firebase/config';
+import { db } from './scripts/firebase/config';
 import AdminPage from './views/pages/AdminPage';
-import StickyBanner from './views/templates/StickyBanner'
+import StickyBanner from './views/templates/StickyBanner';
 
 let isAdmin;
 let role = 'superAdmin';
@@ -23,7 +25,7 @@ let permissionedRole;
 const auth = getAuth();
 let userID = '';
 let loggedIn;
-function App() {
+function App({Component, pageProps }) {
 	const [userState, setUserState] = useState({});
 	
 
@@ -79,8 +81,11 @@ function App() {
 
 
 	return (
+		
 		<div className='container_AppMain'>
-			{loggedIn ? (
+			
+			{
+			loggedIn ? (
 				<div className='container_App'>
 					<Routes>
 						<Route path='/' element={<MainPage role={role} />} />
@@ -101,8 +106,11 @@ function App() {
 						<Route path='login' element={<Login />} />
 					</Routes>
 				</div>
+				
 			)}
+			
 		</div>
+		
 	);
 }
 

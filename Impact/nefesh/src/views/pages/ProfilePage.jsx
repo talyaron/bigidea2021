@@ -1,6 +1,6 @@
 import '../../stylesheets/page/ProfilePage.css';
 import React, { useEffect, useState } from 'react';
-import { db } from '../../functions/firebase/config';
+import { db } from '../../scripts/firebase/config';
 import { doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore';
 
 const userDocRef = doc(db, 'users', '0vtoIVm41lXvBJhSStUSmBqBq873');

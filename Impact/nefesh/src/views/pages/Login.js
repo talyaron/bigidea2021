@@ -1,6 +1,6 @@
-import { db } from '../../functions/firebase/config';
+import { db } from '../../scripts/firebase/config';
 import React from 'react';
-import { authentication } from '../../functions/firebase/config';
+import { authentication } from '../../scripts/firebase/config';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import '../../stylesheets/page/Login.css';
 import NefishLogo from "../../assets/Images/Nefish_B'Nefish_Logo.png";

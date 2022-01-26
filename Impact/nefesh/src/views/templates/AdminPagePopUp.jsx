@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../../stylesheets/page/AdminPagePopUp.css';
-import { db } from '../../functions/firebase/config';
+import { db } from '../../scripts/firebase/config';
 import { collection, Firestore } from '@firebase/firestore';
 import { doc, getDoc, getDocs, updateDoc, where } from 'firebase/firestore';
 import { userIDAdm } from '../pages/AdminPage';

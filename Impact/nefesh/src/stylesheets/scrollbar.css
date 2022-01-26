@@ -3,7 +3,7 @@ html.dark {
     --theme-scrollbar-track: #2f3136;
 }
 
-html.light {
+html {
     --theme-scrollbar-thumb: #ccc;
     --theme-scrollbar-track: #f2f2f2;
 }
