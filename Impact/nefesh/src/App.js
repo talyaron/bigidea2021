@@ -81,7 +81,7 @@ function App({Component, pageProps }) {
 
 
 	return (
-		
+		<div>
 		<div className='container_AppMain'>
 			
 			{
@@ -97,7 +97,7 @@ function App({Component, pageProps }) {
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
 						<Route path='AdminPage' element={<AdminPage />} />
 					</Routes>
-					<StickyBanner/>
+
 				</div>
 			) : (
 				<div className='container_App'>
@@ -110,7 +110,10 @@ function App({Component, pageProps }) {
 			)}
 			
 		</div>
-		
+		{
+			loggedIn ? (<StickyBanner/>) : (null) 
+		}
+		</div>
 	);
 }
 

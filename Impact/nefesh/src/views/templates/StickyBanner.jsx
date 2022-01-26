@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../stylesheets/page/StickyBanner.css';
+import '../../stylesheets/StickyBanner.css';
 
 //icons
 import HomeButton from '../../assets/Images/home.svg';
