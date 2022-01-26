@@ -43,6 +43,7 @@ function AdminPage() {
 				// console.log(userDB.data())
 				// console.log(userDB.exists())
 				let userNameTemp = userDB.data().displayName
+				
 				setDisplayName(userNameTemp);
 				setUserID(userIdSpec);
 			})
@@ -89,17 +90,20 @@ function AdminPage() {
 		ev.preventDefault()
 		let tempSearch = ev.target.value
 		setSearchCont(tempSearch)
+		
 	}
 	
 	
 	async function handleSearch(){
-		let q = query(collection(db, 'users'), where (searchField, '==', searchCont))
 		let tempArr = []
+		let q = query(collection(db, 'users'), where ("userID", '==', searchCont))
 		const userIDSnapshot = await getDocs(q);
 		userIDSnapshot.forEach((userDB) => {  
 			tempArr.push(userDB.data())
+			
 		});
 		setNames(tempArr)
+		console.log(Names)
 	}
 	function handleClearFilter(){
 		getNames()
@@ -113,10 +117,10 @@ function AdminPage() {
 						<form className='searchFor' onChange={handleSearchByChange}>
 							<label for='searchFor' id='searchFor'>Search for:</label>
 							<select id="searchDropdown" name='searchFor'>
-								<option value='userID'>userID's</option>
-								<option value='displayName'>DisplayName's</option>
-								<option value='email'>Email's</option>
-								<option value='role'>Role's</option>
+								<option name= "userID" value='userID'>userID's</option>
+								<option name="displayName" value='displayName'>DisplayName's</option>
+								<option name="email" value='email'>Email's</option>
+								<option name= "role" value='role'>Role's</option>
 							</select>
 						</form>
 					<input type='text' placeholder={`Enter Full ${searchField}`} name='adminPageSearch' id='search_Box_AdminPage' onChange={handleSearchChange}/>

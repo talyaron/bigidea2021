@@ -8,6 +8,7 @@ import { collection,  orderBy, onSnapshot, getDocs, where, getFirestore} from 'f
 const tags = ['newest','popular', 'recent'];
 let eventFilter = ""
 let eventListTemp = []
+let eventFilters= [];
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
    const db = getFirestore();
    const [articles, setArticles]= useState([])
    const [searchField, setSearchField] = useState('')
+   const [searchFilters, setSearchFilters]= useState([])
    
 
    function handleSearchByChange(ev){
@@ -27,63 +29,12 @@ function App() {
 }
 
   async function getTarget(ev) {
-    let arr2= [];
-    if (ev.key === 'Enter') {
-    ev.preventDefault();
-    searchOption= ev.target.value;
-    console.log(searchOption);
-    const q = query(collection(db, "events"), where("Title", ">=", searchOption));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {  
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-      arr2.push(doc.data());
-    });
-    if(searchField=== "popular"){
-      for (var i = 1; i < arr2.length; i++)
-      for (var j = 0; j < i; j++)
-          if (arr2[i].views > arr2[j].views) {
-            var x = arr2[i];
-            arr2[i] = arr2[j];
-            arr2[j] = x;
-          }
-  
 
-  }
-  else if (searchField=== "newest"){
-    for (var i = 1; i < arr2.length; i++)
-    for (var j = 0; j < i; j++)
-        if (arr2[i].Date > arr2[j].Date) {
-          var x = arr2[i];
-          arr2[i] = arr2[j];
-          arr2[j] = x;
-        }
-      }
-  else if(searchField=== "recent"){
-    for (var i = 1; i < arr2.length; i++)
-    for (var j = 0; j < i; j++)
-        if (arr2[i].dateAdded > arr2[j].dateAdded) {
-          var x = arr2[i];
-          arr2[i] = arr2[j];
-          arr2[j] = x;
-        }
-  };
-    setArticles(arr2);
-    console.log(arr2)
-
-    
-
-    //insert filters
-    //find articles with word in it, sort by which article has the word appear the most
-    //for each article 
-    // if newest --> check by date
-    // if recent --> check by creation date
-    // if popular --> check by most views
-
-
-
-  
-  }
+    eventFilters.push(ev.target.name);
+      console.log(ev.target.name)
+      setSearchFilters(eventFilters)
+      console.log(searchFilters);
+      //after getting list, go through list of filters and see if 
 
 }
     const [eventListState, setEventListState] = useState([])
@@ -136,12 +87,14 @@ function App() {
 								<option value='email'>recent</option>
 							</select>
 						</form>
-              <input className='searchBar' type="text" name= "searchBar" onKeyPress={getTarget} />
-              {articles.map((article, i) => (
-            <li className="travelcompany-input" key={i}>
-                <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image}/> 
-            </li>
-           ))}
+              Filters <br/>
+              <input className='searchBar' type="checkbox" name= "dinner" onClick={getTarget} />Dinner<br/>
+              <input className='searchBar' type="checkbox" name= "60+" onClick={getTarget} />60+<br/>
+              <input className='searchBar' type="checkbox" name= "party" onClick={getTarget} />Party<br/>
+
+
+
+        
             <div className="userInterfaceContainer">
                 <form className="filterEvents">
                     <label htmlFor="eventFilterType">Sort out the events displayed:</label>
