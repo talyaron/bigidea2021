@@ -26,6 +26,9 @@ function StickyBanner({isAdmin, isOle}) {
 				}}>
 				<img src={HomeButton} alt='Home' id='homeButton' />
 			</div>
+
+			{/* {isOle? : isAdmin? : } */}
+
 			<div className='Menu_container'>
 				{navToggle ? (
 					<div>

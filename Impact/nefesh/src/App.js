@@ -17,6 +17,7 @@ import { doc, setDoc, getDoc, onSnapshot } from "firebase/firestore";
 import { db } from "./functions/firebase/config";
 import AdminPage from "./views/pages/AdminPage/AdminPage";
 import StickyBanner from "./views/components/StickyBanner/StickyBanner";
+import { set } from "firebase/database";
 
 //hi
 let role = "superAdmin"; //if changed to superAdmin it updates correctly but shows red warnings, also needs to be changed manually
@@ -48,10 +49,12 @@ function App() {
             role = userDB.data().role;
 
             console.log(role);
-            if (role == "superAdmin") {
-              setIsAdmin(true);
+            if (role == "ole") {
+				setIsOle(true);
+				setIsAdmin(false);
             } else {
-              setIsOle(false);
+				setIsOle(false);
+				setIsAdmin(true);
             }
 
             const uid = userDB.data().userID;
@@ -81,8 +84,6 @@ function App() {
       }
     });
   }, []);
-
-	// isOle? true: isSuperAdmin? true: false;
 
 	return (
 		<div className='container_AppMain'>
