@@ -22,6 +22,30 @@ button{
     background-color: black;
     color: white;
     text-align: center;
+    min-width: 60px;
+    min-height: 30px;
+    font-size: 13.3px;
+    font-size: 3.5vw;
+}
+
+p {
+    font-size: 20px;
+    font-size: 3.5vw;
+}
+
+h1{
+    font-size: 2em;
+    font-size: 8vw;
+}
+
+h3{
+    font-size: 1.17em;
+    font-size: 5vw;
+}
+
+h4{
+    font-size: 1.33em;
+    font-size: 4vw;
 }
 
 .mainContainer{
@@ -37,31 +61,56 @@ button{
 
 /*Article Image Section starts here*/
 .articleImage{
+    width: 100vw;
+    height: auto;
+
+    display: flex;
+    flex-flow: row wrap;
+    
+    margin-top: 20px;
+    
+    background-color: var(--Light-blue);
+    background-image: url(https://images.app.goo.gl/zwAQKKfULvPaYiAA9);
+    
+    justify-content:space-between;
+    align-items: center;
+    align-content: space-around;
+
+}
+
+.articleImageButtons{
     position: relative;
     width: 100vw;
-    height: 225px;
-    background-image: url(https://images.app.goo.gl/zwAQKKfULvPaYiAA9);
+    height: auto;
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 250px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    
+    align-items: center;
+    justify-content:space-around;
+    align-content:space-evenly;
 }
 .backButton{
-    float: left;
+    /* float: left;
     margin-left: 20px;
-    margin-top: 30px;
+    margin-top: 5px; */
     width: 80px;
     height: 50px;
     font-size: 20px;
 }
-.eventContact{
-    float: center;
-    margin-top: 25px;
-    width: 100px;
+.addEventButton{
+    /* float: right;
+    margin-right: 20px; */
+    width: 80px;
     height: 60px;
     font-size: 20px;
 }
-.addEventButton{
-    float: right;
-    margin-right: 20px;
-    margin-top: 25px;
-    width: 80px;
+.eventContact{
+    /* float: center; */
+    width: 100px;
     height: 60px;
     font-size: 20px;
 }
@@ -92,6 +141,7 @@ button{
     align-items: center;
 
     margin-top: -20px;
+    margin-bottom: -20px;
     font-size: 20px;
 }
 
@@ -135,16 +185,11 @@ button{
     flex: 0 1 33%;
 }
 
-.eventDescription{
-    padding-left: 40px;
-    padding-right: 40px;
+.eventDetails{
+    padding: 5px 15px;
+    border: 2px solid black;
 }
 
-/*
-.username{
-    link to autoID.eventName
-}
-*/
 /*Article Event Data ends here*/
 
 
@@ -155,42 +200,58 @@ button{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    background-color: var(	--Light-blue);
 }
 
-.signUpButton{
-    width: 70px;
-    height: 30px;
-}
-
-/*
-.capacityValues{
-    //Add Border to 
-}
-.viewedAmount{
-}
-.maxCap{
-}
-*/
-
-.shareButton{
-    width: 60px;
-    height: 30px;
-}
 /*Article User Prompt ends here*/
 
 
 
-.testingSpace{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 0px;
+.eventTags{
+    padding-top: 20px;
+    padding-bottom: 40px;
     width: 100vw;
-    height: 50vw;
+    row-gap: 10px;
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    background-color: var(--Light-D2);
+}
+
+.tagTitle{
+    margin: 10px;
+}
+
+.tagBox{
+    border: 2px solid black;
+    padding: 5px 15px;
+    margin: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    width: fit-content;
+}
+
+.popUp{
+    display: inline-block;
+    width: 100vw;
+    height: 180px;
+    /* margin-top: -240px;
+    margin-bottom: 70px; */
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+}
+.popUpContent{
+    background-color: var(--Light-D2);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    background-color: var(--Grey-D2);
+    margin: 30px;
+}
+.closePopUp{
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
