@@ -21,7 +21,7 @@ function App() {
    const [articles, setArticles]= useState([])
    const [searchField, setSearchField] = useState('')
    const [searchFilters, setSearchFilters]= useState([])
-   const events1 = collection(db, "events")
+
    
    
 
@@ -36,13 +36,8 @@ function App() {
       console.log(ev.target.name)
       setSearchFilters(eventFilters)
       console.log(searchFilters);
-      const q = query(events1, where("filters", "array-contains", searchFilters));
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((events1) => {
-  // doc.data() is never undefined for query doc snapshots
-    console.log(events1.id, " => ", events1.data());
-});
-      //after getting list, go through list of filters and check to see if each event has these filters 
+
+       
 
 }
     const [eventListState, setEventListState] = useState([])
