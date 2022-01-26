@@ -51,6 +51,7 @@ function App() {
     }
     return (
         <div>
+            
             Hi
             <button onClick={test}>Hi</button>
             <div className="userInterfaceContainer">
@@ -79,11 +80,8 @@ function App() {
                                     }}>
                                         Open Event
                                     </button>
-                                    <nav><Link to={event.id}>Open Event</Link>
+                                    <nav>
                                     </nav>
-                                    <Routes>
-                                <Route path={"/MainPage",event.id} element={<EventPage event={event} />}></Route>
-                                    </Routes>
                                 </div>
                                 : null
                         )

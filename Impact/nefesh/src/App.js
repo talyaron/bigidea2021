@@ -67,6 +67,7 @@ function App() {
 		<div className='container_AppMain'>
 			{loggedIn ? (
 				<div className='container_App'>
+					
 					<BrowserRouter>
 						<nav>
 							<Link to='/MainPage'>Main Page</Link>
