@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
 import { getDatabase, ref, onValue, query } from "firebase/database";
 import { collection,  orderBy, onSnapshot, getDocs, where, getFirestore} from 'firebase/firestore';
+import {useNavigate} from 'react-router-dom';
 
 
 const tags = ['newest','popular', 'recent'];
@@ -11,7 +12,7 @@ let eventListTemp = []
 
 function App() {
 
-
+const navigate = useNavigate();
 
 
    var searchOption;
@@ -125,6 +126,10 @@ function App() {
             console.log(eventListState)
         }
     }
+
+    function handleRoute(eventId){
+
+    }
     
     return (
         <div>
@@ -157,7 +162,7 @@ function App() {
                 <div className="eventMapContainer">
                     {eventListState.map(event => {
                         return (
-                            <div key={event.id} className='nametag'>
+                            <div key={event.id} className='nametag card card--link'>
                                 <h1>{event.Title}</h1>
                                 <div>{event.id}</div>
                                 <img src={event.Image} style={{ width: "100px" }}></img>
