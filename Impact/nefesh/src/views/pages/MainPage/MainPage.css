@@ -110,11 +110,10 @@
 }
 .eventMapContainer{
     text-align: center;
-    background-color: var(--Background-light);
-    border: 2px solid var(--Navy-blue);
+    background-color: var(--Light);
 }
 .userInterfaceContainer{
-    background-color: var(--Background-light);
+    background-color: var(--Light);
     font-family:Arial;
     font-weight:bolder;
 }
@@ -127,4 +126,10 @@
     background-color: var(--Grey);
     height: 25px;
     font-weight: bolder;
+}
+.nametag{
+    margin-top: 5px;
+    background-color: var(--Background-light);
+    border-radius: 5px;
+    box-shadow: 5px black;
 }

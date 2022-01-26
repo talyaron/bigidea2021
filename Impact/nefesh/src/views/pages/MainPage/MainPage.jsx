@@ -161,7 +161,7 @@ function App() {
                                 <div>{event.id}</div>
                                 <img src={event.Image} style={{ width: "100px" }}></img>
                                 <div>This event will take place on: {event.Date}</div>
-                                <div>{event.views} many people have viewed this event</div>
+                                {/* <div>{event.views} many people have viewed this event</div> */}
                             </div>
                         )
                     })
