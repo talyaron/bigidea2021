@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './StickyBanner.css';
+import { Component } from 'react';
 
 //icons
 import HomeButton from '../Images/home.svg';
@@ -17,7 +18,7 @@ function StickyBanner({isAdmin, isOle}) {
 		setNavToggle(temp);
 		console.log(navToggle, 'nav toggle');
 	}
-
+	
 	return (
 		<div id='stickyBanner'>
 			<div
