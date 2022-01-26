@@ -1,8 +1,8 @@
 import "./MainPage.css";
 import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
-import { getDatabase, ref, onValue, query } from "firebase/database";
-import { collection,  orderBy, onSnapshot, getDocs, where, getFirestore} from 'firebase/firestore';
+import { getDatabase, ref, onValue,  } from "firebase/database";
+import { collection, doc, orderBy, query,  onSnapshot, getDocs, where, getFirestore} from 'firebase/firestore';
 
 
 const tags = ['newest','popular', 'recent'];
@@ -21,6 +21,8 @@ function App() {
    const [articles, setArticles]= useState([])
    const [searchField, setSearchField] = useState('')
    const [searchFilters, setSearchFilters]= useState([])
+   const events1 = collection(db, "events")
+   
    
 
    function handleSearchByChange(ev){
@@ -34,7 +36,13 @@ function App() {
       console.log(ev.target.name)
       setSearchFilters(eventFilters)
       console.log(searchFilters);
-      //after getting list, go through list of filters and see if 
+      const q = query(events1, where("filters", "array-contains", searchFilters));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((events1) => {
+  // doc.data() is never undefined for query doc snapshots
+    console.log(events1.id, " => ", events1.data());
+});
+      //after getting list, go through list of filters and check to see if each event has these filters 
 
 }
     const [eventListState, setEventListState] = useState([])
