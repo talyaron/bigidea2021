@@ -12,6 +12,9 @@ import {
     where,
     getFirestore,
 } from "firebase/firestore";
+
+let filterRef= doc(db, "events");
+
 const filters = {};
 let eventFilters = [];
 
@@ -59,7 +62,7 @@ function DataFilters() {
         console.log(filter)
         return new Promise((resolve, reject) => {
             const filteredRef = collection(db, "events");
-            const q = query(filteredRef, where("type", "==", filter));
+            const q = query(filteredRef, where("type", "==", filter) /*check if multiple statements can be added here*/);
             getDocs(q).then((eventsDB) => {
                 const eventsTemp = [];
                 eventsDB.forEach((eventDB) => {
@@ -107,7 +110,6 @@ function DataFilters() {
                 name="submit1"
                 onClick={getEvents}
             />
-            <button onClick={ping}>Hi</button>
             {articles.map((event) => {
                 return (
                     <div key={event[0].id} className='nametag'>
