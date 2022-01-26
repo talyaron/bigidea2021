@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
-import './ArticleCreation.css';
+import React, { useState} from 'react';
+import "./ArticleCreation.css"
 import { collection, addDoc, arrayRemove } from "firebase/firestore"
 import { db } from "../../../functions/firebase/config"
 let i = 0
 let statesSumbitted = { views: 0, startTime: "", endTime: "" }
+
 function ArticleCreation(props) {
+
     const [tagsState, setTagsState] = useState([])
     function submitArticle() {
-        const { title, name, date, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity,phone, website, email} = statesSumbitted;
+        const { title, name, date, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSumbitted;
         addDoc(collection(db, "events"), {
             title,
             date,
@@ -19,12 +21,12 @@ function ArticleCreation(props) {
                 houseNumber: houseNumber,
                 city: city
             },
-            contactInfo:{
+            contactInfo: {
                 phone,
                 email,
                 website
             },
-            tags:tagsState,
+            tags: tagsState,
             creatorUID: props.userID,
             creatorOrg: props.userOrg,
             views,
@@ -37,7 +39,7 @@ function ArticleCreation(props) {
         })
     }
     function saveDraft() {
-        const { title, name, date, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email} = statesSumbitted;
+        const { title, name, date, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSumbitted;
 
         addDoc(collection(db, "events"), {
             title,
@@ -50,12 +52,12 @@ function ArticleCreation(props) {
                 houseNumber: houseNumber,
                 city: city
             },
-            contactInfo:{
+            contactInfo: {
                 phone,
                 email,
                 website
             },
-            tags:tagsState,
+            tags: tagsState,
             creatorUID: props.userID,
             creatorOrg: props.userOrg,
             views,
@@ -72,60 +74,63 @@ function ArticleCreation(props) {
         let parse = ev.target.name
         statesSumbitted = { ...statesSumbitted, [parse]: ev.target.value }
     }
-    function ping() {
-        console.log(props.userID)
-    }
+
     function addTags(ev) {
         ev.preventDefault()
         setTagsState([...tagsState, { id: i, tag: ev.target[0].value }])
         i++
+        console.log(ev.target[0].value)
     }
-    function deleteTag(tag){
+    function deleteTag(tag) {
         // debugger
         tag.preventDefault()
-        let tempArray=[...tagsState]
-        tempArray.splice(tag,1)
+
+        let tempArray = [...tagsState]
+        tempArray.splice(tag, 1)
         setTagsState(tempArray)
     }
     return <div>
-        <div className='popup-box'>
-            <b>Input information here</b>
+        <div className='createArticle-popup-box'>
 
-            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here" />
-            <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here" />
-            <input type="text" name="text" onKeyUp={changeState} placeholder="Enter text here" />
-            <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here" />
-            <input type="date" name="date" onChange={changeState} placeholder="Enter date here" />
-            <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" />
-            <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" />
-            <input type="text" name="city" onChange={changeState} placeholder="Enter city here" />
-            <div>Start Time</div>
-            <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" />
-            <div>End Time</div>
-            <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" />
-            <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here" />
-            <form onSubmit={addTags}>
-                <input type="text" name="tagsInput" placeholder="Enter tag here" />
-                <button type="submit">Submit</button>
+            <b className='infoTitle'>Input information here</b>
+            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here"   className='shadow'/>
+            <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here"  className='shadow'/>
+            <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here"  className='shadow'/>
+            <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" className='shadow'/>
+            <input type="text" name="city" onChange={changeState} placeholder="Enter city here"  className='shadow'/>
+            <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" className='shadow'/>
+            <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here"  className='shadow'/>
+            <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here"  className='shadow'/>
+            <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here"  className='shadow'/>
+            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" className='shadow'/>
+            <div>Event Date:</div>
+            <input type="date" name="date" onChange={changeState} placeholder="Enter date here" className='shadow'/>
+            <div>Event Start Time:</div>
+            <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow'/>
+            <div>Event End Time:</div>
+            <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow'/>
+            <div className="expandBox"><span className="textarea" name="text" role="textbox" onKeyUp={changeState} placeholder='Enter event description here' contentEditable></span></div>
+
+
+            <form className='Tags' onSubmit={addTags}>
+                <input type="text" name="tagsInput" placeholder="Enter event tags here" />
+                <button className='submit Button' type="submit">Submit</button>
             </form>
-            <div className="tagsMapContainer">
-                {tagsState.map(tag => {
-                    return (
-                        <form onSubmit={deleteTag} key={tag.id}>
-                            <div className='nametag'>{tag.tag}</div>
-                            <button type="submit">X</button>
-                        </form>
-                    )
-                })
-                }
+            <div className='tagBox'>
+                <div className="tagsMapContainer shadow">
+                    {tagsState.map(tag => {
+                        return (
+                            <form onSubmit={deleteTag} key={tag.id} className='tagForm'>
+                                <div className='nameTag'>{tag.tag}</div>
+                                <button type="submit">X</button>
+                            </form>
+                        )
+                    })
+                    }
+                </div>
             </div>
-            <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here" />
-            <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here" />
-            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" />
-            <button onClick={saveDraft}>Save Draft</button>
-            <button onClick={ping}>Hi</button>
-            <button onClick={submitArticle}>Submit Article</button>
-
+            <button className='submit Button2 shadow' onClick={saveDraft}>Save Draft</button>
+            <button className='submit Button2 shadow' onClick={submitArticle}>Submit Article</button>
 
         </div>
     </div>
