@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 const tags = ["newest", "popular", "recent"];
 let eventFilter = "";
-let eventListTemp = [];
+
 
 function App() {
   const navigate = useNavigate();
@@ -31,48 +31,48 @@ function App() {
   }
 
   async function getTarget(ev) {
-    let arr2 = [];
-    if (ev.key === "Enter") {
-      ev.preventDefault();
-      searchOption = ev.target.value;
-      console.log(searchOption);
-      const q = query(
-        collection(db, "events"),
-        where("Title", ">=", searchOption)
-      );
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-        arr2.push(doc.data());
-      });
-      if (searchField === "popular") {
-        for (var i = 1; i < arr2.length; i++)
-          for (var j = 0; j < i; j++)
-            if (arr2[i].views > arr2[j].views) {
-              var x = arr2[i];
-              arr2[i] = arr2[j];
-              arr2[j] = x;
-            }
-      } else if (searchField === "newest") {
-        for (var i = 1; i < arr2.length; i++)
-          for (var j = 0; j < i; j++)
-            if (arr2[i].Date > arr2[j].Date) {
-              var x = arr2[i];
-              arr2[i] = arr2[j];
-              arr2[j] = x;
-            }
-      } else if (searchField === "recent") {
-        for (var i = 1; i < arr2.length; i++)
-          for (var j = 0; j < i; j++)
-            if (arr2[i].dateAdded > arr2[j].dateAdded) {
-              var x = arr2[i];
-              arr2[i] = arr2[j];
-              arr2[j] = x;
-            }
-      }
-      setArticles(arr2);
-      console.log(arr2);
+    // let arr2 = [];
+    // if (ev.key === "Enter") {
+    //   ev.preventDefault();
+    //   searchOption = ev.target.value;
+    //   console.log(searchOption);
+    //   const q = query(
+    //     collection(db, "events"),
+    //     where("Title", ">=", searchOption)
+    //   );
+    //   const querySnapshot = await getDocs(q);
+    //   querySnapshot.forEach((doc) => {
+    //     // doc.data() is never undefined for query doc snapshots
+    //     console.log(doc.id, " => ", doc.data());
+    //     arr2.push(doc.data());
+    //   });
+    //   if (searchField === "popular") {
+    //     for (var i = 1; i < arr2.length; i++)
+    //       for (var j = 0; j < i; j++)
+    //         if (arr2[i].views > arr2[j].views) {
+    //           var x = arr2[i];
+    //           arr2[i] = arr2[j];
+    //           arr2[j] = x;
+    //         }
+    //   } else if (searchField === "newest") {
+    //     for (var i = 1; i < arr2.length; i++)
+    //       for (var j = 0; j < i; j++)
+    //         if (arr2[i].Date > arr2[j].Date) {
+    //           var x = arr2[i];
+    //           arr2[i] = arr2[j];
+    //           arr2[j] = x;
+    //         }
+    //   } else if (searchField === "recent") {
+    //     for (var i = 1; i < arr2.length; i++)
+    //       for (var j = 0; j < i; j++)
+    //         if (arr2[i].dateAdded > arr2[j].dateAdded) {
+    //           var x = arr2[i];
+    //           arr2[i] = arr2[j];
+    //           arr2[j] = x;
+    //         }
+    //   }
+    //   setArticles(arr2);
+    //   console.log(arr2);
 
       //insert filters
       //find articles with word in it, sort by which article has the word appear the most
@@ -80,14 +80,17 @@ function App() {
       // if newest --> check by date
       // if recent --> check by creation date
       // if popular --> check by most views
-    }
+    // }
   }
   const [eventListState, setEventListState] = useState([]);
 
-  // const [eventFilterState,setEventFilterState]=useState("")
+  
   useEffect(() => {
     const q = query(collection(db, "events"));
-    const unsub = onSnapshot(q, (querySnapshot) => {
+    const eventListTemp = [];
+    
+    //listen to events
+    const unsubuscribe = onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const eventTemp = doc.data();
         eventTemp.id = doc.id;
@@ -96,13 +99,16 @@ function App() {
       console.log("ping!");
       setEventListState(eventListTemp);
     });
+
+    return ()=>{
+      return unsubuscribe()
+    }
   }, []);
-  function test() {
-    console.log(eventListTemp);
-  }
+
+  
   function changeEventFilter(ev) {
-    // console.log('ping! changeeventfilter')
-    eventListTemp = [...eventListState];
+   
+    const eventListTemp = [...eventListState];
     eventFilter = ev.target.value;
     if (eventFilter === "popular") {
       eventListTemp.sort(function (a, b) {
