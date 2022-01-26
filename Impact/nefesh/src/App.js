@@ -14,8 +14,10 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from './functions/firebase/config';
+//pages
 import AdminPage from './views/pages/AdminPage/AdminPage';
 import StickyBanner from './views/components/StickyBanner/StickyBanner'
+import Event from './views/pages/Event/Event';
 
 
 let role = 'superAdmin';
@@ -81,6 +83,7 @@ function App() {
 						<Route path='401' element={<Unauthorised />} />
 						<Route path='MainPage' element={<MainPage role={role} />} />
 						<Route path='ContactUs' element={<ContactUs />} />
+						<Route path='event/:eventID' element={<Event />} />
 						<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
 						<Route path='AdminPage' element={<AdminPage />} />
