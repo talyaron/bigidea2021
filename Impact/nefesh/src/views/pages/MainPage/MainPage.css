@@ -111,6 +111,7 @@
 .eventMapContainer{
     text-align: center;
     background-color: var(--Background-light);
+    border: 2px solid var(--Navy-blue);
 }
 .userInterfaceContainer{
     background-color: var(--Background-light);
