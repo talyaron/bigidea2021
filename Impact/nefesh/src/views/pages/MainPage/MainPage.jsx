@@ -156,22 +156,13 @@ function App() {
                 <div className="eventMapContainer">
                     {eventListState.map(event => {
                         return (
-                            event.isPublished ?
-                                <div key={event.id} className='nametag'>
-                                    <h1>{event.title}</h1>
-                                    <img src={event.coverImage} style={{ width: "100px" }}></img>
-                                    <div>Date: {event.date} between {event.startTime} and {event.endTime}</div>
-                                    <div>{event.views} many people have viewed this event</div>
-                                    <div> Host Organization website<a href={event.contactInfo.website}>{event.contactInfo.website}</a></div>
-                                    <button onClick={()=>{
-                                        navigate(`/Event/${event.id}`)
-                                    }}>
-                                        Open Event
-                                    </button>
-                                    <nav>
-                                    </nav>
-                                </div>
-                                : null
+                            <div key={event.id} className='nametag'>
+                                <h1>{event.Title}</h1>
+                                <div>{event.id}</div>
+                                <img src={event.Image} style={{ width: "100px" }}></img>
+                                <div>This event will take place on: {event.Date}</div>
+                                <div>{event.views} many people have viewed this event</div>
+                            </div>
                         )
                     })
                     }
