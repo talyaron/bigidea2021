@@ -24,8 +24,11 @@
 	bottom: 0px;
 	background-color: var(--Light-blue);
 	/*max-width: 500px;*/
-	width: 100%;
+	width: 98%;
 	height: 50px;
+	margin-inline: 1%;
+    margin-bottom: 10px;
+    border-radius: 9px;
 }
 .menuItem{
     

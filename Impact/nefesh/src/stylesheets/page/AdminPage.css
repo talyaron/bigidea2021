@@ -10,7 +10,8 @@
     flex-direction: column;
 }
 .eventMapContainer{
-    margin-top: 25%;
+    margin-top: 1em;
+    padding-inline: 1em;
     position: relative;
 }
 

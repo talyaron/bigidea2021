@@ -38,7 +38,7 @@ function StickyBanner() {
 										onClick={() => {
 											navigate('/ProfilePage');
 										}}>
-										ProfilePag
+										Profile Page
 									</div>
 								</li>
 								<li className='ListItemElement'>
@@ -47,7 +47,7 @@ function StickyBanner() {
 										onClick={() => {
 											navigate('/ContactUs');
 										}}>
-										contactUs
+										Contact Us
 									</div>
 								</li>
 								<li className='ListItemElement'>
@@ -57,7 +57,7 @@ function StickyBanner() {
 											navigate('/');
 										}}
 										name='add a reqest to be org page'>
-										RequestOrg
+										Request Org
 									</div>
 								</li>
 								<li className='ListItemElement'>
@@ -66,7 +66,7 @@ function StickyBanner() {
 										onClick={() => {
 											navigate('/ArticleCreation');
 										}}>
-										ArticleCreation
+										Article Creation
 									</div>
 								</li>
 								<li className='ListItemElement'>
@@ -75,7 +75,7 @@ function StickyBanner() {
 										onClick={() => {
 											navigate('/AdminPage');
 										}}>
-										AdminPage
+										Admin Page
 									</div>
 								</li>
 							</ul>
