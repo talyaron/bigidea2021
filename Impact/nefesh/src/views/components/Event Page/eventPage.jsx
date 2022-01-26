@@ -91,9 +91,9 @@ function EventPage() {
                         <p className="eventEndTime"> End Time: {eventData.endTime}</p>
                     </div>
                     <div className="eventLocationContainer">
-                        <p className="eventStreet"> Street Name </p>
-                        <p className="eventHouse"> House Number </p>
-                        <p className="eventCity"> City </p>
+                        <p className="eventStreet"> Street Name: </p>
+                        <p className="eventHouse"> House Number: </p>
+                        <p className="eventCity"> City: </p>
                     </div>
                 </div>
                 <p className="eventDescription"> {eventData.article}</p>
