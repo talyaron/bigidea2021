@@ -16,6 +16,7 @@ import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc, onSnapshot } from 'firebase/firestore';
 import { db } from './functions/firebase/config';
 import AdminPage from './views/pages/AdminPage/AdminPage';
+import StickyBanner from './views/components/StickyBanner/StickyBanner'
 
 //hi
 let role = 'superAdmin'; //if changed to superAdmin it updates correctly but shows red warnings, also needs to be changed manually
@@ -25,22 +26,26 @@ let userID = "";
 let loggedIn, isAdmin = 'false';
 
 function App() {
-	const [userState, setUserState] = useState({})
+	const [userState, setUserState] = useState({});
+	
 
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
 				console.log('user logged in');
 				const uid = user.uid;
-				userID=uid
+				userID = uid;
 				//get user from db
 				getDoc(doc(db, 'users', uid)).then((userDB) => {
 					if (userDB.exists()) {
 						console.log('user exists');
-						setUserState({ userName: userDB.data().displayName, userOrg:userDB.data().organization});
+						setUserState({
+							userName: userDB.data().displayName,
+							userOrg: userDB.data().organization,
+						});
 						role = userDB.data().role;
-						const uid=userDB.data().userID;
-						userID=uid
+						const uid = userDB.data().userID;
+						userID = uid;
 					} else {
 						//if user exist in db get the user from DB and get the role
 						console.log('user does not exist');
@@ -78,62 +83,30 @@ function App() {
 		
 
 	}, []);
+
+
 	return (
 		<div className='container_AppMain'>
 			{loggedIn ? (
 				<div className='container_App'>
-					{isAdmin && <BrowserRouter>
-						<nav>
-							<Link to='/MainPage'>Main Page</Link>
-							<Link to='/ContactUs'>Contact Us</Link>
-							<Link to='/ArticleCreation'>Article Creation</Link>
-							<Link to='/ProfilePage'>Profile Page</Link>
-							<Link to='/AdminPage'>Admin Page</Link>
-						</nav>
-						<Routes>
-							<Route path='/' element={<MainPage role={role} />} />
-							<Route path='404' element={<Error />} />
-							<Route path='401' element={<Unauthorised />} />
-							<Route path='MainPage' element={<MainPage role={role} />} />
-							<Route path='ContactUs' element={<ContactUs />} />
-							<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
-							<Route path='ProfilePage' element={<ProfilePage  uid={userID} />} />
-							<Route path='AdminPage' element={<AdminPage />} />
-						</Routes>
-						</BrowserRouter>
-						}
-					
-					{!isAdmin && <BrowserRouter>
-						<nav>
-							<Link to='/MainPage'>Main Page</Link>
-							<Link to='/ContactUs'>Contact Us</Link>
-							<Link to='/ArticleCreation'>Article Creation</Link>
-							<Link to='/ProfilePage'>Profile Page</Link>
-						</nav>
-						<Routes>
-							<Route path='/' element={<MainPage role={role} />} />
-							<Route path='404' element={<Error />} />
-							<Route path='401' element={<Unauthorised />} />
-							<Route path='MainPage' element={<MainPage role={role} />} />
-							<Route path='ContactUs' element={<ContactUs />} />
-							<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
-							<Route path='ProfilePage' element={<ProfilePage  uid={userID} />} />
-						</Routes>
-						</BrowserRouter>
-						}
-					
-					<div id='stickyBanner'>
-						<h5>Developed by: Big Idea</h5>
-					</div>
+					<Routes>
+						<Route path='/' element={<MainPage role={role} />} />
+						<Route path='404' element={<Error />} />
+						<Route path='401' element={<Unauthorised />} />
+						<Route path='MainPage' element={<MainPage role={role} />} />
+						<Route path='ContactUs' element={<ContactUs />} />
+						<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
+						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
+						<Route path='AdminPage' element={<AdminPage />} />
+					</Routes>
+					<StickyBanner/>
 				</div>
 			) : (
 				<div className='container_App'>
-					<BrowserRouter>
-						<Routes>
-							<Route path='/' element={<Login />} />
-							<Route path='login' element={<Login />} />
-						</Routes>
-					</BrowserRouter>
+					<Routes>
+						<Route path='/' element={<Login />} />
+						<Route path='login' element={<Login />} />
+					</Routes>
 				</div>
 			)}
 		</div>
