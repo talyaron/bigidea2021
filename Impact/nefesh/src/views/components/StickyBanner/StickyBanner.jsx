@@ -11,6 +11,7 @@ function StickyBanner() {
 	const navigate = useNavigate();
 	const [navToggle, setNavToggle] = useState(false);
 
+
 	function handleMenu() {
 		let temp = !navToggle;
 		setNavToggle(temp);
@@ -36,46 +37,51 @@ function StickyBanner() {
 									<div
 										className='menuItem'
 										onClick={() => {
-											navigate('/ProfilePage');
+											navigate('/ProfilePage')
+											handleMenu()
 										}}>
-										ProfilePag
+										Profile Page
 									</div>
 								</li>
 								<li className='ListItemElement'>
 									<div
 										className='menuItem'
 										onClick={() => {
-											navigate('/ContactUs');
+											navigate('/ContactUs')
+											handleMenu()
 										}}>
-										contactUs
+										Contact Us
 									</div>
 								</li>
 								<li className='ListItemElement'>
 									<div
 										className='menuItem'
 										onClick={() => {
-											navigate('/');
+											navigate('/')
+											handleMenu()
 										}}
 										name='add a reqest to be org page'>
-										RequestOrg
+										Create an Event
 									</div>
 								</li>
 								<li className='ListItemElement'>
 									<div
 										className='menuItem'
 										onClick={() => {
-											navigate('/ArticleCreation');
+											navigate('/ArticleCreation')
+											handleMenu()
 										}}>
-										ArticleCreation
+										Article Creation
 									</div>
 								</li>
 								<li className='ListItemElement'>
 									<div
 										className='menuItem'
 										onClick={() => {
-											navigate('/AdminPage');
+											navigate('/AdminPage')
+											handleMenu()
 										}}>
-										AdminPage
+										Admin Page
 									</div>
 								</li>
 							</ul>
