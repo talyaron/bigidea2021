@@ -1,4 +1,5 @@
 import "./MainPage.css";
+import DataFilters from '../../components/DataFilters/DataFilters'
 import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
 import { getDatabase, ref, onValue,  } from "firebase/database";
@@ -25,21 +26,14 @@ function App() {
    
    
 
+
    function handleSearchByChange(ev){
     let temp = ev.target.value
     setSearchField(temp)
 }
 
-  async function getTarget(ev) {
+ 
 
-    eventFilters.push(ev.target.name);
-      console.log(ev.target.name)
-      setSearchFilters(eventFilters)
-      console.log(searchFilters);
-
-       
-
-}
     const [eventListState, setEventListState] = useState([])
 
     // const [eventFilterState,setEventFilterState]=useState("")
@@ -79,6 +73,8 @@ function App() {
             console.log(eventListState)
         }
     }
+   
+    
     return (
         <div>
                 
@@ -90,10 +86,8 @@ function App() {
 								<option value='email'>recent</option>
 							</select>
 						</form>
-              Filters <br/>
-              <input className='searchBar' type="checkbox" name= "dinner" onClick={getTarget} />Dinner<br/>
-              <input className='searchBar' type="checkbox" name= "60+" onClick={getTarget} />60+<br/>
-              <input className='searchBar' type="checkbox" name= "party" onClick={getTarget} />Party<br/>
+              <DataFilters/>
+
 
 
 
