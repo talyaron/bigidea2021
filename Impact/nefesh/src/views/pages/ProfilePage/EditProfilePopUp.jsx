@@ -7,7 +7,9 @@ const EditProfilePopUp = props => {
     return (
       <div className="popup-box">
         <div className="EditPopUpbox">
-          <span className="Edit-close-icon" onClick={props.handleClose}>x</span>
+          <span  onClick={props.handleClose}>
+             <div className="Edit-close-icon">X</div>
+              </span>
           {props.content}
         </div>
       </div>
