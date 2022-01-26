@@ -9,7 +9,7 @@ function ContactUs (){
     return(
         <div>
             <div className='head'>
-                Contact us at:
+                <h1>Contact us at:</h1>
             </div>
             <div className='box-1'>
                      
