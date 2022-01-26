@@ -14,7 +14,7 @@
 #homeButton{
 	max-height: 46px;
 }
-
+/*
 #stickyBanner {
 	position: fixed;
 	display: flex;
@@ -23,12 +23,28 @@
 	vertical-align: top;
 	bottom: 0px;
 	background-color: var(--Light-blue);
-	/*max-width: 500px;*/
 	width: 98%;
 	height: 50px;
 	margin-inline: 1%;
     margin-bottom: 10px;
     border-radius: 9px;
+}*/
+
+#stickyBanner {
+	position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    vertical-align: top;
+    bottom: 0px;
+    width: 98%;
+    height: 50px;
+    margin-inline: 1%;
+    margin-bottom: 10px;
+    background-color: #212223bf!important;
+    border-radius: 30px;
+    border: outset deepskyblue;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 7px 4px;
 }
 .menuItem{
     
