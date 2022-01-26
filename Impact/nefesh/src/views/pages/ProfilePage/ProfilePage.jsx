@@ -1,9 +1,9 @@
 import './ProfilePage.css';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../../functions/firebase/config';
-import { doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot, setDoc, updateDoc} from 'firebase/firestore';
+import EditProfilePopUp from './EditProfilePopUp';
 
-const userDocRef = doc(db, 'users', '0vtoIVm41lXvBJhSStUSmBqBq873');
 
 function ProfilePage(props) {
 	const [displayName, setDisplayName] = useState('loading');
@@ -16,6 +16,8 @@ function ProfilePage(props) {
 	const [editing, setEditing] = useState(false)
 	const [choosingPrefs, setChoosingPrefs] = useState(false)
 	const {uid} = props;
+	const [isOpen, setIsOpen] = useState(false);
+  	
 	useEffect(async () => {
 		//pull userId of selected user and set for superAdmin page
 		//on snapshot displayName
@@ -29,7 +31,7 @@ function ProfilePage(props) {
 
 	}, [uid]);
 	function editProfile(ev) {
-
+		setIsOpen(!isOpen);
 		setEditing(true)
 	};
 
@@ -47,7 +49,7 @@ function ProfilePage(props) {
 		setUserGender(gender);
 
 		setEditing(false)
-		setDoc(doc(db, "users", props.uid), {
+		updateDoc(doc(db, "users", props.uid), {
 			displayName: name,
 			userIcon: profilePic,
 			email: email,
@@ -93,17 +95,19 @@ function ProfilePage(props) {
 					<p>Events list goes here</p>
 				</div>
 			</div>
-			<button type="button" onClick={changePreferences} name="settingbtn">Preferences</button>
+			<button type="button" id = "prefButton" onClick={changePreferences} name="settingbtn">Preferences</button>
 			{choosingPrefs ? <div className='settings'>
 				<form onSubmit={submitChangePreferences}>
 
 					Change Font Size: <input type="text" name="newFontSize" /><br />
-					<button type="submit" name="prfbtn"> Submit Changes</button>
+					<button type="submit" id = "submitChanges" name="prfbtn"> Submit Changes</button>
 				</form>
 			</div> : null}
 
 			<button type="button" onClick={editProfile} name="editbtn"> Edit Profile!</button>
-			{editing ? <div className='profileEditor'	>
+			{isOpen && <EditProfilePopUp
+      content={<>
+        {editing ? <div className='profileEditor'	>
 				Edit Profile Here: <br />
 				<form onSubmit={changeProfile}>
 					Enter New Name: <input type="text" name="newName" /><br />
@@ -117,6 +121,10 @@ function ProfilePage(props) {
 
 
 			</div> : null}
+      </>}
+      handleClose={editProfile}
+    />}
+			
 
 		</div>
 
