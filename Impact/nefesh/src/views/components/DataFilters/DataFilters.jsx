@@ -4,6 +4,7 @@ import { db } from '../../../functions/firebase/config';
 import { getDatabase, ref, onValue, } from "firebase/database";
 import { collection, doc, orderBy, query, onSnapshot, getDocs, where, getFirestore } from 'firebase/firestore';
 
+let eventFilters= [];
 function DataFilters() {
 
 
@@ -15,7 +16,7 @@ function DataFilters() {
     const [articles, setArticles] = useState([])
     const [searchField, setSearchField] = useState('')
     const [searchFilters, setSearchFilters] = useState([])
-    let eventFilters= [];
+    
 
 
 
