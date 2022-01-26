@@ -14,6 +14,7 @@
     left: 90px;
     margin: 10px 10px;
     text-decoration: none;
+    
 
     /*
   needs
@@ -39,7 +40,7 @@
 
 .searchBar
 {
-        color: green;
+        color: darkblue;
 
     /*
     needs
@@ -99,15 +100,8 @@
     right: 100px;
 }
 
-/*
-    container
-    searchBar
-    userInterfaceContainer
-    filterEvents
-    eventFilterType
-    eventMapContainer
-    nametag
-
-
-
-*/
+.dropDown{
+    background-color: lightblue;
+    border: 10px black;
+    border-radius: 12px;
+}

@@ -2,12 +2,12 @@ const DB = [
     {
         users,
         userID: {
-            name: 'JoeDoe',
+            displayName: 'JoeDoe',
             email: 'JoeDoe@gmail.com',
             userID: '123ABC345daef123',
             sex: 'male/female/nonBinary/other',
             age: 0,
-            location: 'jerusalem, Israel',
+            location: 'Jerusalem',
             role: 'ole/admin/superAdmin',
             organization: 'Soup Kitchen',
             userPref: [
@@ -43,6 +43,7 @@ const DB = [
                 email: 'joeDoe@gmail.com',
                 website: 'www.google.com',
             },
+            isPublished: true,
         }
     }
 ]
