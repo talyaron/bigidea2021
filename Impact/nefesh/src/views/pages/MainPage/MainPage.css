@@ -31,7 +31,6 @@
 }
 
 .userInterfaceContainer{
-    border: 3px solid var(--Navy-blue);
     background-color: ivory;
     top: 0px;
     padding: 5px;
@@ -101,13 +100,17 @@
 }
 
 .dropDown{
-    background-color: lightblue;
     border: 10px black;
     border-radius: 12px;
+    text-align: center;
+}
+.searchBar{
+    position: relative;
+    left: 30%;
 }
 .eventMapContainer{
     text-align: center;
-    background-color: var(--Light-D1);
+    background-color: var(--Background-light);
 }
 .userInterfaceContainer{
     background-color: var(--Background-light);
