@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './StickyBanner.css';
+import '../../stylesheets/page/StickyBanner.css';
 
 //icons
-import HomeButton from '../Images/home.svg';
-import Menu from '../Images/Menu.svg';
-import X from '../Images/X.svg';
+import HomeButton from '../../assets/Images/home.svg';
+import Menu from '../../assets/Images/Menu.svg';
+import X from '../../assets/Images/X.svg';
 
 function StickyBanner() {
 	const navigate = useNavigate();

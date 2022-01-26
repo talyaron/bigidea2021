@@ -1,21 +1,21 @@
-import './App.css';
-import './views/components/AdminPagePopUp/AdminPagePopUp';
+import './stylesheets/page/App.css';
+import './views/templates/AdminPagePopUp';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 
-import Login from './views/pages/login/Login.js';
-import Error from './views/pages/404/404.js';
-import Unauthorised from './views/pages/401/401.js';
-import ProfilePage from './views/pages/ProfilePage/ProfilePage';
-import ContactUs from './views/components/ContactUs/ContactUs';
-import ArticleCreation from './views/components/ArticleCreation/ArticleCreation';
-import MainPage from './views/pages/MainPage/MainPage';
+import Login from './views/pages/Login.js';
+import Error from './views/pages/404.js';
+import Unauthorised from './views/pages/401.js';
+import ProfilePage from './views/pages/ProfilePage';
+import ContactUs from './views/templates/ContactUs';
+import ArticleCreation from './views/templates/ArticleCreation';
+import MainPage from './views/pages/MainPage';
 import { checkRole } from './functions/general.js';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from './functions/firebase/config';
-import AdminPage from './views/pages/AdminPage/AdminPage';
-import StickyBanner from './views/components/StickyBanner/StickyBanner'
+import AdminPage from './views/pages/AdminPage';
+import StickyBanner from './views/templates/StickyBanner'
 
 let isAdmin;
 let role = 'superAdmin';
