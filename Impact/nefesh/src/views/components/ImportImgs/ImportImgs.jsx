@@ -11,3 +11,5 @@ function ImportImg(){
     )
 
 }
+
+export default ImportImg;
