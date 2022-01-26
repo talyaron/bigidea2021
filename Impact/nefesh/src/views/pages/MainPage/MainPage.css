@@ -31,7 +31,7 @@
 }
 
 .userInterfaceContainer{
-    border: 3px solid green;
+    border: 3px solid var(--Navy-blue);
     background-color: ivory;
     top: 0px;
     padding: 5px;
@@ -104,4 +104,23 @@
     background-color: lightblue;
     border: 10px black;
     border-radius: 12px;
+}
+.eventMapContainer{
+    text-align: center;
+    background-color: var(--Light-D1);
+}
+.userInterfaceContainer{
+    background-color: var(--Background-light);
+    font-family:Arial;
+    font-weight:bolder;
+}
+.filterEvents{
+    font-weight: bolder;
+    text-align: center;
+}
+#eventFilterType{
+    border-radius: 5px;
+    background-color: var(--Grey);
+    height: 25px;
+    font-weight: bolder;
 }

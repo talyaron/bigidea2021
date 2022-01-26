@@ -128,7 +128,7 @@ function App() {
     return (
         <div>
                 
-                <form className='searchFor' className="dropDown" onChange={handleSearchByChange}>
+                {/* <form className='searchFor' className="dropDown" onChange={handleSearchByChange}>
 							<label for='searchFor' id='searchFor'>Search for:</label>
 							<select id="searchDropdown" name='searchFor'>
 								<option value='userID'>popular</option>
@@ -141,7 +141,7 @@ function App() {
             <li className="travelcompany-input" key={i}>
                 <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image}/> 
             </li>
-           ))}
+           ))} */}
             <div className="userInterfaceContainer">
                 <form className="filterEvents">
                     <label htmlFor="eventFilterType">Sort out the events displayed:</label>
@@ -168,19 +168,8 @@ function App() {
                     }
                 </div>
             </div>
+          </div>
        
-
-            <div className='container'>
-              <div className='contianer2'>
-              <div className="sectionOne">
-                <h1>Nefesh B'Nefesh</h1>
-                <button onChange={console.log("does nothing yet")}>|||</button>
-              </div>
-          
-           </div>
-           <button className='Button2'>Home Page</button>
-            </div>
-            </div>
           )
 }
 
