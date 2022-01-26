@@ -84,6 +84,7 @@ function App() {
 
 	}, []);
 
+	// isOle? true: isSuperAdmin? true: false;
 
 	return (
 		<div className='container_AppMain'>
@@ -99,7 +100,7 @@ function App() {
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
 						<Route path='AdminPage' element={<AdminPage />} />
 					</Routes>
-					<StickyBanner/>
+					<StickyBanner isAdmin={isAdmin} isOle={isOle}/>
 				</div>
 			) : (
 				<div className='container_App'>

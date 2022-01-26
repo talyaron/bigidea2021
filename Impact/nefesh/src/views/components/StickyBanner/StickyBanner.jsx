@@ -7,7 +7,7 @@ import HomeButton from '../Images/home.svg';
 import Menu from '../Images/Menu.svg';
 import X from '../Images/X.svg';
 
-function StickyBanner() {
+function StickyBanner({isAdmin, isOle}) {
 	const navigate = useNavigate();
 	const [navToggle, setNavToggle] = useState(false);
 
