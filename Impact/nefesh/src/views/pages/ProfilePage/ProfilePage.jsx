@@ -79,10 +79,10 @@ function ProfilePage(props) {
 					style={{ backgroundImage: 'url(' + profilePicImg + ')' }}
 				/>
 				<h4 style = {{fontSize: textSize + 'px'}}>
-					Name: {displayName}<br />
-					Gender: {userGender} <br />
-					Email: {userEmail}<br />
-					Address: {userAddress}<br />
+					Name: {displayName}
+					Gender: {userGender} 
+					Email: {userEmail}
+					Address: {userAddress}
 					Font Size: {textSize}
 
 
@@ -97,19 +97,19 @@ function ProfilePage(props) {
 			{choosingPrefs ? <div className='settings'>
 				<form onSubmit={submitChangePreferences}>
 
-					Change Font Size: <input type="text" name="newFontSize" /><br />
+					Change Font Size: <input type="text" name="newFontSize" />
 					<button type="submit" name="prfbtn"> Submit Changes</button>
 				</form>
 			</div> : null}
 
 			<button type="button" onClick={editProfile} name="editbtn"> Edit Profile!</button>
 			{editing ? <div className='profileEditor'	>
-				Edit Profile Here: <br />
+				Edit Profile Here: 
 				<form onSubmit={changeProfile}>
-					Enter New Name: <input type="text" name="newName" /><br />
-					Enter New Image : <input type="text" name="newImg" /><br />
-					Enter New Email: <input type="text" name="newEmail" /><br />
-					Enter New Gender: <input type="text" name="newGender" /><br />
+					Enter New Name: <input type="text" name="newName" />
+					Enter New Image : <input type="text" name="newImg" />
+					Enter New Email: <input type="text" name="newEmail" />
+					Enter New Gender: <input type="text" name="newGender" />
 					Enter New Address: <input type="text" name="newAddress" />
 					<button type="submit" name="editbtn"> Submit Changes</button>
 

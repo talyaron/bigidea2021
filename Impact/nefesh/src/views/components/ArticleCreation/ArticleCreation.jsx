@@ -93,11 +93,10 @@ function ArticleCreation(props) {
     }
     return <div>
         <div className='createArticle-popup-box'>
+            <b className='infoTitle'>Input information here</b> 
             <ImportImgs/>
-            <b className='infoTitle'>Input information here</b>
             <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here"   className='shadow'/>
             <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here"  className='shadow'/>
-            <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here"  className='shadow'/>
             <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" className='shadow'/>
             <input type="text" name="city" onChange={changeState} placeholder="Enter city here"  className='shadow'/>
             <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" className='shadow'/>
