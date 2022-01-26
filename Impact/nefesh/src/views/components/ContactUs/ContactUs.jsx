@@ -14,7 +14,7 @@ function ContactUs (){
             <div className='box-1'>
                      
                 <div className= "phoneNum">
-                    Phone number: ###-###-####
+                    Phone number: 072-336-9280
                 </div> 
             </div>
             <div className='box-1'>
