@@ -128,7 +128,7 @@ function App() {
     return (
         <div>
                 
-                {/* <form className='searchFor' className="dropDown" onChange={handleSearchByChange}>
+                <form className='searchFor' className="dropDown" onChange={handleSearchByChange}>
 							<label for='searchFor' id='searchFor'>Search for:</label>
 							<select id="searchDropdown" name='searchFor'>
 								<option value='userID'>popular</option>
@@ -141,7 +141,7 @@ function App() {
             <li className="travelcompany-input" key={i}>
                 <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image}/> 
             </li>
-           ))} */}
+           ))}
             <div className="userInterfaceContainer">
                 <form className="filterEvents">
                     <label htmlFor="eventFilterType">Sort out the events displayed:</label>
