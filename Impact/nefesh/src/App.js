@@ -54,7 +54,11 @@ function App() {
 				setIsAdmin(false);
             } else {
 				setIsOle(false);
-				setIsAdmin(true);
+        setIsAdmin(false);
+        if(role == "superAdmin"){
+          setIsOle(false);
+          setIsAdmin(true);
+        }
             }
 
             const uid = userDB.data().userID;
