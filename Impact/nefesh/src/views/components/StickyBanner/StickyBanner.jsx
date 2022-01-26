@@ -28,12 +28,47 @@ function StickyBanner({isAdmin, isOle}) {
 				}}>
 				<img src={HomeButton} alt='Home' id='homeButton' />
 			</div>
+
+			{/* {isOle? : isAdmin? : } */}
+
 			<div className='Menu_container'>
 				{navToggle ? (
 					<div>
 						<img src={X} alt='X' id='MenuButton' onClick={handleMenu} />
 						<div className='menuList_Container'>
-							<ul className='menuList'>
+						{isOle? <ul className='menuList'>
+								<li className='ListItemElement'>
+									<div
+										className='menuItem'
+										onClick={() => {
+											navigate('/ProfilePage')
+											handleMenu()
+										}}>
+										Profile Page
+									</div>
+								</li>
+								<li className='ListItemElement'>
+									<div
+										className='menuItem'
+										onClick={() => {
+											navigate('/ContactUs')
+											handleMenu()
+										}}>
+										Contact Us
+									</div>
+								</li>
+								<li className='ListItemElement'>
+									<div
+										className='menuItem'
+										onClick={() => {
+											navigate('/')
+											handleMenu()
+										}}
+										name='add a reqest to be org page'>
+										Create an Event
+									</div>
+								</li>
+								</ul> : isAdmin? <ul className='menuList'>
 								<li className='ListItemElement'>
 									<div
 										className='menuItem'
@@ -85,7 +120,48 @@ function StickyBanner({isAdmin, isOle}) {
 										Admin Page
 									</div>
 								</li>
-							</ul>
+							</ul>: <ul className='menuList'>
+								<li className='ListItemElement'>
+									<div
+										className='menuItem'
+										onClick={() => {
+											navigate('/ProfilePage')
+											handleMenu()
+										}}>
+										Profile Page
+									</div>
+								</li>
+								<li className='ListItemElement'>
+									<div
+										className='menuItem'
+										onClick={() => {
+											navigate('/ContactUs')
+											handleMenu()
+										}}>
+										Contact Us
+									</div>
+								</li>
+								<li className='ListItemElement'>
+									<div
+										className='menuItem'
+										onClick={() => {
+											navigate('/')
+											handleMenu()
+										}}
+										name='add a reqest to be org page'>
+										Create an Event
+									</div>
+								</li>
+								<li className='ListItemElement'>
+									<div
+										className='menuItem'
+										onClick={() => {
+											navigate('/ArticleCreation')
+											handleMenu()
+										}}>
+										Article Creation
+									</div>
+								</li></ul>}
 						</div>
 					</div>
 				) : (
