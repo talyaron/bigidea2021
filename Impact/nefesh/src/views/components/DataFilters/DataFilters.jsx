@@ -12,7 +12,6 @@ import {
   where,
   getFirestore,
 } from "firebase/firestore";
-
 const filters = {};
 let eventFilters = [];
 
@@ -24,6 +23,7 @@ function DataFilters() {
   const [searchField, setSearchField] = useState("");
   const [searchFilters, setSearchFilters] = useState([]);
 
+
   function handleSearchByChange(ev) {
     let temp = ev.target.value;
     setSearchField(temp);
@@ -31,17 +31,6 @@ function DataFilters() {
 
   async function getTarget(ev) {
     filters[ev.target.name] = ev.target.checked;
-    // console.log(ev.target.checked);
-    // console.log(ev.target.name);
-    // if (eventFilters.includes(ev.target.name) == true) {
-    //   let i = eventFilters.indexOf(ev.target.name);
-    //   eventFilters.splice(i, 1);
-    // } else {
-    //   eventFilters.push(ev.target.name);
-    //   console.log(ev.target.name);
-    //   setSearchFilters(eventFilters);
-    //   console.log(searchFilters);
-    // }
   }
   async function getEvents(ev) {
     ev.preventDefault();
@@ -60,6 +49,8 @@ function DataFilters() {
       })
       const events = await Promise.all(promisedFilterd);
       console.log(events)
+      setArticles(events);
+      
     }
     //sort through
   }
@@ -77,10 +68,15 @@ function DataFilters() {
         resolve(eventsTemp);
       }).catch(err=>{
           reject(err);
+          
       });
+      
     });
+   
   }
-
+function ping(){
+    console.log(articles)
+}
   return (
     <div>
       Filters:
@@ -111,7 +107,27 @@ function DataFilters() {
         name="submit1"
         onClick={getEvents}
       />
+      <button onClick={ping}>Hi</button>
+{articles.map((event) => {
+                        return (
+                            <div key={event[0].id} className='nametag'>
+                            <h1>{event[0].title}</h1>
+                            <div>{event[0].id}</div>
+                            <img src={event[0].Image} style={{ width: "100px" }}></img>
+                            <div>This event will take place on: {event[0].date}</div>
+                            <div>{event[0].views} many people have viewed this event</div>
+                            <div>Event filter:{event[0].type}</div>
+                            
+                        </div>
+                            )
+                        })
+                        }
+                        
     </div>
+
   );
+
+
+
 }
 export default DataFilters;
