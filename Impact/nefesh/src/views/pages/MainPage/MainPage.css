@@ -9,6 +9,7 @@
     border: 10px black;
     border-radius: 12px;
     text-align: center;
+    margin-top: 10px;
 }
 .searchBar{
     position: relative;

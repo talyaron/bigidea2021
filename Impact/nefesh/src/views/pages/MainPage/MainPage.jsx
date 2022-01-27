@@ -144,7 +144,7 @@ function App() {
            ))}
             <div className="userInterfaceContainer">
                 <form className="filterEvents">
-                    <label htmlFor="eventFilterType">Sort out the events displayed:</label>
+                    <label htmlFor="eventFilterType">Sort out the events displayed: </label>
                     <select name="eventFilterType" id="eventFilterType"
                         onChange={changeEventFilter}
                     >
