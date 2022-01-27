@@ -20,12 +20,12 @@ import StickyBanner from "./views/components/StickyBanner/StickyBanner";
 import { set } from "firebase/database";
 
 //hi
-let role = "superAdmin"; //if changed to superAdmin it updates correctly but shows red warnings, also needs to be changed manually
+let role; //if changed to superAdmin it updates correctly but shows red warnings, also needs to be changed manually
 let permissionedRole;
 const auth = getAuth();
 let userID = "";
 let loggedIn,
-  isAdmin = "false";
+isAdmin = "false";
 
 function App() {
   const [userState, setUserState] = useState({});
