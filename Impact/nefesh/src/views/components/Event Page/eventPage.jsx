@@ -1,4 +1,4 @@
-import './eventPage.css';
+import './EventPage.css';
 import React, { Component, useState, useEffect } from 'react';
 import { collection, setDoc, getDoc, doc } from "firebase/firestore"
 import { db } from "../../../functions/firebase/config"

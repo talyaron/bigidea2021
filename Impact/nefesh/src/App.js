@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from './functions/firebase/config';
 import AdminPage from './views/pages/AdminPage/AdminPage';
-import EventPage from "./views/components/Event Page/eventPage"
+import EventPage from "./views/components/Event Page/EventPage"
 //hi
 let role = 'superAdmin';
 let permissionedRole;

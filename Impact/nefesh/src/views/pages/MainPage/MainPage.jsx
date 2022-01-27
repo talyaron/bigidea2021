@@ -2,7 +2,7 @@ import "./MainPage.css";
 import { useEffect, useState } from "react"
 import { db } from '../../../functions/firebase/config';
 import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
-import EventPage from "../../components/Event Page/eventPage"
+import EventPage from "../../components/Event Page/EventPage"
 import { BrowserRouter, Routes, Route, Link,useNavigate,useParams} from 'react-router-dom';
 let eventFilter = ""
 let eventListTemp = []
