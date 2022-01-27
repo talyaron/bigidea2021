@@ -144,6 +144,15 @@ function EventPage() {
                 <button className="shareButton"> Share </button>
             </div>
 
+            <div className="contactUsContainer">
+                <div className="contactUsContent">
+                    {/* <button className="closePopUp" onClick={hideOrganizerContact}>  &times; Close</button> */}
+                    <p>Our Website: {websiteValidity ? orgWebsite : "No Link Available"}</p>
+                    <p>Our Phone Number: {contactInfo.phone}</p>
+                    <p>Our Email Address: {contactInfo.email}</p>
+                </div>
+            </div>
+
             <div className="eventTags">
                 <h3 className="tagTitle">Event Tags:</h3>
                 {tags.map((tags)=>{
@@ -154,15 +163,7 @@ function EventPage() {
                     )
                 })}
             </div>
-
-            <div className="contactUsContainer">
-                <div className="contactUsContent">
-                    {/* <button className="closePopUp" onClick={hideOrganizerContact}>  &times; Close</button> */}
-                    <p>Our Website: {websiteValidity ? orgWebsite : "No Link Available"}</p>
-                    <p>Our Phone Number: {contactInfo.phone}</p>
-                    <p>Our Email Address: {contactInfo.email}</p>
-                </div>
-            </div>
+            
         </div>        
     )
 }
