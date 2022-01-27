@@ -68,9 +68,6 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role }) => {
 
 	async function handleSetRoleToOle(ev) {
 
-
-
-
 		setIsAdmin(!isAdmin)
 		currentID = sessionStorage.getItem("userIDforPopup");
 		console.log(currentID); //works when getting just id, need to get string from "role" field in the db

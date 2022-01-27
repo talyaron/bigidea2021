@@ -10,7 +10,7 @@
     flex-direction: column;
 }
 .eventMapContainer{
-    margin-top: 33%;
+    margin-top: 25%;
     position: relative;
 }
 
@@ -80,7 +80,7 @@
 
 .search_Container{
     position: fixed;
-    top: 20; /* change to zero when nav bar is on the bottom */
+    top: 0; /* change to zero when nav bar is on the bottom */
     left: 0;
     background-color: var(--Light);
     width: 100%;
@@ -107,3 +107,6 @@
     display: inline;
     border: 1px solid Var(--Grey);
 }
+
+   
+  

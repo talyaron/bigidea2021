@@ -26,7 +26,6 @@ function AdminPage() {
 
 			//get ID for changing settings
 			var userIDforPopup = userIdSpec;
-			console.log('26', userIDforPopup);
 			sessionStorage.setItem("userIDforPopup", userIDforPopup);
 
 			//open popup
@@ -80,6 +79,7 @@ function AdminPage() {
 
 	function handleSearchByChange(ev){
 		let temp = ev.target.value
+		console.log(temp);
 		setSearchField(temp)
 	}
 
@@ -93,13 +93,39 @@ function AdminPage() {
 	
 	
 	async function handleSearch(){
-		let q = query(collection(db, 'users'), where (searchField, '==', searchCont))
+		let q = query(collection(db, 'users'), where (searchField, '>=', searchCont))
 		let tempArr = []
 		const userIDSnapshot = await getDocs(q);
-		userIDSnapshot.forEach((userDB) => {  
-			tempArr.push(userDB.data())
+		userIDSnapshot.forEach((doc) => {  
+			tempArr.push(doc.data())
+			console.log(tempArr)
 		});
 		setNames(tempArr)
+		console.log(tempArr)
+		
+	// 	let input = searchCont
+	// 	input=input.toLowerCase();
+	// 	let x = namesRef;
+		  
+	// 	for (i = 0; i < x.length; i++) { 
+	// 		if (!x[i].innerHTML.toLowerCase().includes(input)) {
+	// 			x[i].style.display="none";
+	// 		}
+	// 		else {
+	// 			x[i].style.display="list-item";                 
+	// 		}
+	// 	}
+
+	// let q = query(collection(db, 'users'), where (searchField, '>=', searchCont))
+	// 	let tempArr = []
+	// 	const userIDSnapshot = await getDocs(q);
+	// 	userIDSnapshot.forEach((doc) => {  
+	// 		tempArr.push(doc.data())
+	// 		console.log(tempArr)
+	// 	});
+	// 	setNames(tempArr)
+	// 	console.log(tempArr)
+	
 	}
 	function handleClearFilter(){
 		getNames()
