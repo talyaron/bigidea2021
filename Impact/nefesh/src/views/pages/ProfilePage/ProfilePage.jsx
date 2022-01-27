@@ -148,7 +148,7 @@ function ProfilePage(props) {
 				Edit Profile Here: <br />
 				<form onSubmit={changeProfile}>
 					Enter New Name: <input type="text" name="newName" /><br />
-					Enter New Image : <input type="text" name="newImg" /><br />
+					Enter New Image : <input type="file" accept="image/*" id="newImg" name="myfile"/>
 					Enter New Email: <input type="text" name="newEmail" /><br />
 					Enter New Gender: <input type="text" name="newGender" /><br />
 					Enter New Address: <input type="text" name="newAddress" />
