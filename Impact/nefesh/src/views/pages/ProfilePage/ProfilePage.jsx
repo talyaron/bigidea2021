@@ -36,27 +36,64 @@ function ProfilePage(props) {
 	};
 
 	function changeProfile(ev) {
-		console.dir(ev.target)
+		ev.preventDefault();
+		console.dir(ev.target);
+
 		const name = ev.target.elements.newName.value;
 		const profilePic = ev.target.elements.newImg.value;
 		const email = ev.target.elements.newEmail.value;
 		const gender = ev.target.elements.newGender.value;
 		const address = ev.target.elements.newAddress.value;
-		setDisplayName(name);
-		setProfilePicImg(profilePic);
-		setUserEmail(email);
-		setUserAddress(address)
-		setUserGender(gender);
 
-		setEditing(false)
-		updateDoc(doc(db, "users", props.uid), {
-			displayName: name,
-			userIcon: profilePic,
-			email: email,
-			sex: gender,
-			location: address,
+		if(ev.target.elements.newName.value.length == 0) {
+			//nothing
+		} else {
+			setDisplayName(name);
+			updateDoc(doc(db, "users", props.uid), {
+				displayName: name,
+			})
+		}
 
-		})
+		if(ev.target.elements.newImg.value.length == 0) {
+			//nothing
+		} else {
+			setProfilePicImg(profilePic);
+			updateDoc(doc(db, "users", props.uid), {
+				userIcon: profilePic
+			})
+		}
+
+		if(ev.target.elements.newEmail.value.length == 0) {
+			//nothing
+		} else {
+			setUserEmail(email);
+			updateDoc(doc(db, "users", props.uid), {
+				email: email
+			})
+		}
+
+		if(ev.target.elements.newGender.value.length == 0) {
+			//nothing
+		} else {
+			setUserGender(gender);
+			updateDoc(doc(db, "users", props.uid), {
+				sex: gender	
+			})
+			
+		}
+		
+		if(ev.target.elements.newAddress.value.length == 0) {
+			//nothing
+		} else {
+			setUserAddress(address);
+			updateDoc(doc(db, "users", props.uid), {
+				location: address
+			})
+		}
+
+		setEditing(false);
+
+		setIsOpen(!isOpen);
 	}
 
 	function changePreferences(ev) {
