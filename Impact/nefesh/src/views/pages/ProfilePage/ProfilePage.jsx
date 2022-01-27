@@ -36,17 +36,45 @@ function ProfilePage(props) {
 	};
 
 	function changeProfile(ev) {
-		console.dir(ev.target)
+		ev.preventDefault();
+		console.dir(ev.target);
+
 		const name = ev.target.elements.newName.value;
 		const profilePic = ev.target.elements.newImg.value;
 		const email = ev.target.elements.newEmail.value;
 		const gender = ev.target.elements.newGender.value;
 		const address = ev.target.elements.newAddress.value;
-		setDisplayName(name);
-		setProfilePicImg(profilePic);
-		setUserEmail(email);
-		setUserAddress(address)
-		setUserGender(gender);
+
+		if(ev.target.elements.newName.value.length == 0) {
+			//nothing
+		} else {
+			setDisplayName(name);
+		}
+
+		if(ev.target.elements.newImg.value.length == 0) {
+			//nothing
+		} else {
+			setProfilePicImg(profilePic);
+		}
+
+		if(ev.target.elements.newEmail.value.length == 0) {
+			//nothing
+		} else {
+			setUserEmail(email);
+		}
+
+		if(ev.target.elements.newGender.value.length == 0) {
+			//nothing
+		} else {
+			setUserGender(gender);
+			
+		}
+		
+		if(ev.target.elements.newAddress.value.length == 0) {
+			//nothing
+		} else {
+			setUserAddress(address);
+		}
 
 		setEditing(false)
 		updateDoc(doc(db, "users", props.uid), {
@@ -57,6 +85,8 @@ function ProfilePage(props) {
 			location: address,
 
 		})
+
+		setIsOpen(!isOpen);
 	}
 
 	function changePreferences(ev) {
