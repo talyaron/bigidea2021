@@ -233,25 +233,20 @@ h4{
     width: fit-content;
 }
 
-.popUp{
+.contactUsContainer{
     display: inline-block;
     width: 100vw;
     height: 180px;
     /* margin-top: -240px;
     margin-bottom: 70px; */
-    margin-top: 30px;
     margin-bottom: 30px;
     
 }
-.popUpContent{
+.contactUsContent{
     background-color: var(--Light-D2);
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 30px;
-}
-.closePopUp{
-    margin-top: 20px;
-    margin-bottom: 10px;
 }
 

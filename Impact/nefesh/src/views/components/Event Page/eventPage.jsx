@@ -155,8 +155,8 @@ function EventPage() {
                 })}
             </div>
 
-            <div className="popUp">
-                <div className="popUpContent">
+            <div className="contactUsContainer">
+                <div className="contactUsContent">
                     {/* <button className="closePopUp" onClick={hideOrganizerContact}>  &times; Close</button> */}
                     <p>Our Website: {websiteValidity ? orgWebsite : "No Link Available"}</p>
                     <p>Our Phone Number: {contactInfo.phone}</p>
