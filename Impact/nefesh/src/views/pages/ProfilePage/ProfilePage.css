@@ -1,7 +1,23 @@
+
+.containerDetails{
+    margin-left: 20%;
+}
 #profilePic{
     height: 100px;
     width: 100px;
     border-radius: 50px;
     background-image: none;
     background-color: blue;
+    margin-left: 20%;
+    margin-top: 15px;
+}
+#prefButton{
+    display: inline;
+    justify-content: center;
+    margin-left: 20%;
+}
+#submitChanges{
+    display: inline;
+    justify-content: center;
+    margin-left: 20%;
 }
