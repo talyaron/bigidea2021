@@ -26,7 +26,6 @@ function AdminPage() {
 
 			//get ID for changing settings
 			var userIDforPopup = userIdSpec;
-			console.log('26', userIDforPopup);
 			sessionStorage.setItem("userIDforPopup", userIDforPopup);
 
 			//open popup

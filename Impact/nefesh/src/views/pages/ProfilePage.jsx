@@ -1,9 +1,8 @@
 import '../../stylesheets/page/ProfilePage.css';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../scripts/firebase/config';
-import { doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore';
-
-const userDocRef = doc(db, 'users', '0vtoIVm41lXvBJhSStUSmBqBq873');
+import { doc, getDoc, onSnapshot, setDoc, updateDoc} from 'firebase/firestore';
+import EditProfilePopUp from './EditProfilePopUp';
 
 function ProfilePage(props) {
 	const [displayName, setDisplayName] = useState('loading');
@@ -16,6 +15,8 @@ function ProfilePage(props) {
 	const [editing, setEditing] = useState(false)
 	const [choosingPrefs, setChoosingPrefs] = useState(false)
 	const {uid} = props;
+	const [isOpen, setIsOpen] = useState(false);
+  	
 	useEffect(async () => {
 		//pull userId of selected user and set for superAdmin page
 		//on snapshot displayName
@@ -29,32 +30,69 @@ function ProfilePage(props) {
 
 	}, [uid]);
 	function editProfile(ev) {
-
+		setIsOpen(!isOpen);
 		setEditing(true)
 	};
 
 	function changeProfile(ev) {
-		console.dir(ev.target)
+		ev.preventDefault();
+		console.dir(ev.target);
+
 		const name = ev.target.elements.newName.value;
 		const profilePic = ev.target.elements.newImg.value;
 		const email = ev.target.elements.newEmail.value;
 		const gender = ev.target.elements.newGender.value;
 		const address = ev.target.elements.newAddress.value;
-		setDisplayName(name);
-		setProfilePicImg(profilePic);
-		setUserEmail(email);
-		setUserAddress(address)
-		setUserGender(gender);
 
-		setEditing(false)
-		setDoc(doc(db, "users", props.uid), {
-			displayName: name,
-			userIcon: profilePic,
-			email: email,
-			sex: gender,
-			location: address,
+		if(ev.target.elements.newName.value.length == 0) {
+			//nothing
+		} else {
+			setDisplayName(name);
+			updateDoc(doc(db, "users", props.uid), {
+				displayName: name,
+			})
+		}
 
-		})
+		if(ev.target.elements.newImg.value.length == 0) {
+			//nothing
+		} else {
+			setProfilePicImg(profilePic);
+			updateDoc(doc(db, "users", props.uid), {
+				userIcon: profilePic
+			})
+		}
+
+		if(ev.target.elements.newEmail.value.length == 0) {
+			//nothing
+		} else {
+			setUserEmail(email);
+			updateDoc(doc(db, "users", props.uid), {
+				email: email
+			})
+		}
+
+		if(ev.target.elements.newGender.value.length == 0) {
+			//nothing
+		} else {
+			setUserGender(gender);
+			updateDoc(doc(db, "users", props.uid), {
+				sex: gender	
+			})
+			
+		}
+		
+		if(ev.target.elements.newAddress.value.length == 0) {
+			//nothing
+		} else {
+			setUserAddress(address);
+			updateDoc(doc(db, "users", props.uid), {
+				location: address
+			})
+		}
+
+		setEditing(false);
+
+		setIsOpen(!isOpen);
 	}
 
 	function changePreferences(ev) {
@@ -78,7 +116,7 @@ function ProfilePage(props) {
 					id='profilePic'
 					style={{ backgroundImage: 'url(' + profilePicImg + ')' }}
 				/>
-				<h4 style = {{fontSize: textSize + 'px'}}>
+				<h4 className = "info" style = {{fontSize: textSize + 'px'}}>
 					Name: {displayName}<br />
 					Gender: {userGender} <br />
 					Email: {userEmail}<br />
@@ -93,21 +131,23 @@ function ProfilePage(props) {
 					<p>Events list goes here</p>
 				</div>
 			</div>
-			<button type="button" onClick={changePreferences} name="settingbtn">Preferences</button>
+			<button type="button" id = "prefButton" onClick={changePreferences} name="settingbtn">Preferences</button>
 			{choosingPrefs ? <div className='settings'>
 				<form onSubmit={submitChangePreferences}>
 
 					Change Font Size: <input type="text" name="newFontSize" /><br />
-					<button type="submit" name="prfbtn"> Submit Changes</button>
+					<button type="submit" id = "submitChanges" name="prfbtn"> Submit Changes</button>
 				</form>
 			</div> : null}
 
 			<button type="button" onClick={editProfile} name="editbtn"> Edit Profile!</button>
-			{editing ? <div className='profileEditor'	>
+			{isOpen && <EditProfilePopUp
+      content={<>
+        {editing ? <div className='profileEditor'	>
 				Edit Profile Here: <br />
 				<form onSubmit={changeProfile}>
 					Enter New Name: <input type="text" name="newName" /><br />
-					Enter New Image : <input type="text" name="newImg" /><br />
+					Enter New Image : <input type="file" accept="image/*" id="newImg" name="myfile"/>
 					Enter New Email: <input type="text" name="newEmail" /><br />
 					Enter New Gender: <input type="text" name="newGender" /><br />
 					Enter New Address: <input type="text" name="newAddress" />
@@ -117,6 +157,10 @@ function ProfilePage(props) {
 
 
 			</div> : null}
+      </>}
+      handleClose={editProfile}
+    />}
+			
 
 		</div>
 
