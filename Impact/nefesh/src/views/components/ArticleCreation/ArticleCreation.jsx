@@ -4,6 +4,9 @@ import { collection, addDoc, arrayRemove } from "firebase/firestore"
 import { db } from "../../../functions/firebase/config"
 let i = 0
 let statesSumbitted = { views: 0, startTime: "", endTime: "" }
+let page = 'ArticleCreation'
+
+
 
 function ArticleCreation(props) {
 
@@ -91,8 +94,8 @@ function ArticleCreation(props) {
     }
     return <div>
         <div className='createArticle-popup-box'>
-
-            <b className='infoTitle'>Input information here</b>
+            <b className='infoTitle'>Input information here</b> 
+            <ImportImgs userData={props} pageName={page}/>
             <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here"   className='shadow'/>
             <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here"  className='shadow'/>
             <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here"  className='shadow'/>
