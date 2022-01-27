@@ -196,18 +196,7 @@ function App() {
           })}
         </div>
       </div>
-
-      <div className="container">
-        <div className="contianer2">
-          <div className="sectionOne">
-            <h1>Nefesh B'Nefesh</h1>
-            <button onChange={console.log("does nothing yet")}>|||</button>
-          </div>
-        </div>
-        <button className="Button2">Home Page</button>
-      </div>
     </div>
-  );
-}
+  )}
 
 export default App;
