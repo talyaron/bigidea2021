@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './StickyBanner.css';
 import { Component } from 'react';
+import { getAuth, signOut } from "firebase/auth";
 
 //icons
 import HomeButton from '../Images/home.svg';
@@ -17,6 +18,17 @@ function StickyBanner({isAdmin, isOle}) {
 		let temp = !navToggle;
 		setNavToggle(temp);
 		console.log(navToggle, 'nav toggle');
+	}
+	function handleLogOut(){
+		const auth = getAuth();
+		signOut(auth).then(() => {
+		// Sign-out successful.
+		// loggedIn = false;
+		navigate('/login');
+		console.log("signed out");
+		}).catch((error) => {
+		// An error happened.
+		});
 	}
 	
 	return (
@@ -66,6 +78,15 @@ function StickyBanner({isAdmin, isOle}) {
 										}}
 										name='add a reqest to be org page'>
 										Create an Event
+									</div>
+								</li>
+								<li className='ListItemElement'>
+									<div
+										className='menuItem'
+										onClick={() => {
+										handleLogOut()
+										}}>
+										Log Out
 									</div>
 								</li>
 								</ul> : isAdmin? <ul className='menuList'>
@@ -120,6 +141,15 @@ function StickyBanner({isAdmin, isOle}) {
 										Admin Page
 									</div>
 								</li>
+								<li className='ListItemElement'>
+									<div
+										className='menuItem'
+										onClick={() => {
+										handleLogOut()
+										}}>
+										Log Out
+									</div>
+								</li>
 							</ul>: <ul className='menuList'>
 								<li className='ListItemElement'>
 									<div
@@ -161,7 +191,17 @@ function StickyBanner({isAdmin, isOle}) {
 										}}>
 										Article Creation
 									</div>
-								</li></ul>}
+								</li>
+								<li className='ListItemElement'>
+									<div
+										className='menuItem'
+										onClick={() => {
+										handleLogOut()
+										}}>
+										Log Out
+									</div>
+								</li>
+								</ul>}
 						</div>
 					</div>
 				) : (
