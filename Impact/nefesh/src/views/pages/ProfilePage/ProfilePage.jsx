@@ -49,24 +49,36 @@ function ProfilePage(props) {
 			//nothing
 		} else {
 			setDisplayName(name);
+			updateDoc(doc(db, "users", props.uid), {
+				displayName: name,
+			})
 		}
 
 		if(ev.target.elements.newImg.value.length == 0) {
 			//nothing
 		} else {
 			setProfilePicImg(profilePic);
+			updateDoc(doc(db, "users", props.uid), {
+				userIcon: profilePic
+			})
 		}
 
 		if(ev.target.elements.newEmail.value.length == 0) {
 			//nothing
 		} else {
 			setUserEmail(email);
+			updateDoc(doc(db, "users", props.uid), {
+				email: email
+			})
 		}
 
 		if(ev.target.elements.newGender.value.length == 0) {
 			//nothing
 		} else {
 			setUserGender(gender);
+			updateDoc(doc(db, "users", props.uid), {
+				sex: gender	
+			})
 			
 		}
 		
@@ -74,17 +86,12 @@ function ProfilePage(props) {
 			//nothing
 		} else {
 			setUserAddress(address);
+			updateDoc(doc(db, "users", props.uid), {
+				location: address
+			})
 		}
 
-		setEditing(false)
-		updateDoc(doc(db, "users", props.uid), {
-			displayName: name,
-			userIcon: profilePic,
-			email: email,
-			sex: gender,
-			location: address,
-
-		})
+		setEditing(false);
 
 		setIsOpen(!isOpen);
 	}
