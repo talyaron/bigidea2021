@@ -87,7 +87,7 @@ function Event() {
 						<span className='title'>{eventData.title}</span>
 						<span className='description'>{eventData.article}</span>
 					</div>
-				<button className='shareButton'> Share </button>
+				<button className='shareButton button_AP'> Share </button>
 			</div>
 
 			<div className='contactUsContainer'>
