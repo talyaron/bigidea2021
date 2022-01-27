@@ -80,7 +80,7 @@ function ProfilePage(props) {
 					id='profilePic'
 					style={{ backgroundImage: 'url(' + profilePicImg + ')' }}
 				/>
-				<h4 style = {{fontSize: textSize + 'px'}}>
+				<h4 className = "info" style = {{fontSize: textSize + 'px'}}>
 					Name: {displayName}<br />
 					Gender: {userGender} <br />
 					Email: {userEmail}<br />
