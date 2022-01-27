@@ -18,72 +18,80 @@ function StickyBanner() {
 	}
 
 	return (
-		<div id='stickyBanner'>
-			<div
-				className='homeB_container'
-				onClick={() => {
-					navigate('/MainPage');
-				}}>
-				<img src={HomeButton} alt='Home' id='homeButton' />
+		<div id='menuButtonGroup'>
+			<div className='stickyBanner'
+			onClick={() => {
+				navigate('/MainPage');
+			}}>
+				<div
+					className='MenuButton'
+					id='homeB_container'
+					>
+					<img src={HomeButton} alt='Home' id='homeButton' />
+				</div>
 			</div>
-			<div className='Menu_container'>
-				{navToggle ? (
-					<div>
-						<img src={X} alt='X' id='MenuButton' onClick={handleMenu} />
-						<div className='menuList_Container'>
-							<ul className='menuList'>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/ProfilePage');
-										}}>
-										Profile Page
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/ContactUs');
-										}}>
-										Contact Us
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/');
-										}}
-										name='add a reqest to be org page'>
-										Request Org
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/ArticleCreation');
-										}}>
-										Article Creation
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/AdminPage');
-										}}>
-										Admin Page
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				) : (
-					<img src={Menu} alt='Home' id='MenuButton' onClick={handleMenu} />
-				)}
+			<div className='stickyBanner' onClick={handleMenu}>
+				<div className='MenuButton'
+					id='Menu_container'>
+					{ navToggle ? 
+					( <img src={X} alt='X' id='MenuButton'  /> )
+					: 
+					(<img src={Menu} alt='Home' id='MenuButton' />)
+					}
+					{ navToggle ? (
+							<div className='menuList_Container'>
+								<ul className='menuList'>
+									<li className='ListItemElement'>
+										<div
+											className='menuItem'
+											onClick={() => {
+												navigate('/ProfilePage');
+											}}>
+											Profile Page
+										</div>
+									</li>
+									<li className='ListItemElement'>
+										<div
+											className='menuItem'
+											onClick={() => {
+												navigate('/ContactUs');
+											}}>
+											Contact Us
+										</div>
+									</li>
+									<li className='ListItemElement'>
+										<div
+											className='menuItem'
+											onClick={() => {
+												navigate('/');
+											}}
+											name='add a reqest to be org page'>
+											Request Org
+										</div>
+									</li>
+									<li className='ListItemElement'>
+										<div
+											className='menuItem'
+											onClick={() => {
+												navigate('/ArticleCreation');
+											}}>
+											Article Creation
+										</div>
+									</li>
+									<li className='ListItemElement'>
+										<div
+											className='menuItem'
+											onClick={() => {
+												navigate('/AdminPage');
+											}}>
+											Admin Page
+										</div>
+									</li>
+								</ul>
+							</div>
+					
+					) : null }
+				</div>
 			</div>
 		</div>
 	);

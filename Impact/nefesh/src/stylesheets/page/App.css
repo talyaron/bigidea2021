@@ -25,6 +25,7 @@ body {
 }
 
 
+
 .container_AppMain{
 	position: relative;
     align-items: center;
@@ -43,6 +44,9 @@ body {
 	height: 100vh;
 	margin: 0px;
 }
+
+
+
 /*
 .container_App::-webkit-scrollbar {
 	display: none;
