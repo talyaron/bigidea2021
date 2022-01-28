@@ -1,13 +1,26 @@
 import { onSnapshot } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-function ImportImg() {
+function ImportImg(props) {
 	const allInputs = { imgUrl: '' };
 	const [imageAsFile, setImageAsFile] = useState('');
 	const [imageAsUrl, setImageAsUrl] = useState(allInputs);
 	const storage = getStorage();
-	let storageRef = ref(storage, `EventImgs/${imageAsFile.name}`);
+	const [userID, setUserID] = useState('TempUserID')
+	const [currentUsePage, setCurrentUsePage] = useState('TempPageUse')
+	let storageRef = ref(storage, `Images/${userID}/${currentUsePage}/${imageAsFile.name}`);
+
+	console.log(props)
+	useEffect(()=>{
+		let tempUID = props.userData.userID
+		setUserID(tempUID)
+		let tempPN = props.pageName
+		setCurrentUsePage(tempPN)
+
+	},[])
+
+	console.log(userID, currentUsePage)
 
 	function handleImgUpload(ev) {
 		const image = ev.target.files[0];

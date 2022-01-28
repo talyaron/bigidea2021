@@ -1,100 +1,47 @@
-.article
-{
-    font-size: 20px;
-    color: darkred;
-    font-family:  Arial, Helvetica, sans-serif;
-    border-radius: 5px;
-    border: red;
-    background-color: royalblue;
-    border-width: 5px;
-    height: 60px;
-    width: 40px;
-    padding: 10px;
-    top: 90px;
-    left: 90px;
-    margin: 10px 10px;
-    text-decoration: none;
-    
 
-    /*
-  needs
-    X font choices
-    X radius
-    X border
-    X height 
-    X width
-    X position (left and top)
-    X background color
-  
-  
-  */
-}
-
-
-.searchBar
-{
-        color: darkblue;
-
-    /*
-    needs
-    X font choices
-    X radius
-    border
-    height 
-    width
-    position (left and top)
-    X background color
-    */
+.userInterfaceContainer{
+    background-color: ivory;
+    top: 0px;
+    padding: 5px;
 
 }
-.button{
-    width: 500px;
-    height: 500px;
-    line-height: 500px;
-    border-radius: 25%;
-    font-size: 50px;
-    text-align: center;
-    color:orange;
-    background: peru;
-    font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
-
-    /*
-    needs
-        font choices
-        border
-        
-    */
-}
-.circle{
-    position: absolute;
-    display: flex;
-    border-radius: 45px;
-    background-color: red;
-    top: 5px;
-    right: 5px;
-    height: 45px;
-    width: 45px;
-}
-
-.profile{
-    position: absolute;
-    width: 80px;
-    height: 30px;
-    bottom: 5px;
-    background-color: blue;
-}
-
-.box{
-    position: absolute;
-    width: 120px;
-    height: 50px;
-    text-align: center;
-    right: 100px;
-}
-
 .dropDown{
-    background-color: lightblue;
     border: 10px black;
     border-radius: 12px;
+    text-align: center;
+    margin-top: 10px;
+}
+.searchBar{
+    position: relative;
+    left: 30%;
+}
+.eventMapContainer{
+    text-align: center;
+    background-color: var(--Background-light);
+    margin: 5px;
+    margin-top: 32%;
+}
+.userInterfaceContainer{
+    background-color: var(--Background-light);
+    font-family:Arial;
+    font-weight:bolder;
+}
+.filterEvents{
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: -120px;
+}
+#eventFilterType{
+    border-radius: 5px;
+    background-color: var(--Grey);
+    height: 25px;
+    font-weight: bolder;
+}
+.nametag{
+    margin-top: 6px;
+    background-color: var(--Light);
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.274);
+    padding: 5px;
+    margin-bottom: 5px;
 }

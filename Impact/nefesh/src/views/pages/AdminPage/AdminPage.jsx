@@ -26,7 +26,6 @@ function AdminPage() {
 
 			//get ID for changing settings
 			var userIDforPopup = userIdSpec;
-			console.log('26', userIDforPopup);
 			sessionStorage.setItem("userIDforPopup", userIDforPopup);
 
 			//open popup
@@ -80,6 +79,7 @@ function AdminPage() {
 
 	function handleSearchByChange(ev){
 		let temp = ev.target.value
+		console.log(temp);
 		setSearchField(temp)
 	}
 
@@ -93,13 +93,39 @@ function AdminPage() {
 	
 	
 	async function handleSearch(){
-		let q = query(collection(db, 'users'), where (searchField, '==', searchCont))
+		let q = query(collection(db, 'users'), where (searchField, '>=', searchCont))
 		let tempArr = []
 		const userIDSnapshot = await getDocs(q);
-		userIDSnapshot.forEach((userDB) => {  
-			tempArr.push(userDB.data())
+		userIDSnapshot.forEach((doc) => {  
+			tempArr.push(doc.data())
+			console.log(tempArr)
 		});
 		setNames(tempArr)
+		console.log(tempArr)
+		
+	// 	let input = searchCont
+	// 	input=input.toLowerCase();
+	// 	let x = namesRef;
+		  
+	// 	for (i = 0; i < x.length; i++) { 
+	// 		if (!x[i].innerHTML.toLowerCase().includes(input)) {
+	// 			x[i].style.display="none";
+	// 		}
+	// 		else {
+	// 			x[i].style.display="list-item";                 
+	// 		}
+	// 	}
+
+	// let q = query(collection(db, 'users'), where (searchField, '>=', searchCont))
+	// 	let tempArr = []
+	// 	const userIDSnapshot = await getDocs(q);
+	// 	userIDSnapshot.forEach((doc) => {  
+	// 		tempArr.push(doc.data())
+	// 		console.log(tempArr)
+	// 	});
+	// 	setNames(tempArr)
+	// 	console.log(tempArr)
+	
 	}
 	function handleClearFilter(){
 		getNames()
@@ -109,10 +135,10 @@ function AdminPage() {
 		<div className='HSADBVIABSLVF'>
 			{isAdmin ? (
 				<div className='adminPageCont'>
-					<div className='search_Container'>
-						<form className='searchFor' onChange={handleSearchByChange}>
-							<label for='searchFor' id='searchFor'>Search for:</label>
-							<select id="searchDropdown" name='searchFor'>
+					<div className='search_Container_AP'>
+						<form className='searchFor_AP' onChange={handleSearchByChange}>
+							<label for='searchFor_AP' id='searchFor_AP'>Search for:</label>
+							<select id="searchDropdown_AP" name='searchFor_AP'>
 								<option value='userID'>userID's</option>
 								<option value='displayName'>DisplayName's</option>
 								<option value='email'>Email's</option>
@@ -121,19 +147,19 @@ function AdminPage() {
 						</form>
 					<input type='text' placeholder={`Enter Full ${searchField}`} name='adminPageSearch' id='search_Box_AdminPage' onChange={handleSearchChange}/>
 					<button onClick={handleSearch} id='search_button_AdminPage'>🔍</button>
-					<button onClick={handleClearFilter} id='clearFilter'>Clear Search</button>
+					<button onClick={handleClearFilter} id='clearFilter_AP'>Clear Search</button>
 					</div>
-				<div className='eventMapContainer'>
+				<div className='eventMapContainer_AP'>
 					{Names.map((names) => {
 						return (
-							<div key={names.userID} className='nametag'>
+							<div key={names.userID} className='nametag_AP'>
 								<div
 									value='User Settings'
 									className='adminButton'
 									name='userSelect'>
-									<h4 className="cardInfo">{names.displayName}</h4>
-									<h5 className="cardInfo">{names.email}</h5>
-									<button onClick={()=>togglePopup(names)} name='userButtonID' id={names.userID} className="userButtonID cardInfo">
+									<h4 className="cardInfo_AP">{names.displayName}</h4>
+									<h5 className="cardInfo_AP">{names.email}</h5>
+									<button onClick={()=>togglePopup(names)} name='userButtonID_AP' id={names.userID} className="userButtonID_AP cardInfo_AP">
 										{names.userID}
 									</button>
 								</div>
@@ -149,8 +175,8 @@ function AdminPage() {
 					role={role}
 					content={
 						<>
-							<b id='displayName'>{displayName}</b>
-							<p id='userIDdisplay'> UserID: '{userID}'</p>
+							<b id='displayName_AP'>{displayName}</b>
+							<p id='userIDdisplay_AP'> UserID: '{userID}'</p>
 						</>
 					}
 					handleClose={togglePopup}
