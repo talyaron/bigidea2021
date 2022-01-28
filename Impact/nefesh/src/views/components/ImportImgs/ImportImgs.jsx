@@ -4,24 +4,22 @@ import { useEffect, useState } from 'react';
 
 function ImportImg(props) {
 	const allInputs = { imgUrl: '' };
+	const storage = getStorage();
 	const [imageAsFile, setImageAsFile] = useState('');
 	const [imageAsUrl, setImageAsUrl] = useState(allInputs);
-	const storage = getStorage();
-	const [userID, setUserID] = useState('TempUserID')
-	const [currentUsePage, setCurrentUsePage] = useState('TempPageUse')
+	const [userID, setUserID] = useState('TempUserID');
+	const [currentUsePage, setCurrentUsePage] = useState('TempPageUse');
 	let storageRef = ref(storage, `Images/${userID}/${currentUsePage}/${imageAsFile.name}`);
+	
 
-	console.log(props)
-	useEffect(()=>{
-		let tempUID = props.userData.userID
-		setUserID(tempUID)
-		let tempPN = props.pageName
-		setCurrentUsePage(tempPN)
-
-	},[])
-
-	console.log(userID, currentUsePage)
-
+	console.log(props);
+	useEffect(() => {
+		let tempUID = props.userData.userID;
+		setUserID(tempUID);
+		let tempPN = props.pageName;
+		setCurrentUsePage(tempPN);
+	}, []);
+	
 	function handleImgUpload(ev) {
 		const image = ev.target.files[0];
 		setImageAsFile((imageFile) => image);
@@ -30,32 +28,13 @@ function ImportImg(props) {
 		}
 	}
 
-	const handleFireBaseUpload = (ev) => {
+	const handleFireBaseUpload = async (ev) => {
 		ev.preventDefault();
-		console.log('start of upload');
-		console.log(imageAsFile);
 		uploadBytes(storageRef, imageAsFile).then((snapshot) => {
-			console.log('Uploaded a file!');
-			getDownloadURL(ref(storage, `EventImgs/${imageAsFile.name}`))
-				.then((url) => {
-					// `url` is the download URL for 'images/stars.jpg'
-
-					// This can be downloaded directly:
-					const xhr = new XMLHttpRequest();
-					xhr.responseType = 'blob';
-					xhr.onload = (event) => {
-						const blob = xhr.response;
-					};
-					xhr.open('GET', url);
-					xhr.send();
-
-					// Or inserted into an <img> element
-					// const img = document.getElementById('myimg');
-					// img.setAttribute('src', url);
-				})
-				.catch((error) => {
-					// Handle any errors
-				});
+			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${imageAsFile.name}`)).then((httpRef) => {
+				console.log(httpRef)
+				setImageAsUrl(httpRef)
+			})
 		});
 	};
 
@@ -68,3 +47,33 @@ function ImportImg(props) {
 }
 
 export default ImportImg;
+
+// images.forEach((image, index) => {
+// 	console.log(image, index)
+// 	const imageName = `${uniqueId(2)}${image.name}`;
+// 	console.log(imageName)
+// 	if (!imageName) throw new Error('no name for image')
+// 	console.log(imageName)
+// 	const storageRef = ref(storage, `comparison/${userId}/${comparisonId}/${imageName}`);
+
+// 	const imageRef = doc(db, 'comparison', userId, comparisonId, `${imageName}`);
+
+// 	uploadBytes(storageRef, image).then(snapshot => {
+// 		console.log(snapshot)
+
+// 		getDownloadURL(storageRef).then(httpRef => {
+// 			console.log(httpRef)
+// 			tempObj.images[index] = httpRef;
+
+// 			setDoc(imageRef, { imageSrc: httpRef }).then(() => {
+
+// 				readyArray.push('ready');
+// 				if (readyArray.length === images.length && setIsRedirect) {
+// 					setIsRedirect(true);
+
+// 					console.log(tempObj)
+// 					setDoc(compareRef, tempObj, { merge: true });
+// 				}
+// 			})
+
+// 		})
