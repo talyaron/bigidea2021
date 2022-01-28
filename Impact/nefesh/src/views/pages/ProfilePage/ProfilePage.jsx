@@ -141,7 +141,7 @@ function ProfilePage(props) {
 				</form>
 			</div> : null} */}
 
-			<button type="button" onClick={editProfile} name="editbtn"> Edit Profile!</button>
+			<button className ="EditProfBtn" type="button" onClick={editProfile} name="editbtn"> Edit Profile!</button>
 			{isOpen && <EditProfilePopUp
       content={<>
         {editing ? <div className='profileEditor'	>
