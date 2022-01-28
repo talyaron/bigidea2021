@@ -133,16 +133,16 @@ function ProfilePage(props) {
 					<p>Events list goes here</p>
 				</div>
 			</div>
-			<button type="button" id = "prefButton" onClick={changePreferences} name="settingbtn">Preferences</button>
+			{/* <button type="button" id = "prefButton" onClick={changePreferences} name="settingbtn">Preferences</button>
 			{choosingPrefs ? <div className='settings'>
 				<form onSubmit={submitChangePreferences}>
 
 					Change Font Size: <input type="text" name="newFontSize" /><br />
 					<button type="submit" id = "submitChanges" name="prfbtn"> Submit Changes</button>
 				</form>
-			</div> : null}
+			</div> : null} */}
 
-			<button type="button" onClick={editProfile} name="editbtn"> Edit Profile!</button>
+			<button className ="EditProfBtn" type="button" onClick={editProfile} name="editbtn"> Edit Profile!</button>
 			{isOpen && <EditProfilePopUp
       content={<>
         {editing ? <div className='profileEditor'	>

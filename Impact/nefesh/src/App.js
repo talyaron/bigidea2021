@@ -3,21 +3,22 @@ import "./views/components/AdminPagePopUp/AdminPagePopUp";
 import { render } from "react-dom";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-import Login from "./views/pages/login/Login.js";
-import Error from "./views/pages/404/404.js";
-import Unauthorised from "./views/pages/401/401.js";
-import ProfilePage from "./views/pages/ProfilePage/ProfilePage";
-import ContactUs from "./views/components/ContactUs/ContactUs";
-import ArticleCreation from "./views/components/ArticleCreation/ArticleCreation";
-import MainPage from "./views/pages/MainPage/MainPage";
-import { checkRole } from "./functions/general.js";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useEffect, useState } from "react";
-import { doc, setDoc, getDoc, onSnapshot } from "firebase/firestore";
-import { db } from "./functions/firebase/config";
-import AdminPage from "./views/pages/AdminPage/AdminPage";
-import StickyBanner from "./views/components/StickyBanner/StickyBanner";
-import { set } from "firebase/database";
+import Login from './views/pages/login/Login.js';
+import Error from './views/pages/404/404.js';
+import Unauthorised from './views/pages/401/401.js';
+import ProfilePage from './views/pages/ProfilePage/ProfilePage';
+import ContactUs from './views/components/ContactUs/ContactUs';
+import ArticleCreation from './views/components/ArticleCreation/ArticleCreation';
+import MainPage from './views/pages/MainPage/MainPage';
+import { checkRole } from './functions/general.js';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { db } from './functions/firebase/config';
+//pages
+import AdminPage from './views/pages/AdminPage/AdminPage';
+import StickyBanner from './views/components/StickyBanner/StickyBanner'
+import Event from './views/pages/Event/Event';
 
 //hi
 let role; //if changed to superAdmin it updates correctly but shows red warnings, also needs to be changed manually
@@ -99,6 +100,7 @@ function App() {
 						<Route path='401' element={<Unauthorised />} />
 						<Route path='MainPage' element={<MainPage role={role} />} />
 						<Route path='ContactUs' element={<ContactUs />} />
+						<Route path='event/:eventID' element={<Event />} />
 						<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
 						<Route path='AdminPage' element={<AdminPage />} />

@@ -72,17 +72,6 @@ function StickyBanner({isAdmin, isOle}) {
 									<div
 										className='menuItem'
 										onClick={() => {
-											navigate('/')
-											handleMenu()
-										}}
-										name='add a reqest to be org page'>
-										Create an Event
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
 										handleLogOut()
 										}}>
 										Log Out
@@ -107,17 +96,6 @@ function StickyBanner({isAdmin, isOle}) {
 											handleMenu()
 										}}>
 										Contact Us
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/')
-											handleMenu()
-										}}
-										name='add a reqest to be org page'>
-										Create an Event
 									</div>
 								</li>
 								<li className='ListItemElement'>
@@ -168,17 +146,6 @@ function StickyBanner({isAdmin, isOle}) {
 											handleMenu()
 										}}>
 										Contact Us
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/')
-											handleMenu()
-										}}
-										name='add a reqest to be org page'>
-										Create an Event
 									</div>
 								</li>
 								<li className='ListItemElement'>

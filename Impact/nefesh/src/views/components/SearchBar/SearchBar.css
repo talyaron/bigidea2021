@@ -1,0 +1,83 @@
+/* #myInput {
+   
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
+  
+  #myUL {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #myUL li a {
+    border: 1px solid #ddd;
+    margin-top: -1px; Prevent double borders
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+  } */
+  
+  /* #myUL li a:hover:not(.header) {
+    background-color: #eee;
+  } */
+
+.container {
+  display: flex;
+  columns: 500px 500px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 500px;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  font-family: arial;
+}
+
+.filterData {
+  max-height: 100px;
+  border-radius: 5px;
+}
+
+.searchBar {
+  max-height: 100px;
+  border-radius: 5px;
+}
+
+.Logo {
+  max-height: 40%;
+  max-width: 40%;
+}
+
+.sectionOne{
+  display: grid;
+  grid-template-columns: 200px 200px 50px;
+  max-height: 100px;
+  background-color: rgb(144, 152, 161);
+}
+
+.Logo{
+  max-height: 200px;
+  max-width: 200px;
+  height: 150px;
+  width: 150px;
+}
+button{
+  width: 100px;
+  height: 100px;
+}
+.container2{
+  background-color:rgb(126, 124, 124);
+}
+.Button2{
+  border-radius: 50%;
+}
