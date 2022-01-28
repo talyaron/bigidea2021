@@ -31,8 +31,8 @@ body {
     align-items: center;
     justify-content: center;
     display: flex;
-    padding-inline: 1em;
-    margin-top: 0.4em;
+   /* padding-inline: 1em;
+    margin-top: 0.4em;*/
 }
 
 .container_App {

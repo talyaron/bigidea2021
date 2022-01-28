@@ -133,22 +133,27 @@ function AdminPage() {
 
 	return (
 		<div className='HSADBVIABSLVF'>
+		{ isAdmin && (
+			<div className='search_Container'>
+		<form className='searchFor' onChange={handleSearchByChange}>
+			<label for='searchFor' id='searchFor'>Search for:</label>
+			<select id="searchDropdown" name='searchFor'>
+				<option value='userID'>userID's</option>
+				<option value='displayName'>DisplayName's</option>
+				<option value='email'>Email's</option>
+				<option value='role'>Role's</option>
+			</select>
+		</form>
+	<input type='text' placeholder={`Enter Full ${searchField}`} name='adminPageSearch' id='search_Box_AdminPage' onChange={handleSearchChange}/>
+	<button onClick={handleSearch} id='search_button_AdminPage'>🔍</button>
+	<button onClick={handleClearFilter} id='clearFilter'>Clear Search</button>
+	</div>
+	) }
+	
+		
 			{isAdmin ? (
 				<div className='adminPageCont'>
-					<div className='search_Container'>
-						<form className='searchFor' onChange={handleSearchByChange}>
-							<label for='searchFor' id='searchFor'>Search for:</label>
-							<select id="searchDropdown" name='searchFor'>
-								<option value='userID'>userID's</option>
-								<option value='displayName'>DisplayName's</option>
-								<option value='email'>Email's</option>
-								<option value='role'>Role's</option>
-							</select>
-						</form>
-					<input type='text' placeholder={`Enter Full ${searchField}`} name='adminPageSearch' id='search_Box_AdminPage' onChange={handleSearchChange}/>
-					<button onClick={handleSearch} id='search_button_AdminPage'>🔍</button>
-					<button onClick={handleClearFilter} id='clearFilter'>Clear Search</button>
-					</div>
+					
 				<div className='eventMapContainer'>
 					{Names.map((names) => {
 						return (
@@ -183,6 +188,7 @@ function AdminPage() {
 				/>
 			)}
 		</div>
+		
 	);
 }
 function userIDAdm() {
