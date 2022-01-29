@@ -22,7 +22,7 @@ import StickyBanner from './views/templates/StickyBanner';
 import Event from './views/pages/Event';
 
 
-let role = 'superAdmin';
+let role = null;
 
 const auth = getAuth();
 let userID = '';
@@ -40,11 +40,13 @@ function App() {
 				getDoc(doc(db, 'users', uid)).then((userDB) => {
 					if (userDB.exists()) {
 						console.log('user exists');
+						role = userDB.data().role;
 						setUserState({
 							userName: userDB.data().displayName,
 							userOrg: userDB.data().organization,
 						});
-						role = userDB.data().role;
+						
+						//console.log(role)
 						const uid = userDB.data().userID;
 						userID = uid;
 					} else {
@@ -67,7 +69,7 @@ function App() {
 				loggedIn = true;
 			} else {
 				// user logged out
-				console.log('User loged out');
+				console.log('User logged out');
 				loggedIn = false;
 			}
 		});
@@ -105,7 +107,7 @@ function App() {
 			
 		</div>
 		{
-			loggedIn ? (<StickyBanner/>) : (null) 
+			loggedIn ? (<StickyBanner role={role} />) : (null) 
 		}
 		</div>
 	);

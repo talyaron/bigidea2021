@@ -17,18 +17,20 @@ function Event() {
 	let { eventID } = useParams();
 	let navigate = useNavigate();
 
-	useEffect(async () => {
+	useEffect(() => {
 		try {
 			setWebValidity(false);
 			let eventRef = doc(db, 'events', eventID);
-			const docSnap = await getDoc(eventRef);
-			setEventData(docSnap.data());
+			getDoc(eventRef).then(docSnap => {
+				console.log(docSnap.data());
+			setEventData(docSnap.data().date);
 			setTags(docSnap.data().tags);
 			setAddressInfo(docSnap.data().address);
 			setContactInfo(docSnap.data().contactInfo);
 			let validState = validURL(docSnap.data().contactInfo.website);
 			setWebValidity(validState);
 			setOrgWebsite(docSnap.data().contactInfo.website);
+		});
 		} catch (err) {
 			console.error(err);
 		}
@@ -51,34 +53,34 @@ function Event() {
 		console.log(eventData);
 	}
 	return (
-		<div className='mainContainer'>
+<div className='mainContainer_Event'>
 			  {useScript("https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js")}
-			<div className='articleImage' /*style={divStyle}*/>
-				<div className='articleImageButtons'></div>
+			<div className='articleImage_Event' /*style={divStyle}*/>
+				<div className='articleImageButtons_Event'></div>
 			</div>
 
-			<div className='eventData'>
-				<h1 className='eventName'> {eventData.title} </h1>
-				<h4 className='eventDetails'>
+			<div className='eventData_Event'>
+				<h1 className='eventName_Event'> {eventData.title} </h1>
+				<h4 className='eventDetails_Event'>
 					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 				</h4>
 				<div className='secondaryInfo'>
-					<div className='eventTimeContainer'>
-						<p className='eventDate'> Event Date: {eventData.date} </p>
-						<p className='eventStartTime'> Start Time: {eventData.startTime}</p>
-						<p className='eventEndTime'> End Time: {eventData.endTime}</p>
+					<div className='eventTimeContainer_Event'>
+						<p className='eventDate_Event'> Event Date: {eventData.date} </p>
+						<p className='eventStartTime_Event'> Start Time: {eventData.startTime}</p>
+						<p className='eventEndTime_Event'> End Time: {eventData.endTime}</p>
 					</div>
-					<div className='eventLocationContainer'>
-						<p className='eventStreet'> Street Name: {addressInfo.streetName}</p>
-						<p className='eventHouse'> House Number: {addressInfo.houseNumber}</p>
-						<p className='eventCity'> City: {addressInfo.city}</p>
+					<div className='eventLocationContainer_Event'>
+						<p className='eventStreet_Event'> Street Name: {addressInfo.streetName}</p>
+						<p className='eventHouse_Event'> House Number: {addressInfo.houseNumber}</p>
+						<p className='eventCity_Event'> City: {addressInfo.city}</p>
 					</div>
 				</div>
-				<h4 className='eventDetails'> Description: {eventData.article}</h4>
-				<h3 className='username'> Signed / {eventData.hostName} </h3>
+				<h4 className='eventDetails_Event'> Description: {eventData.article}</h4>
+				<h3 className='username_Event'> Signed / {eventData.hostName} </h3>
 			</div>
 
-			<div className='userPromptContainer'>
+			<div className='userPromptContainer_Event'>
 				<h3 className='maxCap'> Max Capacity: {eventData.maxCapacity} </h3>
 				<div title='Add to Calendar' className='addeventatc'>
 						Add to Calendar
@@ -88,11 +90,11 @@ function Event() {
 						<span className='title'>{eventData.title}</span>
 						<span className='description'>{eventData.article}</span>
 					</div>
-				<button className='shareButton button_AP'> Share </button>
+				<button className='shareButton button_Event'> Share </button>
 			</div>
 
-			<div className='contactUsContainer'>
-				<div className='contactUsContent'>
+			<div className='contactUsContainer_Event'>
+				<div className='contactUsContent_Event'>
 					{/* <button className="closePopUp" onClick={hideOrganizerContact}>  &times; Close</button> */}
 					<p>Our Website: {websiteValidity ? orgWebsite : 'No Link Available'}</p>
 					<p>Our Phone Number: {contactInfo.phone}</p>
@@ -100,11 +102,11 @@ function Event() {
 				</div>
 			</div>
 
-			<div className='eventTags'>
-				<h3 className='tagTitle'>Event Tags:</h3>
+			<div className='eventTags_Event'>
+				<h3 className='tagTitle_Event'>Event Tags:</h3>
 				{tags.map((tags) => {
 					return (
-						<div className='tagBox' key={tags.id}>
+						<div className='tagBox_Event' key={tags.id}>
 							{tags.tag}
 						</div>
 					);

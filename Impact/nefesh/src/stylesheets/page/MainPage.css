@@ -14,8 +14,10 @@
     left: 90px;
     margin: 10px 10px;
     text-decoration: none;
-    
-
+}
+.userInterfaceContainer {
+ padding: 1px;
+}
     /*
   needs
     X font choices
@@ -28,7 +30,7 @@
   
   
   */
-}
+
 
 
 .searchBar

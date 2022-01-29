@@ -4,10 +4,7 @@ import { db } from '../../scripts/firebase/config';
 import { getDatabase, ref, onValue, query } from "firebase/database";
 import {
   collection,
-  orderBy,
   onSnapshot,
-  getDocs,
-  where,
   getFirestore,
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
@@ -137,8 +134,7 @@ function App() {
   return (
     <div>
       <form
-        className="searchFor"
-        className="dropDown"
+        className="searchFor dropDown"
         onChange={handleSearchByChange}>
         <label for="searchFor" id="searchFor">
           Search for:
@@ -162,7 +158,7 @@ function App() {
             {i + 1}. {article.Title} Written on {article.Date} by{" "}
             {article.creator} and currently has {article.views} views
           </span>{" "}
-          <img src={article.Image} />
+          <img src={article.Image} alt="article" />
         </li>
       ))}
       <div className="userInterfaceContainer">
@@ -186,11 +182,13 @@ function App() {
                 key={event.id}
                 className="nametag card card--link"
                 onClick={()=>handleRoute(event.id)}>
-                <h1>{event.Title}</h1>
-                <div>{event.id}</div>
-                <img src={event.Image} style={{ width: "100px" }}></img>
-                <div>This event will take place on: {event.Date}</div>
-                <div>{event.views} many people have viewed this event</div>
+                <h2>{event.title}</h2>
+                <img src={event.coverImage} alt={event.title}></img>
+                <div id="Date">Date: {new Intl.DateTimeFormat("en" , {
+  timeStyle: "short",
+  dateStyle: "medium"
+}).format(new Date(event.date.seconds * 1000)) }</div>
+                <div id="Views">{event.views || 0} views</div>
               </div>
             );
           })}

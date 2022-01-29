@@ -5,6 +5,9 @@ import { doc, getDoc, onSnapshot, setDoc, updateDoc} from 'firebase/firestore';
 import EditProfilePopUp from './EditProfilePopUp';
 
 function ProfilePage(props) {
+
+	const docRef = (doc(db, "users", props.uid));
+	
 	const [displayName, setDisplayName] = useState('loading');
 	const [profilePicImg, setProfilePicImg] = useState('loading');
 	const [userEmail, setUserEmail] = useState('loading')
@@ -17,17 +20,17 @@ function ProfilePage(props) {
 	const {uid} = props;
 	const [isOpen, setIsOpen] = useState(false);
   	
-	useEffect(async () => {
+	useEffect(() => {
 		//pull userId of selected user and set for superAdmin page
 		//on snapshot displayName
-		const docRef = (doc(db, "users", props.uid));
-		const docSnap = await getDoc(docRef);
+		
+		getDoc(docRef).then(docSnap => {
 		setDisplayName(docSnap.data().displayName);
 		setProfilePicImg(docSnap.data().userIcon);
 		setUserEmail(docSnap.data().email);
 		setUserAddress(docSnap.data().location)
 		setUserGender(docSnap.data().sex);
-
+		});
 	}, [uid]);
 	function editProfile(ev) {
 		setIsOpen(!isOpen);
@@ -39,7 +42,8 @@ function ProfilePage(props) {
 		console.dir(ev.target);
 
 		const name = ev.target.elements.newName.value;
-		const profilePic = ev.target.elements.newImg.value;
+		const profilePic = ev.target.elements.newImg.files[0] || ev.target.elements.newImg.value;
+
 		const email = ev.target.elements.newEmail.value;
 		const gender = ev.target.elements.newGender.value;
 		const address = ev.target.elements.newAddress.value;
