@@ -24,7 +24,7 @@ function StickyBanner({role}) {
 		{ id: 4, label: 'Article Creation', href: 'ArticleCreation', role: ['ole', 'admin'] },
 		{ id: 5, label: 'Admin Page', href: 'AdminPage', role: ['ole', 'admin'] },
 		{ id: 6, label: 'log in', href: 'login', role: ['guest'] },
-		{ id: 7, label: 'log out', function: handleLogOut, role: ['member'] },
+		{ id: 7, label: 'log out', href: ' ', function: handleLogOut, role: ['member'] },
 	]
 
 		//pull userId of selected user and set for superAdmin page
@@ -85,7 +85,8 @@ function StickyBanner({role}) {
 											<div
 												className='menuItem'
 												onClick={() => {
-													item.href ? navigate('/' + item.href) : item.function();
+													if(item.function) item.function();
+													if(item.href) navigate('/' + item.href);
 												}}>
 												{item.label}
 											</div>

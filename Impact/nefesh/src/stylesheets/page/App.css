@@ -57,6 +57,11 @@ body {
 	-ms-overflow-style: none; 
 	scrollbar-width: none; 
 }*/
+@media screen and (min-width: 770px) {
+	.card {
+			max-width: 325px;
+	}
+}
 .card{
 	/*padding: 20px;
 	border-radius: 10px;
@@ -69,7 +74,7 @@ body {
     top: 0px;
     position: relative;
 	width: 100%;
-    max-width: 325px;
+    
     height: 150px;
     border-radius: 12px;
     padding: 0px 14px;

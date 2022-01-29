@@ -48,10 +48,12 @@
 
 #art_login {
 	position: fixed;
-	bottom: 0px;
-	z-index: -6;
-	max-width: 100%;
-	margin: none;
+    bottom: 0px;
+    z-index: -6;
+    margin: none;
+    width: 100vw;
+    height: auto;
+    bottom: auto;
 }
 .centerImg_Login {
 	display: flex;
@@ -72,3 +74,4 @@
 	display: flex;
 	justify-content: space-evenly;
 }
+

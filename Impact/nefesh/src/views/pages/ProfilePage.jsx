@@ -40,57 +40,46 @@ function ProfilePage(props) {
 	function changeProfile(ev) {
 		ev.preventDefault();
 		console.dir(ev.target);
+		const profileData = {
+			name: 		ev.target.elements.newName.value,
+			profilePic: ev.target.elements.newImg.files[0] || ev.target.elements.newImg.value,
+			email: 		ev.target.elements.newEmail.value,
+			gender: 	ev.target.elements.newGender.value,
+			address: 	ev.target.elements.newAddress.value
+		}
 
-		const name = ev.target.elements.newName.value;
-		const profilePic = ev.target.elements.newImg.files[0] || ev.target.elements.newImg.value;
-
-		const email = ev.target.elements.newEmail.value;
-		const gender = ev.target.elements.newGender.value;
-		const address = ev.target.elements.newAddress.value;
-
-		if(ev.target.elements.newName.value.length == 0) {
-			//nothing
-		} else {
-			setDisplayName(name);
+		if(profileData.name.length !== 0) {
+			setDisplayName(profileData.name);
 			updateDoc(doc(db, "users", props.uid), {
-				displayName: name,
+				displayName: profileData.name,
 			})
 		}
 
-		if(ev.target.elements.newImg.value.length == 0) {
-			//nothing
-		} else {
-			setProfilePicImg(profilePic);
+		if(profileData.profilePic.length !== 0) {
+			setProfilePicImg(profileData.profilePic);
 			updateDoc(doc(db, "users", props.uid), {
-				userIcon: profilePic
+				userIcon: profileData.profilePic
 			})
 		}
 
-		if(ev.target.elements.newEmail.value.length == 0) {
-			//nothing
-		} else {
-			setUserEmail(email);
+		if(profileData.email.length !== 0) {
+			setUserEmail(profileData.email);
 			updateDoc(doc(db, "users", props.uid), {
-				email: email
+				email: profileData.email
 			})
 		}
 
-		if(ev.target.elements.newGender.value.length == 0) {
-			//nothing
-		} else {
-			setUserGender(gender);
+		if(profileData.gender.length !== 0) {
+			setUserGender(profileData.gender);
 			updateDoc(doc(db, "users", props.uid), {
-				sex: gender	
+				sex: profileData.gender	
 			})
-			
 		}
 		
-		if(ev.target.elements.newAddress.value.length == 0) {
-			//nothing
-		} else {
-			setUserAddress(address);
+		if(profileData.address.length !== 0) {
+			setUserAddress(profileData.address);
 			updateDoc(doc(db, "users", props.uid), {
-				location: address
+				location: profileData.address
 			})
 		}
 
@@ -114,48 +103,53 @@ function ProfilePage(props) {
 		console.log(props.uid)
 	}
 	return (
-		<div>
+		
 			<div className='containerDetails'>
-				<div
+				<img
 					id='profilePic'
-					style={{ backgroundImage: 'url(' + profilePicImg + ')' }}
+					src={profilePicImg}
+					alt='User Profile Img'
 				/>
 				<h4 className = "info" style = {{fontSize: textSize + 'px'}}>
-					Name: {displayName}<br />
-					Gender: {userGender} <br />
-					Email: {userEmail}<br />
-					Address: {userAddress}<br />
-					Font Size: {textSize}
-
-
-
-
+					<h3 id="prof_DisplayName">{displayName}</h3>
+					<h4 class="profileLabel">Gender</h4>
+					<p id="prof_UserGender" class="detailValue">{userGender}</p>
+					<h4 class="profileLabel">Email</h4>
+					<p id="prof_UserEmail" class="detailValue">{userEmail}</p>
+					<h4 class="profileLabel">Address</h4>
+					<p id="prof_UserAddress" class="detailValue">{userAddress}</p>
+					<div>
+					{ textSize.length !== 0 ?
+					(<h4 class="profileLabel">Font Size
+					<p id="prof_TextSize" class="detailValue">{textSize}</p></h4>
+					) : null }
+					</div>
 				</h4>
 				<div className='containerEvents'>
 					<p>Events list goes here</p>
 				</div>
-			</div>
-			<button type="button" id = "prefButton" onClick={changePreferences} name="settingbtn">Preferences</button>
+			
+			<button className='profileButton' type="button" id = "prefButton" onClick={changePreferences} name="settingbtn">Preferences</button>
 			{choosingPrefs ? <div className='settings'>
 				<form onSubmit={submitChangePreferences}>
 
 					Change Font Size: <input type="text" name="newFontSize" /><br />
-					<button type="submit" id = "submitChanges" name="prfbtn"> Submit Changes</button>
+					<button className='profileButton' type="submit" id = "submitChanges" name="prfbtn"> Submit Changes</button>
 				</form>
 			</div> : null}
 
-			<button type="button" onClick={editProfile} name="editbtn"> Edit Profile!</button>
+			<button className='profileButton' type="button" onClick={editProfile} name="editbtn"> Edit Profile!</button>
 			{isOpen && <EditProfilePopUp
       content={<>
         {editing ? <div className='profileEditor'	>
-				Edit Profile Here: <br />
+				<h4>Edit Profile Here:</h4>
 				<form onSubmit={changeProfile}>
-					Enter New Name: <input type="text" name="newName" /><br />
+					Enter New Name: <input type="text" name="newName" />
 					Enter New Image : <input type="file" accept="image/*" id="newImg" name="myfile"/>
-					Enter New Email: <input type="text" name="newEmail" /><br />
-					Enter New Gender: <input type="text" name="newGender" /><br />
+					Enter New Email: <input type="text" name="newEmail" />
+					Enter New Gender: <input type="text" name="newGender" />
 					Enter New Address: <input type="text" name="newAddress" />
-					<button type="submit" name="editbtn"> Submit Changes</button>
+					<button className='profileButton' type="submit" name="editbtn"> Submit Changes</button>
 
 				</form>
 
@@ -164,11 +158,7 @@ function ProfilePage(props) {
       </>}
       handleClose={editProfile}
     />}
-			
-
 		</div>
-
-
 	);
 }
 

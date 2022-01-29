@@ -154,7 +154,6 @@ function AdminPage() {
 			{isAdmin ? (
 				<div className='adminPageCont'>
 					
-				<div className='eventMapContainer'>
 					{Names.map((names) => {
 						return (
 							<div key={names.userID} className='nametag'>
@@ -171,7 +170,7 @@ function AdminPage() {
 							</div>
 						);
 					})}
-				</div>
+		
 				</div>
 			) : null}
 			{isOpen && (
