@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import "./ArticleCreation.css"
 import { collection, addDoc, arrayRemove } from "firebase/firestore"
 import { db } from "../../../functions/firebase/config"
@@ -12,6 +12,16 @@ let page = 'ArticleCreation'
 function ArticleCreation(props) {
 
     const [tagsState, setTagsState] = useState([])
+    const inputRef = useRef();
+    const [value, setValue] = React.useState("I am edittable");
+
+    useEffect(() => {
+        document.getElementById("editor").addEventListener("input", inputEvt, false);
+    }, [])
+    function inputEvt(ev) {
+        let parse = "text"
+        statesSumbitted = { ...statesSumbitted, [parse]: ev.target.innerHTML }
+    }
     function submitArticle() {
         const { title, name, date, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSumbitted;
         addDoc(collection(db, "events"), {
@@ -95,25 +105,27 @@ function ArticleCreation(props) {
     }
     return <div>
         <div className='createArticle-popup-box'>
-            <b className='infoTitle'>Input information here</b> 
-            <ImportImgs userData={props} pageName={page}/>
-            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here"   className='shadow'/>
-            <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here"  className='shadow'/>
-            <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here"  className='shadow'/>
-            <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" className='shadow'/>
-            <input type="text" name="city" onChange={changeState} placeholder="Enter city here"  className='shadow'/>
-            <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" className='shadow'/>
-            <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here"  className='shadow'/>
-            <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here"  className='shadow'/>
-            <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here"  className='shadow'/>
-            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" className='shadow'/>
+            <b className='infoTitle'>Input information here</b>
+            <ImportImgs userData={props} pageName={page} />
+            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here" className='shadow' />
+            <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here" className='shadow' />
+            <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here" className='shadow' />
+            <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" className='shadow' />
+            <input type="text" name="city" onChange={changeState} placeholder="Enter city here" className='shadow' />
+            <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" className='shadow' />
+            <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here" className='shadow' />
+            <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here" className='shadow' />
+            <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here" className='shadow' />
+            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" className='shadow' />
             <div>Event Date:</div>
-            <input type="date" name="date" onChange={changeState} placeholder="Enter date here" className='shadow'/>
+            <input type="date" name="date" onChange={changeState} placeholder="Enter date here" className='shadow' />
             <div>Event Start Time:</div>
-            <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow'/>
+            <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow' />
             <div>Event End Time:</div>
-            <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow'/>
-            <div className="expandBox"><span className="textarea" name="text" role="textbox" onKeyUp={changeState} placeholder='Enter event description here' contentEditable></span></div>
+            <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow' />
+            <div className="expandBox"><div contentEditable="true"  className="textarea" name="text" role="textbox" id="editor"  placeholder='Enter event description here'></div></div>
+
+
 
 
             <form className='Tags' onSubmit={addTags}>
@@ -135,7 +147,6 @@ function ArticleCreation(props) {
             </div>
             <button className='submit Button2 shadow' onClick={saveDraft}>Save Draft</button>
             <button className='submit Button2 shadow' onClick={submitArticle}>Submit Article</button>
-
         </div>
     </div>
 }
