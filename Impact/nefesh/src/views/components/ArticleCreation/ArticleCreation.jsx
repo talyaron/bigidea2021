@@ -103,33 +103,32 @@ function ArticleCreation(props) {
     function ping(){
         console.log(statesSumbitted)
     }
-    return <div>
-        <div className='createArticle-popup-box'>
-            <button onClick={ping}>Hi</button>
-            <b className='infoTitle'>Input information here</b>
+    return <div className='backGround'>
+    <header className='Header'>Create an Article</header>
+    <div className='createArticle-popup-box'>
             <ImportImgs userData={props} pageName={page} />
-            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here" className='shadow' />
-            <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here" className='shadow' />
-            <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here" className='shadow' />
-            <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" className='shadow' />
-            <input type="text" name="city" onChange={changeState} placeholder="Enter city here" className='shadow' />
-            <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" className='shadow' />
-            <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here" className='shadow' />
-            <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here" className='shadow' />
-            <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here" className='shadow' />
-            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" className='shadow' />
+            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here" className='shadow In' />
+            <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here" className='shadow In' />
+            <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here" className='shadow In' />
+            <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" className='shadow In' />
+            <input type="text" name="city" onChange={changeState} placeholder="Enter city here" className='shadow In' />
+            <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" className='shadow In' />
+            <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here" className='shadow In' />
+            <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here" className='shadow In' />
+            <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here" className='shadow In' />
+            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" className='shadow In' />
             <div>Event Start Time:</div>
-            <input type="datetime-local" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow' />
+            <input type="datetime-local" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow In' />
             <div>Event End Time:</div>
-            <input type="datetime-local" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow' />
+            <input type="datetime-local" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow In' />
             <div className="expandBox"><div contentEditable="true"  className="textarea" name="text" role="textbox" id="editor"  placeholder='Enter event description here'></div></div>
 
 
 
 
             <form className='Tags' onSubmit={addTags}>
-                <input type="text" name="tagsInput" placeholder="Enter event types here" />
-                <button className='submit Button' type="submit">Submit</button>
+                <input type="text" name="tagsInput" placeholder="Enter event tags here" className='tag34 shadow' />
+                <button className='submit Button36 shadow' type="submit">Submit</button>
             </form>
             <div className='tagBox'>
                 <div className="tagsMapContainer shadow">
@@ -145,8 +144,10 @@ function ArticleCreation(props) {
                     }
                 </div>
             </div>
-            <button className='submit Button2 shadow' onClick={saveDraft}>Save Draft</button>
-            <button className='submit Button2 shadow' onClick={submitArticle}>Submit Article</button>
+            <div className='buttonContainer23'>
+            <button className='Dragon42 shadow' onClick={saveDraft}>Save Draft</button>
+            <button className='Dragon43 shadow' onClick={submitArticle}>Submit Article</button>
+            </div>
         </div>
     </div>
 }
