@@ -176,7 +176,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) 
 			const showNotification = () => {
 				// create a new notification
 				const notification = new Notification('UPDATE', {
-					body: 'USER BANNED',
+					body: (isBanned2? "USER BAN REMOVED": "USER BANNED"),
 				});
 				// close the notification after 10 seconds
 				setTimeout(() => {
