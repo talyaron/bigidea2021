@@ -3,9 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { db } from '../../../functions/firebase/config';
 import { doc, getDoc, onSnapshot, setDoc, updateDoc} from 'firebase/firestore';
 import EditProfilePopUp from './EditProfilePopUp';
+import ImportImgs from '../../components/ImportImgs/ImportImgs'
+let page = 'ProfilePage';
 
 
 function ProfilePage(props) {
+	const [userData, setUserData] = useState()
 	const [displayName, setDisplayName] = useState('loading');
 	const [profilePicImg, setProfilePicImg] = useState('loading');
 	const [userEmail, setUserEmail] = useState('loading')
@@ -17,17 +20,22 @@ function ProfilePage(props) {
 	const [choosingPrefs, setChoosingPrefs] = useState(false)
 	const {uid} = props;
 	const [isOpen, setIsOpen] = useState(false);
+	const [httpUrl, setHttpUrl] = useState('');
   	
+	
 	useEffect(async () => {
 		//pull userId of selected user and set for superAdmin page
 		//on snapshot displayName
 		const docRef = (doc(db, "users", props.uid));
 		const docSnap = await getDoc(docRef);
+
 		setDisplayName(docSnap.data().displayName);
 		setProfilePicImg(docSnap.data().userIcon);
 		setUserEmail(docSnap.data().email);
 		setUserAddress(docSnap.data().location)
 		setUserGender(docSnap.data().sex);
+		console.log(props, docSnap.data())
+		setUserData(docSnap.data())
 
 	}, [uid]);
 	function editProfile(ev) {
@@ -40,7 +48,7 @@ function ProfilePage(props) {
 		console.dir(ev.target);
 
 		const name = ev.target.elements.newName.value;
-		const profilePic = ev.target.elements.newImg.files[0];
+		const profilePic = httpUrl
 		const email = ev.target.elements.newEmail.value;
 
 		if(ev.target.elements.newName.value.length == 0) {
@@ -52,9 +60,10 @@ function ProfilePage(props) {
 			})
 		}
 
-		if(ev.target.elements.newImg.value.length == 0) {
+		if(profilePic.length == 0) {
 			//nothing
 		} else {
+			ev.preventDefault()
 			console.log(profilePic)
 			setProfilePicImg(profilePic);
 			updateDoc(doc(db, "users", props.uid), {
@@ -87,10 +96,10 @@ function ProfilePage(props) {
 		ev.preventDefault();
 		const fontSize = ev.target[0].value;
 		setTextSize(fontSize);
-
-
-
 	}
+	const callBackFunction = (httpRef) => {
+		setHttpUrl(httpRef);
+	};
 	function debug() {
 		console.log(props.uid)
 	}
@@ -156,7 +165,7 @@ function ProfilePage(props) {
 				<h4 className='center2'> Edit Profile Here </h4>
 				<form onSubmit={changeProfile}>
 					Enter New Name: <input type="text" name="newName" /><br />
-					Enter New Image : <input type="file" accept="image/*" id="newImg" name="myfile"/> <br />
+					Enter New Image : <ImportImgs userData={userData} pageName={page} parentCallBack={callBackFunction} />
 					Enter New Email: <input type="text" name="newEmail" /><br />
 					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
 

@@ -21,6 +21,7 @@ function HandleImportImg(props) {
 	}, []);
 	
 	function handleImgUpload(ev) {
+		ev.preventDefault()
 		const image = ev.target.files[0];
 		setImageAsFile((imageFile) => image);
 		if (imageAsFile === '') {
@@ -32,6 +33,9 @@ function HandleImportImg(props) {
 
 	async function onTrigger(ev){
 		ev.preventDefault();
+		console.log('ratsss', ev)
+		console.log(props.pageName, 'PageName')
+		console.log(props.userData.userID, 'userID')
 		uploadBytes(storageRef, imageAsFile).then((snapshot) => {
 			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${imageAsFile.name}`)).then((httpRef) => {
 				console.log(httpRef)
@@ -42,12 +46,13 @@ function HandleImportImg(props) {
 	}
 
 	return (
-		<form onSubmit={ onTrigger} id='form_ImportImg'>
+		<form onSubmit={onTrigger} id='form_ImportImg'>
 			<input type='file' name='articleImg' id='input_ArticleImg' accept='image/*' onChange={handleImgUpload}className='shadow' />
-			<input type='submit' id='SubmitButton_ImportImg' className='shadow' />
+			<button onClick={onTrigger} id='SubmitButton_ImportImg' className='shadow'>Upload </button>
 		</form>
-	)}
+	)
 }
+
 
 export default HandleImportImg;
 
