@@ -110,7 +110,7 @@ function App() {
                                 <h1>{event.Title}</h1>
                                 <div>{event.id}</div>
                                 <img src={event.Image} style={{ width: "100px" }}></img>
-                                <div>This event will take place on: {event.Date}</div>
+                                {/*This event will take place on: {event.Date}*/}
                                 <div>{event.views} many people have viewed this event</div>
                             </div>
                         )

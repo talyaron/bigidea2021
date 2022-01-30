@@ -19,6 +19,8 @@ const filters = {};
 let filtersArr2 = [];
 let eventFilters = [];
 let count= 0;
+let count2=0;
+
 
 function DataFilters() {
     var searchOption;
@@ -41,7 +43,7 @@ function DataFilters() {
         filtersArr2.push(ev.target.name)
         count++;
         console.log(count)
-        //console.log(filtersArr2)
+        console.log(filtersArr2)
         }
         else if ((count >=5) && (ev.target.checked === true)){
             ev.target.checked= false;
@@ -52,47 +54,77 @@ function DataFilters() {
             count--;
             filters[ev.target.name] = false;
             console.log(count)
-            filtersArr2.splice(filtersArr2.indexOf(ev.target.name))
+            filtersArr2.splice(filters[ev.target.name], 1)
+            
         }
 
-        console.log(filtersArr2);
+        console.log(filters);
 
     }
     async function getEvents(ev) {
+        
         ev.preventDefault();
+
         console.log(filters);
         const filtersArr = [];
+        const filtersTrueFalse = [];
         for (let filter in filters) {
-            console.log(filter);
-            if (filters[filter]) {
-                filtersArr.push(filter);
-            }
 
-            console.log(filtersArr);
+            
+           
+                console.log(`${filter}: ${filters[filter]}`)
+    
+                if (`${filters[filter]}` === "true") {
+                    console.log("TESTING " + `${filter}`);
+                    filtersTrueFalse.push(`${filter}`);
+                    //filtersTrueFalse.sort();
+                    console.log(filtersTrueFalse)
+                    
+                }
+            
+            console.log(filtersTrueFalse);
 
-            const promisedFilterd = filtersArr.map(filter => {
+            const promisedFilterd = filtersTrueFalse.map(filter => {
+                console.log("printing");
+    
                 return getEventPromise(filter)
+                
+                
+                
             })
+            
+            
             const events = await Promise.all(promisedFilterd);
+            
+            
             console.log(events)
             setArticles(events);
+                
+            
 
         }
-        //sort through
+        
+        
     }
 
     function getEventPromise(filter) {
         console.log(filter)
+        
+        
+
+        const filteredRef = collection(db, "events");
+        console.log(filteredRef)
+        
         return new Promise((resolve, reject) => {
-            const filteredRef = collection(db, "events");
-            filters.forEach()
-            const q = query(filteredRef, where("type", "==", filter/*filters[filter]*/));
+            console.log("hello")
+            const eventsTemp = [];
+            const q = query(filteredRef, where("tags", "array-contains", filter));
             getDocs(q).then((eventsDB) => {
-                const eventsTemp = [];
                 eventsDB.forEach((eventDB) => {
-                    eventsTemp.push(eventDB.data());
+                    eventsTemp.push(eventDB.data());            
                 });
                 resolve(eventsTemp);
+                console.log(eventsTemp)
             }).catch(err => {
                 reject(err);
 
@@ -142,26 +174,14 @@ function DataFilters() {
                 onClick={getTarget}
             />
             Party
-            <input
-                className="searchBar"
-                type="checkbox"
-                name="party"
-                onClick={getTarget}
-            />
-            Party
-            <input
-                className="searchBar"
-                type="checkbox"
-                name="party"
-                onClick={getTarget}
-            />
-            Party
+ 
             <input
                 className="submitbutton"
                 type="submit"
                 name="submit1"
                 onClick={getEvents}
             />
+     
             {articles.map((event) => {
                 return (
                     <div key={event[0].id} className='nametag'>
@@ -169,7 +189,7 @@ function DataFilters() {
                         <img src={event[0].Image} style={{ width: "100px" }}></img>
                         <div>This event will take place on: {event[0].date}</div>
                         <div>{event[0].views} many people have viewed this event</div>
-                        <div>Event filter:{event[0].type}</div>
+                        <div>Event filter:{event[0].tags + ","}</div>
 
                     </div>
                 )
