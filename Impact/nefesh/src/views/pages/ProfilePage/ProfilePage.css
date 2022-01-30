@@ -1,15 +1,14 @@
 
-.containerDetails{
-    margin-left: 20%;
-}
 #profilePic{
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
     background-image: none;
     background-color: blue;
-    margin-left: 20%;
     margin-top: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 #prefButton{
     display: inline;
@@ -24,6 +23,51 @@
 .info{
     font-weight: 500;
 }
+.back-1{
+    margin-top: 20px;
+    background-color: #c8e6ff ;
+    align-items: center;
+    text-align: center;
+}
+.back-2{
+    border-top: 1px black solid;
+    background-color: #c8e6ff;
+    text-align: center;
+    margin-bottom: 0%;
+    padding: 10px;
+}
+.back-3{
+    background-color: #c8e6ff;
+    text-align: center;
+    margin-top: 0%;
+    padding: 10px;
+    border-top: 1px black solid;
+}
 .EditProfBtn{
-  margin-left: 20%;
+    margin-top: 10px;
+    margin-left: 10px;
+  background-color: #9CCAFF;
+  border: none;
+  border-radius: 15px 15px 15px 15px;
+  height: 29pt;
+  width: 67pt;
+  float: left;
+}
+.foot{
+    height: 13vh;
+}
+.center{
+    margin-right: 80pt;
+    display: block;
+
+}
+.center2{
+    text-align: center;
+
+}
+.center3{
+   margin-right: auto;
+   margin-left: auto;
+   display: block;
+   margin-top:10px
 }

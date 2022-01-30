@@ -42,8 +42,6 @@ function ProfilePage(props) {
 		const name = ev.target.elements.newName.value;
 		const profilePic = ev.target.elements.newImg.files[0];
 		const email = ev.target.elements.newEmail.value;
-		const gender = ev.target.elements.newGender.value;
-		const address = ev.target.elements.newAddress.value;
 
 		if(ev.target.elements.newName.value.length == 0) {
 			//nothing
@@ -73,24 +71,9 @@ function ProfilePage(props) {
 			})
 		}
 
-		if(ev.target.elements.newGender.value.length == 0) {
-			//nothing
-		} else {
-			setUserGender(gender);
-			updateDoc(doc(db, "users", props.uid), {
-				sex: gender	
-			})
-			
-		}
 		
-		if(ev.target.elements.newAddress.value.length == 0) {
-			//nothing
-		} else {
-			setUserAddress(address);
-			updateDoc(doc(db, "users", props.uid), {
-				location: address
-			})
-		}
+		
+		
 
 		setEditing(false);
 
@@ -113,15 +96,38 @@ function ProfilePage(props) {
 	}
 	return (
 		<div>
+			<div className='back-1'>
+				<button className ="EditProfBtn" type="button" onClick={editProfile} name="editbtn"> Edit Profile</button>
+				<div id='profilePic' style={{ backgroundImage: 'url(' + profilePicImg + ')' }} />
+				<h2> {displayName} </h2> 
+				<p> {userEmail} </p>
+			</div>
+			<div className='back-2'>
+				<button className ="EditProfBtn" type="button" name="PrefButton"> Edit Prefrences </button>
+				<h2 className='center'> Prefrences </h2> 
+				<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </p>
+				 
+			</div>
+			<div className='back-3'>
+				<button className ="EditProfBtn" type="button" name="BioButton"> Edit Bio </button>
+				<h2 className='center'> Biography </h2> 
+				<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </p>
+				
+			</div>
+			<footer  className='back-2 foot'>
+
+			</footer>
+			
+			
+			
+			
+			{/*
 			<div className='containerDetails'>
-				<div
-					id='profilePic'
-					style={{ backgroundImage: 'url(' + profilePicImg + ')' }}
-				/>
+				
 				<h4 className = "info" style = {{fontSize: textSize + 'px'}}>
-					Name: {displayName}<br />
+					Name: <br />
 					Gender: {userGender} <br />
-					Email: {userEmail}<br />
+					Email: <br />
 					Address: {userAddress}<br />
 					Font Size: {textSize}
 
@@ -133,7 +139,8 @@ function ProfilePage(props) {
 					<p>Events list goes here</p>
 				</div>
 			</div>
-			{/* <button type="button" id = "prefButton" onClick={changePreferences} name="settingbtn">Preferences</button>
+
+			<button type="button" id = "prefButton" onClick={changePreferences} name="settingbtn">Preferences</button>
 			{choosingPrefs ? <div className='settings'>
 				<form onSubmit={submitChangePreferences}>
 
@@ -142,18 +149,16 @@ function ProfilePage(props) {
 				</form>
 			</div> : null} */}
 
-			<button className ="EditProfBtn" type="button" onClick={editProfile} name="editbtn"> Edit Profile!</button>
+			
 			{isOpen && <EditProfilePopUp
       content={<>
         {editing ? <div className='profileEditor'	>
-				Edit Profile Here: <br />
+				<h4 className='center2'> Edit Profile Here </h4>
 				<form onSubmit={changeProfile}>
 					Enter New Name: <input type="text" name="newName" /><br />
-					Enter New Image : <input type="file" accept="image/*" id="newImg" name="myfile"/>
+					Enter New Image : <input type="file" accept="image/*" id="newImg" name="myfile"/> <br />
 					Enter New Email: <input type="text" name="newEmail" /><br />
-					Enter New Gender: <input type="text" name="newGender" /><br />
-					Enter New Address: <input type="text" name="newAddress" />
-					<button type="submit" name="editbtn"> Submit Changes</button>
+					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
 
 				</form>
 

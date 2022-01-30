@@ -5,21 +5,24 @@ import { collection, Firestore } from '@firebase/firestore';
 import { doc, getDoc, getDocs, updateDoc, where } from 'firebase/firestore';
 import { userIDAdm } from '../../pages/AdminPage/AdminPage';
 import { query } from 'firebase/database';
+import { getAuth, updateProfile } from "firebase/auth";
 
 let currentID;
-const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role }) => {
+const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) => {
 
 
 	let userIDRef = tempUserIDAdm; // this will change based on the profile page pulled rn
 	let usersRef = collection(db, 'users');
 	let userDocRef = doc(db, 'users', userIDRef);
+	let userDisabledRef = doc(db, 'users', userIDRef, );
 	
 	const [isAdmin, setIsAdmin] = useState(role === 'orgAdmin'?true:false);
+	const [isBanned2, setIsBanned] = useState(isBanned);
+	
 
 	useEffect(() => {
-		// console.log(getDoc(userDocRef), 'hi');
-
-		//this isn't being used right now
+		currentID = sessionStorage.getItem("userIDforPopup");
+		
 	}, []);
 
 
@@ -68,8 +71,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role }) => {
 
 	async function handleSetRoleToOle(ev) {
 
-		setIsAdmin(!isAdmin)
-		currentID = sessionStorage.getItem("userIDforPopup");
+		setIsAdmin(!isAdmin);
 		console.log(currentID); //works when getting just id, need to get string from "role" field in the db
 
 		const q = query(usersRef, where("id", "==", currentID));
@@ -165,8 +167,41 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role }) => {
 		console.log(ev, 'handleSuspendUser');
 	}
 	function handleBanUser(ev) {
-		console.log(ev, 'handleBanUser');
-	}
+		console.log(isBanned2);
+		setIsBanned(!isBanned2);
+		updateDoc(userDocRef, {
+			disabled: !isBanned2
+		}).then(async () => {
+			// create and show the notification
+			const showNotification = () => {
+				// create a new notification
+				const notification = new Notification('UPDATE', {
+					body: (isBanned2? "USER BAN REMOVED": "USER BANNED"),
+				});
+				// close the notification after 10 seconds
+				setTimeout(() => {
+					notification.close();
+				}, 10 * 1000);
+			};
+			// show an error message
+			const showError = () => {
+				// const error = document.querySelector('.error');
+				// error.style.display = 'block';
+				// error.textContent = 'You blocked the notifications';
+				alert('Notifications disabled');
+			};
+			// check notification permission
+			let granted = false;
+			if (Notification.permission === 'granted') {
+				granted = true;
+			} else if (Notification.permission !== 'denied') {
+				let permission = await Notification.requestPermission();
+				granted = permission === 'granted' ? true : false;
+			}
+			// show notification or error
+			granted ? showNotification() : showError();
+		});
+			}
 
 	return (
 		<div className='popupAdmin-box'>
@@ -201,8 +236,8 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role }) => {
 					<button id='suspendUser' onClick={handleSuspendUser}>
 						Suspend User *not in MVP
 					</button>
-					<button id='banUser' onClick={handleBanUser}>
-						Ban User *not in MVP
+					<button id='banUser' className={isBanned2?"danger":''} onClick={handleBanUser}>
+						{isBanned2?"User Banned":"Not Banned"}
 					</button>
 				</div>
 			</div>

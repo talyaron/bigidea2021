@@ -18,6 +18,7 @@ import { db } from './functions/firebase/config';
 //pages
 import AdminPage from './views/pages/AdminPage/AdminPage';
 import StickyBanner from './views/components/StickyBanner/StickyBanner'
+import NavTopBar from "./views/components/NavTopBar/NavTopBar";
 import Event from './views/pages/Event/Event';
 
 //hi
@@ -41,6 +42,10 @@ function App() {
         userID = uid;
         //get user from db
         getDoc(doc(db, "users", uid)).then((userDB) => {
+          if (userDB.data().disabled == true){
+            console.log("user is banned");
+            return;
+          }
           if (userDB.exists()) {
             console.log("user exists");
             setUserState({
@@ -78,6 +83,7 @@ function App() {
               userID: uid,
               userIcon: user.photoURL,
               userPref: ["null"],
+              disabled : false,
             });
           }
         });
@@ -94,16 +100,17 @@ function App() {
 		<div className='container_AppMain'>
 			{loggedIn ? (
 				<div className='container_App'>
+          <NavTopBar titleDisplay="NBM Tel Aviv" />
 					<Routes>
-						<Route path='/' element={<MainPage role={role} />} />
+						<Route path='/' element={<MainPage role={role}/>} />
 						<Route path='404' element={<Error />} />
 						<Route path='401' element={<Unauthorised />} />
 						<Route path='MainPage' element={<MainPage role={role} />} />
-						<Route path='ContactUs' element={<ContactUs />} />
+						<Route path='ContactUs' element={<ContactUs />}/>
 						<Route path='event/:eventID' element={<Event />} />
 						<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
-						<Route path='AdminPage' element={<AdminPage />} />
+						<Route path='AdminPage' element={<AdminPage />}/>
             
 					</Routes>
 					<StickyBanner isAdmin={isAdmin} isOle={isOle}/>

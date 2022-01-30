@@ -20,7 +20,7 @@
 body {
 	font-family: 'Poppins', sans-serif;
 	margin: 0px;
-	background-color: Var(--Background-light);
+	background-color: var(--Background-light);
 	max-height: calc(100vh - 50px);
 }
 
@@ -50,4 +50,14 @@ body {
 .container_App {
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
+}
+
+button{
+	/* width: 190px;
+    height: 40px;
+    margin: 1px; */
+    border-radius: 15px;
+    border: none;
+	background-color: var(--Navy-blue);
+	color: var(--Grey);	
 }
