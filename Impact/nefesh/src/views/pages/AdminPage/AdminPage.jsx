@@ -15,6 +15,7 @@ function AdminPage() {
 	const [userID, setUserID] = useState('id');
 	const [isOpen, setIsOpen] = useState(false);
 	const [role, setRole] = useState('ole');
+	const [isBannedRef, setIsBannedRef] = useState("Ban User");
 
 
 	function togglePopup(name) {
@@ -27,6 +28,12 @@ function AdminPage() {
 			//get ID for changing settings
 			var userIDforPopup = userIdSpec;
 			sessionStorage.setItem("userIDforPopup", userIDforPopup);
+
+			setIsBannedRef(name.disabled);
+
+			//get ID for changing settings
+			var IsBannedforPopup = userIdSpec;
+			sessionStorage.setItem("IsBannedforPopup", IsBannedforPopup);
 
 			//open popup
 			setIsOpen(!isOpen);
@@ -173,6 +180,7 @@ function AdminPage() {
 				<AdminPagePopUp
 					tempUserIDAdm={userID}
 					role={role}
+					isBannedRef={isBannedRef}
 					content={
 						<>
 							<b id='displayName_AP'>{displayName}</b>

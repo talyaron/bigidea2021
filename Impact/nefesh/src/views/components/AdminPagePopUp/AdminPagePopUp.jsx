@@ -8,17 +8,21 @@ import { query } from 'firebase/database';
 import { getAuth, updateProfile } from "firebase/auth";
 
 let currentID;
-const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role }) => {
+const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) => {
 
 
 	let userIDRef = tempUserIDAdm; // this will change based on the profile page pulled rn
 	let usersRef = collection(db, 'users');
 	let userDocRef = doc(db, 'users', userIDRef);
+	let userDisabledRef = doc(db, 'users', userIDRef, );
 	
 	const [isAdmin, setIsAdmin] = useState(role === 'orgAdmin'?true:false);
+	const [isBannedRef, setIsBannedRef] = useState(isBanned);
+	
 
 	useEffect(() => {
 		currentID = sessionStorage.getItem("userIDforPopup");
+		isBanned = sessionStorage.getItem("IsBannedforPopup");
 	}, []);
 
 
@@ -163,9 +167,10 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role }) => {
 		console.log(ev, 'handleSuspendUser');
 	}
 	function handleBanUser(ev) {
-		console.log(userDocRef);
+		console.log(isBannedRef);
+		setIsBannedRef("Remove Ban");
 		updateDoc(userDocRef, {
-			disabled: true
+			disabled: !isBannedRef
 		}).then(async () => {
 			// create and show the notification
 			const showNotification = () => {
@@ -232,7 +237,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role }) => {
 						Suspend User *not in MVP
 					</button>
 					<button id='banUser' onClick={handleBanUser}>
-						Ban User *not in MVP
+						{isBanned}
 					</button>
 				</div>
 			</div>
