@@ -103,7 +103,7 @@ function ArticleCreation(props) {
         tempArray.splice(tag, 1)
         setTagsState(tempArray)
     }
-    return <div>
+    return <div className='backGround'>
         <header className='Header'>Create an Article</header>
         <div className='createArticle-popup-box'>
             {/* <b className='infoTitle'>Input information here</b>  */}

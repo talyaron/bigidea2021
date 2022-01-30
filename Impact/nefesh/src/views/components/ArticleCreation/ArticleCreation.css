@@ -46,18 +46,23 @@
     border-radius: 5px;
     margin-top: 10px;
 }
+.backGround{
+    background-color: var(--Light);
+}
 .createArticle-popup-box {
     position: relative;
     max-width: 100%;
     max-height: 80vh;
     overflow-y: auto;
-    background-color: #c8e6ff;
+    background-color: var(--Background-light);
     color: var(--Navy-blue);
     margin: 15px;
     display: flex;
     flex-direction: column;
     padding: 5px;
     border-radius: 10px;
+    width: 91%;
+    height: 80vh;
     /*grid-template-columns: repeat(6, 1fr); /*6 columns*/
     /*grid-template-rows: repeat(14, auto); /*14 rows*/
     
@@ -136,7 +141,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
     color: var(--Grey);
     width: 100px;
     position: relative;
-    left: 65vw;
+    left: 65.5vw;
     bottom: 5vh;
     border-radius: 15px;
     margin-top: 10px;
