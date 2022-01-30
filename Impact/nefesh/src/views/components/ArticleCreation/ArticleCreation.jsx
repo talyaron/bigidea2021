@@ -105,17 +105,18 @@ function ArticleCreation(props) {
     }
     return <div>
         <div className='createArticle-popup-box'>
-            <b className='infoTitle'>Input information here</b> 
-            <ImportImgs userData={props} pageName={page}/>
-            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here"   className='shadow'/>
-            <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here"  className='shadow'/>
-            <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" className='shadow'/>
-            <input type="text" name="city" onChange={changeState} placeholder="Enter city here"  className='shadow'/>
-            <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" className='shadow'/>
-            <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here"  className='shadow'/>
-            <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here"  className='shadow'/>
-            <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here"  className='shadow'/>
-            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" className='shadow'/>
+            <b className='infoTitle'>Input information here</b>
+            <ImportImgs userData={props} pageName={page} />
+            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here" className='shadow' />
+            <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here" className='shadow' />
+            <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here" className='shadow' />
+            <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" className='shadow' />
+            <input type="text" name="city" onChange={changeState} placeholder="Enter city here" className='shadow' />
+            <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" className='shadow' />
+            <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here" className='shadow' />
+            <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here" className='shadow' />
+            <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here" className='shadow' />
+            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" className='shadow' />
             <div>Event Date:</div>
             <input type="date" name="date" onChange={changeState} placeholder="Enter date here" className='shadow' />
             <div>Event Start Time:</div>
