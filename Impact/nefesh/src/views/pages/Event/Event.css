@@ -28,7 +28,9 @@
     /* font-size: 3.5vw; */
 }
 
-
+/* .eventName_Event{
+    display: block;
+} */
 .mainContainer_Event{
     display: flex;
     flex-direction: column;

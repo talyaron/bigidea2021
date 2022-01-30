@@ -17,54 +17,51 @@ function Event() {
 	let navigate = useNavigate();
 
 	useEffect(async () => {
-		try {
-			setWebValidity(false);
-			let eventRef = doc(db, 'events', eventID);
-			const docSnap = await getDoc(eventRef);
-			console.log(docSnap)
-			setEventData(docSnap);
-			setTags(docSnap.data().tags);
-			setAddressInfo(docSnap.data().address);
-			setContactInfo(docSnap.data().contactInfo);
-			let validState = validURL(docSnap.data().contactInfo.website);
-			setWebValidity(validState);
-			setOrgWebsite(docSnap.data().contactInfo.website);
-		} catch (err) {
-			console.error(err);
-		}
+		// try {
+		// setWebValidity(false);
+		let eventRef = doc(db, 'events', eventID);
+		const docSnap = await getDoc(eventRef);
+		console.log(docSnap.data())
+		console.log(eventID)
+		setEventData(docSnap.data());
+		setTags(docSnap.data().types);
+		setAddressInfo(docSnap.data().address);
+		setContactInfo(docSnap.data().contactInfo);
+		// let validState = validURL(docSnap.data().contactInfo.website);
+		// setWebValidity(validState);
+		setOrgWebsite(docSnap.data().contactInfo.website);
+		// } catch (err) {
+		// 	console.error(err);
+		// }
 	}, []);
 
-	function validURL(str) {
-		var pattern = new RegExp(
-			'^(https?:\\/\\/)?' + // protocol
-			'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-			'((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-			'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-			'(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-			'(\\#[-a-z\\d_]*)?$',
-			'i'
-		); // fragment locator
-		return !!pattern.test(str);
-	}
+	// function validURL(str) {
+	// 	var pattern = new RegExp(
+	// 		'^(https?:\\/\\/)?' + // protocol
+	// 		'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+	// 		'((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+	// 		'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+	// 		'(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+	// 		'(\\#[-a-z\\d_]*)?$',
+	// 		'i'
+	// 	); // fragment locator
+	// 	return !!pattern.test(str);
+	// }
 
 	function ping() {
-		console.log(eventData);
+		console.log(eventData.data());
 	}
 	return (
+		
 		<div className='mainContainer_Event'>
 			{useScript("https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js")}
-			<div className='articleImage_Event' /*style={divStyle}*/>
-				<div className='articleImageButtons_Event'></div>
-			</div>
-
 			<div className='eventData_Event'>
-				<h1 className='eventName_Event'> {eventData.title} </h1>
-				<h4 className='eventDetails_Event'>
+				<div className='eventName_Event'> {eventData.title} </div>
+				{/* <h4 className='eventDetails_Event'>
 					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
-				</h4>
+				</h4> */}
 				<div className='secondaryInfo'>
 					<div className='eventTimeContainer_Event'>
-						<p className='eventDate_Event'> Event Date: {eventData.date} </p>
 						<p className='eventStartTime_Event'> Start Time: {eventData.startTime}</p>
 						<p className='eventEndTime_Event'> End Time: {eventData.endTime}</p>
 					</div>
@@ -97,7 +94,7 @@ function Event() {
 					<p>Our Email Address: {contactInfo.email}</p>
 				</div>
 			</div>
-
+			<button onClick={ping}>Hi</button>
 			<div className='eventTags_Event'>
 				<h3 className='tagTitle_Event'>Event Tags:</h3>
 				{tags.map((tags) => {
