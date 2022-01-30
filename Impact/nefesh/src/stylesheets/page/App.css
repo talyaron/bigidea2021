@@ -69,7 +69,7 @@ body {
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.185);
 	margin-bottom: 10px;
 	*/
-	background-color: #16171b;
+	background-color: #f0f0f0;
 	display: block;
     top: 0px;
     position: relative;
@@ -92,7 +92,11 @@ body {
 }
 
 .card > img {
-	width: 100%;
+
+	object-fit: cover;
+	height: 150px;
+    max-width: 100px;
+    object-position: right;
     /* margin: -32px -24px; */
 	z-index: -1;
     position: absolute;
@@ -103,6 +107,11 @@ body {
 }
 
 .card > #Date, .card > #Views {
-	color: white;
 	font-weight: bold;
+}
+
+
+.nametag > :not(img) {
+    margin-left: 110px;
+	color: #040404;
 }
