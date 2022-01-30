@@ -158,7 +158,7 @@ function ProfilePage(props) {
 					Enter New Name: <input type="text" name="newName" /><br />
 					Enter New Image : <input type="file" accept="image/*" id="newImg" name="myfile"/> <br />
 					Enter New Email: <input type="text" name="newEmail" /><br />
-					<button type="submit" name="editbtn"> Submit Changes</button>
+					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
 
 				</form>
 
