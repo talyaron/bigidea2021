@@ -123,14 +123,14 @@ function ArticleCreation(props) {
             <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow' />
             <div>Event End Time:</div>
             <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow' />
-            <div className="expandBox"><div contentEditable="true"  className="textarea" name="text" role="textbox" id="editor"  placeholder='Enter event description here'></div></div>
+            <div className="expandBox shadow"><div contentEditable="true"  className="textarea" name="text" role="textbox" id="editor"  placeholder='Enter event description here'></div></div>
 
 
 
 
             <form className='Tags' onSubmit={addTags}>
-                <input type="text" name="tagsInput" placeholder="Enter event tags here" />
-                <button className='submit Button36' type="submit">Submit</button>
+                <input type="text" name="tagsInput" placeholder="Enter event tags here" className='shadow' />
+                <button className='submit Button36 shadow' type="submit">Submit</button>
             </form>
             <div className='tagBox'>
                 <div className="tagsMapContainer shadow">

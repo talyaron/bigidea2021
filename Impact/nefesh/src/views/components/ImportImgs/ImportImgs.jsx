@@ -40,8 +40,8 @@ function ImportImg(props) {
 
 	return (
 		<form onSubmit={handleFireBaseUpload} id='form_ImportImg'>
-			<input type='file' name='articleImg' id='input_ArticleImg' accept='image/*' onChange={handleImgUpload} />
-			<input type='submit' id='SubmitButton_ImportImg' />
+			<input type='file' name='articleImg' id='input_ArticleImg' accept='image/*' onChange={handleImgUpload}className='shadow' />
+			<input type='submit' id='SubmitButton_ImportImg' className='shadow' />
 		</form>
 	);
 }
