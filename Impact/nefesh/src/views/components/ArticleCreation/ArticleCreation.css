@@ -134,7 +134,8 @@ https://css-tricks.com/auto-growing-inputs-textareas/
     text-align: center;
     font-size: 40px;
     color: var(--Navy-blue);
-    background-color: var(--Background-blue);
+    background-color: var(--Background-light);
+    width: 450px;
 }
 .Images{
     padding-left: 10px;
