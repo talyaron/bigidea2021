@@ -13,10 +13,12 @@ import {
     getFirestore,
 } from "firebase/firestore";
 
-let filterRef= doc(db, "events");
+//let filterRef= doc(db, "events");
 
 const filters = {};
+let filtersArr2 = [];
 let eventFilters = [];
+let count= 0;
 
 function DataFilters() {
     var searchOption;
@@ -25,6 +27,7 @@ function DataFilters() {
     const [articles, setArticles] = useState([]);
     const [searchField, setSearchField] = useState("");
     const [searchFilters, setSearchFilters] = useState([]);
+   
 
 
     function handleSearchByChange(ev) {
@@ -33,7 +36,27 @@ function DataFilters() {
     }
 
     async function getTarget(ev) {
+        if ((count <5) && (ev.target.checked === true)){
         filters[ev.target.name] = ev.target.checked;
+        filtersArr2.push(ev.target.name)
+        count++;
+        console.log(count)
+        //console.log(filtersArr2)
+        }
+        else if ((count >=5) && (ev.target.checked === true)){
+            ev.target.checked= false;
+            alert("Too many filters. Please select up to five filters.")
+            
+        }
+        else if ((ev.target.checked === false)){
+            count--;
+            filters[ev.target.name] = false;
+            console.log(count)
+            filtersArr2.splice(filtersArr2.indexOf(ev.target.name))
+        }
+
+        console.log(filtersArr2);
+
     }
     async function getEvents(ev) {
         ev.preventDefault();
@@ -62,7 +85,8 @@ function DataFilters() {
         console.log(filter)
         return new Promise((resolve, reject) => {
             const filteredRef = collection(db, "events");
-            const q = query(filteredRef, where("type", "==", filter) /*check if multiple statements can be added here*/);
+            filters.forEach()
+            const q = query(filteredRef, where("type", "==", filter/*filters[filter]*/));
             getDocs(q).then((eventsDB) => {
                 const eventsTemp = [];
                 eventsDB.forEach((eventDB) => {
@@ -82,7 +106,7 @@ function DataFilters() {
     }
     return (
         <div>
-            Filters:
+            Filters (Select up to five filters):
             <input
                 className="searchBar"
                 type="checkbox"
@@ -97,6 +121,34 @@ function DataFilters() {
                 onClick={getTarget}
             />
             60+
+            <input
+                className="searchBar"
+                type="checkbox"
+                name="party"
+                onClick={getTarget}
+            />
+            Party
+            <input
+                className="searchBar"
+                type="checkbox"
+                name="party"
+                onClick={getTarget}
+            />
+            Party
+            <input
+                className="searchBar"
+                type="checkbox"
+                name="party"
+                onClick={getTarget}
+            />
+            Party
+            <input
+                className="searchBar"
+                type="checkbox"
+                name="party"
+                onClick={getTarget}
+            />
+            Party
             <input
                 className="searchBar"
                 type="checkbox"
