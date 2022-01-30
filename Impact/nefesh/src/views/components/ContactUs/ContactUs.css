@@ -1,34 +1,48 @@
-.contactWrapper{
-    background-color: blue;
-    height: 300px;
-  }
+
   .phoneNum{
-    color: mediumseagreen;
-    text-align: left;
-    font-size: 60px;
+    color: #0077cc;
+    text-align: center;
+    font-size: 20px;
   
   }
   .email{
-    color: wheat;
+    color: #0077cc;
     text-align: right;
-    font-size: 60px;
+    font-size: 25px;
   
   }
-  .or{
-    color: purple;
-    font-size: 60px;
-  
+  .head{
+    background-color: #54a4d4;
+    text-align: center;
+    font-size: 30px;
+    height: 50px;
+    margin-top: 10px;
   }
-.bottonBox{
-    position: absolute;
-    display: flex;
-    width: 100px;
-    height: 40px;
-    bottom: 5px;
-}
+  .box-1{
+    border: 1px black solid;
+    margin: 10px;
+    text-align: center;
+    border-radius: 15px 15px 15px 15px;
+    background-color: #e4e8ec;
+  }
+  .apply{
+    text-align: center;
+    font-size: 20px;
+  }
+  .apbutton{
+    font-size: 20px;
+    background-color: #54a4d4;
+  }
+  .mission{
+    text-align: center;
+    border: none;
+    padding: 10px;
+    border-radius: 15px 15px 15px 15px;
+    margin: 20px;
+    background-color: #54a4d4;
+  }
+  .mishead{
+    font-size: 20px;
+  }
 
-.container{
-    width: 300px;
-    height: 200px;
-    
-}
+

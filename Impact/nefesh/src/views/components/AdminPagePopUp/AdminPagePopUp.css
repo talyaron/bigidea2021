@@ -10,12 +10,12 @@
   
   .adminBox {
     position: relative;
-    width: 70%;
+    width: fit-content;
     margin: 0 auto;
     height: auto;
     max-height: 70vh;
     margin-top: calc(100vh - 85vh - 20px);
-    background: Var(--Light-blue);
+    background: Var(--Navy-blue);
     border-radius: 4px;
     padding: 20px;
     border: 2px solid Var(--Dark-L2);
@@ -26,6 +26,7 @@
     content: 'x';
     cursor: pointer;
     position: fixed;
+    left: 93%;
     right: calc(15% - 30px);
     top: calc(100vh - 85vh - 33px);
     background: #ededed;
@@ -41,7 +42,6 @@
   .AdminButtonContainer{
     padding: 10px;
     border-radius: 5px;
-    background-color:salmon;
   }
 
   #changeDisplayName, #setRoleToOle, #setRoleToOrgAdmin, #suspendUser, #banUser{
@@ -49,7 +49,8 @@
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid Var(--Dark-L1);
-    box-shadow: 1px 1px 3px 2px Var(--Dark);
+    box-shadow: 1px 1px 2px 2px Var(--Dark);
+    color: Var(--Navy-blue);
     height: auto;
     display: flex;
     flex-direction: column;
@@ -59,11 +60,19 @@
     background-color: Var(--Light);
   }
   #setRoleToOle{
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
+    width: fit-content;
+    font-size: small;
+    
   }
   #displayName, #userIDdisplay {
-    color: Var(--Dark);
+    color: Var(--Light);
     font-size: larger;
+    font-weight: 500;
+    text-shadow: 0 0 3px Var(--Dark), 0 0 5px Var(--Dark);
   }
 
   /* The switch - the box around the slider */
@@ -72,6 +81,8 @@
   display: inline-block;
   width: 60px;
   height: 34px;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 /* Hide default HTML checkbox */
@@ -89,7 +100,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color:Var(--Light-D2);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -101,17 +112,17 @@
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color:Var(--Light);
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: Var(--Light-blue);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px Var(--Light-blue);
 }
 
 input:checked + .slider:before {
@@ -127,4 +138,8 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.danger{
+	background-color: tomato !important;
 }
