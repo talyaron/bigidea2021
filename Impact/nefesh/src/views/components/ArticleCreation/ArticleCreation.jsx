@@ -104,8 +104,10 @@ function ArticleCreation(props) {
         setTagsState(tempArray)
     }
     return <div>
+        <header className='Header'>Create an Article</header>
+        <div className='Background'>
         <div className='createArticle-popup-box'>
-            <b className='infoTitle'>Input information here</b> 
+            {/* <b className='infoTitle'>Input information here</b>  */}
             <ImportImgs userData={props} pageName={page}/>
             <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here"   className='shadow'/>
             <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here"  className='shadow'/>
@@ -147,6 +149,7 @@ function ArticleCreation(props) {
             <button className='submit Button2 shadow' onClick={saveDraft}>Save Draft</button>
             <button className='submit Button2 shadow' onClick={submitArticle}>Submit Article</button>
         </div>
+    </div>
     </div>
 }
 

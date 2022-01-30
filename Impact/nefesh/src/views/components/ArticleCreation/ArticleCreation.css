@@ -46,13 +46,12 @@
     border-radius: 5px;
     margin-top: 10px;
 }
-
 .createArticle-popup-box {
     position: relative;
     max-width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    background-color: var(--Background-blue);
+    background-color: var(--Light);
     color: var(--Navy-blue);
     margin: 15px;
     display: flex;
@@ -65,12 +64,12 @@
     
 }
 .createArticle-popup-box input{
-    background-color: /*rgb(231, 231, 231)*/var(--Light-D2);
+    background-color: /*rgb(231, 231, 231)*/var(--Grey);
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 10px;
     border: none;
-    color: var(--Grey);
+    color: var(--Dark-D2);
 }
 .tagBox{
     display: flex;
@@ -92,7 +91,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 10px;
-    color: var(--Grey);
+    color: var(--Dark-D2);
     font-family:sans-serif;
     font-size: 15px;
 }
@@ -117,4 +116,9 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 .Button2{
     height: 50px;
+}
+.Header{
+    text-align: center;
+    font-size: 40px;
+    color: var(--Navy-blue);
 }
