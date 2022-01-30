@@ -17,12 +17,12 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) 
 	let userDisabledRef = doc(db, 'users', userIDRef, );
 	
 	const [isAdmin, setIsAdmin] = useState(role === 'orgAdmin'?true:false);
-	const [isBannedRef, setIsBannedRef] = useState(isBanned);
+	const [isBanned2, setIsBanned] = useState(isBanned);
 	
 
 	useEffect(() => {
 		currentID = sessionStorage.getItem("userIDforPopup");
-		isBanned = sessionStorage.getItem("IsBannedforPopup");
+		
 	}, []);
 
 
@@ -167,10 +167,10 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) 
 		console.log(ev, 'handleSuspendUser');
 	}
 	function handleBanUser(ev) {
-		console.log(isBannedRef);
-		setIsBannedRef("Remove Ban");
+		console.log(isBanned2);
+		setIsBanned(!isBanned2);
 		updateDoc(userDocRef, {
-			disabled: !isBannedRef
+			disabled: !isBanned2
 		}).then(async () => {
 			// create and show the notification
 			const showNotification = () => {
@@ -236,8 +236,8 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) 
 					<button id='suspendUser' onClick={handleSuspendUser}>
 						Suspend User *not in MVP
 					</button>
-					<button id='banUser' onClick={handleBanUser}>
-						{isBanned}
+					<button id='banUser' className={isBanned2?"danger":''} onClick={handleBanUser}>
+						{isBanned2?"User Banned":"Not Banned"}
 					</button>
 				</div>
 			</div>

@@ -15,7 +15,7 @@ function AdminPage() {
 	const [userID, setUserID] = useState('id');
 	const [isOpen, setIsOpen] = useState(false);
 	const [role, setRole] = useState('ole');
-	const [isBannedRef, setIsBannedRef] = useState("Ban User");
+	const [isBanned, setIsBanned] = useState(false);
 
 
 	function togglePopup(name) {
@@ -29,7 +29,7 @@ function AdminPage() {
 			var userIDforPopup = userIdSpec;
 			sessionStorage.setItem("userIDforPopup", userIDforPopup);
 
-			setIsBannedRef(name.disabled);
+			setIsBanned(name.disabled);
 
 			//get ID for changing settings
 			var IsBannedforPopup = userIdSpec;
@@ -157,17 +157,17 @@ function AdminPage() {
 					<button onClick={handleClearFilter} id='clearFilter_AP'>Clear Search</button>
 					</div>
 				<div className='eventMapContainer_AP'>
-					{Names.map((names) => {
+					{Names.map((name) => {
 						return (
-							<div key={names.userID} className='nametag_AP'>
+							<div key={name.userID} className='nametag_AP'>
 								<div
 									value='User Settings'
 									className='adminButton'
 									name='userSelect'>
-									<h4 className="cardInfo_AP">{names.displayName}</h4>
-									<h5 className="cardInfo_AP">{names.email}</h5>
-									<button onClick={()=>togglePopup(names)} name='userButtonID_AP' id={names.userID} className="userButtonID_AP cardInfo_AP">
-										{names.userID}
+									<h4 className="cardInfo_AP">{name.displayName}</h4>
+									<h5 className="cardInfo_AP">{name.email}</h5>
+									<button onClick={()=>togglePopup(name)} name='userButtonID_AP' id={name.userID} className="userButtonID_AP cardInfo_AP">
+										{name.userID}
 									</button>
 								</div>
 							</div>
@@ -180,7 +180,7 @@ function AdminPage() {
 				<AdminPagePopUp
 					tempUserIDAdm={userID}
 					role={role}
-					isBannedRef={isBannedRef}
+					isBanned={isBanned}
 					content={
 						<>
 							<b id='displayName_AP'>{displayName}</b>
