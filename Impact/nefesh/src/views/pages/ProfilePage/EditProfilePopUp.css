@@ -11,10 +11,9 @@
   }
   .popup-box {
     position: fixed;
-    width: 70%;
+    width: 30%;
     height: fit-content;
     top: 0;
-    margin-left: 15%;
   }
   
   .Edit-close-icon {
@@ -29,7 +28,7 @@
     border: 1px solid Var(--Grey);
     font-size: 20px;
     z-index: 99;
-    right: 20%;
+    right: 38%;
   }
   .profileEditor{
     width: fit-content;
