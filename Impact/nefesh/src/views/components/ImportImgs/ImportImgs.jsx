@@ -28,18 +28,21 @@ function ImportImg(props) {
 		}
 	}
 
-	const handleFireBaseUpload = async (ev) => {
+	
+
+	async function onTrigger(ev){
 		ev.preventDefault();
 		uploadBytes(storageRef, imageAsFile).then((snapshot) => {
 			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${imageAsFile.name}`)).then((httpRef) => {
 				console.log(httpRef)
 				setImageAsUrl(httpRef)
+					props.parentCallBack(httpRef);
 			})
 		});
-	};
+	}
 
 	return (
-		<form onSubmit={handleFireBaseUpload} id='form_ImportImg'>
+		<form onSubmit={ onTrigger} id='form_ImportImg'>
 			<input type='file' name='articleImg' id='input_ArticleImg' accept='image/*' onChange={handleImgUpload}className='shadow' />
 			<input type='submit' id='SubmitButton_ImportImg' className='shadow' />
 		</form>
