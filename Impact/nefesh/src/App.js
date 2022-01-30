@@ -82,6 +82,7 @@ function App() {
               userID: uid,
               userIcon: user.photoURL,
               userPref: ["null"],
+              disabled : false,
             });
           }
         });
