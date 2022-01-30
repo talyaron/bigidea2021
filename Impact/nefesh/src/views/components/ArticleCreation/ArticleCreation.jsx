@@ -10,7 +10,7 @@ let page = 'ArticleCreation'
 
 
 function ArticleCreation(props) {
-
+    const [ImageUrl, setImageUrl] = useState('')
     const [tagsState, setTagsState] = useState([])
     const inputRef = useRef();
     const [value, setValue] = React.useState("I am edittable");
@@ -107,7 +107,7 @@ function ArticleCreation(props) {
         <div className='createArticle-popup-box'>
             <button onClick={ping}>Hi</button>
             <b className='infoTitle'>Input information here</b>
-            <ImportImgs userData={props} pageName={page} />
+            <ImportImgs userData={props} pageName={page} handleFireBaseUpload={Url => setImageUrl(ImageUrl)} />
             <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here" className='shadow' />
             <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here" className='shadow' />
             <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here" className='shadow' />
