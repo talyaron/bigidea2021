@@ -5,6 +5,7 @@ import { collection, Firestore } from '@firebase/firestore';
 import { doc, getDoc, getDocs, updateDoc, where } from 'firebase/firestore';
 import { userIDAdm } from '../../pages/AdminPage/AdminPage';
 import { query } from 'firebase/database';
+import { getAuth, updateProfile } from "firebase/auth";
 
 let currentID;
 const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role }) => {
@@ -17,9 +18,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role }) => {
 	const [isAdmin, setIsAdmin] = useState(role === 'orgAdmin'?true:false);
 
 	useEffect(() => {
-		// console.log(getDoc(userDocRef), 'hi');
-
-		//this isn't being used right now
+		currentID = sessionStorage.getItem("userIDforPopup");
 	}, []);
 
 
@@ -68,8 +67,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role }) => {
 
 	async function handleSetRoleToOle(ev) {
 
-		setIsAdmin(!isAdmin)
-		currentID = sessionStorage.getItem("userIDforPopup");
+		setIsAdmin(!isAdmin);
 		console.log(currentID); //works when getting just id, need to get string from "role" field in the db
 
 		const q = query(usersRef, where("id", "==", currentID));
@@ -165,8 +163,11 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role }) => {
 		console.log(ev, 'handleSuspendUser');
 	}
 	function handleBanUser(ev) {
-		console.log(ev, 'handleBanUser');
-	}
+		console.log(userDocRef);
+		updateDoc(userDocRef, {
+			disabled: true
+		})
+			}
 
 	return (
 		<div className='popupAdmin-box'>
