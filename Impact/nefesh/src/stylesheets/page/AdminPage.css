@@ -1,0 +1,124 @@
+.adminPageCont{
+   /* position: relative;
+    max-width: 100%;
+    max-height: 79vh;
+    overflow-y: auto;*/
+    background-color: var(--background-light);
+    color: var(--Dark);
+    /*margin: 15px;
+    display: flex;
+    flex-direction: column;*/
+    text-align: center;
+}
+.eventMapContainer{
+    /*margin-top: 1em;
+    padding-inline: 1em;
+    position: relative;*/
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2%;
+    margin-inline: 2%;
+}
+
+.adminButton {
+    border: 2px solid Var(--Dark);
+    background-color: Var(--Navy-blue);
+    display: inline-block;
+    margin: 3px;
+    width: 95%;
+    color: Var(--Light);
+    border-radius: 5px;
+    text-shadow: 0 0 3px Var(--Dark), 0 0 5px Var(--Dark);
+}
+
+.userButtonID {
+    background-color: Var(--Light-D2);
+    border-radius: 5px;
+    border: 1px solid Var(--Navy-blue);
+    box-shadow: 1px 1px 2px 2px Var(--Navy-blue);
+    font-size: small;
+    margin: 10px;
+    color: Var(--Navy-blue);
+}
+
+.userButtonID:hover {
+    background-color: Var(--Light-blue);
+    color: Var(--Light);
+}
+
+.cardInfo {
+    padding-left: 10px;
+    font-weight:500;
+}
+
+#searchDropdown {
+    background-color: Var(--Light);
+    margin-left: 5px;
+    border-radius: 5px;
+    border: 1px solid Var(--Grey-D2);
+    color: Var(--Navy-blue);
+}
+.searchAmenities{
+    border: 1px solid Var(--Dark);
+    border-collapse: collapse;
+}
+
+#search_button_AdminPage {
+    background-color: Var(--Light);
+    border: 1px solid Var(--Light);
+    height: 5.7vh;
+    width: 10%;
+    max-width: 60px;
+    font-size:large;
+    margin-left: .3vw;
+    margin-right: .3vw;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+    
+}
+
+#search_button_AdminPage:hover, #clearFilter:hover, #searchDropdown:hover {
+    background-color: Var(--Background-light);
+}
+
+#searchFor {
+    color: Var(--Navy-blue);
+}
+
+.search_Container{
+    /* position: fixed; */
+    position: sticky;
+    top: 0; /* change to zero when nav bar is on the bottom */
+    left: 0;
+    background-color: var(--Light);
+   /* width: 100%;*/
+    z-index: 8;
+    /*margin-bottom: 5%;*/
+    padding: 1%;
+    /* padding-right: 0%;
+    flex: none;
+    display: inline; */
+
+}
+#search_Box_AdminPage {
+    height: 5vh;
+    width: 60%;
+    max-width: 300px;
+    border: 1px solid Var(--Light);
+    background-color: Var(--Light);
+    
+}
+#clearFilter{
+    height: 6vh;
+    width: 25%;
+    max-width: 150px;
+    background-color: Var(--Light);
+    color: Var(--Grey-D2);
+    display: inline;
+    border: 1px solid Var(--Grey);
+}
+
+   
+  

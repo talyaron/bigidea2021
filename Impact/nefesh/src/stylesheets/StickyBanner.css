@@ -1,0 +1,95 @@
+.menuList_Container{
+	position: fixed;
+    background-color: #b7cbe7e8;
+    display: flex;
+    flex-direction: column;
+    bottom: 2%;
+    width: 70%;
+    left: 0;
+	border-bottom-right-radius: 35px;
+    border-top-right-radius: 35px;
+    border: outset;
+    border-left: none;
+	animation: move .2s linear 0s 1 alternate forwards;
+
+}
+
+
+/*
+#stickyBanner {
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	vertical-align: top;
+	bottom: 0px;
+	background-color: var(--Light-blue);
+	width: 98%;
+	height: 50px;
+	margin-inline: 1%;
+    margin-bottom: 10px;
+    border-radius: 9px;
+}*/
+
+#menuButtonGroup {
+	display: flex;
+    position: fixed;
+    bottom: 1%;
+    flex-flow: column;
+    right: 1%;
+}
+
+.stickyBanner {
+    margin-bottom: 10px;
+    background-color: #212223bf!important;
+    border-radius: 50%;
+    border: outset deepskyblue;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 7px 4px;
+    right: 1%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+	padding: 8px;
+}
+
+.MenuButton {
+
+}
+
+
+
+.stickyBanner > .MenuButton > img {
+	height: 40px;
+    width: auto;
+    margin-top: 4px;
+}
+
+.menuList {
+	padding-left: 3%;
+}
+
+.ListItemElement:hover {
+    background-color: var(--Grey-D1) ;
+}
+.ListItemElement {
+    margin-bottom: 0.1em;
+    border-start-start-radius: 16px;
+    border-end-start-radius: 16px;
+    list-style: none;
+	text-align: left;
+	background: #0789ba54;
+    padding: inherit;
+}
+
+@keyframes move {
+	0%{
+		z-index: -1;
+		transform: translateX(-200px);
+		/*transform: translateY(20px);*/
+	}
+	100%{
+		z-index: -1;
+		transform: translateX(0px);
+		/*transform: translateY(0px);*/
+	}
+}

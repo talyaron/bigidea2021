@@ -1,0 +1,55 @@
+.profileButton {
+    border-width: 2px;
+    font-weight: 400;
+    font-size: 0.8571em;
+    line-height: 1.35em;
+    margin: 0.5px 1px;
+    border: none;
+    border-radius: 0.1875rem;
+    padding: 11px 22px;
+    cursor: pointer;
+    background-color: #6e3dd1;
+    color: #FFFFFF;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.containerDetails{
+    padding: 4%;
+}
+#profilePic{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-top: 15px;
+    display: block;
+    margin: auto;
+    background-color: #6e3dd1;
+}
+
+#prof_DisplayName {
+    text-align: center;
+}
+
+#prefButton{
+    display: inline;
+    justify-content: center;
+}
+#submitChanges{
+    justify-content: center;
+}
+
+.info{
+    font-weight: 500;
+}
+.profileLabel {
+margin-block: 0px;
+}
+input, .detailValue {
+    margin-left: 0.2em;
+    background: azure;
+    padding: 3px 1em;
+    border-radius: 11px;
+    border-style: outset;
+    margin-block: 0.3em;
+    font-size: 14px;
+}

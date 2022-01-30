@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* name change */
+
+:root {
+	--Dark: #040404;
+	--Dark-L1: #0e1317;
+	--Dark-L2: #191e22;
+	--Grey: #a4b0c1;
+	--Grey-D1: #637897;
+	--Grey-D2: #586d8e;
+	--Light: #f7fbff;
+	--Light-D1: #edf2f6;
+	--Light-D2: #e4e8ec;
+	--Primary: #0077cc;
+	--Background-light: #c8e6ff;
+	--Navy-blue: #043c6c;
+	--Light-blue: #54a4d4;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	margin: 0px;
+	background-color: Var(--Background-light);
+	max-height: calc(100vh - 50px);
+}
+
+
+
+.container_AppMain{
+	position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+   /* padding-inline: 1em;
+    margin-top: 0.4em;*/
+}
+
+.container_App {
+	width: 100vw;
+	/*max-width: 500px;
+	/*overflow-y: scroll;  /* Hide vertical scrollbar */
+	/*overflow-x: hidden; /* Hide horizontal scrollbar */
+	max-height: 100vh;
+	height: 100vh;
+	margin: 0px;
+}
+
+
+
+/*
+.container_App::-webkit-scrollbar {
+	display: none;
+}
+
+ Hide scrollbar for IE, Edge and Firefox 
+.container_App {
+	-ms-overflow-style: none; 
+	scrollbar-width: none; 
+}*/
+@media screen and (min-width: 770px) {
+	.card {
+			max-width: 325px;
+	}
+}
+.card{
+	/*padding: 20px;
+	border-radius: 10px;
+	
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.185);
+	margin-bottom: 10px;
+	*/
+	background-color: #f0f0f0;
+	display: block;
+    top: 0px;
+    position: relative;
+	width: 100%;
+    
+    height: 150px;
+    border-radius: 12px;
+    padding: 0px 14px;
+    margin: 4px;
+    text-decoration: none;
+    z-index: 0;
+    overflow: hidden;
+    border: 1px solid var(--card-bg);
+    transition: all 0.2s ease;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 7px;
+}
+.card--link{
+	cursor: pointer;
+	user-select: none;
+}
+
+.card > img {
+
+	object-fit: cover;
+	height: 150px;
+    max-width: 100px;
+    object-position: right;
+    /* margin: -32px -24px; */
+	z-index: -1;
+    position: absolute;
+	top: 0;
+    left: 0;
+	mask-image: linear-gradient(180deg, rgb(255 255 255) 0%, rgb(19 19 19 / 24%) 75%);
+    -webkit-mask-image: linear-gradient(180deg, rgb(255 255 255) 0%, rgb(19 19 19 / 24%) 75%);
+}
+
+.card > #Date, .card > #Views {
+	font-weight: bold;
+}
+
+
+.nametag > :not(img) {
+    margin-left: 110px;
+	color: #040404;
+}

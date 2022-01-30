@@ -1,0 +1,45 @@
+/* Popup style */
+
+  
+.EditPopUpbox {
+    position: relative;
+    margin: 0 auto;
+    margin-top: calc(100vh - 85vh - 20px);
+    background:Var(--Light);
+    border-radius: 4px;
+    padding: 20px;
+  }
+  .popup-box {
+    position: fixed;
+    min-width: 70%;
+    height: -moz-fit-content;
+    height: fit-content;
+    top: 0;
+    display: inline;
+    left: 15%;
+  }
+  
+  .Edit-close-icon {
+    content: 'x';
+    position: absolute;
+    background: Var(--Light-D2);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid Var(--Grey);
+    font-size: 20px;
+    z-index: 99;
+    right: 1em;
+  }
+
+
+  .profileEditor > form {
+    display: grid;
+  }
+
+  .profileEditor > h4 {
+    margin-top: auto;
+    margin-bottom: 1em;
+  }
