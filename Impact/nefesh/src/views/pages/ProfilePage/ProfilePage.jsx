@@ -40,7 +40,7 @@ function ProfilePage(props) {
 		console.dir(ev.target);
 
 		const name = ev.target.elements.newName.value;
-		const profilePic = ev.target.elements.newImg.value;
+		const profilePic = ev.target.elements.newImg.files[0];
 		const email = ev.target.elements.newEmail.value;
 		const gender = ev.target.elements.newGender.value;
 		const address = ev.target.elements.newAddress.value;
@@ -57,6 +57,7 @@ function ProfilePage(props) {
 		if(ev.target.elements.newImg.value.length == 0) {
 			//nothing
 		} else {
+			console.log(profilePic)
 			setProfilePicImg(profilePic);
 			updateDoc(doc(db, "users", props.uid), {
 				userIcon: profilePic
@@ -141,7 +142,7 @@ function ProfilePage(props) {
 				</form>
 			</div> : null} */}
 
-			<button type="button" onClick={editProfile} name="editbtn"> Edit Profile!</button>
+			<button className ="EditProfBtn" type="button" onClick={editProfile} name="editbtn"> Edit Profile!</button>
 			{isOpen && <EditProfilePopUp
       content={<>
         {editing ? <div className='profileEditor'	>

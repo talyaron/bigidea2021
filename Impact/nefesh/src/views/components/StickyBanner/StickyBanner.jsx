@@ -25,12 +25,16 @@ function StickyBanner({isAdmin, isOle}) {
 		const auth = getAuth();
 		signOut(auth).then(() => {
 		// Sign-out successful.
-		navigate('/login');
+		handleRoute();
+		window.location.reload(false);
 		console.log("signed out");
 		}).catch((error) => {
 		// An error happened.
 		});
 	}
+	function handleRoute() {
+		navigate("/");
+	  }
 	
 	return (
 		<div id='stickyBanner'>
