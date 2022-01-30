@@ -45,8 +45,8 @@ function ArticleCreation(props) {
             views,
             dateAdded: new Date(),
             isPublished: true,
-            startTime,
-            endTime,
+            startTime: new Date(startTime),
+            endTime: new Date(startTime),
             maxCapacity,
             currentCapacity: maxCapacity
         })
@@ -89,8 +89,7 @@ function ArticleCreation(props) {
 
     function addTags(ev) {
         ev.preventDefault()
-        setTagsState([...tagsState, { id: i, tag: ev.target[0].value }])
-        i++
+        setTagsState([...tagsState, ev.target[0].value])
         console.log(ev.target[0].value)
     }
     function deleteTag(tag) {
@@ -135,9 +134,10 @@ function ArticleCreation(props) {
             <div className='tagBox'>
                 <div className="tagsMapContainer shadow">
                     {tagsState.map(tag => {
+                        i ++
                         return (
-                            <form onSubmit={deleteTag} key={tag.id} className='tagForm'>
-                                <div className='nameTag'>{tag.tag}</div>
+                            <form onSubmit={deleteTag} key={tag, i} className='tagForm'>
+                                <div className='nameTag'>{tag}</div>
                                 <button type="submit">X</button>
                             </form>
                         )
