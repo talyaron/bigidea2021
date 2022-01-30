@@ -130,7 +130,7 @@ function ArticleCreation(props) {
 
             <form className='Tags' onSubmit={addTags}>
                 <input type="text" name="tagsInput" placeholder="Enter event tags here" />
-                <button className='submit Button' type="submit">Submit</button>
+                <button className='submit Button36' type="submit">Submit</button>
             </form>
             <div className='tagBox'>
                 <div className="tagsMapContainer shadow">
