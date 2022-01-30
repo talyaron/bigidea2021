@@ -23,10 +23,9 @@ function ArticleCreation(props) {
         statesSumbitted = { ...statesSumbitted, [parse]: ev.target.innerHTML }
     }
     function submitArticle() {
-        const { title, name, date, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSumbitted;
+        const { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSumbitted;
         addDoc(collection(db, "events"), {
             title,
-            date,
             coverImage: image,
             article: text,
             hostName: name,
@@ -40,24 +39,23 @@ function ArticleCreation(props) {
                 email,
                 website
             },
-            tags: tagsState,
+            types: tagsState,
             creatorUID: props.userID,
             creatorOrg: props.userOrg,
             views,
             dateAdded: new Date(),
             isPublished: true,
-            startTime,
-            endTime,
+            startTime: new Date(startTime),
+            endTime: new Date(startTime),
             maxCapacity,
             currentCapacity: maxCapacity
         })
     }
     function saveDraft() {
-        const { title, name, date, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSumbitted;
+        const { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSumbitted;
 
         addDoc(collection(db, "events"), {
             title,
-            date,
             coverImage: image,
             article: text,
             hostName: name,
@@ -71,14 +69,14 @@ function ArticleCreation(props) {
                 email,
                 website
             },
-            tags: tagsState,
+            types: tagsState,
             creatorUID: props.userID,
             creatorOrg: props.userOrg,
             views,
             dateAdded: new Date(),
             isPublished: true,
-            startTime,
-            endTime,
+            startTime: new Date(startTime),
+            endTime: new Date(endTime),
             maxCapacity
         })
 
@@ -91,8 +89,7 @@ function ArticleCreation(props) {
 
     function addTags(ev) {
         ev.preventDefault()
-        setTagsState([...tagsState, { id: i, tag: ev.target[0].value }])
-        i++
+        setTagsState([...tagsState, ev.target[0].value])
         console.log(ev.target[0].value)
     }
     function deleteTag(tag) {
@@ -103,8 +100,12 @@ function ArticleCreation(props) {
         tempArray.splice(tag, 1)
         setTagsState(tempArray)
     }
+    function ping(){
+        console.log(statesSumbitted)
+    }
     return <div>
         <div className='createArticle-popup-box'>
+            <button onClick={ping}>Hi</button>
             <b className='infoTitle'>Input information here</b>
             <ImportImgs userData={props} pageName={page} />
             <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here" className='shadow' />
@@ -117,27 +118,26 @@ function ArticleCreation(props) {
             <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here" className='shadow' />
             <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here" className='shadow' />
             <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" className='shadow' />
-            <div>Event Date:</div>
-            <input type="date" name="date" onChange={changeState} placeholder="Enter date here" className='shadow' />
             <div>Event Start Time:</div>
-            <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow' />
+            <input type="datetime-local" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow' />
             <div>Event End Time:</div>
-            <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow' />
+            <input type="datetime-local" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow' />
             <div className="expandBox"><div contentEditable="true"  className="textarea" name="text" role="textbox" id="editor"  placeholder='Enter event description here'></div></div>
 
 
 
 
             <form className='Tags' onSubmit={addTags}>
-                <input type="text" name="tagsInput" placeholder="Enter event tags here" />
+                <input type="text" name="tagsInput" placeholder="Enter event types here" />
                 <button className='submit Button' type="submit">Submit</button>
             </form>
             <div className='tagBox'>
                 <div className="tagsMapContainer shadow">
                     {tagsState.map(tag => {
+                        i ++
                         return (
-                            <form onSubmit={deleteTag} key={tag.id} className='tagForm'>
-                                <div className='nameTag'>{tag.tag}</div>
+                            <form onSubmit={deleteTag} key={tag, i} className='tagForm'>
+                                <div className='nameTag'>{tag}</div>
                                 <button type="submit">X</button>
                             </form>
                         )

@@ -159,7 +159,7 @@ function App() {
         <li className="travelcompany-input" key={i}>
           <span className="input-label">
             {" "}
-            {/* {i + 1}. {article.Title} Written on {article.Date} by{" "} */}
+            {i + 1}. {article.Title} Written on {article.Date} by{" "}
             {article.creator} and currently has {article.views} views
           </span>{" "}
           <img src={article.Image} />
@@ -189,7 +189,7 @@ function App() {
                 <h1>{event.Title}</h1>
                 <div>{event.id}</div>
                 <img src={event.Image} style={{ width: "100px" }}></img>
-                {/* <div>This event will take place on: {event.Date}</div> */}
+                <div>This event will take place on: {event.Date}</div>
                 <div>{event.views} many people have viewed this event</div>
               </div>
             );
