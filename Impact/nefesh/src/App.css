@@ -20,7 +20,7 @@
 body {
 	font-family: 'Poppins', sans-serif;
 	margin: 0px;
-	background-color: Var(--Background-light);
+	background-color: white;
 	max-height: calc(100vh - 50px);
 }
 

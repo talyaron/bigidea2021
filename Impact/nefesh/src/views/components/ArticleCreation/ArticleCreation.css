@@ -51,7 +51,7 @@
     max-width: 100%;
     max-height: 80vh;
     overflow-y: auto;
-    background-color: var(--Light);
+    background-color: #c8e6ff;
     color: var(--Navy-blue);
     margin: 15px;
     display: flex;
