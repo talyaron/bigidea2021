@@ -108,28 +108,28 @@ function ArticleCreation(props) {
         <div className='createArticle-popup-box'>
             {/* <b className='infoTitle'>Input information here</b>  */}
             <ImportImgs userData={props} pageName={page}/>
-            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here"   className='shadow'/>
-            <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here"  className='shadow'/>
-            <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" className='shadow'/>
-            <input type="text" name="city" onChange={changeState} placeholder="Enter city here"  className='shadow'/>
-            <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" className='shadow'/>
-            <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here"  className='shadow'/>
-            <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here"  className='shadow'/>
-            <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here"  className='shadow'/>
-            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" className='shadow'/>
+            <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here"   className='shadow In'/>
+            <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here"  className='shadow In'/>
+            <input type="text" name="streetName" onChange={changeState} placeholder="Enter street name here" className='shadow In'/>
+            <input type="text" name="city" onChange={changeState} placeholder="Enter city here"  className='shadow In'/>
+            <input type="text" name="houseNumber" onChange={changeState} placeholder="Enter building number here" className='shadow In'/>
+            <input type="number" name="maxCapacity" onChange={changeState} placeholder="Enter maximum capacity here"  className='shadow In'/>
+            <input type="text" name="phone" onChange={changeState} placeholder="Enter phone number here"  className='shadow In'/>
+            <input type="text" name="email" onChange={changeState} placeholder="Enter your contact email here"  className='shadow In'/>
+            <input type="text" name="website" onChange={changeState} placeholder="Enter your website url here" className='shadow In'/>
             <div>Event Date:</div>
-            <input type="date" name="date" onChange={changeState} placeholder="Enter date here" className='shadow' />
+            <input type="date" name="date" onChange={changeState} placeholder="Enter date here" className='shadow In' />
             <div>Event Start Time:</div>
-            <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow' />
+            <input type="time" name="startTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow In' />
             <div>Event End Time:</div>
-            <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow' />
+            <input type="time" name="endTime" onChange={changeState} placeholder="Enter address line 1 here" className='shadow In' />
             <div className="expandBox shadow"><div contentEditable="true"  className="textarea" name="text" role="textbox" id="editor"  placeholder='Enter event description here'></div></div>
 
 
 
 
             <form className='Tags' onSubmit={addTags}>
-                <input type="text" name="tagsInput" placeholder="Enter event tags here" className='shadow' />
+                <input type="text" name="tagsInput" placeholder="Enter event tags here" className='tag34 shadow' />
                 <button className='submit Button36 shadow' type="submit">Submit</button>
             </form>
             <div className='tagBox'>
