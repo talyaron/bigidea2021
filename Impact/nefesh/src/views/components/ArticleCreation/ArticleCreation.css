@@ -35,7 +35,7 @@
 
 .submit{
     background-color: var(--Grey);
-    height: 40px;
+    height: 100px;
     border-radius: 15px;
     margin-top: 10px;
     border: none;
@@ -113,23 +113,38 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 /*Autogrowing box changes end here*/
 .Button{
     width: 190px;
-    height: 50px;
+    height: 40px;
     margin: 1px;
+    border-radius: 15px;
+    margin-top: 10px;
+    border: none;
 }
-.Button2{
-    height: 50px;
+.Dragon42{
+    height: 100px;
     background-color: var(--Navy-blue);
     color: var(--Grey);
     width: 100px;
+    border-radius: 15px;
+    margin-top: 10px;
+    border: none;
+    padding: 10px;
+    /*Button*/
 }
-.Button3{
-    height: 50px;
+.Dragon43{
+    height: 100px;
     background-color: var(--Navy-blue);
     color: var(--Grey);
     width: 100px;
     position: relative;
     left: 65vw;
-    bottom: 3vh;
+    bottom: 5vh;
+    border-radius: 15px;
+    margin-top: 10px;
+    border: none;
+    padding: 10px;
+    padding-left: 9px;
+    padding-right: 9px;
+    /*Button*/
 }
 .Header{
     text-align: center;
