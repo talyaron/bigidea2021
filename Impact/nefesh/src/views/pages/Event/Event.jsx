@@ -21,8 +21,8 @@ function Event() {
 			setWebValidity(false);
 			let eventRef = doc(db, 'events', eventID);
 			const docSnap = await getDoc(eventRef);
-			console.log(docSnap.data())
-			setEventData(docSnap.data().date);
+			console.log(docSnap)
+			setEventData(docSnap);
 			setTags(docSnap.data().tags);
 			setAddressInfo(docSnap.data().address);
 			setContactInfo(docSnap.data().contactInfo);
@@ -93,8 +93,6 @@ function Event() {
 
 			<div className='contactUsContainer_Event'>
 				<div className='contactUsContent_Event'>
-					{/* <button className="closePopUp" onClick={hideOrganizerContact}>  &times; Close</button> */}
-					<p>Our Website: {websiteValidity ? orgWebsite : 'No Link Available'}</p>
 					<p>Our Phone Number: {contactInfo.phone}</p>
 					<p>Our Email Address: {contactInfo.email}</p>
 				</div>
@@ -105,7 +103,7 @@ function Event() {
 				{tags.map((tags) => {
 					return (
 						<div className='tagBox_Event' key={tags.id}>
-							{tags.tag}
+							{tags}
 						</div>
 					);
 				})}

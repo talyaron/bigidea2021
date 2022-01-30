@@ -8,9 +8,11 @@ import { getAuth, signOut } from "firebase/auth";
 import HomeButton from '../Images/home.svg';
 import Menu from '../Images/Menu.svg';
 import X from '../Images/X.svg';
+import back from '../Images/back.svg'
 
 function StickyBanner({isAdmin, isOle}) {
 	const navigate = useNavigate();
+	// const history = useHistory();
 	const [navToggle, setNavToggle] = useState(false);
 
 
@@ -32,6 +34,11 @@ function StickyBanner({isAdmin, isOle}) {
 	
 	return (
 		<div id='stickyBanner'>
+			<div className='backB_container' onClick={()=> {
+					// history.goBack()
+				}}>
+				<img src={back} alt="back" id='backButton_SB'/>
+			</div>
 			<div
 				className='homeB_container'
 				onClick={() => {
@@ -39,9 +46,6 @@ function StickyBanner({isAdmin, isOle}) {
 				}}>
 				<img src={HomeButton} alt='Home' id='homeButton' />
 			</div>
-
-			{/* {isOle? : isAdmin? : } */}
-
 			<div className='Menu_container'>
 				{navToggle ? (
 					<div>

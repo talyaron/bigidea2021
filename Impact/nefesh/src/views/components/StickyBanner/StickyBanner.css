@@ -1,16 +1,21 @@
 
 
 #MenuButton{
-	max-height: 37px;
+	max-height: 40px;
 	z-index: 1;
-	margin-top: 7px;
+	margin-top: 3px;
 	
 }
 #homeButton{
 	max-height: 40px;
 	margin-top: 3px;
 	display: inline;
-	left: 0;
+
+}
+#backButton_SB{
+	max-height: 40px;
+	margin-top: 3px;
+	display: inline;
 
 }
 
