@@ -10,7 +10,7 @@ let page = 'ArticleCreation'
 
 
 function ArticleCreation(props) {
-    const [ImageUrl, setImageUrl] = useState('')
+    const {Render, imageAsUrl} = ImportImgs()
     const [tagsState, setTagsState] = useState([])
     const inputRef = useRef();
     const [value, setValue] = React.useState("I am edittable");
@@ -24,6 +24,7 @@ function ArticleCreation(props) {
     }
     function submitArticle() {
         const { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSumbitted;
+        image = [...imageAsUrl]
         addDoc(collection(db, "events"), {
             title,
             coverImage: image,
@@ -53,7 +54,7 @@ function ArticleCreation(props) {
     }
     function saveDraft() {
         const { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSumbitted;
-
+        image = [...imageAsUrl]
         addDoc(collection(db, "events"), {
             title,
             coverImage: image,
@@ -107,7 +108,7 @@ function ArticleCreation(props) {
         <div className='createArticle-popup-box'>
             <button onClick={ping}>Hi</button>
             <b className='infoTitle'>Input information here</b>
-            <ImportImgs userData={props} pageName={page} handleFireBaseUpload={Url => setImageUrl(ImageUrl)} />
+            <Render userData={props} pageName={page} />
             <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here" className='shadow' />
             <input type="text" name="name" onKeyUp={changeState} placeholder="Enter host/s name here" className='shadow' />
             <input type="text" name="image" onKeyUp={changeState} placeholder="Enter cover image url here" className='shadow' />

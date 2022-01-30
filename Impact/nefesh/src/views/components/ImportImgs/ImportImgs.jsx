@@ -2,7 +2,7 @@ import { onSnapshot } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useEffect, useState } from 'react';
 
-function ImportImg(props) {
+function HandleImportImg(props) {
 	const allInputs = { imgUrl: '' };
 	const storage = getStorage();
 	const [imageAsFile, setImageAsFile] = useState('');
@@ -38,15 +38,19 @@ function ImportImg(props) {
 		});
 	};
 
-	return (
+	
+
+	return {
+		imageAsUrl,
+		Render:(
 		<form onSubmit={handleFireBaseUpload} id='form_ImportImg'>
 			<input type='file' name='articleImg' id='input_ArticleImg' accept='image/*' onChange={handleImgUpload} />
 			<input type='submit' id='SubmitButton_ImportImg' />
 		</form>
-	);
+	)}
 }
 
-export default ImportImg;
+export default HandleImportImg;
 
 // images.forEach((image, index) => {
 // 	console.log(image, index)
