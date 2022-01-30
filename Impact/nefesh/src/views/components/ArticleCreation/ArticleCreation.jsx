@@ -104,8 +104,8 @@ function ArticleCreation(props) {
         setTagsState(tempArray)
     }
     return <div>
-        <div className='createArticle-popup-box'>
         <header className='Header'>Create an Article</header>
+        <div className='createArticle-popup-box'>
             {/* <b className='infoTitle'>Input information here</b>  */}
             <ImportImgs userData={props} pageName={page}/>
             <input type="text" name="title" onKeyUp={changeState} placeholder="Enter article title here"   className='shadow'/>
