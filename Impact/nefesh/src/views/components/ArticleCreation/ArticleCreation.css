@@ -52,7 +52,7 @@
 .createArticle-popup-box {
     position: relative;
     max-width: 100%;
-    max-height: 90vh;
+    max-height: 105vh;
     overflow-y: auto;
     background-color: var(--Background-light);
     color: var(--Navy-blue);
@@ -62,7 +62,7 @@
     padding: 5px;
     border-radius: 10px;
     width: 91%;
-    height: 90vh;
+    height: 105vh;
     /*grid-template-columns: repeat(6, 1fr); /*6 columns*/
     /*grid-template-rows: repeat(14, auto); /*14 rows*/
     
@@ -116,7 +116,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
   color: #586d8e;
 }
 /*Autogrowing box changes end here*/
-.Button{
+.Button36{
     width: 190px;
     height: 40px;
     margin: 1px;
@@ -125,31 +125,31 @@ https://css-tricks.com/auto-growing-inputs-textareas/
     border: none;
 }
 .Dragon42{
-    height: 100px;
+    height: 50px;
     background-color: var(--Navy-blue);
     color: var(--Grey);
     width: 100px;
     border-radius: 15px;
     margin-top: 10px;
     border: none;
-    padding: 10px;
+    /* padding: 10px; */
     /*Button*/
 }
 .Dragon43{
-    height: 100px;
+    height: 50px;
     background-color: var(--Navy-blue);
     color: var(--Grey);
     width: 100px; 
     border: none;
-    position: relative;
+    /* position: relative;
     left: 65.5vw;
-    bottom: 5vh;
+    bottom: 5vh; */
     border-radius: 15px;
     margin-top: 10px;
    
-    padding: 10px;
+    /* padding: 10px;
     padding-left: 9px;
-    padding-right: 9px;
+    padding-right: 9px; */
     /*Button*/
 }
 .Header{
@@ -168,7 +168,13 @@ https://css-tricks.com/auto-growing-inputs-textareas/
     background-color: var(--Navy-blue);
     color: var(--Grey);
     height: 50px;
+    border-radius: 15px;
 }
 #input_ArticleImg{
     border-radius: 5px;
+}
+.buttonContainer23{
+    display: flex;
+    width: 100%;
+    gap: 180px;
 }

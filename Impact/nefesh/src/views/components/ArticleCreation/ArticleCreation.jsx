@@ -145,8 +145,10 @@ function ArticleCreation(props) {
                     }
                 </div>
             </div>
+            <div className='buttonContainer23'>
             <button className='Dragon42 shadow' onClick={saveDraft}>Save Draft</button>
             <button className='Dragon43 shadow' onClick={submitArticle}>Submit Article</button>
+            </div>
         </div>
     </div>
 }
