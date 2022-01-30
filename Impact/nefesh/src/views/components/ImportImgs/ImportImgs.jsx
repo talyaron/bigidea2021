@@ -2,7 +2,7 @@ import { onSnapshot } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useEffect, useState } from 'react';
 
-function ImportImg(props) {
+function HandleImportImg(props) {
 	const allInputs = { imgUrl: '' };
 	const storage = getStorage();
 	const [imageAsFile, setImageAsFile] = useState('');
@@ -21,6 +21,7 @@ function ImportImg(props) {
 	}, []);
 	
 	function handleImgUpload(ev) {
+		ev.preventDefault()
 		const image = ev.target.files[0];
 		setImageAsFile((imageFile) => image);
 		if (imageAsFile === '') {
@@ -32,6 +33,9 @@ function ImportImg(props) {
 
 	async function onTrigger(ev){
 		ev.preventDefault();
+		console.log('ratsss', ev)
+		console.log(props.pageName, 'PageName')
+		console.log(props.userData.userID, 'userID')
 		uploadBytes(storageRef, imageAsFile).then((snapshot) => {
 			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${imageAsFile.name}`)).then((httpRef) => {
 				console.log(httpRef)
@@ -42,14 +46,15 @@ function ImportImg(props) {
 	}
 
 	return (
-		<form onSubmit={ onTrigger} id='form_ImportImg'>
+		<form onSubmit={onTrigger} id='form_ImportImg'>
 			<input type='file' name='articleImg' id='input_ArticleImg' accept='image/*' onChange={handleImgUpload}className='shadow' />
-			<input type='submit' id='SubmitButton_ImportImg' className='shadow' />
+			<button onClick={onTrigger} id='SubmitButton_ImportImg' className='shadow'>Upload </button>
 		</form>
-	);
+	)
 }
 
-export default ImportImg;
+
+export default HandleImportImg;
 
 // images.forEach((image, index) => {
 // 	console.log(image, index)
