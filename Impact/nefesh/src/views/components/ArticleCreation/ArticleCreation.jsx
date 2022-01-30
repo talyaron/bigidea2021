@@ -39,7 +39,7 @@ function ArticleCreation(props) {
                 email,
                 website
             },
-            tags: tagsState,
+            types: tagsState,
             creatorUID: props.userID,
             creatorOrg: props.userOrg,
             views,
@@ -69,7 +69,7 @@ function ArticleCreation(props) {
                 email,
                 website
             },
-            tags: tagsState,
+            types: tagsState,
             creatorUID: props.userID,
             creatorOrg: props.userOrg,
             views,
@@ -129,7 +129,7 @@ function ArticleCreation(props) {
 
 
             <form className='Tags' onSubmit={addTags}>
-                <input type="text" name="tagsInput" placeholder="Enter event tags here" />
+                <input type="text" name="tagsInput" placeholder="Enter event types here" />
                 <button className='submit Button' type="submit">Submit</button>
             </form>
             <div className='tagBox'>

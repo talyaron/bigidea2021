@@ -37,11 +37,11 @@ function Event() {
 	function validURL(str) {
 		var pattern = new RegExp(
 			'^(https?:\\/\\/)?' + // protocol
-				'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-				'((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-				'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-				'(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-				'(\\#[-a-z\\d_]*)?$',
+			'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+			'((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+			'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+			'(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+			'(\\#[-a-z\\d_]*)?$',
 			'i'
 		); // fragment locator
 		return !!pattern.test(str);
@@ -52,7 +52,7 @@ function Event() {
 	}
 	return (
 		<div className='mainContainer_Event'>
-			  {useScript("https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js")}
+			{useScript("https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js")}
 			<div className='articleImage_Event' /*style={divStyle}*/>
 				<div className='articleImageButtons_Event'></div>
 			</div>
@@ -81,13 +81,13 @@ function Event() {
 			<div className='userPromptContainer_Event'>
 				<h3 className='maxCap'> Max Capacity: {eventData.maxCapacity} </h3>
 				<div title='Add to Calendar' className='addeventatc'>
-						Add to Calendar
-						<span className='start'>{`${eventData.date}+${eventData.startTime}`}</span>
-						<span className='end'>{`${eventData.date}+${eventData.endTime}`}</span>
-						<span className='timezone'>Asia/Jerusalem</span>
-						<span className='title'>{eventData.title}</span>
-						<span className='description'>{eventData.article}</span>
-					</div>
+					Add to Calendar
+					<span className='start'>{`${eventData.date}+${eventData.startTime}`}</span>
+					<span className='end'>{`${eventData.date}+${eventData.endTime}`}</span>
+					<span className='timezone'>Asia/Jerusalem</span>
+					<span className='title'>{eventData.title}</span>
+					<span className='description'>{eventData.article}</span>
+				</div>
 				<button className='shareButton button_Event'> Share </button>
 			</div>
 
@@ -101,11 +101,7 @@ function Event() {
 			<div className='eventTags_Event'>
 				<h3 className='tagTitle_Event'>Event Tags:</h3>
 				{tags.map((tags) => {
-					return (
-						<div className='tagBox_Event' key={tags.id}>
-							{tags}
-						</div>
-					);
+					return <div key={tags.id}>{tags.tag}</div>;
 				})}
 			</div>
 		</div>
