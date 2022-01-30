@@ -49,6 +49,13 @@
     */
 
 }
+
+.nametag > :not(img) {
+    margin-left: 110px;
+    color: #040404;
+    margin-block: inherit;
+}
+
 .button{
     width: 500px;
     height: 500px;

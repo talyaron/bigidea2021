@@ -3,7 +3,7 @@
     background-color: #b7cbe7e8;
     display: flex;
     flex-direction: column;
-    bottom: 85px;
+    bottom: 2%;
     width: 70%;
     left: 0;
 	border-bottom-right-radius: 35px;
@@ -32,14 +32,11 @@
 }*/
 
 #menuButtonGroup {
-    display: flex;
+	display: flex;
     position: fixed;
-    bottom: 0;
-    width: -webkit-fill-available;
-    gap: 22vw;
-    place-content: center;
-    background-color: #3986c94a;
-    padding-block: 7px;
+    bottom: 1%;
+    flex-flow: column;
+    right: 1%;
 }
 
 .stickyBanner {
@@ -49,8 +46,8 @@
     border: outset deepskyblue;
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 7px 4px;
     right: 1%;
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
     text-align: center;
 	padding: 8px;
 }
@@ -62,10 +59,9 @@
 
 
 .stickyBanner > .MenuButton > img {
-	height: 30px;
+	height: 40px;
     width: auto;
-    margin-top: 0px;
-    user-select: none;
+    margin-top: 4px;
 }
 
 .menuList {

@@ -95,8 +95,9 @@ function App() {
       });
       console.log("ping!");
       setEventListState(eventListTemp);
+      
     });
-
+    console.log(eventListTemp);
     return ()=>{
       return unsubuscribe()
     }
@@ -182,13 +183,17 @@ function App() {
                 key={event.id}
                 className="nametag card card--link"
                 onClick={()=>handleRoute(event.id)}>
-                <h2>{event.title}</h2>
                 <img src={event.coverImage} alt={event.title}></img>
+                <h2>{event.title}</h2>
+                <div className="cardData">
                 <div id="Date">Date: {new Intl.DateTimeFormat("en" , {
   timeStyle: "short",
   dateStyle: "medium"
-}).format(new Date(event.date.seconds * 1000)) }</div>
+}).format(event.startTime.seconds * 1000) }</div>
                 <div id="Views">{event.views || 0} views</div>
+                </div>
+                <div className="cardTags">
+                  </div>
               </div>
             );
           })}

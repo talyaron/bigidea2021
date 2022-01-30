@@ -10,7 +10,7 @@ import { db } from "../../scripts/firebase/config";
 import HomeButton from '../../assets/Images/home.svg';
 import Menu from '../../assets/Images/Menu.svg';
 import X from '../../assets/Images/X.svg';
-
+import back from '../../assets/Images/back.svg';
 //const auth = getAuth();
 //const docRef = (doc(db, "users", auth.currentUser.uid));
 
@@ -59,6 +59,19 @@ function StickyBanner({role}) {
 		<div id='menuButtonGroup'>
 			<div className='stickyBanner'
 				onClick={() => {
+					//history.goBack()
+				}}>
+				<div
+					className='MenuButton'
+					id='backB_container'
+				>
+					<img src={back} alt="back" id='backButton_SB'/>
+				</div>
+
+				
+			</div>
+			<div className='stickyBanner'
+				onClick={() => {
 					navigate('/MainPage');
 				}}>
 				<div
@@ -67,7 +80,9 @@ function StickyBanner({role}) {
 				>
 					<img src={HomeButton} alt='Home' id='homeButton' />
 				</div>
+				
 			</div>
+			
 			<div className='stickyBanner' onClick={handleMenu}>
 				<div className='MenuButton'
 					id='Menu_container'>

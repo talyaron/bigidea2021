@@ -108,10 +108,14 @@ body {
 
 .card > #Date, .card > #Views {
 	font-weight: bold;
+	white-space: nowrap;
+}
+
+.footer {
+	height: 85px
 }
 
 
-.nametag > :not(img) {
-    margin-left: 110px;
-	color: #040404;
+.cardData {
+
 }

@@ -93,14 +93,16 @@ function App() {
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
 						<Route path='AdminPage' element={<AdminPage />} />
 					</Routes>
-
+					<div className="footer"></div>
 				</div>
 			) : (
 				<div className='container_App'>
+					
 					<Routes>
 						<Route path='/' element={<Login />} />
 						<Route path='login' element={<Login />} />
 					</Routes>
+					<div className="footer"></div>
 				</div>
 				
 			)}
