@@ -113,6 +113,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 /*Autogrowing box changes end here*/
 .Button{
     width: 190px;
+    margin: 1px;
 }
 .Button2{
     height: 100px;
@@ -137,4 +138,14 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 .Images{
     padding-left: 10px;
+}
+#SubmitButton_ImportImg{
+    position: relative;
+    left: 2vw;
+    width: 80px;
+    background-color: var(--Navy-blue);
+    color: var(--Grey);
+}
+#input_ArticleImg{
+    border-radius: 2px;
 }
