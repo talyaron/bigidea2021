@@ -73,7 +73,11 @@ function StickyBanner({role}) {
 						:
 						(<img src={Menu} alt='Home' id='MenuButton' />)
 					}
-					{navToggle ? (
+					
+				</div>
+			</div>
+
+			{navToggle ? (
 						<div className='menuList_Container'>
 							<ul className='menuList'>
 								{
@@ -94,9 +98,9 @@ function StickyBanner({role}) {
 						</div>
 
 					) : null}
-				</div>
-			</div>
+	
 		</div>
+		
 	);
 }
 
