@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './StickyBanner.css';
+import '../../styles/component/StickyBanner.css';
 import { Component } from 'react';
 import { getAuth, signOut } from "firebase/auth";
 
 //icons
-import HomeButton from '../Images/home.svg';
-import Menu from '../Images/Menu.svg';
-import X from '../Images/X.svg';
-import back from '../Images/back.svg'
+import HomeButton from '../../assets/Images/home.svg';
+import Menu from '../../assets/Images/Menu.svg';
+import X from '../../assets/Images/X.svg';
+import back from '../../assets/Images/back.svg';
 
 function StickyBanner({isAdmin, isOle}) {
 	const navigate = useNavigate();
@@ -38,9 +38,7 @@ function StickyBanner({isAdmin, isOle}) {
 	
 	return (
 		<div id='stickyBanner'>
-			<div className='backB_container' onClick={()=> {
-					// history.goBack()
-				}}>
+			<div className='backB_container' onClick={()=> navigate(-1) }>
 				<img src={back} alt="back" id='backButton_SB'/>
 			</div>
 			<div

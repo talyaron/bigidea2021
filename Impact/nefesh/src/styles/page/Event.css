@@ -93,6 +93,10 @@
     justify-content:space-around;
     align-content:space-evenly;
 }
+.coverImage{
+    width:95%;
+    margin-top: 3%;
+}
 .backButton_Event{
     /* float: left;
     margin-left: 20px;

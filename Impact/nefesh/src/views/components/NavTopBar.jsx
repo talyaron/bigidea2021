@@ -1,4 +1,4 @@
-import './NavTopBar.css';
+import '../../styles/component/NavTopBar.css';
 
 function NavTopBar({titleDisplay}){
 

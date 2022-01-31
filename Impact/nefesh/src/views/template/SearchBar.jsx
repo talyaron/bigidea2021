@@ -1,8 +1,8 @@
-import './SearchBar.css';
+import '../../styles/template/SearchBar.css';
 import { useState } from 'react';
 import { getDatabase, ref, onValue, query, db } from "firebase/database";
 import { collection, getDocs, where, getFirestore} from '@firebase/firestore';
-import Logo from '../images/Logo.png';
+import Logo from '../../assets/Images/Logo.png';
 
 
 const tags = ['newest','popular', 'recent'];

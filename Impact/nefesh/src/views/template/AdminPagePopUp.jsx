@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import './AdminPagePopUp.css';
-import { db } from '../../../functions/firebase/config';
+import '../../styles/template/AdminPagePopUp.css';
+import { db } from '../../scripts/firebase/config';
 import { collection, Firestore } from '@firebase/firestore';
 import { doc, getDoc, getDocs, updateDoc, where } from 'firebase/firestore';
-import { userIDAdm } from '../../pages/AdminPage/AdminPage';
+import { userIDAdm } from '../pages/AdminPage';
 import { query } from 'firebase/database';
 import { getAuth, updateProfile } from "firebase/auth";
 
