@@ -50,6 +50,7 @@
     background-color: var(--Light);
 }
 .createArticle-popup-box {
+
     position: relative;
     max-width: 100%;
     max-height: 110vh;
@@ -63,18 +64,19 @@
     border-radius: 10px;
     width: 91%;
     height: 110vh;
+    font-weight:530;
     /*grid-template-columns: repeat(6, 1fr); /*6 columns*/
     /*grid-template-rows: repeat(14, auto); /*14 rows*/
 
     
 }
 .createArticle-popup-box input{
-    background-color: /*rgb(231, 231, 231)*/var(--Grey);
+    background-color: /*rgb(231, 231, 231)*/var(--Background-light);
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 10px;
-    border: none;
     color: var(--Navy-blue);
+    font-weight:530;
 }
 .tagBox{
     display: flex;
@@ -83,6 +85,7 @@
 .tagForm{
     display: inline-block;
     margin: 5px;
+    border-bottom: var(--Grey) 1px solid;
 }
 
 
@@ -91,13 +94,14 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 */
 .expandBox {
     display: block;
-    background-color: /*rgb(231, 231, 231)*/ var(--Grey);
+    background-color: /*rgb(231, 231, 231)*/ var(--Background-light);
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 10px;
     color: var(--Navy-blue);
     font-family:sans-serif;
     font-size: 15px;
+    border: 2px solid var(--Grey);
 }
 
 .textarea {
@@ -107,12 +111,12 @@ https://css-tricks.com/auto-growing-inputs-textareas/
     resize: both;
     min-height: 40px;
     line-height: 20px;
-    color: #586d8e;
+    color: var(--Navy-blue);
 }
   
 .textarea[contenteditable]:empty::before {
   content: "Enter event description";
-  color: #586d8e;
+  color: var(--Navy-blue);
 }
 /*Autogrowing box changes end here*/
 .Button36{
@@ -127,7 +131,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
     height: 50px;
     background-color: var(--Navy-blue);
     color: var(--Grey);
-    width: 100px;
+    width: 200px;
     border-radius: 15px;
     margin-top: 10px;
     border: none;
@@ -138,7 +142,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
     height: 50px;
     background-color: var(--Navy-blue);
     color: var(--Grey);
-    width: 100px; 
+    width: 200px; 
     border: none;
     /* position: relative;
     left: 65.5vw;
@@ -155,7 +159,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
     text-align: center;
     font-size: 40px;
     color: var(--Navy-blue);
-    background-color: var(--Background-light);
+    background-color: var(--Light);
 }
 .Images{
     padding-left: 10px;
@@ -175,8 +179,8 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 .buttonContainer23{
     display: flex;
-    width: 100%;
-    gap: 180px;
+    justify-content: space-around;
+
 }
 
 .tag34{
@@ -186,4 +190,39 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 .In{
     height: 20px;
+}
+.border-ArticleCreation {
+    border-bottom: 2px var(--Grey) solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+#ArtC_Header{
+    background-color: var(--Light) ;
+}
+
+.placeHolderText_articleCreation::placeholder{
+    color: var(--Navy-blue);
+    font-weight:530;
+
+}
+
+.tagsMapContainer{
+    background-color: var(--Light);
+    border-radius: 5px;
+}
+.Tag-Content{
+    display: inline-block;
+    margin-right: 5px;
+}
+.Tag-X{
+    display: inline-block;
+}
+.Tags{
+    display: flex;
+    justify-content: space-evenly;
+}
+#form_ImportImg{
+    display: flex;
+    justify-content: space-evenly;
 }

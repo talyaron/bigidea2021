@@ -88,6 +88,7 @@ function ArticleCreation(props) {
 	function addTags(ev) {
 		ev.preventDefault();
 		setTagsState([...tagsState, ev.target[0].value]);
+		ev.target[0].value = ''
 		console.log(ev.target[0].value);
 	}
 	function deleteTag(tag) {
@@ -104,30 +105,30 @@ function ArticleCreation(props) {
 		setHttpUrl(httpRef);
 	};
 
-	return (
-		<div className='backGround'>
+	return (<div id='ArtC_Header'>
 			<header className='Header'>Create an Article</header>
+			<div className='backGround'>
 			<div className='createArticle-popup-box'>
 				<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} />
-				<input type='text' name='title' onKeyUp={changeState} placeholder='Enter article title here' className='shadow In' />
-				<input type='text' name='name' onKeyUp={changeState} placeholder='Enter host/s name here' className='shadow In' />
-				<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' className='shadow In' />
-				<input type='text' name='city' onChange={changeState} placeholder='Enter city here' className='shadow In' />
-				<input type='text' name='houseNumber' onChange={changeState} placeholder='Enter building number here' className='shadow In' />
-				<input type='number' name='maxCapacity' onChange={changeState} placeholder='Enter maximum capacity here' className='shadow In' />
-				<input type='text' name='phone' onChange={changeState} placeholder='Enter phone number here' className='shadow In' />
-				<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' className='shadow In' />
-				<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' className='shadow In' />
+				<input type='text' name='title' onKeyUp={changeState} placeholder='Enter article title here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+				<input type='text' name='name' onKeyUp={changeState} placeholder='Enter host/s name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+				<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+				<input type='text' name='city' onChange={changeState} placeholder='Enter city here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+				<input type='number' name='houseNumber' onChange={changeState} placeholder='Enter building number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+				<input type='number' name='maxCapacity' onChange={changeState} placeholder='Enter maximum capacity here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+				<input type='number' name='phone' onChange={changeState} placeholder='Enter phone number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+				<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+				<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 				<div>Event Start Time:</div>
-				<input type='datetime-local' name='startTime' onChange={changeState} placeholder='Enter address line 1 here' className='shadow In' />
+				<input type='datetime-local' name='startTime' onChange={changeState} placeholder='Enter address line 1 here' className='border-ArticleCreation In' />
 				<div>Event End Time:</div>
-				<input type='datetime-local' name='endTime' onChange={changeState} placeholder='Enter address line 1 here' className='shadow In' />
+				<input type='datetime-local' name='endTime' onChange={changeState} placeholder='Enter address line 1 here' className='border-ArticleCreation In' />
 				<div className='expandBox'>
-					<div contentEditable='true' className='textarea' name='text' role='textbox' id='editor' placeholder='Enter event description here'></div>
+					<div contentEditable='true' className='textarea' name='text' role='textbox' id='editor' placeholder='Enter event description here placeHolderText_articleCreation'></div>
 				</div>
 
 				<form className='Tags' onSubmit={addTags}>
-					<input type='text' name='tagsInput' placeholder='Enter event tags here' className='tag34 shadow' />
+					<input type='text' name='tagsInput' placeholder='Enter event tags here' className='tag34 border-ArticleCreation placeHolderText_articleCreation' />
 					<button className='submit Button36 shadow' type='submit'>
 						Submit
 					</button>
@@ -138,8 +139,8 @@ function ArticleCreation(props) {
 							i++;
 							return (
 								<form onSubmit={deleteTag} key={(tag, i)} className='tagForm'>
-									<div className='nameTag'>{tag}</div>
-									<button type='submit'>X</button>
+									<div className='Tag-Content'>{tag}</div>
+									<button type='submit' className='Tag-X'>X</button>
 								</form>
 							);
 						})}
@@ -154,6 +155,7 @@ function ArticleCreation(props) {
 					</button>
 				</div>
 			</div>
+		</div>
 		</div>
 	);
 }
