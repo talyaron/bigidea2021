@@ -1,4 +1,4 @@
-import '../../stylesheets/page/AdminPage.css';
+import '../../styles/page/AdminPage.css';
 import AdminPagePopUp from '../template/AdminPagePopUp';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../scripts/firebase/config';

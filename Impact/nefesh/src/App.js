@@ -1,4 +1,4 @@
-import "./stylesheets/global/App.css";
+import "./styles/global/App.css";
 import "./views/template/AdminPagePopUp";
 import { render } from "react-dom";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
