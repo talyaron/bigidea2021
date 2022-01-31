@@ -47,8 +47,8 @@ function App() {
           if (userDB.exists()) {
             console.log("user exists");
             setUserState({
-              userName: userDB.data().displayName,
               userOrg: userDB.data().organization,
+              displayName: userDB.data().displayName
             });
             role = userDB.data().role;
             if (userDB.data().disabled == true){
@@ -109,7 +109,7 @@ function App() {
 						<Route path='404' element={<Error />} />
 						<Route path='401' element={<Unauthorised />} />
 						<Route path='MainPage' element={<MainPage role={role} />} />
-						<Route path='ContactUs' element={<ContactUs  uid = {isUserID}/>}/>
+						<Route path='ContactUs' element={<ContactUs  uid = {isUserID} displayName={userState.displayName}/>}/>
 						<Route path='event/:eventID' element={<Event />} />
 						<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
