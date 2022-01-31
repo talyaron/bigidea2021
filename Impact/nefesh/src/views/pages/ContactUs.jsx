@@ -3,6 +3,7 @@ import { db } from "../../scripts/firebase/config";
 import { collection, Firestore } from "@firebase/firestore";
 import { doc, getDoc, getDocs, updateDoc, where } from "firebase/firestore";
 import { useEffect, useState} from "react";
+
 function ContactUs(props) {
   const [mailTo, setMailtoLink] = useState('');
   useEffect(async () => {
