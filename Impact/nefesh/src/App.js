@@ -1,25 +1,25 @@
-import "./App.css";
-import "./views/components/AdminPagePopUp/AdminPagePopUp";
+import "./styles/global/App.css";
+import "./views/template/AdminPagePopUp";
 import { render } from "react-dom";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-import Login from './views/pages/login/Login.js';
-import Error from './views/pages/404/404.js';
-import Unauthorised from './views/pages/401/401.js';
-import ProfilePage from './views/pages/ProfilePage/ProfilePage';
-import ContactUs from './views/components/ContactUs/ContactUs';
-import ArticleCreation from './views/components/ArticleCreation/ArticleCreation';
-import MainPage from './views/pages/MainPage/MainPage';
-import { checkRole } from './functions/general.js';
+import Login from './views/pages/Login.js';
+import Error from './views/pages/404.js';
+import Unauthorised from './views/pages/401.js';
+import ProfilePage from './views/pages/ProfilePage';
+import ContactUs from './views/pages/ContactUs';
+import ArticleCreation from './views/pages/ArticleCreation';
+import MainPage from './views/pages/MainPage';
+import { checkRole } from './scripts/general.js';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
-import { db } from './functions/firebase/config';
+import { db } from './scripts/firebase/config';
 //pages
-import AdminPage from './views/pages/AdminPage/AdminPage';
-import StickyBanner from './views/components/StickyBanner/StickyBanner'
-import NavTopBar from "./views/components/NavTopBar/NavTopBar";
-import Event from './views/pages/Event/Event';
+import AdminPage from './views/pages/AdminPage';
+import StickyBanner from './views/components/StickyBanner'
+import NavTopBar from "./views/components/NavTopBar";
+import Event from './views/pages/Event';
 
 //hi
 let role; //if changed to superAdmin it updates correctly but shows red warnings, also needs to be changed manually
@@ -49,6 +49,10 @@ function App() {
               userOrg: userDB.data().organization,
             });
             role = userDB.data().role;
+            if (userDB.data().disabled == true){
+              console.log("user is banned");
+              return;
+            }
 
             console.log(role);
             if (role == "ole") {
@@ -79,6 +83,8 @@ function App() {
               userID: uid,
               userIcon: user.photoURL,
               userPref: ["null"],
+              disabled : false,
+              bio: "null"
             });
           }
         });
