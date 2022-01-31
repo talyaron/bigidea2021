@@ -100,7 +100,7 @@ function AdminPage() {
 	
 	
 	async function handleSearch(){
-		let q = query(collection(db, 'users'), where (searchField, '>=', searchCont))
+		let q = query(collection(db, 'users'), where (searchField, '==', searchCont))
 		let tempArr = []
 		const userIDSnapshot = await getDocs(q);
 		userIDSnapshot.forEach((doc) => {  

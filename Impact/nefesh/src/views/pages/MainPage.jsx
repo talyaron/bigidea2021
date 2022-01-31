@@ -118,7 +118,7 @@ function App() {
           <span className="input-label">
             {" "}
             {i + 1}. {article.Title} Written on {article.Date} by{" "}
-            {article.creator} and currently has {article.views} views
+            {article.creator} and currently has {article.tags} views
           </span>{" "}
           <img src={article.Image} alt="article" />
         </li>
@@ -151,7 +151,7 @@ function App() {
   timeStyle: "short",
   dateStyle: "medium"
 }).format(event.startTime.seconds * 1000) }</div>
-                <div id="Views">{event.views || 0} views</div>
+                <div id="Views">Tags: {event.tags}</div>
                 </div>
                 <div className="cardTags">
                   </div>
