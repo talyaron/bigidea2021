@@ -85,6 +85,8 @@ function DataFilters() {
     }
     return (
         <div>
+             <button onClick={revealFilters} name="hi" >Click here to apply filters</button>
+    <div hidden= {hidden}>
             Filters:
             <input
                 className="searchBar"
@@ -126,7 +128,7 @@ function DataFilters() {
                 )
             })
             }
-
+</div>
         </div>
 
     );
