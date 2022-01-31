@@ -55,6 +55,13 @@
     height: auto;
     bottom: auto;
 }
+
+@media only screen and (max-aspect-ratio: 6 / 10) {
+#art_login {
+    bottom: 0;
+}
+}
+
 .centerImg_Login {
 	display: flex;
 	flex-direction: column;
