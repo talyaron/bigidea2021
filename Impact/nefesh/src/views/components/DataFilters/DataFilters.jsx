@@ -1,8 +1,8 @@
 
 import { useEffect, useState } from "react";
-import { db } from "../../../functions/firebase"
 import { getDatabase, ref, onValue } from "firebase/database";
-import {
+import { db } from "../../../functions/firebase/config";
+import { 
     collection,
     doc,
     orderBy,
@@ -12,6 +12,7 @@ import {
     where,
     getFirestore,
 } from "firebase/firestore";
+
 
 let filterRef= doc(db, "events");
 

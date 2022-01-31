@@ -1,6 +1,7 @@
 import "./MainPage.css";
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import DataFilters from "../../components/DataFilters/DataFilters";
 import { db } from "../../../functions/firebase/config";
 import { getDatabase, ref, onValue, query } from "firebase/database";
 import {
@@ -10,9 +11,9 @@ import {
   getDocs,
   where,
   getFirestore,
-} from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
-import DataFilters from '../../components/DataFilters/DataFilters'
+} from "firebase/firestore";;
+
+
 const tags = ["newest", "popular", "recent"];
 let eventFilter = "";
 
@@ -150,7 +151,7 @@ function App() {
           <option value="email">recent</option>
         </select>
       </form>
-    <DataFilters/>
+
       <input
         className="searchBar"
         type="text"
