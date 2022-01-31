@@ -69,7 +69,7 @@ function DataFilters() {
     function getEventPromise(filter) {
         console.log(filter)
         return new Promise((resolve, reject) => {
-            const q = query(collection(db, "events"), where("types", "array-contains", filter) /*check if multiple statements can be added here*/);
+            const q = query(collection(db, "events"), where("tags", "array-contains", filter) /*check if multiple statements can be added here*/);
             getDocs(q).then((eventsDB) => {
                 const eventsTemp = [];
                 eventsDB.forEach((eventDB) => {
