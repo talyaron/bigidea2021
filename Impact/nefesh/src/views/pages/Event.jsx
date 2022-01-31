@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./Event.css";
+import "../../stylesheets/page/Event.css";
 import { collection, setDoc, getDoc, doc } from "firebase/firestore";
-import { db } from "../../../functions/firebase/config";
+import { db } from "../../scripts/firebase/config";
 import { useNavigate, useParams } from "react-router-dom";
-import useScript from "../../../functions/useScript";
+import useScript from "../../scripts/useScript";
 import Moment from 'react-moment';
 // import 'moment-timezone';
 
@@ -17,7 +17,7 @@ function Event() {
 	const [imageValidity, setImgValidity] = useState(false);
 	let { eventID } = useParams();
 	let navigate = useNavigate();
-
+	const [image,setImage]=useState()
 	useEffect(async () => {
 		try {
 			setWebValidity(false);
@@ -38,7 +38,7 @@ function Event() {
 				console.log(eventObj.tags)
 				setTags(eventObj.tags);
 			}
-
+			setImage(eventObj.coverImage)
 			setAddressInfo(eventObj.address);
 			setContactInfo(eventObj.contactInfo);
 			let validState = validURL(eventObj.contactInfo.website);
@@ -67,9 +67,10 @@ function Event() {
 			{useScript("https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js")}
 			<div className="eventData_Event">
 				<div className="title"> {eventData.title} </div>
-				<h4 className='eventDetails_Event'>
+				<div className='eventDetails_Event'>
 					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
-				</h4>
+				</div>
+				<img className="coverImage" src={image}></img>
 				<div className="timeContainer">
 					<p className="time">
 						Start Time: <br></br><b><Moment format="YYYY/MM/DD @ hh:mm">{eventData.startTime}</Moment></b>
