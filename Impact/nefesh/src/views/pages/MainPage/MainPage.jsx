@@ -21,6 +21,8 @@ let eventFilter = "";
 function App() {
   const navigate = useNavigate();
 
+  
+
   var searchOption;
   var filterOption;
   const db = getFirestore();
@@ -91,6 +93,7 @@ function App() {
     const q = query(collection(db, "events"));
     const eventListTemp = [];
     
+    
     //listen to events
     const unsubuscribe = onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -138,6 +141,7 @@ function App() {
 
   return (
     <div>
+      <DataFilters />
       <form
         className="searchFor"
         className="dropDown"

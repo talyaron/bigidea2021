@@ -14,7 +14,7 @@ import {
 } from "firebase/firestore";
 
 
-let filterRef= doc(db, "events");
+//let filterRef= doc(db, "events");
 
 const filters = {};
 let eventFilters = [];
