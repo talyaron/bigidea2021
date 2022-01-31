@@ -12,6 +12,7 @@ import {
   getFirestore,
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import DataFilters from '../../components/DataFilters/DataFilters'
 const tags = ["newest", "popular", "recent"];
 let eventFilter = "";
 
@@ -149,7 +150,7 @@ function App() {
           <option value="email">recent</option>
         </select>
       </form>
-
+    <DataFilters/>
       <input
         className="searchBar"
         type="text"
