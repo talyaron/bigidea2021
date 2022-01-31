@@ -149,7 +149,7 @@ function ProfilePage(props) {
 					Enter New Email: <input type="text" name="newEmail" />
 					Enter New Gender: <input type="text" name="newGender" />
 					Enter New Address: <input type="text" name="newAddress" />
-					<button className='profileButton' type="submit" name="editbtn"> Submit Changes</button>
+					<button className='profileButton center3' type="submit" name="editbtn"> Submit Changes</button>
 
 				</form>
 

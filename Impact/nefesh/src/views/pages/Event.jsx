@@ -20,21 +20,22 @@ function Event() {
 	useEffect(() => {
 		
 
-			setWebValidity(false);
+			//setWebValidity(false);
 			
 			getDoc(eventRef).then(docSnap => {
 			console.log(docSnap.data());
-			setEventData(docSnap);
-			setTags(docSnap.data().tags);
+			setEventData(docSnap.data());
+			//setTags(docSnap.data().tags);
+			setTags(docSnap.data().types);
 			setAddressInfo(docSnap.data().address);
 			setContactInfo(docSnap.data().contactInfo);
-			let validState = validURL(docSnap.data().contactInfo.website);
-			setWebValidity(validState);
+			//let validState = validURL(docSnap.data().contactInfo.website);
+			//setWebValidity(validState);
 			setOrgWebsite(docSnap.data().contactInfo.website);
 			});
 	
 	}, []);
-
+/*
 	function validURL(str) {
 		var pattern = new RegExp(
 			'^(https?:\\/\\/)?' + // protocol
@@ -47,22 +48,22 @@ function Event() {
 		); // fragment locator
 		return !!pattern.test(str);
 	}
-
+*/
 	function ping() {
-		console.log(eventData);
+		console.log(eventData.data());
 	}
 	return (
 		<div className='mainContainer_Event'>
 			  {useScript("https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js")}
-			<div className='articleImage_Event' /*style={divStyle}*/>
+		{/*<div className='articleImage_Event' /*style={divStyle}*//*>
 				<div className='articleImageButtons_Event'></div>
-			</div>
+	</div>*/}
 
 			<div className='eventData_Event'>
-				<h1 className='eventName_Event'> {eventData.title} </h1>
-				<h4 className='eventDetails_Event'>
+				<div  className='eventName_Event'> {eventData.title} </div >
+				{/*<h4 className='eventDetails_Event'>
 					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
-				</h4>
+	</h4>*/}
 				<div className='secondaryInfo'>
 					<div className='eventTimeContainer_Event'>
 						<p className='eventStartTime_Event'> Start Time: {eventData.startTime}</p>
