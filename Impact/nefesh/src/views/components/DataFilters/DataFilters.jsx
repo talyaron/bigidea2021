@@ -14,7 +14,7 @@ import {
 } from "firebase/firestore";
 
 
-//let filterRef= doc(db, "events");
+//let filterRef= ;
 
 const filters = {};
 let eventFilters = [];
@@ -72,7 +72,7 @@ function DataFilters() {
         console.log(filter)
         return new Promise((resolve, reject) => {
             const filteredRef = collection(db, "events");
-            const q = query(filteredRef, where("type", "==", filter) /*check if multiple statements can be added here*/);
+            const q = query(filteredRef, where("types", "array-contains", filter) /*check if multiple statements can be added here*/);
             getDocs(q).then((eventsDB) => {
                 const eventsTemp = [];
                 eventsDB.forEach((eventDB) => {
