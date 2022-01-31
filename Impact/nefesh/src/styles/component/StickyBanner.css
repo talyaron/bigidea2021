@@ -30,7 +30,7 @@
 	max-width: 500px;
 	width: 100%;
 	height: 40px;
-	z-index: 0;
+	z-index: 3;
 	border-top: 1px solid Var(--Navy-blue);
 }
 
