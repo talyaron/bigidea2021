@@ -100,10 +100,12 @@ function App() {
 
 	return (
 		<div>
+	    <NavTopBar titleDisplay="NBM Tel Aviv" />
 		<div className='container_AppMain'>
+		
 			{loggedIn ? (
 				<div className='container_App'>
-          <NavTopBar titleDisplay="NBM Tel Aviv" />
+          
 					<Routes>
 						<Route path='/' element={<MainPage role={role}/>} />
 						<Route path='404' element={<Error />} />
@@ -116,6 +118,7 @@ function App() {
 						<Route path='AdminPage' element={<AdminPage />}/>
             
 					</Routes>
+					
 				</div>
 			) : (
 				<div className='container_App'>
@@ -123,10 +126,10 @@ function App() {
 						<Route path='/' element={<Login />} />
 						<Route path='login' element={<Login />} />
 					</Routes>
-					<div className="footer"></div>
 				</div>
 			)}
 		</div>
+		<div className="footer"></div>
 		{
 			loggedIn ? (<StickyBanner role={role} />) : (null) 
 		}

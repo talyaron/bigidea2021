@@ -30,6 +30,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	display: flex;
+	top: 25px;
 }
 
 .container_App {
@@ -38,7 +39,7 @@ body {
 	/*overflow-y: scroll;  /* Hide vertical scrollbar */
 	/*overflow-x: hidden; /* Hide horizontal scrollbar */
 	max-height: 100vh;
-	height: 100vh;
+	/*height: 100vh;*/
 	margin: 0px;
 }
 
