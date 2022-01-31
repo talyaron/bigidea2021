@@ -23,7 +23,7 @@ function Event() {
 		const docSnap = await getDoc(eventRef);
 		console.log(docSnap.data())
 		console.log(eventID)
-		setEventData(docSnap.data());
+		setEventData(docSnap);
 		setTags(docSnap.data().types);
 		setAddressInfo(docSnap.data().address);
 		setContactInfo(docSnap.data().contactInfo);
