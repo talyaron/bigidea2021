@@ -141,12 +141,12 @@ function ProfilePage(props) {
 				<h2> {displayName} </h2> 
 				<p> {userEmail} </p>
 			</div>
-			<div className='back-2'>
+			{/* <div className='back-2'>
 				<button className ="EditProfBtn" type="button" name="PrefButton"> Edit Prefrences </button>
 				<h2 className='center'> Prefrences </h2> 
 				<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </p>
 				 
-			</div>
+			</div> */}
 			<div className='back-3'>
 				<button className ="EditProfBtn" type="button" onClick = {editBio} name="BioButton"> Edit Bio </button>
 				<h2 className='center'> Bio </h2> 
