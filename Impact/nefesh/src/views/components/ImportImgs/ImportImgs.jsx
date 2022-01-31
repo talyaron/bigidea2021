@@ -11,8 +11,6 @@ function HandleImportImg(props) {
 	const [currentUsePage, setCurrentUsePage] = useState('TempPageUse');
 	let storageRef = ref(storage, `Images/${userID}/${currentUsePage}/${imageAsFile.name}`);
 	
-
-	console.log(props);
 	useEffect(() => {
 		let tempUID = props.userData.userID;
 		setUserID(tempUID);

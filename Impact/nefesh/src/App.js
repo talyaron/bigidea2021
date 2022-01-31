@@ -20,6 +20,8 @@ import AdminPage from './views/pages/AdminPage/AdminPage';
 import StickyBanner from './views/components/StickyBanner/StickyBanner'
 import NavTopBar from "./views/components/NavTopBar/NavTopBar";
 import Event from './views/pages/Event/Event';
+import SavedEvent from './views/pages/SavedEvent/SavedEvent';
+import EditSavedEvent from'./views/pages/EditSavedArticles/EditSavedArticles'
 
 //hi
 let role; //if changed to superAdmin it updates correctly but shows red warnings, also needs to be changed manually
@@ -111,7 +113,8 @@ function App() {
 						<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
 						<Route path='AdminPage' element={<AdminPage />}/>
-            
+            <Route path='ProfilePage/SavedEvents/Preview/:eventID' element={<SavedEvent userID={userID} />} />
+            <Route path='ProfilePage/SavedEvents/Edit/:eventID' element={<EditSavedEvent userID={userID} />} />
 					</Routes>
 					<StickyBanner isAdmin={isAdmin} isOle={isOle}/>
 				</div>

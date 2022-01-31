@@ -1,27 +1,32 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './ArticleCreation.css';
-import { collection, addDoc, arrayRemove } from 'firebase/firestore';
+import './EditSavedArticles.css';
+import { doc, getDoc, setDoc, addDoc, collection } from 'firebase/firestore';
 import { db } from '../../../functions/firebase/config';
-import ImportImgs from '../ImportImgs/ImportImgs';
+import ImportImgs from '../../components/ImportImgs/ImportImgs';
+import { useParams } from "react-router-dom";
 let i = 0;
-let statesSumbitted = { views: 0, startTime: '', endTime: '' };
 let page = 'ArticleCreation';
 
-function ArticleCreation(props) {
+function EditSavedArticles(props) {
 	const [tagsState, setTagsState] = useState([]);
 	const inputRef = useRef();
 	const [httpUrl, setHttpUrl] = useState('');
-
-	useEffect(() => {
+	let { eventID } = useParams();
+	const [statesSubmitted, setStatesSubmitted] = useState({})
+	useEffect(async () => {
 		document.getElementById('editor').addEventListener('input', inputEvt, false);
+		const eventRef = doc(db, "users", props.userID, "Saved", eventID)
+		let eventDB = await getDoc(eventRef)
+		setStatesSubmitted(eventDB.data())
+
 	}, []);
 	function inputEvt(ev) {
 		let parse = 'text';
-		statesSumbitted = { ...statesSumbitted, [parse]: ev.target.innerHTML };
+		setStatesSubmitted({ ...statesSubmitted, [parse]: ev.target.innerHTML });
 	}
 	function submitArticle() {
-		let { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSumbitted;
-        image = httpUrl
+		let { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
+		image = httpUrl
 		addDoc(collection(db, 'events'), {
 			title,
 			coverImage: image,
@@ -50,9 +55,9 @@ function ArticleCreation(props) {
 		});
 	}
 	function saveDraft() {
-		let { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSumbitted;
-        image = httpUrl
-		addDoc(collection(db, 'users',props.userID,"Saved"), {
+		let { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
+		image = httpUrl
+		addDoc(collection(db, 'users', props.userID, "Saved"), {
 			// title,
 			// coverImage: image,
 			// article: text,
@@ -81,7 +86,7 @@ function ArticleCreation(props) {
 
 	function changeState(ev) {
 		let parse = ev.target.name;
-		statesSumbitted = { ...statesSumbitted, [parse]: ev.target.value };
+		setStatesSubmitted({ ...statesSubmitted, [parse]: ev.target.value });
 	}
 
 	function addTags(ev) {
@@ -97,19 +102,19 @@ function ArticleCreation(props) {
 		tempArray.splice(tag, 1);
 		setTagsState(tempArray);
 	}
-	function ping() {}
-
+	
 	const callBackFunction = (httpRef) => {
 		setHttpUrl(httpRef);
 	};
 
 	return (
 		<div className='backGround'>
+			{/* <button onClick={ping}>Hiii</button> */}
 			<header className='Header'>Create an Article</header>
 			<div className='createArticle-popup-box'>
 				<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} />
-				<input type='text' name='title' onKeyUp={changeState} placeholder='Enter article title here' className='shadow In' />
-				<input type='text' name='name' onKeyUp={changeState} placeholder='Enter host/s name here' className='shadow In' />
+				<input type='text' name='title' onKeyUp={changeState} placeholder='Enter article title here' defaultValue={statesSubmitted.title} className='shadow In' />
+				<input type='text' name='name' onKeyUp={changeState} placeholder='Enter host/s name here' value="hii" className='shadow In' />
 				<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' className='shadow In' />
 				<input type='text' name='city' onChange={changeState} placeholder='Enter city here' className='shadow In' />
 				<input type='text' name='houseNumber' onChange={changeState} placeholder='Enter building number here' className='shadow In' />
@@ -157,4 +162,4 @@ function ArticleCreation(props) {
 	);
 }
 
-export default ArticleCreation;
+export default EditSavedArticles;
