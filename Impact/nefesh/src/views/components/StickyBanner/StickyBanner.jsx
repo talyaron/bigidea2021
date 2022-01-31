@@ -38,9 +38,7 @@ function StickyBanner({isAdmin, isOle}) {
 	
 	return (
 		<div id='stickyBanner'>
-			<div className='backB_container' onClick={()=> {
-					// history.goBack()
-				}}>
+			<div className='backB_container' onClick={()=> navigate(-1) }>
 				<img src={back} alt="back" id='backButton_SB'/>
 			</div>
 			<div
