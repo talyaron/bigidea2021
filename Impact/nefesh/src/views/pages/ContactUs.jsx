@@ -1,4 +1,4 @@
-import '../../stylesheets/page/ContactUs.css'
+import '../../styles/page/ContactUs.css'
 function ContactUs (){
     function redirect(){ 
 

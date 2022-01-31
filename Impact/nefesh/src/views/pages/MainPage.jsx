@@ -1,4 +1,4 @@
-import "../../stylesheets/page/MainPage.css";
+import "../../styles/page/MainPage.css";
 import { useEffect, useState } from "react";
 import { db } from "../../scripts/firebase/config";
 import { getDatabase, ref, onValue, query } from "firebase/database";

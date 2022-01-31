@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../stylesheets/page/Event.css";
+import "../../styles/page/Event.css";
 import { collection, setDoc, getDoc, doc } from "firebase/firestore";
 import { db } from "../../scripts/firebase/config";
 import { useNavigate, useParams } from "react-router-dom";

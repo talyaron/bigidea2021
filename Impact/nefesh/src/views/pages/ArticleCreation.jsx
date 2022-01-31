@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import '../../stylesheets/page/ArticleCreation.css';
+import '../../styles/page/ArticleCreation.css';
 import { collection, addDoc, arrayRemove } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import ImportImgs from '../template/ImportImgs';

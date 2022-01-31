@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../../stylesheets/template/AdminPagePopUp.css';
+import '../../styles/template/AdminPagePopUp.css';
 import { db } from '../../scripts/firebase/config';
 import { collection, Firestore } from '@firebase/firestore';
 import { doc, getDoc, getDocs, updateDoc, where } from 'firebase/firestore';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../stylesheets/component/StickyBanner.css';
+import '../../styles/component/StickyBanner.css';
 import { Component } from 'react';
 import { getAuth, signOut } from "firebase/auth";
 
