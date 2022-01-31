@@ -2,7 +2,7 @@
     position: relative;
     max-width: 100%;
     max-height: 90vh;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     background-color: var(--background-light);
     color: var(--Dark);
     margin: 15px;
@@ -10,7 +10,7 @@
     flex-direction: column;
 }
 .eventMapContainer_AP{
-    margin-top: 25%;
+    margin-top: 125px;
     position: relative;
 }
 
@@ -80,7 +80,7 @@
 
 .search_Container_AP{
     position: fixed;
-    top: 0; /* change to zero when nav bar is on the bottom */
+    top: 24px;
     left: 0;
     background-color: var(--Light);
     width: 100%;
@@ -91,6 +91,7 @@
     flex: none;
     display: inline;
     max-height: 25%;
+    height: 95px;
 
 }
 #search_Box_AdminPage {

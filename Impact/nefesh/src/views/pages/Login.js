@@ -2,7 +2,7 @@ import { db } from '../../scripts/firebase/config';
 import React from 'react';
 import { authentication } from '../../scripts/firebase/config';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import '../../stylesheets/page/Login.css';
+import '../../styles/page/Login.css';
 import NefishLogo from '../../assets/Images/Nefish_B\'Nefish_Logo.png';
 import GoogleLogo from '../../assets/Images/Google.png';
 import LoginArt from '../../assets/Images/signin_img.svg';
