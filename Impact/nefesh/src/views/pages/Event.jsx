@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./Event.css";
+import "../../stylesheets/page/Event.css";
 import { collection, setDoc, getDoc, doc } from "firebase/firestore";
-import { db } from "../../../functions/firebase/config";
+import { db } from "../../scripts/firebase/config";
 import { useNavigate, useParams } from "react-router-dom";
-import useScript from "../../../functions/useScript";
+import useScript from "../../scripts/useScript";
 import Moment from 'react-moment';
 // import 'moment-timezone';
 
