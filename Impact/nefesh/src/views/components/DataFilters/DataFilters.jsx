@@ -1,4 +1,4 @@
-import "./DataFilters.css";
+
 import { useEffect, useState } from "react";
 import { db } from "../../../functions/firebase/config";
 import { getDatabase, ref, onValue } from "firebase/database";

@@ -1,5 +1,6 @@
 import "./MainPage.css";
 import { useEffect, useState } from "react";
+import DataFilters from '../../components/DataFilters/DataFilters'
 import { db } from "../../../functions/firebase/config";
 import { getDatabase, ref, onValue, query } from "firebase/database";
 import {
