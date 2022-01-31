@@ -5,18 +5,17 @@
     background:Var(--Light-D2);
     border-radius: 4px;
     padding: 20px;
-    width: 200%;
   }
   .popup-boxBio {
     position: fixed;
-    width: 30%;
+    width: 31.3em;
     height: fit-content;
     top: 0;
   }
   
   .Edit-close-iconBio {
     content: 'x';
-    position: fixed;
+    position:fixed;
     background: Var(--Light-D2);
     width: 25px;
     height: 25px;
@@ -26,7 +25,7 @@
     border: 1px solid Var(--Grey);
     font-size: 20px;
     z-index: 99;
-    right: 38%;
+    margin-left: 400px;
   }
   .profileEditorBio{
     width: fit-content;

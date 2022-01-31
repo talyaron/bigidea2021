@@ -177,10 +177,10 @@ function ProfilePage(props) {
     />}
 	{isBioOpen && <EditBioPopUp
       content={<>
-        {editing ? <div className='profileEditorBio'	>
+        {editing ? <div className='profileEditor'	>
 				<h4 className='center2'> Edit Bio Here </h4>
 				<form onSubmit={changeBio}>
-					Enter New Bio: <input type="text" name="newBio"/>
+					Enter New Bio: <textarea type="text" name='newBio' rows="4" cols="50" className='nonresize' > </textarea> 
 					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
 
 				</form>
