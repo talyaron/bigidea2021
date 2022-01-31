@@ -102,7 +102,9 @@ function App() {
 
 	return (
 		<div>
+			{loggedIn ? (
 	    <NavTopBar titleDisplay="NBM Tel Aviv" />
+			) : (null) }
 		<div className='container_AppMain'>
 		
 			{loggedIn ? (
