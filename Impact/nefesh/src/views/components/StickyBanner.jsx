@@ -23,7 +23,7 @@ function StickyBanner({role}) {
 		{ id: 4, label: 'Article Creation', href: 'ArticleCreation', role: ['ole', 'orgAdmin', 'superAdmin'] },
 		{ id: 5, label: 'Admin Page', href: 'AdminPage', role: ['superAdmin'] },
 		{ id: 6, label: 'log in', href: 'login', role: ['guest'] },
-		{ id: 7, label: 'log out', href: ' ', function: handleLogOut, role: ['member'] },
+		{ id: 7, label: 'log out', href: 'login', function: handleLogOut, role: ['member'] },
 	]
 
 	navList = navList.filter(navItem => navItem.role.some(urole => [role ? role : "guest", role ? "member" : null, "everyone"].includes(urole)));
@@ -39,7 +39,6 @@ function StickyBanner({role}) {
 		signOut(auth).then(() => {
 		// Sign-out successful.
 		window.location.reload(false);
-		navigate('/login')
 		console.log("signed out");
 		}).catch((error) => {
 		// An error happened.
