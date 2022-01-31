@@ -42,10 +42,6 @@ function App() {
         userID = uid;
         //get user from db
         getDoc(doc(db, "users", uid)).then((userDB) => {
-          if (userDB.data().disabled == true){
-            console.log("user is banned");
-            return;
-          }
           if (userDB.exists()) {
             console.log("user exists");
             setUserState({
@@ -53,6 +49,10 @@ function App() {
               userOrg: userDB.data().organization,
             });
             role = userDB.data().role;
+            if (userDB.data().disabled == true){
+              console.log("user is banned");
+              return;
+            }
 
             console.log(role);
             if (role == "ole") {
