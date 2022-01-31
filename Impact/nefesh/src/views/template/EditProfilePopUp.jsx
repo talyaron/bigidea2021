@@ -1,6 +1,6 @@
-import './EditProfilePopUp.css'
+import '../../stylesheets/template/EditProfilePopUp.css'
 import React, { useEffect, useState } from 'react';
-import { db } from '../../../functions/firebase/config';
+import { db } from '../../scripts/firebase/config';
 import { doc, getDoc, onSnapshot, setDoc, updateDoc} from 'firebase/firestore';
 
 const EditProfilePopUp = props => {
