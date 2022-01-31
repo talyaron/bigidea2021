@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { db } from "../../../functions/firebase/config";
+import { db } from "../../../functions/firebase"
 import { getDatabase, ref, onValue } from "firebase/database";
 import {
     collection,
@@ -28,11 +28,13 @@ function DataFilters() {
 
 
     function handleSearchByChange(ev) {
+        ev.preventDefault();
         let temp = ev.target.value;
         setSearchField(temp);
     }
 
     async function getTarget(ev) {
+        ev.preventDefault();
         filters[ev.target.name] = ev.target.checked;
     }
     async function getEvents(ev) {
