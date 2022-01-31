@@ -4,6 +4,7 @@ function ContactUs (){
 
       var email = "xyz@something.com"
       var mailto_link = 'mailto:' + email
+      let testID;
       
 }
     return(
@@ -22,7 +23,9 @@ function ContactUs (){
             </div>
             <div className='apply'>
                 Apply for an organizational profile: &nbsp;
-                <button className='apbutton'>  Apply </button>
+                <div className='apbutton'>
+                <a href="mailto:Nefesh@nefesh.com?subject=Organization Admin Request&body= hehe "  className="email">Click here to apply</a>
+            </div>
             </div>
             <div className='mission'>
                  <span className='mishead'> Our Mission </span>
