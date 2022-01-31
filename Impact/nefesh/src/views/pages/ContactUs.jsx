@@ -1,4 +1,4 @@
-import "../../stylesheets/page/ContactUs.css";
+import "../../styles/page/ContactUs.css";
 import { db } from "../../scripts/firebase/config";
 import { collection, Firestore } from "@firebase/firestore";
 import { doc, getDoc, getDocs, updateDoc, where } from "firebase/firestore";
