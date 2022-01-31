@@ -26,6 +26,7 @@ function DataFilters() {
     const [articles, setArticles] = useState([]);
     const [searchField, setSearchField] = useState("");
     const [searchFilters, setSearchFilters] = useState([]);
+    const [hidden, setHidden]= useState("false")
 
 
     function handleSearchByChange(ev) {
@@ -33,9 +34,15 @@ function DataFilters() {
         let temp = ev.target.value;
         setSearchField(temp);
     }
+    function revealFilters(ev){
+        ev.preventDefault();
+        setHidden("");
+         console.log(hidden)
+     
+    }
 
     async function getTarget(ev) {
-        ev.preventDefault();
+     
         filters[ev.target.name] = ev.target.checked;
     }
     async function getEvents(ev) {
@@ -114,15 +121,15 @@ function DataFilters() {
                 type="submit"
                 name="submit1"
                 onClick={getEvents}
-            />
+                /> 
             {articles.map((event) => {
                 return (
-                    <div key={event[0].id} className='nametag'>
-                        <h1>{event[0].title}</h1>
-                        <img src={event[0].Image} style={{ width: "100px" }}></img>
-                        <div>This event will take place on: {event[0].date}</div>
-                        <div>{event[0].views} many people have viewed this event</div>
-                        <div>Event filter:{event[0].type}</div>
+                    <div key={event.id} className='nametag'>
+                        <h1>{event.title}</h1>
+                        <img src={event.Image} style={{ width: "100px" }}></img>
+                        <div>This event will take place on: {event.date}</div>
+                        <div>{event.views} many people have viewed this event</div>
+                        <div>Event filter:{event.type}</div>
 
                     </div>
                 )
