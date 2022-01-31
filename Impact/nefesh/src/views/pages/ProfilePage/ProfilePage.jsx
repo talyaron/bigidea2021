@@ -28,14 +28,14 @@ function ProfilePage(props) {
 		//on snapshot displayName
 		const docRef = (doc(db, "users", props.uid));
 		const docSnap = await getDoc(docRef);
-
+		setUserData(docSnap.data())
 		setDisplayName(docSnap.data().displayName);
 		setProfilePicImg(docSnap.data().userIcon);
 		setUserEmail(docSnap.data().email);
 		setUserAddress(docSnap.data().location)
 		setUserGender(docSnap.data().sex);
 		console.log(props, docSnap.data())
-		setUserData(docSnap.data())
+		
 
 	}, [uid]);
 	function editProfile(ev) {
