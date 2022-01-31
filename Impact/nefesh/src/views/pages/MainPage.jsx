@@ -28,6 +28,7 @@ function App() {
   const db = getFirestore();
   const [articles, setArticles] = useState([]);
   const [searchField, setSearchField] = useState("");
+  const [eventListState, setEventListState] = useState([]);
 
   function handleSearchByChange(ev) {
     let temp = ev.target.value;
@@ -35,58 +36,9 @@ function App() {
   }
 
   async function getTarget(ev) {
-    // let arr2 = [];
-    // if (ev.key === "Enter") {
-    //   ev.preventDefault();
-    //   searchOption = ev.target.value;
-    //   console.log(searchOption);
-    //   const q = query(
-    //     collection(db, "events"),
-    //     where("Title", ">=", searchOption)
-    //   );
-    //   const querySnapshot = await getDocs(q);
-    //   querySnapshot.forEach((doc) => {
-    //     // doc.data() is never undefined for query doc snapshots
-    //     console.log(doc.id, " => ", doc.data());
-    //     arr2.push(doc.data());
-    //   });
-    //   if (searchField === "popular") {
-    //     for (var i = 1; i < arr2.length; i++)
-    //       for (var j = 0; j < i; j++)
-    //         if (arr2[i].views > arr2[j].views) {
-    //           var x = arr2[i];
-    //           arr2[i] = arr2[j];
-    //           arr2[j] = x;
-    //         }
-    //   } else if (searchField === "newest") {
-    //     for (var i = 1; i < arr2.length; i++)
-    //       for (var j = 0; j < i; j++)
-    //         if (arr2[i].Date > arr2[j].Date) {
-    //           var x = arr2[i];
-    //           arr2[i] = arr2[j];
-    //           arr2[j] = x;
-    //         }
-    //   } else if (searchField === "recent") {
-    //     for (var i = 1; i < arr2.length; i++)
-    //       for (var j = 0; j < i; j++)
-    //         if (arr2[i].dateAdded > arr2[j].dateAdded) {
-    //           var x = arr2[i];
-    //           arr2[i] = arr2[j];
-    //           arr2[j] = x;
-    //         }
-    //   }
-    //   setArticles(arr2);
-    //   console.log(arr2);
-
-      //insert filters
-      //find articles with word in it, sort by which article has the word appear the most
-      //for each article
-      // if newest --> check by date
-      // if recent --> check by creation date
-      // if popular --> check by most views
-    // }
+   
   }
-  const [eventListState, setEventListState] = useState([]);
+  
 
   
   useEffect(() => {
@@ -141,7 +93,7 @@ function App() {
 
   return (
     <div>
-      <DataFilters />
+      <DataFilters setEventListState={setEventListState} />
       <form
         className="searchFor dropDown"
         onChange={handleSearchByChange}>
