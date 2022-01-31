@@ -44,24 +44,25 @@ function App() {
         getDoc(doc(db, "users", uid)).then((userDB) => {
           if (userDB.exists()) {
             console.log("user exists");
+			role = userDB.data().role;
             setUserState({
               userName: userDB.data().displayName,
               userOrg: userDB.data().organization,
             });
-            role = userDB.data().role;
-            if (userDB.data().disabled == true){
+            
+            if (userDB.data().disabled){
               console.log("user is banned");
               return;
             }
 
             console.log(role);
-            if (role == "ole") {
+            if (role === "ole") {
 				setIsOle(true);
 				setIsAdmin(false);
             } else {
 				setIsOle(false);
         setIsAdmin(false);
-        if(role == "superAdmin"){
+        if(role === "superAdmin"){
           setIsOle(false);
           setIsAdmin(true);
         }
@@ -98,6 +99,7 @@ function App() {
   }, []);
 
 	return (
+		<div>
 		<div className='container_AppMain'>
 			{loggedIn ? (
 				<div className='container_App'>
@@ -114,7 +116,6 @@ function App() {
 						<Route path='AdminPage' element={<AdminPage />}/>
             
 					</Routes>
-					<StickyBanner isAdmin={isAdmin} isOle={isOle}/>
 				</div>
 			) : (
 				<div className='container_App'>
@@ -122,8 +123,13 @@ function App() {
 						<Route path='/' element={<Login />} />
 						<Route path='login' element={<Login />} />
 					</Routes>
+					<div className="footer"></div>
 				</div>
 			)}
+		</div>
+		{
+			loggedIn ? (<StickyBanner role={role} />) : (null) 
+		}
 		</div>
 	);
 }
