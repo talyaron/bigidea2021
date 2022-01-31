@@ -47,7 +47,7 @@ function HandleImportImg(props) {
 
 	return (
 		<form onSubmit={onTrigger} id='form_ImportImg'>
-			<input type='file' name='articleImg' id='input_ArticleImg' accept='image/*' onChange={handleImgUpload}className='shadow' />
+			<input type='file' name='articleImg' id='input_ArticleImg' accept='image/*' onChange={handleImgUpload}className='border-ArticleCreation' />
 			<button onClick={onTrigger} id='SubmitButton_ImportImg' className='shadow'>Upload </button>
 		</form>
 	)
