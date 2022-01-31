@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState, Component  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/component/StickyBanner.css';
-import { Component } from 'react';
 import { getAuth, signOut } from "firebase/auth";
+
+import { collection, setDoc, getDoc, doc } from "firebase/firestore";
+import { db } from "../../scripts/firebase/config";
+
 
 //icons
 import HomeButton from '../../assets/Images/home.svg';
@@ -10,11 +13,21 @@ import Menu from '../../assets/Images/Menu.svg';
 import X from '../../assets/Images/X.svg';
 import back from '../../assets/Images/back.svg';
 
-function StickyBanner({isAdmin, isOle}) {
+function StickyBanner({role}) {
 	const navigate = useNavigate();
-	// const history = useHistory();
 	const [navToggle, setNavToggle] = useState(false);
+	let navList = [
+		{ id: 1, label: 'Profile Page', href: 'ProfilePage', role: ['member'] },
+		{ id: 2, label: 'Contact Us', href: 'ContactUs', role: ['everyone'] },
+		{ id: 3, label: 'Request Org', href: ' ', role: ['orgAdmin', 'superAdmin'] },
+		{ id: 4, label: 'Article Creation', href: 'ArticleCreation', role: ['ole', 'orgAdmin', 'superAdmin'] },
+		{ id: 5, label: 'Admin Page', href: 'AdminPage', role: ['superAdmin'] },
+		{ id: 6, label: 'log in', href: 'login', role: ['guest'] },
+		{ id: 7, label: 'log out', href: ' ', function: handleLogOut, role: ['member'] },
+	]
 
+	navList = navList.filter(navItem => navItem.role.some(urole => [role ? role : "guest", role ? "member" : null, "everyone"].includes(urole)));
+	console.log(navList);
 
 	function handleMenu() {
 		let temp = !navToggle;
@@ -25,160 +38,72 @@ function StickyBanner({isAdmin, isOle}) {
 		const auth = getAuth();
 		signOut(auth).then(() => {
 		// Sign-out successful.
-		handleRoute();
 		window.location.reload(false);
+		navigate('/login')
 		console.log("signed out");
 		}).catch((error) => {
 		// An error happened.
 		});
 	}
-	function handleRoute() {
-		navigate("/");
-	  }
-	
+
 	return (
-		<div id='stickyBanner'>
-			<div className='backB_container' onClick={()=> navigate(-1) }>
-				<img src={back} alt="back" id='backButton_SB'/>
+		<div id='menuButtonGroup'>
+			<div className='stickyBanner'
+				onClick={() => {
+					navigate(-1);
+				}}>
+				<div
+					className='MenuButton'
+					id='backB_container'
+				>
+					<img src={back} alt="back" id='backButton_SB'/>
+				</div>
+
+				
 			</div>
-			<div
-				className='homeB_container'
+			<div className='stickyBanner'
 				onClick={() => {
 					navigate('/MainPage');
 				}}>
-				<img src={HomeButton} alt='Home' id='homeButton' />
+				<div
+					className='MenuButton'
+					id='homeB_container'
+				>
+					<img src={HomeButton} alt='Home' id='homeButton' />
+				</div>
+				
 			</div>
-			<div className='Menu_container'>
-				{navToggle ? (
-					<div>
-						<img src={X} alt='X' id='MenuButton' onClick={handleMenu} />
+			
+			<div className='stickyBanner' onClick={handleMenu}>
+				<div className='MenuButton'
+					id='Menu_container'>
+					{navToggle ?
+						(<img src={X} alt='X' id='MenuButton' />)
+						:
+						(<img src={Menu} alt='Home' id='MenuButton' />)
+					}
+					{navToggle ? (
 						<div className='menuList_Container'>
-						{isOle? <ul className='menuList'>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/ProfilePage')
-											handleMenu()
-										}}>
-										Profile Page
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/ContactUs')
-											handleMenu()
-										}}>
-										Contact Us
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-										handleLogOut()
-										}}>
-										Log Out
-									</div>
-								</li>
-								</ul> : isAdmin? <ul className='menuList'>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/ProfilePage')
-											handleMenu()
-										}}>
-										Profile Page
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/ContactUs')
-											handleMenu()
-										}}>
-										Contact Us
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/ArticleCreation')
-											handleMenu()
-										}}>
-										Article Creation
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/AdminPage')
-											handleMenu()
-										}}>
-										Admin Page
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-										handleLogOut()
-										}}>
-										Log Out
-									</div>
-								</li>
-							</ul>: <ul className='menuList'>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/ProfilePage')
-											handleMenu()
-										}}>
-										Profile Page
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/ContactUs')
-											handleMenu()
-										}}>
-										Contact Us
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-											navigate('/ArticleCreation')
-											handleMenu()
-										}}>
-										Article Creation
-									</div>
-								</li>
-								<li className='ListItemElement'>
-									<div
-										className='menuItem'
-										onClick={() => {
-										handleLogOut()
-										}}>
-										Log Out
-									</div>
-								</li>
-								</ul>}
+							<ul className='menuList'>
+								{
+									navList.map(function (item) {
+										return <li className='ListItemElement'>
+											<div
+												className='menuItem'
+												onClick={() => {
+													if(item.function) item.function();
+													if(item.href) navigate('/' + item.href);
+												}}>
+												{item.label}
+											</div>
+										</li>
+									})
+								}
+							</ul>
 						</div>
-					</div>
-				) : (
-					<img src={Menu} alt='Home' id='MenuButton' onClick={handleMenu} />
-				)}
+
+					) : null}
+				</div>
 			</div>
 		</div>
 	);
