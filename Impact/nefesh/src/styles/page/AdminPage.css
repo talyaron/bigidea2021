@@ -10,7 +10,7 @@
     flex-direction: column;
 }
 .eventMapContainer_AP{
-    margin-top: 125px;
+    margin-top: 85px;
     position: relative;
 }
 
@@ -60,13 +60,13 @@
 #search_button_AdminPage {
     background-color: Var(--Light);
     border: 1px solid Var(--Light);
-    height: 5.7vh;
+    height: 28px;
     width: 10vw;
-    font-size:large;
-    margin-left: .3vw;
-    margin-right: .3vw;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
+    font-size: large;
+    margin-left: 0.3vw;
+    margin-right: 0.3vw;
+    margin-top: 5px;
+    margin-bottom: 10px;
     
 }
 
@@ -85,24 +85,22 @@
     background-color: var(--Light);
     width: 100%;
     z-index: 8;
-    margin-bottom: 5%;
-    padding: 1%;
+    padding: 12px;
     padding-right: 0%;
     flex: none;
     display: inline;
     max-height: 25%;
-    height: 95px;
 
 }
 #search_Box_AdminPage {
-    height: 5vh;
+    height: 28px;
     width: 50vw;
     border: 1px solid Var(--Light);
     background-color: Var(--Light);
     
 }
 #clearFilter_AP{
-    height: 6vh;
+    height: 28px;
     width: 25vw;
     background-color: Var(--Light);
     color: Var(--Grey-D2);
