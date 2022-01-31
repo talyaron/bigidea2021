@@ -14,8 +14,6 @@ import {
 } from "firebase/firestore";
 
 
-//let filterRef= ;
-
 const filters = {};
 let eventFilters = [];
 
@@ -71,8 +69,7 @@ function DataFilters() {
     function getEventPromise(filter) {
         console.log(filter)
         return new Promise((resolve, reject) => {
-            const filteredRef = collection(db, "events");
-            const q = query(filteredRef, where("types", "array-contains", filter) /*check if multiple statements can be added here*/);
+            const q = query(collection(db, "events"), where("types", "array-contains", filter) /*check if multiple statements can be added here*/);
             getDocs(q).then((eventsDB) => {
                 const eventsTemp = [];
                 eventsDB.forEach((eventDB) => {
@@ -96,21 +93,21 @@ function DataFilters() {
     <div hidden= {hidden}>
             Filters:
             <input
-                className="searchBar"
+                className="checkbox"
                 type="checkbox"
                 name="dinner"
                 onClick={getTarget}
             />
             Dinner
             <input
-                className="searchBar"
+                className="checkbox"
                 type="checkbox"
                 name="60+"
                 onClick={getTarget}
             />
             60+
             <input
-                className="searchBar"
+                className="checkbox"
                 type="checkbox"
                 name="party"
                 onClick={getTarget}
@@ -122,9 +119,9 @@ function DataFilters() {
                 name="submit1"
                 onClick={getEvents}
                 /> 
-            {articles.map((event) => {
+            {articles.map((event,index) => {
                 return (
-                    <div key={event.id} className='nametag'>
+                    <div key={index} className='nametag'>
                         <h1>{event.title}</h1>
                         <img src={event.Image} style={{ width: "100px" }}></img>
                         <div>This event will take place on: {event.date}</div>
