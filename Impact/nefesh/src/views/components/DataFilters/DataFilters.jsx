@@ -28,10 +28,18 @@ function DataFilters() {
   const [articles, setArticles] = useState([]);
   const [searchField, setSearchField] = useState("");
   const [searchFilters, setSearchFilters] = useState([]);
+  const [hidden, setHidden] = useState("false")
 
   function handleSearchByChange(ev) {
     let temp = ev.target.value;
     setSearchField(temp);
+  }
+
+  function revealFilters(ev){
+      ev.preventDefault();
+      setHidden("");
+       console.log(hidden)
+   
   }
 
   async function getTarget(ev) {
@@ -123,6 +131,8 @@ function DataFilters() {
   }
   return (
     <div>
+        <button onClick={revealFilters} name="hi" >Click here to apply filters</button>
+    <div hidden= {hidden}>
       Filters (Select up to five filters):
       <input
         className="searchBar"
@@ -146,25 +156,13 @@ function DataFilters() {
       />
       Party
       <input
-        className="searchBar"
-        type="checkbox"
-        name="party"
-        onClick={getTarget}
-      />
-      Party
-      <input
-        className="searchBar"
-        type="checkbox"
-        name="party"
-        onClick={getTarget}
-      />
-      Party
-      <input
         className="submitbutton"
         type="submit"
         name="submit1"
-        onClick={getEvents}
-      />
+        onClick={getEvents}>
+            Apply Filters
+            </input>
+      
       {articles.map((event) => {
         return (
           <div key={event.id} className="nametag">
@@ -177,6 +175,7 @@ function DataFilters() {
         );
       })}
     </div>
-  );
+    </div>
+  )
 }
 export default DataFilters;
