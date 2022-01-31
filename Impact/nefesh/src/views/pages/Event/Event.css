@@ -30,24 +30,21 @@
 
 .timeContainer{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
 }
 .title{
     font-weight: bolder;
     font-size: 30px;
     text-decoration: underline;
+    background-color: var(--Background-light);
 }
 .time{
     width:40%;
-    border: groove blue;
-    border-radius: 5px;
+    border: groove black;
 }
 .locationContainer{
     border: 2px solid black;
-    width:80%;
-    margin: 0px 0px 0px 10%;
-    justify-self: middle;
+    width:60%;
     border-radius: 5px;
 }
 .mainContainer_Event{
@@ -57,6 +54,7 @@
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
+    background-color: var(--Light);
 }
 
 /*Article Image Section starts here*/
@@ -207,7 +205,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    background-color: var(--Background-light);
+    background-color: var(--Light);
 }
 
 /*Article User Prompt ends here*/
