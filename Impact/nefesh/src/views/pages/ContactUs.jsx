@@ -1,12 +1,27 @@
 import '../../stylesheets/page/ContactUs.css'
-function ContactUs (){
-    function redirect(){ 
-
-      var email = "xyz@something.com"
-      var mailto_link = 'mailto:' + email
-      let testID;
+import { db } from '../../scripts/firebase/config';
+import { collection, Firestore } from '@firebase/firestore';
+import { doc, getDoc, getDocs, updateDoc, where } from 'firebase/firestore';
+import { useEffect } from 'react';
+function ContactUs (props){
+    let mailto_link;
+    useEffect(async ()=>{
+      let notName = await getDoc(doc(db, "users", props.uid, props.displayName));
+      let userIDTemp = props.uid;
+      var email = "Nefesh@nefesh.com"
+      var subject = "Request to be Organization Admin"
+      var body_start= `user ${notName} with User ID: ${userIDTemp} wants to be an organizational Admin because(input your reason here)`
+      mailto_link = `mailto:`+ email + `?subject=`+subject+`&body=`+body_start;
       
-}
+
+
+
+    },[])
+    function handleEmail(){
+        window.open(mailto_link);
+    }
+      
+      
     return(
         <div>
             <div className='head'>
@@ -24,7 +39,7 @@ function ContactUs (){
             <div className='apply'>
                 Apply for an organizational profile: &nbsp;
                 <div className='apbutton'>
-                <a href="mailto:Nefesh@nefesh.com?subject=Organization Admin Request&body= hehe "  className="email">Click here to apply</a>
+                <button onClick = {handleEmail} className="email">Click here to apply</button>
             </div>
             </div>
             <div className='mission'>

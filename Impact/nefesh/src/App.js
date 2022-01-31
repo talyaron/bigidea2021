@@ -33,12 +33,14 @@ function App() {
   const [userState, setUserState] = useState({});
   const [isAdmin, setIsAdmin] = useState(false);
   const [isOle, setIsOle] = useState(true);
+  const [isUserID, setIsUserID] = useState(null);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log("user logged in");
         const uid = user.uid;
+        setIsUserID(uid);
         userID = uid;
         //get user from db
         getDoc(doc(db, "users", uid)).then((userDB) => {
@@ -107,7 +109,7 @@ function App() {
 						<Route path='404' element={<Error />} />
 						<Route path='401' element={<Unauthorised />} />
 						<Route path='MainPage' element={<MainPage role={role} />} />
-						<Route path='ContactUs' element={<ContactUs />}/>
+						<Route path='ContactUs' element={<ContactUs  uid = {isUserID}/>}/>
 						<Route path='event/:eventID' element={<Event />} />
 						<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
