@@ -1,6 +1,6 @@
-import './ProfilePage.css';
+import '../../stylesheets/page/ProfilePage.css';
 import React, { useEffect, useState } from 'react';
-import { db } from '../../../functions/firebase/config';
+import { db } from '../../scripts/firebase/config';
 import { doc, getDoc, onSnapshot, setDoc, updateDoc} from 'firebase/firestore';
 import EditProfilePopUp from './EditProfilePopUp';
 import ImportImgs from '../../components/ImportImgs/ImportImgs'

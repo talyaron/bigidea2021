@@ -28,9 +28,28 @@
     /* font-size: 3.5vw; */
 }
 
-/* .eventName_Event{
-    display: block;
-} */
+.timeContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.title{
+    font-weight: bolder;
+    font-size: 30px;
+    text-decoration: underline;
+}
+.time{
+    width:40%;
+    border: groove blue;
+    border-radius: 5px;
+}
+.locationContainer{
+    border: 2px solid black;
+    width:80%;
+    margin: 0px 0px 0px 10%;
+    justify-self: middle;
+    border-radius: 5px;
+}
 .mainContainer_Event{
     display: flex;
     flex-direction: column;
@@ -74,6 +93,10 @@
     justify-content:space-around;
     align-content:space-evenly;
 }
+.coverImage{
+    width:95%;
+    margin-top: 3%;
+}
 .backButton_Event{
     /* float: left;
     margin-left: 20px;
@@ -108,7 +131,13 @@
     text-align: center;
     overflow-wrap: break-word;
 }
-
+.tag{
+    border: 1px blue solid;
+    margin-left: 5px;
+    border-radius: 10px;
+    padding:3px;
+    font-weight: bold;
+}
 /*
 .eventName{
     link to autoID.eventName
@@ -233,5 +262,5 @@
 
 .addeventatc{
     position: relative;
-    z-index: -99;
+    z-index: -1;
 }
