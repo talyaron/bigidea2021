@@ -71,22 +71,24 @@ function Event() {
 					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 				</div>
 				<img className="coverImage" src={image}></img>
-				<div className="timeContainer">
-					<p className="time">
-						Start Time: <br></br><b><Moment format="YYYY/MM/DD @ hh:mm">{eventData.startTime}</Moment></b>
-					</p>
-					<p className="time"> End Time: <br></br><b><Moment format="YYYY/MM/DD @ hh:mm">{eventData.endTime}</Moment> </b></p>
-				</div>
-				<div className="locationContainer">
-					<p className="eventStreet_Event">
-						{" "}
-						Street Name: {addressInfo.streetName}
-					</p>
-					<p className="eventHouse_Event">
-						{" "}
-						House Number: {addressInfo.houseNumber}
-					</p>
-					<p className="eventCity_Event"> City: {addressInfo.city}</p>
+				<div className="dateAndLocationContainer">
+					<div className="timeContainer">
+						<div className="time">
+							Start Time: <br></br><b><Moment format="YYYY/MM/DD @ hh:mm">{eventData.startTime}</Moment></b>
+						</div>
+						<div className="time"> End Time: <br></br><b><Moment format="YYYY/MM/DD @ hh:mm">{eventData.endTime}</Moment> </b></div>
+					</div>
+					<div className="locationContainer">
+						<p className="eventStreet_Event">
+							{" "}
+							Street Name: {addressInfo.streetName}
+						</p>
+						<p className="eventHouse_Event">
+							{" "}
+							House Number: {addressInfo.houseNumber}
+						</p>
+						<p className="eventCity_Event"> City: {addressInfo.city}</p>
+					</div>
 				</div>
 				<h4 className="eventDetails_Event">
 					{" "}

@@ -28,9 +28,16 @@
     /* font-size: 3.5vw; */
 }
 
+.dateAndLocationContainer{
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: space-around;
+}
+
 .timeContainer{
     display: flex;
     flex-direction: column;
+    width: 40%;
 }
 .title{
     font-weight: bolder;
@@ -39,12 +46,14 @@
     background-color: var(--Background-light);
 }
 .time{
-    width:40%;
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
     border: groove black;
 }
 .locationContainer{
     border: 2px solid black;
-    width:60%;
+    width: 60%;
     border-radius: 5px;
 }
 .mainContainer_Event{
