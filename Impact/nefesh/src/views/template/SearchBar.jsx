@@ -1,6 +1,6 @@
 import '../../styles/template/SearchBar.css';
 import { useState } from 'react';
-import { getDatabase, ref, onValue, query, db } from "firebase/database";
+import {  query } from "firebase/database";
 import { collection, getDocs, where, getFirestore} from '@firebase/firestore';
 import Logo from '../../assets/Images/Logo.png';
 
@@ -21,7 +21,6 @@ function SearchBar() {
 
   async function getFilter(ev){
     ev.preventDefault();
-    const arr= [];
     setHidden(false)
     filterOption= ev.target.value;
     setTag(filterOption)
@@ -44,10 +43,10 @@ function SearchBar() {
       arr2.push(doc.data());
     });
     if(tag=== "popular"){
-      for (var i = 1; i < arr2.length; i++)
-      for (var j = 0; j < i; j++)
+      for (let i = 1; i < arr2.length; i++)
+      for (let j = 0; j < i; j++)
           if (arr2[i].views > arr2[j].views) {
-            var x = arr2[i];
+            let x = arr2[i];
             arr2[i] = arr2[j];
             arr2[j] = x;
           }
@@ -55,19 +54,19 @@ function SearchBar() {
 
   }
   else if (tag=== "newest"){
-    for (var i = 1; i < arr2.length; i++)
-    for (var j = 0; j < i; j++)
+    for (let i = 1; i < arr2.length; i++)
+    for (let j = 0; j < i; j++)
         if (arr2[i].Date > arr2[j].Date) {
-          var x = arr2[i];
+          let x = arr2[i];
           arr2[i] = arr2[j];
           arr2[j] = x;
         }
       }
   else if(tag=== "recent"){
-    for (var i = 1; i < arr2.length; i++)
-    for (var j = 0; j < i; j++)
+    for (let i = 1; i < arr2.length; i++)
+    for (let j = 0; j < i; j++)
         if (arr2[i].dateAdded > arr2[j].dateAdded) {
-          var x = arr2[i];
+          let x = arr2[i];
           arr2[i] = arr2[j];
           arr2[j] = x;
         }
@@ -92,7 +91,7 @@ function SearchBar() {
     <div className='container'>
       <div className='contianer2'>
       <div className="sectionOne">
-        <img className='Logo' src= {Logo} />
+        <img className='Logo' src= {Logo} alt="Nefesh B'Nefesh Logo" />
         <h1>Nefesh B'Nefesh</h1>
         <button onChange={console.log("does nothing yet")}>|||</button>
       </div>
@@ -106,7 +105,7 @@ function SearchBar() {
       <input className='searchBar' type="text" name= "searchBar" hidden= {hidden} onKeyPress={getTarget} />
       {articles.map((article, i) => (
     <li className="travelcompany-input" key={i}>
-        <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image}/> 
+        <span className="input-label"> {i+1}. {article.Title} Written on {article.Date} by {article.creator} and currently has {article.views} views</span> <img src= {article.Image} alt={article.Title}/> 
     </li>
    ))}
    </div>

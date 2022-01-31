@@ -3,12 +3,9 @@ import AdminPagePopUp from '../template/AdminPagePopUp';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../scripts/firebase/config';
 import { onSnapshot, collection, query, doc, getDoc, where, getDocs } from 'firebase/firestore';
-import { async } from '@firebase/util';
-import { push } from 'firebase/database';
 
 var isAdmin = true;
 let userIDAdmin;
-
 
 function AdminPage() {
 	const [displayName, setDisplayName] = useState('displayName');
@@ -16,7 +13,6 @@ function AdminPage() {
 	const [isOpen, setIsOpen] = useState(false);
 	const [role, setRole] = useState('ole');
 	const [isBanned, setIsBanned] = useState(false);
-
 
 	function togglePopup(name) {
 
@@ -40,8 +36,6 @@ function AdminPage() {
 
 			//this is where you were fixing the code trying to get the username to display on the popup
 			// let ref = userIDAdm();
-
-		
 			
 			const userRef = doc(db, "users", userIdSpec)
 
@@ -67,13 +61,8 @@ function AdminPage() {
 	const [searchField, setSearchField] = useState('userID')
 	let q = query(namesRef);
 
-	useEffect(() => {
-        //snapshot all names and set them to 'Names'
-		getNames()
-	}, []);
-
 	function getNames(){
-		const namesQuery = onSnapshot(q, (snapshot) => {
+		onSnapshot(q, (snapshot) => {
 			let list = [];
 			snapshot.forEach((namesDB) => {
 				const namesTemp = namesDB.data();
@@ -82,6 +71,13 @@ function AdminPage() {
 			setNames(list);
 		});
 	}
+
+	useEffect(() => {
+        //snapshot all names and set them to 'Names'
+		getNames();
+	}, []);
+
+	
 
 
 	function handleSearchByChange(ev){
@@ -173,6 +169,7 @@ function AdminPage() {
 							</div>
 						);
 					})}
+					<div class="footer"></div>
 				</div>
 				</div>
 			) : null}

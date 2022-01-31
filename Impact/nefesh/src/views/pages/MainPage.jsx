@@ -2,29 +2,20 @@ import "../../styles/page/MainPage.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DataFilters from "../components/DataFilters/DataFilters";
-import { db } from "../../scripts/firebase/config";
-import { getDatabase, ref, onValue, query } from "firebase/database";
+import { query } from "firebase/database";
 import {
   collection,
-  orderBy,
   onSnapshot,
-  getDocs,
-  where,
   getFirestore,
 } from "firebase/firestore";;
 
-
-const tags = ["newest", "popular", "recent"];
+//const tags = ["newest", "popular", "recent"];
 let eventFilter = "";
-
 
 function App() {
   const navigate = useNavigate();
 
-  
-
-  var searchOption;
-  var filterOption;
+  //var searchOption, filterOption;
   const db = getFirestore();
   const [articles, setArticles] = useState([]);
   const [searchField, setSearchField] = useState("");
@@ -39,7 +30,6 @@ function App() {
    
   }
   
-
   
   useEffect(() => {
     const q = query(collection(db, "events"));

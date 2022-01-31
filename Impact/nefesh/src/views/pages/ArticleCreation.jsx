@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/page/ArticleCreation.css';
-import { collection, addDoc, arrayRemove } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import ImportImgs from '../template/ImportImgs';
 let i = 0;
@@ -9,8 +9,8 @@ let page = 'ArticleCreation';
 
 function ArticleCreation(props) {
 	const [tagsState, setTagsState] = useState([]);
-	const inputRef = useRef();
-	const [value, setValue] = React.useState('I am edittable');
+	//const inputRef = useRef();
+	//const [value, setValue] = React.useState('I am edittable');
 	const [httpUrl, setHttpUrl] = useState('');
 
 	useEffect(() => {
@@ -45,7 +45,7 @@ function ArticleCreation(props) {
 			dateAdded: new Date(),
 			isPublished: true,
 			startTime: new Date(startTime),
-			endTime: new Date(startTime),
+			endTime: new Date(endTime),
 			maxCapacity,
 			currentCapacity: maxCapacity,
 		});
@@ -99,7 +99,7 @@ function ArticleCreation(props) {
 		tempArray.splice(tag, 1);
 		setTagsState(tempArray);
 	}
-	function ping() {}
+	//function ping() {}
 
 	const callBackFunction = (httpRef) => {
 		setHttpUrl(httpRef);
@@ -129,9 +129,7 @@ function ArticleCreation(props) {
 
 				<form className='Tags' onSubmit={addTags}>
 					<input type='text' name='tagsInput' placeholder='Enter event tags here' className='tag34 border-ArticleCreation placeHolderText_articleCreation' />
-					<button className='submit Button36 shadow' type='submit'>
-						Submit
-					</button>
+					<button className='submit Button36 shadow' type='submit'>Submit</button>
 				</form>
 				<div className='tagBox'>
 					<div className='tagsMapContainer shadow'>

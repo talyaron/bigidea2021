@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/page/Event.css";
-import { collection, setDoc, getDoc, doc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../scripts/firebase/config";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import useScript from "../../scripts/useScript";
 import Moment from 'react-moment';
 // import 'moment-timezone';
@@ -14,17 +14,18 @@ function Event() {
 	const [contactInfo, setContactInfo] = useState([]);
 	const [orgWebsite, setOrgWebsite] = useState([]);
 	const [websiteValidity, setWebValidity] = useState(false);
-	const [imageValidity, setImgValidity] = useState(false);
+	//const [imageValidity, setImgValidity] = useState(false);
 	let { eventID } = useParams();
-	let navigate = useNavigate();
+	//let navigate = useNavigate();
 	const [image,setImage]=useState()
-	useEffect(async () => {
+	useEffect(() => {
 		try {
 			setWebValidity(false);
 			let eventRef = doc(db, "events", eventID);
-			const docSnap = await getDoc(eventRef);
-			const eventObj = docSnap.data();
-			let { startTime, endTime } = eventObj;
+			let eventObj;
+			getDoc(eventRef).then(docSnap => {
+				eventObj = docSnap.data();
+				let { startTime, endTime } = eventObj;
 			if (startTime) startTime = new Date(startTime.seconds * 1000);
 			if (endTime) endTime = new Date(endTime.seconds * 1000);
 			console.log(startTime, endTime);
@@ -44,10 +45,11 @@ function Event() {
 			let validState = validURL(eventObj.contactInfo.website);
 			setWebValidity(validState);
 			setOrgWebsite(eventObj.contactInfo.website);
+			});
 		} catch (err) {
 			console.error(err);
 		}
-	}, []);
+	}, [eventID]);
 
 	function validURL(str) {
 		var pattern = new RegExp(
@@ -70,7 +72,7 @@ function Event() {
 				<div className='eventDetails_Event'>
 					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 				</div>
-				<img className="coverImage" src={image}></img>
+				<img className="coverImage" src={image} alt="Event"></img>
 				<div className="timeContainer">
 					<p className="time">
 						Start Time: <br></br><b><Moment format="YYYY/MM/DD @ hh:mm">{eventData.startTime}</Moment></b>

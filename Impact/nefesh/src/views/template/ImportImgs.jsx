@@ -1,4 +1,4 @@
-import { onSnapshot } from 'firebase/firestore';
+//import { onSnapshot } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useEffect, useState } from 'react';
 

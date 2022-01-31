@@ -1,11 +1,7 @@
-import { useState, Component  } from 'react';
+import { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/component/StickyBanner.css';
 import { getAuth, signOut } from "firebase/auth";
-
-import { collection, setDoc, getDoc, doc } from "firebase/firestore";
-import { db } from "../../scripts/firebase/config";
-
 
 //icons
 import HomeButton from '../../assets/Images/home.svg';
@@ -64,18 +60,14 @@ function StickyBanner({role}) {
 				onClick={() => {
 					navigate('/MainPage');
 				}}>
-				<div
-					className='MenuButton'
-					id='homeB_container'
-				>
+				<div className='MenuButton' id='homeB_container' >
 					<img src={HomeButton} alt='Home' id='homeButton' />
 				</div>
 				
 			</div>
 			
 			<div className='stickyBanner' onClick={handleMenu}>
-				<div className='MenuButton'
-					id='Menu_container'>
+				<div className='MenuButton' id='Menu_container'>
 					{navToggle ?
 						(<img src={X} alt='X' id='MenuButton' />)
 						:

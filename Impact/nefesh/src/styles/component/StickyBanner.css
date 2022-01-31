@@ -3,10 +3,10 @@
     background-color: #b7cbe7e8;
     display: flex;
     flex-direction: column;
-    bottom: 85px;
-    width: 70%;
-    left: 0;
-	border-bottom-right-radius: 35px;
+    bottom: 70px;
+    width: 90%;
+    left: 5%;
+	border-top-left-radius: 35px;
     border-top-right-radius: 35px;
     border: outset;
     border-left: none;
@@ -58,12 +58,6 @@
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 7px 4px;
 }
 
-.MenuButton {
-
-}
-
-
-
 .stickyBanner > .MenuButton > img {
 	height: 30px;
     width: auto;
@@ -91,12 +85,12 @@
 @keyframes move {
 	0%{
 		z-index: -1;
-		transform: translateX(-200px);
+		transform: translateY(20px);
 		/*transform: translateY(20px);*/
 	}
 	100%{
 		z-index: -1;
-		transform: translateX(0px);
+		transform: translateY(0px);
 		/*transform: translateY(0px);*/
 	}
 }
