@@ -45,17 +45,18 @@
 
 .stickyBanner {
     margin-bottom: 10px;
-   /* 
-   background-color: #212223bf!important;
-    border-radius: 50%;
-    border: outset deepskyblue;
-    box-shadow: rgb(0 0 0 / 10%) 0px 0px 7px 4px;
-	*/
     right: 1%;
     height: 30px;
     width: 30px;
     text-align: center;
 	padding: 8px;
+	border-radius: 50%;
+    box-shadow: transparent;
+}
+
+.stickyBanner:hover {
+	background-color: #212223bf!important;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 7px 4px;
 }
 
 .MenuButton {
