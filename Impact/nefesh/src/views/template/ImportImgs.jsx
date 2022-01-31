@@ -18,35 +18,29 @@ function HandleImportImg(props) {
 		setCurrentUsePage(tempPN);
 	}, []);
 	
-	function handleImgUpload(ev) {
-		ev.preventDefault()
+
+
+	async function onTrigger(ev){
+		ev.preventDefault();
 		const image = ev.target.files[0];
 		setImageAsFile((imageFile) => image);
 		if (imageAsFile === '') {
 			console.error(`not an image, the image file is a ${typeof imageAsFile}`);
 		}
-	}
-
-	
-
-	async function onTrigger(ev){
-		ev.preventDefault();
-		uploadBytes(storageRef, imageAsFile).then((snapshot) => {
+		uploadBytes(storageRef, image).then((snapshot) => {
 			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${imageAsFile.name}`)).then((httpRef) => {
 				setImageAsUrl(httpRef)
 					props.parentCallBack(httpRef);
+					console.log(httpRef)
 			})
 		});
 		console.log('Upload Successful!')
 	}
 
 	return (
-		<form onSubmit={onTrigger} id='form_ImportImg'>
-			<input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif' onChange={handleImgUpload}className='border-ArticleCreation' />
-			<button onClick={onTrigger} id='SubmitButton_ImportImg' className='shadow'>Upload </button>
-		</form>
-	)
-}
+			<input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif' onChange={onTrigger} className='border-ArticleCreation' />
+			
+	)}
 
 
 export default HandleImportImg;
