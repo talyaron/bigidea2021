@@ -4,6 +4,7 @@ import { db } from '../../../functions/firebase/config';
 import { doc, getDoc, onSnapshot, setDoc, updateDoc} from 'firebase/firestore';
 import EditProfilePopUp from './EditProfilePopUp';
 import ImportImgs from '../../components/ImportImgs/ImportImgs'
+import EditBioPopUp from './EditBioPopUp';
 let page = 'ProfilePage';
 
 
@@ -21,6 +22,8 @@ function ProfilePage(props) {
 	const {uid} = props;
 	const [isOpen, setIsOpen] = useState(false);
 	const [httpUrl, setHttpUrl] = useState('');
+	const [isBioOpen, setIsBioOpen] = useState(false);
+	const [userBio, setUserBio] = useState('loading');
   	
 	
 	useEffect(async () => {
@@ -34,13 +37,14 @@ function ProfilePage(props) {
 		setUserEmail(docSnap.data().email);
 		setUserAddress(docSnap.data().location)
 		setUserGender(docSnap.data().sex);
+		setUserBio(docSnap.data().bio);
 		console.log(props, docSnap.data())
 		
 
 	}, [uid]);
 	function editProfile(ev) {
 		setIsOpen(!isOpen);
-		setEditing(true)
+		setEditing(true);
 	};
 
 	function changeProfile(ev) {
@@ -89,6 +93,28 @@ function ProfilePage(props) {
 		setIsOpen(!isOpen);
 	}
 
+
+	function changeBio(ev) {
+		ev.preventDefault();
+		console.dir(ev.target);
+
+		const bio = ev.target.elements.newBio.value;
+
+		if(ev.target.elements.newBio.value.length == 0) {
+			//nothing
+		} else {
+			setUserBio(bio);
+			console.log(bio)
+			updateDoc(doc(db, "users", props.uid), {
+				bio: bio,
+			})
+		}
+
+		setEditing(false);
+
+		setIsBioOpen(!isBioOpen);
+	}
+
 	function changePreferences(ev) {
 		setChoosingPrefs(true)
 	}
@@ -102,6 +128,10 @@ function ProfilePage(props) {
 	};
 	function debug() {
 		console.log(props.uid)
+	}
+	function editBio(){
+		setIsBioOpen(!isBioOpen);
+		setEditing(true);
 	}
 	return (
 		<div>
@@ -118,45 +148,14 @@ function ProfilePage(props) {
 				 
 			</div>
 			<div className='back-3'>
-				<button className ="EditProfBtn" type="button" name="BioButton"> Edit Bio </button>
-				<h2 className='center'> Biography </h2> 
-				<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </p>
+				<button className ="EditProfBtn" type="button" onClick = {editBio} name="BioButton"> Edit Bio </button>
+				<h2 className='center'> Bio </h2> 
+				<p>{userBio}</p>
 				
 			</div>
 			<footer  className='back-2 foot'>
 
 			</footer>
-			
-			
-			
-			
-			{/*
-			<div className='containerDetails'>
-				
-				<h4 className = "info" style = {{fontSize: textSize + 'px'}}>
-					Name: <br />
-					Gender: {userGender} <br />
-					Email: <br />
-					Address: {userAddress}<br />
-					Font Size: {textSize}
-
-
-
-
-				</h4>
-				<div className='containerEvents'>
-					<p>Events list goes here</p>
-				</div>
-			</div>
-
-			<button type="button" id = "prefButton" onClick={changePreferences} name="settingbtn">Preferences</button>
-			{choosingPrefs ? <div className='settings'>
-				<form onSubmit={submitChangePreferences}>
-
-					Change Font Size: <input type="text" name="newFontSize" /><br />
-					<button type="submit" id = "submitChanges" name="prfbtn"> Submit Changes</button>
-				</form>
-			</div> : null} */}
 
 			
 			{isOpen && <EditProfilePopUp
@@ -175,6 +174,21 @@ function ProfilePage(props) {
 			</div> : null}
       </>}
       handleClose={editProfile}
+    />}
+	{isBioOpen && <EditBioPopUp
+      content={<>
+        {editing ? <div className='profileEditorBio'	>
+				<h4 className='center2'> Edit Bio Here </h4>
+				<form onSubmit={changeBio}>
+					Enter New Bio: <input type="text" name="newBio"/>
+					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
+
+				</form>
+
+
+			</div> : null}
+      </>}
+      handleClose={editBio}
     />}
 			
 

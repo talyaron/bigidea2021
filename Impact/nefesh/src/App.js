@@ -84,6 +84,7 @@ function App() {
               userIcon: user.photoURL,
               userPref: ["null"],
               disabled : false,
+              bio: "null"
             });
           }
         });
