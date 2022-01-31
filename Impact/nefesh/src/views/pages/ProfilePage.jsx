@@ -2,9 +2,9 @@ import '../../stylesheets/page/ProfilePage.css';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../scripts/firebase/config';
 import { doc, getDoc, onSnapshot, setDoc, updateDoc} from 'firebase/firestore';
-import EditProfilePopUp from './EditProfilePopUp';
-import ImportImgs from '../../components/ImportImgs/ImportImgs'
-import EditBioPopUp from './EditBioPopUp';
+import EditProfilePopUp from './ProfilePage/EditBioPopUp';
+import ImportImgs from '../template/ImportImgs'
+import EditBioPopUp from './ProfilePage/EditBioPopUp';
 let page = 'ProfilePage';
 
 
