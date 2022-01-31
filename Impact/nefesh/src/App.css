@@ -33,13 +33,13 @@ body {
 }
 
 .container_App {
-	/* width: 100vw;
+	width: 100vw;
 	max-width: 500px;
-	overflow-y: scroll; /* Hide vertical scrollbar */
-	/* overflow-x: hidden; Hide horizontal scrollbar */
-	/* max-height: 100vh; */
-	/* height: 100vh;
-	margin: 0px; */ 
+	overflow-y: scroll; 
+	overflow-x: hidden; 
+	max-height: 100vh;
+	height: 100vh;
+	margin: 0px; 
 }
 
 .container_App::-webkit-scrollbar {
