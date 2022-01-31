@@ -57,7 +57,7 @@
     border-collapse: collapse;
 }
 
-#search_button_AdminPage {
+#search_button_AdminPage, #clearFilter_AP {
     background-color: Var(--Light);
     border: 1px solid Var(--Light);
     height: 28px;
@@ -99,14 +99,15 @@
     background-color: Var(--Light);
     
 }
+/*
 #clearFilter_AP{
     height: 28px;
-    width: 25vw;
+    width: 60px;
     background-color: Var(--Light);
     color: Var(--Grey-D2);
     display: inline;
     border: 1px solid Var(--Grey);
-}
+}*/
 
    
   

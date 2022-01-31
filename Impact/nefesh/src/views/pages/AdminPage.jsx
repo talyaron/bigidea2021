@@ -154,7 +154,7 @@ function AdminPage() {
 						</form>
 					<input type='text' placeholder={`Enter Full ${searchField}`} name='adminPageSearch' id='search_Box_AdminPage' onChange={handleSearchChange}/>
 					<button onClick={handleSearch} id='search_button_AdminPage'>🔍</button>
-					<button onClick={handleClearFilter} id='clearFilter_AP'>Clear Search</button>
+					<button onClick={handleClearFilter} id='clearFilter_AP'>🗑️</button>
 					</div>
 				<div className='eventMapContainer_AP'>
 					{Names.map((name) => {
