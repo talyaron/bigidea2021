@@ -1,10 +1,9 @@
 import "../../styles/page/MainPage.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import DataFilters from "../components/DataFilters/DataFilters";
+import DataFilters from "../template/DataFilters";
 import { query } from "firebase/database";
 import { collection, onSnapshot, getFirestore } from "firebase/firestore";
-import CheckBoxes from "../components/CheckBoxes/CheckBoxes";
 
 //const tags = ["newest", "popular", "recent"];
 let eventFilter = "";
@@ -23,9 +22,6 @@ function App() {
     setSearchField(temp);
   }
 
-  async function getTarget(ev) {
-   
-  }
   
   
   useEffect(() => {
@@ -84,7 +80,7 @@ function App() {
       <form
         className="searchFor dropDown"
         onChange={handleSearchByChange}>
-        <label for="searchFor" id="searchFor">
+        <label htmlFor="searchFor" id="searchFor">
           Search for:
         </label>
         <select id="searchDropdown" name="searchFor">
@@ -93,23 +89,6 @@ function App() {
           <option value="email">recent</option>
         </select>
       </form>
-
-      <input
-        className="searchBar"
-        type="text"
-        name="searchBar"
-        onKeyPress={getTarget}
-      />
-      {articles.map((article, i) => (
-        <li className="travelcompany-input" key={i}>
-          <span className="input-label">
-            {" "}
-            {i + 1}. {article.Title} Written on {article.Date} by{" "}
-            {article.creator} and currently has {article.tags} views
-          </span>{" "}
-          <img src={article.Image} alt="article" />
-        </li>
-      ))}
       <div className="userInterfaceContainer">
         <form className="filterEvents">
           <label htmlFor="eventFilterType">
