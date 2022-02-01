@@ -15,6 +15,8 @@ import {
 
 const filters = {};
 let eventFilters = [];
+let tags = ["dinner", "60+", "party", "fun", "outdoors"];
+
 
 function DataFilters({ setEventListState }) {
   var searchOption;
@@ -111,7 +113,7 @@ const joinedEventsList = []
       <button onClick={revealFilters} name="hi">
         Click here to apply filters
       </button>
-      {hidden ? (
+      {/* {hidden ? (
         <div>
           Filters:
           <input
@@ -142,7 +144,20 @@ const joinedEventsList = []
             onClick={getEvents}
           />
         </div>
-      ) : null}
+      ) : null} */}
+
+    {hidden? 
+        <div id="tagsContainer">
+        {tags.map((tag) => {
+            return(
+            <div>
+                <p>{tag}</p>
+                <input name={tag} type="checkbox" onClick={getTarget}/>
+            </div>
+            )
+        })}
+        <input className="submitbutton" type="submit" name="submit1" onClick={getEvents} />
+        </div> : null}                     
     </div>
   );
 }

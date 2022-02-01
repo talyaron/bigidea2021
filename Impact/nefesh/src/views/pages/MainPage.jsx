@@ -3,11 +3,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DataFilters from "../components/DataFilters/DataFilters";
 import { query } from "firebase/database";
-import {
-  collection,
-  onSnapshot,
-  getFirestore,
-} from "firebase/firestore";;
+import { collection, onSnapshot, getFirestore } from "firebase/firestore";
+import CheckBoxes from "../components/CheckBoxes/CheckBoxes";
 
 //const tags = ["newest", "popular", "recent"];
 let eventFilter = "";
