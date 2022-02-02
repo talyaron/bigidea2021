@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/page/ArticleCreation.css';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, getDoc, doc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import ImportImgs from '../template/ImportImgs';
 let i = 0;
@@ -12,22 +12,29 @@ function ArticleCreation(props) {
 	//const inputRef = useRef();
 	//const [value, setValue] = React.useState('I am editable');
 	const [httpUrl, setHttpUrl] = useState('');
+	const [tags, setTags] = useState([]);
+	const [selectedTagArray, setSelectedTagArray] = useState([])
 
 	useEffect(() => {
 		document.getElementById('editor').addEventListener('input', inputEvt, false);
+		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
+		getDoc(tagsRef).then((tagsDB) => {
+			console.log(tagsDB.data().tagArray);
+			setTags(tagsDB.data().tagArray);
+		});
 	}, []);
 	function inputEvt(ev) {
 		let parse = 'text';
 		statesSubmitted = { ...statesSubmitted, [parse]: ev.target.innerHTML };
 	}
 	function submitArticle() {
-		let { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
+		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
 		addDoc(collection(db, 'events'), {
 			title,
 			coverImage: image,
 			article: text,
-			hostName: name,
+			hostName,
 			address: {
 				streetName: streetName,
 				houseNumber: houseNumber,
@@ -51,13 +58,13 @@ function ArticleCreation(props) {
 		});
 	}
 	function saveDraft() {
-		let { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
+		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
 		addDoc(collection(db, 'events'), {
 			title,
 			coverImage: image,
 			article: text,
-			hostName: name,
+			hostName,
 			address: {
 				streetName: streetName,
 				houseNumber: houseNumber,
@@ -104,6 +111,22 @@ function ArticleCreation(props) {
 	const callBackFunction = (httpRef) => {
 		setHttpUrl(httpRef);
 	};
+	
+	function getTarget(ev) {
+		let temp = ev.target.innerHTML
+		let tempArray = selectedTagArray
+		console.log(temp);
+		if(tempArray.includes(temp)){
+			const index = tempArray.indexOf(temp)
+			tempArray.splice(index, 1)
+			console.log(tempArray)
+		}
+		else{
+		tempArray.push(temp)
+		console.log(tempArray)
+		}
+		setSelectedTagArray(tempArray)
+	}
 
 	return (
 		<div id='ArtC_Header'>
@@ -112,7 +135,7 @@ function ArticleCreation(props) {
 				<div className='createArticle-popup-box'>
 					<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} />
 					<input type='text' name='title' onChange={changeState} placeholder='Enter article title here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='text' name='name' onChange={changeState} placeholder='Enter host/s name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+					<input type='text' name='hostName' onChange={changeState} placeholder='Enter host/s name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<input type='text' name='city' onChange={changeState} placeholder='Enter city here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<input type='number' name='houseNumber' onChange={changeState} placeholder='Enter building number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
@@ -127,26 +150,33 @@ function ArticleCreation(props) {
 					<div className='expandBox'>
 						<div contentEditable='true' className='textarea' name='text' role='textbox' id='editor' placeholder='Enter event description here placeHolderText_articleCreation'></div>
 					</div>
-
-					<form className='Tags' onSubmit={addTags}>
-						<input type='text' name='tagsInput' placeholder='Enter event tags here' className='tag34 border-ArticleCreation placeHolderText_articleCreation' />
-						<button className='submit Button36 shadow' type='submit'>
-							Submit
-						</button>
-					</form>
-					<div className='tagBox'>
-						<div className='tagsMapContainer shadow'>
-							{tagsState.map((tag) => {
-								i++;
+					<div className='selected_tagBox'>
+							{selectedTagArray.map((tag) => {
+								console.log('ping.map')
 								return (
-									<form onSubmit={deleteTag} key={(tag, i)} className='tagForm'>
-										<div className='Tag-Content'>{tag}</div>
-										<button type='submit' className='Tag-X'>
-											X
-										</button>
-									</form>
+									<div key={tag}>
+										<div className='inline-block'>
+											<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
+												{tag}
+											</div>
+										</div>
+									</div>
 								);
 							})}
+						<div className='unselected_tagBox'>
+							<div className='tagsMapContainer shadow'>
+								{tags.map((tag) => {
+									return (
+										<div key={tag}>
+											<div className='inline-block'>
+												<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
+													{tag}
+												</div>
+											</div>
+										</div>
+									);
+								})}
+							</div>
 						</div>
 					</div>
 					<div className='buttonContainer23'>
