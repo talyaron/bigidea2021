@@ -34,10 +34,14 @@ function DataFilters({ setEventListState }) {
   }
 
   async function getTarget(ev) {
-    filters[ev.target.name] = ev.target.checked;
+    for (var oldFilter in filters) delete filters[oldFilter];
+    filters[ev.target.name] = ev.target;
+
+    console.log(filters)
+    getEvents(ev)
   }
   async function getEvents(ev) {
-    ev.preventDefault();
+    
     console.log(filters);
     const filtersArr = [];
     for (let filter in filters) {
@@ -116,13 +120,13 @@ const joinedEventsList = []
             <div key={tag}>
                 <div className="inline-block">
                   {tag}
-                  <input name={tag} type="checkbox" onClick={getTarget}/>
+                  <button className="filterBtn" name={tag} onClick={getTarget}/>
                 </div>
                 
             </div>
             )
         })}
-        <input className="submitbutton" type="submit" name="submit1" onClick={getEvents} />
+     
         </div> : null}                     
     </div>
   );
