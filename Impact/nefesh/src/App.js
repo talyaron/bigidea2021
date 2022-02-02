@@ -32,8 +32,9 @@ isAdmin = "false";
 function App() {
   const [userState, setUserState] = useState({});
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isOle, setIsOle] = useState(true);
+  const [isOle, setIsOle] = useState(false);
   const [isUserID, setIsUserID] = useState(null);
+  const [isGuest, setIsGuest] =useState(true)
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -58,6 +59,10 @@ function App() {
             }
 
             console.log(role);
+            if (role == "guest"){
+              setIsOle(false);
+              setIsAdmin(false);
+            }
             if (role === "ole") {
 				setIsOle(true);
 				setIsAdmin(false);
@@ -125,16 +130,14 @@ function App() {
 			) : (
 				<div className='container_App'>
 					<Routes>
-						<Route path='/' element={<Login />} />
-						<Route path='login' element={<Login />} />
+						<Route path='/' element={<MainPage />} />
+						<Route path='/' element={<MainPage />} />
 					</Routes>
 				</div>
 			)}
 		</div>
 		<div className="footer"></div>
-		{
-			loggedIn ? (<StickyBanner role={role} />) : (null) 
-		}
+		<StickyBanner role={role} />
 		</div>
 	);
 }
