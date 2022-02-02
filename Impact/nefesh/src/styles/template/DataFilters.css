@@ -23,6 +23,19 @@
 
 .filterBtn{
     height: 20px;
-    width: 20px;
-    background-color: brown;
+    width: fit-content;
+    background-color: rgb(0, 149, 255);
+    color: white;
+
+}
+
+.filterBanner{
+    text-align: center;
+    background-color: rgb(0, 149, 255);
+    
+}
+
+.filterBtn:focus{
+    background-color: blue;
+    color: white;
 }

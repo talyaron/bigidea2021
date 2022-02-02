@@ -13,7 +13,7 @@ import {
 
 const filters = {};
 let eventFilters = [];
-let tags = ["dinner", "60+", "party", "fun", "outdoors"];
+let tags = ["dinner", "60+", "party", "fun", "outdoors", "potato"];
 
 
 function DataFilters({ setEventListState }) {
@@ -108,26 +108,25 @@ const joinedEventsList = []
   }
   
   return (
-    <div className="revealFiltersButton_cont">
-      <button onClick={revealFilters} name="revealFiltersButton">
-        Click here to apply filters
-      </button>
+  <div>
+  <div className= "filterBanner">
+    Filters
+  </div>
 
-    {hidden? 
         <div id="tagsContainer">
         {tags.map((tag) => {
             return(
             <div key={tag}>
                 <div className="inline-block">
-                  {tag}
-                  <button className="filterBtn" name={tag} onClick={getTarget}/>
+  
+                  <button className="filterBtn" name={tag} onClick={getTarget}>{tag}</button>
                 </div>
                 
             </div>
             )
         })}
      
-        </div> : null}                     
+        </div>             
     </div>
   );
 }
