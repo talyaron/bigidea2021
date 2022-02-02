@@ -75,7 +75,7 @@ function AdminPage() {
 	useEffect(() => {
         //snapshot all names and set them to 'Names'
 		getNames();
-	}, []);
+	});
 
 	
 

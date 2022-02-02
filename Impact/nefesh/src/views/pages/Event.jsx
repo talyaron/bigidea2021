@@ -119,7 +119,7 @@ function Event() {
 			<div className="eventTags_Event">
 				<h3 className="tagTitle_Event">Event Tags:</h3>
 				{tags.map((tag, index) => {
-					return <div className="tag" key={`tag-${index}`}>{tag}</div>;
+					return <tag key={`tag-${index}`}>{tag}</tag>;
 				})}
 			</div>
 		</div>

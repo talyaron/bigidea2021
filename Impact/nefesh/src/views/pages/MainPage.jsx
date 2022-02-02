@@ -117,7 +117,7 @@ function App() {
   timeStyle: "short",
   dateStyle: "medium"
 }).format(event.startTime.seconds * 1000) }</div>
-                <div id="Views">Tags: {event.tags}</div>
+                <div id="Views">Tags: {event.tags.map(e => (<tag>{e}</tag>))}</div>
                 </div>
                 <div className="cardTags">
                   </div>

@@ -62,3 +62,23 @@ button{
 	background-color: var(--Navy-blue);
 	color: var(--Grey);	
 }
+
+tag {
+	margin-block: auto;
+    border: inset 3px;
+    background: #4c97ec;
+    vertical-align: middle;
+    margin-left: 3px;
+    margin-right: 3px;
+    border-radius: 1.5rem;
+    padding: 4px 4px;
+    text-align: center;
+    -webkit-user-select: none;
+    user-select: none;
+    line-height: 12px;
+    color: #FFFFFF;
+    border-radius: 1rem;
+    font-size: 100% !important;
+    display: inline-block;
+    white-space: nowrap;
+}
