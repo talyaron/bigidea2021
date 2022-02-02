@@ -95,6 +95,7 @@ function Event() {
 		return formatted;
 	}
 
+
 	return (
 		<div className="mainContainer_Event">
 			{useScript("https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js")}
@@ -133,8 +134,8 @@ function Event() {
 				<h3 className="maxCap"> Max Capacity: {eventData.maxCapacity} </h3>
 				<div title="Add to Calendar" className="addeventatc">
 					Add to Calendar
-					<span className="start">{`${eventData.date}+${eventData.startTime}`}</span>
-					<span className="end">{`${eventData.date}+${eventData.endTime}`}</span>
+					<span className="start">{`${eventData.startTime}`}</span>
+					<span className="end">{`${eventData.endTime}`}</span>
 					<span className="timezone">Asia/Jerusalem</span>
 					<span className="title">{eventData.title}</span>
 					<span className="description">{eventData.article}</span>
