@@ -105,9 +105,7 @@ function App() {
 
 	return (
 		<div>
-			{loggedIn ? (
 	    <NavTopBar titleDisplay="NBM Tel Aviv" />
-			) : (null) }
 		<div className='container_AppMain'>
 		
 			{loggedIn ? (
@@ -130,8 +128,13 @@ function App() {
 			) : (
 				<div className='container_App'>
 					<Routes>
-						<Route path='/' element={<MainPage />} />
-						<Route path='/' element={<MainPage />} />
+						<Route path='/' element={<MainPage role={role} />} />
+            <Route path='MainPage' element={<MainPage role={role}/>} />
+            <Route path='404' element={<Error />} />
+						<Route path='401' element={<Unauthorised />} />
+            <Route path='ContactUs' element={<ContactUs  uid = {isUserID} displayName={userState.displayName}/>}/>
+            <Route path='event/:eventID' element={<Event />} />
+            <Route path='login' element={<Login/>} />
 					</Routes>
 				</div>
 			)}
