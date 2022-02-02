@@ -17,6 +17,10 @@
 
 }
 
+svg {
+    fill: aliceblue;
+}
+
 .topNavSpacer{
     display: inline-block;
     justify-content: space-evenly;

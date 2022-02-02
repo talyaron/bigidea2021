@@ -4,7 +4,6 @@ import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../scripts/firebase/config";
 import {  useParams } from "react-router-dom";
 import useScript from "../../scripts/useScript";
-import Moment from 'react-moment';
 // import 'moment-timezone';
 
 function Event() {
@@ -26,15 +25,15 @@ function Event() {
 			let eventObj;
 			getDoc(eventRef).then(docSnap => {
 				eventObj = docSnap.data();
-			//	let filterEntriesArr = ;
 
-//setfilterData();
-				let { startTime, endTime } = eventObj;
-			if (startTime) startTime = new Date(startTime.seconds * 1000);
-			if (endTime) endTime = new Date(endTime.seconds * 1000);
+				let { startTime, endTime, address } = eventObj;
+			if (startTime) startTime = new Date(startTime.seconds * 1000).toJSON();
+			if (endTime) endTime = new Date(endTime.seconds * 1000).toJSON();
+			if (address) address = Object.entries(address);
 
 			eventObj.startTime = startTime;
 			eventObj.endTime = endTime;
+			eventObj.address = address;
 			console.log(eventObj);
 			console.log(eventID);
 			setEventData(eventObj);
@@ -55,10 +54,14 @@ function Event() {
 		}
 	}, [eventID]);
 
-	function filterEntries(obj, arr) {
-		let data = Object.entries(obj).filter(e => arr.includes(e[0]));
+	function filterEntries(data) {
+		if(data[0].length === 0) return [];
+		let data2 = Object.entries(data[0]);
+		let buffer = [...data[1]];
 
-		let objectData = Object.fromEntries(data);
+		let buffer2 = buffer.map(element => data2.find(e=> e[0] === element));
+		let objectData = Object.fromEntries(buffer2);
+
 		return objectData;
 }
 
@@ -76,13 +79,19 @@ function Event() {
 	}
 
 	function formatField(key, value) {
-		let formatted = value;
+		let formatted = {};
+		if(Array.isArray(value)) {
+			if(Array.isArray(value[1])) value = Object.fromEntries(value);
+		}
+
+		if(Date.parse(value)) formatted = new Intl.DateTimeFormat("en", { timeStyle: "short", dateStyle: "medium"}).format(Date.parse(value));
+
 		if(typeof value == "object") { 
-			if(value instanceof Date) formatted = new Intl.DateTimeFormat("en", { timeStyle: "short", dateStyle: "medium"}).format(value);
 			if(key === "address") formatted = `${value.houseNumber} ${value.streetName}, ${value.city}`;
 		}
-		
-		
+
+		if(!formatted)  formatted = value;
+
 		return formatted;
 	}
 
@@ -95,7 +104,7 @@ function Event() {
 				<div class="dataBox">
 					{
 						
-					Object.entries(filterEntries(eventData, ["startTime", "endTime", "address"])).map(e=>
+					Object.entries(filterEntries([eventData, ["startTime", "endTime", "address"]])).map(e=>
 						 (<div className="dataEntry" id={e[0] + "Entry"}>
 							<div className="dataLabel" id={e[0] + "Label"}>
 								{e[0]}
