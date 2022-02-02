@@ -1,7 +1,5 @@
-import "./DataFilters.css";
-import { useEffect, useState } from "react";
-import { getDatabase, ref, onValue } from "firebase/database";
-import { db } from "../../../scripts/firebase/config";
+import "../../styles/template/DataFilters.css";
+import { useState } from "react";
 import {
   collection,
   doc,
@@ -15,12 +13,11 @@ import {
 
 const filters = {};
 let eventFilters = [];
+let tags = ["dinner", "60+", "party", "fun", "outdoors"];
+
 
 function DataFilters({ setEventListState }) {
-  var searchOption;
-  var filterOption;
   const db = getFirestore();
-
   const [searchField, setSearchField] = useState("");
   const [searchFilters, setSearchFilters] = useState([]);
   const [hidden, setHidden] = useState(false);
@@ -31,8 +28,8 @@ function DataFilters({ setEventListState }) {
     setSearchField(temp);
   }
   function revealFilters() {
-   console.log('reveal')
-    setHidden(true);
+    let temp = !hidden
+    setHidden(temp);
     
   }
 
@@ -107,42 +104,26 @@ const joinedEventsList = []
   }
   
   return (
-    <div>
-      <button onClick={revealFilters} name="hi">
+    <div className="revealFiltersButton_cont">
+      <button onClick={revealFilters} name="revealFiltersButton">
         Click here to apply filters
       </button>
-      {hidden ? (
-        <div>
-          Filters:
-          <input
-            className="checkbox"
-            type="checkbox"
-            name="dinner"
-            onClick={getTarget}
-          />
-          Dinner
-          <input
-            className="checkbox"
-            type="checkbox"
-            name="60+"
-            onClick={getTarget}
-          />
-          60+
-          <input
-            className="checkbox"
-            type="checkbox"
-            name="party"
-            onClick={getTarget}
-          />
-          Party
-          <input
-            className="submitbutton"
-            type="submit"
-            name="submit1"
-            onClick={getEvents}
-          />
-        </div>
-      ) : null}
+
+    {hidden? 
+        <div id="tagsContainer">
+        {tags.map((tag) => {
+            return(
+            <div key={tag}>
+                <div className="inline-block">
+                  {tag}
+                  <input name={tag} type="checkbox" onClick={getTarget}/>
+                </div>
+                
+            </div>
+            )
+        })}
+        <input className="submitbutton" type="submit" name="submit1" onClick={getEvents} />
+        </div> : null}                     
     </div>
   );
 }
