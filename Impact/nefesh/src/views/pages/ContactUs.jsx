@@ -1,21 +1,19 @@
 import "../../styles/page/ContactUs.css";
-import { db } from "../../scripts/firebase/config";
-import { collection, Firestore } from "@firebase/firestore";
-import { doc, getDoc, getDocs, updateDoc, where } from "firebase/firestore";
+
 import { useEffect, useState} from "react";
 
 function ContactUs(props) {
   const [mailTo, setMailtoLink] = useState('');
-  useEffect(async () => {
+  useEffect(() => {
     console.log("users", props.uid, props.displayName);
-    let notName = await getDoc(doc(db, "users", props.uid));
+    //let notName = await getDoc(doc(db, "users", props.uid));
     let userIDTemp = props.uid;
     var email = "Nefesh@nefesh.com";
     var subject = "Request to be Organization Admin";
     var body_start =  `${props.displayName} with User ID: ${userIDTemp} wants to be an organizational Admin because(input your reason here)`;
     setMailtoLink( `mailto:` + email + `?subject=` + subject + `&body=` + body_start);
     console.log(mailTo);
-  }, []);
+  }, [mailTo, props]);
 
   return (
     <div>
@@ -34,7 +32,7 @@ function ContactUs(props) {
         Apply for an organizational profile: &nbsp;
         <div className="apbutton">
           <div className="box-1">
-            <a href={`${mailTo}`} target="_blank">
+            <a href={`${mailTo}`} target="_blank" rel="noreferrer">
               Click here to apply
             </a>
           </div>

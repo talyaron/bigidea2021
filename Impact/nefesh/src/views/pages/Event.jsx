@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/page/Event.css";
-import { collection, setDoc, getDoc, doc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../scripts/firebase/config";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import useScript from "../../scripts/useScript";
 import Moment from 'react-moment';
 // import 'moment-timezone';
@@ -14,20 +14,25 @@ function Event() {
 	const [contactInfo, setContactInfo] = useState([]);
 	const [orgWebsite, setOrgWebsite] = useState([]);
 	const [websiteValidity, setWebValidity] = useState(false);
-	const [imageValidity, setImgValidity] = useState(false);
+	//const [imageValidity, setImgValidity] = useState(false);
 	let { eventID } = useParams();
-	let navigate = useNavigate();
-	const [image,setImage]=useState()
-	useEffect(async () => {
+	//let navigate = useNavigate();
+	const [image,setImage]=useState();
+	//const [filterObjectData,setfilterData]=useState([]);
+	useEffect(() => {
 		try {
 			setWebValidity(false);
 			let eventRef = doc(db, "events", eventID);
-			const docSnap = await getDoc(eventRef);
-			const eventObj = docSnap.data();
-			let { startTime, endTime } = eventObj;
+			let eventObj;
+			getDoc(eventRef).then(docSnap => {
+				eventObj = docSnap.data();
+			//	let filterEntriesArr = ;
+
+//setfilterData();
+				let { startTime, endTime } = eventObj;
 			if (startTime) startTime = new Date(startTime.seconds * 1000);
 			if (endTime) endTime = new Date(endTime.seconds * 1000);
-			console.log(startTime, endTime);
+
 			eventObj.startTime = startTime;
 			eventObj.endTime = endTime;
 			console.log(eventObj);
@@ -44,10 +49,18 @@ function Event() {
 			let validState = validURL(eventObj.contactInfo.website);
 			setWebValidity(validState);
 			setOrgWebsite(eventObj.contactInfo.website);
+			});
 		} catch (err) {
 			console.error(err);
 		}
-	}, []);
+	}, [eventID]);
+
+	function filterEntries(obj, arr) {
+		let data = Object.entries(obj).filter(e => arr.includes(e[0]));
+
+		let objectData = Object.fromEntries(data);
+		return objectData;
+}
 
 	function validURL(str) {
 		var pattern = new RegExp(
@@ -62,32 +75,43 @@ function Event() {
 		return !!pattern.test(str);
 	}
 
+	function formatField(key, value) {
+		let formatted = value;
+		if(typeof value == "object") { 
+			if(value instanceof Date) formatted = new Intl.DateTimeFormat("en", { timeStyle: "short", dateStyle: "medium"}).format(value);
+			if(key === "address") formatted = `${value.houseNumber} ${value.streetName}, ${value.city}`;
+		}
+		
+		
+		return formatted;
+	}
+
 	return (
 		<div className="mainContainer_Event">
 			{useScript("https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js")}
+			<img className="coverImage" src={image} alt="Event"></img>
 			<div className="eventData_Event">
 				<div className="title"> {eventData.title} </div>
+				<div class="dataBox">
+					{
+						
+					Object.entries(filterEntries(eventData, ["startTime", "endTime", "address"])).map(e=>
+						 (<div className="dataEntry" id={e[0] + "Entry"}>
+							<div className="dataLabel" id={e[0] + "Label"}>
+								{e[0]}
+							</div>
+							<div className="dataField" id={e[0] + "Field"}>
+								{ formatField(...e) }
+							</div>
+							</div>)
+					)
+				}
+				
+				</div>
 				<div className='eventDetails_Event'>
 					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 				</div>
-				<img className="coverImage" src={image}></img>
-				<div className="timeContainer">
-					<p className="time">
-						Start Time: <br></br><b><Moment format="YYYY/MM/DD @ hh:mm">{eventData.startTime}</Moment></b>
-					</p>
-					<p className="time"> End Time: <br></br><b><Moment format="YYYY/MM/DD @ hh:mm">{eventData.endTime}</Moment> </b></p>
-				</div>
-				<div className="locationContainer">
-					<p className="eventStreet_Event">
-						{" "}
-						Street Name: {addressInfo.streetName}
-					</p>
-					<p className="eventHouse_Event">
-						{" "}
-						House Number: {addressInfo.houseNumber}
-					</p>
-					<p className="eventCity_Event"> City: {addressInfo.city}</p>
-				</div>
+				
 				<h4 className="eventDetails_Event">
 					{" "}
 					Description: {eventData.article}
@@ -119,7 +143,7 @@ function Event() {
 			<div className="eventTags_Event">
 				<h3 className="tagTitle_Event">Event Tags:</h3>
 				{tags.map((tag, index) => {
-					return <div className="tag" key={`tag-${index}`}>{tag}</div>;
+					return <tag key={`tag-${index}`}>{tag}</tag>;
 				})}
 			</div>
 		</div>

@@ -3,13 +3,13 @@
     background-color: #b7cbe7e8;
     display: flex;
     flex-direction: column;
-    bottom: 85px;
-    width: 70%;
-    left: 0;
-	border-bottom-right-radius: 35px;
+    bottom: 71px;;
+    width: 90%;
+    left: 5%;
+	border-top-left-radius: 35px;
     border-top-right-radius: 35px;
     border: outset;
-    border-left: none;
+    border-bottom: none;
 	animation: move .2s linear 0s 1 alternate forwards;
 
 }
@@ -41,38 +41,35 @@
     background-color: var(--Light-blue);
     padding-block: 7px;
 	border-top: 1px solid Var(--Navy-blue);
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .stickyBanner {
     margin-bottom: 10px;
-   /* 
-   background-color: #212223bf!important;
-    border-radius: 50%;
-    border: outset deepskyblue;
-    box-shadow: rgb(0 0 0 / 10%) 0px 0px 7px 4px;
-	*/
     right: 1%;
     height: 30px;
     width: 30px;
     text-align: center;
 	padding: 8px;
+	border-radius: 50%;
+    box-shadow: transparent;
 }
 
-.MenuButton {
-
+.stickyBanner:hover {
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 7px 4px;
 }
-
-
 
 .stickyBanner > .MenuButton > img {
 	height: 30px;
     width: auto;
     margin-top: 0px;
     user-select: none;
+    -webkit-user-drag: none;
 }
 
 .menuList {
-	padding-left: 3%;
+	padding-inline: 3%;
 }
 
 .ListItemElement:hover {
@@ -80,10 +77,9 @@
 }
 .ListItemElement {
     margin-bottom: 0.1em;
-    border-start-start-radius: 16px;
-    border-end-start-radius: 16px;
+    border-radius: 16px;
     list-style: none;
-	text-align: left;
+	text-align: center;
 	background: #0789ba54;
     padding: inherit;
 }
@@ -91,12 +87,23 @@
 @keyframes move {
 	0%{
 		z-index: -1;
-		transform: translateX(-200px);
+		transform: translateY(40px);
+        opacity: 0;
+        max-height: 0;
+		/*transform: translateY(20px);*/
+	}
+    50%{
+		z-index: -1;
+		transform: translateY(20px);
+        opacity: 0.4;
+        max-height: 50%;
 		/*transform: translateY(20px);*/
 	}
 	100%{
 		z-index: -1;
-		transform: translateX(0px);
+        opacity: 1;
+		transform: translateY(0px);
+        max-height: 100%;
 		/*transform: translateY(0px);*/
 	}
 }

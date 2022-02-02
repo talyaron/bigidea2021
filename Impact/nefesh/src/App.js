@@ -1,7 +1,6 @@
 import "./styles/global/App.css";
 import "./views/template/AdminPagePopUp";
-import { render } from "react-dom";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Login from './views/pages/Login.js';
 import Error from './views/pages/404.js';
@@ -10,7 +9,7 @@ import ProfilePage from './views/pages/ProfilePage';
 import ContactUs from './views/pages/ContactUs';
 import ArticleCreation from './views/pages/ArticleCreation';
 import MainPage from './views/pages/MainPage';
-import { checkRole } from './scripts/general.js';
+
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
@@ -23,11 +22,10 @@ import Event from './views/pages/Event';
 
 //hi
 let role; //if changed to superAdmin it updates correctly but shows red warnings, also needs to be changed manually
-let permissionedRole;
+
 const auth = getAuth();
 let userID = "";
-let loggedIn,
-isAdmin = "false";
+let loggedIn;
 
 function App() {
   const [userState, setUserState] = useState({});
@@ -107,7 +105,9 @@ function App() {
 
 	return (
 		<div>
+			{loggedIn ? (
 	    <NavTopBar titleDisplay="NBM Tel Aviv" />
+			) : (null) }
 		<div className='container_AppMain'>
 		
 			{loggedIn ? (

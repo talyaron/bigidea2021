@@ -94,8 +94,13 @@
     align-content:space-evenly;
 }
 .coverImage{
-    width:95%;
-    margin-top: 3%;
+    width: 100%;
+    user-select: none;
+    -webkit-user-drag: none;
+    app-region: no-drag;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: center;
 }
 .backButton_Event{
     /* float: left;
@@ -124,20 +129,27 @@
 /*Article Event Data starts here*/
 .eventData_Event{
     background-color: var(--Light-D2);
-
-    width: 100%;
+    width: 96%;
     display: inline-block;
-
-    text-align: center;
+    /* text-align: center; */
     overflow-wrap: break-word;
+    align-self: center;
+    padding-inline: 2%;
+    padding-top: 0.7em;
 }
-.tag{
-    border: 1px blue solid;
-    margin-left: 5px;
-    border-radius: 10px;
-    padding:3px;
-    font-weight: bold;
+
+.dataBox {
+    background: aliceblue;
+    border-radius: 9px;
+    padding: 10px;
 }
+
+.dataEntry {
+    background: #fefefe;
+    margin-block: 7px;
+    border-radius: 30px;
+}
+
 /*
 .eventName{
     link to autoID.eventName
@@ -197,7 +209,6 @@
 
 .eventDetails_Event{
     padding: 5px 15px;
-    border: 2px solid black;
 }
 
 /*Article Event Data ends here*/

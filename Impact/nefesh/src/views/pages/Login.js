@@ -1,13 +1,15 @@
-import { db } from '../../scripts/firebase/config';
 import React from 'react';
 import { authentication } from '../../scripts/firebase/config';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { useNavigate } from "react-router-dom";
+
 import '../../styles/page/Login.css';
 import NefishLogo from '../../assets/Images/Nefish_B\'Nefish_Logo.png';
 import GoogleLogo from '../../assets/Images/Google.png';
 import LoginArt from '../../assets/Images/signin_img.svg';
 
 function Login() {
+	const navigate = useNavigate();
 	const SignIn = (ev) => {
 		ev.preventDefault();
 		const provider = new GoogleAuthProvider();
@@ -17,7 +19,8 @@ function Login() {
 				console.log(re.user.displayName);
 				console.log(re.user.email);
 				console.log(re.user.photoURL);
-				let userEmail = re.user.email;
+				//let userEmail = re.user.email;
+				if(re.user) navigate('/MainPage');
 			})
 			.catch((err) => {
 				console.log(err);

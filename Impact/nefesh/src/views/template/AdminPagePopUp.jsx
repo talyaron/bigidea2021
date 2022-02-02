@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/template/AdminPagePopUp.css';
 import { db } from '../../scripts/firebase/config';
-import { collection, Firestore } from '@firebase/firestore';
-import { doc, getDoc, getDocs, updateDoc, where } from 'firebase/firestore';
-import { userIDAdm } from '../pages/AdminPage';
+import { collection } from '@firebase/firestore';
+import { doc, getDocs, updateDoc, where } from 'firebase/firestore';
 import { query } from 'firebase/database';
-import { getAuth, updateProfile } from "firebase/auth";
+
 
 let currentID;
 const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) => {
@@ -14,7 +13,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) 
 	let userIDRef = tempUserIDAdm; // this will change based on the profile page pulled rn
 	let usersRef = collection(db, 'users');
 	let userDocRef = doc(db, 'users', userIDRef);
-	let userDisabledRef = doc(db, 'users', userIDRef, );
+	//let userDisabledRef = doc(db, 'users', userIDRef, );
 	
 	const [isAdmin, setIsAdmin] = useState(role === 'orgAdmin'?true:false);
 	const [isBanned2, setIsBanned] = useState(isBanned);

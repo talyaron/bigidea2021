@@ -1,7 +1,7 @@
 import '../../styles/page/ProfilePage.css';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../scripts/firebase/config';
-import { doc, getDoc, onSnapshot, setDoc, updateDoc} from 'firebase/firestore';
+import { doc, getDoc, updateDoc} from 'firebase/firestore';
 import EditProfilePopUp from '../template/EditProfilePopUp';
 import ImportImgs from '../template/ImportImgs'
 import EditBioPopUp from '../template/EditBioPopUp';
@@ -15,7 +15,7 @@ function ProfilePage(props) {
 	const [userEmail, setUserEmail] = useState('loading')
 	const [userAddress, setUserAddress] = useState('loading')
 	const [userGender, setUserGender] = useState('loading')
-	const [userArticles, setUserArticles] = useState('loading');
+	//const [userArticles, setUserArticles] = useState('loading');
 	const [textSize, setTextSize] = useState('')
 	const [editing, setEditing] = useState(false)
 	const [choosingPrefs, setChoosingPrefs] = useState(false)
@@ -25,12 +25,12 @@ function ProfilePage(props) {
 	const [isBioOpen, setIsBioOpen] = useState(false);
 	const [userBio, setUserBio] = useState('loading');
   	
-	
-	useEffect(async () => {
+	const docRef = (doc(db, "users", props.uid));
+	useEffect(() => {
 		//pull userId of selected user and set for superAdmin page
 		//on snapshot displayName
-		const docRef = (doc(db, "users", props.uid));
-		const docSnap = await getDoc(docRef);
+		
+	getDoc(docRef).then(docSnap => {
 		setUserData(docSnap.data())
 		setDisplayName(docSnap.data().displayName);
 		setProfilePicImg(docSnap.data().userIcon);
@@ -39,10 +39,11 @@ function ProfilePage(props) {
 		setUserGender(docSnap.data().sex);
 		setUserBio(docSnap.data().bio);
 		console.log(props, docSnap.data())
-		
+		});
 
-	}, [uid]);
-	function editProfile(ev) {
+	}, [uid, docRef, props]);
+
+	function editProfile() {
 		setIsOpen(!isOpen);
 		setEditing(true);
 	};
@@ -55,18 +56,14 @@ function ProfilePage(props) {
 		const profilePic = httpUrl
 		const email = ev.target.elements.newEmail.value;
 
-		if(ev.target.elements.newName.value.length == 0) {
-			//nothing
-		} else {
+		if(ev.target.elements.newName.value.length !== 0) {
 			setDisplayName(name);
 			updateDoc(doc(db, "users", props.uid), {
 				displayName: name,
 			})
 		}
 
-		if(profilePic.length == 0) {
-			//nothing
-		} else {
+		if(profilePic.length !== 0) {
 			ev.preventDefault()
 			console.log(profilePic)
 			setProfilePicImg(profilePic);
@@ -75,19 +72,13 @@ function ProfilePage(props) {
 			})
 		}
 
-		if(ev.target.elements.newEmail.value.length == 0) {
-			//nothing
-		} else {
+		if(ev.target.elements.newEmail.value.length !== 0) {
 			setUserEmail(email);
 			updateDoc(doc(db, "users", props.uid), {
 				email: email
 			})
 		}
-
 		
-		
-		
-
 		setEditing(false);
 
 		setIsOpen(!isOpen);
@@ -100,9 +91,7 @@ function ProfilePage(props) {
 
 		const bio = ev.target.elements.newBio.value;
 
-		if(ev.target.elements.newBio.value.length == 0) {
-			//nothing
-		} else {
+		if(ev.target.elements.newBio.value.length !== 0) {
 			setUserBio(bio);
 			console.log(bio)
 			updateDoc(doc(db, "users", props.uid), {
@@ -115,24 +104,29 @@ function ProfilePage(props) {
 		setIsBioOpen(!isBioOpen);
 	}
 
-	function changePreferences(ev) {
+	function changePreferences() {
 		setChoosingPrefs(true)
 	}
+
 	function submitChangePreferences(ev) {
 		ev.preventDefault();
 		const fontSize = ev.target[0].value;
 		setTextSize(fontSize);
 	}
+
 	const callBackFunction = (httpRef) => {
 		setHttpUrl(httpRef);
 	};
+
 	function debug() {
 		console.log(props.uid)
 	}
+
 	function editBio(){
 		setIsBioOpen(!isBioOpen);
 		setEditing(true);
 	}
+
 	return (
 		<div>
 			<div className='back-1'>

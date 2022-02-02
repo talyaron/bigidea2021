@@ -1,11 +1,7 @@
-import { useState, Component  } from 'react';
+import { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/component/StickyBanner.css';
 import { getAuth, signOut } from "firebase/auth";
-
-import { collection, setDoc, getDoc, doc } from "firebase/firestore";
-import { db } from "../../scripts/firebase/config";
-
 
 //icons
 import HomeButton from '../../assets/Images/home.svg';
@@ -19,11 +15,10 @@ function StickyBanner({role}) {
 	let navList = [
 		{ id: 1, label: 'Profile Page', href: 'ProfilePage', role: ['member'] },
 		{ id: 2, label: 'Contact Us', href: 'ContactUs', role: ['everyone'] },
-		{ id: 3, label: 'Request Org', href: ' ', role: ['orgAdmin', 'superAdmin'] },
-		{ id: 4, label: 'Article Creation', href: 'ArticleCreation', role: ['orgAdmin', 'superAdmin'] },
+		{ id: 4, label: 'Article Creation', href: 'ArticleCreation', role: ['ole', 'orgAdmin', 'superAdmin'] },
 		{ id: 5, label: 'Admin Page', href: 'AdminPage', role: ['superAdmin'] },
-		{ id: 6, label: 'log in', href: 'login', role: ['ole', 'guest', 'orgAdmin', 'superAdmin'] },
-		{ id: 7, label: 'log out', href: ' ', function: handleLogOut, role: ['member'] },
+		{ id: 6, label: 'log in', href: 'login', role: ['guest'] },
+		{ id: 7, label: 'log out', href: 'login', function: handleLogOut, role: ['member'] },
 	]
 
 	navList = navList.filter(navItem => navItem.role.some(urole => [role ? role : "guest", role ? "member" : null, "everyone"].includes(urole)));
@@ -39,7 +34,6 @@ function StickyBanner({role}) {
 		signOut(auth).then(() => {
 		// Sign-out successful.
 		window.location.reload(false);
-		navigate('/login')
 		console.log("signed out");
 		}).catch((error) => {
 		// An error happened.
@@ -65,24 +59,24 @@ function StickyBanner({role}) {
 				onClick={() => {
 					navigate('/MainPage');
 				}}>
-				<div
-					className='MenuButton'
-					id='homeB_container'
-				>
+				<div className='MenuButton' id='homeB_container' >
 					<img src={HomeButton} alt='Home' id='homeButton' />
 				</div>
 				
 			</div>
 			
 			<div className='stickyBanner' onClick={handleMenu}>
-				<div className='MenuButton'
-					id='Menu_container'>
+				<div className='MenuButton' id='Menu_container'>
 					{navToggle ?
 						(<img src={X} alt='X' id='MenuButton' />)
 						:
 						(<img src={Menu} alt='Home' id='MenuButton' />)
 					}
-					{navToggle ? (
+					
+				</div>
+			</div>
+
+			{navToggle ? (
 						<div className='menuList_Container'>
 							<ul className='menuList'>
 								{
@@ -93,6 +87,7 @@ function StickyBanner({role}) {
 												onClick={() => {
 													if(item.function) item.function();
 													if(item.href) navigate('/' + item.href);
+													handleMenu()
 												}}>
 												{item.label}
 											</div>
@@ -103,9 +98,9 @@ function StickyBanner({role}) {
 						</div>
 
 					) : null}
-				</div>
-			</div>
+	
 		</div>
+		
 	);
 }
 

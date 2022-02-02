@@ -1,4 +1,4 @@
-import { onSnapshot } from 'firebase/firestore';
+//import { onSnapshot } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useEffect, useState } from 'react';
 
@@ -10,9 +10,7 @@ function HandleImportImg(props) {
 	const [userID, setUserID] = useState('TempUserID');
 	const [currentUsePage, setCurrentUsePage] = useState('TempPageUse');
 	let storageRef = ref(storage, `Images/${userID}/${currentUsePage}/${imageAsFile.name}`);
-	
 
-	console.log(props);
 	useEffect(() => {
 		let tempUID = props.userData.userID;
 		setUserID(tempUID);
@@ -20,38 +18,29 @@ function HandleImportImg(props) {
 		setCurrentUsePage(tempPN);
 	}, []);
 	
-	function handleImgUpload(ev) {
-		ev.preventDefault()
+
+
+	async function onTrigger(ev){
+		ev.preventDefault();
 		const image = ev.target.files[0];
 		setImageAsFile((imageFile) => image);
 		if (imageAsFile === '') {
 			console.error(`not an image, the image file is a ${typeof imageAsFile}`);
 		}
-	}
-
-	
-
-	async function onTrigger(ev){
-		ev.preventDefault();
-		console.log('ratsss', ev)
-		console.log(props.pageName, 'PageName')
-		console.log(props.userData.userID, 'userID')
-		uploadBytes(storageRef, imageAsFile).then((snapshot) => {
+		uploadBytes(storageRef, image).then((snapshot) => {
 			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${imageAsFile.name}`)).then((httpRef) => {
-				console.log(httpRef)
 				setImageAsUrl(httpRef)
 					props.parentCallBack(httpRef);
+					console.log(httpRef)
 			})
 		});
+		console.log('Upload Successful!')
 	}
 
 	return (
-		<form onSubmit={onTrigger} id='form_ImportImg'>
-			<input type='file' name='articleImg' id='input_ArticleImg' accept='image/*' onChange={handleImgUpload}className='border-ArticleCreation' />
-			<button onClick={onTrigger} id='SubmitButton_ImportImg' className='shadow'>Upload </button>
-		</form>
-	)
-}
+			<input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif' onChange={onTrigger} className='border-ArticleCreation' />
+			
+	)}
 
 
 export default HandleImportImg;
