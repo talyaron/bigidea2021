@@ -77,18 +77,6 @@ function App() {
   return (
     <div>
       <DataFilters setEventListState={setEventListState} />
-      <form
-        className="searchFor dropDown"
-        onChange={handleSearchByChange}>
-        <label htmlFor="searchFor" id="searchFor">
-          Search for:
-        </label>
-        <select id="searchDropdown" name="searchFor">
-          <option value="userID">popular</option>
-          <option value="displayName">newest</option>
-          <option value="email">recent</option>
-        </select>
-      </form>
       <div className="userInterfaceContainer">
         <form className="filterEvents">
           <label htmlFor="eventFilterType">
@@ -98,9 +86,8 @@ function App() {
             name="eventFilterType"
             id="eventFilterType"
             onChange={changeEventFilter}>
-            <option value="newest">Newest to Oldest</option>
-            <option value="popular">Most Popular</option>
-            <option value="recent">Most Recent</option>
+            <option value="newest">Upcoming</option>
+            <option value="recent">Freshly Added</option>
           </select>
         </form>
         <div className="eventMapContainer">
