@@ -87,7 +87,6 @@ function StickyBanner({role}) {
 												onClick={() => {
 													if(item.function) item.function();
 													if(item.href) navigate('/' + item.href);
-													handleMenu()
 												}}>
 												{item.label}
 											</div>
