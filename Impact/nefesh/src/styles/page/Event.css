@@ -129,12 +129,13 @@
 /*Article Event Data starts here*/
 .eventData_Event{
     background-color: var(--Light-D2);
-
     width: 100%;
     display: inline-block;
-
-    text-align: center;
+    /* text-align: center; */
     overflow-wrap: break-word;
+    align-self: center;
+    padding-inline: 2%;
+    padding-top: 0.7em;
 }
 
 /*

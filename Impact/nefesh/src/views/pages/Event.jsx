@@ -67,12 +67,13 @@ function Event() {
 	return (
 		<div className="mainContainer_Event">
 			{useScript("https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js")}
+			<img className="coverImage" src={image} alt="Event"></img>
 			<div className="eventData_Event">
 				<div className="title"> {eventData.title} </div>
 				<div className='eventDetails_Event'>
 					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 				</div>
-				<img className="coverImage" src={image} alt="Event"></img>
+				
 				<div className="timeContainer">
 					<p className="time">
 						Start Time: <br></br><b><Moment format="YYYY/MM/DD @ hh:mm">{eventData.startTime}</Moment></b>
