@@ -38,7 +38,6 @@ function ProfilePage(props) {
 		setUserAddress(docSnap.data().location)
 		setUserGender(docSnap.data().sex);
 		setUserBio(docSnap.data().bio);
-		console.log(props, docSnap.data())
 		});
 
 	}, [uid, docRef, props]);
@@ -50,7 +49,7 @@ function ProfilePage(props) {
 
 	function changeProfile(ev) {
 		ev.preventDefault();
-		console.dir(ev.target);
+
 
 		const name = ev.target.elements.newName.value;
 		const profilePic = httpUrl
@@ -65,7 +64,6 @@ function ProfilePage(props) {
 
 		if(profilePic.length !== 0) {
 			ev.preventDefault()
-			console.log(profilePic)
 			setProfilePicImg(profilePic);
 			updateDoc(doc(db, "users", props.uid), {
 				userIcon: profilePic
@@ -87,13 +85,13 @@ function ProfilePage(props) {
 
 	function changeBio(ev) {
 		ev.preventDefault();
-		console.dir(ev.target);
+		
 
 		const bio = ev.target.elements.newBio.value;
 
 		if(ev.target.elements.newBio.value.length !== 0) {
 			setUserBio(bio);
-			console.log(bio)
+			
 			updateDoc(doc(db, "users", props.uid), {
 				bio: bio,
 			})
@@ -118,9 +116,7 @@ function ProfilePage(props) {
 		setHttpUrl(httpRef);
 	};
 
-	function debug() {
-		console.log(props.uid)
-	}
+	
 
 	function editBio(){
 		setIsBioOpen(!isBioOpen);

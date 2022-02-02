@@ -15,10 +15,10 @@ function StickyBanner({role}) {
 	let navList = [
 		{ id: 1, label: 'Profile Page', href: 'ProfilePage', role: ['member'] },
 		{ id: 2, label: 'Contact Us', href: 'ContactUs', role: ['everyone'] },
-		{ id: 4, label: 'Article Creation', href: 'ArticleCreation', role: ['ole', 'orgAdmin', 'superAdmin'] },
+		{ id: 4, label: 'Article Creation', href: 'ArticleCreation', role: [ 'orgAdmin', 'superAdmin'] },
 		{ id: 5, label: 'Admin Page', href: 'AdminPage', role: ['superAdmin'] },
 		{ id: 6, label: 'log in', href: 'login', role: ['guest'] },
-		{ id: 7, label: 'log out', href: 'login', function: handleLogOut, role: ['member'] },
+		{ id: 7, label: 'log out', href: 'MainPage', function: handleLogOut, role: ['member'] },
 	]
 
 	navList = navList.filter(navItem => navItem.role.some(urole => [role ? role : "guest", role ? "member" : null, "everyone"].includes(urole)));
