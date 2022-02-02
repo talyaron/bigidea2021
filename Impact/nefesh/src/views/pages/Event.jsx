@@ -8,6 +8,7 @@ import Moment from 'react-moment';
 // import 'moment-timezone';
 
 function Event() {
+	const [eventMailToLink, setEventMailToLink] = useState('');
 	const [eventData, setEventData] = useState([]);
 	const [tags, setTags] = useState([]);
 	const [addressInfo, setAddressInfo] = useState([]);
@@ -44,6 +45,7 @@ function Event() {
 			let validState = validURL(eventObj.contactInfo.website);
 			setWebValidity(validState);
 			setOrgWebsite(eventObj.contactInfo.website);
+			// setMailtoLink( `mailto:` + {contactInfo.} + `?subject=` + subject + `&body=` + body_start);
 		} catch (err) {
 			console.error(err);
 		}
@@ -111,7 +113,9 @@ function Event() {
 			<div className="contactUsContainer_Event">
 				<div className="contactUsContent_Event">
 					<p>Our Phone Number: {contactInfo.phone}</p>
-					<p>Our Email Address: {contactInfo.email}</p>
+					<a href={`mailto: ${contactInfo.email} ?subject=Event!&body=Hi! I wanted to contact you to tell you that (type here)`} target="_blank">
+              			Email Us!
+            		</a>
 				</div>
 			</div>
 			<div className="eventTags_Event">
