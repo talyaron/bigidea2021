@@ -17,7 +17,8 @@ function Event() {
 	//const [imageValidity, setImgValidity] = useState(false);
 	let { eventID } = useParams();
 	//let navigate = useNavigate();
-	const [image,setImage]=useState()
+	const [image,setImage]=useState();
+	//const [filterObjectData,setfilterData]=useState([]);
 	useEffect(() => {
 		try {
 			setWebValidity(false);
@@ -25,6 +26,9 @@ function Event() {
 			let eventObj;
 			getDoc(eventRef).then(docSnap => {
 				eventObj = docSnap.data();
+			//	let filterEntriesArr = ;
+
+//setfilterData();
 				let { startTime, endTime } = eventObj;
 			if (startTime) startTime = new Date(startTime.seconds * 1000);
 			if (endTime) endTime = new Date(endTime.seconds * 1000);
@@ -51,6 +55,14 @@ function Event() {
 		}
 	}, [eventID]);
 
+	function filterEntries(obj, arr) {
+		let data = Object.entries(obj).filter(e => arr.includes(e[0]));
+
+		let objectData = Object.fromEntries(data);
+		console.log(objectData);
+		return objectData;
+}
+
 	function validURL(str) {
 		var pattern = new RegExp(
 			'^(https?:\\/\\/)?' + // protocol
@@ -64,21 +76,42 @@ function Event() {
 		return !!pattern.test(str);
 	}
 
+	function formatField(key, value) {
+		let formatted = value;
+		console.log(value);
+		if(typeof value == "object") { 
+			if(value instanceof Date) formatted = new Intl.DateTimeFormat("en", { timeStyle: "short", dateStyle: "medium"}).format(value);
+			if(key === "address") formatted = `${value.houseNumber} ${value.streetName}, ${value.city}`;
+		}
+		
+		
+		return formatted;
+	}
+
 	return (
 		<div className="mainContainer_Event">
 			{useScript("https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js")}
 			<img className="coverImage" src={image} alt="Event"></img>
 			<div className="eventData_Event">
 				<div className="title"> {eventData.title} </div>
+				<div class="dataBox">
+					{
+						
+					Object.entries(filterEntries(eventData, ["startTime", "endTime", "address"])).map(e=>
+						 (<div className="dataEntry" id={e[0] + "Entry"}>
+							<div className="dataLabel" id={e[0] + "Label"}>
+								{e[0]}
+							</div>
+							<div className="dataField" id={e[0] + "Field"}>
+								{ formatField(...e) }
+							</div>
+							</div>)
+					)
+				}
+				
+				</div>
 				<div className='eventDetails_Event'>
 					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
-				</div>
-				
-				<div className="timeContainer">
-					<p className="time">
-						Start Time: <br></br><b><Moment format="YYYY/MM/DD @ hh:mm">{eventData.startTime}</Moment></b>
-					</p>
-					<p className="time"> End Time: <br></br><b><Moment format="YYYY/MM/DD @ hh:mm">{eventData.endTime}</Moment> </b></p>
 				</div>
 				<div className="locationContainer">
 					<p className="eventStreet_Event">

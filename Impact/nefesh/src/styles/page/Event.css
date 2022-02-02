@@ -138,6 +138,18 @@
     padding-top: 0.7em;
 }
 
+.dataBox {
+    background: aliceblue;
+    border-radius: 9px;
+    padding: 10px;
+}
+
+.dataEntry {
+    background: #fefefe;
+    margin-block: 7px;
+    border-radius: 30px;
+}
+
 /*
 .eventName{
     link to autoID.eventName
