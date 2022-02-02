@@ -6,7 +6,7 @@ import { query } from "firebase/database";
 import { collection, onSnapshot, getFirestore } from "firebase/firestore";
 
 //const tags = ["newest", "popular", "recent"];
-let eventFilter = "";
+
 
 function App() {
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ function App() {
     console.log(eventFilter);
     if (eventFilter === "Upcoming") {
       eventListTemp.sort(function (a, b) {
-        return b.startTime - a.startTime;
+        return b.startTime.seconds - a.startTime.seconds;
       });
       setEventListState(eventListTemp);
       console.log(eventListState);
