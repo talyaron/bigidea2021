@@ -27,7 +27,7 @@ function ContactUs(props) {
         <a
           href="mailto:Nefesh@nefesh.com?subject=Contacting Creators!&body=Hi! I wanted to contact you to tell you that (type here)"
           className="email">
-          Click here to email us
+          Click here to send us an email!
         </a>
       </div>
       <div className="apply">
