@@ -136,24 +136,7 @@
     text-align: center;
     overflow-wrap: break-word;
 }
-.tag{
-    margin-block: auto;
-    border: inset 3px;
-    background: #4c97ec;
-    vertical-align: middle;
-    margin-left: 3px;
-    margin-right: 3px;
-    border-radius: 1.5rem;
-    padding: 4px 4px;
-    text-align: center;
-    user-select: none;
-    line-height: 12px;
-    color: #FFFFFF;
-    border-radius: 1rem;
-    font-size: 100% !important;
-    display: inline-block;
-    white-space: nowrap;
-}
+
 /*
 .eventName{
     link to autoID.eventName
