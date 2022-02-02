@@ -101,6 +101,7 @@ function Event() {
 			<img className="coverImage" src={image} alt="Event"></img>
 			<div className="eventData_Event">
 				<div className="title"> {eventData.title} </div>
+				<h3 className="username_Event"> {eventData.hostName} </h3>
 				<div class="dataBox">
 					{
 						
@@ -125,7 +126,7 @@ function Event() {
 					{" "}
 					Description: {eventData.article}
 				</h4>
-				<h3 className="username_Event"> Signed / {eventData.hostName} </h3>
+				
 			</div>
 
 			<div className="userPromptContainer_Event">
