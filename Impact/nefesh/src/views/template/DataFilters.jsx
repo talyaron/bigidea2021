@@ -13,7 +13,7 @@ import {
 
 const filters = {};
 let eventFilters = [];
-let tags = ["dinner", "60+", "party", "fun", "outdoors"];
+let tags = ["dinner", "60+", "party", "fun", "outdoors", "potato"];
 
 
 function DataFilters({ setEventListState }) {
@@ -34,10 +34,14 @@ function DataFilters({ setEventListState }) {
   }
 
   async function getTarget(ev) {
-    filters[ev.target.name] = ev.target.checked;
+    for (var oldFilter in filters) delete filters[oldFilter];
+    filters[ev.target.name] = ev.target;
+
+    console.log(filters)
+    getEvents(ev)
   }
   async function getEvents(ev) {
-    ev.preventDefault();
+    
     console.log(filters);
     const filtersArr = [];
     for (let filter in filters) {
@@ -104,26 +108,25 @@ const joinedEventsList = []
   }
   
   return (
-    <div className="revealFiltersButton_cont">
-      <button onClick={revealFilters} name="revealFiltersButton">
-        Click here to apply filters
-      </button>
+  <div>
+  <div className= "filterBanner">
+    Filters
+  </div>
 
-    {hidden? 
         <div id="tagsContainer">
         {tags.map((tag) => {
             return(
             <div key={tag}>
                 <div className="inline-block">
-                  {tag}
-                  <input name={tag} type="checkbox" onClick={getTarget}/>
+  
+                  <button className="filterBtn" name={tag} onClick={getTarget}>{tag}</button>
                 </div>
                 
             </div>
             )
         })}
-        <input className="submitbutton" type="submit" name="submit1" onClick={getEvents} />
-        </div> : null}                     
+     
+        </div>             
     </div>
   );
 }
