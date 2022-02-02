@@ -16,6 +16,7 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [searchField, setSearchField] = useState("");
   const [eventListState, setEventListState] = useState([]);
+  const [eventFilter, setEventFilter] = useState("Upcoming")
 
   function handleSearchByChange(ev) {
     let temp = ev.target.value;
@@ -47,24 +48,25 @@ function App() {
 
   
   function changeEventFilter(ev) {
-   
+    console.log("running")
+
     const eventListTemp = [...eventListState];
-    eventFilter = ev.target.value;
-    if (eventFilter === "popular") {
+    console.log(eventListTemp)
+    setEventFilter(ev.target.value); 
+    console.log(eventFilter);
+    if (eventFilter === "Upcoming") {
       eventListTemp.sort(function (a, b) {
-        return b.views - a.views;
+        return b.startTime - a.startTime;
       });
       setEventListState(eventListTemp);
       console.log(eventListState);
     }
-    if (eventFilter === "newest") {
-      eventListTemp.forEach((doc) => {
-        doc.dateCompare = doc.Date.replace(/\D/g, "");
-      });
+    if (eventFilter === "Freshly Added") {
       eventListTemp.sort(function (a, b) {
         return b.dateAdded.seconds - a.dateAdded.seconds;
       });
       setEventListState(eventListTemp);
+     
       console.log(eventListTemp);
       console.log(eventListState);
     }
@@ -86,8 +88,8 @@ function App() {
             name="eventFilterType"
             id="eventFilterType"
             onChange={changeEventFilter}>
-            <option value="newest">Upcoming</option>
-            <option value="recent">Freshly Added</option>
+            <option value="Upcoming">Upcoming</option>
+            <option value="Freshly Added">Freshly Added</option>
           </select>
         </form>
         <div className="eventMapContainer">
