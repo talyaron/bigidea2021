@@ -32,7 +32,7 @@ function Event() {
 				let { startTime, endTime } = eventObj;
 			if (startTime) startTime = new Date(startTime.seconds * 1000);
 			if (endTime) endTime = new Date(endTime.seconds * 1000);
-			console.log(startTime, endTime);
+
 			eventObj.startTime = startTime;
 			eventObj.endTime = endTime;
 			console.log(eventObj);
@@ -59,7 +59,6 @@ function Event() {
 		let data = Object.entries(obj).filter(e => arr.includes(e[0]));
 
 		let objectData = Object.fromEntries(data);
-		console.log(objectData);
 		return objectData;
 }
 
@@ -78,7 +77,6 @@ function Event() {
 
 	function formatField(key, value) {
 		let formatted = value;
-		console.log(value);
 		if(typeof value == "object") { 
 			if(value instanceof Date) formatted = new Intl.DateTimeFormat("en", { timeStyle: "short", dateStyle: "medium"}).format(value);
 			if(key === "address") formatted = `${value.houseNumber} ${value.streetName}, ${value.city}`;
@@ -113,17 +111,7 @@ function Event() {
 				<div className='eventDetails_Event'>
 					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 				</div>
-				<div className="locationContainer">
-					<p className="eventStreet_Event">
-						{" "}
-						Street Name: {addressInfo.streetName}
-					</p>
-					<p className="eventHouse_Event">
-						{" "}
-						House Number: {addressInfo.houseNumber}
-					</p>
-					<p className="eventCity_Event"> City: {addressInfo.city}</p>
-				</div>
+				
 				<h4 className="eventDetails_Event">
 					{" "}
 					Description: {eventData.article}
