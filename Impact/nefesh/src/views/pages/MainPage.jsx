@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DataFilters from "../template/DataFilters";
 import { query } from "firebase/database";
-import { collection, onSnapshot, getFirestore } from "firebase/firestore";
+import { collection, onSnapshot, getFirestore , where} from "firebase/firestore";
 
 //const tags = ["newest", "popular", "recent"];
-
 
 function App() {
   const navigate = useNavigate();
@@ -16,60 +15,67 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [searchField, setSearchField] = useState("");
   const [eventListState, setEventListState] = useState([]);
-  const [eventFilter, setEventFilter] = useState("Upcoming")
+  const [eventFilter, setEventFilter] = useState("Upcoming");
 
   function handleSearchByChange(ev) {
     let temp = ev.target.value;
     setSearchField(temp);
   }
 
-  
-  
   useEffect(() => {
-    const q = query(collection(db, "events"));
-    const eventListTemp = [];
-    
-    
+    const q = query(collection(db, "events"), where('startTime', '>', new Date()));
+   
+
     //listen to events
     const unsubuscribe = onSnapshot(q, (querySnapshot) => {
+      let eventListTemp = [];
       querySnapshot.forEach((doc) => {
         const eventTemp = doc.data();
         eventTemp.id = doc.id;
         eventListTemp.push(eventTemp);
       });
+
+      eventListTemp = sortBy(eventFilter, eventListTemp)
       console.log("ping!");
       setEventListState(eventListTemp);
     });
 
-    return ()=>{
-      return unsubuscribe()
-    }
+    return () => {
+      return unsubuscribe();
+    };
   }, []);
 
-  
-  function changeEventFilter(ev) {
-    console.log("running")
+  function handleOrderBy(ev) {
+    console.log("running");
 
-    const eventListTemp = [...eventListState];
-    console.log(eventListTemp)
-    setEventFilter(ev.target.value); 
-    console.log(eventFilter);
-    if (eventFilter === "Upcoming") {
-      eventListTemp.sort(function (a, b) {
-        return b.startTime.seconds - a.startTime.seconds;
+    let eventListTemp = [...eventListState];
+    console.log(eventListTemp);
+    setEventFilter(ev.target.value);
+    const eventFilterTemp = ev.target.value;
+    console.log(eventFilterTemp);
+    const sortedEvents = sortBy(eventFilterTemp, eventListState);
+    sortedEvents.forEach((ev) => {
+      console.log(ev.title, ev.startTime.seconds);
+    });
+    console.log(sortedEvents);
+    setEventListState(sortedEvents);
+  }
+
+  function sortBy(type, evntsParams) {
+    let events = [...evntsParams];
+    if (type === "Upcoming") {
+      events = events.sort((a, b) => {
+        return a.startTime.seconds - b.startTime.seconds;
       });
-      setEventListState(eventListTemp);
+
       console.log(eventListState);
     }
-    if (eventFilter === "Freshly Added") {
-      eventListTemp.sort(function (a, b) {
+    if (type === "Freshly Added") {
+      events = events.sort(function (a, b) {
         return b.dateAdded.seconds - a.dateAdded.seconds;
       });
-      setEventListState(eventListTemp);
-     
-      console.log(eventListTemp);
-      console.log(eventListState);
     }
+    return events;
   }
 
   function handleRoute(eventId) {
@@ -87,7 +93,7 @@ function App() {
           <select
             name="eventFilterType"
             id="eventFilterType"
-            onChange={changeEventFilter}>
+            onChange={handleOrderBy}>
             <option value="Upcoming">Upcoming</option>
             <option value="Freshly Added">Freshly Added</option>
           </select>
@@ -98,24 +104,32 @@ function App() {
               <div
                 key={event.id}
                 className="nametag card card--link"
-                onClick={()=>handleRoute(event.id)}>
+                onClick={() => handleRoute(event.id)}>
                 <img src={event.coverImage} alt={event.title}></img>
                 <h2>{event.title}</h2>
                 <div className="cardData">
-                <div id="Date">Date: {new Intl.DateTimeFormat("en" , {
-  timeStyle: "short",
-  dateStyle: "medium"
-}).format(event.startTime.seconds * 1000) }</div>
-                <div id="Views">Tags: {event.tags.map(e => (<tag>{e}</tag>))}</div>
-                </div>
-                <div className="cardTags">
+                  <div id="Date">
+                    Date:{" "}
+                    {new Intl.DateTimeFormat("en", {
+                      timeStyle: "short",
+                      dateStyle: "medium",
+                    }).format(event.startTime.seconds * 1000)}
                   </div>
+                  <div id="Views">
+                    Tags:{" "}
+                    {event.tags.map((e) => (
+                      <tag>{e}</tag>
+                    ))}
+                  </div>
+                </div>
+                <div className="cardTags"></div>
               </div>
             );
           })}
         </div>
       </div>
     </div>
-  )}
+  );
+}
 
 export default App;
