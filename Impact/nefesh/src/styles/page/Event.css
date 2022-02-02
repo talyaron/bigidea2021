@@ -129,7 +129,7 @@
 /*Article Event Data starts here*/
 .eventData_Event{
     background-color: var(--Light-D2);
-    width: 100%;
+    width: 96%;
     display: inline-block;
     /* text-align: center; */
     overflow-wrap: break-word;
