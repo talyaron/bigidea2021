@@ -17,7 +17,7 @@
 .adminButton {
     border: 2px solid Var(--Dark);
     background-color: Var(--Navy-blue);
-    display: inline-block;
+    display: inline-grid;
     margin: 3px;
     width: 95%;
     color: Var(--Light);
@@ -43,6 +43,17 @@
 .cardInfo_AP {
     padding-left: 10px;
     font-weight:500;
+    margin-block: inherit;
+}
+
+.smallpfp {
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    display: block;
+    margin: 2px 2px 0;
+    padding: 0;
+    object-fit: cover;
 }
 
 #searchDropdown_AP{
