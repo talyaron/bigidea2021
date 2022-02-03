@@ -9,6 +9,7 @@ import ProfilePage from './views/pages/ProfilePage';
 import ContactUs from './views/pages/ContactUs';
 import ArticleCreation from './views/pages/ArticleCreation';
 import MainPage from './views/pages/MainPage';
+import LogoNew from './assets/Images/LogoNew.svg'
 
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
@@ -105,7 +106,7 @@ function App() {
 
 	return (
 		<div>
-	    <NavTopBar titleDisplay="NBM Tel Aviv" />
+	    <NavTopBar titleDisplay= {LogoNew} />
 		<div className='container_AppMain'>
 		
 			{loggedIn ? (
