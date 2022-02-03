@@ -1,9 +1,11 @@
-import '../../styles/page/MainPage.css';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import DataFilters from '../template/DataFilters';
-import { query } from 'firebase/database';
-import { collection, onSnapshot, getFirestore } from 'firebase/firestore';
+import "../../styles/page/MainPage.css";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import DataFilters from "../template/DataFilters";
+import { query, } from "firebase/database";
+import { collection, onSnapshot, getFirestore, where, getDocs,} from "firebase/firestore";
+
+
 
 //const tags = ["newest", "popular", "recent"];
 let eventFilter = '';
@@ -12,10 +14,15 @@ function App() {
 	const navigate = useNavigate();
 
 	//var searchOption, filterOption;
-	const db = getFirestore();
-	const [articles, setArticles] = useState([]);
-	const [searchField, setSearchField] = useState('');
-	const [eventListState, setEventListState] = useState([]);
+  const db = getFirestore();
+  const [articles, setArticles] = useState([]);
+  const [searchField, setSearchField] = useState("");
+  const [eventListState, setEventListState] = useState([]);
+  const [finalFirstDate, setFinalFirstDate]= useState("")
+  const [finalLastDate, setFinalLastDate]= useState("")
+
+
+
 
 	function handleSearchByChange(ev) {
 		let temp = ev.target.value;
@@ -65,6 +72,44 @@ function App() {
 		}
 	}
 
+  function setStartDate(ev){
+    ev.preventDefault();
+    let startDayTemp= ev.target.value;
+    setFinalFirstDate(startDayTemp)
+    console.log(finalFirstDate);
+
+  }
+
+ async function checkByDate(ev){
+    ev.preventDefault();
+    console.log("hi");
+    let lastDayTemp= ev.target.value;
+    if(lastDayTemp< finalFirstDate){
+      lastDayTemp= "";
+      alert("selected final date is before start date. Please select a valid date  ")
+      
+    }
+    else{
+      console.log(finalFirstDate);
+      console.log(lastDayTemp);
+      const q = query(collection(db, "events"), where("endTime", "<=", lastDayTemp) && where("startTime", ">=", finalFirstDate));
+      const querySnapshot = await getDocs(q);
+      console.log(q)
+      console.log(querySnapshot);
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+  
+  });
+    }
+
+    //where()
+    
+//  set two 
+  }
+
+
+
 	function handleRoute(eventId) {
 		navigate('/event/' + eventId);
 	}
@@ -80,6 +125,11 @@ function App() {
 						<option value='recent'>Freshly Added</option>
 					</select>
 				</form>
+        <form className= "dateSelector">
+          Select dates to look between:
+          <input type='datetime-local' name="fisrtDate" onChange={setStartDate} />
+          <input type='datetime-local' name="lastDate" onChange={checkByDate}/>    
+          </form>
 				<div className='eventMapContainer'>
 					{eventListState.map((event) => {
 						return (
