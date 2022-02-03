@@ -38,7 +38,7 @@
     width: -webkit-fill-available;
     gap: 22vw;
     place-content: center;
-    background-color: var(--Light-blue);
+    background-color: var(--Light);
     padding-block: 7px;
 	border-top: 1px solid Var(--Navy-blue);
     user-select: none;

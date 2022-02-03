@@ -4,10 +4,13 @@ import { useEffect, useState} from "react";
 
 function ContactUs(props) {
   const [mailTo, setMailtoLink] = useState('');
+  const [userIsOle, setUserIsOle] = useState();
   useEffect(() => {
-    console.log("users", props.uid, props.displayName);
+    console.log("users", props.uid, props.displayName, props.isOle);
     //let notName = await getDoc(doc(db, "users", props.uid));
     let userIDTemp = props.uid;
+    // let userRole = props.userRole;
+    setUserIsOle(props.isOle);
     var email = "Nefesh@nefesh.com";
     var subject = "Request to be Organization Admin";
     var body_start =  `${props.displayName} with User ID: ${userIDTemp} wants to be an organizational Admin because(input your reason here)`;
@@ -28,6 +31,7 @@ function ContactUs(props) {
           Click here to send us an email!
         </a>
       </div>
+      {userIsOle? (
       <div className="apply">
         Apply for an organizational profile: &nbsp;
         <div className="apbutton">
@@ -37,7 +41,7 @@ function ContactUs(props) {
             </a>
           </div>
         </div>
-      </div>
+      </div>) : (null) }
       <div className="mission">
         <span className="mishead"> Our Mission </span>
         <br />
