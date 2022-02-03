@@ -53,29 +53,29 @@ function ArticleCreation(props) {
 		let { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSumbitted;
         image = httpUrl
 		addDoc(collection(db, 'users',props.userID,"Saved"), {
-			// title,
-			// coverImage: image,
-			// article: text,
-			// hostName: name,
-			// address: {
-			// 	streetName: streetName,
-			// 	houseNumber: houseNumber,
-			// 	city: city,
-			// },
-			// contactInfo: {
-			// 	phone,
-			// 	email,
-			// 	website,
-			// },
-			// types: tagsState,
-			// creatorUID: props.userID,
-			// creatorOrg: props.userOrg,
-			// views,
-			// dateAdded: new Date(),
-			// isPublished: true,
-			// startTime: new Date(startTime),
-			// endTime: new Date(endTime),
-			// maxCapacity,
+			title,
+			coverImage: image,
+			article: text,
+			hostName: name,
+			address: {
+				streetName: streetName,
+				houseNumber: houseNumber,
+				city: city,
+			},
+			contactInfo: {
+				phone,
+				email,
+				website,
+			},
+			types: tagsState,
+			creatorUID: props.userID,
+			creatorOrg: props.userOrg,
+			views,
+			dateAdded: new Date(),
+			isPublished: true,
+			startTime: new Date(startTime),
+			endTime: new Date(endTime),
+			maxCapacity,
 		});
 	}
 
