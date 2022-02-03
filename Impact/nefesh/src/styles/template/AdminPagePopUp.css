@@ -15,7 +15,7 @@
     height: auto;
     max-height: 70vh;
     margin-top: calc(100vh - 85vh - 20px);
-    background: Var(--Navy-blue);
+    background: Var(--Light-D2);
     border-radius: 4px;
     padding: 20px;
     border: 2px solid Var(--Dark-L2);
@@ -25,10 +25,8 @@
   .closeAdmin-icon {
     content: 'x';
     cursor: pointer;
-    position: fixed;
-    left: 93%;
-    right: calc(15% - 30px);
-    top: calc(100vh - 85vh - 33px);
+    right: 10px;
+    top: 15px;
     background: #ededed;
     width: 25px;
     height: 25px;
@@ -37,14 +35,17 @@
     text-align: center;
     border: 1px solid #999;
     font-size: 20px;
+    position: absolute;
   }
 
-  .AdminButtonContainer{
+  .adminButtonContainer{
     padding: 10px;
     border-radius: 5px;
+    background-color: var(--Light-D1);
+    box-shadow: 1px 1px 2px 2px Var(--Light-D2);
   }
 
-  #changeDisplayName, #setRoleToOle, #setRoleToOrgAdmin, #suspendUser, #banUser{
+  .adminButtonContainer > * {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -58,13 +59,18 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: bold;
     background-color: Var(--Light);
+    width: -webkit-fill-available;
+  }
+
+  .adminButtonContainer > button:hover {
+    background-color: Var(--Light-D2);
+    cursor: pointer;
   }
   #setRoleToOle{
     display: flexbox;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    width: fit-content;
     font-size: small;
     
   }

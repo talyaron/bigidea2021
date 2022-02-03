@@ -27,8 +27,9 @@
 }
 .filterEvents{
     font-weight: bolder;
-    text-align: center;
-    /*margin-bottom: -120px;*/
+    margin-block: 0.8em 3px;
+    margin-inline: 2px;
+    margin-left: 2%;
 }
 #eventFilterType{
     border-radius: 5px;
@@ -36,6 +37,12 @@
     height: 25px;
     font-weight: bolder;
 }
+
+.filterEvents > * {
+    margin-inline: inherit;
+}
+
+
 .nametag{
     margin-top: 6px;
     background-color: var(--Light);

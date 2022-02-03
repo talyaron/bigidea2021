@@ -74,7 +74,7 @@ function App() {
 			<DataFilters setEventListState={setEventListState} />
 			<div className='userInterfaceContainer'>
 				<form className='filterEvents'>
-					<label htmlFor='eventFilterType'>Sort out the events displayed:</label>
+					<label htmlFor='eventFilterType'>Sort Events:</label>
 					<select name='eventFilterType' id='eventFilterType' onChange={changeEventFilter}>
 						<option value='newest'>Upcoming</option>
 						<option value='recent'>Freshly Added</option>

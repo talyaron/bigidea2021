@@ -56,6 +56,15 @@
     object-fit: cover;
 }
 
+.cardInfoGroup_AP {
+    display: inline-flex;
+    padding: 1%;
+}
+
+.cardUserInfo_AP {
+    margin-block: auto;
+}
+
 #searchDropdown_AP{
     background-color: Var(--Light);
     margin-left: 5px;
