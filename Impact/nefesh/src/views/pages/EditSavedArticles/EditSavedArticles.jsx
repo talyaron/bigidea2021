@@ -4,6 +4,7 @@ import { doc, getDoc, setDoc, addDoc, collection } from 'firebase/firestore';
 import { db } from '../../../functions/firebase/config';
 import ImportImgs from '../../components/ImportImgs/ImportImgs';
 import { useParams } from "react-router-dom";
+import ContentEditable from '../../components/contentEditable/ContentEditable'
 let i = 0;
 let page = 'ArticleCreation';
 
@@ -13,24 +14,28 @@ function EditSavedArticles(props) {
 	const [httpUrl, setHttpUrl] = useState('');
 	let { eventID } = useParams();
 	const [statesSubmitted, setStatesSubmitted] = useState({})
+	const [address,setAddress]=useState([])
+	const [contactInfo,setContactInfo]=useState([])
 	useEffect(async () => {
 		document.getElementById('editor').addEventListener('input', inputEvt, false);
 		const eventRef = doc(db, "users", props.userID, "Saved", eventID)
 		let eventDB = await getDoc(eventRef)
 		setStatesSubmitted(eventDB.data())
-
+		setAddress(eventDB.data().address)
+		setContactInfo(eventDB.data().contactInfo)
+		setTagsState(eventDB.data().types)
 	}, []);
 	function inputEvt(ev) {
-		let parse = 'text';
+		let parse = 'article';
 		setStatesSubmitted({ ...statesSubmitted, [parse]: ev.target.innerHTML });
 	}
 	function submitArticle() {
-		let { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
+		let { title, name, article, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl
-		addDoc(collection(db, 'events'), {
+		setDoc(doc(db, 'events',eventID), {
 			title,
 			coverImage: image,
-			article: text,
+			article,
 			hostName: name,
 			address: {
 				streetName: streetName,
@@ -57,30 +62,30 @@ function EditSavedArticles(props) {
 	function saveDraft() {
 		let { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl
-		addDoc(collection(db, 'users', props.userID, "Saved"), {
-			// title,
-			// coverImage: image,
-			// article: text,
-			// hostName: name,
-			// address: {
-			// 	streetName: streetName,
-			// 	houseNumber: houseNumber,
-			// 	city: city,
-			// },
-			// contactInfo: {
-			// 	phone,
-			// 	email,
-			// 	website,
-			// },
-			// types: tagsState,
-			// creatorUID: props.userID,
-			// creatorOrg: props.userOrg,
-			// views,
-			// dateAdded: new Date(),
-			// isPublished: true,
-			// startTime: new Date(startTime),
-			// endTime: new Date(endTime),
-			// maxCapacity,
+		setDoc(doc(db, 'users', props.userID, "Saved",eventID), {
+			title,
+			coverImage: image,
+			article: text,
+			hostName: name,
+			address: {
+				streetName: streetName,
+				houseNumber: houseNumber,
+				city: city,
+			},
+			contactInfo: {
+				phone,
+				email,
+				website,
+			},
+			types: tagsState,
+			creatorUID: props.userID,
+			creatorOrg: props.userOrg,
+			views,
+			dateAdded: new Date(),
+			isPublished: true,
+			startTime: new Date(startTime),
+			endTime: new Date(endTime),
+			maxCapacity,
 		});
 	}
 
@@ -106,6 +111,9 @@ function EditSavedArticles(props) {
 	const callBackFunction = (httpRef) => {
 		setHttpUrl(httpRef);
 	};
+	function ping (){
+		console.log(statesSubmitted)
+	}
 
 	return (
 		<div className='backGround'>
@@ -114,20 +122,20 @@ function EditSavedArticles(props) {
 			<div className='createArticle-popup-box'>
 				<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} />
 				<input type='text' name='title' onKeyUp={changeState} placeholder='Enter article title here' defaultValue={statesSubmitted.title} className='shadow In' />
-				<input type='text' name='name' onKeyUp={changeState} placeholder='Enter host/s name here' value="hii" className='shadow In' />
-				<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' className='shadow In' />
-				<input type='text' name='city' onChange={changeState} placeholder='Enter city here' className='shadow In' />
-				<input type='text' name='houseNumber' onChange={changeState} placeholder='Enter building number here' className='shadow In' />
-				<input type='number' name='maxCapacity' onChange={changeState} placeholder='Enter maximum capacity here' className='shadow In' />
-				<input type='text' name='phone' onChange={changeState} placeholder='Enter phone number here' className='shadow In' />
-				<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' className='shadow In' />
-				<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' className='shadow In' />
+				<input type='text' name='name' onKeyUp={changeState} placeholder='Enter host/s name here' defaultValue={statesSubmitted.hostName} className='shadow In' />
+				<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' defaultValue={address.streetName} className='shadow In' />
+				<input type='text' name='city' onChange={changeState} placeholder='Enter city here' defaultValue={address.city} className='shadow In' />
+				<input type='text' name='houseNumber' onChange={changeState} placeholder='Enter building number here' defaultValue={address.houseNumber} className='shadow In' />
+				<input type='number' name='maxCapacity' onChange={changeState} placeholder='Enter maximum capacity here' defaultValue={statesSubmitted.maxCapacity} className='shadow In' />
+				<input type='text' name='phone' onChange={changeState} placeholder='Enter phone number here' defaultValue={contactInfo.phone} className='shadow In' />
+				<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' defaultValue={contactInfo.email} className='shadow In' />
+				<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' defaultValue={contactInfo.website} className='shadow In' />
 				<div>Event Start Time:</div>
-				<input type='datetime-local' name='startTime' onChange={changeState} placeholder='Enter address line 1 here' className='shadow In' />
+				<input type='datetime-local' name='startTime' onChange={changeState} defaultValue={statesSubmitted.startTime} className='shadow In' />
 				<div>Event End Time:</div>
-				<input type='datetime-local' name='endTime' onChange={changeState} placeholder='Enter address line 1 here' className='shadow In' />
+				<input type='datetime-local' name='endTime' onChange={changeState} defaultValue={statesSubmitted.endTime} className='shadow In' />
 				<div className='expandBox'>
-					<div contentEditable='true' className='textarea' name='text' role='textbox' id='editor' placeholder='Enter event description here'></div>
+					<div name='text' role='textbox' id='editor' placeholder='Enter event description here' >{statesSubmitted.article}</div>
 				</div>
 
 				<form className='Tags' onSubmit={addTags}>
@@ -135,6 +143,7 @@ function EditSavedArticles(props) {
 					<button className='submit Button36 shadow' type='submit'>
 						Submit
 					</button>
+					<button onClick={ping}>HIIII</button>
 				</form>
 				<div className='tagBox'>
 					<div className='tagsMapContainer shadow'>
