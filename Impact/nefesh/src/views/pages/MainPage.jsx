@@ -71,7 +71,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className= "MainPageBody">
       <DataFilters setEventListState={setEventListState} />
       <div className="userInterfaceContainer">
         <form className="filterEvents">
