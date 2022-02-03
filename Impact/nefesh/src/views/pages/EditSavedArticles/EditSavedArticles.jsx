@@ -4,7 +4,7 @@ import { doc, getDoc, setDoc, addDoc, collection } from 'firebase/firestore';
 import { db } from '../../../functions/firebase/config';
 import ImportImgs from '../../components/ImportImgs/ImportImgs';
 import { useParams } from "react-router-dom";
-import ContentEditable from '../../components/contentEditable/ContentEditable'
+// import ContentEditable from '../../components/contentEditable/ContentEditable'
 let i = 0;
 let page = 'ArticleCreation';
 
@@ -17,7 +17,7 @@ function EditSavedArticles(props) {
 	const [address,setAddress]=useState([])
 	const [contactInfo,setContactInfo]=useState([])
 	useEffect(async () => {
-		document.getElementById('editor').addEventListener('input', inputEvt, false);
+	
 		const eventRef = doc(db, "users", props.userID, "Saved", eventID)
 		let eventDB = await getDoc(eventRef)
 		setStatesSubmitted(eventDB.data())
@@ -134,9 +134,9 @@ function EditSavedArticles(props) {
 				<input type='datetime-local' name='startTime' onChange={changeState} defaultValue={statesSubmitted.startTime} className='shadow In' />
 				<div>Event End Time:</div>
 				<input type='datetime-local' name='endTime' onChange={changeState} defaultValue={statesSubmitted.endTime} className='shadow In' />
-				<div className='expandBox'>
-					<div name='text' role='textbox' id='editor' placeholder='Enter event description here' >{statesSubmitted.article}</div>
-				</div>
+				<textarea className='expandBox' defaultValue={statesSubmitted.article} onChange={changeState}>
+				
+				</textarea>
 
 				<form className='Tags' onSubmit={addTags}>
 					<input type='text' name='tagsInput' placeholder='Enter event tags here' className='tag34 shadow' />
