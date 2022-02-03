@@ -6,10 +6,10 @@ import { query, } from "firebase/database";
 import { collection, onSnapshot, getFirestore, where, getDocs,} from "firebase/firestore";
 
 //const tags = ["newest", "popular", "recent"];
-let eventFilter = "";
+let eventFilter = '';
 
 function App() {
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
   //var searchOption, filterOption;
   const db = getFirestore();
@@ -19,33 +19,31 @@ function App() {
   const [finalFirstDate, setFinalFirstDate]= useState("")
   const [finalLastDate, setFinalLastDate]= useState("")
 
-  function handleSearchByChange(ev) {
-    let temp = ev.target.value;
-    setSearchField(temp);
-  }
+	function handleSearchByChange(ev) {
+		let temp = ev.target.value;
+		setSearchField(temp);
+	}
 
-  
-  
-  useEffect(() => {
-    const q = query(collection(db, "events"));
-    const eventListTemp = [];
-    
-    
-    //listen to events
-    const unsubuscribe = onSnapshot(q, (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const eventTemp = doc.data();
-        eventTemp.id = doc.id;
-        eventListTemp.push(eventTemp);
-      });
-      console.log("ping!");
-      setEventListState(eventListTemp);
-    });
+	useEffect(() => {
+		const q = query(collection(db, 'events'));
+		const eventListTemp = [];
 
-    return ()=>{
-      return unsubuscribe()
-    }
-  }, []);
+		//listen to events
+		const eventsSnapshot = onSnapshot(q, (querySnapshot) => {
+			querySnapshot.forEach((doc) => {
+				const eventTemp = doc.data();
+				eventTemp.id = doc.id;
+				eventListTemp.push(eventTemp);
+			});
+			console.log('ping!');
+			setEventListState(eventListTemp);
+		});
+    return () => {
+			return eventsSnapshot();
+		};
+	}, []);
+
+
 
   
   function changeEventFilter(ev) {
@@ -107,9 +105,29 @@ function App() {
 //  set two 
   }
 
-  function handleRoute(eventId) {
-    navigate("/event/" + eventId);
-  }
+
+	function changeEventFilter(ev) {
+		const eventListTemp = [...eventListState];
+		eventFilter = ev.target.value;
+		if (eventFilter === 'popular') {
+			eventListTemp.sort(function (a, b) {
+				return b.views - a.views;
+			});
+			setEventListState(eventListTemp);
+			console.log(eventListState);
+		}
+		if (eventFilter === 'newest') {
+			eventListTemp.forEach((doc) => {
+				doc.dateCompare = doc.Date.replace(/\D/g, '');
+			});
+			eventListTemp.sort(function (a, b) {
+				return b.dateAdded.seconds - a.dateAdded.seconds;
+			});
+			setEventListState(eventListTemp);
+			console.log(eventListTemp);
+			console.log(eventListState);
+		}
+	}
 
   return (
     <div>
