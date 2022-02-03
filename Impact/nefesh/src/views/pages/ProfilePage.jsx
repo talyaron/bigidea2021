@@ -12,13 +12,13 @@ function ProfilePage(props) {
 	const [userData, setUserData] = useState()
 	const [displayName, setDisplayName] = useState('loading');
 	const [profilePicImg, setProfilePicImg] = useState('loading');
-	const [userEmail, setUserEmail] = useState('loading')
-	const [userAddress, setUserAddress] = useState('loading')
-	const [userGender, setUserGender] = useState('loading')
+	const [userEmail, setUserEmail] = useState('loading');
+	const [userAddress, setUserAddress] = useState('loading');
+	const [userGender, setUserGender] = useState('loading');
 	//const [userArticles, setUserArticles] = useState('loading');
-	const [textSize, setTextSize] = useState('')
-	const [editing, setEditing] = useState(false)
-	const [choosingPrefs, setChoosingPrefs] = useState(false)
+	const [textSize, setTextSize] = useState('');
+	const [editing, setEditing] = useState(false);
+	const [choosingPrefs, setChoosingPrefs] = useState(false);
 	const {uid} = props;
 	const [isOpen, setIsOpen] = useState(false);
 	const [httpUrl, setHttpUrl] = useState('');
@@ -50,7 +50,6 @@ function ProfilePage(props) {
 	function changeProfile(ev) {
 		ev.preventDefault();
 
-
 		const name = ev.target.elements.newName.value;
 		const profilePic = httpUrl
 		const email = ev.target.elements.newEmail.value;
@@ -78,14 +77,11 @@ function ProfilePage(props) {
 		}
 		
 		setEditing(false);
-
 		setIsOpen(!isOpen);
 	}
 
-
 	function changeBio(ev) {
 		ev.preventDefault();
-		
 
 		const bio = ev.target.elements.newBio.value;
 
@@ -98,7 +94,6 @@ function ProfilePage(props) {
 		}
 
 		setEditing(false);
-
 		setIsBioOpen(!isBioOpen);
 	}
 
@@ -115,8 +110,6 @@ function ProfilePage(props) {
 	const callBackFunction = (httpRef) => {
 		setHttpUrl(httpRef);
 	};
-
-	
 
 	function editBio(){
 		setIsBioOpen(!isBioOpen);
@@ -144,9 +137,7 @@ function ProfilePage(props) {
 				
 			</div>
 			<footer  className='back-2 foot'>
-
 			</footer>
-
 			
 			{isOpen && <EditProfilePopUp
       content={<>
@@ -157,9 +148,7 @@ function ProfilePage(props) {
 					Enter New Image : <ImportImgs userData={userData} pageName={page} parentCallBack={callBackFunction} />
 					Enter New Email: <input type="text" name="newEmail" /><br />
 					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
-
 				</form>
-
 
 			</div> : null}
       </>}
@@ -172,19 +161,13 @@ function ProfilePage(props) {
 				<form onSubmit={changeBio}>
 					Enter New Bio: <input type="text" name="newBio"/>
 					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
-
 				</form>
-
 
 			</div> : null}
       </>}
       handleClose={editBio}
     />}
-			
-
 		</div>
-
-
 	);
 }
 

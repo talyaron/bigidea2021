@@ -32,19 +32,16 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isOle, setIsOle] = useState(false);
   const [isUserID, setIsUserID] = useState(null);
-  const [isGuest, setIsGuest] =useState(true)
   
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("user logged in");
         const uid = user.uid;
         setIsUserID(uid);
         userID = uid;
         //get user from db
         getDoc(doc(db, "users", uid)).then((userDB) => {
           if (userDB.exists()) {
-            console.log("user exists");
 			role = userDB.data().role;
             setUserState({
               userOrg: userDB.data().organization,
@@ -56,8 +53,7 @@ function App() {
               return;
             }
 
-            console.log(role);
-            if (role == "guest"){
+            if (role === "guest"){
               setIsOle(false);
               setIsAdmin(false);
             }

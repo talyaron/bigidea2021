@@ -1,41 +1,31 @@
 import "../../styles/template/DataFilters.css";
 import { useState } from "react";
-import {
-  collection,
-  doc,
-  orderBy,
-  query,
-  onSnapshot,
-  getDocs,
-  where,
-  getFirestore,
-} from "firebase/firestore";
+import { collection, query, getDocs, where, getFirestore } from "firebase/firestore";
 
 const filters = {};
-let eventFilters = [];
 let tags = ["dinner", "60+", "party", "fun", "outdoors"];
 
 
 function DataFilters({ setEventListState }) {
   const db = getFirestore();
   const [searchField, setSearchField] = useState("");
-  const [searchFilters, setSearchFilters] = useState([]);
   const [hidden, setHidden] = useState(false);
 
-  function handleSearchByChange(ev) {
-    ev.preventDefault();
-    let temp = ev.target.value;
-    setSearchField(temp);
-  }
+  // function handleSearchByChange(ev) {
+  //   ev.preventDefault();
+  //   let temp = ev.target.value;
+  //   setSearchField(temp);
+  // }
+
   function revealFilters() {
     let temp = !hidden
     setHidden(temp);
-    
   }
 
   async function getTarget(ev) {
     filters[ev.target.name] = ev.target.checked;
   }
+
   async function getEvents(ev) {
     ev.preventDefault();
     console.log(filters);
@@ -45,8 +35,6 @@ function DataFilters({ setEventListState }) {
       if (filters[filter]) {
         filtersArr.push(filter);
       }
-
-      console.log(filtersArr);
 
       const promisedFilterd = filtersArr.map((filter) => {
         return getEventPromise(filter);
@@ -73,7 +61,6 @@ const joinedEventsList = []
     })
 
     return joinedEventsList;
-
 }
 
   function getEventPromise(filter) {

@@ -13,16 +13,13 @@ function App() {
 
   //var searchOption, filterOption;
   const db = getFirestore();
-  const [articles, setArticles] = useState([]);
   const [searchField, setSearchField] = useState("");
   const [eventListState, setEventListState] = useState([]);
 
-  function handleSearchByChange(ev) {
-    let temp = ev.target.value;
-    setSearchField(temp);
-  }
-
-  
+  // function handleSearchByChange(ev) {
+  //   let temp = ev.target.value;
+  //   setSearchField(temp);
+  // }
   
   useEffect(() => {
     const q = query(collection(db, "events"));
@@ -30,13 +27,12 @@ function App() {
     
     
     //listen to events
-    const unsubuscribe = onSnapshot(q, (querySnapshot) => {
+    const unsubuscribe = onSnapshot(q, (querySnapshot) => { //check line since unsubscribe is spelled incorrectly
       querySnapshot.forEach((doc) => {
         const eventTemp = doc.data();
         eventTemp.id = doc.id;
         eventListTemp.push(eventTemp);
       });
-      console.log("ping!");
       setEventListState(eventListTemp);
     });
 

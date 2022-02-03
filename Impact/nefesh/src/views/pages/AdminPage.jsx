@@ -40,8 +40,6 @@ function AdminPage() {
 			const userRef = doc(db, "users", userIdSpec)
 
 			getDoc(userRef).then(userDB => {
-				// console.log(userDB.data())
-				// console.log(userDB.exists())
 				let userNameTemp = userDB.data().displayName
 				setDisplayName(userNameTemp);
 				setUserID(userIdSpec);
@@ -81,8 +79,7 @@ function AdminPage() {
 
 
 	function handleSearchByChange(ev){
-		let temp = ev.target.value
-		console.log(temp);
+		let temp = ev.target.value;
 		setSearchField(temp)
 	}
 
@@ -100,11 +97,9 @@ function AdminPage() {
 		let tempArr = []
 		const userIDSnapshot = await getDocs(q);
 		userIDSnapshot.forEach((doc) => {  
-			tempArr.push(doc.data())
-			console.log(tempArr)
+			tempArr.push(doc.data());
 		});
-		setNames(tempArr)
-		console.log(tempArr)
+		setNames(tempArr);
 		
 	// 	let input = searchCont
 	// 	input=input.toLowerCase();
@@ -124,10 +119,8 @@ function AdminPage() {
 	// 	const userIDSnapshot = await getDocs(q);
 	// 	userIDSnapshot.forEach((doc) => {  
 	// 		tempArr.push(doc.data())
-	// 		console.log(tempArr)
 	// 	});
 	// 	setNames(tempArr)
-	// 	console.log(tempArr)
 	
 	}
 	function handleClearFilter(){

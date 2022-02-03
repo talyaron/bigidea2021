@@ -4,7 +4,6 @@ import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../scripts/firebase/config";
 import {  useParams } from "react-router-dom";
 import useScript from "../../scripts/useScript";
-import Moment from 'react-moment';
 // import 'moment-timezone';
 
 function Event() {
