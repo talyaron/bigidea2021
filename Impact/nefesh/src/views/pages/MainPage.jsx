@@ -1,15 +1,15 @@
-import "../../styles/page/MainPage.css";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import DataFilters from "../template/DataFilters";
-import { query } from "firebase/database";
-import { collection, onSnapshot, getFirestore } from "firebase/firestore";
+import '../../styles/page/MainPage.css';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import DataFilters from '../template/DataFilters';
+import { query } from 'firebase/database';
+import { collection, onSnapshot, getFirestore } from 'firebase/firestore';
 
 //const tags = ["newest", "popular", "recent"];
-let eventFilter = "";
+let eventFilter = '';
 
 function App() {
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
   //var searchOption, filterOption;
   const db = getFirestore();
@@ -36,39 +36,44 @@ function App() {
       setEventListState(eventListTemp);
     });
 
-    return ()=>{
-      return unsubuscribe()
-    }
-  }, []);
+		//listen to events
+		const eventsSnapshot = onSnapshot(q, (querySnapshot) => {
+			querySnapshot.forEach((doc) => {
+				const eventTemp = doc.data();
+				eventTemp.id = doc.id;
+				eventListTemp.push(eventTemp);
+			});
+			console.log('ping!');
+			setEventListState(eventListTemp);
+		});
 
-  
-  function changeEventFilter(ev) {
-   
-    const eventListTemp = [...eventListState];
-    eventFilter = ev.target.value;
-    if (eventFilter === "popular") {
-      eventListTemp.sort(function (a, b) {
-        return b.views - a.views;
-      });
-      setEventListState(eventListTemp);
-      console.log(eventListState);
-    }
-    if (eventFilter === "newest") {
-      eventListTemp.forEach((doc) => {
-        doc.dateCompare = doc.Date.replace(/\D/g, "");
-      });
-      eventListTemp.sort(function (a, b) {
-        return b.dateAdded.seconds - a.dateAdded.seconds;
-      });
-      setEventListState(eventListTemp);
-      console.log(eventListTemp);
-      console.log(eventListState);
-    }
-  }
+		return () => {
+			return eventsSnapshot();
+		};
+	}, []);
 
-  function handleRoute(eventId) {
-    navigate("/event/" + eventId);
-  }
+	function changeEventFilter(ev) {
+		const eventListTemp = [...eventListState];
+		eventFilter = ev.target.value;
+		if (eventFilter === 'popular') {
+			eventListTemp.sort(function (a, b) {
+				return b.views - a.views;
+			});
+			setEventListState(eventListTemp);
+			console.log(eventListState);
+		}
+		if (eventFilter === 'newest') {
+			eventListTemp.forEach((doc) => {
+				doc.dateCompare = doc.Date.replace(/\D/g, '');
+			});
+			eventListTemp.sort(function (a, b) {
+				return b.dateAdded.seconds - a.dateAdded.seconds;
+			});
+			setEventListState(eventListTemp);
+			console.log(eventListTemp);
+			console.log(eventListState);
+		}
+	}
 
   return (
     <div className= "MainPageBody">

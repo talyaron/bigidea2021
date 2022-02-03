@@ -82,9 +82,9 @@ function StickyBanner({role}) {
 											<div
 												className='menuItem'
 												onClick={() => {
+													handleMenu()  //this keeps hetting removed but it is needed to close the menu after selecting 
 													if(item.function) item.function();
 													if(item.href) navigate('/' + item.href);
-													handleMenu()
 												}}>
 												{item.label}
 											</div>

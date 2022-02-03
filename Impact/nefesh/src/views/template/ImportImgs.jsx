@@ -39,7 +39,6 @@ function HandleImportImg(props) {
 
 	return (
 			<input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif' onChange={onTrigger} className='border-ArticleCreation' />
-			
 	)}
 
 
