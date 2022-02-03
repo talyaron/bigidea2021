@@ -19,7 +19,6 @@
 */
 
 .button_Event{
-    background-color: black;
     color: white;
     text-align: center;
     min-width: 60px;
@@ -68,7 +67,7 @@
     
     margin-top: 20px;
     
-    background-color: var(--Background-light);
+    background-color: var(--Light);
     background-image: url(https://images.app.goo.gl/zwAQKKfULvPaYiAA9);
     
     justify-content:space-between;
@@ -96,7 +95,7 @@
     width: 100%;
     user-select: none;
     -webkit-user-drag: none;
-    app-region: no-drag;
+    /* app-region: no-drag; */
     max-height: 300px;
     object-fit: cover;
     object-position: center;
@@ -127,7 +126,7 @@
 
 /*Article Event Data starts here*/
 .eventData_Event{
-    background-color: var(--Light-D2);
+    background-color: var(--Light);
     width: 96%;
     display: inline-block;
     /* text-align: center; */
@@ -138,7 +137,7 @@
 }
 
 .dataBox {
-    background: aliceblue;
+    background: var(--Light);
     border-radius: 9px;
     padding: 10px;
     width: fit-content;
@@ -146,7 +145,7 @@
 }
 
 .dataEntry {
-    background: #fefefe;
+    background: var(--Light);
     margin-block: 7px;
     margin-inline: 3px;
     border-radius: 12px;
@@ -228,7 +227,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    background-color: var(--Background-light);
+    background-color: var(--Light);
 }
 
 /*Article User Prompt ends here*/
@@ -236,15 +235,15 @@
 
 
 .eventTags_Event{
-    padding-top: 20px;
+    /* padding-top: 20px; */
     padding-bottom: 40px;
     width: 100%;
     row-gap: 10px;
-    display: flex;
+    /* display: flex;
     flex-flow: row wrap;
-    align-items: flex-start;
-    align-content: flex-start;
-    background-color: var(--Light-D2);
+    align-items: center;
+    align-content: center; */
+    background-color: var(--Light);
 }
 
 .tagTitle_Event{
@@ -270,7 +269,7 @@
     
 }
 .contactUsContent_Event{
-    background-color: var(--Light-D2);
+    background-color: var(--Light);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -280,4 +279,8 @@
 .addeventatc{
     position: relative;
     z-index: 0 !important;
+}
+
+.titleContainer{
+    background-color: var(--Background-light);
 }

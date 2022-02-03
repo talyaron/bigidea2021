@@ -100,8 +100,13 @@ function Event() {
 			{useScript('https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js')}
 			<img className='coverImage' src={image} alt='Event'></img>
 			<div className='eventData_Event'>
+				<div className='titleContainer'>
 				<div className='title'> {eventData.title} </div>
-				<h3 className='username_Event'> {eventData.hostName} </h3>
+				<div className='eventDetails_Event'>
+					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
+				</div>
+				
+				</div>
 				<div class='dataBox'>
 					{Object.entries(filterEntries([eventData, ['startTime', 'endTime', 'address']])).map((e) => (
 						<div className='dataEntry' id={e[0] + 'Entry'}>
@@ -114,15 +119,13 @@ function Event() {
 						</div>
 					))}
 				</div>
-				<div className='eventDetails_Event'>
-					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
-				</div>
 
 				<h4 className='eventDetails_Event'> Description: {eventData.article}</h4>
 			</div>
 
 			<div className='userPromptContainer_Event'>
-				<h3 className='maxCap'> Max Capacity: {eventData.maxCapacity} </h3>
+				{/* <h3 className='maxCap'> Max Capacity: {eventData.maxCapacity} </h3> */}
+				<button className='registerButton'>Register</button>
 				<div title='Add to Calendar' className='addeventatc'>
 					Add to Calendar
 					<span className='start'>{`${eventData.startTime}`}</span>
@@ -143,11 +146,12 @@ function Event() {
 				</div>
 			</div>
 			<div className='eventTags_Event'>
-				<h3 className='tagTitle_Event'>Event Tags:</h3>
+				<h3 className='tagTitle_Event'></h3>
 				{tags.map((tag, index) => {
 					return <tag key={`tag-${index}`}>{tag}</tag>;
 				})}
 			</div>
+			<h3 className='username_Event'>Posted By {eventData.hostName} </h3>
 		</div>
 	);
 }

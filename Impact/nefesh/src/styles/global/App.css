@@ -20,7 +20,7 @@
 body {
 	font-family: 'Poppins', sans-serif;
 	margin: 0px;
-	background-color: var(--Background-light);
+	background-color: var(--Light);
 	max-height: calc(100vh - 50px);
 }
 
@@ -54,13 +54,13 @@ body {
 }*/
 
 button{
-	/* width: 190px;
+	width: 120px;
     height: 40px;
-    margin: 1px; */
-    border-radius: 15px;
+    margin: 1px;
+    border-radius: 20px;
     border: none;
-	background-color: var(--Navy-blue);
-	color: var(--Grey);	
+	background-color: var(--Light-blue);
+	color: white;	
 }
 
 tag {
