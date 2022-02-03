@@ -125,8 +125,8 @@ function Event() {
 
 			<div className='userPromptContainer_Event'>
 				{/* <h3 className='maxCap'> Max Capacity: {eventData.maxCapacity} </h3> */}
-				<button className='registerButton'>Register</button>
-				<div title='Add to Calendar' className='addeventatc'>
+				<button className='registerButton shadow'>Register</button>
+				<div title='Add to Calendar shaodw' className='addeventatc'>
 					Add to Calendar
 					<span className='start'>{`${eventData.startTime}`}</span>
 					<span className='end'>{`${eventData.endTime}`}</span>
@@ -134,7 +134,7 @@ function Event() {
 					<span className='title'>{eventData.title}</span>
 					<span className='description'>{eventData.article}</span>
 				</div>
-				<button className='shareButton button_Event'> Share </button>
+				<button className='shareButton button_Event shadow'> Share </button>
 			</div>
 
 			<div className='contactUsContainer_Event'>

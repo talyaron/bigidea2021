@@ -214,6 +214,7 @@
 
 .eventDetails_Event{
     padding: 5px 15px;
+    background-color: var(--Background-light);
 }
 
 /*Article Event Data ends here*/
@@ -227,7 +228,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    background-color: var(--Light);
+    background-color: var(--Background-light);
 }
 
 /*Article User Prompt ends here*/
@@ -269,7 +270,7 @@
     
 }
 .contactUsContent_Event{
-    background-color: var(--Light);
+    background-color: var(--Background-light);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -279,6 +280,7 @@
 .addeventatc{
     position: relative;
     z-index: 0 !important;
+    border-radius: 200px;
 }
 
 .titleContainer{
