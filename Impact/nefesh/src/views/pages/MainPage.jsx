@@ -88,15 +88,20 @@ function App() {
       alert("selected final date is before start date. Please select a valid date  ")
       
     }
-    console.log(finalFirstDate);
-    console.log(lastDayTemp);
-    const q = query(collection(db, "events"), where("endTime", "<=", lastDayTemp) && where("startTime", ">=", finalFirstDate));
-    const querySnapshot = await getDocs(q);
-querySnapshot.forEach((doc) => {
-  // doc.data() is never undefined for query doc snapshots
-  console.log(doc.id, " => ", doc.data());
+    else{
+      console.log(finalFirstDate);
+      console.log(lastDayTemp);
+      const q = query(collection(db, "events"), where("endTime", "<=", lastDayTemp) && where("startTime", ">=", finalFirstDate));
+      const querySnapshot = await getDocs(q);
+      console.log(q)
+      console.log(querySnapshot);
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+  
+  });
+    }
 
-});
     //where()
     
 //  set two 
