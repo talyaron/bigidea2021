@@ -48,6 +48,8 @@
 }
 .backGround {
 	background-color: var(--Light);
+	display: flex;
+	justify-content: center;
 }
 .createArticle-popup-box {
 	position: relative;
