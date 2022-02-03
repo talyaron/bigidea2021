@@ -70,6 +70,10 @@ function App() {
     }
   }
 
+  //function checkByDate(ev, date1, date2){
+//  set two 
+  //}
+
   function handleRoute(eventId) {
     navigate("/event/" + eventId);
   }
@@ -90,6 +94,12 @@ function App() {
             <option value="recent">Freshly Added</option>
           </select>
         </form>
+        <form className= "dateSelector">
+          Select dates to look between:
+          <input placeholder="enter first available day" />
+          <input placeholder="enter last available day" />
+          <button value= "submit" >Enter Dates</button>
+          </form>
         <div className="eventMapContainer">
           {eventListState.map((event) => {
             return (
