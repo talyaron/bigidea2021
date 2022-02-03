@@ -134,7 +134,7 @@ function Event() {
 			<div className="contactUsContainer_Event">
 				<div className="contactUsContent_Event">
 					<p>Our Phone Number: {contactInfo.phone}</p>
-					<a href={`mailto: ${contactInfo.email} ?subject=Event!&body=Hi! I wanted to contact you to tell you that (type here)`} target="_blank">
+					<a href={`mailto: ${contactInfo.email} ?subject=Event!&body=Hi! I wanted to contact you to tell you that (type here)`} target="_blank" rel="noreferrer">
               			Email Us!
             		</a>
 				</div>

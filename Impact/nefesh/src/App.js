@@ -33,6 +33,7 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isOle, setIsOle] = useState(false);
   const [isUserID, setIsUserID] = useState(null);
+  console.log(isAdmin)
   
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {

@@ -1,5 +1,5 @@
 import '../../styles/component/NavTopBar.css';
-import LogoNew from '../../assets/Images/LogoNew.svg'
+
 
 function NavTopBar({titleDisplay}){
 

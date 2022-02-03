@@ -87,10 +87,10 @@ function App() {
           </select>
         </form>
         <div className="eventMapContainer">
-          {eventListState.map((event) => {
+          {eventListState.map((event, i) => {
             return (
               <div
-                key={event.id}
+                key={i}
                 className="nametag card card--link"
                 onClick={()=>handleRoute(event.id)}>
                 <img src={event.coverImage} alt={event.title}></img>
@@ -100,7 +100,7 @@ function App() {
   timeStyle: "short",
   dateStyle: "medium"
 }).format(event.startTime.seconds * 1000) }</div>
-                <div id="Views">Tags: {event.tags.map(e => (<tag>{e}</tag>))}</div>
+                <div id="Views">Tags: {event.tags.map(e => (<div className="tag">{e}</div>))}</div>
                 </div>
                 <div className="cardTags">
                   </div>
