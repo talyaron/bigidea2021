@@ -203,7 +203,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 
 .tagsMapContainer {
     margin-top: 15px;
-	background-color: var(--Light);
+	background-color: var(--Background-light);
 	border-radius: 5px;
 	display: flex;
 	flex-direction: row;
@@ -213,7 +213,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 .tagsMapContainer_selected{
     margin-top: 15px;
-	background-color: var(--Light);
+	background-color: var(--Background-light);
 	border-radius: 5px;
 	display: flex;
 	flex-direction: row;

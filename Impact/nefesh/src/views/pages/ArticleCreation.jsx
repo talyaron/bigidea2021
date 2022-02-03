@@ -3,11 +3,14 @@ import '../../styles/page/ArticleCreation.css';
 import { collection, addDoc, getDoc, doc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import ImportImgs from '../template/ImportImgs';
+import { useNavigate } from 'react-router-dom';
+
 let i = 0;
 let statesSubmitted = { views: 0, startTime: '', endTime: '' };
 let page = 'ArticleCreation';
 
 function ArticleCreation(props) {
+	const navigate = useNavigate();
 	const [httpUrl, setHttpUrl] = useState('');
 	const [tags, setTags] = useState([]);
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
@@ -24,9 +27,11 @@ function ArticleCreation(props) {
 		let parse = 'text';
 		statesSubmitted = { ...statesSubmitted, [parse]: ev.target.innerHTML };
 	}
+
 	function submitArticle() {
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
+		try{
 		addDoc(collection(db, 'events'), {
 			title,
 			coverImage: image,
@@ -53,6 +58,12 @@ function ArticleCreation(props) {
 			maxCapacity,
 			currentCapacity: maxCapacity,
 		});
+		alert('Event Submitted!')
+		navigate('/MainPage')
+	} catch (err){
+		console.error(err)
+		alert('Invalid Fields. Make Sure you fill out all the fields',err)		
+		}
 	}
 	function saveDraft() {
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
@@ -82,6 +93,7 @@ function ArticleCreation(props) {
 			endTime: new Date(endTime),
 			maxCapacity,
 		});
+		alert('Event Saved!')
 	}
 
 	function changeState(ev) {
@@ -129,7 +141,7 @@ function ArticleCreation(props) {
 					</div>
 					<label htmlFor="selected_tagBox">Selected Tags:</label>
 					<div name='selected_tagBox' className='selected_tagBox'>
-						<div className='tagsMapContainer_selected shadow'>
+						<div className='tagsMapContainer_selected'>
 							{[...tempArray].map((tag) => {
 								return (
 									<div key={tag}>
@@ -144,7 +156,7 @@ function ArticleCreation(props) {
 						</div>
 						<label htmlFor="unselected_tagBox">Unselected Tags:</label>
 						<div name='unselected_tagBox' className='unselected_tagBox'>
-							<div className='tagsMapContainer shadow'>
+							<div className='tagsMapContainer'>
 								{tags.map((tag) => {
 									return (
 										<div key={tag}>
