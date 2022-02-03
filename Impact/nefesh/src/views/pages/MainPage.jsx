@@ -83,6 +83,11 @@ function App() {
     ev.preventDefault();
     console.log("hi");
     let lastDayTemp= ev.target.value;
+    if(lastDayTemp< finalFirstDate){
+      lastDayTemp= "";
+      alert("selected final date is before start date. Please select a valid date  ")
+      
+    }
     console.log(finalFirstDate);
     console.log(lastDayTemp);
     const q = query(collection(db, "events"), where("startTime", "<=", lastDayTemp))
