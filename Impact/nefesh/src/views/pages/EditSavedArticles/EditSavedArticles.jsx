@@ -112,10 +112,12 @@ function EditSavedArticles(props) {
 		setHttpUrl(httpRef);
 	};
 	function ping (){
-		console.log(statesSubmitted)
+		console.log(statesSubmitted.startTime.seconds)
 	}
 
 	return (
+		<>
+		{statesSubmitted?
 		<div className='backGround'>
 			{/* <button onClick={ping}>Hiii</button> */}
 			<header className='Header'>Create an Article</header>
@@ -131,10 +133,10 @@ function EditSavedArticles(props) {
 				<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' defaultValue={contactInfo.email} className='shadow In' />
 				<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' defaultValue={contactInfo.website} className='shadow In' />
 				<div>Event Start Time:</div>
-				<input type='datetime-local' name='startTime' onChange={changeState} defaultValue={statesSubmitted.startTime} className='shadow In' />
+				{/* <input type='datetime-local' name='startTime' onChange={changeState} defaultValue={new Date(statesSubmitted.startTime.seconds*1000)} className='shadow In' /> */}
 				<div>Event End Time:</div>
 				<input type='datetime-local' name='endTime' onChange={changeState} defaultValue={statesSubmitted.endTime} className='shadow In' />
-				<textarea className='expandBox' defaultValue={statesSubmitted.article} onChange={changeState}>
+				<textarea name="article"className='expandBox' defaultValue={statesSubmitted.article} onChange={changeState}>
 				
 				</textarea>
 
@@ -168,7 +170,10 @@ function EditSavedArticles(props) {
 				</div>
 			</div>
 		</div>
+	:null}
+	</>
 	);
 }
+
 
 export default EditSavedArticles;
