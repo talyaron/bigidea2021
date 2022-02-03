@@ -33,7 +33,7 @@ function App() {
   const [isOle, setIsOle] = useState(false);
   const [isUserID, setIsUserID] = useState(null);
   const [isGuest, setIsGuest] =useState(true)
-
+  
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -116,7 +116,7 @@ function App() {
 						<Route path='404' element={<Error />} />
 						<Route path='401' element={<Unauthorised />} />
 						<Route path='MainPage' element={<MainPage role={role} />} />
-						<Route path='ContactUs' element={<ContactUs  uid = {isUserID} displayName={userState.displayName}/>}/>
+						<Route path='ContactUs' element={<ContactUs  uid = {isUserID} displayName={userState.displayName} isOle={isOle}/>}/>
 						<Route path='event/:eventID' element={<Event />} />
 						<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
@@ -132,7 +132,7 @@ function App() {
             <Route path='MainPage' element={<MainPage role={role}/>} />
             <Route path='404' element={<Error />} />
 						<Route path='401' element={<Unauthorised />} />
-            <Route path='ContactUs' element={<ContactUs  uid = {isUserID} displayName={userState.displayName}/>}/>
+            <Route path='ContactUs' element={<ContactUs  uid = {isUserID} displayName={userState.displayName} isOle={isOle}/>}/>
             <Route path='event/:eventID' element={<Event />} />
             <Route path='login' element={<Login/>} />
 					</Routes>
