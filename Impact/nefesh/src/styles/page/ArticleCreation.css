@@ -202,15 +202,28 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 
 .tagsMapContainer {
+    margin-top: 15px;
 	background-color: var(--Light);
 	border-radius: 5px;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content:    center;
     max-width: 100%;
     flex-wrap: wrap;
 }
-.Tag-Content {
+.tagsMapContainer_selected{
+    margin-top: 15px;
+	background-color: var(--Light);
+	border-radius: 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.unselected_tagBox {
 	display: inline-block;
 	margin-right: 5px;
 }
@@ -248,3 +261,4 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 .filterBtn_articleCreation_selected{
     background-color: #264e7c;
 }
+

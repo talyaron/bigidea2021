@@ -8,12 +8,9 @@ let statesSubmitted = { views: 0, startTime: '', endTime: '' };
 let page = 'ArticleCreation';
 
 function ArticleCreation(props) {
-	const [tagsState, setTagsState] = useState([]);
-	//const inputRef = useRef();
-	//const [value, setValue] = React.useState('I am editable');
 	const [httpUrl, setHttpUrl] = useState('');
 	const [tags, setTags] = useState([]);
-	const [selectedTagArray, setSelectedTagArray] = useState([])
+	const [selectedTagArray, setSelectedTagArray] = useState([]);
 
 	useEffect(() => {
 		document.getElementById('editor').addEventListener('input', inputEvt, false);
@@ -45,7 +42,7 @@ function ArticleCreation(props) {
 				email,
 				website,
 			},
-			tags: tagsState,
+			tags: selectedTagArray,
 			creatorUID: props.userID,
 			creatorOrg: props.userOrg,
 			views,
@@ -75,7 +72,7 @@ function ArticleCreation(props) {
 				email,
 				website,
 			},
-			tags: tagsState,
+			tags: selectedTagArray,
 			creatorUID: props.userID,
 			creatorOrg: props.userOrg,
 			views,
@@ -92,42 +89,22 @@ function ArticleCreation(props) {
 		statesSubmitted = { ...statesSubmitted, [parse]: ev.target.value };
 	}
 
-	function addTags(ev) {
-		ev.preventDefault();
-		setTagsState([...tagsState, ev.target[0].value]);
-		ev.target[0].value = '';
-		console.log(ev.target[0].value);
-	}
-	function deleteTag(tag) {
-		// debugger
-		tag.preventDefault();
-
-		let tempArray = [...tagsState];
-		tempArray.splice(tag, 1);
-		setTagsState(tempArray);
-	}
-	//function ping() {}
-
 	const callBackFunction = (httpRef) => {
 		setHttpUrl(httpRef);
 	};
-	
-	function getTarget(ev) {
-		let temp = ev.target.innerHTML
-		let tempArray = selectedTagArray
-		console.log(temp);
-		if(tempArray.includes(temp)){
-			const index = tempArray.indexOf(temp)
-			tempArray.splice(index, 1)
-			console.log(tempArray)
-		}
-		else{
-		tempArray.push(temp)
-		console.log(tempArray)
-		}
-		setSelectedTagArray(tempArray)
-	}
 
+	let tempArray = [...selectedTagArray];
+	function getTarget(ev) {
+		let temp = ev.target.innerHTML;
+		if (tempArray.includes(temp)) {
+			const index = tempArray.indexOf(temp);
+			tempArray.splice(index, 1);
+		} else {
+			tempArray.push(temp);
+		}
+		setSelectedTagArray(tempArray);
+	
+	}
 	return (
 		<div id='ArtC_Header'>
 			<header className='Header'>Create an Article</header>
@@ -150,9 +127,10 @@ function ArticleCreation(props) {
 					<div className='expandBox'>
 						<div contentEditable='true' className='textarea' name='text' role='textbox' id='editor' placeholder='Enter event description here placeHolderText_articleCreation'></div>
 					</div>
-					<div className='selected_tagBox'>
-							{selectedTagArray.map((tag) => {
-								console.log('ping.map')
+					<label htmlFor="selected_tagBox">Selected Tags:</label>
+					<div name='selected_tagBox' className='selected_tagBox'>
+						<div className='tagsMapContainer_selected shadow'>
+							{[...tempArray].map((tag) => {
 								return (
 									<div key={tag}>
 										<div className='inline-block'>
@@ -163,7 +141,9 @@ function ArticleCreation(props) {
 									</div>
 								);
 							})}
-						<div className='unselected_tagBox'>
+						</div>
+						<label htmlFor="unselected_tagBox">Unselected Tags:</label>
+						<div name='unselected_tagBox' className='unselected_tagBox'>
 							<div className='tagsMapContainer shadow'>
 								{tags.map((tag) => {
 									return (
