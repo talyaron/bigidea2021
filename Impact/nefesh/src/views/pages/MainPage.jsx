@@ -83,7 +83,7 @@ function App() {
 				<div className='eventMapContainer'>
 					{eventListState.map((event) => {
 						return (
-							<div key={event.id} className='nameTag card card--link' onClick={() => handleRoute(event.id)}>
+							<div key={event.id} className='nametag card card--link' onClick={() => handleRoute(event.id)}>
 								<img src={event.coverImage} alt={event.title}></img>
 								<h2>{event.title}</h2>
 								<div className='cardData'>
