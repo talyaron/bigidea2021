@@ -30,12 +30,16 @@
     margin-block: 0.8em 3px;
     margin-inline: 2px;
     margin-left: 2%;
+    text-align: center;
+    color: #043c6c;
 }
+
 #eventFilterType{
     border-radius: 5px;
-    background-color: var(--Grey);
+    background-color: #a4b0c1;
     height: 25px;
     font-weight: bolder;
+    color:  #191e22;
 }
 
 .filterEvents > * {
