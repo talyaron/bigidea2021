@@ -4,7 +4,7 @@ import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 
 import '../../styles/page/Login.css';
-import NefishLogo from '../../assets/Images/Nefish_B\'Nefish_Logo.png';
+import LogoNew from '../../assets/Images/LogoNew.svg';
 import GoogleLogo from '../../assets/Images/Google.svg';
 import LoginArt from '../../assets/Images/signin_img.svg';
 
@@ -32,7 +32,7 @@ function Login() {
 			<div className='loginPage'>
 				<div className='centerImg_Login'>
 					<div>
-						<img id='logo_LoginPage' src={NefishLogo} alt="Nefish B' Nefish" />
+						<img id='logo_LoginPage' src={LogoNew} alt="Nefish B' Nefish" />
 					</div>
 					
 				</div>
