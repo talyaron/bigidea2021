@@ -100,15 +100,21 @@
 
 	object-fit: cover;
 	height: 150px;
-    max-width: 100px;
-    object-position: right;
+    width: 100px;
+    object-position: center;
     /* margin: -32px -24px; */
 	z-index: -1;
     position: absolute;
 	top: 0;
     left: 0;
+    transition: all 0.15s;
 	/* mask-image: linear-gradient(180deg, rgb(255 255 255) 0%, rgb(19 19 19 / 24%) 75%);
     -webkit-mask-image: linear-gradient(180deg, rgb(255 255 255) 0%, rgb(19 19 19 / 24%) 75%); */
+}
+
+.card:hover > img {
+    width: 110px;
+    height: 160px;
 }
 
 .card > #Date, .card > #Views {
@@ -117,7 +123,7 @@
 }
 
 .footer {
-	height: 85px
+	height: 100px;
 }
 .MainPageBody{
     margin-top: 7%;

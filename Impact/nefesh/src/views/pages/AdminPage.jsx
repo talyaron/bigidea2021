@@ -173,7 +173,7 @@ function AdminPage() {
 							</div>
 						);
 					})}
-					<div class="footer"></div>
+					<div className="footer"></div>
 				</div>
 				</div>
 			) : null}
