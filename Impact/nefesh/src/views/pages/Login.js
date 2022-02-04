@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import '../../styles/page/Login.css';
 import NefishLogo from '../../assets/Images/Nefish_B\'Nefish_Logo.png';
-import GoogleLogo from '../../assets/Images/Google.png';
+import GoogleLogo from '../../assets/Images/Google.svg';
 import LoginArt from '../../assets/Images/signin_img.svg';
 
 function Login() {

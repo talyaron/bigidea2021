@@ -20,7 +20,7 @@
 :root{
 	--Light: #FFFFFF;  /*For background color for all pages */
 	--Light-BlueTint: #F7FBFF; /* For all buttons */
-	--Blue1: #E7F2FF; /* For background of text boxes */
+	--Blue1: #E7F2FF; /* For background of text boxes, input fields on Article Creation */
 	--Blue2: #CFE4FF; /*for tags and buttons when hovered */
 	--Blue3: #9CCAFF; /* for text in tags on main page base */
 	--Blue4: #5FAADF; /*for edit buttons, pressed buttons, and hover/pressed on Nav bar popup */
