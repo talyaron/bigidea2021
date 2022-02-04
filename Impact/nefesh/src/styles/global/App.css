@@ -18,16 +18,16 @@
 } */
 
 :root{
-	--Light: #FFFFFF;
-	--Light-BlueTint: #F7FBFF;
-	--Blue1: #E7F2FF;
-	--Blue2: #CFE4FF;
-	--Blue3: #9CCAFF;
-	--Blue4: #5FAADF;
-	--Blue5: #1D86D2;
-	--Blue6: #0077CC;
-	--Grey: #938F99;
-	--Dark: #000000;
+	--Light: #FFFFFF;  /*For background color for all pages */
+	--Light-BlueTint: #F7FBFF; /* For all buttons */
+	--Blue1: #E7F2FF; /* For background of text boxes */
+	--Blue2: #CFE4FF; /*for tags and buttons when hovered */
+	--Blue3: #9CCAFF; /* for text in tags on main page base */
+	--Blue4: #5FAADF; /*for edit buttons, pressed buttons, and hover/pressed on Nav bar popup */
+	--Blue5: #1D86D2; /* for hovered, pressed buttons text color*/
+	--Blue6: #0077CC; /* for all edit buttons icon colors*/
+	--Grey: #938F99; /* for all shadows, border on profile page user icon */
+	--Dark: #000000; /* for all unspecified text and icons  */
 }
 
 
