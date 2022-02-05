@@ -88,17 +88,17 @@ function App() {
 								<h2>{event.title}</h2>
 								<div className='cardData'>
 									<div id='Date'>
-										Date:
 										{new Intl.DateTimeFormat('en', {
 											timeStyle: 'short',
 											dateStyle: 'medium',
 										}).format(event.startTime.seconds * 1000)}
 									</div>
 									<div id='Views'>
-										Tags:
+										<div className="tagGroup">
 										{event.tags.map((e) => (
 											<tag>{e}</tag>
 										))}
+										</div>
 									</div>
 								</div>
 								<div className='cardTags'></div>

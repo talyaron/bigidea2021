@@ -8,8 +8,9 @@ import useScript from '../../scripts/useScript';
 
 function Event() {
 	const [eventData, setEventData] = useState([]);
+	const [EventFilter] = useState([{ id: 0, field: 'startTime', label: '', type: 'timestamp'}, { id: 1, field: 'endTime', label: 'End', type: 'timestamp'}, { id: 2, field: 'address', label: 'Address', type: 'location'}]);
 	const [tags, setTags] = useState([]);
-	const [addressInfo, setAddressInfo] = useState([]);
+	//const [addressInfo, setAddressInfo] = useState([]);
 	const [contactInfo, setContactInfo] = useState([]);
 	const [orgWebsite, setOrgWebsite] = useState([]);
 	const [websiteValidity, setWebValidity] = useState(false);
@@ -29,21 +30,24 @@ function Event() {
 				let { startTime, endTime, address } = eventObj;
 				if (startTime) startTime = new Date(startTime.seconds * 1000).toJSON();
 				if (endTime) endTime = new Date(endTime.seconds * 1000).toJSON();
-				if (address) address = Object.entries(address);
+				//if (address) address = Object.entries(address);
 
 				eventObj.startTime = startTime;
 				eventObj.endTime = endTime;
-				eventObj.address = address;
-				console.log(eventObj);
+				//eventObj.address = address;
+
+				let EventArray = Object.entries(eventObj);
+				EventArray = EventArray.map(e=>[e[0], (e[1] instanceof Object && !Array.isArray(e[1])) ? Object.entries(e[1]) : e[1]]);
+				//console.log(EventArray)
 				console.log(eventID);
-				setEventData(eventObj);
+				setEventData(EventArray);
 				if ('tags' in eventObj && Array.isArray(eventObj.tags)) {
 					console.log('we have tags');
 					console.log(eventObj.tags);
 					setTags(eventObj.tags);
 				}
 				setImage(eventObj.coverImage);
-				setAddressInfo(eventObj.address);
+				//setAddressInfo(eventObj.address);
 				setContactInfo(eventObj.contactInfo);
 				let validState = validURL(eventObj.contactInfo.website);
 				setWebValidity(validState);
@@ -56,15 +60,22 @@ function Event() {
 
 	function filterEntries(data) {
 		if (data[0].length === 0) return [];
-		let data2 = Object.entries(data[0]);
-		let buffer = [...data[1]];
 
-		let buffer2 = buffer.map((element) => data2.find((e) => e[0] === element));
-		let objectData = Object.fromEntries(buffer2);
-
-		return objectData;
+		let buffer = data[1];
+		//.map(e=>Object.entries(e));
+		//console.log(data[0]);
+		//console.log(buffer);
+		buffer.map((element) => element.data = data[0].find(e=>e[0] === element.field)[1]);
+		buffer = buffer.map(e => Object.entries(e));
+	
+		console.log(buffer)
+	
+		return buffer;
 	}
 
+	function getField(data, field) {
+		return Object.fromEntries(data)[field];
+	}
 	function validURL(str) {
 		var pattern = new RegExp(
 			'^(https?:\\/\\/)?' + // protocol
@@ -80,18 +91,17 @@ function Event() {
 
 	function formatField(key, value) {
 		let formatted = {};
-		if (Array.isArray(value)) {
-			if (Array.isArray(value[1])) value = Object.fromEntries(value);
+		
+		let val = Object.fromEntries(value);
+		
+		if (val.type === "location") {
+			if (Array.isArray(val.data)) val.data = Object.fromEntries(val.data);
+			if (val.data.city && val.data.houseNumber && val.data.streetName) formatted = `${val.data.houseNumber} ${val.data.streetName}, ${val.data.city}`;
 		}
 
-		if (Date.parse(value)) formatted = new Intl.DateTimeFormat('en', { timeStyle: 'short', dateStyle: 'medium' }).format(Date.parse(value));
+		if (val.type === "timestamp" && Date.parse(val.data)) formatted = new Intl.DateTimeFormat('en', { timeStyle: 'short', dateStyle: 'long' }).format(Date.parse(val.data));
 
-		if (typeof value == 'object') {
-			if (key === 'address') formatted = `${value.houseNumber} ${value.streetName}, ${value.city}`;
-		}
-
-		if (!formatted) formatted = value;
-
+		if (!formatted) formatted = val.data;
 		return formatted;
 	}
 
@@ -99,16 +109,18 @@ function Event() {
 		<div className='mainContainer_Event'>
 			{useScript('https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js')}
 			<img className='coverImage' src={image} alt='Event'></img>
-			<div className='eventData_Event'>
-				<div className='title'> {eventData.title} </div>
-				<h3 className='username_Event'> {eventData.hostName} </h3>
-				<div class='dataBox'>
-					{Object.entries(filterEntries([eventData, ['startTime', 'endTime', 'address']])).map((e) => (
-						<div className='dataEntry' id={e[0] + 'Entry'}>
-							<div className='dataLabel' id={e[0] + 'Label'}>
-								{e[0]}
-							</div>
-							<div className='dataField' id={e[0] + 'Field'}>
+			<div className='eventData_Event'> 
+			<div key="0">
+				<div key="1" className='title'> { getField(eventData, "title") } </div>
+				<h3 key="2" className='username_Event'> { getField(eventData, "hostName") } </h3>
+				</div>
+				<div className='dataBox'>
+					{Object.entries(filterEntries([eventData, EventFilter])).map((e) => (
+						<div className='dataEntry' id={e[1][1][1] + 'Entry'}>
+							{e[1][2][1] ? <div className='dataLabel' id={e[1][1][1] + 'Label'}>
+								{e[1][2][1]}
+							</div> : null}
+							<div className='dataField' id={e[1][1][1] + 'Field'}>
 								{formatField(...e)}
 							</div>
 						</div>
@@ -118,18 +130,18 @@ function Event() {
 					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 				</div>
 
-				<h4 className='eventDetails_Event'> Description: {eventData.article}</h4>
+				<h4 className='eventDetails_Event'> Description: { getField(eventData, "article") } </h4>
 			</div>
 
 			<div className='userPromptContainer_Event'>
-				<h3 className='maxCap'> Max Capacity: {eventData.maxCapacity} </h3>
+				<h3 className='maxCap'> Max Capacity: { getField(eventData, "maxCapacity") } </h3>
 				<div title='Add to Calendar' className='addeventatc'>
 					Add to Calendar
-					<span className='start'>{`${eventData.startTime}`}</span>
-					<span className='end'>{`${eventData.endTime}`}</span>
+					<span className='start'>{`${ getField(eventData, "startTime") }`}</span>
+					<span className='end'>{`${ getField(eventData, "endTime") }`}</span>
 					<span className='timezone'>Asia/Jerusalem</span>
-					<span className='title'>{eventData.title}</span>
-					<span className='description'>{eventData.article}</span>
+					<span className='title'>{ getField(eventData, "title") }</span>
+					<span className='description'>{ getField(eventData, "article") }</span>
 				</div>
 				<button className='shareButton button_Event'> Share </button>
 			</div>
@@ -137,7 +149,7 @@ function Event() {
 			<div className='contactUsContainer_Event'>
 				<div className='contactUsContent_Event'>
 					<p>Our Phone Number: {contactInfo.phone}</p>
-					<a href={`mailto: ${contactInfo.email} ?subject=Event!&body=Hi! I wanted to contact you to tell you that (type here)`} target='_blank'>
+					<a rel="noreferrer" href={`mailto: ${contactInfo.email} ?subject=Event!&body=Hi! I wanted to contact you to tell you that (type here)`} target='_blank'>
 						Email Us!
 					</a>
 				</div>
