@@ -31,25 +31,27 @@
 }
 .back-1{
     margin-top: 20px;
-    background-color: #c8e6ff ;
+    background-color:#F7FBFF ;
     align-items: center;
     text-align: center;
+    width: 100%
 }
 .back-2{
-    border-top: 1px black solid;
-    background-color: #c8e6ff;
+    background-color: #F7FBFF;
     text-align: center;
     margin-bottom: 0%;
     padding: 10px;
 }
 .back-3{
-    background-color: #c8e6ff;
+    background: #E7F2FF;
+    border-radius: 100px;
     text-align: center;
+    left: center;
     margin-top: 0%;
     padding: 10px;
     border-top: 1px black solid;
 }
-.EditProfBtn{
+.EditProfBtn1{
     margin-top: 10px;
     margin-left: 10px;
     background-color: #9CCAFF;
@@ -59,6 +61,29 @@
     height: 29pt;
     width: 67pt;
     float: left;
+    position: relative;
+    float: center;
+    left: 51vw;
+    top: 20vh;
+    
+
+}
+.EditProfBtn2{
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: #9CCAFF;
+    color: black;
+    border: none;
+    border-radius: 15px 15px 15px 15px;
+    height: 29pt;
+    width: 67pt;
+    float: left;
+    position: relative;
+    float: center;
+    left: 60vw;
+    top: 20vh;
+    
+
 }
 .foot{
     height: 13vh;
@@ -66,15 +91,26 @@
 .center{
     margin-right: 80pt;
     display: block;
+    background: #E7F2FF;
+    border-radius: inherit;
+    width: 80%;
 
 }
 .center2{
     text-align: center;
-
+    
 }
 .center3{
    margin-right: auto;
    margin-left: auto;
    display: block;
-   margin-top:10px
+   margin-top:10px;
+   border-radius: 100px;
+   border: black;
+}
+
+.finalBio{
+    background: #E7F2FF;
+    border-radius: 1000px;;
+    text-align: center;
 }
