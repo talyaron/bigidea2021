@@ -47,6 +47,8 @@ function ProfilePage(props) {
 	function editProfile() {
 		setIsOpen(!isOpen);
 		setEditing(true);
+		setIsBioOpen(!isBioOpen);
+		setEditing(true);
 	};
 
 	function changeProfile(ev) {
@@ -82,6 +84,20 @@ function ProfilePage(props) {
 		setEditing(false);
 
 		setIsOpen(!isOpen);
+		
+		const bio = ev.target.elements.newBio.value;
+
+		if(ev.target.elements.newBio.value.length !== 0) {
+			setUserBio(bio);
+			
+			updateDoc(doc(db, "users", props.uid), {
+				bio: bio,
+			})
+		}
+
+		setEditing(false);
+
+		setIsBioOpen(!isBioOpen);
 	}
 
 
@@ -131,7 +147,7 @@ function ProfilePage(props) {
 				<img className ="EditProfBtn1" src={EditPic} type="button" onClick={editProfile} name="editbtn"/>
 				<div id='profilePic' style={{ backgroundImage: 'url(' + profilePicImg + ')' }} />
 				<div className= "displayName"> {displayName} </div> 
-				<img src= {Envelope} className= "emailMe"/> {userEmail} 
+				<img src= {Envelope} className= "emailMe"/> 
 			</div>
 			{/* <div className='back-2'>
 				<button className ="EditProfBtn" type="button" name="PrefButton"> Edit Prefrences </button>
@@ -140,7 +156,6 @@ function ProfilePage(props) {
 				 
 			</div> */}
 			<div className='back-3'>
-				<img className ="EditProfBtn2" type="button" src={EditPic} onClick = {editBio} name="BioButton"/>
 				<div className='center'> Bio </div> 
 				<div className= "finalBio">{userBio}</div>
 				
@@ -158,6 +173,7 @@ function ProfilePage(props) {
 					Enter New Name: <input type="text" name="newName" /><br />
 					Enter New Image : <ImportImgs userData={userData} pageName={page} parentCallBack={callBackFunction} />
 					Enter New Email: <input type="text" name="newEmail" /><br />
+					Enter New Bio: <input type="text" name="newBio"/>
 					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
 
 				</form>
@@ -170,7 +186,6 @@ function ProfilePage(props) {
 	{isBioOpen && <EditBioPopUp
       content={<>
         {editing ? <div className='profileEditorBio'	>
-				<h4 className='center2'> Edit Bio Here </h4>
 				<form onSubmit={changeBio}>
 					Enter New Bio: <input type="text" name="newBio"/>
 					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
