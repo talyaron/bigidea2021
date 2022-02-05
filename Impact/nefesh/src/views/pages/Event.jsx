@@ -8,7 +8,7 @@ import useScript from '../../scripts/useScript';
 
 function Event() {
 	const [eventData, setEventData] = useState([]);
-	const [EventFilter] = useState([{ id: 0, field: 'startTime', label: 'Start', type: 'timestamp'}, { id: 1, field: 'endTime', label: 'End', type: 'timestamp'}, { id: 2, field: 'address', label: 'Address', type: 'location'}]);
+	const [EventFilter] = useState([{ id: 0, field: 'startTime', label: '', type: 'timestamp'}, { id: 1, field: 'endTime', label: 'End', type: 'timestamp'}, { id: 2, field: 'address', label: 'Address', type: 'location'}]);
 	const [tags, setTags] = useState([]);
 	//const [addressInfo, setAddressInfo] = useState([]);
 	const [contactInfo, setContactInfo] = useState([]);
@@ -99,7 +99,7 @@ function Event() {
 			if (val.data.city && val.data.houseNumber && val.data.streetName) formatted = `${val.data.houseNumber} ${val.data.streetName}, ${val.data.city}`;
 		}
 
-		if (val.type === "timestamp" && Date.parse(val.data)) formatted = new Intl.DateTimeFormat('en', { timeStyle: 'short', dateStyle: 'medium' }).format(Date.parse(val.data));
+		if (val.type === "timestamp" && Date.parse(val.data)) formatted = new Intl.DateTimeFormat('en', { timeStyle: 'short', dateStyle: 'long' }).format(Date.parse(val.data));
 
 		if (!formatted) formatted = val.data;
 		return formatted;
@@ -117,9 +117,9 @@ function Event() {
 				<div className='dataBox'>
 					{Object.entries(filterEntries([eventData, EventFilter])).map((e) => (
 						<div className='dataEntry' id={e[1][1][1] + 'Entry'}>
-							<div className='dataLabel' id={e[1][1][1] + 'Label'}>
+							{e[1][2][1] ? <div className='dataLabel' id={e[1][1][1] + 'Label'}>
 								{e[1][2][1]}
-							</div>
+							</div> : null}
 							<div className='dataField' id={e[1][1][1] + 'Field'}>
 								{formatField(...e)}
 							</div>

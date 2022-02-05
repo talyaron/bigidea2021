@@ -59,7 +59,14 @@
 .nametag > :not(img, .adminButton) {
     margin-left: 110px;
     color: #040404;
-    margin-block: inherit;
+}
+
+.nametag > h2 {
+    margin-top: auto;
+    height: 50px;
+    padding-top: 14px;
+    margin-bottom: inherit;
+    font-size: clamp( 20px, 10px, 3vh);
 }
 
 @media screen and (min-width: 770px) {
@@ -127,6 +134,13 @@
 .card > #Date, .card > #Views {
 	font-weight: bold;
 	white-space: nowrap;
+}
+
+.tagGroup {
+    overflow-x: scroll;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
 }
 
 .footer {
