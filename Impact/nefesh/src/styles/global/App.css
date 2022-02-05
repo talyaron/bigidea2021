@@ -17,30 +17,27 @@
 	--Light-blue: #54a4d4;
 } */
 
-:root{
-	--Light: #FFFFFF;  /*For background color for all pages */
-	--Light-BlueTint: #F7FBFF; /* For all buttons */
-	--Blue1: #E7F2FF; /* For background of text boxes, input fields on Article Creation */
-	--Blue2: #CFE4FF; /*for tags and buttons when hovered */
-	--Blue3: #9CCAFF; /* for text in tags on main page base */
-	--Blue4: #5FAADF; /*for edit buttons, pressed buttons, and hover/pressed on Nav bar popup */
-	--Blue5: #1D86D2; /* for hovered, pressed buttons text color*/
-	--Blue6: #0077CC; /* for all edit buttons icon colors*/
-	--Grey: #938F99; /* for all shadows, border on profile page user icon */
+:root {
+	--Light: #ffffff; /*For buttons and nav bar all pages */ 
+	--Light-Page: #F7FBFF; /* for all pages backdrop */
+	--Blue1: #e7f2ff; /* For background of text boxes, input fields on Article Creation */
+	--Blue2: #cfe4ff; /*for tags and buttons when hovered */
+	--Blue3: #9ccaff; /* for text in tags on main page base */
+	--Blue4: #5faadf; /*for edit buttons, pressed buttons, and hover/pressed on Nav bar popup */
+	--Blue5: #1d86d2; /* for hovered, pressed buttons text color*/
+	--Blue6: #0077cc; /* for all edit buttons icon colors*/
+	--Grey: #938f99; /* for all shadows, border on profile page user icon */
 	--Dark: #000000; /* for all unspecified text and icons  */
 }
 
-
-
 body {
-	font-family: 'Poppins', sans-serif;
+	font-family: Roboto, sans-serif;
 	margin: 0px;
-	background-color: var(--Background-light);
+	background-color: var(--Blue2);
 	max-height: calc(100vh - 50px);
 }
 
-
-.container_AppMain{
+.container_AppMain {
 	position: relative;
 	align-items: center;
 	justify-content: center;
@@ -68,17 +65,7 @@ body {
 	scrollbar-width: none; 
 }*/
 
-button{
-	/* width: 190px;
-    height: 40px;
-    margin: 1px; */
-    border-radius: 15px;
-    border: none;
-	background-color: var(--Navy-blue);
-	color: var(--Grey);	
-}
-
-tag {
+/* tag {
 	margin-block: auto;
     border: inset 3px;
     background: #4c97ec;
@@ -96,6 +83,21 @@ tag {
     font-size: 100% !important;
     display: inline-block;
     white-space: nowrap;
+} */
+
+tag {
+	background: var(--Blue2);
+	border: 1px solid var(--Grey);
+	box-sizing: border-box;
+	border-radius: 10px;
+	color: var(--Blue4);
+	padding: 3px;
+	text-align: center;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 28px;
+	margin: 3px;
 }
 
 html {
