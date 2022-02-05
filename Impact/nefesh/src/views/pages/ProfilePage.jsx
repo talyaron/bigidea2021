@@ -5,6 +5,7 @@ import { doc, getDoc, updateDoc} from 'firebase/firestore';
 import EditProfilePopUp from '../template/EditProfilePopUp';
 import ImportImgs from '../template/ImportImgs'
 import EditBioPopUp from '../template/EditBioPopUp';
+import editPic from '../../../src/assets/Images/NewIcons/edit.svg';
 let page = 'ProfilePage';
 
 
@@ -126,7 +127,7 @@ function ProfilePage(props) {
 	return (
 		<div>
 			<div className='back-1'>
-				<button className ="EditProfBtn1" type="button" onClick={editProfile} name="editbtn"> Edit Profile</button>
+				<button className ="EditProfBtn1" type="button" onClick={editProfile} name="editbtn"> <editPic/></button>
 				<div id='profilePic' style={{ backgroundImage: 'url(' + profilePicImg + ')' }} />
 				<h2> {displayName} </h2> 
 				<p> {userEmail} </p>
@@ -138,7 +139,7 @@ function ProfilePage(props) {
 				 
 			</div> */}
 			<div className='back-3'>
-				<button className ="EditProfBtn2" type="button" onClick = {editBio} name="BioButton"> Edit Bio </button>
+				<button className ="EditProfBtn2" type="button" onClick = {editBio} name="BioButton"> <editPic/> </button>
 				<h2 className='center'> Bio </h2> 
 				<p className= "finalBio">{userBio}</p>
 				
