@@ -14,7 +14,7 @@
     z-index: 1;
     background-color: var(--Light);
     border-bottom: 1px solid Var(--Navy-blue);
-    
+    box-shadow: 0px 2px 3px 0px rgb(145 145 145 / 32%);
 
 }
 
