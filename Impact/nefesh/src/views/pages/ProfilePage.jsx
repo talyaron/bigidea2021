@@ -162,6 +162,8 @@ function ProfilePage(props) {
 				<div className="finalBio">{userBio}</div>
 
 			</div>
+			<button>Saved Articles</button>
+			<button>Published Articles</button>
 			<footer className='back-2 foot'>
 
 			</footer>

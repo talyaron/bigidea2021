@@ -2,12 +2,6 @@ import '../../styles/page/ProfilePage.css';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../scripts/firebase/config';
 import { doc, getDoc, updateDoc, collection, getDocs, query } from 'firebase/firestore';
-import EditProfilePopUp from '../template/EditProfilePopUp';
-import ImportImgs from '../template/ImportImgs'
-import EditBioPopUp from '../template/EditBioPopUp';
-import EditPic from '../../assets/Images/NewIcons/edit.svg';
-import Envelope from '../../assets/Images/NewIcons/email.svg';
-import Upload from '../../assets/Images/NewIcons/upload.svg'
 import { useNavigate } from "react-router-dom"
 let page = 'ProfilePage';
 
