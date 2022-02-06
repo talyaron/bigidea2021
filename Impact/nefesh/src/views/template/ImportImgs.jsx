@@ -1,6 +1,7 @@
 //import { onSnapshot } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useEffect, useState } from 'react';
+import Icon from '../../assets/Images/NewIcons/upload.svg'
 
 function HandleImportImg(props) {
 	const allInputs = { imgUrl: '' };
@@ -43,11 +44,17 @@ function HandleImportImg(props) {
 	}
 
 	return(
-		<input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif' onChange={onTrigger} className='border-ArticleCreation' />
+		<label htmlFor="articleImg" onChange={onTrigger} className='border-ArticleCreation'>
+			<input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif' hidden/>
+			Upload an Image<img src={Icon} alt='upload'/>
+		</label>
 	)
 
 }
 
 export default HandleImportImg;
 
-// 
+{/* <label onChange={onTrigger} className='border-ArticleCreation' htmlFor="articleImg">
+<input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif'  hidden />
+<img src={Icon} alt='upload'/>
+</label> */}
