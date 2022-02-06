@@ -84,7 +84,7 @@ function App() {
 									<div id='Views'>
 										<div className="tagGroup">
 										{event.tags.map((e) => (
-											<tag>{e}</tag>
+											<div className="tag">{e}</div>
 										))}
 										</div>
 									</div>

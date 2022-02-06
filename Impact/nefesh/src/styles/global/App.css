@@ -86,7 +86,7 @@ body {
     white-space: nowrap;
 } */
 
-tag {
+.tag {
 	background: var(--Blue2);
 	border: 1px solid var(--Grey);
 	box-sizing: border-box;
