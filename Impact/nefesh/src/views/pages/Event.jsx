@@ -4,6 +4,7 @@ import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import { useParams } from 'react-router-dom';
 import useScript from '../../scripts/useScript';
+
 // import 'moment-timezone';
 
 function Event() {
@@ -111,9 +112,12 @@ function Event() {
 			<img className='coverImage' src={image} alt='Event'></img>
 			<div className='eventData_Event'> 
 			<div key="0">
+				<div className='Titlecard'>
 				<div key="1" className='title'> { getField(eventData, "title") } </div>
 				<h3 key="2" className='username_Event'> { getField(eventData, "hostName") } </h3>
 				</div>
+				</div>
+				
 				<div className='dataBox'>
 					{Object.entries(filterEntries([eventData, EventFilter])).map((e) => (
 						<div className='dataEntry' id={e[1][1][1] + 'Entry'}>
@@ -127,14 +131,15 @@ function Event() {
 					))}
 				</div>
 				<div className='eventDetails_Event'>
-					<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
+					<button className='orgsite' href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</button>
 				</div>
 
 				<h4 className='eventDetails_Event'> Description: { getField(eventData, "article") } </h4>
 			</div>
 
 			<div className='userPromptContainer_Event'>
-				<h3 className='maxCap'> Max Capacity: { getField(eventData, "maxCapacity") } </h3>
+				{/* <h3 className='maxCap'> Max Capacity: { getField(eventData, "maxCapacity") } </h3> */}
+				<button className='register button_Event'>Register</button>
 				<div title='Add to Calendar' className='addeventatc'>
 					Add to Calendar
 					<span className='start'>{`${ getField(eventData, "startTime") }`}</span>
@@ -148,18 +153,19 @@ function Event() {
 
 			<div className='contactUsContainer_Event'>
 				<div className='contactUsContent_Event'>
-					<p>Our Phone Number: {contactInfo.phone}</p>
-					<a rel="noreferrer" href={`mailto: ${contactInfo.email} ?subject=Event!&body=Hi! I wanted to contact you to tell you that (type here)`} target='_blank'>
-						Email Us!
-					</a>
+					<button className='phoneNumero'>{contactInfo.phone}</button>
+					<button rel="noreferrer" className='email2' href={`mailto: ${contactInfo.email} ?subject=Event!&body=Hi! I wanted to contact you to tell you that (type here)`} target='_blank'>
+						
+					</button>
 				</div>
 			</div>
 			<div className='eventTags_Event'>
-				<h3 className='tagTitle_Event'>Event Tags:</h3>
+				<h3 className='tagTitle_Event'></h3>
 				{tags.map((tag, index) => {
 					return <tag key={`tag-${index}`}>{tag}</tag>;
 				})}
 			</div>
+			
 		</div>
 	);
 }

@@ -56,6 +56,8 @@
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
+    background-color: var(--Light-Page);
+    font-family: Roboto;
 }
 
 /*Article Image Section starts here*/
@@ -127,7 +129,7 @@
 
 /*Article Event Data starts here*/
 .eventData_Event{
-    background-color: var(--Light-D2);
+    background-color: var(--Light-Page);
     width: 96%;
     display: inline-block;
     /* text-align: center; */
@@ -138,7 +140,7 @@
 }
 
 .dataBox {
-    background: aliceblue;
+    background: var(--Light-Page);
     border-radius: 9px;
     padding: 10px;
     width: fit-content;
@@ -151,7 +153,7 @@
     margin-inline: 3px;
     border-radius: 12px;
     padding: inherit;
-    display: inline-flex;
+    display: flex;
     align-items: flex-start;
     flex-direction: column;
 }
@@ -228,7 +230,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    background-color: var(--Background-light);
+    background-color: var(--Light-Page);
 }
 
 /*Article User Prompt ends here*/
@@ -238,13 +240,17 @@
 .eventTags_Event{
     padding-top: 20px;
     padding-bottom: 40px;
-    width: 100%;
+    position: relative;
+    left: 40px;
+    width: 90%;
     row-gap: 10px;
     display: flex;
     flex-flow: row wrap;
-    align-items: flex-start;
-    align-content: flex-start;
-    background-color: var(--Light-D2);
+    align-items: center;
+    align-content: center;
+    background-color: var(--Light-Page);
+    text-align: center;
+    font: Roboto;
 }
 
 .tagTitle_Event{
@@ -266,11 +272,12 @@
     height: 180px;
     /* margin-top: -240px;
     margin-bottom: 70px; */
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
+    background-color: var(--Light-Page);
     
 }
 .contactUsContent_Event{
-    background-color: var(--Light-D2);
+    background-color: var(--Light-Page);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -280,4 +287,44 @@
 .addeventatc{
     position: relative;
     z-index: 0 !important;
+}
+.Titlecard{
+    background-color: var(--Blue2);
+}
+.button_Event{
+    background-color: var(--Blue6);
+    color: white;
+    text-align: center;
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    border: none;
+    /* font-size: 13.3px; */
+    /* font-size: 3.5vw; */
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+}
+.email2{
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    left: 370px;
+    top: 250px;
+    
+    
+}
+.phoneNumero{
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    left: 270px;
+    top: 250px;
+    color: white;
+}
+.orgsite{
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    left: 220px;
+    top: 250px;
 }
