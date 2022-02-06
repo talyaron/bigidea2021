@@ -162,11 +162,14 @@ function ProfilePage(props) {
 				<div className="finalBio">{userBio}</div>
 
 			</div>
-			<button>Saved Articles</button>
-			<button>Published Articles</button>
+			<div className= "buttonHolder">
+			<button className= "savedArticles">Saved Articles</button>
+			<button className= "publishedArticles" >Published Articles</button>
 			<footer className='back-2 foot'>
+		
 
 			</footer>
+			</div>
 
 
 			{isOpen && <EditProfilePopUp
