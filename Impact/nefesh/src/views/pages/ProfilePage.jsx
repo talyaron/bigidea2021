@@ -5,6 +5,8 @@ import { doc, getDoc, updateDoc} from 'firebase/firestore';
 import EditProfilePopUp from '../template/EditProfilePopUp';
 import ImportImgs from '../template/ImportImgs'
 import EditBioPopUp from '../template/EditBioPopUp';
+import EditPic from '../../assets/Images/NewIcons/edit.svg';
+import Envelope from '../../assets/Images/NewIcons/email.svg'
 let page = 'ProfilePage';
 
 
@@ -12,13 +14,13 @@ function ProfilePage(props) {
 	const [userData, setUserData] = useState()
 	const [displayName, setDisplayName] = useState('loading');
 	const [profilePicImg, setProfilePicImg] = useState('loading');
-	const [userEmail, setUserEmail] = useState('loading');
-	const [userAddress, setUserAddress] = useState('loading');
-	const [userGender, setUserGender] = useState('loading');
+	const [/*userEmail*/, setUserEmail] = useState('loading');
+	const [/*userAddress*/, setUserAddress] = useState('loading');
+	const [/*userGender*/, setUserGender] = useState('loading');
 	//const [userArticles, setUserArticles] = useState('loading');
-	const [textSize, setTextSize] = useState('');
+	//const [textSize, setTextSize] = useState('');
 	const [editing, setEditing] = useState(false);
-	const [choosingPrefs, setChoosingPrefs] = useState(false);
+	//const [choosingPrefs, setChoosingPrefs] = useState(false);
 	const {uid} = props;
 	const [isOpen, setIsOpen] = useState(false);
 	const [httpUrl, setHttpUrl] = useState('');
@@ -45,13 +47,15 @@ function ProfilePage(props) {
 	function editProfile() {
 		setIsOpen(!isOpen);
 		setEditing(true);
+		setIsBioOpen(!isBioOpen);
+		setEditing(true);
 	};
 
 	function changeProfile(ev) {
 		ev.preventDefault();
 
 		const name = ev.target.elements.newName.value;
-		const profilePic = httpUrl
+		const profilePic = httpUrl;
 		const email = ev.target.elements.newEmail.value;
 
 		if(ev.target.elements.newName.value.length !== 0) {
@@ -78,6 +82,19 @@ function ProfilePage(props) {
 		
 		setEditing(false);
 		setIsOpen(!isOpen);
+		
+		const bio = ev.target.elements.newBio.value;
+
+		if(ev.target.elements.newBio.value.length !== 0) {
+			setUserBio(bio);
+			
+			updateDoc(doc(db, "users", props.uid), {
+				bio: bio,
+			})
+		}
+
+		setEditing(false);
+		setIsBioOpen(!isBioOpen);
 	}
 
 	function changeBio(ev) {
@@ -97,16 +114,6 @@ function ProfilePage(props) {
 		setIsBioOpen(!isBioOpen);
 	}
 
-	function changePreferences() {
-		setChoosingPrefs(true)
-	}
-
-	function submitChangePreferences(ev) {
-		ev.preventDefault();
-		const fontSize = ev.target[0].value;
-		setTextSize(fontSize);
-	}
-
 	const callBackFunction = (httpRef) => {
 		setHttpUrl(httpRef);
 	};
@@ -117,12 +124,12 @@ function ProfilePage(props) {
 	}
 
 	return (
-		<div>
+		<div className= "wholePage">
 			<div className='back-1'>
-				<button className ="EditProfBtn" type="button" onClick={editProfile} name="editbtn"> Edit Profile</button>
+				<img className ="EditProfBtn1" src={EditPic} type="button" onClick={editProfile} name="editbtn" alt="edit profile button"/>
 				<div id='profilePic' style={{ backgroundImage: 'url(' + profilePicImg + ')' }} />
-				<h2> {displayName} </h2> 
-				<p> {userEmail} </p>
+				<div className= "displayName"> {displayName} </div> 
+				<img src= {Envelope} className= "emailMe" alt="emailMe"/> 
 			</div>
 			{/* <div className='back-2'>
 				<button className ="EditProfBtn" type="button" name="PrefButton"> Edit Prefrences </button>
@@ -131,9 +138,8 @@ function ProfilePage(props) {
 				 
 			</div> */}
 			<div className='back-3'>
-				<button className ="EditProfBtn" type="button" onClick = {editBio} name="BioButton"> Edit Bio </button>
-				<h2 className='center'> Bio </h2> 
-				<p>{userBio}</p>
+				<div className='center'> Bio </div> 
+				<div className= "finalBio">{userBio}</div>
 				
 			</div>
 			<footer  className='back-2 foot'>
@@ -147,6 +153,7 @@ function ProfilePage(props) {
 					Enter New Name: <input type="text" name="newName" /><br />
 					Enter New Image : <ImportImgs userData={userData} pageName={page} parentCallBack={callBackFunction} />
 					Enter New Email: <input type="text" name="newEmail" /><br />
+					Enter New Bio: <input type="text" name="newBio"/>
 					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
 				</form>
 
@@ -157,7 +164,6 @@ function ProfilePage(props) {
 	{isBioOpen && <EditBioPopUp
       content={<>
         {editing ? <div className='profileEditorBio'	>
-				<h4 className='center2'> Edit Bio Here </h4>
 				<form onSubmit={changeBio}>
 					Enter New Bio: <input type="text" name="newBio"/>
 					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>

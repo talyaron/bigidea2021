@@ -56,6 +56,15 @@
     object-fit: cover;
 }
 
+.cardInfoGroup_AP {
+    display: inline-flex;
+    padding: 1%;
+}
+
+.cardUserInfo_AP {
+    margin-block: auto;
+}
+
 #searchDropdown_AP{
     background-color: Var(--Light);
     margin-left: 5px;
@@ -78,7 +87,6 @@
     margin-right: 0.3vw;
     margin-top: 5px;
     margin-bottom: 10px;
-    
 }
 
 #search_button_AdminPage:hover, #clearFilter_AP:hover, #searchDropdown_AP:hover {
@@ -91,7 +99,7 @@
 
 .search_Container_AP{
     position: fixed;
-    top: 24px;
+    top: 40px;
     left: 0;
     background-color: var(--Light);
     width: 100%;
@@ -101,6 +109,7 @@
     flex: none;
     display: inline;
     max-height: 25%;
+    box-shadow: 0px 2px 3px 0px rgb(145 145 145 / 32%);
 
 }
 #search_Box_AdminPage {

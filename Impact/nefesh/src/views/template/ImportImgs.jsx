@@ -6,21 +6,26 @@ function HandleImportImg(props) {
 	const allInputs = { imgUrl: '' };
 	const storage = getStorage();
 	const [imageAsFile, setImageAsFile] = useState('');
-	const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+	const [/*imageAsUrl*/, setImageAsUrl] = useState(allInputs);
 	const [userID, setUserID] = useState('TempUserID');
 	const [currentUsePage, setCurrentUsePage] = useState('TempPageUse');
-	let storageRef = ref(storage, `Images/${userID}/${currentUsePage}/${imageAsFile.name}`);
+	const uid = function () {
+		return Date.now().toString(36) + Math.random().toString(36).substr(2);
+	};
+
+	let UniqueId;
 
 	useEffect(() => {
+		UniqueId = uid();
 		let tempUID = props.userData.userID;
 		setUserID(tempUID);
 		let tempPN = props.pageName;
 		setCurrentUsePage(tempPN);
 	}, []);
-	
 
+	let storageRef = ref(storage, `Images/${userID}/${currentUsePage}/${UniqueId}+${imageAsFile.name}`);
 
-	async function onTrigger(ev){
+	async function onTrigger(ev) {
 		ev.preventDefault();
 		const image = ev.target.files[0];
 		setImageAsFile((imageFile) => image);
@@ -28,19 +33,17 @@ function HandleImportImg(props) {
 			console.error(`not an image, the image file is a ${typeof imageAsFile}`);
 		}
 		uploadBytes(storageRef, image).then((snapshot) => {
-			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${imageAsFile.name}`)).then((httpRef) => {
-				setImageAsUrl(httpRef)
-					props.parentCallBack(httpRef);
-					console.log(httpRef)
-			})
+			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${UniqueId}+${imageAsFile.name}`)).then((httpRef) => {
+				setImageAsUrl(httpRef);
+				props.parentCallBack(httpRef);
+				console.log(httpRef);
+			});
 		});
-		console.log('Upload Successful!')
+		console.log('Upload Successful!');
 	}
 
-	return (
-			<input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif' onChange={onTrigger} className='border-ArticleCreation' />
-	)}
-
+	return <input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif' onChange={onTrigger} className='border-ArticleCreation' />;
+}
 
 export default HandleImportImg;
 

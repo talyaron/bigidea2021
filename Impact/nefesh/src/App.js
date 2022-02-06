@@ -21,19 +21,17 @@ import StickyBanner from './views/components/StickyBanner'
 import NavTopBar from "./views/components/NavTopBar";
 import Event from './views/pages/Event';
 
-//hi
-let role; //if changed to superAdmin it updates correctly but shows red warnings, also needs to be changed manually
 
+let role;
 const auth = getAuth();
 let userID = "";
 let loggedIn;
 
 function App() {
   const [userState, setUserState] = useState({});
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [/*isAdmin*/, setIsAdmin] = useState(false);
   const [isOle, setIsOle] = useState(false);
   const [isUserID, setIsUserID] = useState(null);
-  console.log(isAdmin)
   
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -44,14 +42,14 @@ function App() {
         //get user from db
         getDoc(doc(db, "users", uid)).then((userDB) => {
           if (userDB.exists()) {
-			role = userDB.data().role;
+			      role = userDB.data().role;
             setUserState({
               userOrg: userDB.data().organization,
               displayName: userDB.data().displayName
             });
             
             if (userDB.data().disabled){
-              console.log("user is banned");
+              alert("user is banned");
               return;
             }
 

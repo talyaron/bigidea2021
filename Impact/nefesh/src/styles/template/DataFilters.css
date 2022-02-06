@@ -5,37 +5,37 @@
 }
 #tagsContainer{
     display: flex;
-    justify-content: space-evenly;
     flex-direction: row;
     background-color: var(--Light);
-    padding: 5px;
+    padding:7px;
+    overflow-x: scroll;
+    max-width: 100%;
+    
 }
 .inline-block{
     display: inline-block;
-    height: 20px;
-    
-}
-.revealFiltersButton_cont{
-    display: flex;
-    justify-content: center;
-    margin: 5px;
 }
 
 .filterBtn{
-    height: 20px;
-    width: fit-content;
+    max-height: 20px;
     background-color: rgb(0, 149, 255);
     color: white;
-
+    border-radius: 5px;
+    padding: 3px;
+    margin-left: 3px;
 }
 
 .filterBanner{
     text-align: center;
     background-color: rgb(0, 149, 255);
-    
 }
 
 .filterBtn:focus{
     background-color: blue;
     color: white;
+}
+.filterBtn_cont{
+    max-height: 25px;
+    margin-left: 5px;
+    cursor: pointer;
 }

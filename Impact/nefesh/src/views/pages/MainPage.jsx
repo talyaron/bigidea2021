@@ -11,30 +11,12 @@ let eventFilter = '';
 function App() {
 	const navigate = useNavigate();
 
-  //var searchOption, filterOption;
-  const db = getFirestore();
-  const [searchField, setSearchField] = useState("");
-  const [eventListState, setEventListState] = useState([]);
+	const db = getFirestore();
+	const [eventListState, setEventListState] = useState([]);
 
-  // function handleSearchByChange(ev) {
-  //   let temp = ev.target.value;
-  //   setSearchField(temp);
-  // }
-  
-  useEffect(() => {
-    const q = query(collection(db, "events"));
-    const eventListTemp = [];
-    
-    
-    //listen to events
-    const unsubuscribe = onSnapshot(q, (querySnapshot) => { //check line since unsubscribe is spelled incorrectly
-      querySnapshot.forEach((doc) => {
-        const eventTemp = doc.data();
-        eventTemp.id = doc.id;
-        eventListTemp.push(eventTemp);
-      });
-      setEventListState(eventListTemp);
-    });
+	useEffect(() => {
+		const q = query(collection(db, 'events'));
+		const eventListTemp = [];
 
 		//listen to events
 		const eventsSnapshot = onSnapshot(q, (querySnapshot) => {
@@ -43,7 +25,6 @@ function App() {
 				eventTemp.id = doc.id;
 				eventListTemp.push(eventTemp);
 			});
-			console.log('ping!');
 			setEventListState(eventListTemp);
 		});
 
@@ -75,46 +56,50 @@ function App() {
 		}
 	}
 
-  return (
-    <div className= "MainPageBody">
-      <DataFilters setEventListState={setEventListState} />
-      <div className="userInterfaceContainer">
-        <form className="filterEvents">
-          <label htmlFor="eventFilterType">
-            Sort out the events displayed:
-          </label>
-          <select
-            name="eventFilterType"
-            id="eventFilterType"
-            onChange={changeEventFilter}>
-            <option value="newest">Upcoming</option>
-            <option value="recent">Freshly Added</option>
-          </select>
-        </form>
-        <div className="eventMapContainer">
-          {eventListState.map((event, i) => {
-            return (
-              <div
-                key={i}
-                className="nametag card card--link"
-                onClick={()=>handleRoute(event.id)}>
-                <img src={event.coverImage} alt={event.title}></img>
-                <h2>{event.title}</h2>
-                <div className="cardData">
-                <div id="Date">Date: {new Intl.DateTimeFormat("en" , {
-  timeStyle: "short",
-  dateStyle: "medium"
-}).format(event.startTime.seconds * 1000) }</div>
-                <div id="Views">Tags: {event.tags.map(e => (<div className="tag">{e}</div>))}</div>
-                </div>
-                <div className="cardTags">
-                  </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  )}
+	function handleRoute(eventId) {
+		navigate('/event/' + eventId);
+	}
+
+	return (
+		<div>
+			<DataFilters setEventListState={setEventListState} />
+			<div className='userInterfaceContainer'>
+				<form className='filterEvents'>
+					<label htmlFor='eventFilterType'>Sort Events:</label>
+					<select name='eventFilterType' id='eventFilterType' onChange={changeEventFilter}>
+						<option value='newest'>Upcoming</option>
+						<option value='recent'>Freshly Added</option>
+					</select>
+				</form>
+				<div className='eventMapContainer'>
+					{eventListState.map((event) => {
+						return (
+							<div key={event.id} className='nametag card card--link' onClick={() => handleRoute(event.id)}>
+								<img src={event.coverImage} alt={event.title}></img>
+								<h2>{event.title}</h2>
+								<div className='cardData'>
+									<div id='Date'>
+										{new Intl.DateTimeFormat('en', {
+											timeStyle: 'short',
+											dateStyle: 'medium',
+										}).format(event.startTime.seconds * 1000)}
+									</div>
+									<div id='Views'>
+										<div className="tagGroup">
+										{event.tags.map((e) => (
+											<tag>{e}</tag>
+										))}
+										</div>
+									</div>
+								</div>
+								<div className='cardTags'></div>
+							</div>
+						);
+					})}
+				</div>
+			</div>
+		</div>
+	);
+}
 
 export default App;

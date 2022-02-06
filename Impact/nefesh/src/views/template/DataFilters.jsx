@@ -1,27 +1,28 @@
 import "../../styles/template/DataFilters.css";
-import { useState } from "react";
-import { collection, query, getDocs, where, getFirestore } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import {
+  collection,
+  doc,
+  query,
+  getDocs,
+  where,
+  getFirestore,
+  getDoc
+} from "firebase/firestore";
 
 const filters = {};
-let eventFilters = [];
-let tags = ["dinner", "60+", "party", "fun", "outdoors", "potato"];
-
 
 function DataFilters({ setEventListState }) {
   const db = getFirestore();
-  const [searchField, setSearchField] = useState("");
-  const [hidden, setHidden] = useState(false);
+  const [tags, setTags] = useState([]);
 
-  // function handleSearchByChange(ev) {
-  //   ev.preventDefault();
-  //   let temp = ev.target.value;
-  //   setSearchField(temp);
-  // }
+  useEffect(() => {
+		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
+		getDoc(tagsRef).then((tagsDB) => {
+			setTags(tagsDB.data().tagArray);
+		});
+	}, []);
 
-  function revealFilters() {
-    let temp = !hidden
-    setHidden(temp);
-  }
 
   async function getTarget(ev) {
     for (var oldFilter in filters) delete filters[oldFilter];
@@ -36,7 +37,6 @@ function DataFilters({ setEventListState }) {
     console.log(filters);
     const filtersArr = [];
     for (let filter in filters) {
-     
       if (filters[filter]) {
         filtersArr.push(filter);
       }
@@ -103,17 +103,16 @@ const joinedEventsList = []
 
         <div id="tagsContainer">
         {tags.map((tag) => {
-            return(
-            <div key={tag}>
-                <div className="inline-block">
-  
-                  <button className="filterBtn" name={tag} onClick={getTarget}>{tag}</button>
-                </div>
-                
-            </div>
-            )
-        })}
-     
+								return (
+									<div key={tag}className='filterBtn_cont'>
+										<div className='inline-block'>
+											<div className='filterBtn inline-block shadow' name={tag} onClick={getTarget}>
+												{tag}
+											</div>
+										</div>
+									</div>
+								);
+							})}
         </div>             
     </div>
   );
