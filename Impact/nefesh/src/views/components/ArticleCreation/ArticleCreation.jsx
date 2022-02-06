@@ -10,6 +10,7 @@ let page = 'ArticleCreation';
 function ArticleCreation(props) {
 	const [tagsState, setTagsState] = useState([]);
 	const inputRef = useRef();
+	const [value, setValue] = React.useState('I am edittable');
 	const [httpUrl, setHttpUrl] = useState('');
 
 	useEffect(() => {
@@ -52,7 +53,7 @@ function ArticleCreation(props) {
 	function saveDraft() {
 		let { title, name, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSumbitted;
         image = httpUrl
-		addDoc(collection(db, 'users',props.userID,"Saved"), {
+		addDoc(collection(db, 'events'), {
 			title,
 			coverImage: image,
 			article: text,

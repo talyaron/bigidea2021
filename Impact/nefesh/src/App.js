@@ -1,69 +1,71 @@
-import "./App.css";
-import "./views/components/AdminPagePopUp/AdminPagePopUp";
-import { render } from "react-dom";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import "./styles/global/App.css";
+import "./views/template/AdminPagePopUp";
+import { Routes, Route } from "react-router-dom";
 
-import Login from './views/pages/login/Login.js';
-import Error from './views/pages/404/404.js';
-import Unauthorised from './views/pages/401/401.js';
-import ProfilePage from './views/pages/ProfilePage/ProfilePage';
-import ContactUs from './views/components/ContactUs/ContactUs';
-import ArticleCreation from './views/components/ArticleCreation/ArticleCreation';
-import MainPage from './views/pages/MainPage/MainPage';
-import { checkRole } from './functions/general.js';
+import Login from './views/pages/Login.js';
+import Error from './views/pages/404.js';
+import Unauthorised from './views/pages/401.js';
+import ProfilePage from './views/pages/ProfilePage';
+import ContactUs from './views/pages/ContactUs';
+import ArticleCreation from './views/pages/ArticleCreation';
+import MainPage from './views/pages/MainPage';
+import LogoNew from './assets/Images/LogoNew.svg'
+
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
-import { db } from './functions/firebase/config';
+import { db } from './scripts/firebase/config';
 //pages
-import AdminPage from './views/pages/AdminPage/AdminPage';
-import StickyBanner from './views/components/StickyBanner/StickyBanner'
-import NavTopBar from "./views/components/NavTopBar/NavTopBar";
-import Event from './views/pages/Event/Event';
-import SavedEvent from './views/pages/SavedEvent/SavedEvent';
-import EditSavedEvent from'./views/pages/EditSavedArticles/EditSavedArticles'
+import AdminPage from './views/pages/AdminPage';
+import StickyBanner from './views/components/StickyBanner'
+import NavTopBar from "./views/components/NavTopBar";
+import Event from './views/pages/Event';
+import SavedEvent from './views/template/SavedEvent';
+import EditSavedEvent from'./views/template/EditSavedArticles'
 
-//hi
-let role; //if changed to superAdmin it updates correctly but shows red warnings, also needs to be changed manually
-let permissionedRole;
+
+let role;
 const auth = getAuth();
 let userID = "";
-let loggedIn,
-isAdmin = "false";
+let loggedIn;
 
 function App() {
   const [userState, setUserState] = useState({});
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isOle, setIsOle] = useState(true);
-
+  const [/*isAdmin*/, setIsAdmin] = useState(false);
+  const [isOle, setIsOle] = useState(false);
+  const [isUserID, setIsUserID] = useState(null);
+  
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("user logged in");
         const uid = user.uid;
+        setIsUserID(uid);
         userID = uid;
         //get user from db
         getDoc(doc(db, "users", uid)).then((userDB) => {
-          if (userDB.data().disabled == true){
-            console.log("user is banned");
-            return;
-          }
           if (userDB.exists()) {
-            console.log("user exists");
+			      role = userDB.data().role;
             setUserState({
-              userName: userDB.data().displayName,
               userOrg: userDB.data().organization,
+              displayName: userDB.data().displayName
             });
-            role = userDB.data().role;
+            
+            if (userDB.data().disabled){
+              alert("user is banned");
+              return;
+            }
 
-            console.log(role);
-            if (role == "ole") {
+            if (role === "guest"){
+              setIsOle(false);
+              setIsAdmin(false);
+            }
+            if (role === "ole") {
 				setIsOle(true);
 				setIsAdmin(false);
             } else {
 				setIsOle(false);
         setIsAdmin(false);
-        if(role == "superAdmin"){
+        if(role === "superAdmin"){
           setIsOle(false);
           setIsAdmin(true);
         }
@@ -86,6 +88,7 @@ function App() {
               userIcon: user.photoURL,
               userPref: ["null"],
               disabled : false,
+              bio: "null"
             });
           }
         });
@@ -99,16 +102,19 @@ function App() {
   }, []);
 
 	return (
+		<div>
+	    <NavTopBar titleDisplay= {LogoNew} />
 		<div className='container_AppMain'>
+		
 			{loggedIn ? (
 				<div className='container_App'>
-          <NavTopBar titleDisplay="NBM Tel Aviv" />
+          
 					<Routes>
 						<Route path='/' element={<MainPage role={role}/>} />
 						<Route path='404' element={<Error />} />
 						<Route path='401' element={<Unauthorised />} />
 						<Route path='MainPage' element={<MainPage role={role} />} />
-						<Route path='ContactUs' element={<ContactUs />}/>
+						<Route path='ContactUs' element={<ContactUs  uid = {isUserID} displayName={userState.displayName} isOle={isOle}/>}/>
 						<Route path='event/:eventID' element={<Event />} />
 						<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
@@ -116,16 +122,24 @@ function App() {
             <Route path='ProfilePage/SavedEvents/Preview/:eventID' element={<SavedEvent userID={userID} userOrg={userState.userOrg} />} />
             <Route path='ProfilePage/SavedEvents/Edit/:eventID' element={<EditSavedEvent userID={userID} userOrg={userState.userOrg}  />} />
 					</Routes>
-					<StickyBanner isAdmin={isAdmin} isOle={isOle}/>
+					
 				</div>
 			) : (
 				<div className='container_App'>
 					<Routes>
-						<Route path='/' element={<Login />} />
-						<Route path='login' element={<Login />} />
+						<Route path='/' element={<MainPage role={role} />} />
+            <Route path='MainPage' element={<MainPage role={role}/>} />
+            <Route path='404' element={<Error />} />
+						<Route path='401' element={<Unauthorised />} />
+            <Route path='ContactUs' element={<ContactUs  uid = {isUserID} displayName={userState.displayName} isOle={isOle}/>}/>
+            <Route path='event/:eventID' element={<Event />} />
+            <Route path='login' element={<Login/>} />
 					</Routes>
 				</div>
 			)}
+		</div>
+		<div className="footer"></div>
+		<StickyBanner role={role} />
 		</div>
 	);
 }

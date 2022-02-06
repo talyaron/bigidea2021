@@ -1,0 +1,112 @@
+.menuList_Container{
+	position: fixed;
+    background-color: #b7cbe7e8;
+    display: flex;
+    flex-direction: column;
+    bottom: 71px;;
+    width: 90%;
+    left: 5%;
+	border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    border: outset;
+    border-bottom: none;
+	animation: move .2s linear 0s 1 alternate forwards;
+
+}
+
+
+/*
+#stickyBanner {
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	vertical-align: top;
+	bottom: 0px;
+	background-color: var(--Light-blue);
+	width: 98%;
+	height: 50px;
+	margin-inline: 1%;
+    margin-bottom: 10px;
+    border-radius: 9px;
+}*/
+
+#menuButtonGroup {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: -webkit-fill-available;
+    height: 56px;
+    gap: 22vw;
+    place-content: center;
+    background-color: var(--Light);
+    padding-block: 7px;
+	border-top: 1px solid Var(--Navy-blue);
+    user-select: none;
+    -webkit-user-drag: none;
+    box-shadow: 0px 2px 3px 3px rgb(145 145 145 / 32%);
+}
+
+.stickyBanner {
+    margin-bottom: 10px;
+    right: 1%;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+	padding: 8px;
+	border-radius: 50%;
+    box-shadow: transparent;
+    cursor: pointer;
+}
+
+.stickyBanner:hover {
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 7px 4px;
+}
+
+.stickyBanner > .MenuButton > img {
+	height: 30px;
+    width: auto;
+    margin-top: 0px;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.menuList {
+	padding-inline: 3%;
+}
+
+.ListItemElement:hover {
+    background-color: var(--Grey-D1) ;
+}
+.ListItemElement {
+    margin-bottom: 0.1em;
+    border-radius: 16px;
+    list-style: none;
+	text-align: center;
+	background: #0789ba54;
+    padding: inherit;
+}
+
+@keyframes move {
+	0%{
+		z-index: -1;
+		transform: translateY(40px);
+        opacity: 0;
+        max-height: 0;
+		/*transform: translateY(20px);*/
+	}
+    50%{
+		z-index: -1;
+		transform: translateY(20px);
+        opacity: 0.4;
+        max-height: 50%;
+		/*transform: translateY(20px);*/
+	}
+	100%{
+		z-index: -1;
+        opacity: 1;
+		transform: translateY(0px);
+        max-height: 100%;
+		/*transform: translateY(0px);*/
+	}
+}
