@@ -101,9 +101,9 @@ const joinedEventsList = []
   
   return (
   <div>
-  <div className= "filterBanner">
+  {/* <div className= "filterBanner">
     Filters
-  </div>
+  </div> */}
 
         <div id="tagsContainer">
         {tags.map((tag) => {
