@@ -4,6 +4,7 @@ import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import { useParams } from 'react-router-dom';
 import useScript from '../../scripts/useScript';
+import Clock from '../../assets/Images/NewIcons/clock.svg'
 // import 'moment-timezone';
 
 function Event() {
@@ -117,10 +118,11 @@ function Event() {
 				<div className='eventTimeCont'>
 					{Object.entries(filterEntries([eventData, EventFilter])).map((e) => (
 						<div className='dataEntry' id={e[1][1][1] + 'Entry'} key={e}>
-							{e[1][2][1] ? <div className='dataLabel' id={e[1][1][1] + 'Label'}>
+							<img id='clock' className='inlineBlock' src={Clock} alt="clock" /> 
+							{e[1][2][1] ? <div className='dataLabel inlineBlock' id={e[1][1][1] + 'Label'}>
 								{e[1][2][1]}:
 							</div> : null}
-							<div className='dataField' id={e[1][1][1] + 'Field'}>
+							<div className='dataField inlineBlock' id={e[1][1][1] + 'Field'}>
 								{formatField(...e)}
 							</div>
 						</div>
