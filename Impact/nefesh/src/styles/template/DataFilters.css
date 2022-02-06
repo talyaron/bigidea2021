@@ -25,6 +25,33 @@
     margin-left: 3px;
 }
 
+.filterBtn:hover{
+    max-height: 20px;
+    background-color: #cfe4ff;
+    color: #1d86d2;
+    border-radius: 5px;
+    padding: 3px;
+    margin-left: 3px;
+}
+
+.filterBtn:active{
+    max-height: 20px;
+    background-color: #ffffff;
+    color: #1d86d2;
+    border-radius: 5px;
+    padding: 3px;
+    margin-left: 3px;
+}
+
+.filterBtn:focus{
+    max-height: 20px;
+    background-color: #ffffff;
+    color: #1d86d2;
+    border-radius: 5px;
+    padding: 3px;
+    margin-left: 3px;
+}
+
 .filterBanner{
     text-align: center;
     background-color: rgb(0, 149, 255);
