@@ -9,7 +9,7 @@ import ProfilePage from './views/pages/ProfilePage';
 import ContactUs from './views/pages/ContactUs';
 import ArticleCreation from './views/pages/ArticleCreation';
 import MainPage from './views/pages/MainPage';
-import LogoNew from './assets/Images/LogoNew.svg'
+
 
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
@@ -18,8 +18,7 @@ import { db } from './scripts/firebase/config';
 import { useLocation } from 'react-router-dom';
 //pages
 import AdminPage from './views/pages/AdminPage';
-import StickyBanner from './views/components/StickyBanner'
-import NavTopBar from "./views/components/NavTopBar";
+
 import Event from './views/pages/Event';
 
 
@@ -120,7 +119,7 @@ function App() {
 
 	return (
 		<div>
-	    {renderBars? <NavTopBar titleDisplay= {LogoNew} /> : null}
+	
 		<div className='container_AppMain'>
 		
 			{loggedIn ? (
@@ -147,15 +146,15 @@ function App() {
             <Route path='MainPage' element={<MainPage role={role}/>} />
             <Route path='404' element={<Error />} />
 						<Route path='401' element={<Unauthorised />} />
-            <Route path='ContactUs' element={<ContactUs  uid = {isUserID} displayName={userState.displayName} isOle={isOle}/>}/>
-            <Route path='event/:eventID' element={<Event />} />
+            <Route path='ContactUs' element={<ContactUs role={role} uid = {isUserID} displayName={userState.displayName} isOle={isOle}/>}/>
+            <Route path='event/:eventID' element={<Event />} role={role} />
             <Route path='login' element={<Login/>} />
 					</Routes>
 				</div>
 			)}
 		</div>
 		<div className="footer"></div>
-		{renderBars? <StickyBanner role={role} /> : null}
+
 		</div>
 	);
 }
