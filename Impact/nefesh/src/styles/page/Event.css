@@ -8,14 +8,15 @@
 	background-color: var(--Light-Page);
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	height: max-content;
+    align-items: center;
+    padding: 0px 0px 10% 0px;
 }
 
 #coverImage_Event {
 	max-height: 40vh;
 	max-width: 100vw;
-	width: 100%;
-	flex-grow: 100vw;
+	width: 100vw;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 .eventData_Event {
@@ -31,8 +32,7 @@
 #title_Event {
 	font-family: Roboto;
 	font-style: normal;
-	font-weight: normal;
-    font-weight: 500;
+    font-weight: 400;
 	font-size: 40px;
 	line-height: 36px;
 }
@@ -86,6 +86,11 @@
     margin: 5px;
 }
 #eventWebsite_Event{
+    color: var(--Dark);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
     padding: 5px;
     border-bottom: 3px solid var(--Dark);
 	border-radius: 3px;
@@ -117,4 +122,38 @@
 	line-height: 28px;
 	margin: 3px;
     width: min-content;
+}
+.eventTags_Event{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;  
+    max-width: 50%;
+    padding: 5px;
+    border-top: 3px solid var(--Dark);
+    border-bottom: 3px solid var(--Dark);
+	border-radius: 3px;
+    width: 80%;
+
+}
+.addToCalAndMaxCap_Cont{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#maxCap{
+    margin: 7px;
+}
+.dataLabel{
+    position: relative;
+    bottom: 7px;
+}
+a, a:link, a:visited, a:focus, a:hover, a:active{
+    color:var(--Dark);
+    text-decoration:none; 
+    cursor: crosshair;
+}
+#addeventatc1{
+    position: relative;
+    z-index: 0 !important;
 }
