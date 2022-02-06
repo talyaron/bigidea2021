@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import useScript from '../../scripts/useScript';
 // import 'moment-timezone';
 
-function SavedEvent() {
+function SavedEvent(props) {
 	const [eventData, setEventData] = useState([]);
 	const [EventFilter] = useState([{ id: 0, field: 'startTime', label: 'Start', type: 'timestamp'}, { id: 1, field: 'endTime', label: 'End', type: 'timestamp'}, { id: 2, field: 'address', label: 'Address', type: 'location'}]);
 	const [tags, setTags] = useState([]);
@@ -15,10 +15,10 @@ function SavedEvent() {
 	const [websiteValidity, setWebValidity] = useState(false);
 	let { eventID } = useParams();
 	const [image, setImage] = useState();
-	useEffect(() => {
+	useEffect(async() => {
 		try {
 			setWebValidity(false);
-			let eventRef = doc(db, 'events', eventID);
+			let eventRef = doc(db, "users",props.userID,"Saved",eventID);
 			let eventObj;
 			getDoc(eventRef).then((docSnap) => {
 				eventObj = docSnap.data();

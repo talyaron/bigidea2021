@@ -23,6 +23,7 @@ import Event from './views/pages/Event';
 import EditSavedEvent from'./views/template/EditSavedArticles'
 import SavedEvents from "./views/template/SavedEvents";
 import SavedEvent from "./views/template/SavedEvent"
+import PublishedEvents from "./views/template/PublishedEvents";
 
 let role;
 const auth = getAuth();
@@ -121,6 +122,8 @@ function App() {
 						<Route path='AdminPage' element={<AdminPage />}/>
             <Route path='ProfilePage/SavedEvents/Preview/:eventID' element={<SavedEvent userID={userID} userOrg={userState.userOrg} />} />
             <Route path='ProfilePage/SavedEvents' element={<SavedEvents userID={userID} userOrg={userState.userOrg} />} />
+            <Route path='ProfilePage/PublishedEvents' element={<PublishedEvents userID={userID} userOrg={userState.userOrg} />} />
+            <Route path="/ProfilePage/PublishedEvents/View/:eventID" element={<Event userID={userID} userOrg={userState.userOrg}/> }/>
             <Route path='ProfilePage/SavedEvents/Edit/:eventID' element={<EditSavedEvent userID={userID} userOrg={userState.userOrg}  />} />
 					</Routes>
 					
