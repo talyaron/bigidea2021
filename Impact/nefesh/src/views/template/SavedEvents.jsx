@@ -11,11 +11,11 @@ function SavedEvents(props) {
 	let savedEventsTemp = []
 	const handleRoute = useNavigate()
 	const [savedArticles, setSavedArticles] = useState([])
-	const docRef = (doc(db, "users", props.uid));
+	const docRef = (doc(db, "users", props.userID));
 	useEffect(async () => {
 		//pull userId of selected user and set for superAdmin page
 		//on snapshot displayName
-		const q = query(collection(db, "users", props.uid, "Saved"))
+		const q = query(collection(db, "users", props.userID, "Saved"))
 		const savedEventsDB = await getDocs(q)
 
 		savedEventsDB.forEach((savedEventDB) => {
