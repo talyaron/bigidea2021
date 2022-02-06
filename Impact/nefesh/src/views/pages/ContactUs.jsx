@@ -1,4 +1,6 @@
 import "../../styles/page/ContactUs.css";
+import Envelope from '../../assets/Images/NewIcons/email.svg'
+import Phone from '../../assets/Images/NewIcons/phone.svg'
 
 import { useEffect, useState} from "react";
 
@@ -23,13 +25,19 @@ function ContactUs(props) {
       <div className="head">Contact us at:</div>
       <div className="box-1">
         <div className="phoneNum">Phone number: ###-###-####</div>
+        <img src = {Phone} className = "phoneNum" />
       </div>
       <div className="box-1">
-        <a
+        {/* <a
           href="mailto:Nefesh@nefesh.com?subject=Contacting Creators!&body=Hi! I wanted to contact you to tell you that (type here)"
           className="email">
           Click here to send us an email!
-        </a>
+        </a> */}
+      
+      <img src= {Envelope} className= "emailMe"/>
+      
+      
+
       </div>
       {userIsOle? (
       <div className="apply">
@@ -53,6 +61,8 @@ function ContactUs(props) {
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </div>
+
+      <div className = "organization">Be An Organization</div>
     </div>
   );
 }
