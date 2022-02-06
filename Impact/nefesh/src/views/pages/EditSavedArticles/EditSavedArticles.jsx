@@ -34,10 +34,19 @@ function EditSavedArticles(props) {
 	const [statesSubmitted, setStatesSubmitted] = useState({});
 	const [address, setAddress] = useState([]);
 	const [contactInfo, setContactInfo] = useState([]);
+	const [tags, setTags] = useState([]);
+	const [selectedTagArray, setSelectedTagArray] = useState([]);
+
 	useEffect(async () => {
 		const eventRef = doc(db, "users", props.userID, "Saved", eventID);
 		let eventDB = await getDoc(eventRef);
 		const eventDBTemp = eventDB.data();
+		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
+		getDoc(tagsRef).then((tagsDB) => {
+			console.log(tagsDB.data().tagArray);
+			setTags(tagsDB.data().tagArray);
+
+		})
 		if ("dateAdded" in eventDBTemp) {
 			let time = new Date(eventDB.data().dateAdded.seconds * 1000);
 			time = convertToDefaultTime(time);
@@ -174,7 +183,18 @@ function EditSavedArticles(props) {
 		console.log(statesSubmitted);
 		console.log(props)
 	}
-
+	let tempArray = [...selectedTagArray];
+	function getTarget(ev) {
+		let temp = ev.target.innerHTML;
+		if (tempArray.includes(temp)) {
+			const index = tempArray.indexOf(temp);
+			tempArray.splice(index, 1);
+		} else {
+			tempArray.push(temp);
+		}
+		setSelectedTagArray(tempArray);
+	
+	}
 	return (
 		<>
 			{statesSubmitted ? (
@@ -281,34 +301,40 @@ function EditSavedArticles(props) {
 							defaultValue={statesSubmitted.article}
 							onChange={changeState}></textarea>
 
-						<form className="Tags" onSubmit={addTags}>
-							<input
-								type="text"
-								name="tagsInput"
-								placeholder="Enter event tags here"
-								className="tag34 shadow"
-							/>
-							<button className="submit Button36 shadow" type="submit">
-								Submit
-							</button>
-							<button onClick={ping}>HIIII</button>
-						</form>
-						<div className="tagBox">
-							<div className="tagsMapContainer shadow">
-								{tagsState.map((tag) => {
-									i++;
+						<button onClick={ping}>HIIII</button>
+						
+						<label htmlFor="selected_tagBox">Selected Tags:</label>
+					<div name='selected_tagBox' className='selected_tagBox'>
+						<div className='tagsMapContainer_selected'>
+							{[...tempArray].map((tag) => {
+								return (
+									<div key={tag}>
+										<div className='inline-block'>
+											<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
+												{tag}
+											</div>
+										</div>
+									</div>
+								);
+							})}
+						</div>
+						<label htmlFor="unselected_tagBox">Unselected Tags:</label>
+						<div name='unselected_tagBox' className='unselected_tagBox'>
+							<div className='tagsMapContainer'>
+								{tags.map((tag) => {
 									return (
-										<form
-											onSubmit={deleteTag}
-											key={(tag, i)}
-											className="tagForm">
-											<div className="nameTag">{tag}</div>
-											<button type="submit">X</button>
-										</form>
+										<div key={tag}>
+											<div className='inline-block'>
+												<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
+													{tag}
+												</div>
+											</div>
+										</div>
 									);
 								})}
 							</div>
 						</div>
+					</div>
 						<div className="buttonContainer23">
 							<button className="Dragon42 shadow" onClick={saveDraft}>
 								Save Draft
