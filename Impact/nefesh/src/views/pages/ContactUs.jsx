@@ -1,8 +1,15 @@
 import "../../styles/page/ContactUs.css";
-
 import { useEffect, useState} from "react";
+import StickyBanner from '../components/StickyBanner'
+import NavTopBar from "../components/NavTopBar";
+
+import LogoNew from '../../assets/Images/LogoNew.svg';
+
+
 
 function ContactUs(props) {
+  const role = props.role;
+
   const [mailTo, setMailtoLink] = useState('');
   const [userIsOle, setUserIsOle] = useState();
   useEffect(() => {
@@ -18,6 +25,7 @@ function ContactUs(props) {
 
   return (
     <div>
+      <NavTopBar titleDisplay={LogoNew}/>
       <div className="head">Contact us at:</div>
       <div className="box-1">
         <div className="phoneNum">Phone number: ###-###-####</div>
@@ -51,6 +59,7 @@ function ContactUs(props) {
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </div>
+      <StickyBanner role={role} />
     </div>
   );
 }
