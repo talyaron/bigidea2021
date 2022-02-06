@@ -80,7 +80,7 @@ function StickyBanner({role}) {
 							<ul className='menuList'>
 								{
 									navList.map(function (item) {
-										return <li className='ListItemElement'>
+										return <li className='ListItemElement' key={item.href} id={item.href}>
 											<div
 												className='menuItem'
 												onClick={() => {
