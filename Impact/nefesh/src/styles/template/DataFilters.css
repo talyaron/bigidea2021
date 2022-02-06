@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: row;
     background-color: var(--Light);
-    padding:7px;
+    padding:10px;
     overflow-x: scroll;
     max-width: 100%;
     
@@ -21,8 +21,9 @@
     background-color: rgb(0, 149, 255);
     color: white;
     border-radius: 10px;
-    padding: 3px;
+    padding: 6px;
     margin-left: 10px;
+    margin-top: 5px;
 }
 
 .filterBtn:hover{
@@ -30,8 +31,9 @@
     background-color: #cfe4ff;
     color: #1d86d2;
     border-radius: 10px;
-    padding: 3px;
+    padding: 6px;
     margin-left: 10px;
+    margin-top: 5px;
 }
 
 .filterBtn:active{
@@ -39,8 +41,9 @@
     background-color: #ffffff;
     color: #1d86d2;
     border-radius: 10px;
-    padding: 3px;
+    padding: 6px;
     margin-left: 10px;
+    margin-top: 5px;
 }
 
 .filterBtn:focus{
@@ -48,8 +51,9 @@
     background-color: #ffffff;
     color: #1d86d2;
     border-radius: 10px;
-    padding: 3px;
+    padding: 6px;
     margin-left: 10px;
+    margin-top: 5px;
 }
 
 .filterBanner{
@@ -62,7 +66,7 @@
     color: white;
 }
 .filterBtn_cont{
-    max-height: 25px;
+    max-height: 35px;
     margin-left: 5px;
     cursor: pointer;
 }
