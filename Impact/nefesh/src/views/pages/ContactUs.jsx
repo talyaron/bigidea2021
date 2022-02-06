@@ -29,16 +29,7 @@ function ContactUs(props) {
       <div className="head">About us</div>
       <div className="line"> </div>
       
-      <div className = "phoneNum">
-      <img src = {Phone}/>#########
-
-      </div>
       
-      
-        
-      <div className="emailMe" onClick = {handleEmail}> 
-      <img src= {Envelope}/> Email Us</div>
-    
 
       
       
@@ -68,11 +59,23 @@ function ContactUs(props) {
         mollit anim id est laborum.</p>
       </div>
       <div className="head sp">Contact us</div>
-        <div className="line"> </div>
+      <div className="line"> </div>
+
+      <div className="position">
+        <div className = "button mar">
+          <img src = {Phone}/> &nbsp; #########
+        </div>
+        <div className="button" onClick = {handleEmail}> 
+          <img src= {Envelope}/> &nbsp; Email Us
+        </div>
+      </div>
+
+    
+        
         <div className="head sp">Request to be a Host</div>
         <div className="line"> </div>
-
-      <div className = "organization">Be An Organization</div>
+      <div className="position2"> <div className = "button">Be a Host</div> </div>
+      
     </div>
   );
 }
