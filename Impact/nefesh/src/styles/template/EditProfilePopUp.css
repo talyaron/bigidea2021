@@ -3,11 +3,14 @@
   
   .EditPopUpbox {
     position: relative;
+    left: 50vw;
+    transform: translateX(-50%);
     margin: 0 auto;
     margin-top: calc(100vh - 85vh - 20px);
     background:Var(--Light-D2);
     border-radius: 4px;
     padding: 20px;
+    z-index: 4000;
   }
   .popup-box {
     position: fixed;

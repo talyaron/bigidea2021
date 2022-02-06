@@ -48,6 +48,7 @@ body {
 
 .container_App {
 	width: 100%;
+	min-height: 90vh;
 	/*max-width: 500px;
 	/*overflow-y: scroll;  /* Hide vertical scrollbar */
 	/*overflow-x: hidden; /* Hide horizontal scrollbar */
@@ -125,4 +126,19 @@ html {
     border-radius: 8px;
     margin-bottom: 8px;
     background-clip: padding-box;
+}
+
+.btn{
+	border-radius: 5px;
+	background-color: teal;
+	padding: 10px 20px;
+	text-align: center;
+	color: white;
+	user-select: none;
+	cursor: pointer;
+}
+.btns{
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
 }
