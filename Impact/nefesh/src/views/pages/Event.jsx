@@ -130,9 +130,6 @@ function Event() {
 						</div>
 					))}
 				</div>
-				<div className='eventDetails_Event'>
-					<button className='orgsite' href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</button>
-				</div>
 
 				<h4 className='eventDetails_Event'> Description: { getField(eventData, "article") } </h4>
 			</div>
@@ -155,7 +152,7 @@ function Event() {
 				<div className='contactUsContent_Event'>
 					<button className='phoneNumero'>{contactInfo.phone}</button>
 					<button rel="noreferrer" className='email2' href={`mailto: ${contactInfo.email} ?subject=Event!&body=Hi! I wanted to contact you to tell you that (type here)`} target='_blank'>
-						
+					<button className='orgsite' href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</button>
 					</button>
 				</div>
 			</div>
