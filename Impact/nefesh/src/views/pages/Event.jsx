@@ -8,7 +8,7 @@ import useScript from '../../scripts/useScript';
 
 function Event() {
 	const [eventData, setEventData] = useState([]);
-	const [EventFilter] = useState([{ id: 0, field: 'startTime', label: '', type: 'timestamp'}, { id: 1, field: 'endTime', label: 'End', type: 'timestamp'}, { id: 2, field: 'address', label: 'Address', type: 'location'}]);
+	const [EventFilter] = useState([{ id: 0, field: 'startTime', label: 'Start', type: 'timestamp'}, { id: 1, field: 'endTime', label: 'End', type: 'timestamp'}, { id: 2, field: 'address', label: 'Address', type: 'location'}]);
 	const [tags, setTags] = useState([]);
 	//const [addressInfo, setAddressInfo] = useState([]);
 	const [contactInfo, setContactInfo] = useState([]);
