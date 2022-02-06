@@ -44,25 +44,17 @@ function HandleImportImg(props) {
 	}
 
 	return(
-<<<<<<< HEAD
 		<label htmlFor="articleImg" onChange={onTrigger} className='border-ArticleCreation'>
 			<input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif' hidden/>
 			Upload an Image<img src={Icon} alt='upload'/>
 		</label>
-=======
-		<input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif' onChange={onTrigger} className='border-ArticleCreation' />
->>>>>>> Max-offDev
 	)
 
 }
 
 export default HandleImportImg;
 
-<<<<<<< HEAD
 {/* <label onChange={onTrigger} className='border-ArticleCreation' htmlFor="articleImg">
 <input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif'  hidden />
 <img src={Icon} alt='upload'/>
 </label> */}
-=======
-// 
->>>>>>> Max-offDev
