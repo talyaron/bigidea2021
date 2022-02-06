@@ -21,7 +21,7 @@ function ContactUs(props) {
   }, [mailTo, props]);
 
   function handleEmail(){
-    console.log("HELLOOOOOOOOOOO");
+    window.location = "mailto:Nefesh@nefesh.com?subject=Contacting Creators!";
   }
 
   return (
@@ -66,7 +66,7 @@ function ContactUs(props) {
           <img src = {Phone}/> &nbsp; #########
         </div>
         <div className="button" onClick = {handleEmail}> 
-          <img src= {Envelope}/> &nbsp; Email Us
+          <img src= {Envelope}/> Email Us
         </div>
       </div>
 
@@ -74,7 +74,7 @@ function ContactUs(props) {
         
         <div className="head sp">Request to be a Host</div>
         <div className="line"> </div>
-      <div className="position2"> <div className = "button">Be a Host</div> </div>
+      <div className="position2"> <div className = "button">Be A Host</div> </div>
       
     </div>
   );
