@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: row;
     background-color: var(--Light);
-    padding:7px;
+    padding:10px;
     overflow-x: scroll;
     max-width: 100%;
     
@@ -25,6 +25,36 @@
     margin-left: 3px;
 }
 
+.filterBtn:hover{
+    max-height: 20px;
+    background-color: #cfe4ff;
+    color: var(--Grey);
+    border-radius: 10px;
+    padding: 6px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.filterBtn:active{
+    max-height: 20px;
+    background-color: #ffffff;
+    color: var(--Blue1);
+    border-radius: 10px;
+    padding: 6px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.filterBtn:focus{
+    max-height: 20px;
+    background-color: #ffffff;
+    color: var(--Blue2);
+    border-radius: 10px;
+    padding: 6px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
 .filterBanner{
     text-align: center;
     background-color: var(--Blue5);
@@ -36,7 +66,7 @@
     color: var(--Light);
 }
 .filterBtn_cont{
-    max-height: 25px;
+    max-height: 35px;
     margin-left: 5px;
     cursor: pointer;
 }
