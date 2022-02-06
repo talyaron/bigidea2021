@@ -103,3 +103,17 @@
     font-size: 20px;
     line-height: 15px;
 }
+.tag{
+    background: var(--Blue2);
+	border: 1px solid var(--Grey);
+	box-sizing: border-box;
+	border-radius: 10px;
+	color: var(--Blue4);
+	padding: 3px;
+	text-align: center;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 28px;
+	margin: 3px;
+}

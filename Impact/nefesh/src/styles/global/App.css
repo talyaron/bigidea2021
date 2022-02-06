@@ -86,7 +86,7 @@ body {
     white-space: nowrap;
 } */
 
-tag {
+/* tag {
 	background: var(--Blue2);
 	border: 1px solid var(--Grey);
 	box-sizing: border-box;
@@ -99,7 +99,7 @@ tag {
 	font-size: 12px;
 	line-height: 28px;
 	margin: 3px;
-}
+} */
 
 html {
     --theme-scrollbar-thumb: #ccc;
