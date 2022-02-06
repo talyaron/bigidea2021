@@ -12,11 +12,29 @@
   
   }
   .head{
-    background-color: #54a4d4;
     text-align: center;
     font-size: 30px;
     height: 50px;
-    margin-top: 10px;
+   padding-top: 10px;
+   margin-top: 10px;
+ 
+  }
+  .sp{
+    margin-top: 1%;
+  }
+  .back-color{
+    background-color: #F7FBFF;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 0%;
+  }
+  .line{
+    border-bottom: 2px black solid;
+    margin-top: 0%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5%;
+    width: 70%;
   }
   .box-1{
     border: 1px black solid;
@@ -36,13 +54,14 @@
   .mission{
     text-align: center;
     border: none;
-    padding: 10px;
+    padding: 20px;
     border-radius: 15px 15px 15px 15px;
-    margin: 20px;
-    background-color: #54a4d4;
+    margin: auto;
+    width: 70%;
+    background-color: #E7F2FF;
   }
   .mishead{
-    font-size: 20px;
+    font-size: 25px;
   }
 
 
