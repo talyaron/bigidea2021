@@ -6,7 +6,6 @@ function ContactUs(props) {
   const [mailTo, setMailtoLink] = useState('');
   const [userIsOle, setUserIsOle] = useState();
   useEffect(() => {
-    console.log("users", props.uid, props.displayName, props.isOle);
     //let notName = await getDoc(doc(db, "users", props.uid));
     let userIDTemp = props.uid;
     // let userRole = props.userRole;
@@ -15,7 +14,6 @@ function ContactUs(props) {
     var subject = "Request to be Organization Admin";
     var body_start =  `${props.displayName} with User ID: ${userIDTemp} wants to be an organizational Admin because(input your reason here)`;
     setMailtoLink( `mailto:` + email + `?subject=` + subject + `&body=` + body_start);
-    console.log(mailTo);
   }, [mailTo, props]);
 
   return (

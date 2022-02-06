@@ -28,7 +28,6 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) 
 	function handleChangeDisplayName(ev) {
 		/* make sure to check that username is not taken */
 		let username = prompt('Enter your new username.');
-		console.log(ev, username);
 
 		if (username === null) {
 			return;
@@ -71,7 +70,6 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) 
 	async function handleSetRoleToOle(ev) {
 
 		setIsAdmin(!isAdmin);
-		console.log(currentID); //works when getting just id, need to get string from "role" field in the db
 
 		const q = query(usersRef, where("id", "==", currentID));
 		const querySnapshot = await getDocs(q);
@@ -79,13 +77,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) 
 			console.log(doc.data());
 		})
 
-		// setUserRole(currentID);
-		console.log(isAdmin); //role shows up as what it was initialized to, doesn't change b/c of lines above ^^^
 		if (isAdmin === false) {
-			console.log("true", 'org admin');
-
-			console.log(ev, 'handleSetRoleToOrgAdmin');
-			/* make sure to check that username is not taken */
 
 			updateDoc(userDocRef, {
 				role: 'orgAdmin',
@@ -121,10 +113,7 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) 
 			});
 
 		} else {
-			console.log("false", 'ole');
 
-			console.log(ev, 'handleSetRoleToOle');
-			/* make sure to check that username is not taken */
 			updateDoc(userDocRef, {
 				role: 'ole',
 			}).then(async () => {
@@ -166,7 +155,6 @@ const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) 
 		console.log(ev, 'handleSuspendUser');
 	}
 	function handleBanUser(ev) {
-		console.log(isBanned2);
 		setIsBanned(!isBanned2);
 		updateDoc(userDocRef, {
 			disabled: !isBanned2

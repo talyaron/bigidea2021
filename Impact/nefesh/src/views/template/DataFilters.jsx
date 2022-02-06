@@ -27,14 +27,11 @@ function DataFilters({ setEventListState }) {
   async function getTarget(ev) {
     for (var oldFilter in filters) delete filters[oldFilter];
     filters[ev.target.name] = ev.target;
-
-    console.log(filters)
-    getEvents(ev)
+    getEvents(ev);
   }
 
   async function getEvents(ev) {
-    
-    console.log(filters);
+
     const filtersArr = [];
     for (let filter in filters) {
       if (filters[filter]) {
@@ -46,14 +43,12 @@ function DataFilters({ setEventListState }) {
       });
       const events = await Promise.all(promisedFilterd);
       const joinedEvents = convertArticleToSingleArray(events);
-      console.log(joinedEvents)
       setEventListState(joinedEvents);
     }
     //sort through
   }
 
 function convertArticleToSingleArray(events){
-    console.log(events)
     let eventsIds = new Set();
 const joinedEventsList = []
     events.forEach(fiteredEvents=>{
@@ -69,7 +64,6 @@ const joinedEventsList = []
 }
 
   function getEventPromise(filter) {
-    console.log(filter);
     return new Promise((resolve, reject) => {
       const q = query(
         collection(db, "events"),

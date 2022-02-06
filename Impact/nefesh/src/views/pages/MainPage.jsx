@@ -41,7 +41,6 @@ function App() {
 				return b.views - a.views;
 			});
 			setEventListState(eventListTemp);
-			console.log(eventListState);
 		}
 		if (eventFilter === 'newest') {
 			eventListTemp.forEach((doc) => {
@@ -51,8 +50,6 @@ function App() {
 				return b.dateAdded.seconds - a.dateAdded.seconds;
 			});
 			setEventListState(eventListTemp);
-			console.log(eventListTemp);
-			console.log(eventListState);
 		}
 	}
 

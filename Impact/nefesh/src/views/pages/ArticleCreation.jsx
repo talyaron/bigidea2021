@@ -18,7 +18,6 @@ function ArticleCreation(props) {
 		document.getElementById('editor').addEventListener('input', inputEvt, false);
 		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
 		getDoc(tagsRef).then((tagsDB) => {
-			console.log(tagsDB.data().tagArray);
 			setTags(tagsDB.data().tagArray);
 		});
 	}, []);

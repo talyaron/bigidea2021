@@ -15,10 +15,6 @@ function Login() {
 		const provider = new GoogleAuthProvider();
 		signInWithPopup(authentication, provider)
 			.then((re) => {
-				console.log(re);
-				console.log(re.user.displayName);
-				console.log(re.user.email);
-				console.log(re.user.photoURL);
 				//let userEmail = re.user.email;
 				if(re.user) navigate('/MainPage');
 			})

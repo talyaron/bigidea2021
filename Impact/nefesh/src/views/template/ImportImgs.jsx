@@ -36,10 +36,8 @@ function HandleImportImg(props) {
 			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${UniqueId}+${imageAsFile.name}`)).then((httpRef) => {
 				setImageAsUrl(httpRef);
 				props.parentCallBack(httpRef);
-				console.log(httpRef);
 			});
 		});
-		console.log('Upload Successful!');
 	}
 
 	return <input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif' onChange={onTrigger} className='border-ArticleCreation' />;

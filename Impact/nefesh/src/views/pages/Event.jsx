@@ -34,12 +34,8 @@ function Event() {
 
 				let EventArray = Object.entries(eventObj);
 				EventArray = EventArray.map(e=>[e[0], (e[1] instanceof Object && !Array.isArray(e[1])) ? Object.entries(e[1]) : e[1]]);
-				//console.log(EventArray)
-				console.log(eventID);
 				setEventData(EventArray);
 				if ('tags' in eventObj && Array.isArray(eventObj.tags)) {
-					console.log('we have tags');
-					console.log(eventObj.tags);
 					setTags(eventObj.tags);
 				}
 				setImage(eventObj.coverImage);
@@ -59,12 +55,8 @@ function Event() {
 
 		let buffer = data[1];
 		//.map(e=>Object.entries(e));
-		//console.log(data[0]);
-		//console.log(buffer);
 		buffer.map((element) => element.data = data[0].find(e=>e[0] === element.field)[1]);
 		buffer = buffer.map(e => Object.entries(e));
-	
-		console.log(buffer)
 	
 		return buffer;
 	}
@@ -153,7 +145,7 @@ function Event() {
 			<div className='eventTags_Event'>
 				<h3 className='tagTitle_Event'>Event Tags:</h3>
 				{tags.map((tag, index) => {
-					return <tag key={`tag-${index}`}>{tag}</tag>;
+					return <tag key={`tag-${index}`}>{tag}</tag>; //look here for warning
 				})}
 			</div>
 		</div>

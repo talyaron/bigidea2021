@@ -21,11 +21,9 @@ function SearchBar() {
 
   async function getFilter(ev){
     ev.preventDefault();
-    setHidden(false)
+    setHidden(false);
     filterOption= ev.target.value;
-    setTag(filterOption)
-    console.log(ev)
-    console.log(filterOption)
+    setTag(filterOption);
 
  
   }
@@ -34,12 +32,10 @@ function SearchBar() {
     if (ev.key === 'Enter') {
     ev.preventDefault();
     searchOption= ev.target.value;
-    console.log(searchOption);
     const q = query(collection(db, "events"), where("Title", ">=", searchOption));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {  
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
       arr2.push(doc.data());
     });
     if(tag=== "popular"){
@@ -72,7 +68,6 @@ function SearchBar() {
         }
   };
     setArticles(arr2);
-    console.log(arr2)
 
     }
 

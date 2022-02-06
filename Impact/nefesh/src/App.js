@@ -73,7 +73,6 @@ function App() {
             userID = uid;
           } else {
             //if user exist in db get the user from DB and get the role
-            console.log("user does not exist");
             setDoc(doc(db, "users", uid), {
               age: "null",
               displayName: user.displayName,
@@ -93,7 +92,6 @@ function App() {
         loggedIn = true;
       } else {
         // user logged out
-        console.log("User loged out");
         loggedIn = false;
       }
     });
