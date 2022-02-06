@@ -15,13 +15,13 @@ function ProfilePage(props) {
 	const [userData, setUserData] = useState()
 	const [displayName, setDisplayName] = useState('loading');
 	const [profilePicImg, setProfilePicImg] = useState('loading');
-	const [userEmail, setUserEmail] = useState('loading')
-	const [userAddress, setUserAddress] = useState('loading')
-	const [userGender, setUserGender] = useState('loading')
+	const [/*userEmail*/, setUserEmail] = useState('loading');
+	const [/*userAddress*/, setUserAddress] = useState('loading');
+	const [/*userGender*/, setUserGender] = useState('loading');
 	//const [userArticles, setUserArticles] = useState('loading');
-	const [textSize, setTextSize] = useState('')
-	const [editing, setEditing] = useState(false)
-	const [choosingPrefs, setChoosingPrefs] = useState(false)
+	//const [textSize, setTextSize] = useState('');
+	const [editing, setEditing] = useState(false);
+	//const [choosingPrefs, setChoosingPrefs] = useState(false);
 	const {uid} = props;
 	const [isOpen, setIsOpen] = useState(false);
 	const [httpUrl, setHttpUrl] = useState('');
@@ -57,7 +57,7 @@ function ProfilePage(props) {
 
 
 		const name = ev.target.elements.newName.value;
-		const profilePic = httpUrl
+		const profilePic = httpUrl;
 		const email = ev.target.elements.newEmail.value;
 
 		if(ev.target.elements.newName.value.length !== 0) {
@@ -83,7 +83,6 @@ function ProfilePage(props) {
 		}
 		
 		setEditing(false);
-
 		setIsOpen(!isOpen);
 		
 		const bio = ev.target.elements.newBio.value;
@@ -97,7 +96,6 @@ function ProfilePage(props) {
 		}
 
 		setEditing(false);
-
 		setIsBioOpen(!isBioOpen);
 	}
 
@@ -121,16 +119,6 @@ function ProfilePage(props) {
 		setIsBioOpen(!isBioOpen);
 	}
 
-	function changePreferences() {
-		setChoosingPrefs(true)
-	}
-
-	function submitChangePreferences(ev) {
-		ev.preventDefault();
-		const fontSize = ev.target[0].value;
-		setTextSize(fontSize);
-	}
-
 	const callBackFunction = (httpRef) => {
 		setHttpUrl(httpRef);
 	};
@@ -145,10 +133,10 @@ function ProfilePage(props) {
 	return (
 		<div className= "wholePage">
 			<div className='back-1'>
-				<img className ="EditProfBtn1" src={EditPic} type="button" onClick={editProfile} name="editbtn"/>
+				<img className ="EditProfBtn1" src={EditPic} type="button" onClick={editProfile} name="editbtn" alt="edit profile button"/>
 				<div id='profilePic' style={{ backgroundImage: 'url(' + profilePicImg + ')' }} />
 				<div className= "displayName"> {displayName} </div> 
-				<img src= {Envelope} className= "emailMe"/> 
+				<img src= {Envelope} className= "emailMe" alt="emailMe"/> 
 			</div>
 			{/* <div className='back-2'>
 				<button className ="EditProfBtn" type="button" name="PrefButton"> Edit Prefrences </button>

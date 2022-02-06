@@ -11,16 +11,8 @@ let eventFilter = '';
 function App() {
 	const navigate = useNavigate();
 
-	//var searchOption, filterOption;
 	const db = getFirestore();
-	const [articles, setArticles] = useState([]);
-	const [searchField, setSearchField] = useState('');
 	const [eventListState, setEventListState] = useState([]);
-
-	function handleSearchByChange(ev) {
-		let temp = ev.target.value;
-		setSearchField(temp);
-	}
 
 	useEffect(() => {
 		const q = query(collection(db, 'events'));
@@ -33,7 +25,6 @@ function App() {
 				eventTemp.id = doc.id;
 				eventListTemp.push(eventTemp);
 			});
-			console.log('ping!');
 			setEventListState(eventListTemp);
 		});
 

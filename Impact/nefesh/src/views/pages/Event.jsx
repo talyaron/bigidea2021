@@ -10,15 +10,11 @@ function Event() {
 	const [eventData, setEventData] = useState([]);
 	const [EventFilter] = useState([{ id: 0, field: 'startTime', label: 'Start', type: 'timestamp'}, { id: 1, field: 'endTime', label: 'End', type: 'timestamp'}, { id: 2, field: 'address', label: 'Address', type: 'location'}]);
 	const [tags, setTags] = useState([]);
-	//const [addressInfo, setAddressInfo] = useState([]);
 	const [contactInfo, setContactInfo] = useState([]);
 	const [orgWebsite, setOrgWebsite] = useState([]);
 	const [websiteValidity, setWebValidity] = useState(false);
-	//const [imageValidity, setImgValidity] = useState(false);
 	let { eventID } = useParams();
-	//let navigate = useNavigate();
 	const [image, setImage] = useState();
-	//const [filterObjectData,setfilterData]=useState([]);
 	useEffect(() => {
 		try {
 			setWebValidity(false);
@@ -27,7 +23,7 @@ function Event() {
 			getDoc(eventRef).then((docSnap) => {
 				eventObj = docSnap.data();
 
-				let { startTime, endTime, address } = eventObj;
+				let { startTime, endTime, /*address*/ } = eventObj;
 				if (startTime) startTime = new Date(startTime.seconds * 1000).toJSON();
 				if (endTime) endTime = new Date(endTime.seconds * 1000).toJSON();
 				//if (address) address = Object.entries(address);
