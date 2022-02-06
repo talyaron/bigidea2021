@@ -5,7 +5,6 @@ import { db } from '../../scripts/firebase/config';
 import ImportImgs from '../template/ImportImgs';
 import { useNavigate } from 'react-router-dom';
 
-let i = 0;
 let statesSubmitted = { views: 0, startTime: '', endTime: '' };
 let page = 'ArticleCreation';
 

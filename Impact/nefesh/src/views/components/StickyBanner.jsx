@@ -22,7 +22,6 @@ function StickyBanner({role}) {
 	]
 
 	navList = navList.filter(navItem => navItem.role.some(urole => [role ? role : "guest", role ? "member" : null, "everyone"].includes(urole)));
-	console.log(navList);
 
 	function handleMenu() {
 		let temp = !navToggle;

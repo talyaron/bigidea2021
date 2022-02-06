@@ -6,7 +6,7 @@ function HandleImportImg(props) {
 	const allInputs = { imgUrl: '' };
 	const storage = getStorage();
 	const [imageAsFile, setImageAsFile] = useState('');
-	const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+	const [/*imageAsUrl*/, setImageAsUrl] = useState(allInputs);
 	const [userID, setUserID] = useState('TempUserID');
 	const [currentUsePage, setCurrentUsePage] = useState('TempPageUse');
 	const uid = function () {

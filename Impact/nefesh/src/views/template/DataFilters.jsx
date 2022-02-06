@@ -14,13 +14,11 @@ const filters = {};
 
 function DataFilters({ setEventListState }) {
   const db = getFirestore();
-  const [hidden, setHidden] = useState(false);
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
 		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
 		getDoc(tagsRef).then((tagsDB) => {
-			console.log(tagsDB.data().tagArray);
 			setTags(tagsDB.data().tagArray);
 		});
 	}, []);
