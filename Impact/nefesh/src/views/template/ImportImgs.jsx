@@ -46,8 +46,8 @@ function HandleImportImg(props) {
 	}
 
 	return(
-		<label htmlFor="articleImg" onChange={onTrigger} className='border-ArticleCreation'>
-			<input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif'/>
+		<label htmlFor="articleImg"  id='input_ArticleImg' className='border-ArticleCreation'>
+			<input type='file' name='articleImg'  accept='.jpg, .png, .gif, .tif'  onChange={onTrigger}/>
 			Upload an Image<img src={Icon} alt='upload'/>
 		</label>
 	)
