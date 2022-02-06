@@ -1,4 +1,6 @@
 import "../../styles/page/ContactUs.css";
+import Envelope from '../../assets/Images/NewIcons/email.svg'
+import Phone from '../../assets/Images/NewIcons/phone.svg'
 
 import { useEffect, useState} from "react";
 
@@ -18,19 +20,16 @@ function ContactUs(props) {
     console.log(mailTo);
   }, [mailTo, props]);
 
+  function handleEmail(){
+    window.location = "mailto:Nefesh@nefesh.com?subject=Contacting Creators!";
+  }
+
   return (
-    <div>
-      <div className="head">Contact us at:</div>
-      <div className="box-1">
-        <div className="phoneNum">Phone number: ###-###-####</div>
-      </div>
-      <div className="box-1">
-        <a
-          href="mailto:Nefesh@nefesh.com?subject=Contacting Creators!&body=Hi! I wanted to contact you to tell you that (type here)"
-          className="email">
-          Click here to send us an email!
-        </a>
-      </div>
+    <div className="back-color">
+      <div className="head">About us</div>
+      <div className="line"> </div>
+      
+      
       {userIsOle? (
       <div className="apply">
         Apply for an organizational profile: &nbsp;
@@ -44,15 +43,33 @@ function ContactUs(props) {
       </div>) : (null) }
       <div className="mission">
         <span className="mishead"> Our Mission </span>
-        <br />
+        <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
         commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
         velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        mollit anim id est laborum.</p>
       </div>
+      <div className="head sp">Contact us</div>
+      <div className="line"> </div>
+
+      <div className="position">
+        <div className = "btn">
+          <img src = {Phone}/> &nbsp; #########
+        </div>
+        <div className="btn" onClick = {handleEmail}> 
+          <img src= {Envelope}/> Email Us
+        </div>
+      </div>
+
+    
+        
+        <div className="head sp">Request to be a Host</div>
+        <div className="line"> </div>
+      <div className="btns"> <div className = "btn">Ask to be A Host</div> </div>
+      
     </div>
   );
 }
