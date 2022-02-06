@@ -35,6 +35,8 @@ function ContactUs(props) {
       </div>
       <div className="head sp">Contact us</div>
         <div className="line"> </div>
+        <div className="head sp">Request to be a Host</div>
+        <div className="line"> </div>
 
       
     </div>
