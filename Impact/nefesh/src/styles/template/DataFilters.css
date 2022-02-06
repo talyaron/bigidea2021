@@ -61,10 +61,6 @@
     background-color: rgb(0, 149, 255);
 }
 
-.filterBtn:focus{
-    background-color: blue;
-    color: white;
-}
 .filterBtn_cont{
     max-height: 35px;
     margin-left: 5px;
