@@ -92,7 +92,7 @@ function App() {
 									</div>
 									<div id='Views'>
 										<div className="tagGroup">
-										{event.tags.slice(0, 5).map((e) => (
+										{event.tags.map((e) => (
 											<div className='tag'>{e}</div>
 										))}
 										</div>

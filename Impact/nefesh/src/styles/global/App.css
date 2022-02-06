@@ -91,15 +91,15 @@ body {
 	background: var(--Blue1);
 	border: 1px solid var(--Grey);
 	box-sizing: border-box;
-	border-radius: 10px;
+	border-radius: 12px;
 	color: var(--Blue6);
-	padding: 3px;
+	padding: 1px 8px;
 	text-align: center;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 12px;
 	line-height: 15px;
-	margin: 3px;
+	margin: 1.5px;
 }
 
 html {
