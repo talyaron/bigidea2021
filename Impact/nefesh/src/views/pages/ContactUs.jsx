@@ -20,16 +20,27 @@ function ContactUs(props) {
     console.log(mailTo);
   }, [mailTo, props]);
 
+  function handleEmail(){
+    console.log("HELLOOOOOOOOOOO");
+  }
+
   return (
     <div className="back-color">
       <div className="head">About us</div>
       <div className="line"> </div>
       
-        <img src = {Phone} className = "phoneNum" />
+      <div className = "phoneNum">
+      <img src = {Phone}/>#########
+
+      </div>
+      
       
         
+      <div className="emailMe" onClick = {handleEmail}> 
+      <img src= {Envelope}/> Email Us</div>
+    
+
       
-      <img src= {Envelope} className= "emailMe"/>
       
       
 

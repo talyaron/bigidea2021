@@ -1,6 +1,7 @@
 
   .emailMe
   {
+    
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -85,6 +86,7 @@
   .sp{
     margin-top: 1%;
   }
+  
   .back-color{
     background-color: #F7FBFF;
     margin-left: 3%;
@@ -100,13 +102,7 @@
     margin-bottom: 1.5%;
     width: 70%;
   }
-  .box-1{
-    border: 1px black solid;
-    margin: 10px;
-    text-align: center;
-    border-radius: 15px 15px 15px 15px;
-    background-color: #e4e8ec;
-  }
+  
   .apply{
     text-align: center;
     font-size: 20px;
