@@ -1,4 +1,6 @@
 import "../../styles/page/ContactUs.css";
+import Envelope from '../../assets/Images/NewIcons/email.svg'
+import Phone from '../../assets/Images/NewIcons/phone.svg'
 
 import { useEffect, useState} from "react";
 
@@ -19,9 +21,31 @@ function ContactUs(props) {
   }, [mailTo, props]);
 
   return (
-    <div className="back-color">
-      <div className="head">About us</div>
-        <div className="line"> </div>
+    <div>
+      <div className="head">Contact us at:</div>
+      <div className="box-1">
+        <div className="phoneNum">Phone number: ###-###-####</div>
+        <img src = {Phone} className = "phoneNum" />
+      </div>
+      <div className="box-1">
+        
+      
+      <img src= {Envelope} className= "emailMe"/>
+      
+      
+
+      </div>
+      {userIsOle? (
+      <div className="apply">
+        Apply for an organizational profile: &nbsp;
+        <div className="apbutton">
+          <div className="box-1">
+            <a href={`${mailTo}`} target="_blank" rel="noreferrer">
+              Click here to apply
+            </a>
+          </div>
+        </div>
+      </div>) : (null) }
       <div className="mission">
         <span className="mishead"> Our Mission </span>
         <p>
@@ -38,7 +62,7 @@ function ContactUs(props) {
         <div className="head sp">Request to be a Host</div>
         <div className="line"> </div>
 
-      
+      <div className = "organization">Be An Organization</div>
     </div>
   );
 }
