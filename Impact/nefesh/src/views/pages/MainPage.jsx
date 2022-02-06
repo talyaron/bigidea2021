@@ -70,13 +70,13 @@ function App() {
 		<div>
 			<DataFilters setEventListState={setEventListState} />
 			<div className='userInterfaceContainer'>
-				<form className='filterEvents'>
+				{/* <form className='filterEvents'>
 					<label htmlFor='eventFilterType'>Sort Events:</label>
 					<select name='eventFilterType' id='eventFilterType' onChange={changeEventFilter}>
 						<option value='newest'>Upcoming</option>
 						<option value='recent'>Freshly Added</option>
 					</select>
-				</form>
+				</form> */}
 				<div className='eventMapContainer'>
 					{eventListState.map((event) => {
 						return (
