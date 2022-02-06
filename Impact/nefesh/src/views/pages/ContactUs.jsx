@@ -30,12 +30,6 @@ function ContactUs(props) {
       <div className="line"> </div>
       
       
-
-      
-      
-      
-
-      
       {userIsOle? (
       <div className="apply">
         Apply for an organizational profile: &nbsp;
@@ -62,10 +56,10 @@ function ContactUs(props) {
       <div className="line"> </div>
 
       <div className="position">
-        <div className = "button mar">
+        <div className = "btn">
           <img src = {Phone}/> &nbsp; #########
         </div>
-        <div className="button" onClick = {handleEmail}> 
+        <div className="btn" onClick = {handleEmail}> 
           <img src= {Envelope}/> Email Us
         </div>
       </div>
@@ -74,7 +68,7 @@ function ContactUs(props) {
         
         <div className="head sp">Request to be a Host</div>
         <div className="line"> </div>
-      <div className="position2"> <div className = "button">Be A Host</div> </div>
+      <div className="btns"> <div className = "btn">Ask to be A Host</div> </div>
       
     </div>
   );
