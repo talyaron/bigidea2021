@@ -25,7 +25,7 @@ export function convertToDefaultTime(time) {
 	return `${time.toDateInputValue()}T${hours}:${minutes}`;
 }
 
-function EditSavedArticles(props) {
+function EditPublishedEvent(props) {
 	const navigate = useNavigate()
 	const [tagsState, setTagsState] = useState([]);
 	const inputRef = useRef();
@@ -38,7 +38,7 @@ function EditSavedArticles(props) {
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
 
 	useEffect(async () => {
-		const eventRef = doc(db, "users", props.userID, "Saved", eventID);
+		const eventRef = doc(db, "users", props.userID, "Published", eventID);
 		let eventDB = await getDoc(eventRef);
 		const eventDBTemp = eventDB.data();
 		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
@@ -114,23 +114,7 @@ function EditSavedArticles(props) {
 			endTime: new Date(endTime),
 			maxCapacity,
 		});
-		deleteDoc(doc(db,"users",props.userID,"Saved",eventID))
-		alert("Event Published")
-		navigate("/ProfilePage")
-	}
-	function saveDraft() {
-		let {
-			title,
-			hostName,
-			coverImage,
-			views,
-			startTime,
-			endTime,
-			maxCapacity,
-			article
-		} = statesSubmitted;
-		coverImage = httpUrl;
-		setDoc(doc(db, "users", props.userID, "Saved", eventID), {
+		setDoc(doc(db,"users",props.userID,"Published",eventID), {
 			title,
 			coverImage,
 			article,
@@ -150,13 +134,13 @@ function EditSavedArticles(props) {
 			creatorOrg: props.userOrg,
 			views,
 			dateAdded: new Date(),
-			isPublished: false,
+			isPublished: true,
 			startTime: new Date(startTime),
 			endTime: new Date(endTime),
 			maxCapacity,
 		});
+		alert("Event Published")
 		navigate("/ProfilePage")
-		alert("Event Saved!")
 	}
 
 	function changeState(ev) {
@@ -338,11 +322,8 @@ function EditSavedArticles(props) {
 						</div>
 					</div>
 						<div className="buttonContainer23">
-							<button className="Dragon42 shadow" onClick={saveDraft}>
-								Save Draft
-							</button>
 							<button className="Dragon43 shadow" onClick={submitArticle}>
-								Submit Article
+								Submit Article Changes
 							</button>
 						</div>
 					</div>
@@ -352,4 +333,4 @@ function EditSavedArticles(props) {
 	);
 }
 
-export default EditSavedArticles;
+export default EditPublishedEvent;

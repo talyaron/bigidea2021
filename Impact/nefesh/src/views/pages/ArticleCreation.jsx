@@ -59,7 +59,31 @@ function ArticleCreation(props) {
 			});
 			console.log(docRef.id)
 			addDoc(collection(db, 'users',props.userID,"Published"), {
-				id:docRef.id
+				id:docRef.id,
+				title,
+				coverImage: image,
+				article: text,
+				hostName,
+				address: {
+					streetName: streetName,
+					houseNumber: houseNumber,
+					city: city,
+				},
+				contactInfo: {
+					phone,
+					email,
+					website,
+				},
+				tags: selectedTagArray,
+				creatorUID: props.userID,
+				creatorOrg: props.userOrg,
+				views,
+				dateAdded: new Date(),
+				isPublished: true,
+				startTime: new Date(startTime),
+				endTime: new Date(endTime),
+				maxCapacity,
+				currentCapacity: maxCapacity,
 			});
 			alert('Event Submitted!')
 			navigate('/MainPage')
