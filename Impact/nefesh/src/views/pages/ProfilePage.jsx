@@ -168,39 +168,21 @@ function ProfilePage(props) {
 
 
 			{isOpen && <EditProfilePopUp
-      content={<>
-        {editing ? <div className='profileEditor'	>
-				<div className="editProfile">
-					<input type="text" className="bioField" name="newName" placeholder= "Enter New Name" /><br />
-					<ImportImgs userData={userData} placeholder= "Enter New Image" className= "choosePictureButton" pageName={page} parentCallBack={callBackFunction} /><img  src={Upload}/>
-					<input type="text" className="bioField" placeholder= "Enter New Bio" name="newBio"/>
-					<div className='center3' name="editbtn" onClick={changeProfile}> Submit Changes</div>
+				content={<>
+					{editing ? <div className='profileEditor'	>
+						<div className="editProfile">
+							<input type="text" className="bioField" name="newName" placeholder="Enter New Name" /><br />
+							<ImportImgs userData={userData} placeholder="Enter New Image" className="choosePictureButton" pageName={page} parentCallBack={callBackFunction} /><img src={Upload} />
+							<input type="text" className="bioField" placeholder="Enter New Bio" name="newBio" />
+							<div className='center3' name="editbtn" onClick={changeProfile}> Submit Changes</div>
 
-				</div>
-
-
-			</div> : null}
-      </>}
-      handleClose={editProfile}
-    />}
-	
-			
-
-			<div className="SavedEvents">
-				<h3 className="EventParent2">Saved Events:</h3>
-				{savedArticles.map((event, index) => {
-					return (
-						<div key={index}>
-							Edit Events:
-							<div
-								className="nametag card card--link"
-								onClick={() => handleRoute(`/ProfilePage/SavedEvents/Edit/${event.id}`)}>
-								{event.title}</div>
-							<button onClick={() => handleRoute(`/ProfilePage/SavedEvents/Preview/${event.id}`)}>Preview</button>
 						</div>
-					);
-				})}
-			</div>
+
+
+					</div> : null}
+				</>}
+				handleClose={editProfile}
+			/>}
 		</div>
 
 
