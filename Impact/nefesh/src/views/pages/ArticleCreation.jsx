@@ -67,7 +67,7 @@ function ArticleCreation(props) {
 	function saveDraft() {
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
-		addDoc(collection(db, 'events'), {
+		addDoc(collection(db, "users",props.userID,"Saved"), {
 			title,
 			coverImage: image,
 			article: text,
