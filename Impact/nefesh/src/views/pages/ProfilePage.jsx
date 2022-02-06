@@ -142,7 +142,12 @@ function ProfilePage(props) {
 		setIsBioOpen(!isBioOpen);
 		setEditing(true);
 	}
-
+	function navigateSaved(){
+		handleRoute("SavedEvents")
+	}
+	function navigatePublished(){
+		handleRoute("PublishedEvents")
+	}
 	return (
 		<div className="wholePage">
 			<div className='back-1'>
@@ -151,19 +156,13 @@ function ProfilePage(props) {
 				<div className="displayName"> {displayName} </div>
 				<img src={Envelope} className="emailMe" alt="emailMe" />
 			</div>
-			{/* <div className='back-2'>
-				<button className ="EditProfBtn" type="button" name="PrefButton"> Edit Prefrences </button>
-				<h2 className='center'> Prefrences </h2> 
-				<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </p>
-				 
-			</div> */}
 			<div className='back-3'>
 				<div className='center'> Bio </div>
 				<div className="finalBio">{userBio}</div>
 
 			</div>
-			<button>Saved Articles</button>
-			<button>Published Articles</button>
+			<button onClick={navigateSaved}>Saved Articles</button>
+			<button onClick={navigatePublished}>Published Articles</button>
 			<footer className='back-2 foot'>
 
 			</footer>

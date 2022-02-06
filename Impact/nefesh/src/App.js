@@ -20,9 +20,9 @@ import AdminPage from './views/pages/AdminPage';
 import StickyBanner from './views/components/StickyBanner'
 import NavTopBar from "./views/components/NavTopBar";
 import Event from './views/pages/Event';
-import SavedEvent from './views/template/SavedEvent';
 import EditSavedEvent from'./views/template/EditSavedArticles'
-
+import SavedEvents from "./views/template/SavedEvents";
+import SavedEvent from "./views/template/SavedEvent"
 
 let role;
 const auth = getAuth();
@@ -119,7 +119,8 @@ function App() {
 						<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
 						<Route path='AdminPage' element={<AdminPage />}/>
-            <Route path='ProfilePage/SavedEvents/Preview/:eventID' element={<Event userID={userID} userOrg={userState.userOrg} />} />
+            <Route path='ProfilePage/SavedEvents/Preview/:eventID' element={<SavedEvent userID={userID} userOrg={userState.userOrg} />} />
+            <Route path='ProfilePage/SavedEvents' element={<SavedEvents userID={userID} userOrg={userState.userOrg} />} />
             <Route path='ProfilePage/SavedEvents/Edit/:eventID' element={<EditSavedEvent userID={userID} userOrg={userState.userOrg}  />} />
 					</Routes>
 					

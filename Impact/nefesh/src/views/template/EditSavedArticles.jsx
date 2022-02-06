@@ -115,6 +115,7 @@ function EditSavedArticles(props) {
 			maxCapacity,
 		});
 		deleteDoc(doc(db,"users",props.userID,"Saved",eventID))
+		alert("Event Published")
 		navigate("/ProfilePage")
 	}
 	function saveDraft() {
@@ -149,12 +150,13 @@ function EditSavedArticles(props) {
 			creatorOrg: props.userOrg,
 			views,
 			dateAdded: new Date(),
-			isPublished: true,
+			isPublished: false,
 			startTime: new Date(startTime),
 			endTime: new Date(endTime),
 			maxCapacity,
 		});
 		navigate("/ProfilePage")
+		alert("Event Saved!")
 	}
 
 	function changeState(ev) {
