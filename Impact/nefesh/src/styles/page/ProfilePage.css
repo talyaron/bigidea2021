@@ -2,22 +2,25 @@
 .profileEditor{
     padding-left: 2.4em;
     width: 100%;
+    text-align: center;
+    background-color: #E7F2FF;
+    width: 80%;
+    font-family: Roboto;
 }
 #profilePic{
     height: 150px;
     width: 150px;
     border-radius: 100px;
-    top: 86px;
-    left: 105px;
+    align-self: center;
     background-image: none;
     background-color: blue;
     border: 2px solid #938F99;
     margin-top: 15px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     background-size: contain;
     background-repeat: no-repeat;
+    padding: 10px;
     background-size: cover;
 }
 #prefButton{
@@ -47,19 +50,19 @@
     padding: 10px;
 }
 .back-3{
-    position: absolute;
+    position: fixed;
     width: 251px;
     height: 171px;
-    left: 50px;
-    top: 310px;
+    left: 39%;
+    top: 390px;
     background: #E7F2FF;
     border-radius: 20px;
 }
 .EditProfBtn1{
     margin-top: 10px;
     margin-left: 10px;
-    background-color: #9CCAFF;
-    color: black;
+    color: #0077cc;
+    background-color: #6CB1E2;
     border: none;
     border-radius: 140px 140px 140px 140px;
     height: 29pt;
@@ -113,6 +116,9 @@
 }
 .center2{
     text-align: center;
+    font-family: Roboto;
+    background-color: #E7F2FF;
+    color: black;
     
 }
 .center3{
@@ -121,6 +127,8 @@
    display: block;
    margin-top:10px;
    border-radius: 100px;
+   text-align: left;
+   border-radius: 10px;
    
 }
 
@@ -148,15 +156,15 @@ color: #000000;
 
 .emailMe
 {
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: row; */
     align-items: center;
+   
     padding: 6px 16px 6px 8px;
     
-    position: absolute;
     width: 127px;
     height: 32px;
-    left: 100px;
+    left: 43%;
     top: 256px;
     
     background: #FFFFFF;
@@ -167,12 +175,10 @@ color: #000000;
 
 .displayName
 {
-    position: absolute;
-left: 25%;
-right: 17.78%;
-top: 230px;
-bottom: 64.92%;
-
+position: relative;
+top: 20%;
+bottom: 500.92%;
+padding: 10px;
 /* material-theme/headline3 */
 font-family: Roboto;
 font-style: normal;
@@ -180,9 +186,38 @@ font-weight: normal;
 font-size: 28px;
 line-height: 36px;
 /* or 129% */
-display: flex;
 align-items: center;
 text-align: center;
 
 color: #000000;
+align-self: center;
 }
+
+.choosePictureButton{
+    color: red;
+    background: rgba(207, 228, 255, 0.4);
+}
+
+
+.editProfile{
+    text-align: left;
+    /* background-color: ; */
+    width: 60%;
+    padding: 10px;
+    border-radius: 20px;
+    
+
+}
+
+.bioField{
+    background-color: rgba(207, 228, 255, 0.4);
+    border: none;
+    color: #000000;
+    
+}
+
+.bioField, ::placeholder{
+
+    color: #000000;
+}
+

@@ -6,7 +6,8 @@ import EditProfilePopUp from '../template/EditProfilePopUp';
 import ImportImgs from '../template/ImportImgs'
 import EditBioPopUp from '../template/EditBioPopUp';
 import EditPic from '../../assets/Images/NewIcons/edit.svg';
-import Envelope from '../../assets/Images/NewIcons/email.svg'
+import Envelope from '../../assets/Images/NewIcons/email.svg';
+import Upload from '../../assets/Images/NewIcons/upload.svg'
 let page = 'ProfilePage';
 
 
@@ -168,35 +169,20 @@ function ProfilePage(props) {
 			{isOpen && <EditProfilePopUp
       content={<>
         {editing ? <div className='profileEditor'	>
-				<h4 className='center2'> Edit Profile Here </h4>
-				<form onSubmit={changeProfile}>
-					Enter New Name: <input type="text" name="newName" /><br />
-					Enter New Image : <ImportImgs userData={userData} pageName={page} parentCallBack={callBackFunction} />
-					Enter New Email: <input type="text" name="newEmail" /><br />
-					Enter New Bio: <input type="text" name="newBio"/>
-					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
+				<div className="editProfile">
+					<input type="text" className="bioField" name="newName" placeholder= "Enter New Name" /><br />
+					<ImportImgs userData={userData} placeholder= "Enter New Image" className= "choosePictureButton" pageName={page} parentCallBack={callBackFunction} /><img  src={Upload}/>
+					<input type="text" className="bioField" placeholder= "Enter New Bio" name="newBio"/>
+					<div className='center3' name="editbtn" onClick={changeProfile}> Submit Changes</div>
 
-				</form>
+				</div>
 
 
 			</div> : null}
       </>}
       handleClose={editProfile}
     />}
-	{isBioOpen && <EditBioPopUp
-      content={<>
-        {editing ? <div className='profileEditorBio'	>
-				<form onSubmit={changeBio}>
-					Enter New Bio: <input type="text" name="newBio"/>
-					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
-
-				</form>
-
-
-			</div> : null}
-      </>}
-      handleClose={editBio}
-    />}
+	
 			
 
 		</div>

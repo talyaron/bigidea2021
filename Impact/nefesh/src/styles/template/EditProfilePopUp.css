@@ -18,17 +18,17 @@
   
   .Edit-close-icon {
     content: 'x';
-    position:fixed;
+    border: none;
+    position: fixed;
     background: Var(--Light-D2);
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    line-height: 20px;
+    line-height: 18px;
     text-align: center;
-    border: 1px solid Var(--Grey);
     font-size: 20px;
     z-index: 99;
     margin-left: 400px;
+  top: 24vh;
+    left: -40px;
+
   }
   .profileEditor{
     width: fit-content;
