@@ -22,7 +22,7 @@
     color: white;
     border-radius: 10px;
     padding: 3px;
-    margin-left: 3px;
+    margin-left: 10px;
 }
 
 .filterBtn:hover{
@@ -31,7 +31,7 @@
     color: #1d86d2;
     border-radius: 10px;
     padding: 3px;
-    margin-left: 3px;
+    margin-left: 10px;
 }
 
 .filterBtn:active{
@@ -40,7 +40,7 @@
     color: #1d86d2;
     border-radius: 10px;
     padding: 3px;
-    margin-left: 3px;
+    margin-left: 10px;
 }
 
 .filterBtn:focus{
@@ -49,7 +49,7 @@
     color: #1d86d2;
     border-radius: 10px;
     padding: 3px;
-    margin-left: 3px;
+    margin-left: 10px;
 }
 
 .filterBanner{
