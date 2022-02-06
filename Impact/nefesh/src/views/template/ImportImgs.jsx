@@ -17,14 +17,14 @@ function HandleImportImg(props) {
 	let UniqueId;
 
 	useEffect(() => {
-		UniqueId = uid();
+		
 		let tempUID = props.userData.userID;
 		setUserID(tempUID);
 		let tempPN = props.pageName;
 		setCurrentUsePage(tempPN);
 	}, []);
 
-	let storageRef = ref(storage, `Images/${userID}/${currentUsePage}/${UniqueId}+${imageAsFile.name}`);
+	
 
 	async function onTrigger(ev) {
 		ev.preventDefault();
@@ -33,8 +33,10 @@ function HandleImportImg(props) {
 		if (imageAsFile === '') {
 			console.error(`not an image, the image file is a ${typeof imageAsFile}`);
 		}
+		UniqueId = uid();
+		let storageRef = ref(storage, `Images/${userID}/${currentUsePage}/${UniqueId}${image.name}`);
 		uploadBytes(storageRef, image).then((snapshot) => {
-			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${UniqueId}+${imageAsFile.name}`)).then((httpRef) => {
+			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${UniqueId}${image.name}`)).then((httpRef) => {
 				setImageAsUrl(httpRef);
 				props.parentCallBack(httpRef);
 				console.log(httpRef);
@@ -45,7 +47,7 @@ function HandleImportImg(props) {
 
 	return(
 		<label htmlFor="articleImg" onChange={onTrigger} className='border-ArticleCreation'>
-			<input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif' hidden/>
+			<input type='file' name='articleImg' id='input_ArticleImg' accept='.jpg, .png, .gif, .tif'/>
 			Upload an Image<img src={Icon} alt='upload'/>
 		</label>
 	)
