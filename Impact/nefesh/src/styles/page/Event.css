@@ -241,13 +241,12 @@
     padding-top: 20px;
     padding-bottom: 40px;
     position: relative;
-    left: 40px;
-    width: 90%;
+    width: 100%;
     row-gap: 10px;
-    display: flex;
+    /* display: flex;
     flex-flow: row wrap;
-    align-items: center;
-    align-content: center;
+    align-items:center;
+    align-content:center; */
     background-color: var(--Light-Page);
     text-align: center;
     font: Roboto;
@@ -255,6 +254,9 @@
 
 .tagTitle_Event{
     margin: 10px;
+    align-self: center;
+    position: relative;
+    left: 100vw;
 }
 
 .tagBox_Event{
@@ -269,7 +271,7 @@
 .contactUsContainer_Event{
     display: inline-block;
     width: 100%;
-    height: 180px;
+    height: 0px;
     /* margin-top: -240px;
     margin-bottom: 70px; */
     /* margin-bottom: 30px; */
@@ -281,10 +283,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 30px;
     position: relative;
-    bottom: 70vh;
-    padding-left: 30vw;
+    padding-left: 70%;
+    bottom: 5vh;
 }
 
 .addeventatc{
@@ -306,4 +307,42 @@
     /* font-size: 3.5vw; */
     box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
     filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+}
+.phoneNumero{
+    width: 41px;
+    height: 41px;
+    border-radius: 10px;
+}
+.email2{
+    width: 41px;
+    height: 41px;
+    border-radius: 10px;
+}
+.orgsite{
+    width: 41px;
+    height: 41px;
+    border-radius: 10px;
+}
+.emailimg{
+    max-width: 35px;
+    max-height: 35px;
+    border-radius: 20px;
+    position: relative;
+    right: 4.5px;
+}
+.phoneimg{
+    max-width: 35px;
+    max-height: 35px;
+    border-radius: 20px;
+    position: relative;
+    right: 4.5px;
+    bottom: 1px;
+}
+.webimg{
+    max-width: 35px;
+    max-height: 35px;
+    border-radius: 20px;
+    position: relative;
+    right: 5px;
+    bottom: 1px;
 }

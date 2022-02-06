@@ -110,11 +110,20 @@ function Event() {
 		<div className='mainContainer_Event'>
 			{useScript('https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js')}
 			<img className='coverImage' src={image} alt='Event'></img>
+			<div className='contactUsContainer_Event'>
+				<div className='contactUsContent_Event'>
+				<button className='orgsite' href={websiteValidity ? orgWebsite : null}> <img className='webimg' src='https://static.thenounproject.com/png/1614677-200.png'></img>{/*websiteValidity ? orgWebsite : 'There is no link'*/}</button>
+					<button className='phoneNumero'><img className='phoneimg' src='https://media.istockphoto.com/vectors/phone-icon-call-application-symbol-green-round-button-flat-interface-vector-id1250911025?k=20&m=1250911025&s=170667a&w=0&h=1aZJUHR8KVcvWKyVaufUdR8yN_r5VqTCfyGNx8pdOAY='></img>{/*contactInfo.phone*/}</button>
+					<button rel="noreferrer" className='email2' href={`mailto: ${contactInfo.email} ?subject=Event!&body=Hi! I wanted to contact you to tell you that (type here)`} target='_blank'>
+					<img className='emailimg' src='https://media.istockphoto.com/vectors/mail-post-envelope-icon-shape-postage-letter-logo-symbol-email-sign-vector-id1189293453?k=20&m=1189293453&s=170667a&w=0&h=0qLb01CW7QhspfsfOBzXvzAz0rRB8jT-mMytGkgsqP0='></img>
+					</button>
+				</div>
+			</div>
 			<div className='eventData_Event'> 
 			<div key="0">
 				<div className='Titlecard'>
 				<div key="1" className='title'> { getField(eventData, "title") } </div>
-				<h3 key="2" className='username_Event'> { getField(eventData, "hostName") } </h3>
+				<h3 key="2" className='username_Event'>Hosted by: { getField(eventData, "hostName") } </h3>
 				</div>
 				</div>
 				
@@ -148,21 +157,13 @@ function Event() {
 				<button className='shareButton button_Event'> Share </button>
 			</div>
 
-			<div className='contactUsContainer_Event'>
-				<div className='contactUsContent_Event'>
-					<button className='phoneNumero'>{contactInfo.phone}</button>
-					<button rel="noreferrer" className='email2' href={`mailto: ${contactInfo.email} ?subject=Event!&body=Hi! I wanted to contact you to tell you that (type here)`} target='_blank'>
-					<button className='orgsite' href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</button>
-					</button>
-				</div>
-			</div>
 			<div className='eventTags_Event'>
 				<h3 className='tagTitle_Event'></h3>
 				{tags.map((tag, index) => {
 					return <tag key={`tag-${index}`}>{tag}</tag>;
 				})}
 			</div>
-			
+			<h3 key="2" className='username_Event'>Posted by: { getField(eventData, "hostName") } </h3>
 		</div>
 	);
 }
