@@ -1,15 +1,17 @@
 .menuList_Container{
 	position: fixed;
-    background-color: var(--Blue2);
+    background-color: var(--Light);
     display: flex;
     flex-direction: column;
     border-top-left-radius: 35px;
-    bottom: 71px;;
+    bottom: 70px;;
     width: 50%;
     left: 50%;
     border-bottom: none;
 	animation: move .2s linear 0s 1 alternate forwards;
-    
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    z-index: 0 !important;
+
 
 }
 
@@ -78,6 +80,7 @@
     margin-inline-end: 0px;
     border-top-left-radius: 35px;
     background-color: var(--Light-blue);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
     
 }
 
@@ -92,7 +95,7 @@
 	background: var(--Light-blue);
     height: 25px;
     width: 100%;
-    border-top-left-radius: 20px ;
+
     
 }
 
@@ -122,4 +125,8 @@
 .menuItem{
     border-radius: 35px;
     
+}
+
+#ProfilePage:hover{
+    border-top-left-radius: 35px;
 }
