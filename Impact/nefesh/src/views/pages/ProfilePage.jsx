@@ -211,7 +211,7 @@ function ProfilePage(props) {
                     <div className="btn" name="editbtn" onClick={changeProfile}>
                       Submit Changes
                     </div>
-                    <div className="btn" name="editbtn" onClick={changeProfile}>
+                    <div className="btn" name="editbtn" onClick={editProfile}>
                       Cancel
                     </div>
                   </div>
