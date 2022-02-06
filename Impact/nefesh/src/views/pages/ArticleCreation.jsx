@@ -30,44 +30,44 @@ function ArticleCreation(props) {
 	function submitArticle() {
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
-		try{
-		addDoc(collection(db, 'events'), {
-			title,
-			coverImage: image,
-			article: text,
-			hostName,
-			address: {
-				streetName: streetName,
-				houseNumber: houseNumber,
-				city: city,
-			},
-			contactInfo: {
-				phone,
-				email,
-				website,
-			},
-			tags: selectedTagArray,
-			creatorUID: props.userID,
-			creatorOrg: props.userOrg,
-			views,
-			dateAdded: new Date(),
-			isPublished: true,
-			startTime: new Date(startTime),
-			endTime: new Date(endTime),
-			maxCapacity,
-			currentCapacity: maxCapacity,
-		});
-		alert('Event Submitted!')
-		navigate('/MainPage')
-	} catch (err){
-		console.error(err)
-		alert('Invalid Fields. Make Sure you fill out all the fields',err)		
+		try {
+			addDoc(collection(db, 'events'), {
+				title,
+				coverImage: image,
+				article: text,
+				hostName,
+				address: {
+					streetName: streetName,
+					houseNumber: houseNumber,
+					city: city,
+				},
+				contactInfo: {
+					phone,
+					email,
+					website,
+				},
+				tags: selectedTagArray,
+				creatorUID: props.userID,
+				creatorOrg: props.userOrg,
+				views,
+				dateAdded: new Date(),
+				isPublished: true,
+				startTime: new Date(startTime),
+				endTime: new Date(endTime),
+				maxCapacity,
+				currentCapacity: maxCapacity,
+			});
+			alert('Event Submitted!')
+			navigate('/MainPage')
+		} catch (err) {
+			console.error(err)
+			alert('Invalid Fields. Make Sure you fill out all the fields', err)
 		}
 	}
 	function saveDraft() {
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
-		addDoc(collection(db, 'events'), {
+		addDoc(collection(db, "users",props.userID,"Saved"), {
 			title,
 			coverImage: image,
 			article: text,
@@ -114,7 +114,7 @@ function ArticleCreation(props) {
 			tempArray.push(temp);
 		}
 		setSelectedTagArray(tempArray);
-	
+
 	}
 	return (
 		<div id='ArtC_Header'>
@@ -126,9 +126,22 @@ function ArticleCreation(props) {
 					<input type='text' name='hostName' onChange={changeState} placeholder='Enter host/s name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<input type='text' name='city' onChange={changeState} placeholder='Enter city here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='number' name='houseNumber' onChange={changeState} placeholder='Enter building number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='number' name='maxCapacity' onChange={changeState} placeholder='Enter maximum capacity here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='number' name='phone' onChange={changeState} placeholder='Enter phone number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+					<input type='number' onKeyPress={(event) => {
+						if (!/[0-9]/.test(event.key)) {
+							event.preventDefault();
+						}
+					}} name='houseNumber' onChange={changeState} placeholder='Enter building number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+					<input type='number' onKeyPress={(event) => {
+						if (!/[0-9]/.test(event.key)) {
+							event.preventDefault();
+						}
+					}} name='maxCapacity' onChange={changeState} placeholder='Enter maximum capacity here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+					<input type='number'
+						onKeyPress={(event) => {
+							if (!/[0-9]/.test(event.key)) {
+								event.preventDefault();
+							}
+						}} name='phone' onChange={changeState} placeholder='Enter phone number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<div>Event Start Time:</div>
