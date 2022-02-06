@@ -19,15 +19,14 @@
   .Edit-close-icon {
     content: 'x';
     border: none;
-    position: fixed;
+    position: relative;
     background: Var(--Light-D2);
     line-height: 18px;
     text-align: center;
     font-size: 20px;
     z-index: 99;
-    margin-left: 400px;
-  top: 24vh;
-    left: -40px;
+    top: 24vh;
+    left: 160px;
 
   }
   .profileEditor{

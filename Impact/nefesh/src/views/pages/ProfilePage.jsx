@@ -161,11 +161,15 @@ function ProfilePage(props) {
 				<div className="finalBio">{userBio}</div>
 
 			</div>
-			<button onClick={navigateSaved}>Saved Articles</button>
-			<button onClick={navigatePublished}>Published Articles</button>
+
+ <div className= "buttonHolder">
+ 			<button className= "savedArticles" onClick={navigateSaved}>Saved Articles</button>
+			<button className= "publishedArticles" onClick={navigatePublished}>Published Articles</button>
 			<footer className='back-2 foot'>
+		
 
 			</footer>
+			</div>
 
 
 			{isOpen && <EditProfilePopUp
