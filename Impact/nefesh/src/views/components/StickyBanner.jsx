@@ -79,9 +79,10 @@ function StickyBanner({role}) {
 						<div className='menuList_Container'>
 							<ul className='menuList'>
 								{
-									navList.map(function (item) {
+									navList.map(function (item, i) {
 										return <li className='ListItemElement'>
 											<div
+												key={i}
 												className='menuItem'
 												onClick={() => {
 													handleMenu()  //this keeps hetting removed but it is needed to close the menu after selecting 
