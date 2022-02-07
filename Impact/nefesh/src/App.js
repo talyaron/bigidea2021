@@ -9,7 +9,8 @@ import ProfilePage from './views/pages/ProfilePage';
 import ContactUs from './views/pages/ContactUs';
 import ArticleCreation from './views/pages/ArticleCreation';
 import MainPage from './views/pages/MainPage';
-import LogoNew from './assets/Images/LogoNew.svg'
+import LogoNew from './assets/Images/LogoNew.svg';
+import LogoNewTwo from './assets/Images/NewIcons/tel-aviv-yafo.svg';
 
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
@@ -104,7 +105,7 @@ function App() {
 
 	return (
 		<div>
-	    <NavTopBar titleDisplay= {LogoNew} />
+	    <NavTopBar titleDisplay= {LogoNew} titleSecondDisplay= {LogoNewTwo}/>
 		<div className='container_AppMain'>
 		
 			{loggedIn ? (
