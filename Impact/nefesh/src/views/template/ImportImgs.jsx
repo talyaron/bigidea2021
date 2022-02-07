@@ -26,9 +26,14 @@ function HandleImportImg(props) {
 		setCurrentUsePage(tempPN);
 	}, []);
 
+	function handleClickImage(ev){
+		console.log(ev)
+	}
+
 	
 
 	async function onTrigger(ev) {
+		console.log(onTrigger)
 		ev.preventDefault();
 		const image = ev.target.files[0];
 		setImageAsFile((imageFile) => image);
@@ -49,7 +54,9 @@ function HandleImportImg(props) {
 
 	return(
 		<label htmlFor="articleImg"  id='input_ArticleImg' className='border-ArticleCreation'>
-			<input type='file' name='articleImg'  accept='.jpg, .png, .gif, .tif'  onChange={onTrigger}/>
+			<div className="btn" >ADD an Image</div>
+			<input type='file' id='articleImg'  accept='.jpg, .png, .gif, .tif' onClick={handleClickImage} onChange={onTrigger} className='hide'/>
+			
 			Upload an Image<img src={Icon} alt='upload'/>
 		</label>
 	)
