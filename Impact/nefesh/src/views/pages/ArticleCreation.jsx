@@ -170,6 +170,7 @@ function ArticleCreation(props) {
 								);
 							})}
 						</div>
+						</div>
 						<label htmlFor="unselected_tagBox">Unselected Tags:</label>
 						<div name='unselected_tagBox' className='unselected_tagBox'>
 							<div className='tagsMapContainer'>
@@ -186,7 +187,7 @@ function ArticleCreation(props) {
 								})}
 							</div>
 						</div>
-					</div>
+					
 					<div className='buttonContainer23'>
 						<button className='Dragon42 shadow' onClick={saveDraft}>
 							Save Draft
