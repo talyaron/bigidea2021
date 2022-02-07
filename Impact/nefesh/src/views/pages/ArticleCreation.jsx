@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/page/ArticleCreation.css';
-import { collection, addDoc, getDoc, doc ,setDoc} from 'firebase/firestore';
+import { collection, addDoc, getDoc, doc, setDoc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import ImportImgs from '../template/ImportImgs';
 import { useNavigate } from 'react-router-dom';
@@ -13,14 +13,23 @@ function ArticleCreation(props) {
 	const [httpUrl, setHttpUrl] = useState('');
 	const [tags, setTags] = useState([]);
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
-
-	useEffect(() => {
+	let tagsSorted=[]
+	useEffect(async () => {
 		document.getElementById('editor').addEventListener('input', inputEvt, false);
-		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
-		getDoc(tagsRef).then((tagsDB) => {
-			console.log(tagsDB.data().tagArray);
-			setTags(tagsDB.data().tagArray);
-		});
+		// const tagsRef = doc(db, 'tagCollection', 'tagDoc');
+		// getDoc(tagsRef).then((tagsDB) => {
+		// 	console.log(tagsDB.data().tagArray);
+		// 	setTags(tagsDB.data().tagArray);
+		// });
+		const tagsDB = await getDoc(doc(db, "tagCollection", "tagDoc"))
+
+		tagsSorted = tagsDB.data().tagArray;
+
+		tagsSorted.sort(function (a, b) {
+			return a.localeCompare(b); //using String.prototype.localCompare()
+		})
+
+		setTags(tagsSorted)
 	}, []);
 	function inputEvt(ev) {
 		let parse = 'text';
@@ -58,8 +67,8 @@ function ArticleCreation(props) {
 				currentCapacity: maxCapacity,
 			});
 			console.log(docRef.id)
-			addDoc(collection(db, 'users',props.userID,"Published"), {
-				id:docRef.id
+			addDoc(collection(db, 'users', props.userID, "Published"), {
+				id: docRef.id
 			});
 			alert('Event Submitted!')
 			navigate('/MainPage')
@@ -71,7 +80,7 @@ function ArticleCreation(props) {
 	function saveDraft() {
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
-		addDoc(collection(db, "users",props.userID,"Saved"), {
+		addDoc(collection(db, "users", props.userID, "Saved"), {
 			title,
 			coverImage: image,
 			article: text,
