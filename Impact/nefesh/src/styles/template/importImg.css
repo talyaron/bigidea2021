@@ -1,0 +1,10 @@
+
+#form_ImportImg {
+	display: flex;
+	justify-content: space-evenly;
+}
+#input_ArticleImg {
+    background-color: var(--Blue1);
+    font-family: Roboto;
+    width: 80%;
+}

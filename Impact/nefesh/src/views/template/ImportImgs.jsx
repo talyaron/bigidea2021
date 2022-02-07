@@ -1,7 +1,9 @@
+import '../../styles/template/importImg.css'
 //import { onSnapshot } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useEffect, useState } from 'react';
 import Icon from '../../assets/Images/NewIcons/upload.svg'
+
 
 function HandleImportImg(props) {
 	const allInputs = { imgUrl: '' };
