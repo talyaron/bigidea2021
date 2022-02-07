@@ -168,6 +168,11 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	height: 45px;
 	border-radius: 15px;
 }
+#input_ArticleImg {
+	background-color:var(--Blue1);
+	font-family: Roboto;
+	width: 80%;
+}
 .buttonContainer23 {
 	display: flex;
 	justify-content: space-around;
@@ -234,7 +239,10 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	display: flex;
 	justify-content: space-evenly;
 }
-
+#form_ImportImg {
+	display: flex;
+	justify-content: space-evenly;
+}
 .inline-block {
 	display: inline-block;
 }

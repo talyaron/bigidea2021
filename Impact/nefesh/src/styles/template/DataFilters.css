@@ -26,26 +26,34 @@
 }
 
 .filterBtn:hover{
+    max-height: 20px;
     background-color: #cfe4ff;
-    color: var(--Dark);
-    margin-left: 4px;
-    font-weight: bold;
+    color: var(--Grey);
+    border-radius: 10px;
+    padding: 6px;
+    margin-left: 10px;
+    margin-top: 5px;
 }
 
 .filterBtn:active{
-    background-color: var(--Blue6);
+    max-height: 20px;
+    background-color: #ffffff;
     color: var(--Blue1);
     border-radius: 10px;
-    margin-left: 5px;
+    padding: 6px;
+    margin-left: 10px;
+    margin-top: 5px;
 }
 
 .filterBtn:focus{
-    background-color: var(--Blue6);
+    max-height: 20px;
+    background-color: #ffffff;
     color: var(--Blue2);
     border-radius: 10px;
-    margin-left: 5px;
+    padding: 6px;
+    margin-left: 10px;
+    margin-top: 5px;
 }
-
 
 .filterBanner{
     text-align: center;
@@ -53,7 +61,10 @@
     color: var(--Blue1);
 }
 
-
+.filterBtn:focus{
+    background-color: var(--Blue6);
+    color: var(--Light);
+}
 .filterBtn_cont{
     max-height: 35px;
     margin-left: 5px;

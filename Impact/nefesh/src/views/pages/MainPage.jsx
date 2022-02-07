@@ -93,7 +93,7 @@ function App() {
       <div className="userInterfaceContainer">
         <form className="filterEvents">
           <label htmlFor="eventFilterType">
-            Sort Events:
+            Sort out the events displayed:
           </label>
           <select
             name="eventFilterType"
@@ -114,6 +114,7 @@ function App() {
                 <h2>{event.title}</h2>
                 <div className="cardData">
                   <div id="Date">
+                    Date:{" "}
                     {new Intl.DateTimeFormat("en", {
                       timeStyle: "short",
                       dateStyle: "medium",

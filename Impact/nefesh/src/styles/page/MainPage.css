@@ -26,21 +26,12 @@
     font-weight:bolder;
 }
 .filterEvents{
-    margin: 9px auto 9px auto;
-    padding: 6px 6px 6px 6px;
-    background: var(--Light);
-    font-family: Roboto;
-    font-weight: 500;
-    font-size: 14px;
-    box-shadow: 0px 1px 2px rgb(0 0 0 / 30%), 0px 1px 3px 1px rgb(0 0 0 / 15%);
-    border-radius: 8px;
+    font-weight: bolder;
+    margin-block: 0.8em 3px;
+    margin-inline: 2px;
+    margin-left: 2%;
     text-align: center;
-    color: var(--Dark);
-    width: 75%;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
+    color: #043c6c;
 }
 
 #eventFilterType{
@@ -51,7 +42,7 @@
 }
 
 .filterEvents > * {
-    margin-inline: 2px;
+    margin-inline: inherit;
 }
 
 
