@@ -1,8 +1,9 @@
-import '../../styles/template/EditProfilePopUp.css'
+
 import React from 'react';
 
 
 const EditProfilePopUp = props => {
+  import ('../../styles/template/EditProfilePopUp.css');
     return (
       <div className="popup-box">
         <div className="EditPopUpbox">

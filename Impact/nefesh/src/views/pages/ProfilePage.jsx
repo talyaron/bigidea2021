@@ -1,4 +1,4 @@
-import "../../styles/page/ProfilePage.css";
+
 import React, { useEffect, useState } from "react";
 import { db } from "../../scripts/firebase/config";
 import {
@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 let page = "ProfilePage";
 
 function ProfilePage(props) {
+  import("../../styles/page/ProfilePage.css");
   let savedEventsTemp = [];
   const handleRoute = useNavigate();
   const [savedArticles, setSavedArticles] = useState([]);

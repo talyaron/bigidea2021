@@ -1,4 +1,4 @@
-import "../../styles/template/DataFilters.css";
+
 import { useEffect, useState } from "react";
 import {
   collection,
@@ -13,6 +13,7 @@ import {
 const filters = {};
 
 function DataFilters({ setEventListState }) {
+  import("../../styles/template/DataFilters.css");
   const db = getFirestore();
   let tagsSorted=[]
   const [tags, setTags] = useState([]);

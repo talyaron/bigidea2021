@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "../../styles/template/EditSavedArticles.css";
+
 import { doc, getDoc, setDoc, addDoc,deleteDoc } from "firebase/firestore";
 import { db } from "../../scripts/firebase/config";
 import ImportImgs from "./ImportImgs";
@@ -26,6 +26,7 @@ export function convertToDefaultTime(time) {
 }
 
 function EditSavedArticle(props) {
+	import("../../styles/template/EditSavedArticles.css");
 	const navigate = useNavigate()
 	const [tagsState, setTagsState] = useState([]);
 	const inputRef = useRef();

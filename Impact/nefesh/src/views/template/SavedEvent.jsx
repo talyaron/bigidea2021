@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../styles/page/Event.css';
+
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import { useParams } from 'react-router-dom';
@@ -8,6 +8,7 @@ import Clock from '../../assets/Images/NewIcons/clock.svg';
 // import 'moment-timezone';
 
 function PublishedEvent(props) {
+	import ('../../styles/page/Event.css');
 	const [eventData, setEventData] = useState([]);
 	const [EventFilter] = useState([
 		{ id: 0, field: 'startTime', label: 'Start Time', type: 'timestamp' },

@@ -1,4 +1,4 @@
-import "../../styles/page/MainPage.css";
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DataFilters from "../template/DataFilters";
@@ -9,6 +9,7 @@ let eventFilter = '';
 //const tags = ["newest", "popular", "recent"];
 
 function App() {
+  import("../../styles/page/MainPage.css");
 	const navigate = useNavigate();
 
   //var searchOption, filterOption;

@@ -1,4 +1,4 @@
-import '../../styles/template/SearchBar.css';
+
 import { useState } from 'react';
 import {  query } from "firebase/database";
 import { collection, getDocs, where, getFirestore} from '@firebase/firestore';
@@ -12,6 +12,7 @@ const tags = ['newest','popular', 'recent'];
 
 
 function SearchBar() {
+  import('../../styles/template/SearchBar.css');
    var searchOption;
    var filterOption;
    const db = getFirestore();

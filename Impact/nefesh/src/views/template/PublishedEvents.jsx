@@ -1,4 +1,4 @@
-import '../../styles/page/ProfilePage.css';
+
 import React, { useEffect, useState } from 'react';
 import { db } from '../../scripts/firebase/config';
 import { doc, getDoc, updateDoc, collection, getDocs, query, onSnapshot } from 'firebase/firestore';
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 let page = 'ProfilePage';
 
 function SavedEvents(props) {
+	import('../../styles/page/ProfilePage.css');
 	const [eventListState, setEventListState] = useState([]);
 
 	let SavedEventsTemp = []
