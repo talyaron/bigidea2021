@@ -47,23 +47,35 @@
 	margin-top: 10px;
 }
 .backGround {
-	background-color: var(--Light);
+	background-color: var(--Light-Page);
 	justify-content: center;
+}
+.In {
+	height: 20px;
+	background-color:var(--Blue1);
+	font-family: Roboto;
+	width: 80%;
+	/* align-self: center; */
 }
 
 .createArticle-popup-box {
-    background-color: var(--Background-light);
-    color: var(--Navy-blue);
+	background-color: var(--Light-Page);
+    color: var(--Dark);
     margin: 15px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     font-weight: 530;
+	font-family: Roboto;
+	border: none;
+	max-width: 80%;
+	width: 80%;
+	align-items: center;
+	margin-left: 10%;
 }
 
 .createArticle-popup-box input {
-	background-color: /*rgb(231, 231, 231)*/ var(--Background-light);
-	border-radius: 5px;
+	/* background-color: var(--Background-light); */
 	margin-bottom: 10px;
 	padding: 8px;
 	color: var(--Navy-blue);
@@ -84,14 +96,13 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 */
 .expandBox {
 	display: block;
-	background-color: /*rgb(231, 231, 231)*/ var(--Background-light);
-	border-radius: 5px;
+	background-color: var(--Blue1);
 	margin-bottom: 10px;
 	padding: 10px;
-	color: var(--Navy-blue);
-	font-family: sans-serif;
+	color: var(--Dark);
+	font-family: Roboto;
 	font-size: 15px;
-	border: 2px solid var(--Grey);
+	width: 80%;
 }
 
 .textarea {
@@ -119,8 +130,8 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 .Dragon42 {
 	height: 50px;
-	background-color: var(--Navy-blue);
-	color: var(--Grey);
+	background-color: var(--Blue6);
+	color: var(--Light);
 	width: 150px;
 	border-radius: 15px;
 	margin-top: 10px;
@@ -129,8 +140,8 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 .Dragon43 {
 	height: 50px;
-	background-color: var(--Navy-blue);
-	color: var(--Grey);
+	background-color: var(--Blue6);
+	color: var(--Light);
 	width: 150px;
 	border: none;
 	border-radius: 15px;
@@ -139,9 +150,12 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 .Header {
 	text-align: center;
 	font-size: 40px;
+	font-weight: 500;
 	color: var(--Navy-blue);
-	background-color: var(--Light);
-	margin-top: 10px;
+	border-bottom: 1px solid var(--Dark);
+	font-family: Roboto;
+	max-width: 80%;
+	margin-left: 10%;
 }
 .Images {
 	padding-left: 10px;
@@ -155,11 +169,14 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	border-radius: 15px;
 }
 #input_ArticleImg {
-	border-radius: 10px;
+	background-color:var(--Blue1);
+	font-family: Roboto;
+	width: 80%;
 }
 .buttonContainer23 {
 	display: flex;
 	justify-content: space-around;
+	width: 100%;
 }
 
 .tag34 {
@@ -167,17 +184,13 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	height: 25px;
 	border-radius: 15px;
 }
-.In {
-	height: 20px;
-}
+
 .border-ArticleCreation {
-	border-bottom: 2px var(--Grey) solid;
-	border-top: none;
-	border-left: none;
-	border-right: none;
+	border: none;
 }
 #ArtC_Header {
-	background-color: var(--Light);
+	background-color: var(--Light-Page);
+	margin: 0px 9px 0px 9px;
 }
 
 .placeHolderText_articleCreation::placeholder {
@@ -186,7 +199,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 
 .tagsMapContainer {
-    margin-top: 15px;
+    margin: 5px;
 	background-color: var(--Background-light);
 	border-radius: 5px;
 	display: flex;
@@ -198,7 +211,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	overflow-y: scroll;
 }
 .tagsMapContainer_selected{
-    margin-top: 15px;
+    margin: 5px;
 	background-color: var(--Background-light);
 	border-radius: 5px;
 	display: flex;
@@ -211,6 +224,13 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 
 .unselected_tagBox {
 	display: inline-block;
+	background-color: var(--Blue1);
+	border-radius: 15px;
+}
+.selected_tagBox {
+    display: inline-block;
+    background-color: var(--Blue1);
+	border-radius: 15px;
 }
 .Tag-X {
 	display: inline-block;
@@ -227,17 +247,24 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	display: inline-block;
 }
 .filterBtn_articleCreation {
-	background-color: #4c97ec;
-	max-height: 20px;
-	height: 20px;
-    margin: 5px;
-    padding: 4px;
-    border-radius: 10px;
-    color: var(--Light);
+	background: var(--Blue2);
+	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+	border-radius: 10px;
+	color: var(--Blue4);
+	padding: 3px;
+	text-align: center;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 28px;
+	margin: 3px;
+    width: min-content;
 }
 
 .filterBtn_articleCreation:hover{
     background-color: #3e80ca;
+
 }
 .filterBtn_articleCreation:active{
     background-color: #264e7c;

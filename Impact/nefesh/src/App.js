@@ -16,14 +16,17 @@ import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from './scripts/firebase/config';
 //pages
+import PublishedEvent from "./views/template/PublishedEvent";
+import EditSavedArticles from "./views/template/EditSavedArticle";
 import AdminPage from './views/pages/AdminPage';
 import StickyBanner from './views/components/StickyBanner'
 import NavTopBar from "./views/components/NavTopBar";
 import Event from './views/pages/Event';
-import EditSavedEvent from'./views/template/EditSavedArticles'
+import EditSavedArticle from'./views/template/EditSavedArticle'
 import SavedEvents from "./views/template/SavedEvents";
 import SavedEvent from "./views/template/SavedEvent"
 import PublishedEvents from "./views/template/PublishedEvents";
+import EditPublishedEvent from "./views/template/EditPublishedEvent"
 
 let role;
 const auth = getAuth();
@@ -120,11 +123,12 @@ function App() {
 						<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
 						<Route path='AdminPage' element={<AdminPage />}/>
-            <Route path='ProfilePage/SavedEvents/Preview/:eventID' element={<SavedEvent userID={userID} userOrg={userState.userOrg} />} />
+            <Route path='ProfilePage/SavedEvents/View/:eventID' element={<SavedEvent userID={userID} userOrg={userState.userOrg} />} />
             <Route path='ProfilePage/SavedEvents' element={<SavedEvents userID={userID} userOrg={userState.userOrg} />} />
             <Route path='ProfilePage/PublishedEvents' element={<PublishedEvents userID={userID} userOrg={userState.userOrg} />} />
-            <Route path="/ProfilePage/PublishedEvents/View/:eventID" element={<Event userID={userID} userOrg={userState.userOrg}/> }/>
-            <Route path='ProfilePage/SavedEvents/Edit/:eventID' element={<EditSavedEvent userID={userID} userOrg={userState.userOrg}  />} />
+            <Route path="/ProfilePage/PublishedEvents/View/:eventID" element={<PublishedEvent userID={userID} userOrg={userState.userOrg}/> }/>
+            <Route path="/profilePage/PublishedEvents/Edit/:eventID" element={<EditPublishedEvent userID={userID} userOrg={userState.userOrg}  />} />
+            <Route path='ProfilePage/SavedEvents/Edit/:eventID' element={<EditSavedArticle userID={userID} userOrg={userState.userOrg}  />} />
 					</Routes>
 					
 				</div>
