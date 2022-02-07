@@ -9,6 +9,7 @@ import LogoNew from '../../assets/Images/LogoNew.svg';
 
 function ContactUs(props) {
   const role = props.role;
+  console.log(role);
 
   const [mailTo, setMailtoLink] = useState('');
   const [userIsOle, setUserIsOle] = useState();

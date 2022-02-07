@@ -22,7 +22,6 @@ import AdminPage from './views/pages/AdminPage';
 import Event from './views/pages/Event';
 
 
-let role;
 const auth = getAuth();
 let userID = "";
 let loggedIn;
@@ -32,6 +31,7 @@ function App() {
   const [/*isAdmin*/, setIsAdmin] = useState(false);
   const [isOle, setIsOle] = useState(false);
   const [isUserID, setIsUserID] = useState(null);
+  const [role, setRole] = useState('guest');
 
   //what I added
   const [renderBars, setRenderBars] = useState(false);
@@ -51,7 +51,7 @@ function App() {
         //get user from db
         getDoc(doc(db, "users", uid)).then((userDB) => {
           if (userDB.exists()) {
-			      role = userDB.data().role;
+			      setRole(userDB.data().role);
             setUserState({
               userOrg: userDB.data().organization,
               displayName: userDB.data().displayName
