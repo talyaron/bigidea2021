@@ -60,7 +60,7 @@ function ProfilePage(props) {
       setUserGender(docSnap.data().sex);
       setUserBio(docSnap.data().bio);
     });
-  }, [uid, docRef, props]);
+  }, []);
 
   function editProfile() {
     setIsOpen(!isOpen);
@@ -69,33 +69,33 @@ function ProfilePage(props) {
     setEditing(true);
   }
 
-  function changeProfile(ev) {
+async function changeProfile(ev) {
     ev.preventDefault();
+	const profileRef = doc(db, "users", props.uid);
 
     const name = ev.target.elements.newName.value;
+	console.log(name);
     const profilePic = httpUrl;
-    const email = ev.target.elements.newEmail.value;
+	console.log("before changes");
 
-    if (ev.target.elements.newName.value.length !== 0) {
+    if (name.length !== 0) {
       setDisplayName(name);
-      updateDoc(doc(db, "users", props.uid), {
+	  console.log(props.uid);
+    	await updateDoc(profileRef, {
         displayName: name,
       });
+	  console.log("after change name");
     }
+	setEditing(false);
+    setIsOpen(false);
 
     if (profilePic.length !== 0) {
       ev.preventDefault();
       setProfilePicImg(profilePic);
-      updateDoc(doc(db, "users", props.uid), {
+      await updateDoc(profileRef, {
         userIcon: profilePic,
       });
-    }
-
-    if (ev.target.elements.newEmail.value.length !== 0) {
-      setUserEmail(email);
-      updateDoc(doc(db, "users", props.uid), {
-        email: email,
-      });
+	  console.log("after change photo");
     }
 
     setEditing(false);
@@ -106,14 +106,16 @@ function ProfilePage(props) {
     if (ev.target.elements.newBio.value.length !== 0) {
       setUserBio(bio);
 
-      updateDoc(doc(db, "users", props.uid), {
+    await updateDoc(profileRef, {
         bio: bio,
       });
+	  console.log("after change bio");
     }
 
     setEditing(false);
     setIsBioOpen(!isBioOpen);
   }
+  console.log("after full function");
 
   function changeBio(ev) {
     ev.preventDefault();
@@ -123,7 +125,7 @@ function ProfilePage(props) {
     if (ev.target.elements.newBio.value.length !== 0) {
       setUserBio(bio);
 
-      updateDoc(doc(db, "users", props.uid), {
+      updateDoc(db, "users", props.uid, {
         bio: bio,
       });
     }
@@ -135,6 +137,7 @@ function ProfilePage(props) {
 
   const callBackFunction = (httpRef) => {
     setHttpUrl(httpRef);
+	console.log(httpRef);
   };
 
   function editBio() {
@@ -150,14 +153,14 @@ function ProfilePage(props) {
   return (
     <div className="profilePage">
       <div className="back-1">
-        <img
+        {!isOpen? <img
           className="EditProfBtn1"
           src={EditPic}
           type="button"
           onClick={editProfile}
           name="editbtn"
           alt="edit profile button"
-        />
+        /> : null}
         <div
           id="profilePic"
           style={{ backgroundImage: "url(" + profilePicImg + ")" }}
@@ -185,8 +188,8 @@ function ProfilePage(props) {
           content={
             <>
               {editing ? (
-                <div className="profileEditor">
-                  <input
+                <form className="profileEditor" onSubmit={changeProfile}>
+					<input
                     type="text"
                     className="bioField"
                     name="newName"
@@ -209,14 +212,14 @@ function ProfilePage(props) {
                     name="newBio"
                   />
                   <div className="btns">
-                    <div className="btn" name="editbtn" onClick={changeProfile}>
+                    <button className="btn" name="editbtn" type="submit">
                       Submit Changes
-                    </div>
+                    </button>
                     <div className="btn" name="editbtn" onClick={editProfile}>
                       Cancel
                     </div>
                   </div>
-                </div>
+                </form>
               ) : null}
             </>
           }

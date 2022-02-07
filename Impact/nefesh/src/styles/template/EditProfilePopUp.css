@@ -10,7 +10,7 @@
     background:Var(--Light-D2);
     border-radius: 4px;
     padding: 20px;
-    z-index: 4000;
+    z-index: 4000 !important;
   }
   .popup-box {
     position: fixed;

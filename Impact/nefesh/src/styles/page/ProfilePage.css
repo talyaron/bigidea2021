@@ -19,9 +19,8 @@
   background-image: none;
   background-color: blue;
   border: 2px solid #938f99;
-  margin-top: 15px;
+  margin-left:25% ;
   display: block;
-  margin: auto;
   background-size: contain;
   background-repeat: no-repeat;
   padding: 10px;
@@ -41,8 +40,6 @@
   font-weight: 500;
 }
 .back-1 {
-  margin-top: 20px;
-  
   align-items: center;
   text-align: center;
   width: 100%;
@@ -81,11 +78,11 @@ text-align: center;
   float: left;
   position: relative;
   float: center;
-  left: 51vw;
-  top: 15vh;
+  left: 46vw;
+  top: 38vh;
   cursor: pointer;
   user-select: none;
-  z-index: 2000;
+  z-index: 2 !important;
 }
 .EditProfBtn2 {
   margin-top: 10px;
