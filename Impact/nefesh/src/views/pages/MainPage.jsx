@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import DataFilters from "../template/DataFilters";
 import { query } from "firebase/database";
 import { collection, onSnapshot, getFirestore , where} from "firebase/firestore";
+let eventFilter = '';
 
 //const tags = ["newest", "popular", "recent"];
 
 function App() {
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
   //var searchOption, filterOption;
   const db = getFirestore();
@@ -17,13 +18,11 @@ function App() {
   const [eventListState, setEventListState] = useState([]);
   const [eventFilter, setEventFilter] = useState("Upcoming");
 
-  function handleSearchByChange(ev) {
-    let temp = ev.target.value;
-    setSearchField(temp);
-  }
+	useEffect(() => {
+		const q = query(collection(db, "events"), where('startTime', '>', new Date()));
+		const eventListTemp = [];
 
-  useEffect(() => {
-    const q = query(collection(db, "events"), where('startTime', '>', new Date()));
+    
    
 
     //listen to events
@@ -78,9 +77,14 @@ function App() {
     return events;
   }
 
+	window.addEventListener("load", event => {
+		var image = document.querySelector('img');
+		var isLoaded = image.complete && image.naturalHeight !== 0;
+		console.log(isLoaded);
+	});
   function handleRoute(eventId) {
-    navigate("/event/" + eventId);
-  }
+		navigate('/event/' + eventId);
+	}
 
   return (
     <div>

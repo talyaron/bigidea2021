@@ -160,8 +160,12 @@ function AdminPage() {
 									value='User Settings'
 									className='adminButton'
 									name='userSelect'>
+										<div className='cardInfoGroup_AP'>
+									<img className="cardInfo_AP smallpfp"  src={name.userIcon} alt="user icon"></img>
+									<div className='cardUserInfo_AP'>
 									<h4 className="cardInfo_AP">{name.displayName}</h4>
 									<h5 className="cardInfo_AP">{name.email}</h5>
+									</div></div>
 									<button onClick={()=>togglePopup(name)} name='userButtonID_AP' id={name.userID} className="userButtonID_AP cardInfo_AP">
 										{name.userID}
 									</button>
@@ -169,7 +173,7 @@ function AdminPage() {
 							</div>
 						);
 					})}
-					<div class="footer"></div>
+					<div className="footer"></div>
 				</div>
 				</div>
 			) : null}

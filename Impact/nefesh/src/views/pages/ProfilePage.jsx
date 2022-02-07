@@ -1,195 +1,230 @@
-import '../../styles/page/ProfilePage.css';
-import React, { useEffect, useState } from 'react';
-import { db } from '../../scripts/firebase/config';
-import { doc, getDoc, updateDoc} from 'firebase/firestore';
-import EditProfilePopUp from '../template/EditProfilePopUp';
-import ImportImgs from '../template/ImportImgs'
-import EditBioPopUp from '../template/EditBioPopUp';
-let page = 'ProfilePage';
-
+import "../../styles/page/ProfilePage.css";
+import React, { useEffect, useState } from "react";
+import { db } from "../../scripts/firebase/config";
+import {
+  doc,
+  getDoc,
+  updateDoc,
+  collection,
+  getDocs,
+  query,
+} from "firebase/firestore";
+import EditProfilePopUp from "../template/EditProfilePopUp";
+import ImportImgs from "../template/ImportImgs";
+import EditBioPopUp from "../template/EditBioPopUp";
+import EditPic from "../../assets/Images/NewIcons/edit.svg";
+import Envelope from "../../assets/Images/NewIcons/email.svg";
+import Upload from "../../assets/Images/NewIcons/upload.svg";
+import { useNavigate } from "react-router-dom";
+let page = "ProfilePage";
 
 function ProfilePage(props) {
-	const [userData, setUserData] = useState()
-	const [displayName, setDisplayName] = useState('loading');
-	const [profilePicImg, setProfilePicImg] = useState('loading');
-	const [userEmail, setUserEmail] = useState('loading')
-	const [userAddress, setUserAddress] = useState('loading')
-	const [userGender, setUserGender] = useState('loading')
-	//const [userArticles, setUserArticles] = useState('loading');
-	const [textSize, setTextSize] = useState('')
-	const [editing, setEditing] = useState(false)
-	const [choosingPrefs, setChoosingPrefs] = useState(false)
-	const {uid} = props;
-	const [isOpen, setIsOpen] = useState(false);
-	const [httpUrl, setHttpUrl] = useState('');
-	const [isBioOpen, setIsBioOpen] = useState(false);
-	const [userBio, setUserBio] = useState('loading');
-  	
-	const docRef = (doc(db, "users", props.uid));
-	useEffect(() => {
-		//pull userId of selected user and set for superAdmin page
-		//on snapshot displayName
-		
-	getDoc(docRef).then(docSnap => {
-		setUserData(docSnap.data())
-		setDisplayName(docSnap.data().displayName);
-		setProfilePicImg(docSnap.data().userIcon);
-		setUserEmail(docSnap.data().email);
-		setUserAddress(docSnap.data().location)
-		setUserGender(docSnap.data().sex);
-		setUserBio(docSnap.data().bio);
-		console.log(props, docSnap.data())
-		});
+  let savedEventsTemp = [];
+  const handleRoute = useNavigate();
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [userData, setUserData] = useState();
+  const [displayName, setDisplayName] = useState("loading");
+  const [profilePicImg, setProfilePicImg] = useState("loading");
+  const [, /*userEmail*/ setUserEmail] = useState("loading");
+  const [, /*userAddress*/ setUserAddress] = useState("loading");
+  const [, /*userGender*/ setUserGender] = useState("loading");
+  //const [userArticles, setUserArticles] = useState('loading');
+  //const [textSize, setTextSize] = useState('');
+  const [editing, setEditing] = useState(false);
+  //const [choosingPrefs, setChoosingPrefs] = useState(false);
+  const { uid } = props;
+  const [isOpen, setIsOpen] = useState(false);
+  const [httpUrl, setHttpUrl] = useState("");
+  const [isBioOpen, setIsBioOpen] = useState(false);
+  const [userBio, setUserBio] = useState("loading");
 
-	}, [uid, docRef, props]);
+  const docRef = doc(db, "users", props.uid);
+  useEffect(async () => {
+    //pull userId of selected user and set for superAdmin page
+    //on snapshot displayName
+    const q = query(collection(db, "users", props.uid, "Saved"));
+    const savedEventsDB = await getDocs(q);
 
-	function editProfile() {
-		setIsOpen(!isOpen);
-		setEditing(true);
-	};
+    savedEventsDB.forEach((savedEventDB) => {
+      const newSavedEvent = savedEventDB.data();
+      newSavedEvent.id = savedEventDB.id;
+      savedEventsTemp.push(newSavedEvent);
+    });
+    setSavedArticles(savedEventsTemp);
+    getDoc(docRef).then((docSnap) => {
+      setUserData(docSnap.data());
+      setDisplayName(docSnap.data().displayName);
+      setProfilePicImg(docSnap.data().userIcon);
+      setUserEmail(docSnap.data().email);
+      setUserAddress(docSnap.data().location);
+      setUserGender(docSnap.data().sex);
+      setUserBio(docSnap.data().bio);
+    });
+  }, [uid, docRef, props]);
 
-	function changeProfile(ev) {
-		ev.preventDefault();
-		console.dir(ev.target);
+  function editProfile() {
+    setIsOpen(!isOpen);
+    setEditing(true);
+    setIsBioOpen(!isBioOpen);
+    setEditing(true);
+  }
 
-		const name = ev.target.elements.newName.value;
-		const profilePic = httpUrl
-		const email = ev.target.elements.newEmail.value;
+  function changeProfile(ev) {
+    ev.preventDefault();
 
-		if(ev.target.elements.newName.value.length !== 0) {
-			setDisplayName(name);
-			updateDoc(doc(db, "users", props.uid), {
-				displayName: name,
-			})
-		}
+    const name = ev.target.elements.newName.value;
+    const profilePic = httpUrl;
+    const email = ev.target.elements.newEmail.value;
 
-		if(profilePic.length !== 0) {
-			ev.preventDefault()
-			console.log(profilePic)
-			setProfilePicImg(profilePic);
-			updateDoc(doc(db, "users", props.uid), {
-				userIcon: profilePic
-			})
-		}
+    if (ev.target.elements.newName.value.length !== 0) {
+      setDisplayName(name);
+      updateDoc(doc(db, "users", props.uid), {
+        displayName: name,
+      });
+    }
 
-		if(ev.target.elements.newEmail.value.length !== 0) {
-			setUserEmail(email);
-			updateDoc(doc(db, "users", props.uid), {
-				email: email
-			})
-		}
-		
-		setEditing(false);
+    if (profilePic.length !== 0) {
+      ev.preventDefault();
+      setProfilePicImg(profilePic);
+      updateDoc(doc(db, "users", props.uid), {
+        userIcon: profilePic,
+      });
+    }
 
-		setIsOpen(!isOpen);
-	}
+    if (ev.target.elements.newEmail.value.length !== 0) {
+      setUserEmail(email);
+      updateDoc(doc(db, "users", props.uid), {
+        email: email,
+      });
+    }
 
+    setEditing(false);
+    setIsOpen(false);
 
-	function changeBio(ev) {
-		ev.preventDefault();
-		console.dir(ev.target);
+    const bio = ev.target.elements.newBio.value;
 
-		const bio = ev.target.elements.newBio.value;
+    if (ev.target.elements.newBio.value.length !== 0) {
+      setUserBio(bio);
 
-		if(ev.target.elements.newBio.value.length !== 0) {
-			setUserBio(bio);
-			console.log(bio)
-			updateDoc(doc(db, "users", props.uid), {
-				bio: bio,
-			})
-		}
+      updateDoc(doc(db, "users", props.uid), {
+        bio: bio,
+      });
+    }
 
-		setEditing(false);
+    setEditing(false);
+    setIsBioOpen(!isBioOpen);
+  }
 
-		setIsBioOpen(!isBioOpen);
-	}
+  function changeBio(ev) {
+    ev.preventDefault();
 
-	function changePreferences() {
-		setChoosingPrefs(true)
-	}
+    const bio = ev.target.elements.newBio.value;
 
-	function submitChangePreferences(ev) {
-		ev.preventDefault();
-		const fontSize = ev.target[0].value;
-		setTextSize(fontSize);
-	}
+    if (ev.target.elements.newBio.value.length !== 0) {
+      setUserBio(bio);
 
-	const callBackFunction = (httpRef) => {
-		setHttpUrl(httpRef);
-	};
+      updateDoc(doc(db, "users", props.uid), {
+        bio: bio,
+      });
+    }
 
-	function debug() {
-		console.log(props.uid)
-	}
+    setEditing(false);
 
-	function editBio(){
-		setIsBioOpen(!isBioOpen);
-		setEditing(true);
-	}
+    setIsBioOpen(!isBioOpen);
+  }
 
-	return (
-		<div>
-			<div className='back-1'>
-				<button className ="EditProfBtn" type="button" onClick={editProfile} name="editbtn"> Edit Profile</button>
-				<div id='profilePic' style={{ backgroundImage: 'url(' + profilePicImg + ')' }} />
-				<h2> {displayName} </h2> 
-				<p> {userEmail} </p>
-			</div>
-			{/* <div className='back-2'>
-				<button className ="EditProfBtn" type="button" name="PrefButton"> Edit Prefrences </button>
-				<h2 className='center'> Prefrences </h2> 
-				<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </p>
-				 
-			</div> */}
-			<div className='back-3'>
-				<button className ="EditProfBtn" type="button" onClick = {editBio} name="BioButton"> Edit Bio </button>
-				<h2 className='center'> Bio </h2> 
-				<p>{userBio}</p>
-				
-			</div>
-			<footer  className='back-2 foot'>
+  const callBackFunction = (httpRef) => {
+    setHttpUrl(httpRef);
+  };
 
-			</footer>
+  function editBio() {
+    setIsBioOpen(!isBioOpen);
+    setEditing(true);
+  }
+  function navigateSaved() {
+    handleRoute("SavedEvents");
+  }
+  function navigatePublished() {
+    handleRoute("PublishedEvents");
+  }
+  return (
+    <div className="profilePage">
+      <div className="back-1">
+        <img
+          className="EditProfBtn1"
+          src={EditPic}
+          type="button"
+          onClick={editProfile}
+          name="editbtn"
+          alt="edit profile button"
+        />
+        <div
+          id="profilePic"
+          style={{ backgroundImage: "url(" + profilePicImg + ")" }}
+        />
+        <div className="displayName"> {displayName} </div>
+        <img src={Envelope} className="emailMe" alt="emailMe" />
+      </div>
 
-			
-			{isOpen && <EditProfilePopUp
-      content={<>
-        {editing ? <div className='profileEditor'	>
-				<h4 className='center2'> Edit Profile Here </h4>
-				<form onSubmit={changeProfile}>
-					Enter New Name: <input type="text" name="newName" /><br />
-					Enter New Image : <ImportImgs userData={userData} pageName={page} parentCallBack={callBackFunction} />
-					Enter New Email: <input type="text" name="newEmail" /><br />
-					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
+      <div className="buttonHolder">
+        <button className="savedArticles" onClick={navigateSaved}>
+          Saved Articles
+        </button>
+        <button className="publishedArticles" onClick={navigatePublished}>
+          Published Articles
+        </button>
+        <footer className="back-2 foot"></footer>
+      </div>
+      <div className="bio-filed">
+        <h3> Bio </h3>
+        <p>{userBio}</p>
+      </div>
 
-				</form>
-
-
-			</div> : null}
-      </>}
-      handleClose={editProfile}
-    />}
-	{isBioOpen && <EditBioPopUp
-      content={<>
-        {editing ? <div className='profileEditorBio'	>
-				<h4 className='center2'> Edit Bio Here </h4>
-				<form onSubmit={changeBio}>
-					Enter New Bio: <input type="text" name="newBio"/>
-					<button type="submit" className='center3' name="editbtn"> Submit Changes</button>
-
-				</form>
-
-
-			</div> : null}
-      </>}
-      handleClose={editBio}
-    />}
-			
-
-		</div>
-
-
-	);
+      {isOpen && (
+        <EditProfilePopUp
+          content={
+            <>
+              {editing ? (
+                <div className="profileEditor">
+                  <input
+                    type="text"
+                    className="bioField"
+                    name="newName"
+                    placeholder="Enter New Name"
+                  />
+                  <br />
+                  <ImportImgs
+                    userData={userData}
+                    placeholder="Enter New Image"
+                    className="choosePictureButton"
+                    pageName={page}
+                    parentCallBack={callBackFunction}
+                  />
+				  <br />
+                  <img src={Upload} />
+                  <input
+                    type="text"
+                    className="bioField"
+                    placeholder="Enter New Bio"
+                    name="newBio"
+                  />
+                  <div className="btns">
+                    <div className="btn" name="editbtn" onClick={changeProfile}>
+                      Submit Changes
+                    </div>
+                    <div className="btn" name="editbtn" onClick={editProfile}>
+                      Cancel
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+            </>
+          }
+          handleClose={editProfile}
+        />
+      )}
+    </div>
+  );
 }
 
 export default ProfilePage;

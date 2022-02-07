@@ -1,47 +1,43 @@
 import "../../styles/template/DataFilters.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   collection,
   doc,
-  orderBy,
   query,
-  onSnapshot,
   getDocs,
   where,
   getFirestore,
+  getDoc
 } from "firebase/firestore";
 
 const filters = {};
-let eventFilters = [];
-let tags = ["dinner", "60+", "party", "fun", "outdoors"];
-
 
 function DataFilters({ setEventListState }) {
   const db = getFirestore();
-  const [searchField, setSearchField] = useState("");
-  const [searchFilters, setSearchFilters] = useState([]);
-  const [hidden, setHidden] = useState(false);
+  const [tags, setTags] = useState([]);
 
-  function handleSearchByChange(ev) {
-    ev.preventDefault();
-    let temp = ev.target.value;
-    setSearchField(temp);
-  }
-  function revealFilters() {
-    let temp = !hidden
-    setHidden(temp);
+  useEffect(async() => {
+		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
+		await getDoc(tagsRef).then((tagsDB) => {
+			setTags(tagsDB.data().tagArray);
+		});
     
-  }
+	},
+   []);
+  
+
 
   async function getTarget(ev) {
-    filters[ev.target.name] = ev.target.checked;
+    for (var oldFilter in filters) delete filters[oldFilter];
+    filters[ev.target.id] = ev.target;
+    console.log(filters)
+    getEvents(ev)
   }
   async function getEvents(ev) {
-    ev.preventDefault();
+    
     console.log(filters);
     const filtersArr = [];
     for (let filter in filters) {
-     
       if (filters[filter]) {
         filtersArr.push(filter);
       }
@@ -104,26 +100,24 @@ const joinedEventsList = []
   }
   
   return (
-    <div className="revealFiltersButton_cont">
-      <button onClick={revealFilters} name="revealFiltersButton">
-        Click here to apply filters
-      </button>
+  <div>
+  {/* <div className= "filterBanner">
+    Filters
+  </div> */}
 
-    {hidden? 
         <div id="tagsContainer">
         {tags.map((tag) => {
-            return(
-            <div key={tag}>
-                <div className="inline-block">
-                  {tag}
-                  <input name={tag} type="checkbox" onClick={getTarget}/>
-                </div>
-                
-            </div>
-            )
-        })}
-        <input className="submitbutton" type="submit" name="submit1" onClick={getEvents} />
-        </div> : null}                     
+								return (
+									<div key={tag}className='filterBtn_cont'>
+										<div className='inline-block'>
+											<div className='filterBtn inline-block shadow' id={tag} onClick={getTarget}>
+												{tag}
+											</div>
+										</div>
+									</div>
+								);
+							})}
+        </div>             
     </div>
   );
 }
