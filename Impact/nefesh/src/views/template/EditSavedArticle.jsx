@@ -25,7 +25,7 @@ export function convertToDefaultTime(time) {
 	return `${time.toDateInputValue()}T${hours}:${minutes}`;
 }
 
-function EditSavedArticles(props) {
+function EditSavedArticle(props) {
 	const navigate = useNavigate()
 	const [tagsState, setTagsState] = useState([]);
 	const inputRef = useRef();
@@ -42,6 +42,7 @@ function EditSavedArticles(props) {
 		let eventDB = await getDoc(eventRef);
 		const eventDBTemp = eventDB.data();
 		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
+		
 		getDoc(tagsRef).then((tagsDB) => {
 			console.log(tagsDB.data().tagArray);
 			setTags(tagsDB.data().tagArray);
@@ -74,7 +75,8 @@ function EditSavedArticles(props) {
 		setStatesSubmitted(eventDBTemp);
 		setAddress(eventDBTemp.address);
 		setContactInfo(eventDBTemp.contactInfo);
-		setTagsState(eventDBTemp.tags);
+		setSelectedTagArray(eventDBTemp.tags);
+		setHttpUrl(eventDBTemp.coverImage);
 	}, []);
 
 	function submitArticle() {
@@ -89,9 +91,9 @@ function EditSavedArticles(props) {
 			article
 		} = statesSubmitted;
 		coverImage = httpUrl;
-		setDoc(doc(db, "events",eventID), {
+		setDoc(doc(db, "users",props.userID,"Published",eventID), {
 			title,
-			coverImage,
+			coverImage:httpUrl,
 			article,
 			hostName,
 			address: {
@@ -104,7 +106,32 @@ function EditSavedArticles(props) {
 				email: statesSubmitted.contactInfo.email,
 				website: statesSubmitted.contactInfo.website,
 			},
-			tags: tagsState,
+			tags: selectedTagArray,
+			creatorUID: props.userID,
+			creatorOrg: props.userOrg,
+			views,
+			dateAdded: new Date(),
+			isPublished: true,
+			startTime: new Date(startTime),
+			endTime: new Date(endTime),
+			maxCapacity,
+		});
+		setDoc(doc(db, "events",eventID), {
+			title,
+			coverImage:httpUrl,
+			article,
+			hostName,
+			address: {
+				streetName: statesSubmitted.address.streetName,
+				houseNumber: statesSubmitted.address.houseNumber,
+				city: statesSubmitted.address.city,
+			},
+			contactInfo: {
+				phone:statesSubmitted.contactInfo.phone,
+				email: statesSubmitted.contactInfo.email,
+				website: statesSubmitted.contactInfo.website,
+			},
+			tags: selectedTagArray,
 			creatorUID: props.userID,
 			creatorOrg: props.userOrg,
 			views,
@@ -129,10 +156,9 @@ function EditSavedArticles(props) {
 			maxCapacity,
 			article
 		} = statesSubmitted;
-		coverImage = httpUrl;
 		setDoc(doc(db, "users", props.userID, "Saved", eventID), {
 			title,
-			coverImage,
+			coverImage:httpUrl,
 			article,
 			hostName,
 			address: {
@@ -145,7 +171,7 @@ function EditSavedArticles(props) {
 				email: statesSubmitted.contactInfo.email,
 				website: statesSubmitted.contactInfo.website,
 			},
-			tags: tagsState,
+			tags: selectedTagArray,
 			creatorUID: props.userID,
 			creatorOrg: props.userOrg,
 			views,
@@ -352,4 +378,4 @@ function EditSavedArticles(props) {
 	);
 }
 
-export default EditSavedArticles;
+export default EditSavedArticle;

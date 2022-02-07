@@ -24,7 +24,7 @@ function PublishedEvent(props) {
 	useEffect(() => {
 		try {
 			setWebValidity(false);
-			let eventRef = doc(db, "users",props.userID,"Saved",eventID);
+			let eventRef = doc(db, "users",props.userID,"Published",eventID);
 			let eventObj;
 			getDoc(eventRef).then((docSnap) => {
 				eventObj = docSnap.data();
