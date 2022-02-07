@@ -1,4 +1,4 @@
-import "../../styles/template/DataFilters.css";
+
 import { useEffect, useState } from "react";
 import {
   collection,
@@ -13,14 +13,22 @@ import {
 const filters = {};
 
 function DataFilters({ setEventListState }) {
+  import("../../styles/template/DataFilters.css");
   const db = getFirestore();
+  let tagsSorted=[]
   const [tags, setTags] = useState([]);
 
   useEffect(async() => {
-		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
-		await getDoc(tagsRef).then((tagsDB) => {
-			setTags(tagsDB.data().tagArray);
-		});
+		
+    const tagsDB= await getDoc(doc(db,"tagCollection","tagDoc"))
+
+    tagsSorted=tagsDB.data().tagArray;
+    
+      tagsSorted.sort(function (a, b) {
+        return a.localeCompare(b); //using String.prototype.localCompare()
+      })
+      
+      setTags(tagsSorted)
     
 	},
    []);

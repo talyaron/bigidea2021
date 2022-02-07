@@ -1,10 +1,11 @@
-import '../../styles/page/ContactUs.css';
+
 import Envelope from '../../assets/Images/NewIcons/email.svg';
 import Phone from '../../assets/Images/NewIcons/phone.svg';
 
 import { useEffect, useState } from 'react';
 
 function ContactUs(props) {
+	import('../../styles/page/ContactUs.css');
 	const [mailTo, setMailtoLink] = useState('');
 	const [userIsOle, setUserIsOle] = useState();
 	useEffect(() => {

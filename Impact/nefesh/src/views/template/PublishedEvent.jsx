@@ -7,7 +7,7 @@ import useScript from '../../scripts/useScript';
 import Clock from '../../assets/Images/NewIcons/clock.svg';
 // import 'moment-timezone';
 
-function Event() {
+function PublishedEvent(props) {
 	import('../../styles/page/Event.css');
 	const [eventData, setEventData] = useState([]);
 	const [EventFilter] = useState([
@@ -25,7 +25,7 @@ function Event() {
 	useEffect(() => {
 		try {
 			setWebValidity(false);
-			let eventRef = doc(db, 'events', eventID);
+			let eventRef = doc(db, "users",props.userID,"Published",eventID);
 			let eventObj;
 			getDoc(eventRef).then((docSnap) => {
 				eventObj = docSnap.data();
@@ -117,8 +117,7 @@ function Event() {
 					<div id='title_Event'> {getField(eventData, 'title')} </div>
 					<div id='hostName_Event'> Hosted By:{getField(eventData, 'hostName')} </div>
 					<div id='eventWebsite_Event'>
-						{/* <a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a> */}
-						<a href={orgWebsite}/>
+						<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 					</div>
 					<div className='eventTimesCont'>
 						{Object.entries(filterEntries([eventData, EventFilter])).map((e) => (
@@ -149,11 +148,6 @@ function Event() {
 						<span className='title'>{getField(eventData, 'title')}</span>
 						<span className='description'>{getField(eventData, 'article')}</span>
 					</div>
-
-					
-					{/* <a  href = {"https://www.instagram.com/becky_geisberg/"} target='_blank' rel='noreferrer'> Instagram</a> */}
-					
-
 				</div>
 				<div id='maxCap'> Max Capacity: {getField(eventData, 'maxCapacity')} </div>
 				</div>
@@ -172,4 +166,4 @@ function Event() {
 	);
 }
 
-export default Event;
+export default PublishedEvent;

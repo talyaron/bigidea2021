@@ -3,12 +3,13 @@ import { authentication } from '../../scripts/firebase/config';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 
-import '../../styles/page/Login.css';
+
 import LogoNew from '../../assets/Images/LogoNew.svg';
 import GoogleLogo from '../../assets/Images/Google.svg';
 import LoginArt from '../../assets/Images/signin_img.svg';
 
 function Login() {
+	import ('../../styles/page/Login.css');
 	const navigate = useNavigate();
 	const SignIn = (ev) => {
 		ev.preventDefault();

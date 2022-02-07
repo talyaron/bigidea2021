@@ -1,4 +1,4 @@
-import '../../styles/page/AdminPage.css';
+
 import AdminPagePopUp from '../template/AdminPagePopUp';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../scripts/firebase/config';
@@ -8,6 +8,7 @@ var isAdmin = true;
 let userIDAdmin;
 
 function AdminPage() {
+	import('../../styles/page/AdminPage.css');
 	const [displayName, setDisplayName] = useState('displayName');
 	const [userID, setUserID] = useState('id');
 	const [isOpen, setIsOpen] = useState(false);

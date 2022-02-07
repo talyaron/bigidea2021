@@ -1,4 +1,4 @@
-.box {
+/* .box {
     position: relative;
     width: 70%;
     margin: 0 auto;
@@ -31,7 +31,7 @@
     grid-area: "title";
     font-size: 20px;
     padding-bottom: 10px;
-}
+} */
 
 /* .submit{
     background-color: var(--Grey);
@@ -40,7 +40,7 @@
     margin-top: 10px;
     border: none;
 } */
-
+/* 
 .textBasic{
     background-color: var(--Dark-D2);
     border-radius: 5px;
@@ -63,13 +63,13 @@
     border-radius: 10px;
     width: 91%;
     height: 110vh;
-    /*grid-template-columns: repeat(6, 1fr); /*6 columns*/
-    /*grid-template-rows: repeat(14, auto); /*14 rows*/
+    grid-template-columns: repeat(6, 1fr); 6 columns
+    grid-template-rows: repeat(14, auto); 14 rows
 
     
-}
-.createArticle-popup-box input{
-    background-color: /*rgb(231, 231, 231)*/var(--Grey);
+} */
+/* .createArticle-popup-box input{
+    background-color: var(--Grey);
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 10px;
@@ -84,14 +84,14 @@
     display: inline-block;
     margin: 5px;
 }
-
+ */
 
 /*For autogrowing textbox
 https://css-tricks.com/auto-growing-inputs-textareas/
 */
-.expandBox {
+/* .expandBox {
     display: block;
-    background-color: /*rgb(231, 231, 231)*/ var(--Grey);
+    background-color: var(--Grey);
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 10px;
@@ -113,9 +113,9 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 .textarea[contenteditable]:empty::before {
   content: "Enter event description";
   color: #586d8e;
-}
+} */
 /*Autogrowing box changes end here*/
-.Button36{
+/* .Button36{
     width: 95px;
     height: 50px;
     margin-left: 15px;
@@ -131,8 +131,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
     border-radius: 15px;
     margin-top: 10px;
     border: none;
-    /* padding: 10px; */
-    /*Button*/
+    padding: 10px;
 }
 .Dragon43{
     height: 50px;
@@ -140,16 +139,15 @@ https://css-tricks.com/auto-growing-inputs-textareas/
     color: var(--Grey);
     width: 100px; 
     border: none;
-    /* position: relative;
+    position: relative;
     left: 65.5vw;
-    bottom: 5vh; */
+    bottom: 5vh;
     border-radius: 15px;
     margin-top: 10px;
    
-    /* padding: 10px;
+    padding: 10px;
     padding-left: 9px;
-    padding-right: 9px; */
-    /*Button*/
+    padding-right: 9px;
 }
 .Header{
     text-align: center;
@@ -161,8 +159,8 @@ https://css-tricks.com/auto-growing-inputs-textareas/
     padding-left: 10px;
 }
 #SubmitButton_ImportImg{
-    /* position: relative;
-    left: 2vw; */
+    position: relative;
+    left: 2vw;
     margin-left: 10px;
     width: 90px;
     background-color: var(--Navy-blue);
@@ -186,4 +184,4 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 .In{
     height: 20px;
-}
+} */

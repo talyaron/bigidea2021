@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "../../styles/template/EditSavedArticles.css";
+
 import { doc, getDoc, setDoc, addDoc,deleteDoc } from "firebase/firestore";
 import { db } from "../../scripts/firebase/config";
 import ImportImgs from "./ImportImgs";
@@ -25,7 +25,8 @@ export function convertToDefaultTime(time) {
 	return `${time.toDateInputValue()}T${hours}:${minutes}`;
 }
 
-function EditSavedArticles(props) {
+function EditSavedArticle(props) {
+	import("../../styles/template/EditSavedArticles.css");
 	const navigate = useNavigate()
 	const [tagsState, setTagsState] = useState([]);
 	const inputRef = useRef();
@@ -38,10 +39,11 @@ function EditSavedArticles(props) {
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
 
 	useEffect(async () => {
-		const eventRef = doc(db, "users", props.userID, "Saved", eventID);
+		const eventRef = doc(db, "users", props.userID, "Published", eventID);
 		let eventDB = await getDoc(eventRef);
 		const eventDBTemp = eventDB.data();
 		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
+		
 		getDoc(tagsRef).then((tagsDB) => {
 			console.log(tagsDB.data().tagArray);
 			setTags(tagsDB.data().tagArray);
@@ -74,7 +76,8 @@ function EditSavedArticles(props) {
 		setStatesSubmitted(eventDBTemp);
 		setAddress(eventDBTemp.address);
 		setContactInfo(eventDBTemp.contactInfo);
-		setTagsState(eventDBTemp.tags);
+		setSelectedTagArray(eventDBTemp.tags);
+		setHttpUrl(eventDBTemp.coverImage);
 	}, []);
 
 	function submitArticle() {
@@ -88,10 +91,9 @@ function EditSavedArticles(props) {
 			maxCapacity,
 			article
 		} = statesSubmitted;
-		coverImage = httpUrl;
 		setDoc(doc(db, "events",eventID), {
 			title,
-			coverImage,
+			coverImage:httpUrl,
 			article,
 			hostName,
 			address: {
@@ -104,7 +106,7 @@ function EditSavedArticles(props) {
 				email: statesSubmitted.contactInfo.email,
 				website: statesSubmitted.contactInfo.website,
 			},
-			tags: tagsState,
+			tags: selectedTagArray,
 			creatorUID: props.userID,
 			creatorOrg: props.userOrg,
 			views,
@@ -114,25 +116,9 @@ function EditSavedArticles(props) {
 			endTime: new Date(endTime),
 			maxCapacity,
 		});
-		deleteDoc(doc(db,"users",props.userID,"Saved",eventID))
-		alert("Event Published")
-		navigate("/ProfilePage")
-	}
-	function saveDraft() {
-		let {
+		setDoc(doc(db, "users",props.userID,"Published",eventID), {
 			title,
-			hostName,
-			coverImage,
-			views,
-			startTime,
-			endTime,
-			maxCapacity,
-			article
-		} = statesSubmitted;
-		coverImage = httpUrl;
-		setDoc(doc(db, "users", props.userID, "Saved", eventID), {
-			title,
-			coverImage,
+			coverImage:httpUrl,
 			article,
 			hostName,
 			address: {
@@ -145,20 +131,20 @@ function EditSavedArticles(props) {
 				email: statesSubmitted.contactInfo.email,
 				website: statesSubmitted.contactInfo.website,
 			},
-			tags: tagsState,
+			tags: selectedTagArray,
 			creatorUID: props.userID,
 			creatorOrg: props.userOrg,
 			views,
 			dateAdded: new Date(),
-			isPublished: false,
+			isPublished: true,
 			startTime: new Date(startTime),
 			endTime: new Date(endTime),
 			maxCapacity,
 		});
+		alert("Event Changes Published")
 		navigate("/ProfilePage")
-		alert("Event Saved!")
 	}
-
+	
 	function changeState(ev) {
 		let parse = ev.target.name;
 		setStatesSubmitted({ ...statesSubmitted, [parse]: ev.target.value });
@@ -338,11 +324,8 @@ function EditSavedArticles(props) {
 						</div>
 					</div>
 						<div className="buttonContainer23">
-							<button className="Dragon42 shadow" onClick={saveDraft}>
-								Save Draft
-							</button>
 							<button className="Dragon43 shadow" onClick={submitArticle}>
-								Submit Article
+								Submit Changes
 							</button>
 						</div>
 					</div>
@@ -352,4 +335,4 @@ function EditSavedArticles(props) {
 	);
 }
 
-export default EditSavedArticles;
+export default EditSavedArticle;

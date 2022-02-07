@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../../styles/template/AdminPagePopUp.css';
+
 import { db } from '../../scripts/firebase/config';
 import { collection } from '@firebase/firestore';
 import { doc, getDocs, updateDoc, where } from 'firebase/firestore';
@@ -8,7 +8,7 @@ import { query } from 'firebase/database';
 
 let currentID;
 const AdminPagePopUp = ({ tempUserIDAdm, content, handleClose, role, isBanned}) => {
-
+	import ('../../styles/template/AdminPagePopUp.css');
 
 	let userIDRef = tempUserIDAdm; // this will change based on the profile page pulled rn
 	let usersRef = collection(db, 'users');

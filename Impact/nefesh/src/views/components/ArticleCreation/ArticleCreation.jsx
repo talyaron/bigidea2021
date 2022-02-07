@@ -107,8 +107,9 @@ function ArticleCreation(props) {
 	return (
 		<div className='backGround'>
 			<header className='Header'>Create an Article</header>
+			<div className='line54'></div>
 			<div className='createArticle-popup-box'>
-				<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} />
+				<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} className="In"/>
 				<input type='text' name='title' onKeyUp={changeState} placeholder='Enter article title here' className='shadow In' />
 				<input type='text' name='name' onKeyUp={changeState} placeholder='Enter host/s name here' className='shadow In' />
 				<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' className='shadow In' />
@@ -122,7 +123,7 @@ function ArticleCreation(props) {
 				<input type='datetime-local' name='startTime' onChange={changeState} placeholder='Enter address line 1 here' className='shadow In' />
 				<div>Event End Time:</div>
 				<input type='datetime-local' name='endTime' onChange={changeState} placeholder='Enter address line 1 here' className='shadow In' />
-				<div className='expandBox'>
+				<div className='expandBox shadow'>
 					<div contentEditable='true' className='textarea' name='text' role='textbox' id='editor' placeholder='Enter event description here'></div>
 				</div>
 
