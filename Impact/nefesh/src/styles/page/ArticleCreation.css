@@ -47,17 +47,19 @@
 	margin-top: 10px;
 }
 .backGround {
-	background-color: var(--Light);
+	background-color: var(--Light-Page);
 	justify-content: center;
 }
 .In {
 	height: 20px;
 	background-color:var(--Blue1);
 	font-family: Roboto;
+	width: 80%;
+	/* align-self: center; */
 }
 
 .createArticle-popup-box {
-	/* background-color: var(--Blue1); */
+	background-color: var(--Light-Page);
     color: var(--Dark);
     margin: 15px;
     display: flex;
@@ -65,6 +67,11 @@
     border-radius: 10px;
     font-weight: 530;
 	font-family: Roboto;
+	border: none;
+	max-width: 80%;
+	width: 80%;
+	align-items: center;
+	margin-left: 10%;
 }
 
 .createArticle-popup-box input {
@@ -89,13 +96,13 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 */
 .expandBox {
 	display: block;
-	background-color: /*rgb(231, 231, 231)*/ var(--Blue1);
+	background-color: var(--Blue1);
 	margin-bottom: 10px;
 	padding: 10px;
 	color: var(--Dark);
 	font-family: Roboto;
 	font-size: 15px;
-	border-bottom: 2px solid var(--Grey);
+	width: 80%;
 }
 
 .textarea {
@@ -143,10 +150,12 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 .Header {
 	text-align: center;
 	font-size: 40px;
+	font-weight: 500;
 	color: var(--Navy-blue);
-	margin-top: 10px;
-	border-bottom: 1px solid #000000;
-	transform: rotate(0.22deg);
+	border-bottom: 1px solid var(--Dark);
+	font-family: Roboto;
+	max-width: 80%;
+	margin-left: 10%;
 }
 .Images {
 	padding-left: 10px;
@@ -162,12 +171,12 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 #input_ArticleImg {
 	background-color:var(--Blue1);
 	font-family: Roboto;
+	width: 80%;
 }
 .buttonContainer23 {
 	display: flex;
 	justify-content: space-around;
 	width: 100%;
-	background-color: var(--Blue2);
 }
 
 .tag34 {
@@ -177,13 +186,11 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 
 .border-ArticleCreation {
-	border-bottom: 2px var(--Grey) solid;
-	border-top: none;
-	border-left: none;
-	border-right: none;
+	border: none;
 }
 #ArtC_Header {
-	background-color: var(--Light);
+	background-color: var(--Light-Page);
+	margin: 0px 9px 0px 9px;
 }
 
 .placeHolderText_articleCreation::placeholder {
@@ -217,6 +224,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 
 .unselected_tagBox {
 	display: inline-block;
+	background-color: var(--Blue1);
 }
 .Tag-X {
 	display: inline-block;
@@ -233,13 +241,26 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	display: inline-block;
 }
 .filterBtn_articleCreation {
-	background-color: #4c97ec;
+	/* background-color: #4c97ec;
 	max-height: 20px;
 	height: 20px;
     margin: 5px;
     padding: 4px;
     border-radius: 10px;
-    color: var(--Light);
+    color: var(--Light); */
+	background: var(--Blue2);
+	border: 1px solid var(--Grey);
+	box-sizing: border-box;
+	border-radius: 10px;
+	color: var(--Blue4);
+	padding: 3px;
+	text-align: center;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 28px;
+	margin: 3px;
+    width: min-content;
 }
 
 .filterBtn_articleCreation:hover{
