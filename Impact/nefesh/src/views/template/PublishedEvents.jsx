@@ -8,7 +8,6 @@ let page = 'ProfilePage';
 
 function SavedEvents(props) {
 	import('../../styles/page/ProfilePage.css');
-	import('../../styles/page/MainPage.css')
 	const [eventListState, setEventListState] = useState([]);
 
 	let SavedEventsTemp = []
