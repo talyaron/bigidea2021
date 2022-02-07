@@ -183,8 +183,8 @@ text-align: center;
 }
 
 .choosePictureButton {
-  color: red;
-  background: rgba(207, 228, 255, 0.4);
+  width: 100%;
+
 }
 
 .editProfile {

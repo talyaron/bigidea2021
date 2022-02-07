@@ -36,3 +36,14 @@
   .profileEditor{
     width: fit-content;
   }
+  .bioField{
+    width: 100%;
+    padding: 4px;
+  }
+  .choosePictureButton{
+    width: 100%;
+  }
+  #editbtnSubmitProfPage{
+    border: none;
+    font-size: 16px;
+  }

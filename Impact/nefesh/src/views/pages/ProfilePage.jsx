@@ -212,7 +212,7 @@ async function changeProfile(ev) {
                     name="newBio"
                   />
                   <div className="btns">
-                    <button className="btn" name="editbtn" type="submit">
+                    <button className="btn" name="editbtn" type="submit" id="editbtnSubmitProfPage">
                       Submit Changes
                     </button>
                     <div className="btn" name="editbtn" onClick={editProfile}>
