@@ -56,7 +56,6 @@ function HandleImportImg(props) {
 		<label htmlFor="articleImg"  id='input_ArticleImg' className='border-ArticleCreation'>
 			<div className="btn" >ADD an Image</div>
 			<input type='file' id='articleImg'  accept='.jpg, .png, .gif, .tif' onClick={handleClickImage} onChange={onTrigger} className='hide'/>
-			
 			Upload an Image<img src={Icon} alt='upload'/>
 		</label>
 	)
