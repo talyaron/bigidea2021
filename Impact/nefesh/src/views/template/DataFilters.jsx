@@ -16,18 +16,20 @@ function DataFilters({ setEventListState }) {
   const db = getFirestore();
   const [tags, setTags] = useState([]);
 
-  useEffect(() => {
+  useEffect(async() => {
 		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
-		getDoc(tagsRef).then((tagsDB) => {
+		await getDoc(tagsRef).then((tagsDB) => {
 			setTags(tagsDB.data().tagArray);
 		});
-	}, []);
+    
+	},
+   []);
+  
 
 
   async function getTarget(ev) {
     for (var oldFilter in filters) delete filters[oldFilter];
-    filters[ev.target.name] = ev.target;
-
+    filters[ev.target.id] = ev.target;
     console.log(filters)
     getEvents(ev)
   }
@@ -108,7 +110,7 @@ const joinedEventsList = []
 								return (
 									<div key={tag}className='filterBtn_cont'>
 										<div className='inline-block'>
-											<div className='filterBtn inline-block shadow' name={tag} onClick={getTarget}>
+											<div className='filterBtn inline-block shadow' id={tag} onClick={getTarget}>
 												{tag}
 											</div>
 										</div>
