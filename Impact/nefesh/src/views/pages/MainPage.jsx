@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DataFilters from '../template/DataFilters';
 import { query } from 'firebase/database';
-import { collection, onSnapshot, getFirestore } from 'firebase/firestore';
+import { collection, doc, onSnapshot, getFirestore , getDoc} from 'firebase/firestore';
 
 //const tags = ["newest", "popular", "recent"];
 let eventFilter = '';
@@ -14,10 +14,10 @@ function App() {
 	const db = getFirestore();
 	const [eventListState, setEventListState] = useState([]);
 
-	useEffect(() => {
-		const q = query(collection(db, 'events'));
+	useEffect(async() => {
+    const q = query(collection(db, 'events'));
 		const eventListTemp = [];
-
+    
 		//listen to events
 		const eventsSnapshot = onSnapshot(q, (querySnapshot) => {
 			querySnapshot.forEach((doc) => {
@@ -31,7 +31,8 @@ function App() {
 		return () => {
 			return eventsSnapshot();
 		};
-	}, []);
+	}, []
+  );
 
 	function changeEventFilter(ev) {
 		const eventListTemp = [...eventListState];
@@ -65,6 +66,8 @@ function App() {
 	function handleRoute(eventId) {
 		navigate('/event/' + eventId);
 	}
+
+ 
 
 	return (
 		<div>

@@ -14,13 +14,23 @@ const filters = {};
 
 function DataFilters({ setEventListState }) {
   const db = getFirestore();
+  let tagsSorted=[]
   const [tags, setTags] = useState([]);
 
   useEffect(async() => {
 		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
+    const tagsDB= await getDoc(doc(db,"tagCollection","tagDoc"))
+
 		await getDoc(tagsRef).then((tagsDB) => {
 			setTags(tagsDB.data().tagArray);
 		});
+    tagsSorted=tagsDB.data().tagArray;
+    
+      tagsSorted.sort(function (a, b) {
+        return a.localeCompare(b); //using String.prototype.localCompare()
+      })
+      
+      setTags(tagsSorted)
     
 	},
    []);
