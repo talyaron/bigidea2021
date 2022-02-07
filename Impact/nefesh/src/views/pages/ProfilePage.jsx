@@ -201,7 +201,6 @@ function ProfilePage(props) {
                     parentCallBack={callBackFunction}
                   />
 				  <br />
-                  <img src={Upload} />
                   <input
                     type="text"
                     className="bioField"
