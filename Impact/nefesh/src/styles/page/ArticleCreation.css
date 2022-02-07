@@ -50,20 +50,25 @@
 	background-color: var(--Light);
 	justify-content: center;
 }
+.In {
+	height: 20px;
+	background-color:var(--Blue1);
+	font-family: Roboto;
+}
 
 .createArticle-popup-box {
-    background-color: var(--Background-light);
-    color: var(--Navy-blue);
+	/* background-color: var(--Blue1); */
+    color: var(--Dark);
     margin: 15px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     font-weight: 530;
+	font-family: Roboto;
 }
 
 .createArticle-popup-box input {
-	background-color: /*rgb(231, 231, 231)*/ var(--Background-light);
-	border-radius: 5px;
+	/* background-color: var(--Background-light); */
 	margin-bottom: 10px;
 	padding: 8px;
 	color: var(--Navy-blue);
@@ -84,14 +89,13 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 */
 .expandBox {
 	display: block;
-	background-color: /*rgb(231, 231, 231)*/ var(--Background-light);
-	border-radius: 5px;
+	background-color: /*rgb(231, 231, 231)*/ var(--Blue1);
 	margin-bottom: 10px;
 	padding: 10px;
-	color: var(--Navy-blue);
-	font-family: sans-serif;
+	color: var(--Dark);
+	font-family: Roboto;
 	font-size: 15px;
-	border: 2px solid var(--Grey);
+	border-bottom: 2px solid var(--Grey);
 }
 
 .textarea {
@@ -119,8 +123,8 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 .Dragon42 {
 	height: 50px;
-	background-color: var(--Blue3);
-	color: var(--Grey);
+	background-color: var(--Blue6);
+	color: var(--Light);
 	width: 150px;
 	border-radius: 15px;
 	margin-top: 10px;
@@ -129,8 +133,8 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 .Dragon43 {
 	height: 50px;
-	background-color: var(--Navy-blue);
-	color: var(--Grey);
+	background-color: var(--Blue6);
+	color: var(--Light);
 	width: 150px;
 	border: none;
 	border-radius: 15px;
@@ -140,8 +144,9 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	text-align: center;
 	font-size: 40px;
 	color: var(--Navy-blue);
-	background-color: var(--Light);
 	margin-top: 10px;
+	border-bottom: 1px solid #000000;
+	transform: rotate(0.22deg);
 }
 .Images {
 	padding-left: 10px;
@@ -155,11 +160,14 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	border-radius: 15px;
 }
 #input_ArticleImg {
-	border-radius: 10px;
+	background-color:var(--Blue1);
+	font-family: Roboto;
 }
 .buttonContainer23 {
 	display: flex;
 	justify-content: space-around;
+	width: 100%;
+	background-color: var(--Blue2);
 }
 
 .tag34 {
@@ -167,9 +175,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	height: 25px;
 	border-radius: 15px;
 }
-.In {
-	height: 20px;
-}
+
 .border-ArticleCreation {
 	border-bottom: 2px var(--Grey) solid;
 	border-top: none;
