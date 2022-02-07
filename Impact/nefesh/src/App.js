@@ -1,6 +1,6 @@
 import "./styles/global/App.css";
 import "./views/template/AdminPagePopUp";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Login from './views/pages/Login.js';
 import Error from './views/pages/404.js';
@@ -38,8 +38,13 @@ function App() {
   const [/*isAdmin*/, setIsAdmin] = useState(false);
   const [isOle, setIsOle] = useState(false);
   const [isUserID, setIsUserID] = useState(null);
-  
+  const location = useLocation();
+  const [isLogin, setIsLogin] = useState(false);
+
   useEffect(() => {
+    console.log(location)
+   
+
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const uid = user.uid;
@@ -105,9 +110,15 @@ function App() {
     });
   }, []);
 
+  useEffect(()=>{
+    console.log(location.pathname)
+    if(location.pathname === '/login') setIsLogin(true)
+    else setIsLogin(false);
+  },[location.pathname])
+
 	return (
 		<div>
-	    <NavTopBar titleDisplay= {LogoNew} />
+	    {!isLogin?<NavTopBar titleDisplay= {LogoNew} />:null}
 		<div className='container_AppMain'>
 		
 			{loggedIn ? (
@@ -147,7 +158,7 @@ function App() {
 			)}
 		</div>
 		<div className="footer"></div>
-		<StickyBanner role={role} />
+		{!isLogin?<StickyBanner role={role} />:null}
 		</div>
 	);
 }
