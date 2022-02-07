@@ -48,8 +48,9 @@ body {
 }
 
 .container_App {
-  width: 100%;
-  /*max-width: 500px;
+	width: 100%;
+	min-height: 90vh;
+	/*max-width: 500px;
 	/*overflow-y: scroll;  /* Hide vertical scrollbar */
   /*overflow-x: hidden; /* Hide horizontal scrollbar */
   /*max-height: 100vh;*/
@@ -135,22 +136,19 @@ html {
   background-clip: padding-box;
 }
 
-.btn {
-  display: flex;
-  align-items: center;
-  padding: 6px 16px 6px 8px;
-  width: max-content;
-
-  background: var(--Light);
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3),
-    0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
-  margin: 0px 5px;
-  cursor: pointer;
-  user-select: none;
+.btn{
+	border-radius: 5px;
+	background-color: #ffffff;
+	padding: 10px 20px;
+	text-align: center;
+	color: black;
+	user-select: none;
+	cursor: pointer;
+	font-family: Roboto;
 }
-
 .btns{
 	display: flex;
 	justify-content: space-evenly;
+	width: 100%;
+
 }
