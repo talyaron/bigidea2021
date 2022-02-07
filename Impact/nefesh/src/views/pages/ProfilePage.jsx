@@ -205,7 +205,6 @@ async function changeProfile(ev) {
                     parentCallBack={callBackFunction}
                   />
 				  <br />
-                  <img src={Upload} />
                   <input
                     type="text"
                     className="bioField"
