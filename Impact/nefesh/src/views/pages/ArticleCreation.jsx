@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/page/ArticleCreation.css';
-import { collection, addDoc, getDoc, doc } from 'firebase/firestore';
+import { collection, addDoc, getDoc, doc ,setDoc} from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import ImportImgs from '../template/ImportImgs';
 import { useNavigate } from 'react-router-dom';
@@ -27,11 +27,11 @@ function ArticleCreation(props) {
 		statesSubmitted = { ...statesSubmitted, [parse]: ev.target.innerHTML };
 	}
 
-	function submitArticle() {
+	async function submitArticle() {
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
 		try {
-			addDoc(collection(db, 'events'), {
+			const docRef = await addDoc(collection(db, 'events'), {
 				title,
 				coverImage: image,
 				article: text,
@@ -56,6 +56,10 @@ function ArticleCreation(props) {
 				endTime: new Date(endTime),
 				maxCapacity,
 				currentCapacity: maxCapacity,
+			});
+			console.log(docRef.id)
+			addDoc(collection(db, 'users',props.userID,"Published"), {
+				id:docRef.id
 			});
 			alert('Event Submitted!')
 			navigate('/MainPage')

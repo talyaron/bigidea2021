@@ -1,10 +1,39 @@
 
-  .phoneNum{
-    color: #0077cc;
-    text-align: center;
-    font-size: 20px;
+
+
+  
+
+
+
+  .button{
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px 6px 8px;
+  width: fit-content;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  background: #FFFFFF;
+  /* M3/Elevation Light/1 */
+
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
   
   }
+  .position{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .position2{
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+  }
+
+
   .email{
     color: #0077cc;
     text-align: right;
@@ -12,19 +41,36 @@
   
   }
   .head{
-    background-color: #54a4d4;
     text-align: center;
     font-size: 30px;
     height: 50px;
+    padding-top: 10px;
     margin-top: 10px;
+ 
   }
-  .box-1{
-    border: 1px black solid;
-    margin: 10px;
-    text-align: center;
-    border-radius: 15px 15px 15px 15px;
-    background-color: #e4e8ec;
+  .sp{
+    margin-top: 1%;
   }
+  .mar{
+    margin-right: 3%;
+  }
+  
+  .back-color{
+    background-color: #F7FBFF;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 0%;
+    height: 100vh;
+  }
+  .line{
+    border-bottom: 2px black solid;
+    margin-top: 0%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5%;
+    width: 70%;
+  }
+  
   .apply{
     text-align: center;
     font-size: 20px;
@@ -36,13 +82,14 @@
   .mission{
     text-align: center;
     border: none;
-    padding: 10px;
+    padding: 20px;
     border-radius: 15px 15px 15px 15px;
-    margin: 20px;
-    background-color: #54a4d4;
+    margin: auto;
+    width: 70%;
+    background-color: #E7F2FF;
   }
   .mishead{
-    font-size: 20px;
+    font-size: 25px;
   }
 
 
