@@ -199,7 +199,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 
 .tagsMapContainer {
-    margin-top: 15px;
+    margin: 5px;
 	background-color: var(--Background-light);
 	border-radius: 5px;
 	display: flex;
@@ -211,7 +211,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	overflow-y: scroll;
 }
 .tagsMapContainer_selected{
-    margin-top: 15px;
+    margin: 5px;
 	background-color: var(--Background-light);
 	border-radius: 5px;
 	display: flex;
@@ -225,6 +225,12 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 .unselected_tagBox {
 	display: inline-block;
 	background-color: var(--Blue1);
+	border-radius: 15px;
+}
+.selected_tagBox {
+    display: inline-block;
+    background-color: var(--Blue1);
+	border-radius: 15px;
 }
 .Tag-X {
 	display: inline-block;
@@ -241,15 +247,8 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	display: inline-block;
 }
 .filterBtn_articleCreation {
-	/* background-color: #4c97ec;
-	max-height: 20px;
-	height: 20px;
-    margin: 5px;
-    padding: 4px;
-    border-radius: 10px;
-    color: var(--Light); */
 	background: var(--Blue2);
-	border: 1px solid var(--Grey);
+	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 	box-sizing: border-box;
 	border-radius: 10px;
 	color: var(--Blue4);
@@ -265,6 +264,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 
 .filterBtn_articleCreation:hover{
     background-color: #3e80ca;
+
 }
 .filterBtn_articleCreation:active{
     background-color: #264e7c;
