@@ -25,7 +25,7 @@ export function convertToDefaultTime(time) {
 	return `${time.toDateInputValue()}T${hours}:${minutes}`;
 }
 
-function EditPublishedEvent(props) {
+function EditSavedArticle(props) {
 	const navigate = useNavigate()
 	const [tagsState, setTagsState] = useState([]);
 	const inputRef = useRef();
@@ -42,6 +42,7 @@ function EditPublishedEvent(props) {
 		let eventDB = await getDoc(eventRef);
 		const eventDBTemp = eventDB.data();
 		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
+		
 		getDoc(tagsRef).then((tagsDB) => {
 			console.log(tagsDB.data().tagArray);
 			setTags(tagsDB.data().tagArray);
@@ -74,7 +75,8 @@ function EditPublishedEvent(props) {
 		setStatesSubmitted(eventDBTemp);
 		setAddress(eventDBTemp.address);
 		setContactInfo(eventDBTemp.contactInfo);
-		setTagsState(eventDBTemp.tags);
+		setSelectedTagArray(eventDBTemp.tags);
+		setHttpUrl(eventDBTemp.coverImage);
 	}, []);
 
 	function submitArticle() {
@@ -88,10 +90,9 @@ function EditPublishedEvent(props) {
 			maxCapacity,
 			article
 		} = statesSubmitted;
-		coverImage = httpUrl;
 		setDoc(doc(db, "events",eventID), {
 			title,
-			coverImage,
+			coverImage:httpUrl,
 			article,
 			hostName,
 			address: {
@@ -104,7 +105,7 @@ function EditPublishedEvent(props) {
 				email: statesSubmitted.contactInfo.email,
 				website: statesSubmitted.contactInfo.website,
 			},
-			tags: tagsState,
+			tags: selectedTagArray,
 			creatorUID: props.userID,
 			creatorOrg: props.userOrg,
 			views,
@@ -114,9 +115,9 @@ function EditPublishedEvent(props) {
 			endTime: new Date(endTime),
 			maxCapacity,
 		});
-		setDoc(doc(db,"users",props.userID,"Published",eventID), {
+		setDoc(doc(db, "users",props.userID,"Published",eventID), {
 			title,
-			coverImage,
+			coverImage:httpUrl,
 			article,
 			hostName,
 			address: {
@@ -129,7 +130,7 @@ function EditPublishedEvent(props) {
 				email: statesSubmitted.contactInfo.email,
 				website: statesSubmitted.contactInfo.website,
 			},
-			tags: tagsState,
+			tags: selectedTagArray,
 			creatorUID: props.userID,
 			creatorOrg: props.userOrg,
 			views,
@@ -139,10 +140,10 @@ function EditPublishedEvent(props) {
 			endTime: new Date(endTime),
 			maxCapacity,
 		});
-		alert("Event Published")
+		alert("Event Changes Published")
 		navigate("/ProfilePage")
 	}
-
+	
 	function changeState(ev) {
 		let parse = ev.target.name;
 		setStatesSubmitted({ ...statesSubmitted, [parse]: ev.target.value });
@@ -323,7 +324,7 @@ function EditPublishedEvent(props) {
 					</div>
 						<div className="buttonContainer23">
 							<button className="Dragon43 shadow" onClick={submitArticle}>
-								Submit Article Changes
+								Submit Changes
 							</button>
 						</div>
 					</div>
@@ -333,4 +334,4 @@ function EditPublishedEvent(props) {
 	);
 }
 
-export default EditPublishedEvent;
+export default EditSavedArticle;

@@ -26,41 +26,22 @@ function SavedEvents(props) {
 			});
 			setEventListState(eventListTemp);
 		});
-		//pull userId of selected user and set for superAdmin page
-		//on snapshot displayName
-		// const q = query(collection(db, "users", props.userID, "Saved"))
-		// const savedEventsDB = await getDocs(q)
-
-		// savedEventsDB.forEach((savedEventDB) => {
-		// 	const newSavedEvent = savedEventDB.data()
-		// 	newSavedEvent.id = savedEventDB.id
-		// 	SavedEventsTemp.push(newSavedEvent)
-		// })
-		// setSavedArticles(SavedEventsTemp)
 	}, []);
-
-	function ping() {
-		console.log(eventListState[0].id)
-	}
-
-	function editNavigate(ev) {
-
-	}
 
 
 
 	return (
 		<div className="wholePage">
 			<div className="SavedEvents">
-				<h3 className="EventParent2">Published Events</h3>
+				<h3 className="EventParent2">Saved Events</h3>
 				<div className='eventMapContainer'>
-					<button onClick={ping}>HIIIII</button>
 					{eventListState.map((event) => {
 						return (
 							<div key={event.id} className='nametag card card--link' >
-								<button onClick={() => handleRoute(`Edit/${event.id}`)}>Edit Article</button>
+								<button onClick={() => handleRoute(`Edit/${event.id}`)}>Edit Event</button>
+								<img src={event.coverImage} alt={event.title}></img>
 								<div onClick={() => handleRoute(`View/${event.id}`)}>
-									<img src={event.coverImage} alt={event.title}></img>
+									
 									<h2>{event.title}</h2>
 									<div className='cardData'>
 										<div id='Date'>

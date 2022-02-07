@@ -123,12 +123,11 @@ function App() {
 						<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
 						<Route path='AdminPage' element={<AdminPage />}/>
-            <Route path='ProfilePage/SavedEvents/Preview/:eventID' element={<SavedEvent userID={userID} userOrg={userState.userOrg} />} />
+            <Route path='ProfilePage/SavedEvents/View/:eventID' element={<SavedEvent userID={userID} userOrg={userState.userOrg} />} />
             <Route path='ProfilePage/SavedEvents' element={<SavedEvents userID={userID} userOrg={userState.userOrg} />} />
             <Route path='ProfilePage/PublishedEvents' element={<PublishedEvents userID={userID} userOrg={userState.userOrg} />} />
             <Route path="/ProfilePage/PublishedEvents/View/:eventID" element={<PublishedEvent userID={userID} userOrg={userState.userOrg}/> }/>
             <Route path="/profilePage/PublishedEvents/Edit/:eventID" element={<EditPublishedEvent userID={userID} userOrg={userState.userOrg}  />} />
-            <Route path="/ProfilePage/PublishedEvents/Edit/:eventID" element={<EditPublishedEvent userID={userID} userOrg={userState.userOrg}/> }/>
             <Route path='ProfilePage/SavedEvents/Edit/:eventID' element={<EditSavedArticle userID={userID} userOrg={userState.userOrg}  />} />
 					</Routes>
 					

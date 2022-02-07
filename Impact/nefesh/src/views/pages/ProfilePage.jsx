@@ -163,8 +163,8 @@ function ProfilePage(props) {
 			</div>
 
  <div className= "buttonHolder">
- 			<button className= "savedArticles" onClick={navigateSaved}>Saved Articles</button>
-			<button className= "publishedArticles" onClick={navigatePublished}>Published Articles</button>
+ 			<button className= "savedArticles" onClick={navigateSaved}>Saved Events</button>
+			<button className= "publishedArticles" onClick={navigatePublished}>Published Events</button>
 			<footer className='back-2 foot'>
 		
 
