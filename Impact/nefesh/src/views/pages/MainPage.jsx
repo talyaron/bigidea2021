@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import DataFilters from "../template/DataFilters";
 import { query } from "firebase/database";
 import { collection, onSnapshot, getFirestore , where} from "firebase/firestore";
-let eventFilter = '';
+//let eventFilter = '';
 
 //const tags = ["newest", "popular", "recent"];
 
@@ -14,14 +14,14 @@ function App() {
 
   //var searchOption, filterOption;
   const db = getFirestore();
-  const [articles, setArticles] = useState([]);
-  const [searchField, setSearchField] = useState("");
+  // const [articles, setArticles] = useState([]);
+  // const [searchField, setSearchField] = useState("");
   const [eventListState, setEventListState] = useState([]);
   const [eventFilter, setEventFilter] = useState("Upcoming");
 
 	useEffect(() => {
 		const q = query(collection(db, "events"), where('startTime', '>', new Date()));
-		const eventListTemp = [];
+		//const eventListTemp = [];
 
     
    

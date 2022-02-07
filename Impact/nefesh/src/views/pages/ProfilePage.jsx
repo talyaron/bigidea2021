@@ -11,7 +11,7 @@ import {
 } from "firebase/firestore";
 import EditProfilePopUp from "../template/EditProfilePopUp";
 import ImportImgs from "../template/ImportImgs";
-import EditBioPopUp from "../template/EditBioPopUp";
+// import EditBioPopUp from "../template/EditBioPopUp";
 import EditPic from "../../assets/Images/NewIcons/edit.svg";
 import Envelope from "../../assets/Images/NewIcons/email.svg";
 import Upload from "../../assets/Images/NewIcons/upload.svg";
@@ -22,7 +22,7 @@ function ProfilePage(props) {
   import("../../styles/page/ProfilePage.css");
   let savedEventsTemp = [];
   const handleRoute = useNavigate();
-  const [savedArticles, setSavedArticles] = useState([]);
+  const [/*savedArticles*/, setSavedArticles] = useState([]);
   const [userData, setUserData] = useState();
   const [displayName, setDisplayName] = useState("loading");
   const [profilePicImg, setProfilePicImg] = useState("loading");
@@ -116,32 +116,32 @@ function ProfilePage(props) {
     setIsBioOpen(!isBioOpen);
   }
 
-  function changeBio(ev) {
-    ev.preventDefault();
+  // function changeBio(ev) {
+  //   ev.preventDefault();
 
-    const bio = ev.target.elements.newBio.value;
+  //   const bio = ev.target.elements.newBio.value;
 
-    if (ev.target.elements.newBio.value.length !== 0) {
-      setUserBio(bio);
+  //   if (ev.target.elements.newBio.value.length !== 0) {
+  //     setUserBio(bio);
 
-      updateDoc(doc(db, "users", props.uid), {
-        bio: bio,
-      });
-    }
+  //     updateDoc(doc(db, "users", props.uid), {
+  //       bio: bio,
+  //     });
+  //   }
 
-    setEditing(false);
+  //   setEditing(false);
 
-    setIsBioOpen(!isBioOpen);
-  }
+  //   setIsBioOpen(!isBioOpen);
+  // }
 
   const callBackFunction = (httpRef) => {
     setHttpUrl(httpRef);
   };
 
-  function editBio() {
-    setIsBioOpen(!isBioOpen);
-    setEditing(true);
-  }
+  // function editBio() {
+  //   setIsBioOpen(!isBioOpen);
+  //   setEditing(true);
+  // }
   function navigateSaved() {
     handleRoute("SavedEvents");
   }

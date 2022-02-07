@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 
-import { doc, getDoc, setDoc, addDoc,deleteDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../../scripts/firebase/config";
 import ImportImgs from "./ImportImgs";
 import { useParams,useNavigate } from "react-router-dom";
-// import ContentEditable from '../../components/contentEditable/ContentEditable'
-let i = 0;
+// import ContentEditable from '../../components/contentEditable/ContentEditable';
+// let i = 0;
 let page = "ArticleCreation";
 
 Date.prototype.toDateInputValue = function () {
@@ -28,7 +28,7 @@ export function convertToDefaultTime(time) {
 function EditSavedArticle(props) {
 	import("../../styles/template/EditSavedArticles.css");
 	const navigate = useNavigate()
-	const [tagsState, setTagsState] = useState([]);
+	// const [tagsState, setTagsState] = useState([]);
 	const inputRef = useRef();
 	const [httpUrl, setHttpUrl] = useState("");
 	let { eventID } = useParams();
@@ -150,19 +150,19 @@ function EditSavedArticle(props) {
 		setStatesSubmitted({ ...statesSubmitted, [parse]: ev.target.value });
 	}
 
-	function addTags(ev) {
-		ev.preventDefault();
-		setTagsState([...tagsState, ev.target[0].value]);
-		console.log(ev.target[0].value);
-	}
-	function deleteTag(tag) {
-		// debugger
-		tag.preventDefault();
+	// function addTags(ev) {
+	// 	ev.preventDefault();
+	// 	setTagsState([...tagsState, ev.target[0].value]);
+	// 	console.log(ev.target[0].value);
+	// }
+	// function deleteTag(tag) {
+	// 	// debugger
+	// 	tag.preventDefault();
 
-		let tempArray = [...tagsState];
-		tempArray.splice(tag, 1);
-		setTagsState(tempArray);
-	}
+	// 	let tempArray = [...tagsState];
+	// 	tempArray.splice(tag, 1);
+	// 	setTagsState(tempArray);
+	// }
 
 	const callBackFunction = (httpRef) => {
 		setHttpUrl(httpRef);
