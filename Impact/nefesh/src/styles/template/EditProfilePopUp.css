@@ -14,7 +14,7 @@
   }
   .popup-box {
     position: fixed;
-    width: 31.3em;
+    width: 22.em;
     height: fit-content;
     top: 0;
   }
@@ -31,6 +31,7 @@
     top: 24vh;
     left: 160px;
 
+ 
   }
   .profileEditor{
     width: fit-content;

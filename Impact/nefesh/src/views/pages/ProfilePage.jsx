@@ -200,6 +200,7 @@ function ProfilePage(props) {
                     pageName={page}
                     parentCallBack={callBackFunction}
                   />
+				  <br />
                   <img src={Upload} />
                   <input
                     type="text"

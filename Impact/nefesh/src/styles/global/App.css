@@ -130,15 +130,17 @@ html {
 
 .btn{
 	border-radius: 5px;
-	background-color: teal;
+	background-color: #ffffff;
 	padding: 10px 20px;
 	text-align: center;
-	color: white;
+	color: black;
 	user-select: none;
 	cursor: pointer;
+	font-family: Roboto;
 }
 .btns{
 	display: flex;
 	justify-content: space-evenly;
 	width: 100%;
+
 }
