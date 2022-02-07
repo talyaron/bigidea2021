@@ -119,10 +119,10 @@ function App() {
                       dateStyle: "medium",
                     }).format(event.startTime.seconds * 1000)}
                   </div>
-                  <div id="Views">
-                    Tags:{" "}
+                  <div id="Views" >
+                    {" "} 
                     {event.tags.map((e) => (
-                      <tag>{e}</tag>
+                      <tag className="tag">{e}</tag>
                     ))}
                   </div>
                 </div>
