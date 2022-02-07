@@ -14,20 +14,31 @@ const filters = {};
 
 function DataFilters({ setEventListState }) {
   const db = getFirestore();
+  let tagsSorted=[]
   const [tags, setTags] = useState([]);
 
-  useEffect(() => {
-		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
-		getDoc(tagsRef).then((tagsDB) => {
-			setTags(tagsDB.data().tagArray);
-		});
-	}, []);
+  useEffect(async() => {
+		
+    const tagsDB= await getDoc(doc(db,"tagCollection","tagDoc"))
+
+    tagsSorted=tagsDB.data().tagArray;
+    
+      tagsSorted.sort(function (a, b) {
+        return a.localeCompare(b); //using String.prototype.localCompare()
+      })
+      
+      setTags(tagsSorted)
+    
+	},
+   []);
+  
 
 
   async function getTarget(ev) {
     for (var oldFilter in filters) delete filters[oldFilter];
-    filters[ev.target.name] = ev.target;
-    getEvents(ev);
+    filters[ev.target.id] = ev.target;
+    console.log(filters)
+    getEvents(ev)
   }
 
   async function getEvents(ev) {
@@ -91,16 +102,16 @@ const joinedEventsList = []
   
   return (
   <div>
-  <div className= "filterBanner">
+  {/* <div className= "filterBanner">
     Filters
-  </div>
+  </div> */}
 
         <div id="tagsContainer">
         {tags.map((tag) => {
 								return (
 									<div key={tag}className='filterBtn_cont'>
 										<div className='inline-block'>
-											<div className='filterBtn inline-block shadow' name={tag} onClick={getTarget}>
+											<div className='filterBtn inline-block shadow' id={tag} onClick={getTarget}>
 												{tag}
 											</div>
 										</div>

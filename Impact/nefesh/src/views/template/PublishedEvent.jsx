@@ -7,7 +7,7 @@ import useScript from '../../scripts/useScript';
 import Clock from '../../assets/Images/NewIcons/clock.svg';
 // import 'moment-timezone';
 
-function Event() {
+function PublishedEvent(props) {
 	const [eventData, setEventData] = useState([]);
 	const [EventFilter] = useState([
 		{ id: 0, field: 'startTime', label: 'Start Time', type: 'timestamp' },
@@ -24,7 +24,7 @@ function Event() {
 	useEffect(() => {
 		try {
 			setWebValidity(false);
-			let eventRef = doc(db, 'events', eventID);
+			let eventRef = doc(db, "users",props.userID,"Published",eventID);
 			let eventObj;
 			getDoc(eventRef).then((docSnap) => {
 				eventObj = docSnap.data();
@@ -44,6 +44,8 @@ function Event() {
 				console.log(eventID);
 				setEventData(EventArray);
 				if ('tags' in eventObj && Array.isArray(eventObj.tags)) {
+					console.log('we have tags');
+					console.log(eventObj.tags);
 					setTags(eventObj.tags);
 				}
 				setImage(eventObj.coverImage);
@@ -114,8 +116,7 @@ function Event() {
 					<div id='title_Event'> {getField(eventData, 'title')} </div>
 					<div id='hostName_Event'> Hosted By:{getField(eventData, 'hostName')} </div>
 					<div id='eventWebsite_Event'>
-						{/* <a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a> */}
-						<a href={orgWebsite}/>
+						<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 					</div>
 					<div className='eventTimesCont'>
 						{Object.entries(filterEntries([eventData, EventFilter])).map((e) => (
@@ -164,4 +165,4 @@ function Event() {
 	);
 }
 
-export default Event;
+export default PublishedEvent;

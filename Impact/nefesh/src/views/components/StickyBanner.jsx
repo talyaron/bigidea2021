@@ -4,10 +4,10 @@ import '../../styles/component/StickyBanner.css';
 import { getAuth, signOut } from "firebase/auth";
 
 //icons
-import HomeButton from '../../assets/Images/home.svg';
-import Menu from '../../assets/Images/Menu.svg';
-import X from '../../assets/Images/X.svg';
-import back from '../../assets/Images/back.svg';
+import HomeButton from '../../assets/Images/NewIcons/home.svg';
+import Menu from '../../assets/Images/NewIcons/hamburger.svg';
+import X from '../../assets/Images/NewIcons/hamburger.svg';
+import back from '../../assets/Images/NewIcons/back.svg';
 
 function StickyBanner({role}) {
 	const navigate = useNavigate();

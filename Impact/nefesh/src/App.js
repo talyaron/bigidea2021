@@ -1,6 +1,6 @@
 import "./styles/global/App.css";
 import "./views/template/AdminPagePopUp";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Login from './views/pages/Login.js';
 import Error from './views/pages/404.js';
@@ -17,10 +17,16 @@ import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from './scripts/firebase/config';
 import { useLocation } from 'react-router-dom';
 //pages
+import PublishedEvent from "./views/template/PublishedEvent";
+import EditSavedArticles from "./views/template/EditSavedArticle";
 import AdminPage from './views/pages/AdminPage';
 
 import Event from './views/pages/Event';
-
+import EditSavedArticle from'./views/template/EditSavedArticle'
+import SavedEvents from "./views/template/SavedEvents";
+import SavedEvent from "./views/template/SavedEvent"
+import PublishedEvents from "./views/template/PublishedEvents";
+import EditPublishedEvent from "./views/template/EditPublishedEvent"
 
 const auth = getAuth();
 let userID = "";
@@ -31,17 +37,12 @@ function App() {
   const [/*isAdmin*/, setIsAdmin] = useState(false);
   const [isOle, setIsOle] = useState(false);
   const [isUserID, setIsUserID] = useState(null);
-  const [role, setRole] = useState('guest');
-
-  //what I added
-  const [renderBars, setRenderBars] = useState(false);
   const location = useLocation();
-  let currentPage = location.pathname;
-  //up to here
-  
-  useEffect(() => {
+  const [isLogin, setIsLogin] = useState(false);
 
-    settingRenderBars();
+  useEffect(() => {
+    console.log(location)
+   
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -106,20 +107,15 @@ function App() {
     });
   }, []);
 
-  function settingRenderBars() {
-    if(currentPage === '/login') {
-      console.log(currentPage, "login page");
-      setRenderBars(false);
-    } else {
-      console.log(currentPage, "not login");
-      setRenderBars(true);
-    }
-    console.log(renderBars);
-  }
+  useEffect(()=>{
+    console.log(location.pathname)
+    if(location.pathname === '/login') setIsLogin(true)
+    else setIsLogin(false);
+  },[location.pathname])
 
 	return (
 		<div>
-	
+	    {!isLogin?<NavTopBar titleDisplay= {LogoNew} />:null}
 		<div className='container_AppMain'>
 		
 			{loggedIn ? (
@@ -135,7 +131,12 @@ function App() {
 						<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 						<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
 						<Route path='AdminPage' element={<AdminPage />}/>
-            
+            <Route path='ProfilePage/SavedEvents/View/:eventID' element={<SavedEvent userID={userID} userOrg={userState.userOrg} />} />
+            <Route path='ProfilePage/SavedEvents' element={<SavedEvents userID={userID} userOrg={userState.userOrg} />} />
+            <Route path='ProfilePage/PublishedEvents' element={<PublishedEvents userID={userID} userOrg={userState.userOrg} />} />
+            <Route path="/ProfilePage/PublishedEvents/View/:eventID" element={<PublishedEvent userID={userID} userOrg={userState.userOrg}/> }/>
+            <Route path="/profilePage/PublishedEvents/Edit/:eventID" element={<EditPublishedEvent userID={userID} userOrg={userState.userOrg}  />} />
+            <Route path='ProfilePage/SavedEvents/Edit/:eventID' element={<EditSavedArticle userID={userID} userOrg={userState.userOrg}  />} />
 					</Routes>
 					
 				</div>
@@ -154,7 +155,7 @@ function App() {
 			)}
 		</div>
 		<div className="footer"></div>
-
+		{!isLogin?<StickyBanner role={role} />:null}
 		</div>
 	);
 }

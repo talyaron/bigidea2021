@@ -3,32 +3,35 @@
   
   .EditPopUpbox {
     position: relative;
+    left: 50vw;
+    transform: translateX(-50%);
     margin: 0 auto;
     margin-top: calc(100vh - 85vh - 20px);
     background:Var(--Light-D2);
     border-radius: 4px;
     padding: 20px;
+    z-index: 4000;
   }
   .popup-box {
     position: fixed;
-    width: 31.3em;
+    width: 22.em;
     height: fit-content;
     top: 0;
   }
   
   .Edit-close-icon {
     content: 'x';
-    position:fixed;
+    border: none;
+    position: relative;
     background: Var(--Light-D2);
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    line-height: 20px;
+    line-height: 18px;
     text-align: center;
-    border: 1px solid Var(--Grey);
     font-size: 20px;
     z-index: 99;
-    margin-left: 400px;
+    top: 24vh;
+    left: 160px;
+
+ 
   }
   .profileEditor{
     width: fit-content;
