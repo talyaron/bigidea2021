@@ -50,7 +50,7 @@ body {
 
 .container_App {
 	width: 100%;
-	min-height: 90vh;
+/*	min-height: 90vh;*/
 	/*max-width: 500px;
 	/*overflow-y: scroll;  /* Hide vertical scrollbar */
   /*overflow-x: hidden; /* Hide horizontal scrollbar */

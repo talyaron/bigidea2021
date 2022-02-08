@@ -1,31 +1,47 @@
 import React from 'react';
 import { authentication } from '../../scripts/firebase/config';
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
+import { useNavigate  } from "react-router-dom";
 
 
 import LogoNew from '../../assets/Images/LogoNew.svg';
 import GoogleLogo from '../../assets/Images/Google.svg';
 import LoginArt from '../../assets/Images/signin_img.svg';
 
+const auth = getAuth();
+
 function Login() {
 	import ('../../styles/page/Login.css');
+
 	const navigate = useNavigate();
+	if(auth.currentUser) {
+		navigate('/mainpage'); //After successful login, user will be redirected to home.html
+	}
 	const SignIn = (ev) => {
+
 		ev.preventDefault();
 		const provider = new GoogleAuthProvider();
-		signInWithPopup(authentication, provider)
-			.then((re) => {
-				console.log(re);
-				console.log(re.user.displayName);
-				console.log(re.user.email);
-				console.log(re.user.photoURL);
-				//let userEmail = re.user.email;
-				if(re.user) navigate('/MainPage');
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+
+			signInWithRedirect(authentication, provider);
+				getRedirectResult(authentication)
+				.then((result) => {			  
+				  // The signed-in user info.
+	
+				  console.log(result);
+				console.log(result.user.displayName);
+				console.log(result.user.email);
+				console.log(result.user.photoURL);
+				}).catch((error) => {
+					console.log(error);
+				});
+
+				onAuthStateChanged(user => {
+					if(user) {
+						navigate('/mainpage'); //After successful login, user will be redirected to home.html
+					}
+				  });
+
+
 	};
 
 	return (
@@ -40,7 +56,7 @@ function Login() {
 				<form className='googleLoginForm'>
 					<button onClick={SignIn} id='googleLogin' className='shadow'>
 						<img id='googleLogo' src={GoogleLogo} alt='google' />
-						<h4 id='googleText'> Sign In with google</h4>
+						<h4 id='googleText'> Sign In with Google</h4>
 					</button>
 				</form>
 				<h6 id='bigIdeaTag'>Developed by: Big Idea</h6>
