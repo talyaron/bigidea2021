@@ -1,17 +1,29 @@
 /* Popup style */
 
-  
+  @media only screen and (max-width:600px){
   .EditPopUpbox {
     position: relative;
     left: 50vw;
     transform: translateX(-50%);
-    margin: 0 auto;
-    margin-top: calc(100vh - 85vh - 20px);
+    margin-top: 20%;
     background:Var(--Light-D2);
     border-radius: 4px;
     padding: 20px;
     z-index: 4000 !important;
   }
+}
+@media only screen and (min-width:601px){
+  .EditPopUpbox {
+    position: relative;
+    left: 50vw;
+    transform: translateX(-50%);
+    margin-top: 20%;
+    background:Var(--Light-D2);
+    border-radius: 4px;
+    padding: 20px;
+    z-index: 4000 !important;
+  }
+}
   .popup-box {
     position: fixed;
     width: 22.em;
@@ -39,17 +51,20 @@
   .bioField{
     display: flex;
     flex-direction: row;
-    width: 81%;
-    padding: 4px;
-    height: 5vh;
+    background-color: var(--Blue1);
+    font-family: Roboto;
+    width: 80%;
+    height: 35px;
     font-weight: 530;
     font-size: 14px;
-    margin-left: 10px;
+    margin: 10px;
+    padding: 0px 8px;
   }
   .choosePictureButton{
     width: 100%;
   }
   #editbtnSubmitProfPage{
+    width: 151px;
     border: none;
     font-size: 16px;
   }
@@ -63,5 +78,6 @@
       user-select: none;
       cursor: pointer;
       font-family: Roboto;
+      font-weight: 530;
  
   }

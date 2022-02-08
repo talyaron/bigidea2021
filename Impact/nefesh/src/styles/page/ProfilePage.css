@@ -3,7 +3,8 @@
 .profilePage{
     height: fit-content;
     background-color: var(--Light-Page);
-    margin-bottom: 10vh;
+    margin: 0px 9px 0px 9px;
+    padding-bottom: 30px;
 }
 
 .profileEditor {
@@ -13,7 +14,7 @@
   background-color: var(--Light);
   width: 80%;
   font-family: Roboto;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0px 0px 9px rgba(0, 0, 0, .75));
   border-radius: 10px;
 }
 #profilePic {
@@ -269,6 +270,7 @@ text-align: center;
     height: fit-content;
     background-color: var(--Light-Page);
     margin-bottom: 10vh;
+    margin: 0px 9px 0px 9px;
 }
 
 .profileEditor {

@@ -1,4 +1,4 @@
-
+import '../../styles/template/EditProfilePopUp.css'
 import React from 'react';
 
 
