@@ -1,6 +1,6 @@
 import React from 'react';
 import { authentication } from '../../scripts/firebase/config';
-import { getAuth, onAuthStateChanged, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, signInWithRedirect, onAuthStateChanged, getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate  } from "react-router-dom";
 
 
@@ -35,15 +35,11 @@ function Login() {
 					console.log(error);
 				});
 
-				onAuthStateChanged(user => {
-					if(user) {
-						navigate('/mainpage'); //After successful login, user will be redirected to home.html
-					}
-				  });
+				
 
 
 	};
-
+	
 	return (
 		<div>
 			<div className='loginPage'>
