@@ -24,12 +24,12 @@
   background-image: none;
   background-color: blue;
   border: 2px solid #938f99;
-  margin-left:25% ;
   display: block;
   background-size: contain;
   background-repeat: no-repeat;
   padding: 10px;
   background-size: cover;
+  margin-top: -40%;
 }
 #prefButton {
   display: inline;
@@ -44,11 +44,7 @@
 .info {
   font-weight: 500;
 }
-.back-1 {
-  align-items: center;
-  text-align: center;
-  width: 100%;
-}
+
 .back-2 {
   background-color: #f7fbff;
   text-align: center;
@@ -73,7 +69,7 @@ text-align: center;
     }
 .EditProfBtn1 {
   margin-top: -110px;
-  margin-left: 55px;
+  margin-left: 30%;
   color: #0077cc;
   background-color: #6cb1e2;
   border: none;
@@ -83,12 +79,19 @@ text-align: center;
   float: left;
   position: relative;
   float: center;
-  left: 46vw;
-  margin-top: 35%;
+  margin-top: 33%;
+  top: 20px;
   cursor: pointer;
   user-select: none;
   z-index: 2 !important;
   background-position: center;
+}
+.back-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 .EditProfBtn2 {
   margin-top: 10px;
@@ -157,7 +160,6 @@ text-align: center;
   padding: 6px 10px 6px 8px;
   width: fit-content;
   height: 32px;
-  margin-left: 23%;
   top: 256px;
 
   background: #ffffff;
@@ -213,6 +215,7 @@ text-align: center;
 
 .buttonHolder {
   display: flex;
+  flex-direction: row;
   margin: 10px;
   justify-content: center;
 }
@@ -286,12 +289,12 @@ text-align: center;
   background-image: none;
   background-color: blue;
   border: 2px solid #938f99;
-  margin-left:43.5% ;
   display: block;
   background-size: contain;
   background-repeat: no-repeat;
   padding: 10px;
   background-size: cover;
+  margin-top: 7%;
 }
 #prefButton {
   display: inline;
@@ -307,6 +310,8 @@ text-align: center;
   font-weight: 500;
 }
 .back-1 {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
   width: 100%;
@@ -335,7 +340,7 @@ text-align: center;
     }
 .EditProfBtn1 {
   margin-top: -110px;
-  margin-left: 55px;
+  margin-left: 9%;
   color: #0077cc;
   background-color: #6cb1e2;
   border: none;
@@ -345,8 +350,7 @@ text-align: center;
   float: left;
   position: relative;
   float: center;
-  left: 49vw;
-  top: 30vh;
+  top: 33vh;
   cursor: pointer;
   user-select: none;
   z-index: 2 !important;
@@ -419,7 +423,6 @@ text-align: center;
   padding: 6px 10px 6px 8px;
   width: fit-content;
   height: 32px;
-  margin-left: 43%;
   top: 256px;
 
   background: #ffffff;
@@ -475,6 +478,7 @@ text-align: center;
 
 .buttonHolder {
   display: flex;
+  flex-direction: row;
   margin: 10px;
   justify-content: center;
 }
