@@ -196,15 +196,15 @@ async function changeProfile(ev) {
                     name="newName"
                     placeholder="Enter New Name"
                   />
-                  <br />
+                  
                   <ImportImgs
                     userData={userData}
                     placeholder="Enter New Image"
-                    className="choosePictureButton"
+                    className="bioField"
                     pageName={page}
                     parentCallBack={callBackFunction}
                   />
-				  <br />
+				
                   <input
                     type="text"
                     className="bioField"
@@ -212,10 +212,10 @@ async function changeProfile(ev) {
                     name="newBio"
                   />
                   <div className="btns">
-                    <button className="btn" name="editbtn" type="submit" id="editbtnSubmitProfPage">
+                    <button className="btnEditProf" name="editbtn" type="submit" id="editbtnSubmitProfPage">
                       Submit Changes
                     </button>
-                    <div className="btn" name="editbtn" onClick={editProfile}>
+                    <div className="btnEditProf" name="editbtn" onClick={editProfile}>
                       Cancel
                     </div>
                   </div>
