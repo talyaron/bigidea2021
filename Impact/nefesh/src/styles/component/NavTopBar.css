@@ -38,6 +38,8 @@ svg {
     z-index: 0;
     text-align: center;
     font-size: bold;
+    display: flex;
+    flex-direction: row;
 }
 .NewLogoTopNav{
     top: 2.5px;
