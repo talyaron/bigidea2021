@@ -160,6 +160,9 @@ function ArticleCreation(props) {
 			maxCapacity,
 		});
 		alert('Event Saved!')
+		navigate("../ProfilePage")
+	
+
 	}
 function Ping(){
 	console.log(endValue)
