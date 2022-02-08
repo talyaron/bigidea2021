@@ -45,11 +45,12 @@ body {
   justify-content: center;
   display: flex;
   top: 40px;
+  overflow-x: clip;
 }
 
 .container_App {
 	width: 100%;
-	min-height: 90vh;
+/*	min-height: 90vh;*/
 	/*max-width: 500px;
 	/*overflow-y: scroll;  /* Hide vertical scrollbar */
   /*overflow-x: hidden; /* Hide horizontal scrollbar */

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 let page = 'ProfilePage';
 
 function SavedEvents(props) {
-	import ('../../styles/page/ProfilePage.css');
+	import ("../../styles/page/MainPage.css")
 	const [eventListState, setEventListState] = useState([]);
 
 	let SavedEventsTemp = []
@@ -54,7 +54,7 @@ function SavedEvents(props) {
 										<div id='Views'>
 											<div className="tagGroup">
 												{event.tags.map((e) => (
-													<div className='tag'>{e}</div>
+													<div key={e.id} className='tag'>{e}</div>
 												))}
 											</div>
 										</div>

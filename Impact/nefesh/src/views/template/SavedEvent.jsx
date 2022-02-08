@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-import { getDoc, doc } from 'firebase/firestore';
+import { getDoc, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
-import { useParams } from 'react-router-dom';
+import { useParams , useNavigate} from 'react-router-dom';
 import useScript from '../../scripts/useScript';
 import Clock from '../../assets/Images/NewIcons/clock.svg';
 // import 'moment-timezone';
 
 function PublishedEvent(props) {
+	const navigate=useNavigate()
 	import ('../../styles/page/Event.css');
 	const [eventData, setEventData] = useState([]);
 	const [EventFilter] = useState([
@@ -106,6 +107,11 @@ function PublishedEvent(props) {
 		if (!formatted) formatted = val.data;
 		return formatted;
 	}
+	function DeleteEvent(){
+		deleteDoc(doc(db,"users",props.userID,"Saved",eventID))
+		navigate("../ProfilePage")
+		alert("The saved Event has been deleted")
+	}
 
 	return (
 		<div className='EventPage'>
@@ -161,6 +167,7 @@ function PublishedEvent(props) {
 						);
 					})}
 				</div>
+				<button onClick={DeleteEvent}>Delete Event</button>
 			</div>
 		</div>
 	);

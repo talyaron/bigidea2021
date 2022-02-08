@@ -45,35 +45,42 @@ function Event() {
 				console.log(eventID);
 				setEventData(EventArray);
 				if ('tags' in eventObj && Array.isArray(eventObj.tags)) {
-					console.log('we have tags');
-					console.log(eventObj.tags);
+					// console.log('we have tags');
+					// console.log(eventObj.tags);
 					setTags(eventObj.tags);
 				}
 				setImage(eventObj.coverImage);
 				//setAddressInfo(eventObj.address);
 				setContactInfo(eventObj.contactInfo);
-				let validState = validURL(eventObj.contactInfo.website);
+				let tempURL = eventObj.contactInfo.website
+				let validState = validURL(tempURL);
 				setWebValidity(validState);
-				setOrgWebsite(eventObj.contactInfo.website);
+				if(tempURL.includes('https://')){
+					setOrgWebsite(tempURL);
+					}
+					if(tempURL.includes('http://')){
+						setOrgWebsite('Unsecure website. Link not displayed.');
+					}
+					else{
+						tempURL = 'https://' + tempURL
+						console.log(tempURL)
+						setOrgWebsite(tempURL);
+					}
 				SetEventDataValid(true);
 			});
 		} catch (err) {
 			console.error(err);
 		}
-	}, [eventID]);
+	}, []);
 
 	function filterEntries(data) {
 		if (data[0].length === 0) return [];
-
 		let buffer = data[1];
 		//.map(e=>Object.entries(e));
 		//console.log(data[0]);
 		//console.log(buffer);
 		buffer.map((element) => (element.data = data[0].find((e) => e[0] === element.field)[1]));
 		buffer = buffer.map((e) => Object.entries(e));
-
-		console.log(buffer);
-
 		return buffer;
 	}
 
@@ -117,8 +124,7 @@ function Event() {
 					<div id='title_Event'> {getField(eventData, 'title')} </div>
 					<div id='hostName_Event'> Hosted By:{getField(eventData, 'hostName')} </div>
 					<div id='eventWebsite_Event'>
-						{/* <a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a> */}
-						<a href={orgWebsite}/>
+						<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 					</div>
 					<div className='eventTimesCont'>
 						{Object.entries(filterEntries([eventData, EventFilter])).map((e) => (
