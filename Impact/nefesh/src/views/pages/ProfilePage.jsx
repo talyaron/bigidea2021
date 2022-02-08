@@ -26,7 +26,7 @@ function ProfilePage(props) {
   const [userData, setUserData] = useState();
   const [displayName, setDisplayName] = useState("loading");
   const [profilePicImg, setProfilePicImg] = useState("loading");
-  const [, /*userEmail*/ setUserEmail] = useState("loading");
+  const [ userEmail, setUserEmail] = useState("loading");
   const [, /*userAddress*/ setUserAddress] = useState("loading");
   const [, /*userGender*/ setUserGender] = useState("loading");
   //const [userArticles, setUserArticles] = useState('loading');
@@ -167,7 +167,10 @@ async function changeProfile(ev) {
           style={{ backgroundImage: "url(" + profilePicImg + ")" }}
         />
         <div className="displayName"> {displayName} </div>
-        <img src={Envelope} className="emailMe" alt="emailMe" />
+        <div className="emailMe">
+        <img src={Envelope}  alt="emailMe" />
+        {userEmail}
+        </div>
       </div>
 
       <div className="buttonHolder">
