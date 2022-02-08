@@ -18,7 +18,7 @@ import { db } from './scripts/firebase/config';
 //pages
 import PublishedEvent from "./views/template/PublishedEvent";
 // import EditSavedArticles from "./views/template/EditSavedArticle";
-import AdminPage from './views/pages/AdminPage';
+import AdminPage from './views/pages/AdminPage'; 
 import StickyBanner from './views/components/StickyBanner'
 import NavTopBar from "./views/components/NavTopBar";
 import Event from './views/pages/Event';
@@ -42,8 +42,7 @@ function App() {
   const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
-    console.log(location)
-   
+    console.log(location);
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
