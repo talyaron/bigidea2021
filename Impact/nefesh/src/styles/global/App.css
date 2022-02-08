@@ -45,6 +45,7 @@ body {
   justify-content: center;
   display: flex;
   top: 40px;
+  overflow-x: clip;
 }
 
 .container_App {
@@ -151,4 +152,8 @@ html {
 	justify-content: space-evenly;
 	width: 100%;
 
+}
+
+.hide{
+  display: none;
 }
