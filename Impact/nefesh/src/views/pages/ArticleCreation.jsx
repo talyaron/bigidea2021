@@ -7,14 +7,16 @@ import { useNavigate } from 'react-router-dom';
 
 let statesSubmitted = { views: 0, startTime: '', endTime: '' };
 let page = 'ArticleCreation';
-
+let endValueNum=1
 function ArticleCreation(props) {
 	import('../../styles/page/ArticleCreation.css');
 	const navigate = useNavigate();
 	const [httpUrl, setHttpUrl] = useState('');
 	const [tags, setTags] = useState([]);
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
+	
 	let tagsSorted=[]
+	const [endValue,setEndValue]=useState("Submit Article to Main Page")
 	useEffect(async () => {
 		document.getElementById('editor').addEventListener('input', inputEvt, false);
 		// const tagsRef = doc(db, 'tagCollection', 'tagDoc');
@@ -38,7 +40,6 @@ function ArticleCreation(props) {
 	}
 
 	async function submitArticle(ev) {
-		ev.preventDefault();
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
 		try {
@@ -100,7 +101,6 @@ function ArticleCreation(props) {
 			navigate('/MainPage')
 		} catch (err) {
 			console.error(err)
-
 			// create and show the notification
 			const showNotification = () => {
 				// create a new notification
@@ -161,7 +161,10 @@ function ArticleCreation(props) {
 		});
 		alert('Event Saved!')
 	}
-
+function Ping(){
+	console.log(endValue)
+	console.log(endValueNum)
+}
 	function changeState(ev) {
 		let parse = ev.target.name;
 		statesSubmitted = { ...statesSubmitted, [parse]: ev.target.value };
@@ -181,14 +184,41 @@ function ArticleCreation(props) {
 			tempArray.push(temp);
 		}
 		setSelectedTagArray(tempArray);
-
 	}
+function ArticleCheck(ev){
+	ev.preventDefault();
+	if (endValueNum==1){
+		submitArticle(ev.target)
+	}
+	else if (endValueNum==2)
+	saveDraft(ev.target)
+
+}
+function ChangeEndButton(ev){
+	ev.preventDefault();
+	console.log("runs")
+	if (endValueNum==1){
+		console.log("true")
+		setEndValue("Save event to private Profile Area")
+		endValueNum=2
+	}
+	else {
+		console.log("false")
+		setEndValue("Submit Event to Main Page")
+		endValueNum=1
+	}
+}
+
+
+	
 	return (
 		<div id='ArtC_Header'>
+			<button onClick={Ping}>HIIIII</button>
 			<header className='Header'>Create an Article</header>
 			<div className='backGround'>
 				<div className='createArticle-popup-box'>
-					<form onSubmit={submitArticle}>
+					<form onSubmit={ArticleCheck}>
+					
 					<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} />
 					<input type='text' name='title' onChange={changeState} placeholder='Enter article title here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<input type='text' name='hostName' onChange={changeState} placeholder='Enter host/s name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
@@ -220,6 +250,7 @@ function ArticleCreation(props) {
 						<div contentEditable='true' className='textarea' name='text' role='textbox' id='editor' placeholder='Enter event description here placeHolderText_articleCreation'></div>
 					</div>
 					<label htmlFor="selected_tagBox">Selected Tags:</label>
+					
 					<div name='selected_tagBox' className='selected_tagBox'>
 						<div className='tagsMapContainer_selected'>
 							{[...tempArray].map((tag) => {
@@ -251,13 +282,12 @@ function ArticleCreation(props) {
 								})}
 							</div>
 						</div>
-					
+						<button onClick={ChangeEndButton}>Save Article privately instead</button>
+						{/* <input type="checkbox" name="publishArticleCheckbox" id="Publish"></input>
+						<label htmlFor="publishArticleCheckbox">Publish Article to Main Page!</label> */}
 					<div className='buttonContainer23'>
-						<button className='Dragon42 shadow' onClick={saveDraft}>
-							Save Draft
-						</button>
 						<button className='Dragon43 shadow' type='submit'>
-							Submit Article
+							{endValue}
 						</button>
 					</div>
 					</form>
