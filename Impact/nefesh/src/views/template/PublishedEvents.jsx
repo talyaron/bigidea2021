@@ -56,7 +56,7 @@ function SavedEvents(props) {
 										<div id='Views'>
 											<div className="tagGroup">
 												{event.tags.map((e) => (
-													<div className='tag'>{e}</div>
+													<div key={e.id} className='tag'>{e}</div>
 												))}
 												
 											</div>
