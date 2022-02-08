@@ -37,7 +37,8 @@ function ArticleCreation(props) {
 		statesSubmitted = { ...statesSubmitted, [parse]: ev.target.innerHTML };
 	}
 
-	async function submitArticle() {
+	async function submitArticle(ev) {
+		ev.preventDefault();
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
 		try {
@@ -99,7 +100,35 @@ function ArticleCreation(props) {
 			navigate('/MainPage')
 		} catch (err) {
 			console.error(err)
-			alert('Invalid Fields. Make Sure you fill out all the fields', err)
+
+			// create and show the notification
+			const showNotification = () => {
+				// create a new notification
+				const notification = new Notification('Error', {
+					body: 'Not All Fields Were Filled',
+				});
+				// close the notification after 10 seconds
+				setTimeout(() => {
+					notification.close();
+				}, 10 * 1000);
+			};
+			// show an error message
+			const showError = () => {
+				// const error = document.querySelector('.error');
+				// error.style.display = 'block';
+				// error.textContent = 'You blocked the notifications';
+				alert('Notifications disabled');
+			};
+			// check notification permission
+			let granted = false;
+			if (Notification.permission === 'granted') {
+				granted = true;
+			} else if (Notification.permission !== 'denied') {
+				let permission = await Notification.requestPermission();
+				granted = permission === 'granted' ? true : false;
+			}
+			// show notification or error
+			granted ? showNotification() : showError();
 		}
 	}
 	function saveDraft() {
@@ -159,6 +188,7 @@ function ArticleCreation(props) {
 			<header className='Header'>Create an Article</header>
 			<div className='backGround'>
 				<div className='createArticle-popup-box'>
+					<form onSubmit={submitArticle}>
 					<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} />
 					<input type='text' name='title' onChange={changeState} placeholder='Enter article title here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<input type='text' name='hostName' onChange={changeState} placeholder='Enter host/s name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
@@ -226,10 +256,11 @@ function ArticleCreation(props) {
 						<button className='Dragon42 shadow' onClick={saveDraft}>
 							Save Draft
 						</button>
-						<button className='Dragon43 shadow' onClick={submitArticle}>
+						<button className='Dragon43 shadow' type='submit'>
 							Submit Article
 						</button>
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>
