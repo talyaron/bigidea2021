@@ -19,6 +19,7 @@ function StickyBanner({role}) {
 		{ id: 5, label: 'Admin Page', href: 'AdminPage', role: ['superAdmin'] },
 		{ id: 6, label: 'log in', href: 'login', role: ['guest'] },
 		{ id: 7, label: 'log out', href: 'MainPage', function: handleLogOut, role: ['member'] },
+		{id: 8, label: 'Main Page', href: 'MainPage', role: ['member']}
 	]
 
 	navList = navList.filter(navItem => navItem.role.some(urole => [role ? role : "guest", role ? "member" : null, "everyone"].includes(urole)));

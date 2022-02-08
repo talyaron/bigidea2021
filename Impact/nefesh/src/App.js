@@ -9,8 +9,7 @@ import ProfilePage from './views/pages/ProfilePage';
 import ContactUs from './views/pages/ContactUs';
 import ArticleCreation from './views/pages/ArticleCreation';
 import MainPage from './views/pages/MainPage';
-import LogoNew from './assets/Images/LogoNew.svg';
-import LogoNewTwo from './assets/Images/NewIcons/tel-aviv-yafo.svg';
+
 
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
@@ -20,7 +19,6 @@ import { db } from './scripts/firebase/config';
 import PublishedEvent from './views/template/PublishedEvent';
 import EditSavedArticles from './views/template/EditSavedArticle';
 import AdminPage from './views/pages/AdminPage';
-import StickyBanner from './views/components/StickyBanner';
 import NavTopBar from './views/components/NavTopBar';
 import Event from './views/pages/Event';
 import EditSavedArticle from './views/template/EditSavedArticle';
@@ -118,7 +116,7 @@ function App() {
 
 	return (
 		<div>
-			{!isLogin ? <NavTopBar titleDisplay={LogoNew} titleSecondDisplay={LogoNewTwo} /> : null}
+			{!isLogin ? <NavTopBar role={role}/> : null}
 			<div className='container_AppMain'>
 				{loggedIn ? (
 					<div className='container_App'>
@@ -154,8 +152,6 @@ function App() {
 					</div>
 				)}
 			</div>
-			<div className='footer'></div>
-			{!isLogin ? <StickyBanner role={role} /> : null}
 		</div>
 	);
 }
