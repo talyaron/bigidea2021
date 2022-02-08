@@ -26,7 +26,7 @@ function ProfilePage(props) {
   const [userData, setUserData] = useState();
   const [displayName, setDisplayName] = useState("loading");
   const [profilePicImg, setProfilePicImg] = useState("loading");
-  const [, /*userEmail*/ setUserEmail] = useState("loading");
+  const [ userEmail, setUserEmail] = useState("loading");
   const [, /*userAddress*/ setUserAddress] = useState("loading");
   const [, /*userGender*/ setUserGender] = useState("loading");
   //const [userArticles, setUserArticles] = useState('loading');
@@ -61,7 +61,7 @@ function ProfilePage(props) {
       setUserGender(docSnap.data().sex);
       setUserBio(docSnap.data().bio);
     });
-  }, [uid, docRef, props]);
+  }, []);
 
   function editProfile() {
     setIsOpen(!isOpen);
@@ -70,33 +70,33 @@ function ProfilePage(props) {
     setEditing(true);
   }
 
-  function changeProfile(ev) {
+async function changeProfile(ev) {
     ev.preventDefault();
+	const profileRef = doc(db, "users", props.uid);
 
     const name = ev.target.elements.newName.value;
+	console.log(name);
     const profilePic = httpUrl;
-    const email = ev.target.elements.newEmail.value;
+	console.log("before changes");
 
-    if (ev.target.elements.newName.value.length !== 0) {
+    if (name.length !== 0) {
       setDisplayName(name);
-      updateDoc(doc(db, "users", props.uid), {
+	  console.log(props.uid);
+    	await updateDoc(profileRef, {
         displayName: name,
       });
+	  console.log("after change name");
     }
+	setEditing(false);
+    setIsOpen(false);
 
     if (profilePic.length !== 0) {
       ev.preventDefault();
       setProfilePicImg(profilePic);
-      updateDoc(doc(db, "users", props.uid), {
+      await updateDoc(profileRef, {
         userIcon: profilePic,
       });
-    }
-
-    if (ev.target.elements.newEmail.value.length !== 0) {
-      setUserEmail(email);
-      updateDoc(doc(db, "users", props.uid), {
-        email: email,
-      });
+	  console.log("after change photo");
     }
 
     setEditing(false);
@@ -107,14 +107,16 @@ function ProfilePage(props) {
     if (ev.target.elements.newBio.value.length !== 0) {
       setUserBio(bio);
 
-      updateDoc(doc(db, "users", props.uid), {
+    await updateDoc(profileRef, {
         bio: bio,
       });
+	  console.log("after change bio");
     }
 
     setEditing(false);
     setIsBioOpen(!isBioOpen);
   }
+  console.log("after full function");
 
   function changeBio(ev) {
     ev.preventDefault();
@@ -124,7 +126,7 @@ function ProfilePage(props) {
     if (ev.target.elements.newBio.value.length !== 0) {
       setUserBio(bio);
 
-      updateDoc(doc(db, "users", props.uid), {
+      updateDoc(db, "users", props.uid, {
         bio: bio,
       });
     }
@@ -136,6 +138,7 @@ function ProfilePage(props) {
 
   const callBackFunction = (httpRef) => {
     setHttpUrl(httpRef);
+	console.log(httpRef);
   };
 
   function editBio() {
@@ -151,20 +154,23 @@ function ProfilePage(props) {
   return (
     <div className="profilePage">
       <div className="back-1">
-        <img
+        {!isOpen? <img
           className="EditProfBtn1"
           src={EditPic}
           type="button"
           onClick={editProfile}
           name="editbtn"
           alt="edit profile button"
-        />
+        /> : null}
         <div
           id="profilePic"
           style={{ backgroundImage: "url(" + profilePicImg + ")" }}
         />
         <div className="displayName"> {displayName} </div>
-        <img src={Envelope} className="emailMe" alt="emailMe" />
+        <div className="emailMe">
+        <img src={Envelope}  alt="emailMe" />
+        {userEmail}
+        </div>
       </div>
 
       <div className="buttonHolder">
@@ -186,22 +192,22 @@ function ProfilePage(props) {
           content={
             <>
               {editing ? (
-                <div className="profileEditor">
-                  <input
+                <form className="profileEditor" onSubmit={changeProfile}>
+					<input
                     type="text"
                     className="bioField"
                     name="newName"
                     placeholder="Enter New Name"
                   />
-                  <br />
+                  
                   <ImportImgs
                     userData={userData}
                     placeholder="Enter New Image"
-                    className="choosePictureButton"
+                    className="bioField"
                     pageName={page}
                     parentCallBack={callBackFunction}
                   />
-				  <br />
+				
                   <input
                     type="text"
                     className="bioField"
@@ -209,14 +215,14 @@ function ProfilePage(props) {
                     name="newBio"
                   />
                   <div className="btns">
-                    <div className="btn" name="editbtn" onClick={changeProfile}>
+                    <button className="btnEditProf" name="editbtn" type="submit" id="editbtnSubmitProfPage">
                       Submit Changes
-                    </div>
-                    <div className="btn" name="editbtn" onClick={editProfile}>
+                    </button>
+                    <div className="btnEditProf" name="editbtn" onClick={editProfile}>
                       Cancel
                     </div>
                   </div>
-                </div>
+                </form>
               ) : null}
             </>
           }

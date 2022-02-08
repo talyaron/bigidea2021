@@ -155,6 +155,11 @@ function Event() {
 						<span className='title'>{getField(eventData, 'title')}</span>
 						<span className='description'>{getField(eventData, 'article')}</span>
 					</div>
+
+					
+					{/* <a  href = {"https://www.instagram.com/becky_geisberg/"} target='_blank' rel='noreferrer'> Instagram</a> */}
+					
+
 				</div>
 				<div id='maxCap'> Max Capacity: {getField(eventData, 'maxCapacity')} </div>
 				</div>
