@@ -88,7 +88,7 @@ function ContactUs(props) {
 			<div className='line'> </div>
 			
 			<div className='btns'>
-				<div className='btn' onClick = {handleOrganization}>
+				<div className='buttonOrgContact' onClick = {handleOrganization}>
 					<img src = {form} id = 'form' />Be An Organization
 				
 				</div>
