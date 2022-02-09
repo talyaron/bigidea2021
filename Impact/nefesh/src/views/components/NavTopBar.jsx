@@ -23,13 +23,13 @@ function NavTopBar({role}) {
 
 	const [navToggle, setNavToggle] = useState(false);
 	let navList = [
+		{id: 'MainPage', label: 'Main Page', href: 'MainPage', role: ['member']},
 		{ id: 'ProfilePage', label: 'Profile Page', href: 'ProfilePage', role: ['member'] },
 		{ id: 'ContactUs', label: 'Contact Us', href: 'ContactUs', role: ['everyone'] },
 		{ id: 'ArticleCreation', label: 'Article Creation', href: 'ArticleCreation', role: [ 'orgAdmin', 'superAdmin'] },
 		{ id: 'AdminPage', label: 'Admin Page', href: 'AdminPage', role: ['superAdmin'] },
 		{ id: 'Login', label: 'log in', href: 'login', role: ['guest'] },
-		{ id: 'Logout', label: 'log out', href: 'MainPage', function: handleLogOut, role: ['member'] },
-		{id: 'MainPage', label: 'Main Page', href: 'MainPage', role: ['member']}
+		{ id: 'Logout', label: 'log out', href: 'MainPage', function: handleLogOut, role: ['member'] }
 	]
 
 	navList = navList.filter(navItem => navItem.role.some(urole => [role ? role : "guest", role ? "member" : null, "everyone"].includes(urole)));

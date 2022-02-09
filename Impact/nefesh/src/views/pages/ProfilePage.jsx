@@ -29,6 +29,7 @@ function ProfilePage(props) {
   const [ userEmail, setUserEmail] = useState("loading");
   const [, /*userAddress*/ setUserAddress] = useState("loading");
   const [, /*userGender*/ setUserGender] = useState("loading");
+  const [userRole, setUserRole] = useState("loading");
   //const [userArticles, setUserArticles] = useState('loading');
   //const [textSize, setTextSize] = useState('');
   const [editing, setEditing] = useState(false);
@@ -60,6 +61,7 @@ function ProfilePage(props) {
       setUserAddress(docSnap.data().location);
       setUserGender(docSnap.data().sex);
       setUserBio(docSnap.data().bio);
+      setUserRole(docSnap.data().role);
     });
   }, []);
 
@@ -173,6 +175,7 @@ async function changeProfile(ev) {
         </div>
       </div>
 
+        {(userRole != "ole" )?
       <div className="buttonHolder">
         <button className="savedArticles" onClick={navigateSaved}>
           Saved Articles
@@ -182,6 +185,10 @@ async function changeProfile(ev) {
         </button>
         <footer className="back-2 foot"></footer>
       </div>
+      : null
+       }
+
+
       <div className="bio-filed">
         <h3> Bio </h3>
         <p>{userBio}</p>

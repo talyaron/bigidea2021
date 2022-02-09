@@ -110,10 +110,6 @@ svg {
     cursor: pointer;
 }
 
-.stickyBanner:hover {
-    box-shadow: rgb(0 0 0 / 10%) 0px 0px 7px 4px;
-}
-
 .stickyBanner > .MenuButton > img {
 	height: 30px;
     width: auto;
@@ -177,6 +173,9 @@ svg {
     
 }
 
-#MainPage:hover{
+#Login:hover{
+    border-bottom-left-radius: 35px;
+}
+#Logout:hover{
     border-bottom-left-radius: 35px;
 }

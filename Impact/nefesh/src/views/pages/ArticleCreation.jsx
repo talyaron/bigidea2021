@@ -14,7 +14,9 @@ function ArticleCreation(props) {
 	const [httpUrl, setHttpUrl] = useState('');
 	const [tags, setTags] = useState([]);
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
-	let tagsSorted=[]
+	let tagsSorted = [];
+	let isKosher;
+
 	useEffect(async () => {
 		document.getElementById('editor').addEventListener('input', inputEvt, false);
 		// const tagsRef = doc(db, 'tagCollection', 'tagDoc');
@@ -22,15 +24,15 @@ function ArticleCreation(props) {
 		// 	console.log(tagsDB.data().tagArray);
 		// 	setTags(tagsDB.data().tagArray);
 		// });
-		const tagsDB = await getDoc(doc(db, "tagCollection", "tagDoc"))
+		const tagsDB = await getDoc(doc(db, 'tagCollection', 'tagDoc'));
 
 		tagsSorted = tagsDB.data().tagArray;
 
 		tagsSorted.sort(function (a, b) {
 			return a.localeCompare(b); //using String.prototype.localCompare()
-		})
+		});
 
-		setTags(tagsSorted)
+		setTags(tagsSorted);
 	}, []);
 	function inputEvt(ev) {
 		let parse = 'text';
@@ -40,6 +42,7 @@ function ArticleCreation(props) {
 	async function submitArticle() {
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
+		
 		try {
 			const docRef = await addDoc(collection(db, 'events'), {
 				title,
@@ -67,9 +70,9 @@ function ArticleCreation(props) {
 				maxCapacity,
 				currentCapacity: maxCapacity,
 			});
-			console.log(docRef.id)
-			addDoc(collection(db, 'users',props.userID,"Published"), {
-				id:docRef.id,
+			console.log(docRef.id);
+			addDoc(collection(db, 'users', props.userID, 'Published'), {
+				id: docRef.id,
 				title,
 				coverImage: image,
 				article: text,
@@ -95,17 +98,17 @@ function ArticleCreation(props) {
 				maxCapacity,
 				currentCapacity: maxCapacity,
 			});
-			alert('Event Submitted!')
-			navigate('/MainPage')
+			alert('Event Submitted!');
+			navigate('/MainPage');
 		} catch (err) {
-			console.error(err)
-			alert('Invalid Fields. Make Sure you fill out all the fields', err)
+			console.error(err);
+			alert('Invalid Fields. Make Sure you fill out all the fields', err);
 		}
 	}
 	function saveDraft() {
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
-		addDoc(collection(db, "users", props.userID, "Saved"), {
+		addDoc(collection(db, 'users', props.userID, 'Saved'), {
 			title,
 			coverImage: image,
 			article: text,
@@ -130,7 +133,7 @@ function ArticleCreation(props) {
 			endTime: new Date(endTime),
 			maxCapacity,
 		});
-		alert('Event Saved!')
+		alert('Event Saved!');
 	}
 
 	function changeState(ev) {
@@ -149,10 +152,25 @@ function ArticleCreation(props) {
 			const index = tempArray.indexOf(temp);
 			tempArray.splice(index, 1);
 		} else {
-			tempArray.push(temp);
+			if (tempArray.length >= 6) {
+				alert('A maximum of five tags can be selected at once.');
+			} else {
+				tempArray.push(temp);
+			}
 		}
-		setSelectedTagArray(tempArray);
+		if (temp === 'CertifiedKosher' && (tempArray.includes('CertifiedKosher') === true)) {
+			if (window.confirm('Please confirm that all of the food at your event is certified kosher/hechshered')) {
+				isKosher = true;
+			} else {
+				const index = tempArray.indexOf('CertifiedKosher');
+				tempArray.splice(index, 1);
+				console.log(tempArray);
+			}
 
+			console.log(tempArray);
+		}
+
+		setSelectedTagArray(tempArray);
 	}
 	return (
 		<div id='ArtC_Header'>
@@ -164,22 +182,42 @@ function ArticleCreation(props) {
 					<input type='text' name='hostName' onChange={changeState} placeholder='Enter host/s name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<input type='text' name='city' onChange={changeState} placeholder='Enter city here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='number' onKeyPress={(event) => {
-						if (!/[0-9]/.test(event.key)) {
-							event.preventDefault();
-						}
-					}} name='houseNumber' onChange={changeState} placeholder='Enter building number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='number' onKeyPress={(event) => {
-						if (!/[0-9]/.test(event.key)) {
-							event.preventDefault();
-						}
-					}} name='maxCapacity' onChange={changeState} placeholder='Enter maximum capacity here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='number'
+					<input
+						type='number'
 						onKeyPress={(event) => {
 							if (!/[0-9]/.test(event.key)) {
 								event.preventDefault();
 							}
-						}} name='phone' onChange={changeState} placeholder='Enter phone number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						}}
+						name='houseNumber'
+						onChange={changeState}
+						placeholder='Enter building number here'
+						className='border-ArticleCreation In placeHolderText_articleCreation'
+					/>
+					<input
+						type='number'
+						onKeyPress={(event) => {
+							if (!/[0-9]/.test(event.key)) {
+								event.preventDefault();
+							}
+						}}
+						name='maxCapacity'
+						onChange={changeState}
+						placeholder='Enter maximum capacity here'
+						className='border-ArticleCreation In placeHolderText_articleCreation'
+					/>
+					<input
+						type='number'
+						onKeyPress={(event) => {
+							if (!/[0-9]/.test(event.key)) {
+								event.preventDefault();
+							}
+						}}
+						name='phone'
+						onChange={changeState}
+						placeholder='Enter phone number here'
+						className='border-ArticleCreation In placeHolderText_articleCreation'
+					/>
 					<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 					<div>Event Start Time:</div>
@@ -189,7 +227,7 @@ function ArticleCreation(props) {
 					<div className='expandBox'>
 						<div contentEditable='true' className='textarea' name='text' role='textbox' id='editor' placeholder='Enter event description here placeHolderText_articleCreation'></div>
 					</div>
-					<label htmlFor="selected_tagBox">Selected Tags:</label>
+					<label htmlFor='selected_tagBox'>Selected Tags:</label>
 					<div name='selected_tagBox' className='selected_tagBox'>
 						<div className='tagsMapContainer_selected'>
 							{[...tempArray].map((tag) => {
@@ -204,24 +242,24 @@ function ArticleCreation(props) {
 								);
 							})}
 						</div>
-						</div>
-						<label htmlFor="unselected_tagBox">Unselected Tags:</label>
-						<div name='unselected_tagBox' className='unselected_tagBox'>
-							<div className='tagsMapContainer'>
-								{tags.map((tag) => {
-									return (
-										<div key={tag}>
-											<div className='inline-block'>
-												<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
-													{tag}
-												</div>
+					</div>
+					<label htmlFor='unselected_tagBox'>Unselected Tags:</label>
+					<div name='unselected_tagBox' className='unselected_tagBox'>
+						<div className='tagsMapContainer'>
+							{tags.map((tag) => {
+								return (
+									<div key={tag}>
+										<div className='inline-block'>
+											<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
+												{tag}
 											</div>
 										</div>
-									);
-								})}
-							</div>
+									</div>
+								);
+							})}
 						</div>
-					
+					</div>
+
 					<div className='buttonContainer23'>
 						<button className='Dragon42 shadow' onClick={saveDraft}>
 							Save Draft
