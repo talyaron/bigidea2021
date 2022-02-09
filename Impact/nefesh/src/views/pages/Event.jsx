@@ -5,7 +5,6 @@ import { db } from '../../scripts/firebase/config';
 import { useParams } from 'react-router-dom';
 import useScript from '../../scripts/useScript';
 import Clock from '../../assets/Images/NewIcons/clock.svg';
-// import 'moment-timezone';
 
 function Event() {
 	import('../../styles/page/Event.css');
@@ -44,7 +43,6 @@ function Event() {
 					setTags(eventObj.tags);
 				}
 				setImage(eventObj.coverImage);
-				//setAddressInfo(eventObj.address);
 				setContactInfo(eventObj.contactInfo);
 				let tempURL = eventObj.contactInfo.website;
 				let validState = validURL(tempURL);
@@ -64,7 +62,7 @@ function Event() {
 		} catch (err) {
 			console.error(err);
 		}
-	}, []);
+	}, [eventID]);
 
 	function filterEntries(data) {
 		if (data[0].length === 0) return [];

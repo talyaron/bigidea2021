@@ -25,10 +25,7 @@ function Login() {
 			.then((result) => {
 				// The signed-in user info.
 
-				console.log(result);
-				console.log(result.user.displayName);
-				console.log(result.user.email);
-				console.log(result.user.photoURL);
+			
 			})
 			.catch((error) => {
 				console.log(error);

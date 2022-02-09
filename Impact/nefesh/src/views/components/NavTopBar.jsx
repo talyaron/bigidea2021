@@ -35,7 +35,6 @@ function NavTopBar({ role }) {
 	function handleMenu() {
 		let temp = !navToggle;
 		setNavToggle(temp);
-		console.log(navToggle, 'nav toggle');
 	}
 	function handleLogOut() {
 		const auth = getAuth();
@@ -43,7 +42,6 @@ function NavTopBar({ role }) {
 			.then(() => {
 				// Sign-out successful.
 				window.location.reload(false);
-				console.log('signed out');
 			})
 			.catch((error) => {
 				// An error happened.

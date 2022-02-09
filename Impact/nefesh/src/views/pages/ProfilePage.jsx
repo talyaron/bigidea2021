@@ -6,11 +6,12 @@ import ImportImgs from '../template/ImportImgs';
 import EditPic from '../../assets/Images/NewIcons/edit.svg';
 import Envelope from '../../assets/Images/NewIcons/email.svg';
 import { useNavigate } from 'react-router-dom';
-let page = 'ProfilePage';
 
+let page = 'ProfilePage';
+let savedEventsTemp = [];
 function ProfilePage(props) {
 	import('../../styles/page/ProfilePage.css');
-	let savedEventsTemp = [];
+	
 	const handleRoute = useNavigate();
 	const [/*savedArticles*/, setSavedArticles] = useState([]);
 	const [userData, setUserData] = useState();
@@ -21,16 +22,17 @@ function ProfilePage(props) {
 	const [, /*userGender*/ setUserGender] = useState('loading');
 	const [userRole, setUserRole] = useState('loading');
 	const [editing, setEditing] = useState(false);
-	const { /*uid*/ } = props;
 	const [isOpen, setIsOpen] = useState(false);
 	const [httpUrl, setHttpUrl] = useState('');
 	const [isBioOpen, setIsBioOpen] = useState(false);
 	const [userBio, setUserBio] = useState('loading');
 
-	const docRef = doc(db, 'users', props.uid);
-	useEffect(async () => {
-		//pull userId of selected user and set for superAdmin page
-		//on snapshot displayName
+	
+	useEffect(() => {
+		getDataProfilePage()
+
+		async function getDataProfilePage(){
+		const docRef = doc(db, 'users', props.uid);
 		const q = query(collection(db, 'users', props.uid, 'Saved'));
 		const savedEventsDB = await getDocs(q);
 
@@ -40,7 +42,7 @@ function ProfilePage(props) {
 			savedEventsTemp.push(newSavedEvent);
 		});
 		setSavedArticles(savedEventsTemp);
-		getDoc(docRef).then((docSnap) => {
+		await getDoc(docRef).then((docSnap) => {
 			setUserData(docSnap.data());
 			setDisplayName(docSnap.data().displayName);
 			setProfilePicImg(docSnap.data().userIcon);
@@ -50,7 +52,8 @@ function ProfilePage(props) {
 			setUserBio(docSnap.data().bio);
 			setUserRole(docSnap.data().role);
 		});
-	}, []);
+	}
+	}, [props.uid]);
 
 	function editProfile() {
 		setIsOpen(!isOpen);
@@ -124,7 +127,7 @@ function ProfilePage(props) {
 				</div>
 			</div>
 
-			{userRole != 'ole' ? (
+			{userRole !== 'ole' ? (
 				<div className='buttonHolder'>
 					<button className='savedArticles' onClick={navigateSaved}>
 						Saved Articles

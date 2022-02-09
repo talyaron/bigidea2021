@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../scripts/firebase/config';
-import { doc, getDoc, updateDoc, collection, getDocs, query, onSnapshot } from 'firebase/firestore';
+import {collection, query, onSnapshot } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-
-let page = 'ProfilePage';
 
 function SavedEvents(props) {
 	import('../../styles/page/ProfilePage.css');
 	const [eventListState, setEventListState] = useState([]);
 
-	let SavedEventsTemp = [];
 	const handleRoute = useNavigate();
-	const [savedArticles, setSavedArticles] = useState([]);
-	const docRef = doc(db, 'users', props.userID);
-	useEffect(async () => {
+	useEffect(() => {
+		getEventsData()
+		async function getEventsData(){
 		const p = query(collection(db, 'users', props.userID, 'Published'));
 		const eventListTemp = [];
 
 		//listen to events
-		const eventsSnapshot = onSnapshot(p, (querySnapshot) => {
+		onSnapshot(p, (querySnapshot) => {
 			querySnapshot.forEach((doc) => {
 				const eventTemp = doc.data();
 				eventTemp.id = doc.id;
@@ -26,7 +23,8 @@ function SavedEvents(props) {
 			});
 			setEventListState(eventListTemp);
 		});
-	}, []);
+	}
+	}, [props.userID]);
 
 	return (
 		<div className='wholePage'>

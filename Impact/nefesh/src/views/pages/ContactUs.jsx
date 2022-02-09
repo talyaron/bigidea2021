@@ -10,19 +10,15 @@ function ContactUs(props) {
 	import('../../styles/page/ContactUs.css');
 	const [mailTo, setMailtoLink] = useState('');
 	const [userIsOle, setUserIsOle] = useState();
-	let body = '';
+	const [body, setBody] = useState('')
 	useEffect(() => {
-		console.log('users', props.uid, props.displayName, props.isOle);
-		//let notName = await getDoc(doc(db, "users", props.uid));
 		let userIDTemp = props.uid;
-		// let userRole = props.userRole;
 		setUserIsOle(props.isOle);
 		var email = 'Nefesh@nefesh.com';
 		var subject = 'Request to be Organization Admin';
 		var body_start = `${props.displayName} with User ID: ${userIDTemp} wants to be an organizational Admin because (input your reason here)`;
-		body = body_start;
+		setBody(body_start);
 		setMailtoLink(`mailto:` + email + `?subject=` + subject + `&body=` + body_start);
-		console.log(mailTo);
 	}, [mailTo, props]);
 
 	function handleEmail() {
@@ -86,7 +82,7 @@ function ContactUs(props) {
 
 			<div className='btns'>
 				<div className='buttonOrgContact' onClick={handleOrganization}>
-					<img src={form} id='form' />
+					<img src={form} id='form' alt="contact"/>
 					Be An Organization
 				</div>
 			</div>
