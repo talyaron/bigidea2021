@@ -66,13 +66,13 @@ function ContactUs(props) {
 
 			<div className='buttonHolder'>
 				<div className='button'>
-					<img src={Phone} alt='phone' id='phone' /> &nbsp; 072-336-9280
+					<img src={Phone} alt='phone' alt="" id='phone' /> &nbsp; 072-336-9280
 				</div>
 				<div className='button' onClick={handleEmail}>
 					<img src={Envelope} alt='Envelope' id='email' /> nbntlv@nbn.org.il
 				</div>
 				<div className='button' onClick={openLink}>
-					<img src={www} id='www' />
+					<img src={www} id='www' alt="" />
 					https://www.nbn.org.il/nbn-tlv-hub/
 				</div>
 				<div className='button'>

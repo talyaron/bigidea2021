@@ -8,7 +8,6 @@ import Menu from '../../assets/Images/NewIcons/hamburger.svg';
 import X from '../../assets/Images/NewIcons/hamburger.svg';
 import titleDisplay from '../../assets/Images/LogoNew.svg';
 import titleSecondDisplay from '../../assets/Images/NewIcons/tel-aviv-yafo.svg';
-import AdminPage from '../pages/AdminPage';
 
 function NavTopBar({ role }) {
 	const navigate = useNavigate();
