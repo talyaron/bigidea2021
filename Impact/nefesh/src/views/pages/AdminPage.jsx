@@ -6,13 +6,14 @@ import { onSnapshot, collection, query, doc, getDoc, where, getDocs } from 'fire
 var isAdmin = true;
 let userIDAdmin;
 
-function AdminPage() {
+function AdminPage({uid}) {
 	import('../../styles/page/AdminPage.css');
 	const [displayName, setDisplayName] = useState('displayName');
 	const [userID, setUserID] = useState('id');
 	const [isOpen, setIsOpen] = useState(false);
 	const [role, setRole] = useState('ole');
 	const [isBanned, setIsBanned] = useState(false);
+	
 
 	function togglePopup(name) {
 		try {

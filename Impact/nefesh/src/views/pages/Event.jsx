@@ -49,8 +49,7 @@ function Event() {
 				setWebValidity(validState);
 				if (tempURL.includes('https://')) {
 					setOrgWebsite(tempURL);
-				}
-				if (tempURL.includes('http://')) {
+				}else if (tempURL.includes('http://')) {
 					setOrgWebsite('Unsecure website. Link not displayed.');
 				} else {
 					tempURL = 'https://' + tempURL;

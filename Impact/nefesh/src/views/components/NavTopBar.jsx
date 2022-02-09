@@ -9,28 +9,21 @@ import X from '../../assets/Images/NewIcons/hamburger.svg';
 import titleDisplay from '../../assets/Images/LogoNew.svg';
 import titleSecondDisplay from '../../assets/Images/NewIcons/tel-aviv-yafo.svg';
 
-function NavTopBar({ role }) {
+function NavTopBar({ role,  navList}) {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const [isLogin, setIsLogin] = useState(false);
+	
+	let roleArr = [role ? role : 'guest', role ? 'member' : null, 'everyone'];
 
+	navList = navList.filter((navItem) => !navItem.hidden && navItem.role.some((urole) => roleArr.includes(urole)));
 	useEffect(() => {
 		if (location.pathname === '/login') setIsLogin(true);
 		else setIsLogin(false);
 	}, [location.pathname]);
 
 	const [navToggle, setNavToggle] = useState(false);
-	let navList = [
-		{ id: 'MainPage', label: 'Main Page', href: 'MainPage', role: ['member'] },
-		{ id: 'ProfilePage', label: 'Profile Page', href: 'ProfilePage', role: ['member'] },
-		{ id: 'ContactUs', label: 'Contact Us', href: 'ContactUs', role: ['everyone'] },
-		{ id: 'ArticleCreation', label: 'Article Creation', href: 'ArticleCreation', role: ['orgAdmin', 'superAdmin'] },
-		{ id: 'AdminPage', label: 'Admin Page', href: 'AdminPage', role: ['superAdmin'] },
-		{ id: 'Login', label: 'log in', href: 'login', role: ['guest'] },
-		{ id: 'Logout', label: 'log out', href: 'MainPage', function: handleLogOut, role: ['member'] },
-	];
-
-	navList = navList.filter((navItem) => navItem.role.some((urole) => [role ? role : 'guest', role ? 'member' : null, 'everyone'].includes(urole)));
+	
 
 	function handleMenu() {
 		let temp = !navToggle;
@@ -78,7 +71,7 @@ function NavTopBar({ role }) {
 							<ul className='menuList'>
 								{navList.map(function (item) {
 									return (
-										<li className='ListItemElement' key={item.id} id={item.id}>
+										<li className='ListItemElement' key={item.label} id={item.label}>
 											<div
 												className='menuItem'
 												onClick={() => {
