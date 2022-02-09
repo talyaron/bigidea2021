@@ -15,7 +15,6 @@ function ArticleCreation(props) {
 	const [tags, setTags] = useState([]);
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
 	let tagsSorted = [];
-	let isKosher;
 
 	useEffect(async () => {
 		document.getElementById('editor').addEventListener('input', inputEvt, false);
