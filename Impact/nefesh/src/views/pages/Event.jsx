@@ -17,7 +17,7 @@ function Event() {
 	const [tags, setTags] = useState([]);
 	const [/*contactInfo*/, setContactInfo] = useState([]);
 	const [orgWebsite, setOrgWebsite] = useState([]);
-	const [/*websiteValidity*/, setWebValidity] = useState(false);
+	const [websiteValidity, setWebValidity] = useState(false);
 	let { eventID } = useParams();
 	const [image, setImage] = useState();
 	//const [filterObjectData,setfilterData]=useState([]);
