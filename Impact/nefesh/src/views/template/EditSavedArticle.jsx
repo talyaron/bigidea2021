@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from 'react';
 
-import { doc, getDoc, setDoc, addDoc,deleteDoc } from "firebase/firestore";
-import { db } from "../../scripts/firebase/config";
-import ImportImgs from "./ImportImgs";
-import { useParams,useNavigate } from "react-router-dom";
+import { doc, getDoc, setDoc, addDoc, deleteDoc } from 'firebase/firestore';
+import { db } from '../../scripts/firebase/config';
+import ImportImgs from './ImportImgs';
+import { useParams, useNavigate } from 'react-router-dom';
 // import ContentEditable from '../../components/contentEditable/ContentEditable'
 let i = 0;
-let page = "ArticleCreation";
+let page = 'ArticleCreation';
 
 Date.prototype.toDateInputValue = function () {
 	var local = new Date(this);
@@ -26,11 +26,11 @@ export function convertToDefaultTime(time) {
 }
 
 function EditSavedArticle(props) {
-	import("../../styles/template/EditSavedArticles.css");
-	const navigate = useNavigate()
+	import('../../styles/template/EditSavedArticles.css');
+	const navigate = useNavigate();
 	const [tagsState, setTagsState] = useState([]);
 	const inputRef = useRef();
-	const [httpUrl, setHttpUrl] = useState("");
+	const [httpUrl, setHttpUrl] = useState('');
 	let { eventID } = useParams();
 	const [statesSubmitted, setStatesSubmitted] = useState({});
 	const [address, setAddress] = useState([]);
@@ -39,17 +39,16 @@ function EditSavedArticle(props) {
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
 
 	useEffect(async () => {
-		const eventRef = doc(db, "users", props.userID, "Saved", eventID);
+		const eventRef = doc(db, 'users', props.userID, 'Saved', eventID);
 		let eventDB = await getDoc(eventRef);
 		const eventDBTemp = eventDB.data();
 		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
-		
+
 		getDoc(tagsRef).then((tagsDB) => {
 			console.log(tagsDB.data().tagArray);
 			setTags(tagsDB.data().tagArray);
-
-		})
-		if ("dateAdded" in eventDBTemp) {
+		});
+		if ('dateAdded' in eventDBTemp) {
 			let time = new Date(eventDB.data().dateAdded.seconds * 1000);
 			time = convertToDefaultTime(time);
 
@@ -59,19 +58,17 @@ function EditSavedArticle(props) {
 			eventDBTemp.dateAdded = new Date().toDateInputValue();
 		}
 
-		if ("startTime" in eventDBTemp) {
+		if ('startTime' in eventDBTemp) {
 			eventDBTemp.startTime = convertToDefaultTime(new Date(eventDB.data().startTime.seconds * 1000));
 		} else {
 			eventDBTemp.startTime = new Date().toDateInputValue();
 		}
-		if ("endTime" in eventDBTemp) {
+		if ('endTime' in eventDBTemp) {
 			eventDBTemp.endTime = convertToDefaultTime(new Date(eventDB.data().endTime.seconds * 1000));
 		} else {
 			eventDBTemp.endTime = new Date().toDateInputValue();
 		}
-		console.log(
-			new Date(eventDB.data().dateAdded.seconds * 1000).toDateInputValue()
-		);
+		console.log(new Date(eventDB.data().dateAdded.seconds * 1000).toDateInputValue());
 		// console.log(new Date(eventDB.data().endTime.seconds*1000).toDateInputValue())
 		setStatesSubmitted(eventDBTemp);
 		setAddress(eventDBTemp.address);
@@ -81,20 +78,11 @@ function EditSavedArticle(props) {
 	}, []);
 
 	function submitArticle() {
-		let {
-			title,
-			hostName,
-			coverImage,
-			views,
-			startTime,
-			endTime,
-			maxCapacity,
-			article
-		} = statesSubmitted;
+		let { title, hostName, coverImage, views, startTime, endTime, maxCapacity, article } = statesSubmitted;
 		coverImage = httpUrl;
-		setDoc(doc(db, "users",props.userID,"Published",eventID), {
+		setDoc(doc(db, 'users', props.userID, 'Published', eventID), {
 			title,
-			coverImage:httpUrl,
+			coverImage: httpUrl,
 			article,
 			hostName,
 			address: {
@@ -103,7 +91,7 @@ function EditSavedArticle(props) {
 				city: statesSubmitted.address.city,
 			},
 			contactInfo: {
-				phone:statesSubmitted.contactInfo.phone,
+				phone: statesSubmitted.contactInfo.phone,
 				email: statesSubmitted.contactInfo.email,
 				website: statesSubmitted.contactInfo.website,
 			},
@@ -117,9 +105,9 @@ function EditSavedArticle(props) {
 			endTime: new Date(endTime),
 			maxCapacity,
 		});
-		setDoc(doc(db, "events",eventID), {
+		setDoc(doc(db, 'events', eventID), {
 			title,
-			coverImage:httpUrl,
+			coverImage: httpUrl,
 			article,
 			hostName,
 			address: {
@@ -128,7 +116,7 @@ function EditSavedArticle(props) {
 				city: statesSubmitted.address.city,
 			},
 			contactInfo: {
-				phone:statesSubmitted.contactInfo.phone,
+				phone: statesSubmitted.contactInfo.phone,
 				email: statesSubmitted.contactInfo.email,
 				website: statesSubmitted.contactInfo.website,
 			},
@@ -142,24 +130,15 @@ function EditSavedArticle(props) {
 			endTime: new Date(endTime),
 			maxCapacity,
 		});
-		deleteDoc(doc(db,"users",props.userID,"Saved",eventID))
-		alert("Event Published")
-		navigate("/ProfilePage")
+		deleteDoc(doc(db, 'users', props.userID, 'Saved', eventID));
+		alert('Event Published');
+		navigate('/ProfilePage');
 	}
 	function saveDraft() {
-		let {
+		let { title, hostName, coverImage, views, startTime, endTime, maxCapacity, article } = statesSubmitted;
+		setDoc(doc(db, 'users', props.userID, 'Saved', eventID), {
 			title,
-			hostName,
-			coverImage,
-			views,
-			startTime,
-			endTime,
-			maxCapacity,
-			article
-		} = statesSubmitted;
-		setDoc(doc(db, "users", props.userID, "Saved", eventID), {
-			title,
-			coverImage:httpUrl,
+			coverImage: httpUrl,
 			article,
 			hostName,
 			address: {
@@ -168,7 +147,7 @@ function EditSavedArticle(props) {
 				city: statesSubmitted.address.city,
 			},
 			contactInfo: {
-				phone:statesSubmitted.contactInfo.phone,
+				phone: statesSubmitted.contactInfo.phone,
 				email: statesSubmitted.contactInfo.email,
 				website: statesSubmitted.contactInfo.website,
 			},
@@ -182,8 +161,8 @@ function EditSavedArticle(props) {
 			endTime: new Date(endTime),
 			maxCapacity,
 		});
-		navigate("/ProfilePage")
-		alert("Event Saved!")
+		navigate('/ProfilePage');
+		alert('Event Saved!');
 	}
 
 	function changeState(ev) {
@@ -210,7 +189,7 @@ function EditSavedArticle(props) {
 	};
 	function ping() {
 		console.log(statesSubmitted);
-		console.log(props)
+		console.log(props);
 	}
 	let tempArray = [...selectedTagArray];
 	function getTarget(ev) {
@@ -222,135 +201,36 @@ function EditSavedArticle(props) {
 			tempArray.push(temp);
 		}
 		setSelectedTagArray(tempArray);
-	
 	}
 	return (
 		<>
 			{statesSubmitted ? (
-				<div className="backGround">
-					<header className="Header">Edit Article</header>
-					<div className="createArticle-popup-box">
+				<div className='backGround'>
+					<header className='Header'>Edit Article</header>
+					<div className='createArticle-popup-box'>
 						<div>Change your image file here:</div>
-						<ImportImgs
-							userData={props}
-							pageName={page}
-							parentCallBack={callBackFunction}
-						/>
-						<input
-							type="text"
-							name="title"
-							onKeyUp={changeState}
-							placeholder="Enter article title here"
-							defaultValue={statesSubmitted.title}
-							className="shadow In"
-						/>
-						<input
-							type="text"
-							name="hostName"
-							onKeyUp={changeState}
-							placeholder="Enter host/s name here"
-							defaultValue={statesSubmitted.hostName}
-							className="shadow In"
-						/>
-						<input
-							type="text"
-							name="streetName"
-							onChange={changeState}
-							placeholder="Enter street name here"
-							defaultValue={address.streetName}
-							className="shadow In"
-						/>
-						<input
-							type="text"
-							name="city"
-							onChange={changeState}
-							placeholder="Enter city here"
-							defaultValue={address.city}
-							className="shadow In"
-						/>
-						<input
-							type="text"
-							name="houseNumber"
-							onChange={changeState}
-							placeholder="Enter building number here"
-							defaultValue={address.houseNumber}
-							className="shadow In"
-						/>
-						<input
-							type="number"
-							name="maxCapacity"
-							onChange={changeState}
-							placeholder="Enter maximum capacity here"
-							defaultValue={statesSubmitted.maxCapacity}
-							className="shadow In"
-						/>
-						<input
-							type="text"
-							name="phone"
-							onChange={changeState}
-							placeholder="Enter phone number here"
-							defaultValue={contactInfo.phone}
-							className="shadow In"
-						/>
-						<input
-							type="text"
-							name="email"
-							onChange={changeState}
-							placeholder="Enter your contact email here"
-							defaultValue={contactInfo.email}
-							className="shadow In"
-						/>
-						<input
-							type="text"
-							name="website"
-							onChange={changeState}
-							placeholder="Enter your website url here"
-							defaultValue={contactInfo.website}
-							className="shadow In"
-						/>
+						<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} />
+						<input type='text' name='title' onKeyUp={changeState} placeholder='Enter article title here' defaultValue={statesSubmitted.title} className='shadow In' />
+						<input type='text' name='hostName' onKeyUp={changeState} placeholder='Enter host/s name here' defaultValue={statesSubmitted.hostName} className='shadow In' />
+						<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' defaultValue={address.streetName} className='shadow In' />
+						<input type='text' name='city' onChange={changeState} placeholder='Enter city here' defaultValue={address.city} className='shadow In' />
+						<input type='text' name='houseNumber' onChange={changeState} placeholder='Enter building number here' defaultValue={address.houseNumber} className='shadow In' />
+						<input type='number' name='maxCapacity' onChange={changeState} placeholder='Enter maximum capacity here' defaultValue={statesSubmitted.maxCapacity} className='shadow In' />
+						<input type='text' name='phone' onChange={changeState} placeholder='Enter phone number here' defaultValue={contactInfo.phone} className='shadow In' />
+						<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' defaultValue={contactInfo.email} className='shadow In' />
+						<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' defaultValue={contactInfo.website} className='shadow In' />
 						<div>Event Start Time:</div>
-						<input
-							type="datetime-local"
-							name="startTime"
-							onChange={changeState}
-							defaultValue={statesSubmitted.startTime}
-							className="shadow In"
-						/>
+						<input type='datetime-local' name='startTime' onChange={changeState} defaultValue={statesSubmitted.startTime} className='shadow In' />
 						<div>Event End Time:</div>
-						<input
-							type="datetime-local"
-							name="endTime"
-							onChange={changeState}
-							defaultValue={statesSubmitted.endTime}
-							className="shadow In"
-						/>
-						<textarea
-							name="article"
-							className="expandBox"
-							defaultValue={statesSubmitted.article}
-							onChange={changeState}></textarea>
+						<input type='datetime-local' name='endTime' onChange={changeState} defaultValue={statesSubmitted.endTime} className='shadow In' />
+						<textarea name='article' className='expandBox' defaultValue={statesSubmitted.article} onChange={changeState}></textarea>
 
 						<button onClick={ping}>HIIII</button>
-						
-						<label htmlFor="selected_tagBox">Selected Tags:</label>
-					<div name='selected_tagBox' className='selected_tagBox'>
-						<div className='tagsMapContainer_selected'>
-							{[...tempArray].map((tag) => {
-								return (
-									<div key={tag}>
-										<div className='inline-block'>
-											<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
-												{tag}
-											</div>
-										</div>
-									</div>
-								);
-							})}
-						</div>
-						<label htmlFor="unselected_tagBox">Unselected Tags:</label>
-						<div name='unselected_tagBox' className='unselected_tagBox'>
-							<div className='tagsMapContainer'>
-								{tags.map((tag) => {
+
+						<label htmlFor='selected_tagBox'>Selected Tags:</label>
+						<div name='selected_tagBox' className='selected_tagBox'>
+							<div className='tagsMapContainer_selected'>
+								{[...tempArray].map((tag) => {
 									return (
 										<div key={tag}>
 											<div className='inline-block'>
@@ -362,13 +242,28 @@ function EditSavedArticle(props) {
 									);
 								})}
 							</div>
+							<label htmlFor='unselected_tagBox'>Unselected Tags:</label>
+							<div name='unselected_tagBox' className='unselected_tagBox'>
+								<div className='tagsMapContainer'>
+									{tags.map((tag) => {
+										return (
+											<div key={tag}>
+												<div className='inline-block'>
+													<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
+														{tag}
+													</div>
+												</div>
+											</div>
+										);
+									})}
+								</div>
+							</div>
 						</div>
-					</div>
-						<div className="buttonContainer23">
-							<button className="Dragon42 shadow" onClick={saveDraft}>
+						<div className='buttonContainer23'>
+							<button className='Dragon42 shadow' onClick={saveDraft}>
 								Save Draft
 							</button>
-							<button className="Dragon43 shadow" onClick={submitArticle}>
+							<button className='Dragon43 shadow' onClick={submitArticle}>
 								Submit Article
 							</button>
 						</div>

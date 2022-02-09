@@ -30,7 +30,7 @@ function Event() {
 			getDoc(eventRef).then((docSnap) => {
 				eventObj = docSnap.data();
 
-				let { startTime, endTime, /*address*/ } = eventObj;
+				let { startTime, endTime /*address*/ } = eventObj;
 				if (startTime) startTime = new Date(startTime.seconds * 1000).toJSON();
 				if (endTime) endTime = new Date(endTime.seconds * 1000).toJSON();
 				//if (address) address = Object.entries(address);
@@ -45,35 +45,41 @@ function Event() {
 				console.log(eventID);
 				setEventData(EventArray);
 				if ('tags' in eventObj && Array.isArray(eventObj.tags)) {
-					console.log('we have tags');
-					console.log(eventObj.tags);
+					// console.log('we have tags');
+					// console.log(eventObj.tags);
 					setTags(eventObj.tags);
 				}
 				setImage(eventObj.coverImage);
 				//setAddressInfo(eventObj.address);
 				setContactInfo(eventObj.contactInfo);
-				let validState = validURL(eventObj.contactInfo.website);
+				let tempURL = eventObj.contactInfo.website;
+				let validState = validURL(tempURL);
 				setWebValidity(validState);
-				setOrgWebsite(eventObj.contactInfo.website);
+				if (tempURL.includes('https://')) {
+					setOrgWebsite(tempURL);
+				}
+				if (tempURL.includes('http://')) {
+					setOrgWebsite('Unsecure website. Link not displayed.');
+				} else {
+					tempURL = 'https://' + tempURL;
+					console.log(tempURL);
+					setOrgWebsite(tempURL);
+				}
 				SetEventDataValid(true);
 			});
 		} catch (err) {
 			console.error(err);
 		}
-	}, [eventID]);
+	}, []);
 
 	function filterEntries(data) {
 		if (data[0].length === 0) return [];
-
 		let buffer = data[1];
 		//.map(e=>Object.entries(e));
 		//console.log(data[0]);
 		//console.log(buffer);
 		buffer.map((element) => (element.data = data[0].find((e) => e[0] === element.field)[1]));
 		buffer = buffer.map((e) => Object.entries(e));
-
-		console.log(buffer);
-
 		return buffer;
 	}
 
@@ -109,7 +115,6 @@ function Event() {
 
 	return (
 		<div className='EventPage'>
-			
 			<div id='mainContainer_Event'>
 				{useScript('https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js')}
 				<img id='coverImage_Event' src={image} alt='Event'></img>
@@ -117,8 +122,7 @@ function Event() {
 					<div id='title_Event'> {getField(eventData, 'title')} </div>
 					<div id='hostName_Event'> Hosted By:{getField(eventData, 'hostName')} </div>
 					<div id='eventWebsite_Event'>
-						{/* <a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a> */}
-						<a href={orgWebsite}/>
+						<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 					</div>
 					<div className='eventTimesCont'>
 						{Object.entries(filterEntries([eventData, EventFilter])).map((e) => (
@@ -135,24 +139,26 @@ function Event() {
 							</div>
 						))}
 					</div>
-					
+
 					<div id='eventAddress'>{Object.entries(filterEntries([eventData, [{ field: 'address', type: 'location' }]])).map((e) => formatField(...e)) /* {formatField([ ["type", 'location'], ["data", getField(eventData, "address")]])} */}</div>
 					<div id='eventDescription_Event'>{getField(eventData, 'article')}</div>
 				</div>
 				<div className='addToCalAndMaxCap_Cont'>
-				<div className='userPromptContainer_Event'>
-					<div title='Add to Calendar' className='addeventatc'>
-						Add to Calendar
-						<span className='start'>{`${getField(eventData, 'startTime')}`}</span>
-						<span className='end'>{`${getField(eventData, 'endTime')}`}</span>
-						<span className='timezone'>Asia/Jerusalem</span>
-						<span className='title'>{getField(eventData, 'title')}</span>
-						<span className='description'>{getField(eventData, 'article')}</span>
+					<div className='userPromptContainer_Event'>
+						<div title='Add to Calendar' className='addeventatc'>
+							Add to Calendar
+							<span className='start'>{`${getField(eventData, 'startTime')}`}</span>
+							<span className='end'>{`${getField(eventData, 'endTime')}`}</span>
+							<span className='timezone'>Asia/Jerusalem</span>
+							<span className='title'>{getField(eventData, 'title')}</span>
+							<span className='description'>{getField(eventData, 'article')}</span>
+						</div>
+
+						{/* <a  href = {"https://www.instagram.com/becky_geisberg/"} target='_blank' rel='noreferrer'> Instagram</a> */}
 					</div>
+					<div id='maxCap'> Max Capacity: {getField(eventData, 'maxCapacity')} </div>
 				</div>
-				<div id='maxCap'> Max Capacity: {getField(eventData, 'maxCapacity')} </div>
-				</div>
-				
+
 				<div className='eventTags_Event'>
 					{tags.map((tag, index) => {
 						return (

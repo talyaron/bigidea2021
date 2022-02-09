@@ -7,16 +7,16 @@ import { useNavigate } from 'react-router-dom';
 
 let statesSubmitted = { views: 0, startTime: '', endTime: '' };
 let page = 'ArticleCreation';
-let endValueNum=1
+let endValueNum = 1;
 function ArticleCreation(props) {
 	import('../../styles/page/ArticleCreation.css');
 	const navigate = useNavigate();
 	const [httpUrl, setHttpUrl] = useState('');
 	const [tags, setTags] = useState([]);
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
-	
-	let tagsSorted=[]
-	const [endValue,setEndValue]=useState("Submit Article to Main Page")
+	let tagsSorted = [];
+	let isKosher;
+	const [endValue, setEndValue] = useState('Submit Article to Main Page');
 	useEffect(async () => {
 		document.getElementById('editor').addEventListener('input', inputEvt, false);
 		// const tagsRef = doc(db, 'tagCollection', 'tagDoc');
@@ -24,15 +24,15 @@ function ArticleCreation(props) {
 		// 	console.log(tagsDB.data().tagArray);
 		// 	setTags(tagsDB.data().tagArray);
 		// });
-		const tagsDB = await getDoc(doc(db, "tagCollection", "tagDoc"))
+		const tagsDB = await getDoc(doc(db, 'tagCollection', 'tagDoc'));
 
 		tagsSorted = tagsDB.data().tagArray;
 
 		tagsSorted.sort(function (a, b) {
 			return a.localeCompare(b); //using String.prototype.localCompare()
-		})
+		});
 
-		setTags(tagsSorted)
+		setTags(tagsSorted);
 	}, []);
 	function inputEvt(ev) {
 		let parse = 'text';
@@ -42,6 +42,7 @@ function ArticleCreation(props) {
 	async function submitArticle(ev) {
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
+
 		try {
 			const docRef = await addDoc(collection(db, 'events'), {
 				title,
@@ -69,9 +70,9 @@ function ArticleCreation(props) {
 				maxCapacity,
 				currentCapacity: maxCapacity,
 			});
-			console.log(docRef.id)
-			addDoc(collection(db, 'users',props.userID,"Published"), {
-				id:docRef.id,
+			console.log(docRef.id);
+			addDoc(collection(db, 'users', props.userID, 'Published'), {
+				id: docRef.id,
 				title,
 				coverImage: image,
 				article: text,
@@ -97,54 +98,53 @@ function ArticleCreation(props) {
 				maxCapacity,
 				currentCapacity: maxCapacity,
 			});
-			alert('Event Submitted!')
-			navigate('/MainPage')
+			alert('Event Submitted!');
+			navigate('/MainPage');
 		} catch (err) {
-			console.error(err)
-			alert("Not all fields had inputs")
+			console.error(err);
+			alert('Invalid Fields. Make Sure you fill out all the fields', err);
 		}
 	}
 	function saveDraft() {
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
-		try{ const docref=addDoc(collection(db, "users", props.userID, "Saved"), {
-			title,
-			coverImage: image,
-			article: text,
-			hostName,
-			address: {
-				streetName: streetName,
-				houseNumber: houseNumber,
-				city: city,
-			},
-			contactInfo: {
-				phone,
-				email,
-				website,
-			},
-			tags: selectedTagArray,
-			creatorUID: props.userID,
-			creatorOrg: props.userOrg,
-			views,
-			dateAdded: new Date(),
-			isPublished: true,
-			startTime: new Date(startTime),
-			endTime: new Date(endTime),
-			maxCapacity,
-		});
-		alert('Event Saved!')
-		navigate("../ProfilePage")
-	} catch(err){
-		console.error(err)
-		alert("Not all fields had inputs")
+		try {
+			const docref = addDoc(collection(db, 'users', props.userID, 'Saved'), {
+				title,
+				coverImage: image,
+				article: text,
+				hostName,
+				address: {
+					streetName: streetName,
+					houseNumber: houseNumber,
+					city: city,
+				},
+				contactInfo: {
+					phone,
+					email,
+					website,
+				},
+				tags: selectedTagArray,
+				creatorUID: props.userID,
+				creatorOrg: props.userOrg,
+				views,
+				dateAdded: new Date(),
+				isPublished: true,
+				startTime: new Date(startTime),
+				endTime: new Date(endTime),
+				maxCapacity,
+			});
+			alert('Event Saved!');
+			navigate('../ProfilePage');
+		} catch (err) {
+			console.error(err);
+			alert('Not all fields had inputs');
+		}
 	}
-
-
+	function Ping() {
+		console.log(endValue);
+		console.log(endValueNum);
 	}
-function Ping(){
-	console.log(endValue)
-	console.log(endValueNum)
-}
 	function changeState(ev) {
 		let parse = ev.target.name;
 		statesSubmitted = { ...statesSubmitted, [parse]: ev.target.value };
@@ -161,36 +161,46 @@ function Ping(){
 			const index = tempArray.indexOf(temp);
 			tempArray.splice(index, 1);
 		} else {
-			tempArray.push(temp);
+			if (tempArray.length >= 6) {
+				alert('A maximum of five tags can be selected at once.');
+			} else {
+				tempArray.push(temp);
+			}
 		}
+		if (temp === 'CertifiedKosher' && tempArray.includes('CertifiedKosher') === true) {
+			if (window.confirm('Please confirm that all of the food at your event is certified kosher/hechshered')) {
+				isKosher = true;
+			} else {
+				const index = tempArray.indexOf('CertifiedKosher');
+				tempArray.splice(index, 1);
+				console.log(tempArray);
+			}
+
+			console.log(tempArray);
+		}
+
 		setSelectedTagArray(tempArray);
 	}
-function ArticleCheck(ev){
-	ev.preventDefault();
-	if (endValueNum==1){
-		submitArticle(ev.target)
+	function ArticleCheck(ev) {
+		ev.preventDefault();
+		if (endValueNum == 1) {
+			submitArticle(ev.target);
+		} else if (endValueNum == 2) saveDraft(ev.target);
 	}
-	else if (endValueNum==2)
-	saveDraft(ev.target)
-
-}
-function ChangeEndButton(ev){
-	ev.preventDefault();
-	console.log("runs")
-	if (endValueNum==1){
-		console.log("true")
-		setEndValue("Save event to private Profile Area")
-		endValueNum=2
+	function ChangeEndButton(ev) {
+		ev.preventDefault();
+		console.log('runs');
+		if (endValueNum == 1) {
+			console.log('true');
+			setEndValue('Save event to private Profile Area');
+			endValueNum = 2;
+		} else {
+			console.log('false');
+			setEndValue('Submit Event to Main Page');
+			endValueNum = 1;
+		}
 	}
-	else {
-		console.log("false")
-		setEndValue("Submit Event to Main Page")
-		endValueNum=1
-	}
-}
 
-
-	
 	return (
 		<div id='ArtC_Header'>
 			<button onClick={Ping}>HIIIII</button>
@@ -198,55 +208,73 @@ function ChangeEndButton(ev){
 			<div className='backGround'>
 				<div className='createArticle-popup-box'>
 					<form onSubmit={ArticleCheck}>
-					
-					<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} />
-					<input type='text' name='title' onChange={changeState} placeholder='Enter article title here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='text' name='hostName' onChange={changeState} placeholder='Enter host/s name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='text' name='city' onChange={changeState} placeholder='Enter city here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='number' onKeyPress={(event) => {
-						if (!/[0-9]/.test(event.key)) {
-							event.preventDefault();
-						}
-					}} name='houseNumber' onChange={changeState} placeholder='Enter building number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='number' onKeyPress={(event) => {
-						if (!/[0-9]/.test(event.key)) {
-							event.preventDefault();
-						}
-					}} name='maxCapacity' onChange={changeState} placeholder='Enter maximum capacity here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='number'
-						onKeyPress={(event) => {
-							if (!/[0-9]/.test(event.key)) {
-								event.preventDefault();
-							}
-						}} name='phone' onChange={changeState} placeholder='Enter phone number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<div>Event Start Time:</div>
-					<input type='datetime-local' name='startTime' onChange={changeState} placeholder='Enter address line 1 here' className='border-ArticleCreation In' />
-					<div>Event End Time:</div>
-					<input type='datetime-local' name='endTime' onChange={changeState} placeholder='Enter address line 1 here' className='border-ArticleCreation In' />
-					<div className='expandBox'>
-						<div contentEditable='true' className='textarea' name='text' role='textbox' id='editor' placeholder='Enter event description here placeHolderText_articleCreation'></div>
-					</div>
-					<label htmlFor="selected_tagBox">Selected Tags:</label>
-					
-					<div name='selected_tagBox' className='selected_tagBox'>
-						<div className='tagsMapContainer_selected'>
-							{[...tempArray].map((tag) => {
-								return (
-									<div key={tag}>
-										<div className='inline-block'>
-											<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
-												{tag}
+						<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} />
+						<input type='text' name='title' onChange={changeState} placeholder='Enter article title here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='hostName' onChange={changeState} placeholder='Enter host/s name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='city' onChange={changeState} placeholder='Enter city here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input
+							type='number'
+							onKeyPress={(event) => {
+								if (!/[0-9]/.test(event.key)) {
+									event.preventDefault();
+								}
+							}}
+							name='houseNumber'
+							onChange={changeState}
+							placeholder='Enter building number here'
+							className='border-ArticleCreation In placeHolderText_articleCreation'
+						/>
+						<input
+							type='number'
+							onKeyPress={(event) => {
+								if (!/[0-9]/.test(event.key)) {
+									event.preventDefault();
+								}
+							}}
+							name='maxCapacity'
+							onChange={changeState}
+							placeholder='Enter maximum capacity here'
+							className='border-ArticleCreation In placeHolderText_articleCreation'
+						/>
+						<input
+							type='number'
+							onKeyPress={(event) => {
+								if (!/[0-9]/.test(event.key)) {
+									event.preventDefault();
+								}
+							}}
+							name='phone'
+							onChange={changeState}
+							placeholder='Enter phone number here'
+							className='border-ArticleCreation In placeHolderText_articleCreation'
+						/>
+						<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<div>Event Start Time:</div>
+						<input type='datetime-local' name='startTime' onChange={changeState} placeholder='Enter address line 1 here' className='border-ArticleCreation In' />
+						<div>Event End Time:</div>
+						<input type='datetime-local' name='endTime' onChange={changeState} placeholder='Enter address line 1 here' className='border-ArticleCreation In' />
+						<div className='expandBox'>
+							<div contentEditable='true' className='textarea' name='text' role='textbox' id='editor' placeholder='Enter event description here placeHolderText_articleCreation'></div>
+						</div>
+						<label htmlFor='selected_tagBox'>Selected Tags:</label>
+						<div name='selected_tagBox' className='selected_tagBox'>
+							<div className='tagsMapContainer_selected'>
+								{[...tempArray].map((tag) => {
+									return (
+										<div key={tag}>
+											<div className='inline-block'>
+												<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
+													{tag}
+												</div>
 											</div>
 										</div>
-									</div>
-								);
-							})}
+									);
+								})}
+							</div>
 						</div>
-						</div>
-						<label htmlFor="unselected_tagBox">Unselected Tags:</label>
+						<label htmlFor='unselected_tagBox'>Unselected Tags:</label>
 						<div name='unselected_tagBox' className='unselected_tagBox'>
 							<div className='tagsMapContainer'>
 								{tags.map((tag) => {
@@ -262,14 +290,15 @@ function ChangeEndButton(ev){
 								})}
 							</div>
 						</div>
+
 						<button onClick={ChangeEndButton}>Save Article privately instead</button>
 						{/* <input type="checkbox" name="publishArticleCheckbox" id="Publish"></input>
 						<label htmlFor="publishArticleCheckbox">Publish Article to Main Page!</label> */}
-					<div className='buttonContainer23'>
-						<button className='Dragon43 shadow' type='submit'>
-							{endValue}
-						</button>
-					</div>
+						<div className='buttonContainer23'>
+							<button className='Dragon43 shadow' type='submit'>
+								{endValue}
+							</button>
+						</div>
 					</form>
 				</div>
 			</div>
