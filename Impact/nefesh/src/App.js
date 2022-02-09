@@ -29,14 +29,13 @@ import Credits from './views/pages/Credits';
 
 let role;
 let navList = [
-	{ id: 0, label: 'Main Page', href: 'MainPage', role: ['everyone'] },
-	{ id: 1, label: 'Profile Page', href: 'ProfilePage', role: ['member'] },
-	{ id: 2, label: 'Contact Us', href: 'ContactUs', role: ['everyone'] },
-	{ id: 3, label: 'Article Creation', href: 'ArticleCreation', role: ['orgAdmin', 'superAdmin'] },
-	{ id: 4, label: 'Admin Page', href: 'AdminPage', role: ['superAdmin'] },
-	{ id: 5, label: 'Sign In', href: 'login', role: ['guest'] },
-	{ id: 6, label: 'Sign Out', href: 'MainPage', function: handleLogOut, role: ['member'] },
-	{ id: 7, href: 'event', role: ['everyone'], hidden: true },
+	{ id: 'MainPage', label: 'Main Page', href: 'MainPage', role: ['everyone'] },
+	{ id: 'ProfilePage', label: 'Profile Page', href: 'ProfilePage', role: ['member'] },
+	{ id: 'ContactUs', label: 'Contact Us', href: 'ContactUs', role: ['everyone'] },
+	{ id: 'ArticleCreation', label: 'Article Creation', href: 'ArticleCreation', role: ['orgAdmin', 'superAdmin'] },
+	{ id: 'AdminPage', label: 'Admin Page', href: 'AdminPage', role: ['superAdmin'] },
+	{ id: 'SignIn', label: 'Sign In', href: 'login', role: ['guest'] },
+	{ id: 'SignOut', label: 'Sign Out', href: 'MainPage', function: handleLogOut, role: ['member'] },
 ];
 const auth = getAuth();
 let userID = '';

@@ -163,9 +163,9 @@ svg {
 	border-radius: 35px;
 }
 
-#Login:hover {
+#SignIn:hover {
 	border-bottom-left-radius: 35px;
 }
-#Logout:hover {
+#SignOut:hover {
 	border-bottom-left-radius: 35px;
 }
