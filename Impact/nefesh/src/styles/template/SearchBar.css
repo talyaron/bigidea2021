@@ -25,59 +25,59 @@
     color: black;
     display: block;
   } */
-  
-  /* #myUL li a:hover:not(.header) {
+
+/* #myUL li a:hover:not(.header) {
     background-color: #eee;
   } */
 
 .container {
-  display: flex;
-  columns: 500px 500px;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-  width: 500px;
-  height: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-  font-family: arial;
+	display: flex;
+	columns: 500px 500px;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	width: 500px;
+	height: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content: center;
+	font-family: arial;
 }
 
 .filterData {
-  max-height: 100px;
-  border-radius: 5px;
+	max-height: 100px;
+	border-radius: 5px;
 }
 
 .searchBar {
-  max-height: 100px;
-  border-radius: 5px;
+	max-height: 100px;
+	border-radius: 5px;
 }
 
 .Logo {
-  max-height: 40%;
-  max-width: 40%;
+	max-height: 40%;
+	max-width: 40%;
 }
 
-.sectionOne{
-  display: grid;
-  grid-template-columns: 200px 200px 50px;
-  max-height: 100px;
-  background-color: rgb(144, 152, 161);
+.sectionOne {
+	display: grid;
+	grid-template-columns: 200px 200px 50px;
+	max-height: 100px;
+	background-color: rgb(144, 152, 161);
 }
 
-.Logo{
-  max-height: 200px;
-  max-width: 200px;
-  height: 150px;
-  width: 150px;
+.Logo {
+	max-height: 200px;
+	max-width: 200px;
+	height: 150px;
+	width: 150px;
 }
-button{
-  width: 100px;
-  height: 100px;
+button {
+	width: 100px;
+	height: 100px;
 }
-.container2{
-  background-color:rgb(126, 124, 124);
+.container2 {
+	background-color: rgb(126, 124, 124);
 }
-.Button2{
-  border-radius: 50%;
+.Button2 {
+	border-radius: 50%;
 }

@@ -52,7 +52,7 @@
 }
 .In {
 	height: 20px;
-	background-color:var(--Blue1);
+	background-color: var(--Blue1);
 	font-family: Roboto;
 	width: 80%;
 	/* align-self: center; */
@@ -60,12 +60,12 @@
 
 .createArticle-popup-box {
 	background-color: var(--Light-Page);
-    color: var(--Dark);
-    margin: 15px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    font-weight: 530;
+	color: var(--Dark);
+	margin: 15px;
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+	font-weight: 530;
 	font-family: Roboto;
 	border: none;
 	max-width: 80%;
@@ -136,7 +136,6 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	border-radius: 15px;
 	margin-top: 10px;
 	border: none;
-
 }
 .Dragon43 {
 	height: 50px;
@@ -194,27 +193,27 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 
 .tagsMapContainer {
-    margin: 5px;
-	background-color: var(--Background-light);
-	border-radius: 5px;
-	display: flex;
-	flex-direction: row;
-	justify-content:    center;
-    max-width: 100%;
-    flex-wrap: wrap;
-	max-height: 150px;
-	overflow-y: scroll;
-}
-.tagsMapContainer_selected{
-    margin: 5px;
+	margin: 5px;
 	background-color: var(--Background-light);
 	border-radius: 5px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-    width: fit-content;
-    max-width: 100%;
-    flex-wrap: wrap;
+	max-width: 100%;
+	flex-wrap: wrap;
+	max-height: 150px;
+	overflow-y: scroll;
+}
+.tagsMapContainer_selected {
+	margin: 5px;
+	background-color: var(--Background-light);
+	border-radius: 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: fit-content;
+	max-width: 100%;
+	flex-wrap: wrap;
 }
 
 .unselected_tagBox {
@@ -223,8 +222,8 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	border-radius: 15px;
 }
 .selected_tagBox {
-    display: inline-block;
-    background-color: var(--Blue1);
+	display: inline-block;
+	background-color: var(--Blue1);
 	border-radius: 15px;
 }
 .Tag-X {
@@ -251,18 +250,16 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	font-size: 12px;
 	line-height: 28px;
 	margin: 3px;
-    width: min-content;
+	width: min-content;
 }
 
-.filterBtn_articleCreation:hover{
-    background-color: #3e80ca;
-
+.filterBtn_articleCreation:hover {
+	background-color: #3e80ca;
 }
-.filterBtn_articleCreation:active{
-    background-color: #264e7c;
-}
-
-.filterBtn_articleCreation_selected{
-    background-color: #264e7c;
+.filterBtn_articleCreation:active {
+	background-color: #264e7c;
 }
 
+.filterBtn_articleCreation_selected {
+	background-color: #264e7c;
+}

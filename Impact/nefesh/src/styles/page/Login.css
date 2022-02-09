@@ -48,18 +48,18 @@
 
 #art_login {
 	position: fixed;
-    bottom: 0px;
-    z-index: -6;
-    margin: none;
-    width: 100vw;
-    height: auto;
-    bottom: auto;
+	bottom: 0px;
+	z-index: -6;
+	margin: none;
+	width: 100vw;
+	height: auto;
+	bottom: auto;
 }
 
 @media only screen and (max-aspect-ratio: 6 / 10) {
-#art_login {
-    bottom: 0;
-}
+	#art_login {
+		bottom: 0;
+	}
 }
 
 .centerImg_Login {
@@ -76,7 +76,7 @@
 	width: 414px;
 	height: 138px;
 }
-#bigIdeaTag{
+#bigIdeaTag {
 	color: #8b9faf;
 	display: flex;
 	justify-content: space-evenly;

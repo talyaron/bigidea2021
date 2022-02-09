@@ -1,4 +1,3 @@
-
 .EventPage {
 	display: flex;
 	justify-content: center;
@@ -9,21 +8,21 @@
 	display: flex;
 	flex-direction: column;
 	height: max-content;
-    align-items: center;
-    padding: 0px 0px 10% 0px;
+	align-items: center;
+	padding: 0px 0px 10% 0px;
 }
 
 #coverImage_Event {
 	max-height: 40vh;
 	max-width: 100vw;
 	width: 100vw;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    object-fit: cover;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+	object-fit: cover;
 }
 .eventData_Event {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	background-color: var(--Blue1);
 	text-align: center;
 	padding: 10px 4px 10px 4px;
@@ -33,7 +32,7 @@
 #title_Event {
 	font-family: Roboto;
 	font-style: normal;
-    font-weight: 400;
+	font-weight: 400;
 	font-size: 40px;
 	line-height: 36px;
 }
@@ -46,10 +45,10 @@
 	padding: 4px;
 	border-bottom: 3px solid var(--Dark);
 	border-radius: 3px;
-    width: 80%;
+	width: 80%;
 }
 .eventTimesCont {
-    margin: 9px 0px 9px 0px;
+	margin: 9px 0px 9px 0px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -62,55 +61,55 @@
 	line-height: 20px;
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
 	border-radius: 8px;
-    max-width: 80%;
+	max-width: 80%;
 }
-#startTimeField{
-    display: inline-block;
-    position: relative;
-    bottom: 7px
+#startTimeField {
+	display: inline-block;
+	position: relative;
+	bottom: 7px;
 }
-#endTimeField{
-    display: inline-block;
-    position: relative;    
-    bottom: 7px;
+#endTimeField {
+	display: inline-block;
+	position: relative;
+	bottom: 7px;
 }
-#clock{
-    margin-right: 10px;
-    display: inline-block;
+#clock {
+	margin-right: 10px;
+	display: inline-block;
 }
-#eventDescription_Event{
-    max-width: 100%;
-    font-family: Roboto;
-    font-style: normal;
-    font-size: 15px;
-    line-height: 15px;
-    margin: 5px;
+#eventDescription_Event {
+	max-width: 100%;
+	font-family: Roboto;
+	font-style: normal;
+	font-size: 15px;
+	line-height: 15px;
+	margin: 5px;
 }
-#eventWebsite_Event{
-    color: var(--Dark);
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    padding: 5px;
-    border-bottom: 3px solid var(--Dark);
+#eventWebsite_Event {
+	color: var(--Dark);
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	padding: 5px;
+	border-bottom: 3px solid var(--Dark);
 	border-radius: 3px;
-    width: 80%;
+	width: 80%;
 }
-.inlineBlock{
-    display: inline-block;
-    margin-left: 4px;
+.inlineBlock {
+	display: inline-block;
+	margin-left: 4px;
 }
-#eventAddress{
-    margin: 9px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 15px;
+#eventAddress {
+	margin: 9px;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 15px;
 }
-.tag_Event{
-    background: var(--Blue2);
+.tag_Event {
+	background: var(--Blue2);
 	border: 1px solid var(--Grey);
 	box-sizing: border-box;
 	border-radius: 10px;
@@ -122,38 +121,42 @@
 	font-size: 12px;
 	line-height: 28px;
 	margin: 3px;
-    width: min-content;
+	width: min-content;
 }
-.eventTags_Event{
-    display: flex;
-    flex-direction: row;
-    justify-content:center;  
-    max-width: 50%;
-    padding: 5px;
-    border-top: 3px solid var(--Dark);
-    border-bottom: 3px solid var(--Dark);
+.eventTags_Event {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	max-width: 50%;
+	padding: 5px;
+	border-top: 3px solid var(--Dark);
+	border-bottom: 3px solid var(--Dark);
 	border-radius: 3px;
-    width: 80%;
-
+	width: 80%;
 }
-.addToCalAndMaxCap_Cont{
-    margin: 10px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.addToCalAndMaxCap_Cont {
+	margin: 10px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 }
-#maxCap{
-    margin: 7px;
+#maxCap {
+	margin: 7px;
 }
-.dataLabel{
-    position: relative;
-    bottom: 7px;
+.dataLabel {
+	position: relative;
+	bottom: 7px;
 }
-a, a:link, a:visited, a:focus, a:hover, a:active{
-    color:var(--Dark);
-    text-decoration:none; 
+a,
+a:link,
+a:visited,
+a:focus,
+a:hover,
+a:active {
+	color: var(--Dark);
+	text-decoration: none;
 }
-#addeventatc1{
-    position: relative;
-    z-index: 0 !important;
+#addeventatc1 {
+	position: relative;
+	z-index: 0 !important;
 }

@@ -10,7 +10,6 @@ import ContactUs from './views/pages/ContactUs';
 import ArticleCreation from './views/pages/ArticleCreation';
 import MainPage from './views/pages/MainPage';
 
-
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
@@ -116,7 +115,7 @@ function App() {
 
 	return (
 		<div>
-			{!isLogin ? <NavTopBar role={role}/> : null}
+			{!isLogin ? <NavTopBar role={role} /> : null}
 			<div className='container_AppMain'>
 				{loggedIn ? (
 					<div className='container_App'>

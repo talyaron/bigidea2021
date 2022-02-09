@@ -42,7 +42,7 @@ function ArticleCreation(props) {
 	async function submitArticle() {
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		image = httpUrl;
-		
+
 		try {
 			const docRef = await addDoc(collection(db, 'events'), {
 				title,
@@ -158,7 +158,7 @@ function ArticleCreation(props) {
 				tempArray.push(temp);
 			}
 		}
-		if (temp === 'CertifiedKosher' && (tempArray.includes('CertifiedKosher') === true)) {
+		if (temp === 'CertifiedKosher' && tempArray.includes('CertifiedKosher') === true) {
 			if (window.confirm('Please confirm that all of the food at your event is certified kosher/hechshered')) {
 				isKosher = true;
 			} else {
