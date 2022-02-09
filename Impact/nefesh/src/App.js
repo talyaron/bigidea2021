@@ -121,14 +121,14 @@ function App() {
 					<div className='container_App'>
 						<Routes>
 							<Route path='/' element={<MainPage role={role} />} />
-							<Route path='404' element={<Error />} />
+							<Route path='*' element={<Error />} />
 							<Route path='401' element={<Unauthorised />} />
 							<Route path='MainPage' element={<MainPage role={role} />} />
 							<Route path='ContactUs' element={<ContactUs uid={isUserID} displayName={userState.displayName} isOle={isOle} />} />
 							<Route path='event/:eventID' element={<Event />} />
 							<Route path='ArticleCreation' element={<ArticleCreation userID={userID} userOrg={userState.userOrg} />} />
 							<Route path='ProfilePage' element={<ProfilePage uid={userID} />} />
-							<Route path='AdminPage' element={<AdminPage />} />
+							<Route path='AdminPage' element={<AdminPage />} uid={userID} />
 							<Route path='ProfilePage/SavedEvents/View/:eventID' element={<SavedEvent userID={userID} userOrg={userState.userOrg} />} />
 							<Route path='ProfilePage/SavedEvents' element={<SavedEvents userID={userID} userOrg={userState.userOrg} />} />
 							<Route path='ProfilePage/PublishedEvents' element={<PublishedEvents userID={userID} userOrg={userState.userOrg} />} />
