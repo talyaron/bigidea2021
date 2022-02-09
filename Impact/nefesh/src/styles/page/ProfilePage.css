@@ -84,7 +84,7 @@
 		top: 20px;
 		cursor: pointer;
 		user-select: none;
-		z-index: 2 !important;
+		/* z-index: 2 !important; */
 		background-position: center;
 	}
 	.back-1 {
@@ -345,7 +345,7 @@
 		top: 33vh;
 		cursor: pointer;
 		user-select: none;
-		z-index: 2 !important;
+		/* z-index: 2 !important; */
 		background-position: center;
 	}
 	.EditProfBtn2 {
