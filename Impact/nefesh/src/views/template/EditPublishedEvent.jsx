@@ -26,7 +26,7 @@ export function convertToDefaultTime(time) {
 }
 
 function EditSavedArticle(props) {
-	import('../../styles/template/EditSavedArticles.css');
+	import('../../styles/page/ArticleCreation.css');
 	const navigate = useNavigate();
 	const [tagsState, setTagsState] = useState([]);
 	const inputRef = useRef();
@@ -38,7 +38,8 @@ function EditSavedArticle(props) {
 	const [tags, setTags] = useState([]);
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
 
-	useEffect(async () => {
+	useEffect( () => {
+		async function getData(){
 		const eventRef = doc(db, 'users', props.userID, 'Published', eventID);
 		let eventDB = await getDoc(eventRef);
 		const eventDBTemp = eventDB.data();
@@ -75,7 +76,9 @@ function EditSavedArticle(props) {
 		setContactInfo(eventDBTemp.contactInfo);
 		setSelectedTagArray(eventDBTemp.tags);
 		setHttpUrl(eventDBTemp.coverImage);
-	}, []);
+	}
+	getData();
+	}, [props.userID,eventID]);
 
 	function submitArticle() {
 		let { title, hostName, coverImage, views, startTime, endTime, maxCapacity, article } = statesSubmitted;

@@ -38,44 +38,47 @@ function EditSavedArticle(props) {
 	const [tags, setTags] = useState([]);
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
 
-	useEffect(async () => {
-		const eventRef = doc(db, 'users', props.userID, 'Saved', eventID);
-		let eventDB = await getDoc(eventRef);
-		const eventDBTemp = eventDB.data();
-		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
+	useEffect(() => {
+		async function getData() {
+			const eventRef = doc(db, 'users', props.userID, 'Saved', eventID);
+			let eventDB = await getDoc(eventRef);
+			const eventDBTemp = eventDB.data();
+			const tagsRef = doc(db, 'tagCollection', 'tagDoc');
 
-		getDoc(tagsRef).then((tagsDB) => {
-			console.log(tagsDB.data().tagArray);
-			setTags(tagsDB.data().tagArray);
-		});
-		if ('dateAdded' in eventDBTemp) {
-			let time = new Date(eventDB.data().dateAdded.seconds * 1000);
-			time = convertToDefaultTime(time);
+			getDoc(tagsRef).then((tagsDB) => {
+				console.log(tagsDB.data().tagArray);
+				setTags(tagsDB.data().tagArray);
+			});
+			if ('dateAdded' in eventDBTemp) {
+				let time = new Date(eventDB.data().dateAdded.seconds * 1000);
+				time = convertToDefaultTime(time);
 
-			eventDBTemp.dateAdded = time;
-			console.log(eventDBTemp.dateAdded);
-		} else {
-			eventDBTemp.dateAdded = new Date().toDateInputValue();
-		}
+				eventDBTemp.dateAdded = time;
+				console.log(eventDBTemp.dateAdded);
+			} else {
+				eventDBTemp.dateAdded = new Date().toDateInputValue();
+			}
 
-		if ('startTime' in eventDBTemp) {
-			eventDBTemp.startTime = convertToDefaultTime(new Date(eventDB.data().startTime.seconds * 1000));
-		} else {
-			eventDBTemp.startTime = new Date().toDateInputValue();
+			if ('startTime' in eventDBTemp) {
+				eventDBTemp.startTime = convertToDefaultTime(new Date(eventDB.data().startTime.seconds * 1000));
+			} else {
+				eventDBTemp.startTime = new Date().toDateInputValue();
+			}
+			if ('endTime' in eventDBTemp) {
+				eventDBTemp.endTime = convertToDefaultTime(new Date(eventDB.data().endTime.seconds * 1000));
+			} else {
+				eventDBTemp.endTime = new Date().toDateInputValue();
+			}
+			console.log(new Date(eventDB.data().dateAdded.seconds * 1000).toDateInputValue());
+			// console.log(new Date(eventDB.data().endTime.seconds*1000).toDateInputValue())
+			setStatesSubmitted(eventDBTemp);
+			setAddress(eventDBTemp.address);
+			setContactInfo(eventDBTemp.contactInfo);
+			setSelectedTagArray(eventDBTemp.tags);
+			setHttpUrl(eventDBTemp.coverImage);
 		}
-		if ('endTime' in eventDBTemp) {
-			eventDBTemp.endTime = convertToDefaultTime(new Date(eventDB.data().endTime.seconds * 1000));
-		} else {
-			eventDBTemp.endTime = new Date().toDateInputValue();
-		}
-		console.log(new Date(eventDB.data().dateAdded.seconds * 1000).toDateInputValue());
-		// console.log(new Date(eventDB.data().endTime.seconds*1000).toDateInputValue())
-		setStatesSubmitted(eventDBTemp);
-		setAddress(eventDBTemp.address);
-		setContactInfo(eventDBTemp.contactInfo);
-		setSelectedTagArray(eventDBTemp.tags);
-		setHttpUrl(eventDBTemp.coverImage);
-	}, []);
+		getData()
+	}, [props.userID,eventID]);
 
 	function submitArticle() {
 		let { title, hostName, coverImage, views, startTime, endTime, maxCapacity, article } = statesSubmitted;
