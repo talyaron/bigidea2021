@@ -1,0 +1,42 @@
+.creditsContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Blue3);
+    color: var(--Dark);
+    font-family: 'Roboto', 'sans-serif';
+    margin: 5px;
+    border-radius: 10px;
+    border-collapse: collapse;
+    text-align: center;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+@media only screen and (max-width: 600px) {
+    .bigideaPhoto {
+        display: flex;
+        height: 40vh;
+        width: 95%;
+        background-image: url(../../assets/Images/BigIdea.jpeg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        margin-left: 2.5%;
+        margin-bottom: 2.5%;
+        margin-top: 2.5%;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .bigideaPhoto {
+        display: flex;
+        height: 80%;
+        width: 95%;
+        background-image: url(../../assets/Images/BigIdea.jpeg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        border-radius: 5px;
+        margin-left: 2.5%;
+        margin-bottom: 2.5%;
+        margin-top: 2.5%;
+    }
+}
+

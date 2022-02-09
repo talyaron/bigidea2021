@@ -25,6 +25,7 @@ import SavedEvents from './views/template/SavedEvents';
 import SavedEvent from './views/template/SavedEvent';
 import PublishedEvents from './views/template/PublishedEvents';
 import EditPublishedEvent from './views/template/EditPublishedEvent';
+import Credits from './views/pages/Credits';
 
 let role;
 let navList = [
@@ -152,6 +153,7 @@ function App() {
 							<Route path='/ProfilePage/PublishedEvents/View/:eventID' element={<PublishedEvent userID={userID} userOrg={userState.userOrg} />} />
 							<Route path='/profilePage/PublishedEvents/Edit/:eventID' element={<EditPublishedEvent userID={userID} userOrg={userState.userOrg} />} />
 							<Route path='ProfilePage/SavedEvents/Edit/:eventID' element={<EditSavedArticle userID={userID} userOrg={userState.userOrg} />} />
+							<Route path='Credits' element={<Credits />}/>
 						</Routes>
 					</div>
 				) : (
