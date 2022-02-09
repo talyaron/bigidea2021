@@ -25,24 +25,12 @@ function NavTopBar({ role,  navList}) {
 
 	const [navToggle, setNavToggle] = useState(false);
 	
-
 	function handleMenu() {
 		let temp = !navToggle;
 		setNavToggle(temp);
 		console.log(navToggle, 'nav toggle');
 	}
-	function handleLogOut() {
-		const auth = getAuth();
-		signOut(auth)
-			.then(() => {
-				// Sign-out successful.
-				window.location.reload(false);
-				console.log('signed out');
-			})
-			.catch((error) => {
-				// An error happened.
-			});
-	}
+
 	return (
 		<div className='topNavContainer'>
 			{!isLogin ? (

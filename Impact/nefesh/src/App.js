@@ -41,19 +41,6 @@ const auth = getAuth();
 let userID = '';
 let loggedIn;
 
-function handleLogOut() {
-	const auth = getAuth();
-	signOut(auth)
-		.then(() => {
-			// Sign-out successful.
-			window.location.reload(false);
-			console.log('signed out');
-		})
-		.catch((error) => {
-			// An error happened.
-		});
-}
-
 function App() {
 	const [userState, setUserState] = useState({});
 	const [, /*isAdmin*/ setIsAdmin] = useState(false);
@@ -124,7 +111,7 @@ function App() {
 				loggedIn = true;
 			} else {
 				// user logged out
-				console.log('User loged out');
+				console.log('User logged out');
 				loggedIn = false;
 			}
 		});
@@ -135,7 +122,7 @@ function App() {
 		let roleArr = [role ? role : 'guest', role ? 'member' : null, 'everyone'];
 		let authorised = permList ? permList.role.some((urole) => roleArr.includes(urole)) : true;
 		if(!authorised) navigate("/401");
-	}, []);
+	}, [location, navigate]);
 
 	useEffect(() => {
 		console.log(location.pathname);
@@ -183,6 +170,19 @@ function App() {
 			</div>
 		</div>
 	);
+}
+
+function handleLogOut() {
+	const auth = getAuth();
+	signOut(auth)
+		.then(() => {
+			// Sign-out successful.
+			window.location.reload(false);
+			console.log('signed out');
+		})
+		.catch((error) => {
+			// An error happened.
+		});
 }
 
 export default App;
