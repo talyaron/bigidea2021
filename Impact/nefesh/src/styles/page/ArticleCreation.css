@@ -58,7 +58,8 @@
 	/* align-self: center; */
 }
 
-.createArticle-popup-box {
+/* .createArticle-popup-box { */
+	form {
 	background-color: var(--Light-Page);
 	color: var(--Dark);
 	margin: 15px;
