@@ -17,6 +17,7 @@ function ArticleCreation(props) {
 	
 	let tagsSorted=[]
 	const [endValue,setEndValue]=useState("Submit Article to Main Page")
+	const [endButton,setEndButton]=useState("Change to Save Event privately to your Profile Page")
 	useEffect(async () => {
 		document.getElementById('editor').addEventListener('input', inputEvt, false);
 		// const tagsRef = doc(db, 'tagCollection', 'tagDoc');
@@ -141,10 +142,7 @@ function ArticleCreation(props) {
 
 
 	}
-function Ping(){
-	console.log(endValue)
-	console.log(endValueNum)
-}
+
 	function changeState(ev) {
 		let parse = ev.target.name;
 		statesSubmitted = { ...statesSubmitted, [parse]: ev.target.value };
@@ -180,11 +178,13 @@ function ChangeEndButton(ev){
 	if (endValueNum==1){
 		console.log("true")
 		setEndValue("Save event to private Profile Area")
+		setEndButton("Publish to Main Page instead")
 		endValueNum=2
 	}
 	else {
 		console.log("false")
 		setEndValue("Submit Event to Main Page")
+		setEndButton("Save Event privately to your Profile instead")
 		endValueNum=1
 	}
 }
@@ -193,7 +193,6 @@ function ChangeEndButton(ev){
 	
 	return (
 		<div id='ArtC_Header'>
-			<button onClick={Ping}>HIIIII</button>
 			<header className='Header'>Create an Article</header>
 			<div className='backGround'>
 				<div className='createArticle-popup-box'>
@@ -262,10 +261,11 @@ function ChangeEndButton(ev){
 								})}
 							</div>
 						</div>
-						<button onClick={ChangeEndButton}>Save Article privately instead</button>
+						
 						{/* <input type="checkbox" name="publishArticleCheckbox" id="Publish"></input>
 						<label htmlFor="publishArticleCheckbox">Publish Article to Main Page!</label> */}
 					<div className='buttonContainer23'>
+					<button className="Dragon43 Shadow" onClick={ChangeEndButton}>{endButton}</button>
 						<button className='Dragon43 shadow' type='submit'>
 							{endValue}
 						</button>

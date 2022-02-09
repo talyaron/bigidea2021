@@ -26,7 +26,7 @@ export function convertToDefaultTime(time) {
 }
 
 function EditSavedArticle(props) {
-	import('../../styles/template/EditSavedArticles.css');
+	import('../../styles/page/ArticleCreation.css');
 	const navigate = useNavigate();
 	const [tagsState, setTagsState] = useState([]);
 	const inputRef = useRef();
