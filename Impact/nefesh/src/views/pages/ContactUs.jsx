@@ -66,17 +66,17 @@ function ContactUs(props) {
 
 			<div className='buttonHolder'>
 				<div className='button'>
-					<img src={Phone} alt='phone' alt="" id='phone' /> &nbsp; 072-336-9280
+					<img src={Phone} alt='phone'  id='phone' /> &nbsp; 072-336-9280
 				</div>
 				<div className='button' onClick={handleEmail}>
 					<img src={Envelope} alt='Envelope' id='email' /> nbntlv@nbn.org.il
 				</div>
 				<div className='button' onClick={openLink}>
-					<img src={www} id='www' alt="" />
+					<img src={www} alt ='button' id='www' />
 					https://www.nbn.org.il/nbn-tlv-hub/
 				</div>
 				<div className='button'>
-					<img src={home} id='home' />
+					<img src={home} alt='button' id='home' />
 					76 Rothschild BLVD Tel Aviv, Israel
 				</div>
 			</div>

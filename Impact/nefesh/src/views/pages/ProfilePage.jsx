@@ -3,10 +3,8 @@ import { db } from '../../scripts/firebase/config';
 import { doc, getDoc, updateDoc, collection, getDocs, query } from 'firebase/firestore';
 import EditProfilePopUp from '../template/EditProfilePopUp';
 import ImportImgs from '../template/ImportImgs';
-import EditBioPopUp from '../template/EditBioPopUp';
 import EditPic from '../../assets/Images/NewIcons/edit.svg';
 import Envelope from '../../assets/Images/NewIcons/email.svg';
-import Upload from '../../assets/Images/NewIcons/upload.svg';
 import { useNavigate } from 'react-router-dom';
 let page = 'ProfilePage';
 
@@ -14,7 +12,7 @@ function ProfilePage(props) {
 	import('../../styles/page/ProfilePage.css');
 	let savedEventsTemp = [];
 	const handleRoute = useNavigate();
-	const [savedArticles, setSavedArticles] = useState([]);
+	const [/*savedArticles*/, setSavedArticles] = useState([]);
 	const [userData, setUserData] = useState();
 	const [displayName, setDisplayName] = useState('loading');
 	const [profilePicImg, setProfilePicImg] = useState('loading');
@@ -22,11 +20,8 @@ function ProfilePage(props) {
 	const [, /*userAddress*/ setUserAddress] = useState('loading');
 	const [, /*userGender*/ setUserGender] = useState('loading');
 	const [userRole, setUserRole] = useState('loading');
-	//const [userArticles, setUserArticles] = useState('loading');
-	//const [textSize, setTextSize] = useState('');
 	const [editing, setEditing] = useState(false);
-	//const [choosingPrefs, setChoosingPrefs] = useState(false);
-	const { uid } = props;
+	const { /*uid*/ } = props;
 	const [isOpen, setIsOpen] = useState(false);
 	const [httpUrl, setHttpUrl] = useState('');
 	const [isBioOpen, setIsBioOpen] = useState(false);
@@ -69,17 +64,13 @@ function ProfilePage(props) {
 		const profileRef = doc(db, 'users', props.uid);
 
 		const name = ev.target.elements.newName.value;
-		console.log(name);
 		const profilePic = httpUrl;
-		console.log('before changes');
 
 		if (name.length !== 0) {
 			setDisplayName(name);
-			console.log(props.uid);
 			await updateDoc(profileRef, {
 				displayName: name,
 			});
-			console.log('after change name');
 		}
 		setEditing(false);
 		setIsOpen(false);
@@ -90,7 +81,6 @@ function ProfilePage(props) {
 			await updateDoc(profileRef, {
 				userIcon: profilePic,
 			});
-			console.log('after change photo');
 		}
 
 		setEditing(false);
@@ -104,41 +94,18 @@ function ProfilePage(props) {
 			await updateDoc(profileRef, {
 				bio: bio,
 			});
-			console.log('after change bio');
 		}
 
 		setEditing(false);
 		setIsBioOpen(!isBioOpen);
 	}
-	console.log('after full function');
 
-	function changeBio(ev) {
-		ev.preventDefault();
-
-		const bio = ev.target.elements.newBio.value;
-
-		if (ev.target.elements.newBio.value.length !== 0) {
-			setUserBio(bio);
-
-			updateDoc(db, 'users', props.uid, {
-				bio: bio,
-			});
-		}
-
-		setEditing(false);
-
-		setIsBioOpen(!isBioOpen);
-	}
 
 	const callBackFunction = (httpRef) => {
 		setHttpUrl(httpRef);
-		console.log(httpRef);
 	};
 
-	function editBio() {
-		setIsBioOpen(!isBioOpen);
-		setEditing(true);
-	}
+
 	function navigateSaved() {
 		handleRoute('SavedEvents');
 	}

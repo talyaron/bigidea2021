@@ -1,6 +1,6 @@
 import React from 'react';
 import { authentication } from '../../scripts/firebase/config';
-import { getAuth, signInWithRedirect, onAuthStateChanged, getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 import LogoNew from '../../assets/Images/LogoNew.svg';

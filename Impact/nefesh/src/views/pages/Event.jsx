@@ -15,13 +15,12 @@ function Event() {
 		{ id: 1, field: 'endTime', label: 'End Time', type: 'timestamp' },
 	]);
 	const [tags, setTags] = useState([]);
-	const [contactInfo, setContactInfo] = useState([]);
+	const [/*contactInfo*/, setContactInfo] = useState([]);
 	const [orgWebsite, setOrgWebsite] = useState([]);
 	const [websiteValidity, setWebValidity] = useState(false);
 	let { eventID } = useParams();
 	const [image, setImage] = useState();
-	//const [filterObjectData,setfilterData]=useState([]);
-	const [eventDataValid, SetEventDataValid] = useState(false);
+	const [/*eventDataValid*/, SetEventDataValid] = useState(false);
 	useEffect(() => {
 		try {
 			setWebValidity(false);
@@ -29,24 +28,19 @@ function Event() {
 			let eventObj;
 			getDoc(eventRef).then((docSnap) => {
 				eventObj = docSnap.data();
-
 				let { startTime, endTime /*address*/ } = eventObj;
 				if (startTime) startTime = new Date(startTime.seconds * 1000).toJSON();
 				if (endTime) endTime = new Date(endTime.seconds * 1000).toJSON();
-				//if (address) address = Object.entries(address);
 
 				eventObj.startTime = startTime;
 				eventObj.endTime = endTime;
-				//eventObj.address = address;
 
 				let EventArray = Object.entries(eventObj);
 				EventArray = EventArray.map((e) => [e[0], e[1] instanceof Object && !Array.isArray(e[1]) ? Object.entries(e[1]) : e[1]]);
-				//console.log(EventArray)
-				console.log(eventID);
+
 				setEventData(EventArray);
 				if ('tags' in eventObj && Array.isArray(eventObj.tags)) {
-					// console.log('we have tags');
-					// console.log(eventObj.tags);
+
 					setTags(eventObj.tags);
 				}
 				setImage(eventObj.coverImage);
@@ -62,7 +56,7 @@ function Event() {
 					setOrgWebsite('Unsecure website. Link not displayed.');
 				} else {
 					tempURL = 'https://' + tempURL;
-					console.log(tempURL);
+
 					setOrgWebsite(tempURL);
 				}
 				SetEventDataValid(true);
@@ -75,9 +69,6 @@ function Event() {
 	function filterEntries(data) {
 		if (data[0].length === 0) return [];
 		let buffer = data[1];
-		//.map(e=>Object.entries(e));
-		//console.log(data[0]);
-		//console.log(buffer);
 		buffer.map((element) => (element.data = data[0].find((e) => e[0] === element.field)[1]));
 		buffer = buffer.map((e) => Object.entries(e));
 		return buffer;
@@ -154,7 +145,7 @@ function Event() {
 							<span className='description'>{getField(eventData, 'article')}</span>
 						</div>
 
-						{/* <a  href = {"https://www.instagram.com/becky_geisberg/"} target='_blank' rel='noreferrer'> Instagram</a> */}
+						
 					</div>
 					<div id='maxCap'> Max Capacity: {getField(eventData, 'maxCapacity')} </div>
 				</div>
