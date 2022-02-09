@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { collection, addDoc, getDoc, doc } from 'firebase/firestore';
+import { collection, addDoc, getDoc, doc, setDoc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import ImportImgs from '../template/ImportImgs';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,7 @@ function ArticleCreation(props) {
 	const [tags, setTags] = useState([]);
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
 	let tagsSorted = [];
+	let isKosher;
 
 	useEffect(async () => {
 		document.getElementById('editor').addEventListener('input', inputEvt, false);
