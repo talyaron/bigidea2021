@@ -1,6 +1,6 @@
 import './styles/global/App.css';
 import './views/template/AdminPagePopUp';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 
 import Login from './views/pages/Login.js';
 import Error from './views/pages/404.js';
@@ -10,7 +10,7 @@ import ContactUs from './views/pages/ContactUs';
 import ArticleCreation from './views/pages/ArticleCreation';
 import MainPage from './views/pages/MainPage';
 
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from './scripts/firebase/config';
@@ -27,9 +27,32 @@ import PublishedEvents from './views/template/PublishedEvents';
 import EditPublishedEvent from './views/template/EditPublishedEvent';
 
 let role;
+let navList = [
+	{ id: 0, label: 'Main Page', href: 'MainPage', role: ['everyone'] },
+	{ id: 1, label: 'Profile Page', href: 'ProfilePage', role: ['member'] },
+	{ id: 2, label: 'Contact Us', href: 'ContactUs', role: ['everyone'] },
+	{ id: 3, label: 'Article Creation', href: 'ArticleCreation', role: ['orgAdmin', 'superAdmin'] },
+	{ id: 4, label: 'Admin Page', href: 'AdminPage', role: ['superAdmin'] },
+	{ id: 5, label: 'Sign In', href: 'login', role: ['guest'] },
+	{ id: 6, label: 'Sign Out', href: 'MainPage', function: handleLogOut, role: ['member'] },
+	{ id: 7, href: 'event', role: ['everyone'], hidden: true },
+];
 const auth = getAuth();
 let userID = '';
 let loggedIn;
+
+function handleLogOut() {
+	const auth = getAuth();
+	signOut(auth)
+		.then(() => {
+			// Sign-out successful.
+			window.location.reload(false);
+			console.log('signed out');
+		})
+		.catch((error) => {
+			// An error happened.
+		});
+}
 
 function App() {
 	const [userState, setUserState] = useState({});
@@ -38,7 +61,7 @@ function App() {
 	const [isUserID, setIsUserID] = useState(null);
 	const location = useLocation();
 	const [isLogin, setIsLogin] = useState(false);
-
+	const navigate = useNavigate();
 	useEffect(() => {
 		console.log(location);
 
@@ -105,6 +128,13 @@ function App() {
 				loggedIn = false;
 			}
 		});
+	
+		let permList = 	[...navList];
+	
+		permList = permList.find(e => location.pathname.split("/")[1].toLowerCase() === e.href.toLowerCase());
+		let roleArr = [role ? role : 'guest', role ? 'member' : null, 'everyone'];
+		let authorised = permList ? permList.role.some((urole) => roleArr.includes(urole)) : true;
+		if(!authorised) navigate("/401");
 	}, []);
 
 	useEffect(() => {
@@ -115,7 +145,7 @@ function App() {
 
 	return (
 		<div>
-			{!isLogin ? <NavTopBar role={role} /> : null}
+			{!isLogin ? <NavTopBar role={role} navList={navList} /> : null}
 			<div className='container_AppMain'>
 				{loggedIn ? (
 					<div className='container_App'>
