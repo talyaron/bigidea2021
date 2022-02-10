@@ -119,7 +119,7 @@ function Event() {
 				<img id='coverImage_Event' src={image} alt='Event'></img>
 				<div className='eventData_Event'>
 					<div id='title_Event'> {getField(eventData, 'title')} </div>
-					<div id='hostName_Event'> Hosted By:{getField(eventData, 'hostName')} </div>
+					<div id='hostName_Event'> Hosted By: {getField(eventData, 'hostName')} </div>
 					<div id='eventWebsite_Event'>
 						<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 					</div>

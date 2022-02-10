@@ -31,7 +31,7 @@ let navList = [
 	{ id: 0, label: 'Main Page', href: 'MainPage', role: ['everyone'] },
 	{ id: 1, label: 'Profile Page', href: 'ProfilePage', role: ['member'] },
 	{ id: 2, label: 'Contact Us', href: 'ContactUs', role: ['everyone'] },
-	{ id: 3, label: 'Article Creation', href: 'ArticleCreation', role: ['orgAdmin', 'superAdmin'] },
+	{ id: 3, label: 'Create an Event', href: 'ArticleCreation', role: ['orgAdmin', 'superAdmin'] },
 	{ id: 4, label: 'Admin Page', href: 'AdminPage', role: ['superAdmin'] },
 	{ id: 5, label: 'Sign In', href: 'login', role: ['guest'] },
 	{ id: 6, label: 'Sign Out', href: 'MainPage', function: handleLogOut, role: ['member'] },

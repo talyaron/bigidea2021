@@ -70,7 +70,7 @@ function ArticleCreation(props) {
 				maxCapacity,
 				currentCapacity: maxCapacity,
 			});
-			setDoc(doc(db, 'users', props.userID, "Published", documentReference), {
+			await setDoc(doc(db, 'users', props.userID, "Published", documentReference), {
 				id: documentReference,
 				title,
 				coverImage: httpUrl,

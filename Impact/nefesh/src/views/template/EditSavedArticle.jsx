@@ -143,8 +143,9 @@ function EditSavedArticle(props) {
 				endTime: new Date(endTime),
 				maxCapacity,
 			});
+			deleteDoc(doc(db,"users",props.userID,"Saved",eventID))
 			alert('Event Submitted!')
-			navigate('/MainPage')
+			navigate('../MainPage')
 		} catch (err) {
 			console.error(err)
 			alert("Not all fields had inputs")
