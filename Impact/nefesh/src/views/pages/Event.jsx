@@ -140,7 +140,7 @@ function Event() {
 					</div>
 
 					<div id='eventAddress'>{Object.entries(filterEntries([eventData, [{ field: 'address', type: 'location' }]])).map((e) => formatField(...e)) /* {formatField([ ["type", 'location'], ["data", getField(eventData, "address")]])} */}</div>
-					<div id='eventDescription_Event'>{getField(eventData, 'article')}</div>
+					<div id='eventDescription_Event'>{getField(eventData, 'text')}</div>
 				</div>
 				<div className='addToCalAndMaxCap_Cont'>
 					<div className='userPromptContainer_Event'>
@@ -150,7 +150,7 @@ function Event() {
 							<span className='end'>{`${getField(eventData, 'endTime')}`}</span>
 							<span className='timezone'>Asia/Jerusalem</span>
 							<span className='title'>{getField(eventData, 'title')}</span>
-							<span className='description'>{getField(eventData, 'article')}</span>
+							<span className='description'>{getField(eventData, 'text')}</span>
 						</div>
 
 						{/* <a  href = {"https://www.instagram.com/becky_geisberg/"} target='_blank' rel='noreferrer'> Instagram</a> */}

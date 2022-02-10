@@ -16,7 +16,6 @@ import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from './scripts/firebase/config';
 //pages
 import PublishedEvent from './views/template/PublishedEvent';
-import EditSavedArticles from './views/template/EditSavedArticle';
 import AdminPage from './views/pages/AdminPage';
 import NavTopBar from './views/components/NavTopBar';
 import Event from './views/pages/Event';
