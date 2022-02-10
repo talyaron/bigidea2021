@@ -47,7 +47,7 @@ function ArticleCreation(props) {
 				title,
 				coverImage: httpUrl,
 				imageName,
-				article: text,
+				text,
 				hostName,
 				address: {
 					streetName: streetName,
@@ -74,7 +74,7 @@ function ArticleCreation(props) {
 				id: documentReference,
 				title,
 				coverImage: httpUrl,
-				article: text,
+				text,
 				imageName,
 				hostName,
 				address: {
