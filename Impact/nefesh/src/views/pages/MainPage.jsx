@@ -63,7 +63,6 @@ function App() {
 	function handleRoute(eventId) {
 		navigate('/event/' + eventId);
 	}
-
 	return (
 		<div>
 			<DataFilters setEventListState={setEventListState} />
@@ -90,7 +89,7 @@ function App() {
 									</div>
 									<div id='Views' className='tagGroup'>
 										{event.tags.map((e) => (
-											<tag className='tag'>{e}</tag>
+											<div key={e} className='tag'>{e}</div>
 										))}
 									</div>
 								</div>

@@ -18,7 +18,6 @@ function DataFilters({ setEventListState }) {
 			return a.localeCompare(b); 
 		});
 		setTags(tagsSorted);
-		console.log(tagsSorted)
 	}
 	getTagsData()
 	}, [db]);
@@ -34,9 +33,6 @@ function DataFilters({ setEventListState }) {
 			if (filters[filter]) {
 				filtersArr.push(filter);
 			}
-
-
-
 			const promisedFilterd = filtersArr.map((filter) => {
 				return getEventPromise(filter);
 			});
