@@ -39,7 +39,6 @@ function ArticleCreation(props) {
 		statesSubmitted = { ...statesSubmitted, [parse]: ev.target.innerHTML };
 	}
 		
-	}, []);
 
 	async function submitArticle(ev) {
 		let { title, hostName, text, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
