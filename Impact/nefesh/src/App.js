@@ -50,7 +50,7 @@ function App() {
 	const [isLogin, setIsLogin] = useState(false);
 	const navigate = useNavigate();
 	useEffect(() => {
-		console.log(location);
+
 
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
@@ -91,7 +91,7 @@ function App() {
 						userID = uid;
 					} else {
 						//if user exist in db get the user from DB and get the role
-						console.log('user does not exist');
+
 						setDoc(doc(db, 'users', uid), {
 							age: 'null',
 							displayName: user.displayName,
@@ -111,7 +111,6 @@ function App() {
 				loggedIn = true;
 			} else {
 				// user logged out
-				console.log('User logged out');
 				loggedIn = false;
 			}
 		});
@@ -125,7 +124,6 @@ function App() {
 	}, [location, navigate]);
 
 	useEffect(() => {
-		console.log(location.pathname);
 		if (location.pathname === '/login') setIsLogin(true);
 		else setIsLogin(false);
 	}, [location.pathname]);

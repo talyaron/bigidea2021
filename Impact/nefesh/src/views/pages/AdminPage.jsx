@@ -34,14 +34,12 @@ function AdminPage({uid}) {
 			setIsOpen(!isOpen);
 
 			//this is where you were fixing the code trying to get the username to display on the popup
-			// let ref = userIDAdm();
 
 			const userRef = doc(db, 'users', userIdSpec);
 
 			getDoc(userRef)
 				.then((userDB) => {
-					// console.log(userDB.data())
-					// console.log(userDB.exists())
+
 					let userNameTemp = userDB.data().displayName;
 					setDisplayName(userNameTemp);
 					setUserID(userIdSpec);
@@ -78,7 +76,6 @@ function AdminPage({uid}) {
 
 	function handleSearchByChange(ev) {
 		let temp = ev.target.value;
-		console.log(temp);
 		setSearchField(temp);
 	}
 
@@ -94,33 +91,10 @@ function AdminPage({uid}) {
 		const userIDSnapshot = await getDocs(q);
 		userIDSnapshot.forEach((doc) => {
 			tempArr.push(doc.data());
-			console.log(tempArr);
 		});
 		setNames(tempArr);
-		console.log(tempArr);
 
-		// 	let input = searchCont
-		// 	input=input.toLowerCase();
-		// 	let x = namesRef;
-
-		// 	for (i = 0; i < x.length; i++) {
-		// 		if (!x[i].innerHTML.toLowerCase().includes(input)) {
-		// 			x[i].style.display="none";
-		// 		}
-		// 		else {
-		// 			x[i].style.display="list-item";
-		// 		}
-		// 	}
-
-		// let q = query(collection(db, 'users'), where (searchField, '>=', searchCont))
-		// 	let tempArr = []
-		// 	const userIDSnapshot = await getDocs(q);
-		// 	userIDSnapshot.forEach((doc) => {
-		// 		tempArr.push(doc.data())
-		// 		console.log(tempArr)
-		// 	});
-		// 	setNames(tempArr)
-		// 	console.log(tempArr)
+	
 	}
 	function handleClearFilter() {
 		getNames();

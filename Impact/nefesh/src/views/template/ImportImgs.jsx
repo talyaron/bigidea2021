@@ -37,7 +37,6 @@ function HandleImportImg(props) {
 	}
 
 	async function onTrigger(ev) {
-		console.log(onTrigger);
 		ev.preventDefault();
 		const image = ev.target.files[0];
 		setImageAsFile((imageFile) => image);
@@ -52,7 +51,6 @@ function HandleImportImg(props) {
 				setImageAsUrl(httpRef);
 				console.log(image.name)
 				props.parentCallBack(httpRef);
-				console.log(httpRef);
 			});
 			if(props.profileState=="creation"|| props.profileState=="editing"){
 			setDoc(doc(db, "users", userID, "UploadedImgs", props.eventID), {

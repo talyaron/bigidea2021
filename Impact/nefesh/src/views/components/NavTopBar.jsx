@@ -8,7 +8,6 @@ import Menu from '../../assets/Images/NewIcons/hamburger.svg';
 import X from '../../assets/Images/NewIcons/hamburger.svg';
 import titleDisplay from '../../assets/Images/LogoNew.svg';
 import titleSecondDisplay from '../../assets/Images/NewIcons/tel-aviv-yafo.svg';
-import AdminPage from '../pages/AdminPage';
 
 function NavTopBar({ role,  navList}) {
 	const navigate = useNavigate();
@@ -28,9 +27,18 @@ function NavTopBar({ role,  navList}) {
 	function handleMenu() {
 		let temp = !navToggle;
 		setNavToggle(temp);
-		console.log(navToggle, 'nav toggle');
 	}
-
+	function handleLogOut() {
+		const auth = getAuth();
+		signOut(auth)
+			.then(() => {
+				// Sign-out successful.
+				window.location.reload(false);
+			})
+			.catch((error) => {
+				// An error happened.
+			});
+	}
 	return (
 		<div className='topNavContainer'>
 			{!isLogin ? (
@@ -62,7 +70,7 @@ function NavTopBar({ role,  navList}) {
 							<ul className='menuList'>
 								{navList.map(function (item) {
 									return (
-										<li className='ListItemElement' key={item.label} id={item.label}>
+										<li className='ListItemElement' key={item.id} id={item.id}>
 											<div
 												className='menuItem'
 												onClick={() => {

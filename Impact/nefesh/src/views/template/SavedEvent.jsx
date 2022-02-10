@@ -5,7 +5,6 @@ import { db } from '../../scripts/firebase/config';
 import { useParams, useNavigate } from 'react-router-dom';
 import useScript from '../../scripts/useScript';
 import Clock from '../../assets/Images/NewIcons/clock.svg';
-// import 'moment-timezone';
 
 function PublishedEvent(props) {
 	const navigate = useNavigate();
@@ -16,13 +15,12 @@ function PublishedEvent(props) {
 		{ id: 1, field: 'endTime', label: 'End Time', type: 'timestamp' },
 	]);
 	const [tags, setTags] = useState([]);
-	const [contactInfo, setContactInfo] = useState([]);
+	const [/*contactInfo*/, setContactInfo] = useState([]);
 	const [orgWebsite, setOrgWebsite] = useState([]);
 	const [websiteValidity, setWebValidity] = useState(false);
 	let { eventID } = useParams();
 	const [image, setImage] = useState();
-	//const [filterObjectData,setfilterData]=useState([]);
-	const [eventDataValid, SetEventDataValid] = useState(false);
+	const [/*eventDataValid*/, SetEventDataValid] = useState(false);
 	useEffect(() => {
 		try {
 			setWebValidity(false);
@@ -34,15 +32,14 @@ function PublishedEvent(props) {
 				let { startTime, endTime /*address*/ } = eventObj;
 				if (startTime) startTime = new Date(startTime.seconds * 1000).toJSON();
 				if (endTime) endTime = new Date(endTime.seconds * 1000).toJSON();
-				//if (address) address = Object.entries(address);
+
 
 				eventObj.startTime = startTime;
 				eventObj.endTime = endTime;
-				//eventObj.address = address;
+
 
 				let EventArray = Object.entries(eventObj);
 				EventArray = EventArray.map((e) => [e[0], e[1] instanceof Object && !Array.isArray(e[1]) ? Object.entries(e[1]) : e[1]]);
-				//console.log(EventArray)
 				console.log(eventID);
 				setEventData(EventArray);
 				if ('tags' in eventObj && Array.isArray(eventObj.tags)) {
@@ -61,7 +58,7 @@ function PublishedEvent(props) {
 		} catch (err) {
 			console.error(err);
 		}
-	}, [eventID]);
+	}, [eventID, props.userID]);
 
 	function filterEntries(data) {
 		if (data[0].length === 0) return [];

@@ -19,20 +19,16 @@ function SearchBar() {
 		setHidden(false);
 		filterOption = ev.target.value;
 		setTag(filterOption);
-		console.log(ev);
-		console.log(filterOption);
+	
 	}
 	async function getTarget(ev) {
 		let arr2 = [];
 		if (ev.key === 'Enter') {
 			ev.preventDefault();
 			searchOption = ev.target.value;
-			console.log(searchOption);
 			const q = query(collection(db, 'events'), where('Title', '>=', searchOption));
 			const querySnapshot = await getDocs(q);
 			querySnapshot.forEach((doc) => {
-				// doc.data() is never undefined for query doc snapshots
-				console.log(doc.id, ' => ', doc.data());
 				arr2.push(doc.data());
 			});
 			if (tag === 'popular') {
@@ -61,15 +57,9 @@ function SearchBar() {
 						}
 			}
 			setArticles(arr2);
-			console.log(arr2);
 		}
 
-		//insert filters
-		//find articles with word in it, sort by which article has the word appear the most
-		//for each article
-		// if newest --> check by date
-		// if recent --> check by creation date
-		// if popular --> check by most views
+
 	}
 	return (
 		<div className='container'>

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { authentication } from '../../scripts/firebase/config';
-import { getAuth, signInWithRedirect, onAuthStateChanged, getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 import LogoNew from '../../assets/Images/LogoNew.svg';
@@ -11,24 +11,22 @@ const auth = getAuth();
 
 function Login() {
 	import('../../styles/page/Login.css');
-
 	const navigate = useNavigate();
-	if (auth.currentUser) {
+
+	useEffect(()=>{
+		if (auth.currentUser) {
 		navigate('/mainpage'); //After successful login, user will be redirected to home.html
 	}
+	},[auth.currentUser])
+	
 	const SignIn = (ev) => {
 		ev.preventDefault();
 		const provider = new GoogleAuthProvider();
-
 		signInWithRedirect(authentication, provider);
 		getRedirectResult(authentication)
 			.then((result) => {
 				// The signed-in user info.
-
-				console.log(result);
-				console.log(result.user.displayName);
-				console.log(result.user.email);
-				console.log(result.user.photoURL);
+			
 			})
 			.catch((error) => {
 				console.log(error);
