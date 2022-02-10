@@ -11,15 +11,16 @@ function DataFilters({ setEventListState }) {
 	const [tags, setTags] = useState([]);
 
 	useEffect(() => {
-		getTags()
-		async function getTags(){
+		async function getTagsData(){
 		const tagsDB = await getDoc(doc(db, 'tagCollection', 'tagDoc'));
 		tagsSorted = tagsDB.data().tagArray;
 		tagsSorted.sort(function (a, b) {
 			return a.localeCompare(b); 
 		});
 		setTags(tagsSorted);
+		console.log(tagsSorted)
 	}
+	getTagsData()
 	}, [db]);
 
 	async function getTarget(ev) {
@@ -84,7 +85,7 @@ function DataFilters({ setEventListState }) {
 			<div id='tagsContainer'>
 				{tags.map((tag) => {
 					return (
-						<div key={tag} className='filterBtn_cont'>
+						<div key={tag.indexOf() + tag} className='filterBtn_cont'>
 							<div className='inline-block'>
 								<div className='filterBtn inline-block shadow' id={tag} onClick={getTarget}>
 									{tag}

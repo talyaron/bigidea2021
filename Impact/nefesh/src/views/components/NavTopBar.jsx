@@ -70,7 +70,7 @@ function NavTopBar({ role,  navList}) {
 							<ul className='menuList'>
 								{navList.map(function (item) {
 									return (
-										<li className='ListItemElement' key={item.href} id={item.id}>
+										<li className='ListItemElement' key={item.id} id={item.id}>
 											<div
 												className='menuItem'
 												onClick={() => {
