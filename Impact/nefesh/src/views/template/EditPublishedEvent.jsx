@@ -35,6 +35,7 @@ function EditSavedArticle(props) {
 	const [address, setAddress] = useState([]);
 	const [imageName,setImageName]=useState("null")
 	let tagsSorted = []
+	const [profileImageState,setProfileImageState]=useState("editing")
 	const [endValue, setEndValue] = useState("Save Changes to Main Page")
 	const [endButton, setEndButton] = useState("Unpublish Event and save Event privately instead")
 	useEffect(() => {
@@ -245,7 +246,7 @@ function EditSavedArticle(props) {
 			<div className='backGround'>
 				<div className='createArticle-popup-box'>
 					<form onSubmit={ArticleCheck}>
-					<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} eventID={eventID} userID={props.userID} imageName={imageName} />
+					<ImportImgs userData={props} pageName={page} profileState={profileImageState} parentCallBack={callBackFunction} eventID={eventID} userID={props.userID} imageName={imageName} />
 						<input type='text' name='title' onChange={changeState} placeholder='Enter article title here' defaultValue={statesSubmitted.title} className='border-ArticleCreation In placeHolderText_articleCreation' />
 						<input type='text' name='hostName' onChange={changeState} placeholder='Enter host/s name here' defaultValue={statesSubmitted.hostName} className='border-ArticleCreation In placeHolderText_articleCreation' />
 						<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' defaultValue={address.streetName} className='border-ArticleCreation In placeHolderText_articleCreation' />

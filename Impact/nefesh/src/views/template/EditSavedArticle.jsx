@@ -37,7 +37,7 @@ function EditSavedArticle(props) {
 	const [endValue, setEndValue] = useState("Save event to private Profile Area")
 	const [endButton, setEndButton] = useState("Publish event to main page instead")
 	const [imageName,setImageName]=useState("null")
-
+	const [profileImageState,setProfileImageState]=useState("editing")
 	useEffect(() => {
 		async function getData() {
 			const imageNameRef = await getDoc(doc(db,"users",props.userID,"UploadedImgs",eventID))
@@ -248,7 +248,7 @@ function EditSavedArticle(props) {
 				<div className='createArticle-popup-box'>
 					<button onClick={ping}>HIIIII</button>
 					<form onSubmit={ArticleCheck}>
-					<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} eventID={eventID} userID={props.userID} imageName={imageName} />
+					<ImportImgs userData={props} profileState={profileImageState} pageName={page} parentCallBack={callBackFunction} eventID={eventID} userID={props.userID} imageName={imageName} />
 						<input type='text' name='title' onChange={changeState} placeholder='Enter article title here' defaultValue={statesSubmitted.title} className='border-ArticleCreation In placeHolderText_articleCreation' />
 						<input type='text' name='hostName' onChange={changeState} placeholder='Enter host/s name here' defaultValue={statesSubmitted.hostName} className='border-ArticleCreation In placeHolderText_articleCreation' />
 						<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' defaultValue={address.streetName} className='border-ArticleCreation In placeHolderText_articleCreation' />

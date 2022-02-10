@@ -19,6 +19,7 @@ function ArticleCreation(props) {
 	const [endValue, setEndValue] = useState("Submit Article to Main Page")
 	const [endButton, setEndButton] = useState("Change to Save Event privately to your Profile Page")
 	const [imageName,setImageName]=useState("null")
+	const [profileImageState,setProfileImageState]=useState("creation")
 	useEffect(() => {
 
 		async function getData() {
@@ -196,7 +197,7 @@ function ArticleCreation(props) {
 				<div className='createArticle-popup-box'>
 					<form onSubmit={ArticleCheck}>
 
-					<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} eventID={documentReference} userID={props.userID} imageName={imageName} />
+					<ImportImgs userData={props} pageName={page} profileState={profileImageState} parentCallBack={callBackFunction} eventID={documentReference} userID={props.userID} imageName={imageName} />
 						<input type='text' name='title' onChange={changeState} placeholder='Enter article title here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 						<input type='text' name='hostName' onChange={changeState} placeholder='Enter host/s name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
 						<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' className='border-ArticleCreation In placeHolderText_articleCreation' />

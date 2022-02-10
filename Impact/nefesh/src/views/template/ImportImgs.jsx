@@ -54,9 +54,10 @@ function HandleImportImg(props) {
 				props.parentCallBack(httpRef);
 				console.log(httpRef);
 			});
+			if(props.profileState=="creation"|| props.profileState=="editing"){
 			setDoc(doc(db, "users", userID, "UploadedImgs", props.eventID), {
 				name: image.name
-			})
+			})} 
 		});
 
 		console.log('Upload Successful!');
