@@ -10,19 +10,15 @@ function ContactUs(props) {
 	import('../../styles/page/ContactUs.css');
 	const [mailTo, setMailtoLink] = useState('');
 	const [userIsOle, setUserIsOle] = useState();
-	let body = '';
+	const [body, setBody] = useState('')
 	useEffect(() => {
-		console.log('users', props.uid, props.displayName, props.isOle);
-		//let notName = await getDoc(doc(db, "users", props.uid));
 		let userIDTemp = props.uid;
-		// let userRole = props.userRole;
 		setUserIsOle(props.isOle);
 		var email = 'Nefesh@nefesh.com';
 		var subject = 'Request to be Organization Admin';
 		var body_start = `${props.displayName} with User ID: ${userIDTemp} wants to be an organizational Admin because (input your reason here)`;
-		body = body_start;
+		setBody(body_start);
 		setMailtoLink(`mailto:` + email + `?subject=` + subject + `&body=` + body_start);
-		console.log(mailTo);
 	}, [mailTo, props]);
 
 	function handleEmail() {
@@ -66,17 +62,17 @@ function ContactUs(props) {
 
 			<div className='buttonHolder'>
 				<div className='button'>
-					<img src={Phone} alt='phone' id='phone' /> &nbsp; 072-336-9280
+					<img src={Phone} alt='phone'  id='phone' /> &nbsp; 072-336-9280
 				</div>
 				<div className='button' onClick={handleEmail}>
 					<img src={Envelope} alt='Envelope' id='email' /> nbntlv@nbn.org.il
 				</div>
 				<div className='button' onClick={openLink}>
-					<img src={www} id='www' />
+					<img src={www} alt ='button' id='www' />
 					https://www.nbn.org.il/nbn-tlv-hub/
 				</div>
 				<div className='button'>
-					<img src={home} id='home' />
+					<img src={home} alt='button' id='home' />
 					76 Rothschild BLVD Tel Aviv, Israel
 				</div>
 			</div>
@@ -86,7 +82,7 @@ function ContactUs(props) {
 
 			<div className='btns'>
 				<div className='buttonOrgContact' onClick={handleOrganization}>
-					<img src={form} id='form' />
+					<img src={form} id='form' alt="contact"/>
 					Be An Organization
 				</div>
 			</div>

@@ -3,24 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import DataFilters from '../template/DataFilters';
 import { query } from 'firebase/database';
 import { collection, onSnapshot, getFirestore, where } from 'firebase/firestore';
-let eventFilter = '';
 
-//const tags = ["newest", "popular", "recent"];
 
 function App() {
 	import('../../styles/page/MainPage.css');
 	const navigate = useNavigate();
 
-	//var searchOption, filterOption;
 	const db = getFirestore();
-	const [articles, setArticles] = useState([]);
-	const [searchField, setSearchField] = useState('');
 	const [eventListState, setEventListState] = useState([]);
 	const [eventFilter, setEventFilter] = useState('Upcoming');
 
 	useEffect(() => {
 		const q = query(collection(db, 'events'), where('startTime', '>', new Date()));
-		const eventListTemp = [];
+
 
 		//listen to events
 		const unsubuscribe = onSnapshot(q, (querySnapshot) => {
@@ -32,28 +27,20 @@ function App() {
 			});
 
 			eventListTemp = sortBy(eventFilter, eventListTemp);
-			console.log('ping!');
 			setEventListState(eventListTemp);
 		});
 
 		return () => {
 			return unsubuscribe();
 		};
-	}, []);
+	}, [db, eventFilter]);
 
 	function handleOrderBy(ev) {
-		console.log('running');
-
-		let eventListTemp = [...eventListState];
-		console.log(eventListTemp);
 		setEventFilter(ev.target.value);
 		const eventFilterTemp = ev.target.value;
-		console.log(eventFilterTemp);
 		const sortedEvents = sortBy(eventFilterTemp, eventListState);
 		sortedEvents.forEach((ev) => {
-			console.log(ev.title, ev.startTime.seconds);
 		});
-		console.log(sortedEvents);
 		setEventListState(sortedEvents);
 	}
 
@@ -64,7 +51,6 @@ function App() {
 				return a.startTime.seconds - b.startTime.seconds;
 			});
 
-			console.log(eventListState);
 		}
 		if (type === 'Freshly Added') {
 			events = events.sort(function (a, b) {
@@ -74,11 +60,6 @@ function App() {
 		return events;
 	}
 
-	window.addEventListener('load', (event) => {
-		var image = document.querySelector('img');
-		var isLoaded = image.complete && image.naturalHeight !== 0;
-		console.log(isLoaded);
-	});
 	function handleRoute(eventId) {
 		navigate('/event/' + eventId);
 	}

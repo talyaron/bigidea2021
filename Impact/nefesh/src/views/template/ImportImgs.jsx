@@ -23,14 +23,13 @@ function HandleImportImg(props) {
 		setUserID(tempUID);
 		let tempPN = props.pageName;
 		setCurrentUsePage(tempPN);
-	}, []);
+	}, [props.userData.userID, props.pageName]);
 
 	function handleClickImage(ev) {
 		console.log(ev);
 	}
 
 	async function onTrigger(ev) {
-		console.log(onTrigger);
 		ev.preventDefault();
 		const image = ev.target.files[0];
 		setImageAsFile((imageFile) => image);
@@ -44,10 +43,8 @@ function HandleImportImg(props) {
 			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${UniqueId}${image.name}`)).then((httpRef) => {
 				setImageAsUrl(httpRef);
 				props.parentCallBack(httpRef);
-				console.log(httpRef);
 			});
 		});
-		console.log('Upload Successful!');
 	}
 
 	return (

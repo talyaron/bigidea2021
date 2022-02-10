@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { collection, addDoc, getDoc, doc, setDoc } from 'firebase/firestore';
+import { collection, addDoc, getDoc, doc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import ImportImgs from '../template/ImportImgs';
 import { useNavigate } from 'react-router-dom';
@@ -14,30 +14,21 @@ function ArticleCreation(props) {
 	const [httpUrl, setHttpUrl] = useState('');
 	const [tags, setTags] = useState([]);
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
-	let tagsSorted = [];
-	let isKosher;
+	
 
-	useEffect(async () => {
-		document.getElementById('editor').addEventListener('input', inputEvt, false);
-		// const tagsRef = doc(db, 'tagCollection', 'tagDoc');
-		// getDoc(tagsRef).then((tagsDB) => {
-		// 	console.log(tagsDB.data().tagArray);
-		// 	setTags(tagsDB.data().tagArray);
-		// });
+	useEffect(() => {
+		getTags()
+		async function getTags(){
+		let tagsSorted = [];
 		const tagsDB = await getDoc(doc(db, 'tagCollection', 'tagDoc'));
-
 		tagsSorted = tagsDB.data().tagArray;
-
 		tagsSorted.sort(function (a, b) {
-			return a.localeCompare(b); //using String.prototype.localCompare()
+			return a.localeCompare(b); 
 		});
-
 		setTags(tagsSorted);
-	}, []);
-	function inputEvt(ev) {
-		let parse = 'text';
-		statesSubmitted = { ...statesSubmitted, [parse]: ev.target.innerHTML };
 	}
+		
+	}, []);
 
 	async function submitArticle() {
 		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
@@ -70,7 +61,7 @@ function ArticleCreation(props) {
 				maxCapacity,
 				currentCapacity: maxCapacity,
 			});
-			console.log(docRef.id);
+
 			addDoc(collection(db, 'users', props.userID, 'Published'), {
 				id: docRef.id,
 				title,
@@ -160,14 +151,11 @@ function ArticleCreation(props) {
 		}
 		if (temp === 'CertifiedKosher' && tempArray.includes('CertifiedKosher') === true) {
 			if (window.confirm('Please confirm that all of the food at your event is certified kosher/hechshered')) {
-				isKosher = true;
 			} else {
 				const index = tempArray.indexOf('CertifiedKosher');
 				tempArray.splice(index, 1);
-				console.log(tempArray);
 			}
 
-			console.log(tempArray);
 		}
 
 		setSelectedTagArray(tempArray);
