@@ -235,9 +235,6 @@ function EditSavedArticle(props) {
 			endValueNum = 1
 		}
 	}
-	function ping() {
-		console.log(statesSubmitted)
-	}
 
 
 	return (
@@ -246,7 +243,6 @@ function EditSavedArticle(props) {
 			<header className='Header'>Edit Saved Article</header>
 			<div className='backGround'>
 				<div className='createArticle-popup-box'>
-					<button onClick={ping}>HIIIII</button>
 					<form onSubmit={ArticleCheck}>
 					<ImportImgs userData={props} profileState={profileImageState} pageName={page} parentCallBack={callBackFunction} eventID={eventID} userID={props.userID} imageName={imageName} />
 						<input type='text' name='title' onChange={changeState} placeholder='Enter article title here' defaultValue={statesSubmitted.title} className='border-ArticleCreation In placeHolderText_articleCreation' />

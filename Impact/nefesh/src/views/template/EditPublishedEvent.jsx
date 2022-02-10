@@ -234,9 +234,6 @@ function EditSavedArticle(props) {
 			endValueNum = 1
 		}
 	}
-	function ping() {
-		console.log(imageName)
-	}
 
 
 	return (
