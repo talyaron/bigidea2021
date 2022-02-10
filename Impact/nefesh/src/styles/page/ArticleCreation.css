@@ -137,15 +137,17 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	border-radius: 15px;
 	margin-top: 10px;
 	border: none;
+	margin-right: 5px;
 }
 .Dragon43 {
 	height: 50px;
-	background-color: var(--Blue6);
+	background-color: green;
 	color: var(--Light);
 	width: 150px;
 	border: none;
 	border-radius: 15px;
 	margin-top: 10px;
+	margin-left: 5px;
 }
 .Header {
 	text-align: center;

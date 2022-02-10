@@ -1,13 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { doc, getDoc, setDoc, addDoc, deleteDoc } from 'firebase/firestore';
+import { collection, addDoc, getDoc, doc, setDoc, deleteDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
-import ImportImgs from './ImportImgs';
-import { useParams, useNavigate } from 'react-router-dom';
-// import ContentEditable from '../../components/contentEditable/ContentEditable'
-let i = 0;
-let page = 'ArticleCreation';
+import ImportImgs from '../template/ImportImgs';
+import { useNavigate, useParams } from 'react-router-dom';
 
+let page = 'ArticleCreation';
+let endValueNum = 1
 Date.prototype.toDateInputValue = function () {
 	var local = new Date(this);
 	local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
@@ -24,116 +23,173 @@ export function convertToDefaultTime(time) {
 
 	return `${time.toDateInputValue()}T${hours}:${minutes}`;
 }
-
 function EditSavedArticle(props) {
+	let { eventID } = useParams();
 	import('../../styles/page/ArticleCreation.css');
 	const navigate = useNavigate();
-	const [tagsState, setTagsState] = useState([]);
-	const inputRef = useRef();
 	const [httpUrl, setHttpUrl] = useState('');
-	let { eventID } = useParams();
-	const [statesSubmitted, setStatesSubmitted] = useState({});
-	const [address, setAddress] = useState([]);
-	const [contactInfo, setContactInfo] = useState([]);
 	const [tags, setTags] = useState([]);
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
+	const [statesSubmitted, setStatesSubmitted] = useState({});
+	const [contactInfo, setContactInfo] = useState([]);
+	const [address, setAddress] = useState([]);
+	const [imageName,setImageName]=useState("null")
+	let tagsSorted = []
+	const [endValue, setEndValue] = useState("Save Changes to Main Page")
+	const [endButton, setEndButton] = useState("Unpublish Event and save Event privately instead")
+	useEffect(() => {
+		async function getData() {
+			const imageNameRef = await getDoc(doc(db,"users",props.userID,"UploadedImgs",eventID))
+			setImageName(imageNameRef.data())
+			const eventRef = doc(db, 'users', props.userID, 'Published', eventID);
+			let eventDB = await getDoc(eventRef);
+			const eventDBTemp = eventDB.data();
+			const tagsDB = await getDoc(doc(db, "tagCollection", "tagDoc"))
+			tagsSorted = tagsDB.data().tagArray;
+			tagsSorted.sort(function (a, b) {
+				return a.localeCompare(b); //using String.prototype.localCompare()
+			})
+			setTags(tagsSorted)
+			if ('dateAdded' in eventDBTemp) {
+				let time = new Date(eventDB.data().dateAdded.seconds * 1000);
+				time = convertToDefaultTime(time);
 
-	useEffect( () => {
-		async function getData(){
-		const eventRef = doc(db, 'users', props.userID, 'Published', eventID);
-		let eventDB = await getDoc(eventRef);
-		const eventDBTemp = eventDB.data();
-		const tagsRef = doc(db, 'tagCollection', 'tagDoc');
+				eventDBTemp.dateAdded = time;
+				console.log(eventDBTemp.dateAdded);
+			} else {
+				eventDBTemp.dateAdded = new Date().toDateInputValue();
+			}
 
-		getDoc(tagsRef).then((tagsDB) => {
-			console.log(tagsDB.data().tagArray);
-			setTags(tagsDB.data().tagArray);
-		});
-		if ('dateAdded' in eventDBTemp) {
-			let time = new Date(eventDB.data().dateAdded.seconds * 1000);
-			time = convertToDefaultTime(time);
-
-			eventDBTemp.dateAdded = time;
-			console.log(eventDBTemp.dateAdded);
-		} else {
-			eventDBTemp.dateAdded = new Date().toDateInputValue();
+			if ('startTime' in eventDBTemp) {
+				eventDBTemp.startTime = convertToDefaultTime(new Date(eventDB.data().startTime.seconds * 1000));
+			} else {
+				eventDBTemp.startTime = new Date().toDateInputValue();
+			}
+			if ('endTime' in eventDBTemp) {
+				eventDBTemp.endTime = convertToDefaultTime(new Date(eventDB.data().endTime.seconds * 1000));
+			} else {
+				eventDBTemp.endTime = new Date().toDateInputValue();
+			}
+			console.log(new Date(eventDB.data().dateAdded.seconds * 1000).toDateInputValue());
+			// console.log(new Date(eventDB.data().endTime.seconds*1000).toDateInputValue())
+			setStatesSubmitted(eventDBTemp);
+			setAddress(eventDBTemp.address);
+			setContactInfo(eventDBTemp.contactInfo);
+			setSelectedTagArray(eventDBTemp.tags);
+			setHttpUrl(eventDBTemp.coverImage);
 		}
-
-		if ('startTime' in eventDBTemp) {
-			eventDBTemp.startTime = convertToDefaultTime(new Date(eventDB.data().startTime.seconds * 1000));
-		} else {
-			eventDBTemp.startTime = new Date().toDateInputValue();
-		}
-		if ('endTime' in eventDBTemp) {
-			eventDBTemp.endTime = convertToDefaultTime(new Date(eventDB.data().endTime.seconds * 1000));
-		} else {
-			eventDBTemp.endTime = new Date().toDateInputValue();
-		}
-		console.log(new Date(eventDB.data().dateAdded.seconds * 1000).toDateInputValue());
-		// console.log(new Date(eventDB.data().endTime.seconds*1000).toDateInputValue())
-		setStatesSubmitted(eventDBTemp);
-		setAddress(eventDBTemp.address);
-		setContactInfo(eventDBTemp.contactInfo);
-		setSelectedTagArray(eventDBTemp.tags);
-		setHttpUrl(eventDBTemp.coverImage);
+		getData()
+	}, []);
+	function inputEvt(ev) {
+		let parse = 'text';
+		statesSubmitted = { ...statesSubmitted, [parse]: ev.target.innerHTML };
 	}
-	getData();
-	}, [props.userID,eventID]);
 
-	function submitArticle() {
-		let { title, hostName, coverImage, views, startTime, endTime, maxCapacity, article } = statesSubmitted;
-		setDoc(doc(db, 'events', eventID), {
-			title,
-			coverImage: httpUrl,
-			article,
-			hostName,
-			address: {
-				streetName: statesSubmitted.address.streetName,
-				houseNumber: statesSubmitted.address.houseNumber,
-				city: statesSubmitted.address.city,
-			},
-			contactInfo: {
-				phone: statesSubmitted.contactInfo.phone,
-				email: statesSubmitted.contactInfo.email,
-				website: statesSubmitted.contactInfo.website,
-			},
-			tags: selectedTagArray,
-			creatorUID: props.userID,
-			creatorOrg: props.userOrg,
-			views,
-			dateAdded: new Date(),
-			isPublished: true,
-			startTime: new Date(startTime),
-			endTime: new Date(endTime),
-			maxCapacity,
-		});
-		setDoc(doc(db, 'users', props.userID, 'Published', eventID), {
-			title,
-			coverImage: httpUrl,
-			article,
-			hostName,
-			address: {
-				streetName: statesSubmitted.address.streetName,
-				houseNumber: statesSubmitted.address.houseNumber,
-				city: statesSubmitted.address.city,
-			},
-			contactInfo: {
-				phone: statesSubmitted.contactInfo.phone,
-				email: statesSubmitted.contactInfo.email,
-				website: statesSubmitted.contactInfo.website,
-			},
-			tags: selectedTagArray,
-			creatorUID: props.userID,
-			creatorOrg: props.userOrg,
-			views,
-			dateAdded: new Date(),
-			isPublished: true,
-			startTime: new Date(startTime),
-			endTime: new Date(endTime),
-			maxCapacity,
-		});
-		alert('Event Changes Published');
-		navigate('/ProfilePage');
+	async function submitArticle() {
+
+		try {
+			let { title, hostName, views, startTime, endTime, maxCapacity, text } = statesSubmitted;
+			updateDoc(doc(db, 'events', eventID), {
+				title,
+				id: eventID,
+				coverImage: httpUrl,
+				text,
+				hostName,
+				address: {
+					streetName: statesSubmitted.address.streetName,
+					houseNumber: statesSubmitted.address.houseNumber,
+					city: statesSubmitted.address.city,
+				},
+				contactInfo: {
+					phone: statesSubmitted.contactInfo.phone,
+					email: statesSubmitted.contactInfo.email,
+					website: statesSubmitted.contactInfo.website,
+				},
+				tags: selectedTagArray,
+				creatorUID: props.userID,
+				creatorOrg: props.userOrg,
+				views,
+				dateAdded: new Date(),
+				isPublished: true,
+				startTime: new Date(startTime),
+				endTime: new Date(endTime),
+				maxCapacity,
+			});
+			updateDoc(doc(db, 'users', props.userID, 'Published', eventID), {
+				title,
+				id: eventID,
+				coverImage: httpUrl,
+				text,
+				hostName,
+				address: {
+					streetName: statesSubmitted.address.streetName,
+					houseNumber: statesSubmitted.address.houseNumber,
+					city: statesSubmitted.address.city,
+				},
+				contactInfo: {
+					phone: statesSubmitted.contactInfo.phone,
+					email: statesSubmitted.contactInfo.email,
+					website: statesSubmitted.contactInfo.website,
+				},
+				tags: selectedTagArray,
+				creatorUID: props.userID,
+				creatorOrg: props.userOrg,
+				views,
+				dateAdded: new Date(),
+				isPublished: true,
+				startTime: new Date(startTime),
+				endTime: new Date(endTime),
+				maxCapacity,
+			});
+			alert('Event Submitted!')
+			navigate('/MainPage')
+		} catch (err) {
+			console.error(err)
+			alert("Not all fields had inputs")
+		}
+	}
+	function saveDraft() {
+
+
+		try {
+			let { title, hostName, text, views, startTime, endTime, maxCapacity } = statesSubmitted;
+			setDoc(doc(db, "users", props.userID, "Saved",eventID), {
+				title,
+				coverImage: httpUrl,
+				text,
+				hostName,
+				address: {
+					streetName: statesSubmitted.address.streetName,
+					houseNumber: statesSubmitted.address.houseNumber,
+					city: statesSubmitted.address.city,
+				},
+				contactInfo: {
+					phone: statesSubmitted.contactInfo.phone,
+					email: statesSubmitted.contactInfo.email,
+					website: statesSubmitted.contactInfo.website,
+				},
+				tags: selectedTagArray,
+				creatorUID: props.userID,
+				creatorOrg: props.userOrg,
+				views,
+				dateAdded: new Date(),
+				isPublished: true,
+				startTime: new Date(startTime),
+				endTime: new Date(endTime),
+				maxCapacity,
+				id: eventID
+
+			});
+			deleteDoc(doc(db, "events", eventID))
+			deleteDoc(doc(db,"users",props.userID,"Published",eventID))
+			alert('Event Saved!')
+			navigate("../ProfilePage")
+		} catch (err) {
+			console.error(err)
+			alert("Not all fields had inputs")
+		}
+
+
 	}
 
 	function changeState(ev) {
@@ -141,27 +197,9 @@ function EditSavedArticle(props) {
 		setStatesSubmitted({ ...statesSubmitted, [parse]: ev.target.value });
 	}
 
-	// function addTags(ev) {
-	// 	ev.preventDefault();
-	// 	setTagsState([...tagsState, ev.target[0].value]);
-	// 	console.log(ev.target[0].value);
-	// }
-	// function deleteTag(tag) {
-	// 	// debugger
-	// 	tag.preventDefault();
-
-	// 	let tempArray = [...tagsState];
-	// 	tempArray.splice(tag, 1);
-	// 	setTagsState(tempArray);
-	// }
-
 	const callBackFunction = (httpRef) => {
 		setHttpUrl(httpRef);
 	};
-	function ping() {
-		console.log(statesSubmitted);
-		console.log(props);
-	}
 	let tempArray = [...selectedTagArray];
 	function getTarget(ev) {
 		let temp = ev.target.innerHTML;
@@ -173,32 +211,70 @@ function EditSavedArticle(props) {
 		}
 		setSelectedTagArray(tempArray);
 	}
+	function ArticleCheck(ev) {
+		ev.preventDefault();
+		if (endValueNum == 1) {
+			submitArticle(ev.target)
+		}
+		else if (endValueNum == 2)
+			saveDraft(ev.target)
+
+	}
+	function ChangeEndButton(ev) {
+		ev.preventDefault();
+		if (endValueNum == 1) {
+			setEndValue("Save event to private Profile Area")
+			setEndButton("Save changes to main pages instead")
+			endValueNum = 2
+		}
+		else {
+			setEndValue("Submit Event to Main Page")
+			setEndButton("Unpublish Event and save Event privately instead")
+			endValueNum = 1
+		}
+	}
+	function ping() {
+		console.log(imageName)
+	}
+
+
 	return (
-		<>
-			{statesSubmitted ? (
-				<div className='backGround'>
-					<header className='Header'>Edit Article</header>
-					<div className='createArticle-popup-box'>
-						<div>Change your image file here:</div>
-						<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} />
-						<input type='text' name='title' onKeyUp={changeState} placeholder='Enter article title here' defaultValue={statesSubmitted.title} className='shadow In' />
-						<input type='text' name='hostName' onKeyUp={changeState} placeholder='Enter host/s name here' defaultValue={statesSubmitted.hostName} className='shadow In' />
-						<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' defaultValue={address.streetName} className='shadow In' />
-						<input type='text' name='city' onChange={changeState} placeholder='Enter city here' defaultValue={address.city} className='shadow In' />
-						<input type='text' name='houseNumber' onChange={changeState} placeholder='Enter building number here' defaultValue={address.houseNumber} className='shadow In' />
-						<input type='number' name='maxCapacity' onChange={changeState} placeholder='Enter maximum capacity here' defaultValue={statesSubmitted.maxCapacity} className='shadow In' />
-						<input type='text' name='phone' onChange={changeState} placeholder='Enter phone number here' defaultValue={contactInfo.phone} className='shadow In' />
-						<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' defaultValue={contactInfo.email} className='shadow In' />
-						<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' defaultValue={contactInfo.website} className='shadow In' />
+		<div id='ArtC_Header'>
+
+			<header className='Header'>Edit your Article</header>
+			<div className='backGround'>
+				<div className='createArticle-popup-box'>
+					<form onSubmit={ArticleCheck}>
+					<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} eventID={eventID} userID={props.userID} imageName={imageName} />
+						<input type='text' name='title' onChange={changeState} placeholder='Enter article title here' defaultValue={statesSubmitted.title} className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='hostName' onChange={changeState} placeholder='Enter host/s name here' defaultValue={statesSubmitted.hostName} className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' defaultValue={address.streetName} className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='city' onChange={changeState} placeholder='Enter city here' defaultValue={address.city} className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='number' defaultValue={address.houseNumber} onKeyPress={(event) => {
+							if (!/[0-9]/.test(event.key)) {
+								event.preventDefault();
+							}
+						}} name='houseNumber' onChange={changeState} placeholder='Enter building number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='number' onKeyPress={(event) => {
+							if (!/[0-9]/.test(event.key)) {
+								event.preventDefault();
+							}
+						}} name='maxCapacity' onChange={changeState} placeholder='Enter maximum capacity here' defaultValue={statesSubmitted.maxCapacity} className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='number'
+							onKeyPress={(event) => {
+								if (!/[0-9]/.test(event.key)) {
+									event.preventDefault();
+								}
+							}} name='phone' onChange={changeState} placeholder='Enter phone number here' defaultValue={contactInfo.phone} className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' defaultValue={contactInfo.email} className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' defaultValue={contactInfo.website} className='border-ArticleCreation In placeHolderText_articleCreation' />
 						<div>Event Start Time:</div>
-						<input type='datetime-local' name='startTime' onChange={changeState} defaultValue={statesSubmitted.startTime} className='shadow In' />
+						<input type='datetime-local' name='startTime' defaultValue={statesSubmitted.startTime} onChange={changeState} placeholder='Enter address line 1 here' className='border-ArticleCreation In' />
 						<div>Event End Time:</div>
-						<input type='datetime-local' name='endTime' onChange={changeState} defaultValue={statesSubmitted.endTime} className='shadow In' />
-						<textarea name='article' className='expandBox' defaultValue={statesSubmitted.article} onChange={changeState}></textarea>
+						<input type='datetime-local' name='endTime' onChange={changeState} defaultValue={statesSubmitted.endTime} placeholder='Enter address line 1 here' className='border-ArticleCreation In' />
+						<textarea name='text' className='expandBox' defaultValue={statesSubmitted.text} onChange={changeState}></textarea>
+						<label htmlFor="selected_tagBox">Selected Tags:</label>
 
-						<button onClick={ping}>HIIII</button>
-
-						<label htmlFor='selected_tagBox'>Selected Tags:</label>
 						<div name='selected_tagBox' className='selected_tagBox'>
 							<div className='tagsMapContainer_selected'>
 								{[...tempArray].map((tag) => {
@@ -213,32 +289,34 @@ function EditSavedArticle(props) {
 									);
 								})}
 							</div>
-							<label htmlFor='unselected_tagBox'>Unselected Tags:</label>
-							<div name='unselected_tagBox' className='unselected_tagBox'>
-								<div className='tagsMapContainer'>
-									{tags.map((tag) => {
-										return (
-											<div key={tag}>
-												<div className='inline-block'>
-													<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
-														{tag}
-													</div>
+						</div>
+						<label htmlFor="unselected_tagBox">Unselected Tags:</label>
+						<div name='unselected_tagBox' className='unselected_tagBox'>
+							<div className='tagsMapContainer'>
+								{tags.map((tag) => {
+									return (
+										<div key={tag}>
+											<div className='inline-block'>
+												<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
+													{tag}
 												</div>
 											</div>
-										);
-									})}
-								</div>
+										</div>
+									);
+								})}
 							</div>
 						</div>
+
 						<div className='buttonContainer23'>
-							<button className='Dragon43 shadow' onClick={submitArticle}>
-								Submit Changes
+							<button className="Dragon42 Shadow" onClick={ChangeEndButton}>{endButton}</button>
+							<button className='Dragon43 shadow' type='submit'>
+								{endValue}
 							</button>
 						</div>
-					</div>
+					</form>
 				</div>
-			) : null}
-		</>
+			</div>
+		</div>
 	);
 }
 

@@ -1,39 +1,37 @@
 import React, { useState, useEffect } from 'react';
 
-import { collection, addDoc, getDoc, doc, setDoc } from 'firebase/firestore';
+import { collection, addDoc, getDoc, doc, updateDoc, setDoc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import ImportImgs from '../template/ImportImgs';
 import { useNavigate } from 'react-router-dom';
 
 let statesSubmitted = { views: 0, startTime: '', endTime: '' };
 let page = 'ArticleCreation';
-let endValueNum=1
+let endValueNum = 1
 function ArticleCreation(props) {
 	import('../../styles/page/ArticleCreation.css');
 	const navigate = useNavigate();
 	const [httpUrl, setHttpUrl] = useState('');
 	const [tags, setTags] = useState([]);
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
-	
-	let tagsSorted=[]
-	const [endValue,setEndValue]=useState("Submit Article to Main Page")
-	const [endButton,setEndButton]=useState("Change to Save Event privately to your Profile Page")
-	useEffect(async () => {
-		document.getElementById('editor').addEventListener('input', inputEvt, false);
-		// const tagsRef = doc(db, 'tagCollection', 'tagDoc');
-		// getDoc(tagsRef).then((tagsDB) => {
-		// 	console.log(tagsDB.data().tagArray);
-		// 	setTags(tagsDB.data().tagArray);
-		// });
-		const tagsDB = await getDoc(doc(db, "tagCollection", "tagDoc"))
+	let tagsSorted = []
+	const [documentReference, setDocumentReference] = useState("")
+	const [endValue, setEndValue] = useState("Submit Article to Main Page")
+	const [endButton, setEndButton] = useState("Change to Save Event privately to your Profile Page")
+	const [imageName,setImageName]=useState("null")
+	useEffect(() => {
 
-		tagsSorted = tagsDB.data().tagArray;
-
-		tagsSorted.sort(function (a, b) {
-			return a.localeCompare(b); //using String.prototype.localCompare()
-		})
-
-		setTags(tagsSorted)
+		async function getData() {
+			setDocumentReference(Date.now().toString(36) + Math.random().toString(36).substr(2))
+			document.getElementById('editor').addEventListener('input', inputEvt, false);
+			const tagsDB = await getDoc(doc(db, "tagCollection", "tagDoc"))
+			tagsSorted = tagsDB.data().tagArray;
+			tagsSorted.sort(function (a, b) {
+				return a.localeCompare(b); //using String.prototype.localCompare()
+			})
+			setTags(tagsSorted)
+		}
+		getData()
 	}, []);
 	function inputEvt(ev) {
 		let parse = 'text';
@@ -41,12 +39,14 @@ function ArticleCreation(props) {
 	}
 
 	async function submitArticle(ev) {
-		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
-		image = httpUrl;
+		let { title, hostName, text, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
 		try {
-			const docRef = await addDoc(collection(db, 'events'), {
+			const imgRef= await getDoc(doc(db,"users",props.userID,"UploadedImgs",documentReference))
+			setImageName(imgRef.data().setImageName)
+			await setDoc(doc(db, 'events', documentReference), {
 				title,
-				coverImage: image,
+				coverImage: httpUrl,
+				imageName,
 				article: text,
 				hostName,
 				address: {
@@ -70,12 +70,12 @@ function ArticleCreation(props) {
 				maxCapacity,
 				currentCapacity: maxCapacity,
 			});
-			console.log(docRef.id)
-			addDoc(collection(db, 'users',props.userID,"Published"), {
-				id:docRef.id,
+			setDoc(doc(db, 'users', props.userID, "Published", documentReference), {
+				id: documentReference,
 				title,
-				coverImage: image,
+				coverImage: httpUrl,
 				article: text,
+				imageName,
 				hostName,
 				address: {
 					streetName: streetName,
@@ -99,49 +99,50 @@ function ArticleCreation(props) {
 				currentCapacity: maxCapacity,
 			});
 			alert('Event Submitted!')
-			navigate('/MainPage')
+			navigate('/ProfilePage')
 		} catch (err) {
 			console.error(err)
 			alert("Not all fields had inputs")
 		}
 	}
 	function saveDraft() {
-		let { title, hostName, text, image, views, streetName, houseNumber, city, startTime, endTime, maxCapacity, phone, website, email } = statesSubmitted;
-		image = httpUrl;
-		try{ const docref=addDoc(collection(db, "users", props.userID, "Saved"), {
-			title,
-			coverImage: image,
-			article: text,
-			hostName,
-			address: {
-				streetName: streetName,
-				houseNumber: houseNumber,
-				city: city,
-			},
-			contactInfo: {
-				phone,
-				email,
-				website,
-			},
-			tags: selectedTagArray,
-			creatorUID: props.userID,
-			creatorOrg: props.userOrg,
-			views,
-			dateAdded: new Date(),
-			isPublished: true,
-			startTime: new Date(startTime),
-			endTime: new Date(endTime),
-			maxCapacity,
-		});
-		alert('Event Saved!')
-		navigate("../ProfilePage")
-	} catch(err){
-		console.error(err)
-		alert("Not all fields had inputs")
-	}
 
 
-	}
+		try {
+			let { title, hostName, text, views, startTime, endTime, maxCapacity } = statesSubmitted;
+			setDoc(doc(db, "users", props.userID, "Saved",documentReference	), {
+				title,
+				coverImage: httpUrl,
+				text,
+				hostName,
+				address: {
+					streetName: statesSubmitted.streetName,
+					houseNumber: statesSubmitted.houseNumber,
+					city: statesSubmitted.city,
+				},
+				contactInfo: {
+					phone: statesSubmitted.phone,
+					email: statesSubmitted.email,
+					website: statesSubmitted.website,
+				},
+				tags: selectedTagArray,
+				creatorUID: props.userID,
+				creatorOrg: props.userOrg,
+				views,
+				dateAdded: new Date(),
+				isPublished: true,
+				startTime: new Date(startTime),
+				endTime: new Date(endTime),
+				maxCapacity,
+				id: documentReference
+
+			});
+			alert('Event Saved!')
+			navigate("../ProfilePage")
+		} catch (err) {
+			console.error(err)
+			alert("Not all fields had inputs")
+		}}
 
 	function changeState(ev) {
 		let parse = ev.target.name;
@@ -163,87 +164,84 @@ function ArticleCreation(props) {
 		}
 		setSelectedTagArray(tempArray);
 	}
-function ArticleCheck(ev){
-	ev.preventDefault();
-	if (endValueNum==1){
-		submitArticle(ev.target)
-	}
-	else if (endValueNum==2)
-	saveDraft(ev.target)
+	function ArticleCheck(ev) {
+		ev.preventDefault();
+		if (endValueNum == 1) {
+			submitArticle(ev.target)
+		}
+		else if (endValueNum == 2)
+			saveDraft(ev.target)
 
-}
-function ChangeEndButton(ev){
-	ev.preventDefault();
-	console.log("runs")
-	if (endValueNum==1){
-		console.log("true")
-		setEndValue("Save event to private Profile Area")
-		setEndButton("Publish to Main Page instead")
-		endValueNum=2
 	}
-	else {
-		console.log("false")
-		setEndValue("Submit Event to Main Page")
-		setEndButton("Save Event privately to your Profile instead")
-		endValueNum=1
+	function ChangeEndButton(ev) {
+		ev.preventDefault();
+		if (endValueNum == 1) {
+			setEndValue("Save event to private Profile Area")
+			setEndButton("Publish to Main Page instead")
+			endValueNum = 2
+		}
+		else {
+			setEndValue("Submit Event to Main Page")
+			setEndButton("Save Event privately to your Profile instead")
+			endValueNum = 1
+		}
 	}
-}
 
 
-	
+
 	return (
 		<div id='ArtC_Header'>
 			<header className='Header'>Create an Article</header>
 			<div className='backGround'>
 				<div className='createArticle-popup-box'>
 					<form onSubmit={ArticleCheck}>
-					
-					<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} />
-					<input type='text' name='title' onChange={changeState} placeholder='Enter article title here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='text' name='hostName' onChange={changeState} placeholder='Enter host/s name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='text' name='city' onChange={changeState} placeholder='Enter city here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='number' onKeyPress={(event) => {
-						if (!/[0-9]/.test(event.key)) {
-							event.preventDefault();
-						}
-					}} name='houseNumber' onChange={changeState} placeholder='Enter building number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='number' onKeyPress={(event) => {
-						if (!/[0-9]/.test(event.key)) {
-							event.preventDefault();
-						}
-					}} name='maxCapacity' onChange={changeState} placeholder='Enter maximum capacity here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='number'
-						onKeyPress={(event) => {
+
+					<ImportImgs userData={props} pageName={page} parentCallBack={callBackFunction} eventID={documentReference} userID={props.userID} imageName={imageName} />
+						<input type='text' name='title' onChange={changeState} placeholder='Enter article title here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='hostName' onChange={changeState} placeholder='Enter host/s name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='streetName' onChange={changeState} placeholder='Enter street name here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='city' onChange={changeState} placeholder='Enter city here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='number' onKeyPress={(event) => {
 							if (!/[0-9]/.test(event.key)) {
 								event.preventDefault();
 							}
-						}} name='phone' onChange={changeState} placeholder='Enter phone number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' className='border-ArticleCreation In placeHolderText_articleCreation' />
-					<div>Event Start Time:</div>
-					<input type='datetime-local' name='startTime' onChange={changeState} placeholder='Enter address line 1 here' className='border-ArticleCreation In' />
-					<div>Event End Time:</div>
-					<input type='datetime-local' name='endTime' onChange={changeState} placeholder='Enter address line 1 here' className='border-ArticleCreation In' />
-					<div className='expandBox'>
-						<div contentEditable='true' className='textarea' name='text' role='textbox' id='editor' placeholder='Enter event description here placeHolderText_articleCreation'></div>
-					</div>
-					<label htmlFor="selected_tagBox">Selected Tags:</label>
-					
-					<div name='selected_tagBox' className='selected_tagBox'>
-						<div className='tagsMapContainer_selected'>
-							{[...tempArray].map((tag) => {
-								return (
-									<div key={tag}>
-										<div className='inline-block'>
-											<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
-												{tag}
+						}} name='houseNumber' onChange={changeState} placeholder='Enter building number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='number' onKeyPress={(event) => {
+							if (!/[0-9]/.test(event.key)) {
+								event.preventDefault();
+							}
+						}} name='maxCapacity' onChange={changeState} placeholder='Enter maximum capacity here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='number'
+							onKeyPress={(event) => {
+								if (!/[0-9]/.test(event.key)) {
+									event.preventDefault();
+								}
+							}} name='phone' onChange={changeState} placeholder='Enter phone number here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='email' onChange={changeState} placeholder='Enter your contact email here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<input type='text' name='website' onChange={changeState} placeholder='Enter your website url here' className='border-ArticleCreation In placeHolderText_articleCreation' />
+						<div>Event Start Time:</div>
+						<input type='datetime-local' name='startTime' onChange={changeState} placeholder='Enter address line 1 here' className='border-ArticleCreation In' />
+						<div>Event End Time:</div>
+						<input type='datetime-local' name='endTime' onChange={changeState} placeholder='Enter address line 1 here' className='border-ArticleCreation In' />
+						<div className='expandBox'>
+							<div contentEditable='true' className='textarea' name='text' role='textbox' id='editor' placeholder='Enter event description here placeHolderText_articleCreation'></div>
+						</div>
+						<label htmlFor="selected_tagBox">Selected Tags:</label>
+
+						<div name='selected_tagBox' className='selected_tagBox'>
+							<div className='tagsMapContainer_selected'>
+								{[...tempArray].map((tag) => {
+									return (
+										<div key={tag}>
+											<div className='inline-block'>
+												<div className='filterBtn_articleCreation inline-block shadow' name={tag} onClick={getTarget}>
+													{tag}
+												</div>
 											</div>
 										</div>
-									</div>
-								);
-							})}
-						</div>
+									);
+								})}
+							</div>
 						</div>
 						<label htmlFor="unselected_tagBox">Unselected Tags:</label>
 						<div name='unselected_tagBox' className='unselected_tagBox'>
@@ -261,15 +259,15 @@ function ChangeEndButton(ev){
 								})}
 							</div>
 						</div>
-						
+
 						{/* <input type="checkbox" name="publishArticleCheckbox" id="Publish"></input>
 						<label htmlFor="publishArticleCheckbox">Publish Article to Main Page!</label> */}
-					<div className='buttonContainer23'>
-					<button className="Dragon43 Shadow" onClick={ChangeEndButton}>{endButton}</button>
-						<button className='Dragon43 shadow' type='submit'>
-							{endValue}
-						</button>
-					</div>
+						<div className='buttonContainer23'>
+							<button className="Dragon42 Shadow" onClick={ChangeEndButton}>{endButton}</button>
+							<button className='Dragon43 shadow' type='submit'>
+								{endValue}
+							</button>
+						</div>
 					</form>
 				</div>
 			</div>
