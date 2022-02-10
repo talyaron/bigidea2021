@@ -99,7 +99,7 @@ function ArticleCreation(props) {
 				currentCapacity: maxCapacity,
 			});
 			alert('Event Submitted!')
-			navigate('/ProfilePage')
+			navigate('../ProfilePage')
 		} catch (err) {
 			console.error(err)
 			alert("Not all fields had inputs")
