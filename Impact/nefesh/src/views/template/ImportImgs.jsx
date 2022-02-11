@@ -21,7 +21,7 @@ function HandleImportImg(props) {
 
 	useEffect(() => {
 		if (props.imageName==="null"){
-		console.log("didnt run")
+		// console.log("didnt run")
 		}else{
 			setImageAsFile(props.imageName)
 			setImageAsFileValid(true)
@@ -33,7 +33,7 @@ function HandleImportImg(props) {
 	}, [props.imageName]);
 
 	function handleClickImage(ev) {
-		console.log(ev);
+		//console.log(ev);
 	}
 
 	async function onTrigger(ev) {
@@ -49,7 +49,7 @@ function HandleImportImg(props) {
 		uploadBytes(storageRef, image).then((snapshot) => {
 			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${UniqueId}${image.name}`)).then((httpRef) => {
 				setImageAsUrl(httpRef);
-				console.log(image.name)
+				//console.log(image.name)
 				props.parentCallBack(httpRef);
 			});
 			if(props.profileState=="creation"|| props.profileState=="editing"){
@@ -58,7 +58,7 @@ function HandleImportImg(props) {
 			})} 
 		});
 
-		console.log('Upload Successful!');
+		//console.log('Upload Successful!');
 	}
 
 	return (
@@ -66,7 +66,7 @@ function HandleImportImg(props) {
 			<img src={Icon} alt='upload' id='uploadImg_Img' />
 			<div id='input_Img'>{imageAsFileValid ? `${imageAsFile.name}` : 'Upload an Image'}</div>
 			<div></div>
-			<input type='file' id='articleImg' accept='.jpg, .png, .gif, .tif' onClick={handleClickImage} onChange={onTrigger} className='hide' />
+			<input type='file' id='articleImg' accept='.jpg, .png, .gif, .tif'  onChange={onTrigger} className='hide' />
 		</label>
 	);
 }

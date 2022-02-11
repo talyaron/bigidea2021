@@ -36,8 +36,8 @@ function EditSavedArticle(props) {
 	const [imageName,setImageName]=useState("null")
 	let tagsSorted = []
 	const [profileImageState,setProfileImageState]=useState("editing")
-	const [endValue, setEndValue] = useState("Save Changes to Main Page")
-	const [endButton, setEndButton] = useState("Unpublish Event and save Event privately instead")
+	const [endValue, setEndValue] = useState("Publish event")
+	const [endButton, setEndButton] = useState("Switch to save event")
 	useEffect(() => {
 		async function getData() {
 			const imageNameRef = await getDoc(doc(db,"users",props.userID,"UploadedImgs",eventID))
@@ -71,7 +71,7 @@ function EditSavedArticle(props) {
 			} else {
 				eventDBTemp.endTime = new Date().toDateInputValue();
 			}
-			console.log(new Date(eventDB.data().dateAdded.seconds * 1000).toDateInputValue());
+			//console.log(new Date(eventDB.data().dateAdded.seconds * 1000).toDateInputValue());
 			// console.log(new Date(eventDB.data().endTime.seconds*1000).toDateInputValue())
 			setStatesSubmitted(eventDBTemp);
 			setAddress(eventDBTemp.address);
@@ -214,7 +214,7 @@ function EditSavedArticle(props) {
 	}
 	function ArticleCheck(ev) {
 		ev.preventDefault();
-		if (endValueNum == 1) {
+		if (endValueNum === 1) {
 			submitArticle(ev.target)
 		}
 		else if (endValueNum == 2)
@@ -223,14 +223,14 @@ function EditSavedArticle(props) {
 	}
 	function ChangeEndButton(ev) {
 		ev.preventDefault();
-		if (endValueNum == 1) {
-			setEndValue("Save event to private Profile Area")
-			setEndButton("Save changes to main pages instead")
+		if (endValueNum === 1) {
+			setEndValue("Save event")
+			setEndButton("Switch to publish event")
 			endValueNum = 2
 		}
 		else {
-			setEndValue("Submit Event to Main Page")
-			setEndButton("Unpublish Event and save Event privately instead")
+			setEndValue("Publish Event")
+			setEndButton("Switch to save event")
 			endValueNum = 1
 		}
 	}

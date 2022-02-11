@@ -131,7 +131,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 .Dragon42 {
 	height: 50px;
-	background-color: var(--Blue6);
+	background-color: var(--Blue5);
 	color: var(--Light);
 	width: 150px;
 	border-radius: 15px;
@@ -141,7 +141,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 .Dragon43 {
 	height: 50px;
-	background-color: green;
+	background-color: var(--Blue5);
 	color: var(--Light);
 	width: 150px;
 	border: none;

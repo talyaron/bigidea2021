@@ -16,8 +16,8 @@ function ArticleCreation(props) {
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
 	let tagsSorted = []
 	const [documentReference, setDocumentReference] = useState("")
-	const [endValue, setEndValue] = useState("Submit Article to Main Page")
-	const [endButton, setEndButton] = useState("Change to Save Event privately to your Profile Page")
+	const [endValue, setEndValue] = useState("Publish event")
+	const [endButton, setEndButton] = useState("Switch to save event")
 	const [imageName,setImageName]=useState("null")
 	const [profileImageState,setProfileImageState]=useState("creation")
 	useEffect(() => {
@@ -177,14 +177,14 @@ function ArticleCreation(props) {
 	}
 	function ChangeEndButton(ev) {
 		ev.preventDefault();
-		if (endValueNum == 1) {
-			setEndValue("Save event to private Profile Area")
-			setEndButton("Publish to Main Page instead")
+		if (endValueNum === 1) {
+			setEndValue("Save event")
+			setEndButton("Switch to publish event")
 			endValueNum = 2
 		}
 		else {
-			setEndValue("Submit Event to Main Page")
-			setEndButton("Save Event privately to your Profile instead")
+			setEndValue("Publish Event")
+			setEndButton("Switch to save event")
 			endValueNum = 1
 		}
 	}

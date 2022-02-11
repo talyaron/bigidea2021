@@ -34,8 +34,8 @@ function EditSavedArticle(props) {
 	const [contactInfo, setContactInfo] = useState([]);
 	const [address, setAddress] = useState([]);
 	let tagsSorted = []
-	const [endValue, setEndValue] = useState("Save event to private Profile Area")
-	const [endButton, setEndButton] = useState("Publish event to main page instead")
+	const [endValue, setEndValue] = useState("Publish event")
+	const [endButton, setEndButton] = useState("Switch to save event")
 	const [imageName,setImageName]=useState("null")
 	const [profileImageState,setProfileImageState]=useState("editing")
 	useEffect(() => {
@@ -72,7 +72,7 @@ function EditSavedArticle(props) {
 			} else {
 				eventDBTemp.endTime = new Date().toDateInputValue();
 			}
-			console.log(new Date(eventDB.data().dateAdded.seconds * 1000).toDateInputValue());
+			//console.log(new Date(eventDB.data().dateAdded.seconds * 1000).toDateInputValue());
 			// console.log(new Date(eventDB.data().endTime.seconds*1000).toDateInputValue())
 			setStatesSubmitted(eventDBTemp);
 			setAddress(eventDBTemp.address);
@@ -224,14 +224,14 @@ function EditSavedArticle(props) {
 	}
 	function ChangeEndButton(ev) {
 		ev.preventDefault();
-		if (endValueNum == 1) {
-			setEndValue("Publish Event")
-			setEndButton("Save event changes privately instead")
+		if (endValueNum === 1) {
+			setEndValue("Save event")
+			setEndButton("Switch to publish event")
 			endValueNum = 2
 		}
 		else {
-			setEndValue("Save event to private Profile Area")
-			setEndButton("Publish event to Main Page instead")
+			setEndValue("Publish Event")
+			setEndButton("Switch to save event")
 			endValueNum = 1
 		}
 	}
