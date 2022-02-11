@@ -11,7 +11,7 @@ let page = 'ProfilePage';
 let savedEventsTemp = [];
 function ProfilePage(props) {
 	import('../../styles/page/ProfilePage.css');
-	
+	const [imageName,setImageName]=useState("null")
 	const handleRoute = useNavigate();
 	const [/*savedArticles*/, setSavedArticles] = useState([]);
 	const [userData, setUserData] = useState();
@@ -26,7 +26,7 @@ function ProfilePage(props) {
 	const [httpUrl, setHttpUrl] = useState('');
 	const [isBioOpen, setIsBioOpen] = useState(false);
 	const [userBio, setUserBio] = useState('loading');
-
+	const [profileImageState,setProfileImageState]=useState("profile")
 	
 	useEffect(() => {
 		getDataProfilePage()
@@ -152,7 +152,7 @@ function ProfilePage(props) {
 								<form className='profileEditor' onSubmit={changeProfile}>
 									<input type='text' className='bioField' name='newName' placeholder='Enter New Name' />
 
-									<ImportImgs userData={userData} placeholder='Enter New Image' className='bioField' pageName={page} parentCallBack={callBackFunction} />
+									<ImportImgs userData={userData} placeholder='Enter New Image' imageName={imageName} className='bioField' pageName={page} parentCallBack={callBackFunction} />
 
 									<input type='text' className='bioField' placeholder='Enter New Bio' name='newBio' />
 									<div className='btns'>

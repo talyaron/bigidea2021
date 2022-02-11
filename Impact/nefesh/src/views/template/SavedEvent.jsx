@@ -116,8 +116,8 @@ function PublishedEvent(props) {
 				{useScript('https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js')}
 				<img id='coverImage_Event' src={image} alt='Event'></img>
 				<div className='eventData_Event'>
-					<div id='title_Event'> {getField(eventData, 'title')} </div>
-					<div id='hostName_Event'> Hosted By:{getField(eventData, 'hostName')} </div>
+					<div id='title_Event'>{getField(eventData, 'title')}</div>
+					<div id='hostName_Event'> Hosted By: {getField(eventData, 'hostName')} </div>
 					<div id='eventWebsite_Event'>
 						<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 					</div>
@@ -138,7 +138,7 @@ function PublishedEvent(props) {
 					</div>
 
 					<div id='eventAddress'>{Object.entries(filterEntries([eventData, [{ field: 'address', type: 'location' }]])).map((e) => formatField(...e)) /* {formatField([ ["type", 'location'], ["data", getField(eventData, "address")]])} */}</div>
-					<div id='eventDescription_Event'>{getField(eventData, 'article')}</div>
+					<div id='eventDescription_Event'>{getField(eventData, 'text')}</div>
 				</div>
 				<div className='addToCalAndMaxCap_Cont'>
 					<div className='userPromptContainer_Event'>
@@ -148,7 +148,7 @@ function PublishedEvent(props) {
 							<span className='end'>{`${getField(eventData, 'endTime')}`}</span>
 							<span className='timezone'>Asia/Jerusalem</span>
 							<span className='title'>{getField(eventData, 'title')}</span>
-							<span className='description'>{getField(eventData, 'article')}</span>
+							<span className='description'>{getField(eventData, 'text')}</span>
 						</div>
 					</div>
 					<div id='maxCap'> Max Capacity: {getField(eventData, 'maxCapacity')} </div>

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-import { getDoc, doc } from 'firebase/firestore';
+import { getDoc, doc ,deleteDoc} from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
-import { useParams } from 'react-router-dom';
+import { useParams ,useNavigate} from 'react-router-dom';
 import useScript from '../../scripts/useScript';
 import Clock from '../../assets/Images/NewIcons/clock.svg';
 // import 'moment-timezone';
 
 function PublishedEvent(props) {
 	import('../../styles/page/Event.css');
+	const navigate=useNavigate()
 	const [eventData, setEventData] = useState([]);
 	const [EventFilter] = useState([
 		{ id: 0, field: 'startTime', label: 'Start Time', type: 'timestamp' },
@@ -95,6 +96,13 @@ function PublishedEvent(props) {
 		if (!formatted) formatted = val.data;
 		return formatted;
 	}
+	function DeleteEvent() {
+		deleteDoc(doc(db, 'users', props.userID, 'Published', eventID))
+		deleteDoc(doc(db,"events",eventID));
+		navigate('../ProfilePage');
+		alert('The saved Event has been deleted');
+	}
+
 
 	return (
 		<div className='EventPage'>
@@ -103,7 +111,7 @@ function PublishedEvent(props) {
 				<img id='coverImage_Event' src={image} alt='Event'></img>
 				<div className='eventData_Event'>
 					<div id='title_Event'> {getField(eventData, 'title')} </div>
-					<div id='hostName_Event'> Hosted By:{getField(eventData, 'hostName')} </div>
+					<div id='hostName_Event'> Hosted By: {getField(eventData, 'hostName')} </div>
 					<div id='eventWebsite_Event'>
 						<a href={websiteValidity ? orgWebsite : null}>{websiteValidity ? orgWebsite : 'There is no link'}</a>
 					</div>
@@ -124,7 +132,7 @@ function PublishedEvent(props) {
 					</div>
 
 					<div id='eventAddress'>{Object.entries(filterEntries([eventData, [{ field: 'address', type: 'location' }]])).map((e) => formatField(...e)) /* {formatField([ ["type", 'location'], ["data", getField(eventData, "address")]])} */}</div>
-					<div id='eventDescription_Event'>{getField(eventData, 'article')}</div>
+					<div id='eventDescription_Event'>{getField(eventData, 'text')}</div>
 				</div>
 				<div className='addToCalAndMaxCap_Cont'>
 					<div className='userPromptContainer_Event'>
@@ -134,7 +142,7 @@ function PublishedEvent(props) {
 							<span className='end'>{`${getField(eventData, 'endTime')}`}</span>
 							<span className='timezone'>Asia/Jerusalem</span>
 							<span className='title'>{getField(eventData, 'title')}</span>
-							<span className='description'>{getField(eventData, 'article')}</span>
+							<span className='description'>{getField(eventData, 'text')}</span>
 						</div>
 					</div>
 					<div id='maxCap'> Max Capacity: {getField(eventData, 'maxCapacity')} </div>
@@ -149,6 +157,7 @@ function PublishedEvent(props) {
 						);
 					})}
 				</div>
+				<button onClick={DeleteEvent}>Delete Event</button>
 			</div>
 		</div>
 	);

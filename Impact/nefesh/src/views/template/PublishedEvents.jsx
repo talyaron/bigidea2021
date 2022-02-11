@@ -4,7 +4,7 @@ import {collection, query, onSnapshot } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 function SavedEvents(props) {
-	import('../../styles/page/ProfilePage.css');
+	import('../../styles/page/MainPage.css');
 	const [eventListState, setEventListState] = useState([]);
 
 	const handleRoute = useNavigate();

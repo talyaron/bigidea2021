@@ -3,11 +3,12 @@ import '../../styles/template/importImg.css';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useEffect, useState } from 'react';
 import Icon from '../../assets/Images/NewIcons/upload.svg';
-
+import { setDoc, getDoc, doc } from "firebase/firestore";
+import { db } from '../../scripts/firebase/config';
 function HandleImportImg(props) {
 	const allInputs = { imgUrl: '' };
 	const storage = getStorage();
-	const [imageAsFile, setImageAsFile] = useState('');
+	const [imageAsFile, setImageAsFile] = useState({});
 	const [, /*imageAsUrl*/ setImageAsUrl] = useState(allInputs);
 	const [userID, setUserID] = useState('TempUserID');
 	const [currentUsePage, setCurrentUsePage] = useState('TempPageUse');
@@ -19,14 +20,20 @@ function HandleImportImg(props) {
 	let UniqueId;
 
 	useEffect(() => {
+		if (props.imageName==="null"){
+		// console.log("didnt run")
+		}else{
+			setImageAsFile(props.imageName)
+			setImageAsFileValid(true)
+		}
 		let tempUID = props.userData.userID;
 		setUserID(tempUID);
 		let tempPN = props.pageName;
 		setCurrentUsePage(tempPN);
-	}, [props.userData.userID, props.pageName]);
+	}, [props.imageName]);
 
 	function handleClickImage(ev) {
-		console.log(ev);
+		//console.log(ev);
 	}
 
 	async function onTrigger(ev) {
@@ -42,9 +49,16 @@ function HandleImportImg(props) {
 		uploadBytes(storageRef, image).then((snapshot) => {
 			getDownloadURL(ref(storage, `Images/${userID}/${currentUsePage}/${UniqueId}${image.name}`)).then((httpRef) => {
 				setImageAsUrl(httpRef);
+				//console.log(image.name)
 				props.parentCallBack(httpRef);
 			});
+			if(props.profileState=="creation"|| props.profileState=="editing"){
+			setDoc(doc(db, "users", userID, "UploadedImgs", props.eventID), {
+				name: image.name
+			})} 
 		});
+
+		//console.log('Upload Successful!');
 	}
 
 	return (
@@ -52,7 +66,7 @@ function HandleImportImg(props) {
 			<img src={Icon} alt='upload' id='uploadImg_Img' />
 			<div id='input_Img'>{imageAsFileValid ? `${imageAsFile.name}` : 'Upload an Image'}</div>
 			<div></div>
-			<input type='file' id='articleImg' accept='.jpg, .png, .gif, .tif' onClick={handleClickImage} onChange={onTrigger} className='hide' />
+			<input type='file' id='articleImg' accept='.jpg, .png, .gif, .tif'  onChange={onTrigger} className='hide' />
 		</label>
 	);
 }

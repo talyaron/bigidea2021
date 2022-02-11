@@ -58,7 +58,8 @@
 	/* align-self: center; */
 }
 
-.createArticle-popup-box {
+/* .createArticle-popup-box { */
+	form {
 	background-color: var(--Light-Page);
 	color: var(--Dark);
 	margin: 15px;
@@ -130,21 +131,23 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 }
 .Dragon42 {
 	height: 50px;
-	background-color: var(--Blue6);
+	background-color: var(--Blue5);
 	color: var(--Light);
 	width: 150px;
 	border-radius: 15px;
 	margin-top: 10px;
 	border: none;
+	margin-right: 5px;
 }
 .Dragon43 {
 	height: 50px;
-	background-color: var(--Blue6);
+	background-color: var(--Blue5);
 	color: var(--Light);
 	width: 150px;
 	border: none;
 	border-radius: 15px;
 	margin-top: 10px;
+	margin-left: 5px;
 }
 .Header {
 	text-align: center;
@@ -171,6 +174,7 @@ https://css-tricks.com/auto-growing-inputs-textareas/
 	display: flex;
 	justify-content: space-around;
 	width: 100%;
+	margin-bottom: 40px;
 }
 
 .tag34 {
