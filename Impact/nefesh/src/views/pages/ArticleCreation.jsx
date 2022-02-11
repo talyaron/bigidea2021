@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../styles/page/ArticleCreation.css';
+
 import { collection, addDoc, getDoc, doc, updateDoc, setDoc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import ImportImgs from '../template/ImportImgs';
@@ -9,15 +9,15 @@ let statesSubmitted = { views: 0, startTime: '', endTime: '' };
 let page = 'ArticleCreation';
 let endValueNum = 1
 function ArticleCreation(props) {
-	
+	import('../../styles/page/ArticleCreation.css');
 	const navigate = useNavigate();
 	const [httpUrl, setHttpUrl] = useState('');
 	const [tags, setTags] = useState([]);
 	const [selectedTagArray, setSelectedTagArray] = useState([]);
 	let tagsSorted = []
 	const [documentReference, setDocumentReference] = useState("")
-	const [endValue, setEndValue] = useState("Publish event")
-	const [endButton, setEndButton] = useState("Switch to save event")
+	const [endValue, setEndValue] = useState("Submit Article to Main Page")
+	const [endButton, setEndButton] = useState("Change to Save Event privately to your Profile Page")
 	const [imageName,setImageName]=useState("null")
 	const [profileImageState,setProfileImageState]=useState("creation")
 	useEffect(() => {
@@ -177,14 +177,14 @@ function ArticleCreation(props) {
 	}
 	function ChangeEndButton(ev) {
 		ev.preventDefault();
-		if (endValueNum === 1) {
-			setEndValue("Save event")
-			setEndButton("Switch to publish event")
+		if (endValueNum == 1) {
+			setEndValue("Save event to private Profile Area")
+			setEndButton("Publish to Main Page instead")
 			endValueNum = 2
 		}
 		else {
-			setEndValue("Publish Event")
-			setEndButton("Switch to save event")
+			setEndValue("Submit Event to Main Page")
+			setEndButton("Save Event privately to your Profile instead")
 			endValueNum = 1
 		}
 	}
