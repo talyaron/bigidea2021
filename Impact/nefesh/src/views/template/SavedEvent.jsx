@@ -40,11 +40,11 @@ function PublishedEvent(props) {
 
 				let EventArray = Object.entries(eventObj);
 				EventArray = EventArray.map((e) => [e[0], e[1] instanceof Object && !Array.isArray(e[1]) ? Object.entries(e[1]) : e[1]]);
-				console.log(eventID);
+				// console.log(eventID);
 				setEventData(EventArray);
 				if ('tags' in eventObj && Array.isArray(eventObj.tags)) {
-					console.log('we have tags');
-					console.log(eventObj.tags);
+					// console.log('we have tags');
+					// console.log(eventObj.tags);
 					setTags(eventObj.tags);
 				}
 				setImage(eventObj.coverImage);
@@ -70,7 +70,7 @@ function PublishedEvent(props) {
 		buffer.map((element) => (element.data = data[0].find((e) => e[0] === element.field)[1]));
 		buffer = buffer.map((e) => Object.entries(e));
 
-		console.log(buffer);
+		// console.log(buffer);
 
 		return buffer;
 	}
@@ -106,7 +106,7 @@ function PublishedEvent(props) {
 	}
 	function DeleteEvent() {
 		deleteDoc(doc(db, 'users', props.userID, 'Saved', eventID));
-		navigate('../ProfilePage');
+		navigate('ProfilePage');
 		alert('The saved Event has been deleted');
 	}
 
