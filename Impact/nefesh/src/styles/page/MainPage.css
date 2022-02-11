@@ -1,0 +1,173 @@
+.userInterfaceContainer {
+	padding: 1px;
+}
+.dropDown {
+	border: 10px black;
+	border-radius: 12px;
+	text-align: center;
+	margin-top: 10px;
+}
+.searchBar {
+	position: relative;
+	left: 30%;
+}
+.eventMapContainer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 2%;
+	margin-inline: 2%;
+}
+.userInterfaceContainer {
+	font-family: Arial;
+	font-weight: bolder;
+}
+.filterEvents {
+	margin: 9px auto 9px auto;
+	padding: 6px 6px 6px 6px;
+	background: var(--Light);
+	font-family: Roboto;
+	font-weight: 500;
+	font-size: 14px;
+	box-shadow: 0px 1px 2px rgb(0 0 0 / 30%), 0px 1px 3px 1px rgb(0 0 0 / 15%);
+	border-radius: 8px;
+	text-align: center;
+	color: var(--Dark);
+	width: 75%;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+}
+
+#eventFilterType {
+	border-radius: 5px;
+	background-color: var(--Blue1);
+	height: 25px;
+	font-weight: bolder;
+}
+
+.filterEvents > * {
+	margin-inline: 2px;
+}
+
+.nametag {
+	margin-top: 6px;
+	background-color: var(--Light);
+	border-radius: 3px;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.274);
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+.nametag > :not(img, .adminButton) {
+	margin-left: 28%;
+	color: #040404;
+	block-size: fit-content;
+}
+
+.nametag > h2 {
+	margin-top: auto;
+	min-height: 35px;
+	max-height: 55px;
+	padding-top: 14px;
+	margin-bottom: inherit;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.cardData {
+	white-space: nowrap;
+}
+
+#Views {
+	margin-bottom: 0;
+	bottom: 4px;
+	position: absolute;
+}
+
+@media screen and (min-width: 770px) {
+	.card {
+		max-width: 325px;
+	}
+}
+.card {
+	/*padding: 20px;
+	border-radius: 10px;
+	
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.185);
+	margin-bottom: 10px;
+	*/
+	background-color: #f0f0f0;
+	display: block;
+	top: 0px;
+	position: relative;
+	width: 100%;
+	height: 150px;
+	border-radius: 12px;
+	padding: 0px 14px;
+	margin: 4px;
+	text-decoration: none;
+	z-index: 0;
+	overflow: hidden;
+	border: 1px solid var(--card-bg);
+	transition: all 0.2s ease;
+	box-shadow: rgb(0 0 0 / 10%) 0px 0px 7px;
+}
+
+.card:hover {
+	background-color: #ececec;
+}
+
+.card--link {
+	cursor: pointer;
+	user-select: none;
+}
+
+.card > img {
+	object-fit: cover;
+	height: 150px;
+	width: 25%;
+	object-position: center;
+	z-index: -1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: all 0.15s;
+	box-shadow: 0px 0px 12px 2px rgb(145 145 145);
+}
+
+.card:hover > img {
+	width: 26%;
+	height: 160px;
+	box-shadow: 0px 0px 10px 1px rgb(145 145 145);
+}
+
+img:before {
+	content: ' ';
+	display: block;
+	position: initial;
+	height: 100%;
+	width: 100%;
+	background: var(--Blue4);
+}
+
+.card > #Date,
+.card > #Views {
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+.tagGroup {
+	display: flex;
+	flex-wrap: wrap-reverse;
+	max-height: 43px;
+	overflow-y: clip;
+}
+
+.MainPageBody {
+	margin-top: 7%;
+}

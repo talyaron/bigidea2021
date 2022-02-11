@@ -1,0 +1,150 @@
+.popupAdmin-box {
+	position: fixed;
+	z-index: 9;
+	background: #00000050;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+}
+
+.adminBox {
+	position: relative;
+	width: fit-content;
+	margin: 0 auto;
+	height: auto;
+	max-height: 70vh;
+	margin-top: calc(100vh - 85vh - 20px);
+	background: var(--Light);
+	border-radius: 4px;
+	padding: 20px;
+	border: 2px solid var(--Dark);
+	overflow: auto;
+}
+
+.closeAdmin-icon {
+	content: 'x';
+	cursor: pointer;
+	right: 10px;
+	top: 15px;
+	background: #ededed;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	line-height: 20px;
+	text-align: center;
+	border: 1px solid #999;
+	font-size: 20px;
+	position: absolute;
+}
+
+.adminButtonContainer {
+	padding: 10px;
+	border-radius: 5px;
+	background-color: var(--Light);
+}
+
+.adminButtonContainer > * {
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	border: 1px solid var(--Dark);
+	box-shadow: 1px 1px 2px 2px Var(--Dark);
+	color: Var(--Blue6);
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	margin-top: 5px;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-style: bold;
+	background-color: Var(--Light);
+	width: -webkit-fill-available;
+}
+
+.adminButtonContainer > button:hover {
+	background-color: var(--Blue1);
+	cursor: pointer;
+}
+#setRoleToOle {
+	display: flexbox;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	font-size: small;
+}
+#displayName,
+#userIDdisplay {
+	color: Var(--Light);
+	font-size: larger;
+	font-weight: 500;
+	text-shadow: 0 0 3px Var(--Dark), 0 0 5px Var(--Dark);
+}
+
+/* The switch - the box around the slider */
+label.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+/* The slider */
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--Blue4);
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
+
+.slider:before {
+	position: absolute;
+	content: '';
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: Var(--Light);
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
+
+input:checked + .slider {
+	background-color: Var(--Blue5);
+}
+
+input:focus + .slider {
+	box-shadow: 0 0 1px Var(--Blue5);
+}
+
+input:checked + .slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
+}
+
+.danger {
+	background-color: tomato !important;
+}

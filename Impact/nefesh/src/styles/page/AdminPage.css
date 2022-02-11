@@ -1,0 +1,128 @@
+.adminPageCont {
+	position: relative;
+	max-width: 100%;
+	max-height: 90vh;
+	/* overflow-y: auto; */
+	background-color: var(--background-light);
+	color: var(--Dark);
+	margin: 15px;
+	display: flex;
+	flex-direction: column;
+}
+.eventMapContainer_AP {
+	margin-top: 85px;
+	position: relative;
+}
+
+.adminButton {
+	border: 2px solid Var(--Dark);
+	background-color: Var(--Blue6);
+	display: inline-grid;
+	margin: 3px;
+	width: 95%;
+	color: Var(--Light);
+	border-radius: 5px;
+	text-shadow: 0 0 3px Var(--Dark), 0 0 5px Var(--Dark);
+}
+
+.userButtonID_AP {
+	background-color: Var(--Blue3);
+	border-radius: 5px;
+	font-size: small;
+	margin: 10px;
+	color: Var(--Dark);
+}
+
+.userButtonID_AP:hover {
+	background-color: Var(--Light-blue);
+	color: Var(--Light);
+}
+
+.cardInfo_AP {
+	padding-left: 10px;
+	font-weight: 500;
+	margin-block: inherit;
+}
+
+.smallpfp {
+	height: 60px;
+	width: 60px;
+	border-radius: 30px;
+	display: block;
+	margin: 2px 2px 0;
+	padding: 0;
+	object-fit: cover;
+}
+
+.cardInfoGroup_AP {
+	display: inline-flex;
+	padding: 1%;
+}
+
+.cardUserInfo_AP {
+	margin-block: auto;
+}
+
+#searchDropdown_AP {
+	background-color: Var(--Light);
+	margin-left: 5px;
+	border-radius: 5px;
+	border: 1px solid Var(--Grey-D2);
+	color: Var(--Navy-blue);
+}
+.searchAmenities_AP {
+	border: 1px solid Var(--Dark);
+	border-collapse: collapse;
+}
+
+#search_button_AdminPage,
+#clearFilter_AP {
+	background-color: Var(--Light);
+	border: 1px solid Var(--Light);
+	height: 28px;
+	width: 10vw;
+	font-size: large;
+	margin-left: 0.3vw;
+	margin-right: 0.3vw;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+#search_button_AdminPage:hover,
+#clearFilter_AP:hover,
+#searchDropdown_AP:hover {
+	background-color: Var(--Background-light);
+}
+
+#searchFor_AP {
+	color: Var(--Navy-blue);
+}
+
+.search_Container_AP {
+	position: fixed;
+	top: 40px;
+	left: 0;
+	background-color: var(--Light);
+	width: 100%;
+	padding: 12px;
+	padding-right: 0%;
+	flex: none;
+	display: inline;
+	max-height: 25%;
+	box-shadow: 0px 2px 3px 0px rgb(145 145 145 / 32%);
+}
+#search_Box_AdminPage {
+	height: 28px;
+	width: 50vw;
+	border: 1px solid Var(--Light);
+	background-color: Var(--Light);
+}
+/*
+#clearFilter_AP{
+    height: 28px;
+    width: 60px;
+    background-color: Var(--Light);
+    color: Var(--Grey-D2);
+    display: inline;
+    border: 1px solid Var(--Grey);
+}*/

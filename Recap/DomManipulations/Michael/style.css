@@ -1,8 +1,0 @@
-#box{
-    width: 100px;
-    height: 100px;
-    background-color: burlywood;
-    position: relative;
-    left: 0;
-    transition: 1s all;
-}

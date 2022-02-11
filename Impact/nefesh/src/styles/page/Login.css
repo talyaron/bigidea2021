@@ -1,0 +1,83 @@
+.loginPage {
+	position: relative;
+	top: 10vh;
+	justify-content: center;
+	margin-bottom: 0px;
+	align-items: center;
+}
+.header_Login {
+	text-align: center;
+	position: relative;
+}
+.shadow {
+	-moz-box-shadow: 0px 2px 3px 3px rgba(145, 145, 145, 0.322);
+	-webkit-box-shadow: 0px 2px 3px 3px rgba(145, 145, 145, 0.322);
+	box-shadow: 0px 2px 3px 3px rgba(145, 145, 145, 0.322);
+}
+
+#googleLogin {
+	height: 65px;
+	border-radius: 30px;
+	width: 220px;
+	background-color: Var(--Light);
+	border: none;
+}
+
+#googleLogin:hover {
+	background-color: Var(--Light-D2);
+}
+.googleLoginForm {
+	text-align: center;
+}
+
+#logo_LoginPage {
+	width: 414px;
+	height: 138px;
+}
+#googleLogo {
+	max-height: 40px;
+	display: inline;
+	margin-right: 5%;
+}
+#googleText {
+	bottom: 23%;
+	display: inline;
+	margin: auto 0;
+	position: relative;
+}
+
+#art_login {
+	position: fixed;
+	bottom: 0px;
+	z-index: -6;
+	margin: none;
+	width: 100vw;
+	height: auto;
+	bottom: auto;
+}
+
+@media only screen and (max-aspect-ratio: 6 / 10) {
+	#art_login {
+		bottom: 0;
+	}
+}
+
+.centerImg_Login {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.centerImg_Login > div {
+	display: flex;
+	align-items: center;
+}
+
+.centerImg_Login > div > img {
+	width: 414px;
+	height: 138px;
+}
+#bigIdeaTag {
+	color: #8b9faf;
+	display: flex;
+	justify-content: space-evenly;
+}

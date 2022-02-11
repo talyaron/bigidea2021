@@ -1,0 +1,80 @@
+/* Popup style */
+
+@media only screen and (max-width: 600px) {
+	.EditPopUpbox {
+		position: relative;
+		left: 50vw;
+		transform: translateX(-50%);
+		margin-top: 20%;
+		background: Var(--Light-D2);
+		border-radius: 4px;
+		padding: 20px;
+		z-index: 4000 !important;
+	}
+}
+@media only screen and (min-width: 601px) {
+	.EditPopUpbox {
+		position: relative;
+		left: 50vw;
+		transform: translateX(-50%);
+		margin-top: 20%;
+		background: Var(--Light-D2);
+		border-radius: 4px;
+		padding: 20px;
+		z-index: 4000 !important;
+	}
+}
+.popup-box {
+	position: fixed;
+	width: 22em;
+	height: fit-content;
+	top: 0;
+}
+
+.Edit-close-icon {
+	content: 'x';
+	border: none;
+	position: relative;
+	background: Var(--Light-D2);
+	line-height: 18px;
+	text-align: center;
+	font-size: 20px;
+	z-index: 99;
+	top: 24vh;
+	left: 160px;
+}
+.profileEditor {
+	width: fit-content;
+}
+.bioField {
+	display: flex;
+	flex-direction: row;
+	background-color: var(--Blue1);
+	font-family: Roboto;
+	width: 80%;
+	height: 35px;
+	font-weight: 530;
+	font-size: 14px;
+	margin: 10px;
+	padding: 0px 8px;
+}
+.choosePictureButton {
+	width: 100%;
+}
+#editbtnSubmitProfPage {
+	width: 151px;
+	border: none;
+	font-size: 16px;
+}
+.btnEditProf {
+	text-align: left;
+	border-radius: 5px;
+	background-color: var(--Light);
+	padding: 10px;
+	margin-left: 0px;
+	color: var(--Dark);
+	user-select: none;
+	cursor: pointer;
+	font-family: Roboto;
+	font-weight: 530;
+}

@@ -1,0 +1,57 @@
+.submitbutton {
+	background-color: var(--Blue5);
+	font-size: 10px;
+}
+#tagsContainer {
+	display: flex;
+	flex-direction: row;
+	background-color: var(--Light);
+	padding: 10px;
+	overflow-x: scroll;
+	max-width: 100%;
+}
+.inline-block {
+	display: inline-block;
+}
+
+.filterBtn {
+	max-height: 20px;
+	background-color: var(--Blue5);
+	color: var(--Light);
+	border-radius: 5px;
+	padding: 3px;
+	margin-left: 3px;
+}
+
+.filterBtn:hover {
+	background-color: #cfe4ff;
+	color: var(--Dark);
+	margin-left: 4px;
+	font-weight: bold;
+}
+
+.filterBtn:active {
+	background-color: var(--Blue6);
+	color: var(--Blue1);
+	border-radius: 10px;
+	margin-left: 5px;
+}
+
+.filterBtn:focus {
+	background-color: var(--Blue6);
+	color: var(--Blue2);
+	border-radius: 10px;
+	margin-left: 5px;
+}
+
+.filterBanner {
+	text-align: center;
+	background-color: var(--Blue5);
+	color: var(--Blue1);
+}
+
+.filterBtn_cont {
+	max-height: 35px;
+	margin-left: 5px;
+	cursor: pointer;
+}

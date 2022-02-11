@@ -1,0 +1,506 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+	.profilePage {
+		height: fit-content;
+		background-color: var(--Light-Page);
+		margin: 0px 9px 0px 9px;
+		padding-bottom: 30px;
+	}
+
+	.profileEditor {
+		padding: 20px;
+		width: 100%;
+		text-align: center;
+		background-color: var(--Light);
+		width: 80%;
+		font-family: Roboto;
+		filter: drop-shadow(0px 0px 9px rgba(0, 0, 0, 0.75));
+		border-radius: 10px;
+	}
+	#profilePic {
+		height: 150px;
+		width: 150px;
+		border-radius: 100px;
+		align-self: center;
+		background-image: none;
+		background-color: blue;
+		border: 2px solid #938f99;
+		display: block;
+		background-size: contain;
+		background-repeat: no-repeat;
+		padding: 10px;
+		background-size: cover;
+		margin-top: -40%;
+	}
+	#prefButton {
+		display: inline;
+		justify-content: center;
+		margin-left: 20%;
+	}
+	#submitChanges {
+		display: inline;
+		justify-content: center;
+		margin-left: 20%;
+	}
+	.info {
+		font-weight: 500;
+	}
+
+	.back-2 {
+		background-color: #f7fbff;
+		text-align: center;
+		margin-bottom: 0%;
+		padding: 10px;
+	}
+	.bio-filed {
+		position: relative;
+		width: 251px;
+		height: 190px;
+		left: 50vw;
+		top: 10vh;
+		transform: translate(-50%, -50%);
+		background: #e7f2ff;
+		border-radius: 20px;
+	}
+	.bio-filed h3 {
+		text-align: center;
+	}
+	.bio-filed p {
+		text-align: center;
+	}
+	.EditProfBtn1 {
+		margin-top: -110px;
+		margin-left: 30%;
+		color: #0077cc;
+		background-color: #6cb1e2;
+		border: none;
+		border-radius: 140px 140px 140px 140px;
+		height: 29pt;
+		width: 30pt;
+		float: left;
+		position: relative;
+		float: center;
+		margin-top: 33%;
+		top: 20px;
+		cursor: pointer;
+		user-select: none;
+		/* z-index: 2 !important; */
+		background-position: center;
+	}
+	.back-1 {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		width: 100%;
+	}
+	.EditProfBtn2 {
+		margin-top: 10px;
+		margin-left: 10px;
+		background-color: #9ccaff;
+		color: black;
+		border: none;
+		border-radius: 140px 140px 140px 140px;
+		height: 29pt;
+		width: 30pt;
+		float: left;
+		position: relative;
+		float: center;
+		left: 60vw;
+		top: 10vh;
+	}
+	.foot {
+		height: 13vh;
+	}
+	.center {
+		text-align: center;
+	}
+	.center2 {
+		text-align: center;
+		font-family: Roboto;
+		background-color: #e7f2ff;
+		color: black;
+	}
+	.center3 {
+		/* margin-right: auto;
+   margin-left: auto; */
+		display: block;
+		margin-top: 20px;
+		border-radius: 100px;
+		text-align: left;
+		border-radius: 10px;
+	}
+
+	.finalBio {
+		width: 225px;
+		height: 120px;
+		left: 68px;
+		top: 376px;
+
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 12px;
+		line-height: 10px;
+		/* or 83% */
+		text-align: center;
+
+		color: #000000;
+	}
+
+	.wholePage {
+		background-color: #f7fbff;
+		height: 100%;
+	}
+
+	.emailMe {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding: 6px 10px 6px 8px;
+		width: fit-content;
+		height: 32px;
+		top: 256px;
+
+		background: #ffffff;
+		/* M3/Elevation Light/1 */
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+		border-radius: 8px;
+	}
+
+	.displayName {
+		position: relative;
+		top: 20%;
+		bottom: 500.92%;
+		padding: 10px;
+		/* material-theme/headline3 */
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 28px;
+		line-height: 36px;
+		/* or 129% */
+		align-items: center;
+		text-align: center;
+
+		color: #000000;
+		align-self: center;
+	}
+
+	.choosePictureButton {
+		width: 100%;
+	}
+
+	.editProfile {
+		text-align: left;
+		/* background-color: ; */
+		width: 60%;
+		padding: 10px;
+		border-radius: 20px;
+	}
+
+	.bioField {
+		background-color: rgba(207, 228, 255, 0.4);
+		border: none;
+		color: #000000;
+	}
+
+	.bioField,
+	::placeholder {
+		color: #000000;
+	}
+
+	.buttonHolder {
+		display: flex;
+		flex-direction: row;
+		margin: 10px;
+		justify-content: center;
+	}
+
+	.savedArticles {
+		align-items: center;
+		margin: 10px;
+		padding: 6px 16px 6px 8px;
+
+		width: 127px;
+		height: 40px;
+		left: 43%;
+		top: 256px;
+		border: none;
+		background: #ffffff;
+		/* M3/Elevation Light/1 */
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+		border-radius: 8px;
+	}
+
+	.publishedArticles {
+		align-items: center;
+		margin: 10px;
+		padding: 6px 16px 6px 8px;
+
+		width: 127px;
+		height: 40px;
+		left: 43%;
+		top: 256px;
+		border: none;
+		background: #ffffff;
+		/* M3/Elevation Light/1 */
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+		border-radius: 8px;
+		font-family: Roboto;
+	}
+}
+
+/*  END OF PHONE CSS */
+
+/* START OF LAPTOP CSS */
+
+@media only screen and (min-width: 601px) {
+	.profilePage {
+		height: fit-content;
+		background-color: var(--Light-Page);
+		margin-bottom: 10vh;
+		margin: 0px 9px 0px 9px;
+	}
+
+	.profileEditor {
+		padding: 20px;
+		width: 100%;
+		text-align: center;
+		background-color: var(--Light);
+		width: 80%;
+		font-family: Roboto;
+		filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+		border-radius: 10px;
+	}
+	#profilePic {
+		height: 150px;
+		width: 150px;
+		border-radius: 100px;
+		align-self: center;
+		background-image: none;
+		background-color: blue;
+		border: 2px solid #938f99;
+		display: block;
+		background-size: contain;
+		background-repeat: no-repeat;
+		padding: 10px;
+		background-size: cover;
+		margin-top: 7%;
+	}
+	#prefButton {
+		display: inline;
+		justify-content: center;
+		margin-left: 20%;
+	}
+	#submitChanges {
+		display: inline;
+		justify-content: center;
+		margin-left: 20%;
+	}
+	.info {
+		font-weight: 500;
+	}
+	.back-1 {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		width: 100%;
+	}
+	.back-2 {
+		background-color: #f7fbff;
+		text-align: center;
+		margin-bottom: 0%;
+		padding: 10px;
+	}
+	.bio-filed {
+		position: relative;
+		width: 251px;
+		height: 190px;
+		left: 50vw;
+		top: 10vh;
+		transform: translate(-50%, -50%);
+		background: #e7f2ff;
+		border-radius: 20px;
+	}
+	.bio-filed h3 {
+		text-align: center;
+	}
+	.bio-filed p {
+		text-align: center;
+	}
+	.EditProfBtn1 {
+		margin-top: -110px;
+		margin-left: 9%;
+		color: #0077cc;
+		background-color: #6cb1e2;
+		border: none;
+		border-radius: 140px 140px 140px 140px;
+		height: 29pt;
+		width: 30pt;
+		float: left;
+		position: relative;
+		float: center;
+		top: 33vh;
+		cursor: pointer;
+		user-select: none;
+		/* z-index: 2 !important; */
+		background-position: center;
+	}
+	.EditProfBtn2 {
+		margin-top: 10px;
+		margin-left: 10px;
+		background-color: #9ccaff;
+		color: black;
+		border: none;
+		border-radius: 140px 140px 140px 140px;
+		height: 29pt;
+		width: 30pt;
+		float: left;
+		position: relative;
+		float: center;
+		left: 60vw;
+		top: 10vh;
+	}
+	.foot {
+		height: 13vh;
+	}
+	.center {
+		text-align: center;
+	}
+	.center2 {
+		text-align: center;
+		font-family: Roboto;
+		background-color: #e7f2ff;
+		color: black;
+	}
+	.center3 {
+		/* margin-right: auto;
+   margin-left: auto; */
+		display: block;
+		margin-top: 20px;
+		border-radius: 100px;
+		text-align: left;
+		border-radius: 10px;
+	}
+
+	.finalBio {
+		width: 225px;
+		height: 120px;
+		left: 68px;
+		top: 376px;
+
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 12px;
+		line-height: 10px;
+		/* or 83% */
+		text-align: center;
+
+		color: #000000;
+	}
+
+	.wholePage {
+		background-color: #f7fbff;
+		height: 100%;
+	}
+
+	.emailMe {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding: 6px 10px 6px 8px;
+		width: fit-content;
+		height: 32px;
+		top: 256px;
+
+		background: #ffffff;
+		/* M3/Elevation Light/1 */
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+		border-radius: 8px;
+	}
+
+	.displayName {
+		position: relative;
+		top: 20%;
+		bottom: 500.92%;
+		padding: 10px;
+		/* material-theme/headline3 */
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 28px;
+		line-height: 36px;
+		/* or 129% */
+		align-items: center;
+		text-align: center;
+
+		color: #000000;
+		align-self: center;
+	}
+
+	.choosePictureButton {
+		width: 100%;
+	}
+
+	.editProfile {
+		text-align: left;
+		/* background-color: ; */
+		width: 60%;
+		padding: 10px;
+		border-radius: 20px;
+	}
+
+	.bioField {
+		background-color: rgba(207, 228, 255, 0.4);
+		border: none;
+		color: #000000;
+	}
+
+	.bioField,
+	::placeholder {
+		color: #000000;
+	}
+
+	.buttonHolder {
+		display: flex;
+		flex-direction: row;
+		margin: 10px;
+		justify-content: center;
+	}
+
+	.savedArticles {
+		align-items: center;
+		margin: 10px;
+		padding: 6px 16px 6px 8px;
+
+		width: 127px;
+		height: 40px;
+		left: 43%;
+		top: 256px;
+		border: none;
+		background: #ffffff;
+		/* M3/Elevation Light/1 */
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+		border-radius: 8px;
+	}
+
+	.publishedArticles {
+		align-items: center;
+		margin: 10px;
+		padding: 6px 16px 6px 8px;
+
+		width: 127px;
+		height: 40px;
+		left: 43%;
+		top: 256px;
+		border: none;
+		background: #ffffff;
+		/* M3/Elevation Light/1 */
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+		border-radius: 8px;
+		font-family: Roboto;
+	}
+}

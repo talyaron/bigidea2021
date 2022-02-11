@@ -1,0 +1,23 @@
+#form_ImportImg {
+	display: flex;
+	justify-content: space-evenly;
+}
+#input_ArticleImg {
+	display: flex;
+	flex-direction: row;
+	background-color: var(--Blue1);
+	font-family: Roboto;
+	width: 80%;
+	font-weight: 530;
+	font-size: 14px;
+	margin: 10px 0;
+	padding: 0px 8px;
+}
+#input_Img {
+	display: flex;
+	vertical-align: center;
+	padding: 8px;
+}
+#uploadImg_Img {
+	margin-left: 5px;
+}

@@ -1,0 +1,33 @@
+.EditPopUpboxBio {
+	position: relative;
+	margin: 0 auto;
+	margin-top: calc(100vh - 85vh - 20px);
+	background: Var(--Light-D2);
+	border-radius: 4px;
+	padding: 20px;
+	width: 200%;
+}
+.popup-boxBio {
+	position: fixed;
+	width: 30%;
+	height: fit-content;
+	top: 0;
+}
+
+.Edit-close-iconBio {
+	content: 'x';
+	position: fixed;
+	background: Var(--Light-D2);
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	line-height: 20px;
+	text-align: center;
+	border: 1px solid Var(--Grey);
+	font-size: 20px;
+	z-index: 99;
+	right: 38%;
+}
+.profileEditorBio {
+	width: fit-content;
+}
