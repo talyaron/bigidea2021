@@ -119,7 +119,7 @@ function App() {
 		permList = permList.find(e => location.pathname.split("/")[1].toLowerCase() === e.href.toLowerCase());
 		let roleArr = [role ? role : 'guest', role ? 'member' : null, 'everyone'];
 		let authorised = permList ? permList.role.some((urole) => roleArr.includes(urole)) : true;
-		if(!authorised) navigate("/401");
+		if(!authorised) navigate("/");
 	}, [location, navigate]);
 
 	useEffect(() => {
