@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import('../../styles/page/ArticleCreation.css');
 import { collection, addDoc, getDoc, doc } from 'firebase/firestore';
 import { db } from '../../scripts/firebase/config';
 import ImportImgs from '../template/ImportImgs';
@@ -9,7 +9,7 @@ let statesSubmitted = { views: 0, startTime: '', endTime: '' };
 let page = 'ArticleCreation';
 
 function ArticleCreation(props) {
-	import('../../styles/page/ArticleCreation.css');
+	
 	const navigate = useNavigate();
 	const [httpUrl, setHttpUrl] = useState('');
 	const [tags, setTags] = useState([]);
