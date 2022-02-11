@@ -195,7 +195,7 @@ function ArticleCreation(props) {
 
 	return (
 		<div id='ArtC_Header'>
-			<header className='Header'>Create an Article</header>
+			<header className='Header'>Create an Event</header>
 			<div className='backGround'>
 				<div className='createArticle-popup-box'>
 					<form onSubmit={ArticleCheck}>
@@ -250,7 +250,6 @@ function ArticleCreation(props) {
 							<div contentEditable='true' className='textarea' name='text' role='textbox' id='editor' placeholder='Enter event description here placeHolderText_articleCreation'></div>
 						</div>
 						<label htmlFor='selected_tagBox'>Selected Tags:</label>
-
 						<div name='selected_tagBox' className='selected_tagBox'>
 							<div className='tagsMapContainer_selected'>
 								{[...tempArray].map((tag) => {
@@ -286,10 +285,10 @@ function ArticleCreation(props) {
 						{/* <input type="checkbox" name="publishArticleCheckbox" id="Publish"></input>
 						<label htmlFor="publishArticleCheckbox">Publish Article to Main Page!</label> */}
 						<div className='buttonContainer23'>
-							<button className='Dragon42 Shadow' onClick={ChangeEndButton}>
+							<button className='Dragon42 Shadow' onClick={ChangeEndButton} name='switch'>
 								{endButton}
 							</button>
-							<button className='Dragon43 shadow' type='submit'>
+							<button className='Dragon43 shadow' type='submit' name='submit'>
 								{endValue}
 							</button>
 						</div>
