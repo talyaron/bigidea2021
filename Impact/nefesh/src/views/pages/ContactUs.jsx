@@ -26,7 +26,7 @@ function ContactUs(props) {
 	}
 
 	function handleOrganization() {
-		window.location = `mailto:nbntlv@nbn.org.il?subject=Request to Become An Organization &body=${body} `;
+		window.location = `mailto:NBN.App.Management@gmail.com?subject=Request to Become An Organization &body=${body} `;
 	}
 
 	function openLink() {
